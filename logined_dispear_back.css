@@ -1,0 +1,13 @@
+
+.back_to_logined{
+	display:none;
+}
+
+@media screen and (max-width: 650px) {
+	.back_to_logined_next{
+		display:none;
+	}
+	.back_to_logined{
+		display:block;
+	}
+}

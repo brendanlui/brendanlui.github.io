@@ -1,0 +1,65 @@
+.item {
+    height: 335px;
+    min-height: 0px;
+}
+#pre_movie_title{
+	color: #a5a4a4;
+	font-size:1.4em;
+	margin-top: -75px;
+}
+
+li{
+	display:none;
+}
+
+
+form, a.button{
+	display:inline;
+}
+a.button{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+	
+	background-color: #fff9f9;
+    background-image: url("/img/filter_icon.png"); /* Add a search icon to input */
+    background-position: 4px 4px; /* Position the search icon */
+	background-size: 18px, 18px;
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+	max-width: 108px;
+    font-size: 16px; /* Increase font-size */
+	color:#016991;
+	font-weight: bold;
+    padding: 2px 8px 1px 25px; /* Add some padding */
+    border: 2px solid #ddd; /* Add a grey border */
+    margin-bottom: 2px; /* Add some space below the input */
+	border-radius: 5px;
+}
+#myInput {
+    padding-right: 0px;
+}
+#search_button{
+	border: 2px solid #ddd; /* Add a grey border */
+	border-radius: 7px;
+	background-color:#f4f2f2; 
+	height: 35px; 
+	width:35px;
+}
+#search_button_img{
+	border-radius: 7px;
+	background-color:#f4f2f2; 
+	height: 30px; 
+	width:30px;
+	margin-left:-6px;
+	margin-top:-1px;
+	
+}
+@media screen and (max-width: 750px){
+	.item {
+		height: 265px;
+	}
+}

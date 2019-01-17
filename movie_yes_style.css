@@ -1,0 +1,55 @@
+a {
+    color: #ffffff;
+}
+
+a:hover{
+	color: #ffefef;
+}
+
+body {
+    color: #ffffff;
+    background-color: #fdebeb;
+	border-radius: 25px;
+}
+
+html {
+    background: #000000;
+}
+
+.item {
+    border: 8px solid #eee;
+	height: 350px;
+	min-height: 380px;
+}
+
+.sort {
+    background-color: #fff9f9;
+    color: #000000;
+    border: 2px solid #ddd;
+}
+
+#myInput, #myInput2 {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ddd;
+}
+
+
+.list_of_source{
+	/*margin-left: 142.5px;*/
+}
+
+.filter_item{
+	color:#ffffff;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 750px) {
+	.list_of_source {
+		margin-left: -14px;
+	}
+	.item {
+		height: 275px;
+		min-height: 305px;
+	}
+}

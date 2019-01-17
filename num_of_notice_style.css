@@ -1,0 +1,25 @@
+
+.dropdown span.num_of_notice {
+	margin-left: 30px;
+	margin-top:0px;
+    background: #cb4437;
+    border-bottom: 1px solid #fff;
+    border-left: 1px solid #fff;
+    color: #fff;
+    left: 14px;
+    line-height: 15px;
+    min-width: 15px;
+    opacity: 1;
+    position: absolute;
+    text-align: center;
+    top: -2px;
+    z-index: 100;
+    border-radius: 2px;
+}
+@media screen and (max-width: 650px) {
+		
+	.dropdown span.num_of_notice {
+		margin-left: 23px;
+		margin-top: -5px;
+	}
+}

@@ -1,0 +1,31 @@
+#warning{
+	margin-top:-50px;
+	
+}
+
+iframe.movie_warning{
+	margin-top:15px;
+	margin-bottom:15px;
+	width:70%;
+	height: 150px;
+	border: none;
+}
+
+
+@media screen and (max-width: 600px) {
+	body {
+		font-size: 8px;
+	}
+	
+	#warning{
+		margin-top:-30px;
+	}
+
+	iframe.movie_warning{
+		margin-top:15px;
+		margin-bottom:15px;
+		width:100%;
+		height: 50px;
+	}
+
+}

@@ -1,0 +1,12 @@
+.logo_dadiu{
+	width:360px;
+	height:240px;
+}
+
+
+@media screen and (max-width: 1026px) {
+	.logo_dadiu{
+		width:270px;
+		height:180px;
+	}
+}

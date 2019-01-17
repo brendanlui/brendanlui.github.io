@@ -1,0 +1,248 @@
+.btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+	
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+
+
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 2px -50px #e184f3;
+	-webkit-box-shadow:inset 0px 1px 2px -50px #e184f3;
+	box-shadow:inset 0px 1px 2px -50px #e184f3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c123de), color-stop(1, #b4cbed));
+	background:-moz-linear-gradient(top, #c123de 5%, #b4cbed 100%);
+	background:-webkit-linear-gradient(top, #c123de 5%, #b4cbed 100%);
+	background:-o-linear-gradient(top, #c123de 5%, #b4cbed 100%);
+	background:-ms-linear-gradient(top, #c123de 5%, #b4cbed 100%);
+	background:linear-gradient(to bottom, #c123de 5%, #b4cbed 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c123de', endColorstr='#b4cbed',GradientType=0);
+	background-color:#c123de;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #a511c0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:14px 11px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e29ef0;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b4cbed), color-stop(1, #c123de));
+	background:-moz-linear-gradient(top, #b4cbed 5%, #c123de 100%);
+	background:-webkit-linear-gradient(top, #b4cbed 5%, #c123de 100%);
+	background:-o-linear-gradient(top, #b4cbed 5%, #c123de 100%);
+	background:-ms-linear-gradient(top, #b4cbed 5%, #c123de 100%);
+	background:linear-gradient(to bottom, #b4cbed 5%, #c123de 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b4cbed', endColorstr='#c123de',GradientType=0);
+	background-color:#b4cbed;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+
+
+
+
+
+
+element.style {
+    transition: left 0.3s ease;
+    left: 0px;
+}
+style.css?ver=4.8:14
+#sidr-main.left {
+    left: -300px;
+}
+style.css?ver=4.8:14
+#sidr-main {
+    display: block;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    width: 300px;
+    max-width: 100%;
+    padding-bottom: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 1.077em;
+    background: #262626;
+    color: #fff;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+}
+style.css?ver=4.8:14
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+style.css?ver=4.8:14
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+Inherited from body.post-template-default.single.single-post.postid-36478.single-format-standard.wp-custom-logo.wpex-theme.wpex-responsive.full-width-main-layout.no-composer.wpex-live-site.has-sidebar.content-right-sidebar.has-topbar.post-in-category-website-templates.has-breadcrumbs.sidebar-widget-icons.hasnt-overlay-header.smooth-fonts.wpex-mobile-toggle-menu-icon_buttons.has-mobile-menu.wpb-js-composer.js-comp-ver-5.1.vc_responsive.jp-sharing-input-touch.wpex-is-retina.wpex-window-loaded.sidr-open.sidr-main-open
+style.css?ver=4.8:14
+body.smooth-fonts {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+style.css?ver=4.8:14
+body {
+    background: #fff;
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #666;
+}
+style.css?ver=4.8:14
+body {
+    background: #fff;
+    line-height: 1;
+}
+style.css?ver=4.8:14
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+Inherited from html
+style.css?ver=4.8:14
+html {
+    font-size: 62.5%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+style.css?ver=4.8:14
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+Pseudo ::before element
+style.css?ver=4.8:14
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+Pseudo ::after element
+style.css?ver=4.8:14
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+.list li {
+  cursor: pointer;
+}
+.list li:hover:after,
+.list li.fav:after {
+  content: ' \2605';
+  color: rgb(255, 203, 0);
+}
+.list li.fav:hover:after {
+  content: ' \2606';
+}
+

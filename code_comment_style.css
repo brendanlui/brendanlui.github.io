@@ -1,0 +1,10 @@
+.code_img{
+	height:60px;
+	width:200px;
+}
+
+@media screen and (max-width: 750px) {
+	.code_img{
+		width:100%;
+	}
+}

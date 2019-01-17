@@ -1,0 +1,10 @@
+@media screen and (max-width: 650px) {
+	.nav_links li#fix_bar_search, .nav_links li#fix_bar_list div#sort_in_next{
+		display:none;
+	}	
+	
+	.nav_links li#fix_bar_list{
+		float:left;
+		margin-top:8px;
+	}	
+}

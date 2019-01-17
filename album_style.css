@@ -1,0 +1,34 @@
+div.gallery {
+    margin: 5px;
+	margin-top: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+input[type=file], input[type=submit] {
+	max-width: 230px;
+	font-size: 16px;
+}
+
+@media screen and (max-width: 750px) {
+	input[type=file], input[type=submit] {
+		max-width: 180px;
+		font-size: 12px;
+	}
+	
+}

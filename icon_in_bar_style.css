@@ -1,0 +1,10 @@
+img.icon_in_bar{
+	height:30px;
+}
+
+
+@media screen and (max-width: 650px) {
+	img.icon_in_bar{
+		height:20px;
+	}
+}
