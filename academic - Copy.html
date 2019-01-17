@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+	  <script type="text/javascript" src="/js/academicCalculator.min.js"></script>
+	  <script type="text/javascript" src="/js/academicLiarDice1.min.js"></script>
+	  <script type="text/javascript" src="/js/academicLiarDice2.min.js"></script>
+	  <script type="text/javascript" src="/js/academicLucky.min.js"></script>
+</head>
+
+<title>Dadiu | Academic</title>
+
+<body>
+	<div id="page0">
+		<a id="toppest" class="smooth"></a>
+	</div>
+
+	<div id="head">
+		<a href="/">
+		<div id="logo">
+			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
+		</div>
+		</a>
+	</div>
+
+<link rel="stylesheet" href="/css/responsive_bar_style.css">
+<div class="topnav" id="myTopnav">
+  <a href="/">Home</a>
+  <a href="#toppest" onclick="openNav()">Shortcut</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="/css/side_bar_style.css">
+<div id="nav_subtitle">
+	<div id="mySidenav" class="sidenav">
+		 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		 <a href="#calculator"onclick="closeNav()">Calculator</a>
+		 <a href="#liar"onclick="closeNav()">Liar Dice</a>
+		 <a href="#lucky"onclick="closeNav()">Lucky</a>
+	</div>
+</div>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>
+
+	<div id="page4">
+	  <a id="calculator" class="smooth"></a>
+		<h2>Calculator</h2></br>
+					<h4> Get the Probability of Liar Dice: </h4></br>
+
+					<h4> e.g. If there are 20 dice under the cups, and you want to know what the probability of more than or equal 8 numbers of 4-point dice is, then you type "20" into "TOTAL", "8" into "NUMBER", and "4" into "POINT", and then press "Get Value".</h4></br>
+
+					<form id="form" onsubmit="return false;">
+						<input style="clear:both;color:#888;text-align: center;" type="text" id="userInput1" value="TOTAL (MAX: 170)" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						<input style="clear:both;color:#888;text-align: center;" type="text" id="userInput2" value="NUMBER" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						<input style="clear:both;color:#888;text-align: center;" type="text" id="userInput3" value="POINT" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br></br>
+						<button style="clear:both;" type="submit" value="Submit" onclick="cal_get_value();">Get Value</button>
+							<script>
+								function inputFocus(i){
+									if(i.value==i.defaultValue){ i.value=""; i.style.color="#000"; }
+								}
+								function inputBlur(i){
+									if(i.value==""){ i.value=i.defaultValue; i.style.color="#888"; }
+								}
+							</script>
+					</form>
+
+	</div></br></br>
+
+	<div class="divider1">&nbsp;</div>
+
+	<div id="page7">
+	  <a id="liar" class="smooth" style="clear:both;color:#888;"></a>
+		<h2>Liar Dice 1</h2>
+
+			<h4> (Beginner) </h4></br>
+
+			<h4> Press "Start" to restart the game. Type the number you call in the following boxes, and then press "Call". Press "Open" if you do not trust the calling of the computer. Tick "Only" if the 1-point dice are no longer generic. Press "Result" to view your score. </h4>
+
+			<h4> *LOSER GOES FIRST</h4></br>
+					<form name = "f1">
+						<input style="clear:both;color:#888;" type="radio" id="startradio" Name = "r2" Value = "start" onClick="StartLiarDice(this)"> Start &emsp;
+						<input style="clear:both;color:#888;" type="radio" id="resultradio" Name = "r2" value="result" onclick="resultaction();"> Result </br>
+						<input style="clear:both;color:#888;" type="radio" id="callradio" Name = "r2" value="Call" onclick="callaction();"> Call &emsp;
+						<input style="clear:both;color:#888;" type="radio" id="openradio" Name = "r2" value="Open" onclick="openaction();"> Open </br>
+
+						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum2" Name = "call2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						<input type="checkbox" id="userCallOnly" name="only" value="Only"> Only<br><br>
+					</form></br>
+					<div id="output2"></div>
+
+	</div></br>
+
+<div class="divider1">&nbsp;</div>
+
+	<div id="page8">
+	  <a id="liar2" class="smooth" style="clear:both;color:#888;"></a>
+		<h2>Liar Dice 2</h2>
+
+			<h4> (Intermediate) </h4></br>
+
+					<form name = "f1">
+						<input style="clear:both;color:#888;" type = "radio" id="startradio2" Name = "r2" Value = "start" onClick="StartLiarDice2(this)"> Start &emsp;
+						<input style="clear:both;color:#888;" type="radio" id="resultradio2" Name = "r2" value="result" onclick="resultaction2();"> Result </br>
+						<input style="clear:both;color:#888;" type="radio" id="callradio2" Name = "r2" value="Call" onclick="callaction2();"> Call &emsp;
+						<input style="clear:both;color:#888;" type="radio" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"> Open </br>
+
+						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+						<input type="checkbox" id="userCallOnly2" name="only" value="Only"> Only<br><br>
+					</form></br>
+					<div id="output22"></div>
+
+	</div></br>
+
+<div class="divider1">&nbsp;</div>
+
+			<div id="page6">
+				  <a id="lucky" class="smooth" style="clear:both;color:#888;"></a>
+					<h2>Lucky</h2></br>
+
+								<h4> Press "Start" to restart the game. Type the number you keep in the box. One number for one box, and then press "Shake". Press "Clear" to clear the value you have typed. Press "Result" to view your score. </h4>
+
+								<h4> *LOSER GOES FIRST </h4></br>
+										<form name = "f1"> <!-- the "this" in GetSelectedItem(this) is the input -->
+											<input style="clear:both;color:#888;" type = "radio" id="start_radio_lucky" Name = "r2" Value = "start" onClick="StartAction(this)"> Start &emsp;
+											<input style="clear:both;color:#888;" type="radio" id="resultradio" Name = "r2" value="result" onclick="resultaction_shake();"> Result </br>
+											<input style="clear:both;color:#888;" type = "radio" id="shake_radio_lucky" Name = "r2" Value = "shake" onClick="ShakeAction(this)"> Shake </br>
+
+											Keep: </br>
+											<input style="clear:both;text-align: center;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;" type = "text" id="userInputNum2" Name = "choose2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;" type = "text" id="userInputNum3" Name = "choose3" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;" type = "text" id="userInputNum4" Name = "choose4" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<button style="clear:both;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
+
+										</form></br>
+										<div id="output"></div>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
+			 </ul>
+		</div>
+	</div>
+
+	<script>
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+	</script>
+
+		<ul id="foot">
+			</br>
+			<li>© Copyright 2019. All Rights Reserved.</li>
+		</ul></br>
+
+<script type="text/javascript">
+$(function(){
+  $("#nav a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+$(function(){
+  $("#nav_subtitle a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+</script>
+
+</body>
+</html>
