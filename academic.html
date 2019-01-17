@@ -11,10 +11,6 @@
 	  href="/img/d01.png">
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
-	  <script type="text/javascript" src="/js/academicCalculator.min.js"></script>
-	  <script type="text/javascript" src="/js/academicLiarDice1.min.js"></script>
-	  <script type="text/javascript" src="/js/academicLiarDice2.min.js"></script>
-	  <script type="text/javascript" src="/js/academicLucky.min.js"></script>
 </head>
 
 <title>Dadiu | Academic</title>
@@ -94,7 +90,68 @@ function closeNav() {
 								}
 							</script>
 					</form>
+					<script>
 
+						function factorial(n){
+							rval=1;
+							for (i = 2; i <= n; i++)
+								rval = rval * i;
+							return rval;
+						}
+
+						function exact_prob(total, your_want, prob) {
+							// both need
+							temp1 = 1;
+							for (i = 0; i < your_want; i++) {
+								temp1 = temp1 * prob;
+							}
+							temp2 = 1;
+							for (i = 0; i < total - your_want; i++) {
+								temp2 = temp2 * (1 - prob);
+							}
+							probability = 0;
+							nCr = factorial(total)	/ (factorial(your_want) * factorial(total - your_want));
+							probability = nCr;
+							result_prob = probability * temp1 * temp2;
+							return result_prob;
+						}
+
+						function binomial(total, probability, larger_or_equal_to, prob, printing) {
+							total = parseInt(total);
+							larger_or_equal_to = parseInt(larger_or_equal_to);
+							printing = exact_prob(total, larger_or_equal_to, prob);
+							for (j = larger_or_equal_to + 1; j < total + 1; j++) {
+								printing = printing + exact_prob(total, j, prob);
+							}
+							return printing;
+						}
+
+						function cal_get_value() {
+							total = 10;
+							probability = 0;
+							larger_or_equal_to = 4;
+							prob = 1 / 3;
+							printing = 0;
+							dice = 0;
+
+							var total = document.getElementById("userInput1").value;
+							var larger_or_equal_to = document.getElementById("userInput2").value;
+							var dice = document.getElementById("userInput3").value;
+							var save = 0;
+
+							if (dice > 6 || dice < 1) {
+								save = 0;
+								dice = 0;
+							}
+							else {
+								if(dice == 1){
+									prob = 1 / 6;
+								}
+								save = binomial(total, probability, larger_or_equal_to, prob, printing);
+							}
+							alert(save);
+						}
+					</script>
 	</div></br></br>
 
 	<div class="divider1">&nbsp;</div>
@@ -120,15 +177,262 @@ function closeNav() {
 					</form></br>
 					<div id="output2"></div>
 
+<script>
+
+var array_dice = output2.innerHTML.split(" ");
+var player = new Array(5);
+var computer = new Array(5);
+
+var comp_start_first = false;
+var number = 1;
+var point = 6;
+var is_only = false;
+
+var start_is_clicked = false;
+
+var computer_score_1 = 0;
+var player_score_1 = 0;
+
+function resultaction(){
+	alert("(BEGINNER) You v.s Computer is " + player_score_1 + " : " + computer_score_1 + ".")
+}
+
+function StartLiarDice(el) {
+	number = 1;
+	point = 6;
+	is_only = false;
+	start_is_clicked = true;
+
+	document.getElementById("userCallNum1").value = "";
+	document.getElementById("userCallNum2").value = "";
+	document.getElementById("userCallOnly").checked = false;
+	document.getElementById("callradio").checked = false;
+	document.getElementById("openradio").checked = false;
+
+
+
+	for (i = 0; i < 5; i++) {
+		player[i] = Math.floor((Math.random() * 6) + 1);
+		computer[i] = Math.floor((Math.random() * 6) + 1);
+	}
+
+	output2.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output2.innerHTML += player[i]; // set its content to the value of the "el"
+		output2.innerHTML += " ";
+	}
+	output2.innerHTML += "<br/><br/>";
+	output2.innerHTML += "Computer: ";
+
+	if (comp_start_first) {
+		alert("Computer goes first.");
+		if (Math.floor((Math.random() * 4) + 1) != 3) {
+			number = 2;
+			point = 1;
+			is_only = true;
+		}
+		else{
+			number = 4;
+			point = 6;
+			is_only = false;
+		}
+		if (is_only)
+			alert("Computer called " + number + " - " + point + " ONLY.");
+		else
+			alert("Computer called " + number + " - " + point + ".");
+	}
+	else
+		alert("You go first.");
+}
+
+
+function callaction() {
+	document.getElementById("startradio").checked = false;
+	if(start_is_clicked == true){
+		var num_call = document.getElementById("userCallNum1").value;
+		var point_call = document.getElementById("userCallNum2").value;
+			if ((document.getElementById("userCallOnly").checked == false && is_only != document.getElementById("userCallOnly").checked && parseInt(num_call) < 2 * number)
+					|| (parseInt(num_call) < number)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) < point && parseInt(point_call) != 1)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) == point && document.getElementById("userCallOnly").checked == false)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) == point
+							&& document.getElementById("userCallOnly").checked == true && is_only == true)
+					|| (parseInt(num_call) == number && point == 1)
+					|| point_call > 6 || point_call < 1 || isNaN(num_call) || isNaN(point_call)) {
+				alert("Error. Please type again.");
+			} else {
+
+				number = parseInt(num_call);
+				point = parseInt(point_call);
+				is_only = document.getElementById("userCallOnly").checked;
+
+				if (point == 1)
+					is_only = true;
+
+				if (is_only)
+					alert("You called " + number + " - " + point + " ONLY.");
+				else
+					alert("You called " + number + " - " + point + ".");
+
+				//comp_do_think
+				comp_number = 4;
+				comp_point = 6;
+				comp_is_only = false;
+
+				if ((comp_is_only == false && is_only != comp_is_only && comp_number < 2 * number)
+						|| (comp_number < number)
+						|| (comp_number == number && comp_point < point && parseInt(point_call) != 1)
+						|| (comp_number == number && comp_point == point && comp_is_only == false)
+						|| (comp_number == number && comp_point == point
+								&& comp_is_only == true && is_only == true)
+						|| (comp_number == number && point == 1)) {
+
+					comp_number = 2;
+					comp_point = 1;
+					comp_is_only = true;
+
+					if ((comp_is_only == false && is_only != comp_is_only && comp_number < 2 * number)
+							|| (comp_number < number)
+							|| (comp_number == number && comp_point < point && parseInt(point_call) != 1)
+							|| (comp_number == number && comp_point == point && comp_is_only == false)
+							|| (comp_number == number && comp_point == point
+									&& comp_is_only == true && is_only == true)
+							|| (comp_number == number && point == 1)) {
+						//comp_judge_action
+						count = 0;
+						if (is_only) {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == point)
+									count++;
+								if (computer[i] == point)
+									count++;
+							}
+						} else {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == point || player[i] == 1)
+									count++;
+								if (computer[i] == point || computer[i] == 1)
+									count++;
+							}
+						}
+
+						//print the data if open
+						output2.innerHTML = "You: ";
+						for (i = 0; i < 5; i++) {
+							output2.innerHTML += player[i]; // set its content to the value of the "el"
+							output2.innerHTML += " ";
+						}
+						output2.innerHTML += "<br/><br/>";
+						output2.innerHTML += "Computer: ";
+						for (i = 0; i < 5; i++) {
+							output2.innerHTML += computer[i]; // set its content to the value of the "el"
+							output2.innerHTML += " ";
+						}
+
+						if (count >= number) {
+							alert("Computer opened. You win.");
+							player_score_1++;
+							comp_start_first = true;
+						} else {
+							alert("Computer opened. You lose.");
+							computer_score_1++;
+							comp_start_first = false;
+						}
+						start_is_clicked = false;
+						document.getElementById("start_radio_lucky").checked = false;
+					} else {
+						document.getElementById("userCallNum1").value = "";
+						document.getElementById("userCallNum2").value = "";
+						if (comp_is_only)
+							alert("Computer called " + comp_number + " - " + comp_point + " ONLY.");
+						else
+							alert("Computer called " + comp_number + " - " + comp_point + ".");
+					}
+				} else {
+					document.getElementById("userCallNum1").value = "";
+					document.getElementById("userCallNum2").value = "";
+					if (comp_is_only)
+						alert("Computer called " + comp_number + " - " + comp_point + " ONLY.");
+					else
+						alert("Computer called " + comp_number + " - " + comp_point + ".");
+				}
+				number = comp_number;
+				point = comp_point;
+				is_only = comp_is_only;
+			}
+	}
+}
+
+
+function openaction() {
+	document.getElementById("startradio").checked = false;
+	if(start_is_clicked == true){
+		array_dice = output2.innerHTML.split(" ");
+		if(array_dice[8] == null){
+			count = 0;
+			if (document.getElementById("userCallOnly").checked == true) {
+				for (i = 0; i < 5; i++) {
+					if (player[i] == point)
+						count++;
+					if (computer[i] == point)
+						count++;
+				}
+			} else {
+				for (i = 0; i < 5; i++) {
+					if (player[i] == point || player[i] == 1)
+						count++;
+					if (computer[i] == point || computer[i] == 1)
+						count++;
+				}
+			}
+
+			output2.innerHTML = "You: ";
+			for (i = 0; i < 5; i++) {
+				output2.innerHTML += player[i]; // set its content to the value of the "el"
+				output2.innerHTML += " ";
+			}
+			output2.innerHTML += "<br/><br/>";
+			output2.innerHTML += "Computer: ";
+			for (i = 0; i < 5; i++) {
+				output2.innerHTML += computer[i]; // set its content to the value of the "el"
+				output2.innerHTML += " ";
+			}
+
+			if (count >= number) {
+				alert("You lose.");
+				computer_score_1++;
+				comp_start_first = false;
+			} else {
+				alert("You win.");
+				player_score_1++;
+				comp_start_first = true;
+			}
+			start_is_clicked = false;
+		}
+	}
+}
+</script>
+
 	</div></br>
 
 <div class="divider1">&nbsp;</div>
+
+
+
+
+
+
 
 	<div id="page8">
 	  <a id="liar2" class="smooth" style="clear:both;color:#888;"></a>
 		<h2>Liar Dice 2</h2>
 
 			<h4> (Intermediate) </h4></br>
+
+
 
 					<form name = "f1">
 						<input style="clear:both;color:#888;" type = "radio" id="startradio2" Name = "r2" Value = "start" onClick="StartLiarDice2(this)"> Start &emsp;
@@ -142,7 +446,1043 @@ function closeNav() {
 					</form></br>
 					<div id="output22"></div>
 
+<script>
+
+var array_dice = output22.innerHTML.split(" ");
+var player = new Array(5);
+var computer = new Array(5);
+
+var comp_start_first = false;
+var number = 1;
+var point = 6;
+var is_only = false;
+
+var start_is_clicked = false;
+
+var computer_score_2 = 0;
+var player_score_2 = 0;
+
+function resultaction2(){
+	alert("(INTERMEDIATE) You v.s Computer is " + player_score_2 + " : " + computer_score_2 + ".")
+}
+
+function StartLiarDice2(el) {
+	number = 1;
+	point = 6;
+	is_only = false;
+	start_is_clicked = true;
+
+	document.getElementById("userCallNum12").value = "";
+	document.getElementById("userCallNum22").value = "";
+	document.getElementById("userCallOnly2").checked = false;
+	document.getElementById("callradio2").checked = false;
+	document.getElementById("openradio2").checked = false;
+	document.getElementById("resultradio2").checked = false;
+
+	for (i = 0; i < 5; i++) {
+		player[i] = Math.floor((Math.random() * 6) + 1);
+		computer[i] = Math.floor((Math.random() * 6) + 1);
+	}
+
+	output22.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output22.innerHTML += player[i];
+		output22.innerHTML += " ";
+	}
+	output22.innerHTML += "<br/><br/>";
+	output22.innerHTML += "Computer: ";
+
+	if (comp_start_first) {
+		alert("Computer goes first.");
+		is_only = false;
+		number = 2;
+		point = Math.floor((Math.random() * 6) + 1);
+		if (point == 1)
+			is_only = true;
+		if (is_only)
+			alert("Computer called " + number + " - " + point + " ONLY.");
+		else
+			alert("Computer called " + number + " - " + point + ".");
+	}
+	else
+		alert("You go first.");
+}
+
+
+function callaction2() {
+	document.getElementById("startradio2").checked = false;
+	if(start_is_clicked == true){
+		var num_call = document.getElementById("userCallNum12").value;
+		var point_call = document.getElementById("userCallNum22").value;
+			if ((document.getElementById("userCallOnly2").checked == false && is_only != document.getElementById("userCallOnly2").checked && parseInt(num_call) < 2 * number)
+					|| (parseInt(num_call) < number)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) < point && parseInt(point_call) != 1)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) == point && document.getElementById("userCallOnly2").checked == false)
+					|| (parseInt(num_call) == number
+							&& parseInt(point_call) == point
+							&& document.getElementById("userCallOnly2").checked == true && is_only == true)
+					|| (parseInt(num_call) == number && point == 1)
+					|| point_call > 6 || point_call < 1 || isNaN(num_call) || isNaN(point_call)) {
+				alert("Error. Please type again.");
+			} else {
+
+				number = parseInt(num_call);
+				point = parseInt(point_call);
+				is_only = document.getElementById("userCallOnly2").checked;
+
+				if (point == 1)
+					is_only = true;
+				if (is_only)
+					alert("You called " + number + " - " + point + " ONLY.");
+				else
+					alert("You called " + number + " - " + point + ".");
+
+				//below: comp_do_think (cpp to javascript by hand)
+				var believe = 50;
+				var computer_numOf = new Array(6);
+				var computer_choice = new Array(50);	//MAX_CHOICE = 50
+				max_numOF_choice = 0;
+				for (i = 0; i < 6; i++) {
+					computer_numOf[i] = 0;
+				}
+				for (i = 0; i < 50; i++) {
+					computer_choice[i] = new Array(2);
+				}
+
+				var computer_numOf_NOT_ONE = new Array(6);
+				var computer_choice_NOT_ONE = new Array(50);	//MAX_CHOICE = 50
+				max_numOF_choice_NOT_ONE = 0;
+				for (i = 0; i < 6; i++) {
+					computer_numOf_NOT_ONE[i] = 0;
+				}
+				for (i = 0; i < 50; i++) {
+					computer_choice_NOT_ONE[i] = new Array(2);
+				}
+
+				for (i = 0; i < 5; i++) {
+					if (computer[i] == 1) {
+						for (j = 0; j < 6; j++)
+							computer_numOf[j]++;
+					} else
+						computer_numOf[computer[i] - 1]++;
+					computer_numOf_NOT_ONE[computer[i] - 1]++;
+				}
+
+				start = 999;
+				save_i_should_be_a_liar = i_should_be_a_liar(computer_numOf);
+				save_i_should_be_a_liar_NOT_ONE = i_should_be_a_liar_NOT_ONE(computer_numOf_NOT_ONE);
+				if (save_i_should_be_a_liar)
+					max_numOF_choice = first_faker(computer_numOf, computer_choice);
+				else
+					max_numOF_choice = first_check_the_method(computer_numOf,
+							computer_choice);
+				if (save_i_should_be_a_liar_NOT_ONE)
+					max_numOF_choice_NOT_ONE = first_faker_NOT_ONE(computer_numOf_NOT_ONE,
+							computer_choice_NOT_ONE);
+				else
+					max_numOF_choice_NOT_ONE = first_check_method_NOT_ONE(
+							computer_numOf_NOT_ONE, computer_choice_NOT_ONE);
+
+				number_of = number;
+				dice = point;
+				dice_one_is_called = is_only;
+
+				save_number_of = number;
+				save_dice = point;
+
+				max_numOF_choice = re_check_the_method(computer_numOf, computer_choice,
+						number_of, dice, max_numOF_choice);
+				max_numOF_choice_NOT_ONE = re_check_method_NOT_ONE(
+						computer_numOf_NOT_ONE, computer_choice_NOT_ONE, number_of,
+						dice, max_numOF_choice_NOT_ONE);
+
+				if (save_dice == 1 || dice_one_is_called) {			//ONE is not GENERIC
+					dice_one_is_called = true;
+					computer_dice_most_NOT_ONE = find_computer_which_dice_most_NOT_ONE(
+							computer_choice_NOT_ONE, max_numOF_choice_NOT_ONE);
+					computer_dice_least_NOT_ONE =
+							find_computer_which_dice_least_NOT_ONE(computer_numOf_NOT_ONE);
+					if (save_dice != 1) {
+						if (Math.floor(Math.random() * 2) == 0) {
+							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+								if (computer_choice_NOT_ONE[i][0] > save_number_of && computer_choice_NOT_ONE[i][1] == save_dice) {
+									start = i;
+									save_number_of = computer_choice_NOT_ONE[start][0];
+									save_dice = computer_choice_NOT_ONE[start][1];
+									break;
+								}
+							}
+						}
+						if (start == 999) {
+							if (!save_i_should_be_a_liar_NOT_ONE) {
+								for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+									if ((computer_dice_most_NOT_ONE != 0 //priority2		calling our most first if same number of
+											&& computer_choice_NOT_ONE[i][1]
+													== computer_dice_most_NOT_ONE
+											&& computer_choice_NOT_ONE[i][0]
+													> save_number_of)
+											|| (computer_dice_most_NOT_ONE > save_dice
+													&& computer_choice_NOT_ONE[i][1]
+															== computer_dice_most_NOT_ONE
+													&& computer_choice_NOT_ONE[i][0]
+															== save_number_of)) {
+										start = i;
+										save_number_of = computer_choice_NOT_ONE[start][0];
+										save_dice = computer_choice_NOT_ONE[start][1];
+										break;
+									}
+								}
+							} else {
+								for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+									if ((computer_dice_least_NOT_ONE != 0 //priority2.5	calling our least first if same number of (liar version)
+											&& computer_choice_NOT_ONE[i][1]
+													== computer_dice_least_NOT_ONE
+											&& computer_choice_NOT_ONE[i][0]
+													> save_number_of)
+											|| (computer_dice_least_NOT_ONE > save_dice
+													&& computer_choice_NOT_ONE[i][1]
+															== computer_dice_least_NOT_ONE
+													&& computer_choice_NOT_ONE[i][0]
+															== save_number_of)
+											|| (computer_dice_least_NOT_ONE == 1
+													&& save_dice != 1
+													&& computer_choice_NOT_ONE[i][1]
+															== computer_dice_least_NOT_ONE
+													&& computer_choice_NOT_ONE[i][0]
+															== save_number_of)) {
+										start = i;
+										save_number_of = computer_choice_NOT_ONE[start][0];
+										save_dice = computer_choice_NOT_ONE[start][1];
+										break;
+									}
+								}
+							}
+						}
+						if (start == 999) {
+							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+								if ((computer_choice_NOT_ONE[i][0] == save_number_of //priority3		normal rule
+								&& computer_choice_NOT_ONE[i][1] > save_dice)
+										|| computer_choice_NOT_ONE[i][0]
+												> save_number_of) {
+									start = i;
+									save_number_of = computer_choice_NOT_ONE[start][0];
+									save_dice = computer_choice_NOT_ONE[start][1];
+									break;
+								} else if (computer_choice[i][0]
+										>= 2 * save_number_of) { //break the "only" rule
+									dice_one_is_called = false;
+									start = i;
+									save_number_of = computer_choice=[start][0];
+									save_dice = computer_choice=[start][1];
+									break;
+								}
+							}
+						}
+					}
+					else if (save_dice == 1) {
+						if (Math.floor(Math.random() * 2) == 0) {
+							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) { //priority1 	look at player's calling	if save_dice == 1
+								if (computer_choice_NOT_ONE[i][0] > save_number_of
+										&& computer_choice_NOT_ONE[i][1] == 1)
+									start = i;
+									save_number_of = computer_choice_NOT_ONE[start][0];
+									save_dice = computer_choice_NOT_ONE[start][1];
+								break;
+							}
+						}
+						if (start == 999) {
+							if (!save_i_should_be_a_liar_NOT_ONE) {
+								for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+									if ((computer_dice_most_NOT_ONE != 0 //priority2		calling our most first if same number of
+											&& computer_choice_NOT_ONE[i][1]
+													== computer_dice_most_NOT_ONE
+											&& computer_choice_NOT_ONE[i][0]
+													> save_number_of)) {
+										start = i;
+										save_number_of = computer_choice_NOT_ONE[start][0];
+										save_dice = computer_choice_NOT_ONE[start][1];
+										break;
+									}
+								}
+							} else {
+								for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+									if ((computer_dice_least_NOT_ONE != 0 //priority2.5	calling our least first if same number of (liar version)
+											&& computer_choice_NOT_ONE[i][1]
+													== computer_dice_least_NOT_ONE
+											&& computer_choice_NOT_ONE[i][0]
+													> save_number_of)) {
+										start = i;
+										save_number_of = computer_choice_NOT_ONE[start][0];
+										save_dice = computer_choice_NOT_ONE[start][1];
+										break;
+									}
+								}
+							}
+						}
+						if (start == 999) {
+							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+								if (computer_choice_NOT_ONE[i][0] > save_number_of) { //priority3		normal rule
+									start = i;
+									break;
+								} else if (computer_choice[i][0]
+										>= 2 * save_number_of) { //break the "only" rule
+									dice_one_is_called = false;
+									start = i;
+									save_number_of = computer_choice_NOT_ONE[start][0];
+									save_dice = computer_choice_NOT_ONE[start][1];
+									break;
+								}
+							}
+						}
+					}
+					if (!true_for_trust_the_player_NOT_ONE(number_of, dice,	//break
+							computer_numOf_NOT_ONE, believe))
+						start = 999;
+					if (dice_one_is_called == true) {
+						if (start != 999) {
+							save_number_of = computer_choice_NOT_ONE[start][0];
+							save_dice = computer_choice_NOT_ONE[start][1];
+						} else {
+							////////////////////////////////
+							}
+					}else {
+						if (start != 999) {
+							save_number_of = computer_choice[start][0];
+							save_dice = computer_choice[start][1];
+							if (computer_choice[start][1] == 1)
+								dice_one_is_called = true;
+						} else {
+							/////////////////////////////
+						}
+					}
+				}
+				else {												//ONE is GENERIC
+					computer_dice_most = find_computer_which_dice_most(computer_choice,
+							max_numOF_choice);
+					computer_dice_least = find_computer_which_dice_least(
+							computer_numOf);
+					if (Math.floor(Math.random() * 3) == 0) {
+						for (i = 0; i < max_numOF_choice; i++) {
+							if (computer_choice[i][0] > save_number_of//priority1		look at player's calling
+							&& computer_choice[i][1] == save_dice) {
+								start = i;
+								save_number_of = computer_choice[start][0];
+								save_dice = computer_choice[start][1];
+								break;
+							}
+						}
+					}
+					if (start == 999) {
+						if (!save_i_should_be_a_liar) {
+							for (i = 0; i < max_numOF_choice; i++) {
+								if (computer_dice_most > save_dice)	//priority2		calling our most first if same number of
+										{
+									if (computer_choice[i][1] == computer_dice_most
+											&& computer_choice[i][0]
+													>= save_number_of) {
+										start = i;
+										save_number_of = computer_choice[start][0];
+										save_dice = computer_choice[start][1];
+										break;
+									}
+								} else {
+									if (computer_choice[i][1] == computer_dice_most
+											&& computer_choice[i][0] > save_number_of) {
+										start = i;
+										save_number_of = computer_choice[start][0];
+										save_dice = computer_choice[start][1];
+										break;
+									}
+								}
+							}
+						} else {
+							for (i = 0; i < max_numOF_choice; i++) {
+								if (computer_dice_least > save_dice)//priority2.5		calling our least first if same number of (liar version)
+										{
+									if (computer_choice[i][1] == computer_dice_least
+											&& computer_choice[i][0]
+													>= save_number_of) {
+										start = i;
+										save_number_of = computer_choice[start][0];
+										save_dice = computer_choice[start][1];
+										break;
+									}
+								} else {
+									if (computer_choice[i][1] == computer_dice_least
+											&& computer_choice[i][0] > save_number_of) {
+										start = i;
+										save_number_of = computer_choice[start][0];
+										save_dice = computer_choice[start][1];
+										break;
+									}
+								}
+							}
+						}
+					}
+					if (start == 999) {
+						for (i = 0; i < max_numOF_choice; i++) {
+							if ((computer_choice[i][0] == save_number_of///priority3		normal rule
+							&& computer_choice[i][1] > save_dice)
+									|| computer_choice[i][0] > save_number_of) {
+								start = i;
+								save_number_of = computer_choice[start][0];
+								save_dice = computer_choice[start][1];
+								break;
+							}
+						}
+					}
+
+					if (!true_for_trust_the_player(number_of, dice,	//break
+							computer_numOf, believe))
+						start = 999;
+					if (start != 999) {
+						save_number_of = computer_choice[start][0];
+						save_dice = computer_choice[start][1];
+						if (computer_choice[start][1] == 1)
+							dice_one_is_called = true;
+					}else{
+						////////////////////////////////;
+					}
+				}
+				//above: comp_to_think
+
+
+				comp_number = save_number_of;
+				comp_point = save_dice;
+				comp_is_only = dice_one_is_called;
+
+				if ((comp_is_only == false && is_only != comp_is_only && comp_number < 2 * number)
+						|| (comp_number < number)
+						|| (comp_number == number && comp_point < point && parseInt(point_call) != 1)
+						|| (comp_number == number && comp_point == point && comp_is_only == false)
+						|| (comp_number == number && comp_point == point
+								&& comp_is_only == true && is_only == true)
+						|| (comp_number == number && point == 1) || start == 999) {
+						count = 0;
+						if (is_only) {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == point)
+									count++;
+								if (computer[i] == point)
+									count++;
+							}
+						} else {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == point || player[i] == 1)
+									count++;
+								if (computer[i] == point || computer[i] == 1)
+									count++;
+							}
+						}
+
+						//print the data if open
+						output22.innerHTML = "You: ";
+						for (i = 0; i < 5; i++) {
+							output22.innerHTML += player[i]; // set its content to the value of the "el"
+							output22.innerHTML += " ";
+						}
+						output22.innerHTML += "<br/><br/>";
+						output22.innerHTML += "Computer: ";
+						for (i = 0; i < 5; i++) {
+							output22.innerHTML += computer[i]; // set its content to the value of the "el"
+							output22.innerHTML += " ";
+						}
+
+						if (count >= number) {
+							alert("Computer opened. You win.");
+							player_score_2++;
+							comp_start_first = true;
+						} else {
+							alert("Computer opened. You lose.");
+							computer_score_2++;
+							comp_start_first = false;
+						}
+						start_is_clicked = false;
+						document.getElementById("start_radio_lucky").checked = false;
+
+						//below: printing
+						/*
+						output22.innerHTML += "</br></br>---TESTING LOG---</br></br>Let me check the computer: </br>";
+						output22.innerHTML += "comp_number = "	+ comp_number +"</br>comp_point = " + comp_point+"</br>comp_is_only = " + comp_is_only + "</br>start = " + start+ "</br>";
+						if (dice_one_is_called) {
+							output22.innerHTML += "Using NOT_ONE method</br>";
+							if (save_i_should_be_a_liar_NOT_ONE)
+								output22.innerHTML += "Using i_should_be_a_liar_NOT_ONE method</br>";
+							else
+								output22.innerHTML += "Tell you the truth.</br>";
+							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+								output22.innerHTML += computer_choice_NOT_ONE[i][0] + " number of "
+										+ computer_choice_NOT_ONE[i][1] + " only</br>";
+							}
+						} else {
+							output22.innerHTML += "Using includeONE method</br>";
+							if (save_i_should_be_a_liar)
+								output22.innerHTML += "Using i_should_be_a_liar method</br>";
+							else
+								output22.innerHTML += "Tell you the truth.</br>";
+							for (i = 0; i < max_numOF_choice; i++) {
+								output22.innerHTML += computer_choice[i][0] + " number of "
+										+ computer_choice[i][1] + "</br>";
+							}
+						}
+						output22.innerHTML += "Player's Credibility is " + believe + "</br>";
+						*/
+						//above printing
+
+
+
+				} else {
+					document.getElementById("userCallNum12").value = "";
+					document.getElementById("userCallNum22").value = "";
+					if (comp_is_only)
+						alert("Computer called " + comp_number + " - " + comp_point + " ONLY.");
+					else
+						alert("Computer called " + comp_number + " - " + comp_point + ".");
+				}
+				number = comp_number;
+				point = comp_point;
+				is_only = comp_is_only;
+			}
+	}
+}
+
+
+
+//below is the function cpp to javascript
+function i_should_be_a_liar(computer_numOf) {
+	if (computer_numOf[1] >= 4 || computer_numOf[2] >= 4			//priority
+	|| computer_numOf[3] >= 4 || computer_numOf[4] >= 4
+			|| computer_numOf[5] >= 4) 			//100% no lie
+		return false;
+	if (computer_numOf[1] <= 2 && computer_numOf[2] <= 2
+			&& computer_numOf[3] <= 2 && computer_numOf[4] <= 2
+			&& computer_numOf[5] <= 2) 			//100% lie
+		return true;
+	if ((computer_numOf[1] >= 3 || computer_numOf[2] >= 3
+			|| computer_numOf[3] >= 3 || computer_numOf[4] >= 3
+			|| computer_numOf[5] >= 3) && computer_numOf[0] > 1) //100% no lie
+		return false;
+	return true;									//otherwise it should be a liar
+}
+
+function i_should_be_a_liar_NOT_ONE(computer_numOf_NOT_ONE) {
+	if (computer_numOf_NOT_ONE[0] >= 3 || computer_numOf_NOT_ONE[1] >= 3
+			|| computer_numOf_NOT_ONE[2] >= 3 || computer_numOf_NOT_ONE[3] >= 3
+			|| computer_numOf_NOT_ONE[4] >= 3 || computer_numOf_NOT_ONE[5] >= 3)//100% no lie
+		return false;
+	if (computer_numOf_NOT_ONE[0] <= 1 && computer_numOf_NOT_ONE[1] <= 1
+			&& computer_numOf_NOT_ONE[2] <= 1 && computer_numOf_NOT_ONE[3] <= 1
+			&& computer_numOf_NOT_ONE[4] <= 1 && computer_numOf_NOT_ONE[5] <= 1)//100% lie
+		return true;
+	return true;
+}
+
+function first_faker(computer_numOf, computer_choice) {
+	save = 0;
+	for (i = 1, j = 0; i < 6; i++) { //i = 1 since we don't want computer to call 1 first than 2 -6
+		if (computer_numOf[i] == 0) {			//include 2, 3, 4
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			if (Math.floor(Math.random() * 100) >= 13) {				//1 - 13% lie more
+				computer_choice[j][0] = 3;
+				computer_choice[j][1] = i + 1;
+				j++;
+			}
+			if (Math.floor(Math.random() * 100) >= 46) {				//1 - 46% lie more
+				computer_choice[j][0] = 4;
+				computer_choice[j][1] = i + 1;
+				j++;
+			}
+		} else if (computer_numOf[i] == 1) {
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			if (Math.floor(Math.random() * 100) >= 13) {				//1 - 13% lie more
+				computer_choice[j][0] = 3;
+				computer_choice[j][1] = i + 1;
+				j++;
+			}
+			if (Math.floor(Math.random() * 100) >= 46) {				//1 - 46% lie more
+				computer_choice[j][0] = 4;
+				computer_choice[j][1] = i + 1;
+				j++;
+			}
+		} else if (computer_numOf[i] == 2) {
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+			if (Math.floor(Math.random() * 100) >= 79) {				//1 - 79% lie more
+				computer_choice[j][0] = 5;
+				computer_choice[j][1] = i + 1;
+				j++;
+			}
+		} else if (computer_numOf[i] == 3) {//human not easy to know what i thought
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 4) {//human not easy to know what i thought
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 5) {//human not easy to know what i thought
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 5;
+			computer_choice[j][1] = i + 1;
+			j++;
+		}
+		save = j;
+	}
+	return save;
+}
+
+function first_faker_NOT_ONE(computer_numOf_NOT_ONE, computer_choice_NOT_ONE) {
+	save = 0;
+
+	for (i = 1, j = 0; i < 6; i++) { //i = 1 since we don't want computer to call 1 first than 2 -6///////////////////
+		if (computer_numOf_NOT_ONE[i] == 0) {
+			if (Math.floor(Math.random() * 100) >= 40) {				//1 - 40% lie more
+				computer_choice_NOT_ONE[j][0] = 2;
+				computer_choice_NOT_ONE[j][1] = i + 1;
+				j++;
+			}
+			if (Math.floor(Math.random() * 100) >= 80) {				//1 - 80% lie more
+				computer_choice_NOT_ONE[j][0] = 3;
+				computer_choice_NOT_ONE[j][1] = i + 1;
+				j++;
+			}
+		} else if (computer_numOf_NOT_ONE[i] == 1) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			if (Math.floor(Math.random() * 100) >= 80) {				//1 - 80% lie more
+				computer_choice_NOT_ONE[j][0] = 3;
+				computer_choice_NOT_ONE[j][1] = i + 1;
+				j++;
+			}
+			if (Math.floor(Math.random() * 100) >= 96) {				//1 - 80% lie more
+				computer_choice_NOT_ONE[j][0] = 4;
+				computer_choice_NOT_ONE[j][1] = i + 1;
+				j++;
+			}
+		} else if (computer_numOf_NOT_ONE[i] == 2) {//human not easy to know what i thought
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 3) {//human not easy to know what i thought
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 4) {//human not easy to know what i thought
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 4;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 5) {//human not easy to know what i thought
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 4;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 5;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		}
+		save = j;
+	}
+	return save;
+}
+
+function first_check_the_method(computer_numOf, computer_choice) {
+	save = 0;
+	for (i = 1, j = 0; i < 6; i++) { //i = 1 since we don't want computer to call 1 first than 2 -6
+		if (computer_numOf[i] == 0) {
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 1) {
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;			//	may delete -0.21
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 2) {
+			computer_choice[j][0] = 2;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 4;			//	may delete -0.21
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 3) {
+			computer_choice[j][0] = 3;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 5;			//	may delete -0.10
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 4) {
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 5;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 6;			// 0.00 fit
+			computer_choice[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf[i] == 5) {
+			computer_choice[j][0] = 4;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 5;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 6;
+			computer_choice[j][1] = i + 1;
+			j++;
+			computer_choice[j][0] = 7;
+			computer_choice[j][1] = i + 1;
+			j++;
+		}
+		save = j;
+	}
+	return save;
+}
+
+function first_check_method_NOT_ONE(computer_numOf_NOT_ONE, computer_choice_NOT_ONE) {
+	save = 0;
+	for (i = 0, j = 0; i < 6; i++) {
+		if (computer_numOf_NOT_ONE[i] == 1) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 2) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;		// 0.00 fit
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 3) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 4;		//0.12 fit
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 4) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 4;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 5;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		} else if (computer_numOf_NOT_ONE[i] == 5) {
+			computer_choice_NOT_ONE[j][0] = 2;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 3;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 4;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 5;//How to make me to be able to call SADDLE POINT
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+			computer_choice_NOT_ONE[j][0] = 6;
+			computer_choice_NOT_ONE[j][1] = i + 1;
+			j++;
+		}
+		save = j;
+	}
+	return save;
+}
+
+function re_check_the_method(computer_numOf, computer_choice, player_calling, player_dice, max_numOF_choice) {
+	save = 0;
+	for (i = 0, j = max_numOF_choice; i < 6; i++) {
+		if (player_calling != 0 && player_dice != 0) {		//HUMAN PART
+			if (player_dice - 1 == i) {
+				if (player_calling == 2) {
+					computer_choice[j][0] = 1 + computer_numOf[i];
+					computer_choice[j][1] = i + 1;
+					j++;
+				} else if (player_calling == 3) {
+					computer_choice[j][0] = 1 + computer_numOf[i];
+					computer_choice[j][1] = i + 1;
+					j++;
+					if (Math.floor(Math.random() * 100) < 54) {	//54% he has at least two
+						computer_choice[j][0] = 2 + computer_numOf[i];
+						computer_choice[j][1] = i + 1;
+						j++;
+					}
+				} else if (player_calling == 4) {
+					computer_choice[j][0] = 2 + computer_numOf[i];
+					computer_choice[j][1] = i + 1;
+					j++;
+					if (Math.floor(Math.random() * 100) < 21) {	//21% he has at least three
+						computer_choice[j][0] = 3 + computer_numOf[i];
+						computer_choice[j][1] = i + 1;
+						j++;
+					}
+				} else if (player_calling == 5) {
+					computer_choice[j][0] = 2 + computer_numOf[i];
+					computer_choice[j][1] = i + 1;
+					j++;
+					computer_choice[j][0] = 3 + computer_numOf[i];
+					computer_choice[j][1] = i + 1;
+					j++;
+					if (Math.floor(Math.random() * 100) < 5) {	//5% he has at least three
+						computer_choice[j][0] = 4 + computer_numOf[i];
+						computer_choice[j][1] = i + 1;
+						j++;
+					}
+				}
+			}
+		}
+		save = j;
+	}
+	return save;
+}
+
+function re_check_method_NOT_ONE(computer_numOf_NOT_ONE, computer_choice_NOT_ONE, player_calling, player_dice, max_numOF_choice_NOT_ONE) {
+	save = 0;
+	for (i = 0, j = max_numOF_choice_NOT_ONE; i < 6; i++) {
+		if (player_calling != 0 && player_dice != 0) {		//HUMAN PART
+			if (player_dice - 1 == i) {
+				if (player_calling == 2) {
+					if (Math.floor(Math.random() * 100) < 60) {			//20% he has at least 2
+						computer_choice_NOT_ONE[j][0] = 1
+								+ computer_numOf_NOT_ONE[i];
+						computer_choice_NOT_ONE[j][1] = i + 1;
+						j++;
+					}
+				} else if (player_calling == 3) {
+					computer_choice_NOT_ONE[j][0] = 1 + computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+					if (Math.floor(Math.random() * 100) < 20) {			//20% he has at least 2
+						computer_choice_NOT_ONE[j][0] = 2 + computer_numOf_NOT_ONE[i];
+						computer_choice_NOT_ONE[j][1] = i + 1;
+						j++;
+					}
+				} else if (player_calling == 4) {
+					computer_choice_NOT_ONE[j][0] = 1
+							+ computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+					computer_choice_NOT_ONE[j][0] = 2 + computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+					if (Math.floor(Math.random() * 100) < 4) {			//4% he has at least three
+						computer_choice_NOT_ONE[j][0] = 3 + computer_numOf_NOT_ONE[i];
+						computer_choice_NOT_ONE[j][1] = i + 1;
+						j++;
+					}
+				} else if (player_calling == 5) {
+					computer_choice_NOT_ONE[j][0] = 1
+							+ computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+					computer_choice_NOT_ONE[j][0] = 2
+							+ computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+					computer_choice_NOT_ONE[j][0] = 3
+							+ computer_numOf_NOT_ONE[i];
+					computer_choice_NOT_ONE[j][1] = i + 1;
+					j++;
+				}
+			}
+		}
+		save = j;
+	}
+	return save;
+}
+
+function true_for_trust_the_player(number, di, computer_numOf, believe) {
+	if (computer_numOf[di - 1] + 3 == number && Math.floor(Math.random() * 100) >= believe)//50% not trust	by heart
+		return false;
+	if (computer_numOf[di - 1] + 4 == number && Math.floor(Math.random() * 100) >= believe - 40)//90%  not trust
+		return false;
+	if (computer_numOf[di - 1] + 5 <= number)	//100%  not trust
+		return false;
+	return true;
+}
+
+function true_for_trust_the_player_NOT_ONE(number, di, computer_numOf_NOT_ONE, believe) {
+	if (computer_numOf_NOT_ONE[di - 1] + 1 == number
+			&& Math.floor(Math.random() * 100) >= believe + 50)	//100% trust
+		return false;
+	if (computer_numOf_NOT_ONE[di - 1] + 2 == number && Math.floor(Math.random() * 100) >= believe)//50% trust
+		return false;
+	if (computer_numOf_NOT_ONE[di - 1] + 3 == number
+			&& Math.floor(Math.random() * 100) >= believe - 35)	//15% trust
+		return false;
+	if (computer_numOf_NOT_ONE[di - 1] + 4 <= number)	//0% trust
+		return false;
+	return true;
+}
+
+function find_computer_which_dice_least(computer_numOf) {
+	saving_dice = 2;
+	saving_calling = computer_numOf[1];
+	for (i = 1; i < 6; i++) {
+		if (saving_calling >= computer_numOf[i]) {
+			saving_calling = computer_numOf[i];
+			saving_dice = i + 1;
+		}
+	}
+	return saving_dice;
+}
+
+function find_computer_which_dice_least_NOT_ONE(computer_numOf_NOT_ONE) {
+	saving_dice = 1;
+	saving_calling = computer_numOf_NOT_ONE[0];
+	for (i = 0; i < 6; i++) {
+		if (saving_calling >= computer_numOf_NOT_ONE[i]) {
+			saving_calling = computer_numOf_NOT_ONE[i];
+			saving_dice = i + 1;
+		}
+	}
+	return saving_dice;
+}
+
+function find_computer_which_dice_most(computer_choice, max_numOF_choice) {
+	saving_dice = 2;
+	saving_calling = computer_choice[1][0];
+	for (i = 1; i < max_numOF_choice; i++) {
+		if (saving_calling <= computer_choice[i][0]
+				&& saving_dice <= computer_choice[i][1]) {
+			saving_calling = computer_choice[i][0];
+			saving_dice = computer_choice[i][1];
+		}
+	}
+	return saving_dice;
+}
+
+function find_computer_which_dice_most_NOT_ONE(computer_choice_NOT_ONE, max_numOF_choice_NOT_ONE) {
+	saving_dice = 1;
+	saving_calling = computer_choice_NOT_ONE[0][0];
+	for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
+		if (saving_calling <= computer_choice_NOT_ONE[i][0]
+				&& saving_dice <= computer_choice_NOT_ONE[i][1]) {
+			saving_calling = computer_choice_NOT_ONE[i][0];
+			saving_dice = computer_choice_NOT_ONE[i][1];
+		}
+	}
+	return saving_dice;
+}
+//above is the function cpp to javascript
+
+
+
+
+function openaction2() {
+	document.getElementById("startradio2").checked = false;
+	if(start_is_clicked == true){
+		array_dice = output22.innerHTML.split(" ");
+		if(array_dice[8] == null){
+			count = 0;
+			if (document.getElementById("userCallOnly2").checked == true) {
+				for (i = 0; i < 5; i++) {
+					if (player[i] == point)
+						count++;
+					if (computer[i] == point)
+						count++;
+				}
+			} else {
+				for (i = 0; i < 5; i++) {
+					if (player[i] == point || player[i] == 1)
+						count++;
+					if (computer[i] == point || computer[i] == 1)
+						count++;
+				}
+			}
+
+			output22.innerHTML = "You: ";
+			for (i = 0; i < 5; i++) {
+				output22.innerHTML += player[i]; // set its content to the value of the "el"
+				output22.innerHTML += " ";
+			}
+			output22.innerHTML += "<br/><br/>";
+			output22.innerHTML += "Computer: ";
+			for (i = 0; i < 5; i++) {
+				output22.innerHTML += computer[i]; // set its content to the value of the "el"
+				output22.innerHTML += " ";
+			}
+
+			if (count >= number) {
+				alert("You lose.");
+				computer_score_2++;
+				comp_start_first = false;
+			} else {
+				alert("You win.");
+				player_score_2++;
+				comp_start_first = true;
+			}
+			start_is_clicked = false;
+		}
+	}
+}
+</script>
+
 	</div></br>
+
 
 <div class="divider1">&nbsp;</div>
 
@@ -168,6 +1508,626 @@ function closeNav() {
 
 										</form></br>
 										<div id="output"></div>
+
+<script  type="text/javascript">
+		 // Grab the output eleent
+function clear_lucky_input(){
+	document.getElementById("userInputNum1").value = "";
+	document.getElementById("userInputNum2").value = "";
+	document.getElementById("userInputNum3").value = "";
+	document.getElementById("userInputNum4").value = "";
+	document.getElementById("userInputNum5").value = "";
+	document.getElementById("start_radio_lucky").checked = false;
+	document.getElementById("shake_radio_lucky").checked = false;
+}
+
+
+
+var lucky_game_end = false;
+var output = document.getElementById('output');
+	   // "el" is the parameter that references the "this" argument that was passed
+
+var computer_score = 0;
+var player_score = 0;
+
+function resultaction_shake(){
+	alert("(LUCKY) You v.s Computer is " + player_score + " : " + computer_score + ".")
+}
+
+
+function ShakeAction(el) {
+	if(lucky_game_end == false){
+
+		document.getElementById("start_radio_lucky").checked = false;
+
+		var array_dice = output.innerHTML.split(" ");
+		var player = new Array(5);
+		var computer = new Array(5);
+
+		for (i = 0; i < 5; i++) {
+		  player[i] = new Array(2);
+		  computer[i] = new Array(2);
+		}
+
+		for (i = 0; i < 5; i++) {
+			player[i][0] = array_dice[i+1];
+			player[i][1] = 0;
+			computer[i][0] = array_dice[i+7];
+			computer[i][1] = 0;
+		}
+
+		var ipt = new Array(7776);
+		var inside = new Array(7776);
+		var inside_num = new Array(7776);
+		for (i = 0; i < 7776; i++) {
+			ipt[i] = new Array(6);
+			inside[i] = new Array(6);
+			inside_num[i] = new Array(6);
+		}
+
+		genarate_array(ipt, inside, inside_num);
+
+		computer_value = return_value(computer[0][0], computer[1][0],
+						computer[2][0], computer[3][0], computer[4][0], ipt);
+		your_double = 0;
+		your_single = 0;
+		your_single_first_largest = 0;
+		your_single_second_largest = 0;
+		temp_for_your_single = 0;
+
+		var keep_num = new Array(5);
+		keep_num[0] = document.getElementById("userInputNum1").value;
+		keep_num[1] = document.getElementById("userInputNum2").value;
+		keep_num[2] = document.getElementById("userInputNum3").value;
+		keep_num[3] = document.getElementById("userInputNum4").value;
+		keep_num[4] = document.getElementById("userInputNum5").value;
+
+		skip_next_all = 0;
+		for(j = 0; j < 5; j++){
+			if(keep_num[j] != 1 && keep_num[j] != 2 && keep_num[j] != 3 && keep_num[j] != 4 && keep_num[j] != 5 && keep_num[j] != 6 && keep_num[j] != ""){
+				alert("Typing Error.");
+				skip_next_all = 1;
+				skip_next = 1;
+				break;
+			}
+		}
+		if(skip_next_all == 0){
+			for(j = 0; j < 5; j++) {
+				true_or_false = 0;
+				for(k = 0; k < 5; k++){
+					if((player[k][0] == keep_num[j] && player[k][1] == 0) || keep_num[j] == ""){
+						if(keep_num[j] != "")
+							player[k][1] = 1;
+						true_or_false = 1;
+						break;
+					}
+				}
+				if (true_or_false == 0) {
+					skip_next_all = 1;
+					break;
+				}
+			}
+		}
+		if(skip_next_all == 0){
+				for (k = 0; k < 5; k++) {
+					if (player[k][1] != 1){
+						player[k][0] = Math.floor((Math.random() * 6) + 1);
+					}
+					else
+						player[k][1] = 0;
+				}
+		}else{
+			if(skip_next != 1){
+				skip_next_all = 1;
+				alert("Typing Error.");
+			}
+		}
+
+		if(skip_next_all == 0){
+
+			if (return_value(player[0][0], player[1][0], player[2][0],
+				player[3][0], player[4][0], ipt) < return_value(
+				computer[0][0], computer[1][0], computer[2][0],
+				computer[3][0], computer[4][0], ipt)) {
+				output.innerHTML = "";
+				output.innerHTML = "You: ";
+				for (i = 0; i < 5; i++) {
+					output.innerHTML += player[i][0]; // set its content to the value of the "el"
+					output.innerHTML += " ";
+				}
+				output.innerHTML += "<br/><br/>";
+				output.innerHTML += "Computer: ";
+				for (i = 0; i < 5; i++) {
+					output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+					output.innerHTML += " ";
+				}
+				alert("You lose.");
+				computer_score++;
+				document.getElementById("start_radio_lucky").checked = false;
+				lucky_game_end = true;
+			}else{
+
+					if (computer_value <= return_value(1, 6, 5, 4, 3, ipt)) {
+						for (i = 0; i < 5; i++) {
+							if (computer[i][0] == 1) {
+								your_single_first_largest = 1;
+							} else if (computer[i][0] != 1 && computer[i][0] > your_single_second_largest) {
+								your_single_second_largest = computer[i][0];
+							}
+						}
+						if (your_single_first_largest != 1) {
+							your_single_first_largest = 6;
+							your_single_second_largest = 5;
+						}
+					} else if (computer_value >= return_value(2, 2, 3, 4, 5, ipt) && computer_value <= return_value(1, 1, 6, 5, 4, ipt)) {
+						for (i = 0; i < 5; i++) {
+							for (j = 0; j < 5; j++) {
+								if (i != j && computer[i][0] == computer[j][0]) {
+									your_double = computer[i][0];
+									break;
+								}
+							}
+						}
+						for (i = 0; i < 5; i++) {
+							if (computer[i][0] != your_double) {
+								if (computer[i][0] > temp_for_your_single)
+									temp_for_your_single = computer[i][0];
+								if (computer[i][0] == 1)
+									your_single = 1;
+							}
+						}
+						if (your_single != 1)
+							your_single = temp_for_your_single;
+					}
+					var num_of_term_comp = 0;
+					var save_comp = 0;
+
+						//below only can shake with 2 3 4 5 6
+						if (return_value(player[0][0], player[1][0], player[2][0],
+								player[3][0], player[4][0], ipt) > return_value(
+								computer[0][0], computer[1][0], computer[2][0],
+								computer[3][0], computer[4][0], ipt)) {
+
+							num_of_term_comp = (computer[0][0] - 1) * 1296
+									+ (computer[1][0] - 1) * 216 + (computer[2][0] - 1)
+									* 36 + (computer[3][0] - 1) * 6 + (computer[4][0] - 1);
+							temp_computer_value = return_value(computer[0][0], computer[1][0], computer[2][0], computer[3][0], computer[4][0], ipt);
+							if (temp_computer_value >= 228964 && temp_computer_value <= 281425) {
+								for (i = 0; i < 6; i++) {
+									if (inside_num[num_of_term_comp][0] == 2) {
+										save_comp = 1;
+										break;
+									}
+									if (inside_num[num_of_term_comp][i] == 2) {
+										save_comp = i + 1;
+									}
+								}
+							} else if (temp_computer_value >= return_value(2, 2, 2, 3, 3, ipt)
+									&& temp_computer_value <= return_value(1, 1, 1, 6, 6, ipt)) {
+								for (i = 0; i < 6; i++) {
+									if (inside_num[num_of_term_comp][i] == 3) {
+										save_comp = i + 1;
+										break;
+									}
+								}
+							} else {
+								for (i = 0; i < 6; i++) {
+									if (inside_num[num_of_term_comp][i] == 2) {
+										save_comp = i + 1;
+									} else if (inside_num[num_of_term_comp][i] == 3) {
+										save_comp = i + 1;
+									} else if (inside_num[num_of_term_comp][i] == 4) {
+										save_comp = i + 1;
+									} else if (inside_num[num_of_term_comp][i] == 5) {
+										save_comp = i + 1;
+									}
+								}
+							}
+							for (j = 0; j < 5; j++) {
+									if (computer[j][0] == save_comp)
+										computer[j][1] = 1;
+							}
+
+							for (j = 0; j < 5; j++) {
+								if (computer[j][1] != 1){
+									computer[j][0] = Math.floor((Math.random() * 6) + 1);
+								}
+								else
+									computer[j][1] = 0;
+							}
+
+							if (return_value(player[0][0], player[1][0], player[2][0],
+									player[3][0], player[4][0], ipt) > return_value(
+									computer[0][0], computer[1][0], computer[2][0],
+									computer[3][0], computer[4][0], ipt)) {
+								output.innerHTML = "";
+								output.innerHTML = "You: ";
+								for (i = 0; i < 5; i++) {
+									output.innerHTML += player[i][0]; // set its content to the value of the "el"
+									output.innerHTML += " ";
+								}
+								output.innerHTML += "<br/><br/>";
+								output.innerHTML += "Computer: ";
+								for (i = 0; i < 5; i++) {
+									output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+									output.innerHTML += " ";
+								}
+								alert("Computer shaked. You win.");
+								player_score++;
+								document.getElementById("start_radio_lucky").checked = false;
+								lucky_game_end = true;
+							}
+						}
+						else if (return_value(player[0][0], player[1][0], player[2][0],
+								player[3][0], player[4][0], ipt) == return_value(
+								computer[0][0], computer[1][0], computer[2][0],
+								computer[3][0], computer[4][0], ipt)) {
+							output.innerHTML = "";
+							output.innerHTML = "You: ";
+							for (i = 0; i < 5; i++) {
+								output.innerHTML += player[i][0]; // set its content to the value of the "el"
+								output.innerHTML += " ";
+							}
+							output.innerHTML += "<br/><br/>";
+							output.innerHTML += "Computer: ";
+							for (i = 0; i < 5; i++) {
+								output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+								output.innerHTML += " ";
+							}
+							alert("Let's restart the game.");
+							lucky_game_end = true;
+						}
+				}
+		}
+	}
+}
+
+
+
+
+
+function StartAction(el) {
+	document.getElementById("userInputNum1").value = "";
+	document.getElementById("userInputNum2").value = "";
+	document.getElementById("userInputNum3").value = "";
+	document.getElementById("userInputNum4").value = "";
+	document.getElementById("userInputNum5").value = "";
+	document.getElementById("shake_radio_lucky").checked = false;
+	lucky_game_end = false;
+
+	output.innerHTML = "You: ";
+	for (k = 0; k < 5; k++) {
+		output.innerHTML += Math.floor((Math.random() * 6) + 1); // set its content to the value of the "el"
+		output.innerHTML += " ";
+	}
+	output.innerHTML += "<br/><br/>";
+	output.innerHTML += "Computer: ";
+	for (k = 0; k < 5; k++) {
+		output.innerHTML += Math.floor((Math.random() * 6) + 1); // set its content to the value of the "el"
+		output.innerHTML += " ";
+	}
+
+	var array_dice = output.innerHTML.split(" ");
+	var player = new Array(5);
+	var computer = new Array(5);
+
+	for (i = 0; i < 5; i++) {
+	  player[i] = new Array(2);
+	  computer[i] = new Array(2);
+	}
+
+	for (i = 0; i < 5; i++) {
+		player[i][0] = array_dice[i+1];
+		player[i][1] = 0;
+		computer[i][0] = array_dice[i+7];
+		computer[i][1] = 0;
+	}
+
+	var ipt = new Array(7776);
+	var inside = new Array(7776);
+	var inside_num = new Array(7776);
+	for (i = 0; i < 7776; i++) {
+		ipt[i] = new Array(6);
+		inside[i] = new Array(6);
+		inside_num[i] = new Array(6);
+	}
+
+	genarate_array(ipt, inside, inside_num);
+
+	computer_value = return_value(computer[0][0], computer[1][0],
+					computer[2][0], computer[3][0], computer[4][0], ipt);
+	your_double = 0;
+	your_single = 0;
+	your_single_first_largest = 0;
+	your_single_second_largest = 0;
+	temp_for_your_single = 0;
+
+	if (computer_value <= return_value(1, 6, 5, 4, 3, ipt)) {
+		for (i = 0; i < 5; i++) {
+			if (computer[i][0] == 1) {
+				your_single_first_largest = 1;
+			} else if (computer[i][0] != 1 && computer[i][0] > your_single_second_largest) {
+				your_single_second_largest = computer[i][0];
+			}
+		}
+		if (your_single_first_largest != 1) {
+			your_single_first_largest = 6;
+			your_single_second_largest = 5;
+		}
+	} else if (computer_value >= return_value(2, 2, 3, 4, 5, ipt) && computer_value <= return_value(1, 1, 6, 5, 4, ipt)) {
+		for (i = 0; i < 5; i++) {
+			for (j = 0; j < 5; j++) {
+				if (i != j && computer[i][0] == computer[j][0]) {
+					your_double = computer[i][0];
+					break;
+				}
+			}
+		}
+		for (i = 0; i < 5; i++) {
+			if (computer[i][0] != your_double) {
+				if (computer[i][0] > temp_for_your_single)
+					temp_for_your_single = computer[i][0];
+				if (computer[i][0] == 1)
+					your_single = 1;
+			}
+		}
+		if (your_single != 1)
+			your_single = temp_for_your_single;
+	}
+	var num_of_term_comp = 0;
+	var save_comp = 0;
+	//below only can shake with 2 3 4 5 6
+	if (return_value(player[0][0], player[1][0], player[2][0],
+			player[3][0], player[4][0], ipt) > return_value(
+			computer[0][0], computer[1][0], computer[2][0],
+			computer[3][0], computer[4][0], ipt)) {
+
+		num_of_term_comp = (computer[0][0] - 1) * 1296
+				+ (computer[1][0] - 1) * 216 + (computer[2][0] - 1)
+				* 36 + (computer[3][0] - 1) * 6 + (computer[4][0] - 1);
+		temp_computer_value = return_value(computer[0][0], computer[1][0], computer[2][0], computer[3][0], computer[4][0], ipt);
+		if (temp_computer_value >= 228964 && temp_computer_value <= 281425) {
+			for (i = 0; i < 6; i++) {
+				if (inside_num[num_of_term_comp][0] == 2) {
+					save_comp = 1;
+					break;
+				}
+				if (inside_num[num_of_term_comp][i] == 2) {
+					save_comp = i + 1;
+				}
+			}
+		} else if (temp_computer_value >= return_value(2, 2, 2, 3, 3, ipt)
+				&& temp_computer_value <= return_value(1, 1, 1, 6, 6, ipt)) {
+			for (i = 0; i < 6; i++) {
+				if (inside_num[num_of_term_comp][i] == 3) {
+					save_comp = i + 1;
+					break;
+				}
+			}
+		} else {
+			for (i = 0; i < 6; i++) {
+				if (inside_num[num_of_term_comp][i] == 2) {
+					save_comp = i + 1;
+				} else if (inside_num[num_of_term_comp][i] == 3) {
+					save_comp = i + 1;
+				} else if (inside_num[num_of_term_comp][i] == 4) {
+					save_comp = i + 1;
+				} else if (inside_num[num_of_term_comp][i] == 5) {
+					save_comp = i + 1;
+				}
+			}
+		}
+		for (j = 0; j < 5; j++) {
+				if (computer[j][0] == save_comp)
+					computer[j][1] = 1;
+		}
+
+		for (j = 0; j < 5; j++) {
+			if (computer[j][1] != 1){
+				computer[j][0] = Math.floor((Math.random() * 6) + 1);
+			}
+			else
+				computer[j][1] = 0;
+		}
+
+		if (return_value(player[0][0], player[1][0], player[2][0],
+				player[3][0], player[4][0], ipt) > return_value(
+				computer[0][0], computer[1][0], computer[2][0],
+				computer[3][0], computer[4][0], ipt)) {
+					output.innerHTML = "";
+					output.innerHTML = "You: ";
+					for (i = 0; i < 5; i++) {
+						output.innerHTML += player[i][0]; // set its content to the value of the "el"
+						output.innerHTML += " ";
+					}
+					output.innerHTML += "<br/><br/>";
+					output.innerHTML += "Computer: ";
+					for (i = 0; i < 5; i++) {
+						output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+						output.innerHTML += " ";
+					}
+					alert("Computer shaked. You win.");
+					player_score++;
+					document.getElementById("start_radio_lucky").checked = false;
+					lucky_game_end = true;
+		}
+		else{
+			output.innerHTML = "";
+			output.innerHTML = "You: ";
+			for (i = 0; i < 5; i++) {
+				output.innerHTML += player[i][0]; // set its content to the value of the "el"
+				output.innerHTML += " ";
+			}
+			output.innerHTML += "<br/><br/>";
+			output.innerHTML += "Computer: ";
+			for (i = 0; i < 5; i++) {
+				output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+				output.innerHTML += " ";
+			}
+			alert("Computer shaked. Your turn.");
+		}
+	}
+	else if (return_value(player[0][0], player[1][0], player[2][0],
+			player[3][0], player[4][0], ipt) == return_value(
+			computer[0][0], computer[1][0], computer[2][0],
+			computer[3][0], computer[4][0], ipt)) {
+		output.innerHTML = "";
+		output.innerHTML = "You: ";
+		for (i = 0; i < 5; i++) {
+			output.innerHTML += player[i][0]; // set its content to the value of the "el"
+			output.innerHTML += " ";
+		}
+		output.innerHTML += "<br/><br/>";
+		output.innerHTML += "Computer: ";
+		for (i = 0; i < 5; i++) {
+			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+			output.innerHTML += " ";
+		}
+		alert("Let's restart the game.");
+	}else{
+		output.innerHTML = "";
+		output.innerHTML = "You: ";
+		for (i = 0; i < 5; i++) {
+			output.innerHTML += player[i][0]; // set its content to the value of the "el"
+			output.innerHTML += " ";
+		}
+		output.innerHTML += "<br/><br/>";
+		output.innerHTML += "Computer: ";
+		for (i = 0; i < 5; i++) {
+			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+			output.innerHTML += " ";
+		}
+		alert("Computer shaked. Your turn.");
+	}
+}
+
+
+function genarate_array(ipt, inside, inside_num) {
+	for (i = 0; i < 7776; i++) {
+
+		for (k = 0; k < 6; k++) {
+			inside[i][k] = 0;
+		}
+
+		ipt[i][5] = 0;
+
+		ipt[i][4] = i % 6 + 1;
+
+		if (i % 36 < 6)
+			ipt[i][3] = 1;
+		else if (i % 36 >= 6 && i % 36 < 12)
+			ipt[i][3] = 2;
+		else if (i % 36 >= 12 && i % 36 < 18)
+			ipt[i][3] = 3;
+		else if (i % 36 >= 18 && i % 36 < 24)
+			ipt[i][3] = 4;
+		else if (i % 36 >= 24 && i % 36 < 30)
+			ipt[i][3] = 5;
+		else
+			ipt[i][3] = 6;
+
+		if (i % 216 < 36)
+			ipt[i][2] = 1;
+		else if (i % 216 >= 36 && i % 216 < 72)
+			ipt[i][2] = 2;
+		else if (i % 216 >= 72 && i % 216 < 108)
+			ipt[i][2] = 3;
+		else if (i % 216 >= 108 && i % 216 < 144)
+			ipt[i][2] = 4;
+		else if (i % 216 >= 144 && i % 216 < 180)
+			ipt[i][2] = 5;
+		else if (i % 216 >= 180 && i % 216 < 216)
+			ipt[i][2] = 6;
+
+		if (i % 1296 < 216)
+			ipt[i][1] = 1;
+		else if (i % 1296 >= 216 && i % 1296 < 216 * 2)
+			ipt[i][1] = 2;
+		else if (i % 1296 >= 216 * 2 && i % 1296 < 216 * 3)
+			ipt[i][1] = 3;
+		else if (i % 1296 >= 216 * 3 && i % 1296 < 216 * 4)
+			ipt[i][1] = 4;
+		else if (i % 1296 >= 216 * 4 && i % 1296 < 216 * 5)
+			ipt[i][1] = 5;
+		else if (i % 1296 >= 216 * 5 && i % 1296 < 1296)
+			ipt[i][1] = 6;
+
+		if (i % 7776 < 1296)
+			ipt[i][0] = 1;
+		else if (i % 7776 >= 1296 && i % 7776 < 1296 * 2)
+			ipt[i][0] = 2;
+		else if (i % 7776 >= 1296 * 2 && i % 7776 < 1296 * 3)
+			ipt[i][0] = 3;
+		else if (i % 7776 >= 1296 * 3 && i % 7776 < 1296 * 4)
+			ipt[i][0] = 4;
+		else if (i % 7776 >= 1296 * 4 && i % 7776 < 1296 * 5)
+			ipt[i][0] = 5;
+		else if (i % 7776 >= 1296 * 5 && i % 7776 < 1296 * 6)
+			ipt[i][0] = 6;
+
+		for (j = 0; j < 5; j++) {
+			for (k = 0; k < 6; k++) {
+				if (ipt[i][j] == k + 1)
+					inside[i][k]++;
+			}
+		}
+
+		for (k = 0; k < 6; k++) {
+			if (k != 0) {
+				if (inside[i][k] == 0) {
+					inside[i][k] = 0;
+					inside_num[i][k] = 0;
+				} else if (inside[i][k] == 1) {
+					inside[i][k] = (k + 1) * (k + 1) * (k + 1);
+					inside_num[i][k] = 1;
+				} else if (inside[i][k] == 2) {
+					inside[i][k] = (k + 1) * (k + 1) * (k + 1) * 100 + 112700;
+					inside_num[i][k] = 2;
+				} else if (inside[i][k] == 3) {
+					inside[i][k] = ((k + 1)) * 10000 + 281425;
+					inside_num[i][k] = 3;
+				} else if (inside[i][k] == 4) {
+					inside[i][k] = ((k + 1)) * 1000000 + 3845725;
+					inside_num[i][k] = 4;
+				} else if (inside[i][k] == 5) {
+					inside[i][k] = ((k + 1)) + 346845941;
+					inside_num[i][k] = 5;
+				}
+			} else {
+				if (inside[i][k] == 0) {
+					inside[i][k] = 0;
+					inside_num[i][k] = 0;
+				} else if (inside[i][k] == 1) {
+					inside[i][k] = 7 * 7 * 7;
+					inside_num[i][k] = 1;
+				} else if (inside[i][k] == 2) {
+					inside[i][k] = (7 * 7 * 7) * 100 + 112700;
+					inside_num[i][k] = 2;
+				} else if (inside[i][k] == 3) {
+					inside[i][k] = (7) * 10000 + 281425;
+					inside_num[i][k] = 3;
+				} else if (inside[i][k] == 4) {
+					inside[i][k] = (7) * 1000000 + 3845725;
+					inside_num[i][k] = 4;
+				} else if (inside[i][k] == 5) {
+					inside[i][k] = (7) + 346845941;
+					inside_num[i][k] = 5;
+				}
+			}
+		}
+		for (k = 0; k < 6; k++) {
+			ipt[i][5] += inside[i][k];
+		}
+	}
+}
+
+function return_value(a,  b, c, d, e, ipt) {
+	return ipt[(a - 1) * 1296 + (b - 1) * 216 + (c - 1) * 36 + (d - 1) * 6
+			+ (e - 1)][5];
+}
+
+</script>
+
 
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
