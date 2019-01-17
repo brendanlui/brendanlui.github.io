@@ -53,7 +53,7 @@ function myFunction() {
 		 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		 <a href="#calculator"onclick="closeNav()">Calculator</a>
 		 <a href="#liar"onclick="closeNav()">Liar Dice</a>
-		 <a href="#lucky"onclick="closeNav()">Lucky</a>
+		 <a href="#lucky">Lucky</a>
 	</div>
 </div>
 <script>
@@ -2133,7 +2133,7 @@ function return_value(a,  b, c, d, e, ipt) {
 	<div id="head">
 		<div id="nav">
 			 <ul>
-				 <li><a id="myBtn" href="academic#toppest" class="subtitle" >Top</a></li>
+				 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
 			 </ul>
 		</div>
 	</div>
@@ -2155,6 +2155,20 @@ function return_value(a,  b, c, d, e, ipt) {
 			<li>© Copyright 2019. All Rights Reserved.</li>
 		</ul></br>
 
+<script type="text/javascript">
+$(function(){
+  $("#nav a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+$(function(){
+  $("#nav_subtitle a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+</script>
 
 </body>
 </html>
