@@ -175,7 +175,7 @@ function closeNav() {
 						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum2" Name = "call2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						<input type="checkbox" id="userCallOnly" name="only" value="Only"> Only<br><br>
-					</form></br>
+					</form><!--</br>-->
 					<div id="output2"></div>
 
 <script>
@@ -222,7 +222,7 @@ function StartLiarDice(el) {
 		output2.innerHTML += player[i]; // set its content to the value of the "el"
 		output2.innerHTML += " ";
 	}
-	output2.innerHTML += "<br/><br/>";
+	output2.innerHTML += "<br/>";
 	output2.innerHTML += "Computer: ";
 
 	if (comp_start_first) {
@@ -326,7 +326,7 @@ function callaction() {
 							output2.innerHTML += player[i]; // set its content to the value of the "el"
 							output2.innerHTML += " ";
 						}
-						output2.innerHTML += "<br/><br/>";
+						output2.innerHTML += "<br/>";
 						output2.innerHTML += "Computer: ";
 						for (i = 0; i < 5; i++) {
 							output2.innerHTML += computer[i]; // set its content to the value of the "el"
@@ -395,7 +395,7 @@ function openaction() {
 				output2.innerHTML += player[i]; // set its content to the value of the "el"
 				output2.innerHTML += " ";
 			}
-			output2.innerHTML += "<br/><br/>";
+			output2.innerHTML += "<br/>";
 			output2.innerHTML += "Computer: ";
 			for (i = 0; i < 5; i++) {
 				output2.innerHTML += computer[i]; // set its content to the value of the "el"
@@ -444,7 +444,7 @@ function openaction() {
 						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						<input type="checkbox" id="userCallOnly2" name="only" value="Only"> Only<br><br>
-					</form></br>
+					</form><!--</br>-->
 					<div id="output22"></div>
 
 <script>
@@ -490,7 +490,7 @@ function StartLiarDice2(el) {
 		output22.innerHTML += player[i];
 		output22.innerHTML += " ";
 	}
-	output22.innerHTML += "<br/><br/>";
+	output22.innerHTML += "<br/>";
 	output22.innerHTML += "Computer: ";
 
 	if (comp_start_first) {
@@ -884,7 +884,7 @@ function callaction2() {
 							output22.innerHTML += player[i]; // set its content to the value of the "el"
 							output22.innerHTML += " ";
 						}
-						output22.innerHTML += "<br/><br/>";
+						output22.innerHTML += "<br/>";
 						output22.innerHTML += "Computer: ";
 						for (i = 0; i < 5; i++) {
 							output22.innerHTML += computer[i]; // set its content to the value of the "el"
@@ -1460,7 +1460,7 @@ function openaction2() {
 				output22.innerHTML += player[i]; // set its content to the value of the "el"
 				output22.innerHTML += " ";
 			}
-			output22.innerHTML += "<br/><br/>";
+			output22.innerHTML += "<br/>";
 			output22.innerHTML += "Computer: ";
 			for (i = 0; i < 5; i++) {
 				output22.innerHTML += computer[i]; // set its content to the value of the "el"
@@ -1507,7 +1507,7 @@ function openaction2() {
 											<input style="clear:both;text-align: center;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 											<button style="clear:both;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
 
-										</form></br>
+										</form><!--</br>-->
 										<div id="output"></div>
 
 <script  type="text/javascript">
@@ -1636,7 +1636,7 @@ function ShakeAction(el) {
 					output.innerHTML += player[i][0]; // set its content to the value of the "el"
 					output.innerHTML += " ";
 				}
-				output.innerHTML += "<br/><br/>";
+				output.innerHTML += "<br/>";
 				output.innerHTML += "Computer: ";
 				for (i = 0; i < 5; i++) {
 					output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1747,7 +1747,7 @@ function ShakeAction(el) {
 									output.innerHTML += player[i][0]; // set its content to the value of the "el"
 									output.innerHTML += " ";
 								}
-								output.innerHTML += "<br/><br/>";
+								output.innerHTML += "<br/>";
 								output.innerHTML += "Computer: ";
 								for (i = 0; i < 5; i++) {
 									output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1769,7 +1769,7 @@ function ShakeAction(el) {
 								output.innerHTML += player[i][0]; // set its content to the value of the "el"
 								output.innerHTML += " ";
 							}
-							output.innerHTML += "<br/><br/>";
+							output.innerHTML += "<br/>";
 							output.innerHTML += "Computer: ";
 							for (i = 0; i < 5; i++) {
 								output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1801,7 +1801,7 @@ function StartAction(el) {
 		output.innerHTML += Math.floor((Math.random() * 6) + 1); // set its content to the value of the "el"
 		output.innerHTML += " ";
 	}
-	output.innerHTML += "<br/><br/>";
+	output.innerHTML += "<br/>";
 	output.innerHTML += "Computer: ";
 	for (k = 0; k < 5; k++) {
 		output.innerHTML += Math.floor((Math.random() * 6) + 1); // set its content to the value of the "el"
@@ -1941,7 +1941,7 @@ function StartAction(el) {
 						output.innerHTML += player[i][0]; // set its content to the value of the "el"
 						output.innerHTML += " ";
 					}
-					output.innerHTML += "<br/><br/>";
+					output.innerHTML += "<br/>";
 					output.innerHTML += "Computer: ";
 					for (i = 0; i < 5; i++) {
 						output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1959,7 +1959,7 @@ function StartAction(el) {
 				output.innerHTML += player[i][0]; // set its content to the value of the "el"
 				output.innerHTML += " ";
 			}
-			output.innerHTML += "<br/><br/>";
+			output.innerHTML += "<br/>";
 			output.innerHTML += "Computer: ";
 			for (i = 0; i < 5; i++) {
 				output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1978,7 +1978,7 @@ function StartAction(el) {
 			output.innerHTML += player[i][0]; // set its content to the value of the "el"
 			output.innerHTML += " ";
 		}
-		output.innerHTML += "<br/><br/>";
+		output.innerHTML += "<br/>";
 		output.innerHTML += "Computer: ";
 		for (i = 0; i < 5; i++) {
 			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
@@ -1992,7 +1992,7 @@ function StartAction(el) {
 			output.innerHTML += player[i][0]; // set its content to the value of the "el"
 			output.innerHTML += " ";
 		}
-		output.innerHTML += "<br/><br/>";
+		output.innerHTML += "<br/>";
 		output.innerHTML += "Computer: ";
 		for (i = 0; i < 5; i++) {
 			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
