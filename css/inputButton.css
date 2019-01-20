@@ -11,7 +11,7 @@ input.button{
   background-color: white;
   color: black;
   border: 2px solid #555555;
-  width: 120px;
+  width: 100px;
 }
 input.button:hover {
   background-color: #555555;
@@ -21,9 +21,9 @@ input.button:hover {
 input.setting{
   background-color: black;
   color: white;
-  border: 2px solid #efdede;
+  border: 2px solid #f7eaea;
 }
 input.setting:hover {
   color: black;
-  background-color: #efdede;
+  background-color: #f7eaea;
 }
