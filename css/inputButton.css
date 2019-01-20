@@ -17,3 +17,9 @@ input.button:hover {
   background-color: #555555;
   color: white;
 }
+
+@media screen and (max-width: 600px) {
+  input.button{
+    width: 30px;
+  }
+}
