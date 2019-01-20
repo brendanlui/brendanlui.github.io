@@ -11,7 +11,7 @@ input.button{
   background-color: white;
   color: black;
   border: 2px solid #555555;
-  width: 150px;
+  width: 120px;
 }
 input.button:hover {
   background-color: #555555;
@@ -21,13 +21,9 @@ input.button:hover {
 input.setting{
   background-color: black;
   color: white;
+  border: 2px solid #efdede;
 }
 input.setting:hover {
   color: black;
-}
-
-@media screen and (max-width: 660px) {
-  input.button{
-    width: 50px;
-  }
+  background-color: #efdede;
 }
