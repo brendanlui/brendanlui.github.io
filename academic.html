@@ -167,10 +167,10 @@ function closeNav() {
 
 			<h4> *LOSER GOES FIRST</h4></br>
 					<form name = "f1">
-						<input class="button" type="button" id="startradio" Name = "r2" Value = "start" onClick="StartLiarDice(this)"> Start &emsp;
-						<input style="clear:both;color:#888;" type="button" id="resultradio" Name = "r2" value="result" onclick="resultaction();"> Result </br>
-						<input style="clear:both;color:#888;" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();"> Call &emsp;
-						<input style="clear:both;color:#888;" type="button" id="openradio" Name = "r2" value="Open" onclick="openaction();"> Open </br>
+						<input class="button" type="button" id="startradio" Name = "r2" Value = "start" onClick="StartLiarDice(this)">
+						<input class="button" type="button" id="resultradio" Name = "r2" value="result" onclick="resultaction();"></br>
+						<input class="button" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();">
+						<input class="button" type="button" id="openradio" Name = "r2" value="Open" onclick="openaction();"></br>
 
 						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum2" Name = "call2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
@@ -436,10 +436,10 @@ function openaction() {
 
 
 					<form name = "f1">
-						<input style="clear:both;color:#888;" type = "radio" id="startradio2" Name = "r2" Value = "start" onClick="StartLiarDice2(this)"> Start &emsp;
-						<input style="clear:both;color:#888;" type="radio" id="resultradio2" Name = "r2" value="result" onclick="resultaction2();"> Result </br>
-						<input style="clear:both;color:#888;" type="radio" id="callradio2" Name = "r2" value="Call" onclick="callaction2();"> Call &emsp;
-						<input style="clear:both;color:#888;" type="radio" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"> Open </br>
+						<input class="button" type="button" id="startradio2" Name = "r2" Value = "start" onClick="StartLiarDice2(this)"> Start &emsp;
+						<input class="button" type="button" id="resultradio2" Name = "r2" value="result" onclick="resultaction2();"> Result </br>
+						<input class="button" type="button" id="callradio2" Name = "r2" value="Call" onclick="callaction2();"> Call &emsp;
+						<input class="button" type="button" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"> Open </br>
 
 						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
@@ -1495,9 +1495,9 @@ function openaction2() {
 
 								<h4> *LOSER GOES FIRST </h4></br>
 										<form name = "f1"> <!-- the "this" in GetSelectedItem(this) is the input -->
-											<input style="clear:both;color:#888;" type = "radio" id="start_radio_lucky" Name = "r2" Value = "start" onClick="StartAction(this)"> Start &emsp;
-											<input style="clear:both;color:#888;" type="radio" id="resultradio" Name = "r2" value="result" onclick="resultaction_shake();"> Result </br>
-											<input style="clear:both;color:#888;" type = "radio" id="shake_radio_lucky" Name = "r2" Value = "shake" onClick="ShakeAction(this)"> Shake </br>
+											<input class="button" type="button" id="start_radio_lucky" Name = "r2" Value = "start" onClick="StartAction(this)"> Start &emsp;
+											<input class="button" type="button" id="resultradio" Name = "r2" value="result" onclick="resultaction_shake();"> Result </br>
+											<input class="button" type="button" id="shake_radio_lucky" Name = "r2" Value = "shake" onClick="ShakeAction(this)"> Shake </br>
 
 											Keep: </br>
 											<input style="clear:both;text-align: center;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
