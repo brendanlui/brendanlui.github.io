@@ -297,6 +297,17 @@ function StartLiarDice(el) {
 
 function callaction() {
 	document.getElementById("startradio").checked = false;
+
+	var x = document.getElementsByClassName('btnNum');
+	for (i = 0; i < x.length; i++){
+			x[i].style.borderColor = '#ddd';
+	}
+
+	var y = document.getElementsByClassName('btnDice');
+	for (i = 0; i < y.length; i++){
+			y[i].style.borderColor = '#ddd';
+	}
+	
 	if(start_is_clicked == true){
 		var num_call = document.getElementById("userCallNum1").value;
 		var point_call = document.getElementById("userCallNum2").value;
