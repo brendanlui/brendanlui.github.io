@@ -25,3 +25,8 @@ input.setting{
 input.setting:hover {
   color: black;
 }
+
+button.btnDice{
+  width:80px;
+  height:80px;
+}
