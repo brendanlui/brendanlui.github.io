@@ -296,8 +296,6 @@ function StartLiarDice(el) {
 
 
 function callaction() {
-	document.getElementById("startradio").checked = false;
-
 	var x = document.getElementsByClassName('btnNum');
 	for (i = 0; i < x.length; i++){
 			x[i].style.borderColor = '#ddd';
@@ -422,7 +420,6 @@ function callaction() {
 
 
 function openaction() {
-	document.getElementById("startradio").checked = false;
 	if(start_is_clicked == true){
 		array_dice = output2.innerHTML.split(" ");
 		if(array_dice[8] == null){
@@ -443,7 +440,6 @@ function openaction() {
 				}
 			}
 
-
 			if (count >= number) {
 				alert("You lose.");
 				computer_score_1++;
@@ -454,6 +450,12 @@ function openaction() {
 				comp_start_first = true;
 			}
 			start_is_clicked = false;
+		}
+
+		for (i = 0; i < computer.length; i++){
+			output2.innerHTML +=
+			'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
+				+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 		}
 	}
 }
