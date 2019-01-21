@@ -178,10 +178,10 @@ function closeNav() {
 						<img class="btnNum" id="btnNum4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btnNum4')"/>
 						<img class="btnNum" id="btnNum5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btnNum5')"/>
 						<img class="btnNum" id="btnNum6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btnNum6')"/>
-						<img class="btnNum" id="btnNum7" src="/img/dice/num7.png" alt="6"onclick="selectedNum('btnNum7')"/>
-						<img class="btnNum" id="btnNum8" src="/img/dice/num8.png" alt="6"onclick="selectedNum('btnNum8')"/>
-						<img class="btnNum" id="btnNum9" src="/img/dice/num9.png" alt="6"onclick="selectedNum('btnNum9')"/>
-						<img class="btnNum" id="btnNum10" src="/img/dice/num10.png" alt="6"onclick="selectedNum('btnNum10')"/>
+						<img class="btnNum" id="btnNum7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btnNum7')"/>
+						<img class="btnNum" id="btnNum8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btnNum8')"/>
+						<img class="btnNum" id="btnNum9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btnNum9')"/>
+						<img class="btnNum" id="btnNum10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btnNum10')"/>
 						<input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 
 						Point: </br>
@@ -203,6 +203,7 @@ function selectedNum(id){
 		for (i = 0; i < x.length; i++){
 				x[i].style.borderColor = '#ddd';
 		}
+		document.getElementById('userCallNum1').value = document.getElementById(id).alt;
 		document.getElementById(id).style.borderColor = 'red';
 }
 function selectedDice(id){
@@ -210,6 +211,7 @@ function selectedDice(id){
 		for (i = 0; i < x.length; i++){
 				x[i].style.borderColor = '#ddd';
 		}
+		document.getElementById('userCallNum2').value = document.getElementById(id).alt;
 		document.getElementById(id).style.borderColor = 'red';
 }
 </script>
