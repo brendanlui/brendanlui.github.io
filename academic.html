@@ -166,7 +166,8 @@ function closeNav() {
 			<h4> Press "Start" to restart the game. Type the number you call in the following boxes, and then press "Call". Press "Open" if you do not trust the calling of the computer. Tick "Only" if the 1-point dice are no longer generic. Press "Result" to view your score. </h4>
 
 			<h4> *LOSER GOES FIRST</h4></br>
-					<div id="output2"></div>
+					<div id="output2" style='display:none;'></div>
+					<div id="output2_img"></div>
 					<form name = "f1">
 						<input class="button setting" type="button" id="startradio" Name = "r2" Value = "Start" onClick="StartLiarDice(this)">
 						<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction();"></br>
@@ -264,14 +265,21 @@ function StartLiarDice(el) {
 		computer[i] = Math.floor((Math.random() * 6) + 1);
 	}
 
+	output2.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output2.innerHTML += player[i]; // set its content to the value of the "el"
+		output2.innerHTML += " ";
+	}
+	output2.innerHTML += "<br/>";
+	output2.innerHTML += "Computer: ";
 
-	output2.innerHTML = "You: </br>";
+	document.getElementById('output2_img').innerHTML = "You:";
 	for (i = 0; i < player.length; i++){
-		output2.innerHTML +=
+		document.getElementById('output2_img').innerHTML +=
 		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
-	output2.innerHTML += "<br/>Computer: </br>";
+	document.getElementById('output2_img').innerHTML += "</br>Computer: </br>";
 
 	if (comp_start_first) {
 		alert("Computer goes first.");
@@ -296,6 +304,7 @@ function StartLiarDice(el) {
 
 
 function callaction() {
+	document.getElementById("startradio").checked = false;
 	var x = document.getElementsByClassName('btnNum');
 	for (i = 0; i < x.length; i++){
 			x[i].style.borderColor = '#ddd';
@@ -378,8 +387,27 @@ function callaction() {
 						}
 
 						//print the data if open
+						output2.innerHTML = "You: ";
+						for (i = 0; i < 5; i++) {
+							output2.innerHTML += player[i]; // set its content to the value of the "el"
+							output2.innerHTML += " ";
+						}
+						output2.innerHTML += "<br/>";
+						output2.innerHTML += "Computer: ";
+						for (i = 0; i < 5; i++) {
+							output2.innerHTML += computer[i]; // set its content to the value of the "el"
+							output2.innerHTML += " ";
+						}
+
+						document.getElementById('output2_img').innerHTML = "You:";
+						for (i = 0; i < player.length; i++){
+							document.getElementById('output2_img').innerHTML +=
+							'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+								+player[i]+'_red.png" alt="'+player[i]+'"/>';
+						}
+						document.getElementById('output2_img').innerHTML += "</br>Computer:";
 						for (i = 0; i < computer.length; i++){
-							output2.innerHTML +=
+							document.getElementById('output2_img').innerHTML +=
 							'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 						}
@@ -420,6 +448,7 @@ function callaction() {
 
 
 function openaction() {
+	document.getElementById("startradio").checked = false;
 	if(start_is_clicked == true){
 		array_dice = output2.innerHTML.split(" ");
 		if(array_dice[8] == null){
@@ -440,6 +469,31 @@ function openaction() {
 				}
 			}
 
+			output2.innerHTML = "You: ";
+			for (i = 0; i < 5; i++) {
+				output2.innerHTML += player[i]; // set its content to the value of the "el"
+				output2.innerHTML += " ";
+			}
+			output2.innerHTML += "<br/>";
+			output2.innerHTML += "Computer: ";
+			for (i = 0; i < 5; i++) {
+				output2.innerHTML += computer[i]; // set its content to the value of the "el"
+				output2.innerHTML += " ";
+			}
+
+			document.getElementById('output2_img').innerHTML = "You:";
+			for (i = 0; i < player.length; i++){
+				document.getElementById('output2_img').innerHTML +=
+				'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+					+player[i]+'_red.png" alt="'+player[i]+'"/>';
+			}
+			document.getElementById('output2_img').innerHTML += "</br>Computer:";
+			for (i = 0; i < computer.length; i++){
+				document.getElementById('output2_img').innerHTML +=
+				'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
+					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
+			}
+
 			if (count >= number) {
 				alert("You lose.");
 				computer_score_1++;
@@ -450,23 +504,6 @@ function openaction() {
 				comp_start_first = true;
 			}
 			start_is_clicked = false;
-		}
-
-		output2.innerHTML = "You:";
-		for (i = 0; i < player.length; i++){
-			output2.innerHTML +=
-			'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-			output2.innerHTML +=
-			'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-				+player[i]+'_yellow.png" alt="'+player[i]+'"/>';
-		}
-		output2.innerHTML += "</br>Computer:";
-		for (i = 0; i < computer.length; i++){
-			output2.innerHTML +=
-			'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-			output2.innerHTML +=
-			'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-				+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 		}
 	}
 }
