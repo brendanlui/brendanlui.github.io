@@ -280,6 +280,10 @@ function StartLiarDice(el) {
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
 	document.getElementById('output2_img').innerHTML += "</br>Computer: </br>";
+	for (i = 0; i < computer.length; i++){
+		document.getElementById('output2_img').innerHTML +=
+		'<img class="btnDice" src="/img/dice/questionMark.png" alt="?"/>';
+	}
 
 	if (comp_start_first) {
 		alert("Computer goes first.");
