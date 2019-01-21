@@ -197,15 +197,15 @@ function closeNav() {
 <script>
 function selectedNum(id){
 		var x = document.getElementsByClassName('btnNum');
-		for (i = 0; i < 6; i++){
-				x[i].style.borderColor = 'none';
+		for (i = 0; i < x.length; i++){
+				x[i].style.borderColor = '#ddd';
 		}
 		document.getElementById(id).style.borderColor = 'red';
 }
 function selectedDice(id){
 		var x = document.getElementsByClassName('btnDice');
 		for (i = 0; i < x.length; i++){
-				x[i].style.borderColor = 'none';
+				x[i].style.borderColor = '#ddd';
 		}
 		document.getElementById(id).style.borderColor = 'red';
 }
