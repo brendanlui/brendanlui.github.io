@@ -167,7 +167,6 @@ function closeNav() {
 
 			<h4> *LOSER GOES FIRST</h4></br>
 					<div id="output2"></div>
-					<div id="output2_img"></div>
 					<form name = "f1">
 						<input class="button setting" type="button" id="startradio" Name = "r2" Value = "Start" onClick="StartLiarDice(this)">
 						<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction();"></br>
@@ -265,10 +264,12 @@ function StartLiarDice(el) {
 		computer[i] = Math.floor((Math.random() * 6) + 1);
 	}
 
-	output2.innerHTML = "You: ";
-	for (i = 0; i < 5; i++) {
-		output2.innerHTML += player[i]; // set its content to the value of the "el"
-		output2.innerHTML += " ";
+
+	output2.innerHTML = "You:";
+	for (i = 0; i < player.length; i++){
+		output2.innerHTML +=
+		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
 	output2.innerHTML += "<br/>";
 	output2.innerHTML += "Computer: ";
@@ -369,16 +370,17 @@ function callaction() {
 						}
 
 						//print the data if open
-						output2.innerHTML = "You: ";
-						for (i = 0; i < 5; i++) {
-							output2.innerHTML += player[i]; // set its content to the value of the "el"
-							output2.innerHTML += " ";
+						output2.innerHTML = "You:";
+						for (i = 0; i < player.length; i++){
+							output2.innerHTML +=
+							'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+								+player[i]+'_red.png" alt="'+player[i]+'"/>';
 						}
-						output2.innerHTML += "<br/>";
-						output2.innerHTML += "Computer: ";
-						for (i = 0; i < 5; i++) {
-							output2.innerHTML += computer[i]; // set its content to the value of the "el"
-							output2.innerHTML += " ";
+						output2.innerHTML += "</br>Computer:";
+						for (i = 0; i < computer.length; i++){
+							output2 +=
+							'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
+								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 						}
 
 						if (count >= number) {
@@ -438,31 +440,19 @@ function openaction() {
 				}
 			}
 
-			output2.innerHTML = "You: ";
-			for (i = 0; i < 5; i++) {
-				output2.innerHTML += player[i]; // set its content to the value of the "el"
-				output2.innerHTML += " ";
-			}
-			output2.innerHTML += "<br/>";
-			output2.innerHTML += "Computer: ";
-			for (i = 0; i < 5; i++) {
-				output2.innerHTML += computer[i]; // set its content to the value of the "el"
-				output2.innerHTML += " ";
-			}
-
-			document.getElementById('output2_img').innerHTML = "You:";
+			output2.innerHTML = "You:";
 			for (i = 0; i < player.length; i++){
-				document.getElementById('output2_img').innerHTML +=
+				output2.innerHTML +=
 				'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-					+player[i]+'_yellow.png" alt="'+player[i]+'"/>';
+					+player[i]+'_red.png" alt="'+player[i]+'"/>';
 			}
-			document.getElementById('output2_img').innerHTML += "</br>Computer:";
+			output2.innerHTML += "</br>Computer:";
 			for (i = 0; i < computer.length; i++){
-				document.getElementById('output2_img').innerHTML +=
+				output2 +=
 				'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 			}
-			
+
 			if (count >= number) {
 				alert("You lose.");
 				computer_score_1++;
