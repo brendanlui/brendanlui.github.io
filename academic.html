@@ -166,8 +166,9 @@ function closeNav() {
 			<h4> Press "Start" to restart the game. Type the number you call in the following boxes, and then press "Call". Press "Open" if you do not trust the calling of the computer. Tick "Only" if the 1-point dice are no longer generic. Press "Result" to view your score. </h4>
 
 			<h4> *LOSER GOES FIRST</h4></br>
+					<div id="output2"></div>
+					<div id="output2_img"></div>
 					<form name = "f1">
-						<div id="output2"></div>
 						<input class="button setting" type="button" id="startradio" Name = "r2" Value = "Start" onClick="StartLiarDice(this)">
 						<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction();"></br>
 						<input class="button" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();">
@@ -462,6 +463,20 @@ function openaction() {
 		}
 	}
 }
+
+document.getElementById('output2_img').innerHTML = "You:";
+for (i = 0; i < player.length; i++){
+	document.getElementById('output2_img').innerHTML += '
+		<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+		+player[i]+'_yellow.png" alt="'+player[i]+'"/>';
+}
+document.getElementById('output2_img').innerHTML += "</br>Computer:";
+for (i = 0; i < computer.length; i++){
+	document.getElementById('output2_img').innerHTML += '
+		<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
+		+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
+}
+
 </script>
 
 	</div></br>
