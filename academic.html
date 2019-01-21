@@ -217,6 +217,22 @@ function selectedDice(id){
 		document.getElementById('userCallNum2').value = document.getElementById(id).alt;
 		document.getElementById(id).style.borderColor = 'red';
 }
+function selected2Num(id){
+		var x = document.getElementsByClassName('btnNum');
+		for (i = 0; i < x.length; i++){
+				x[i].style.borderColor = '#ddd';
+		}
+		document.getElementById('userCallNum12').value = document.getElementById(id).alt;
+		document.getElementById(id).style.borderColor = 'red';
+}
+function selected2Dice(id){
+		var x = document.getElementsByClassName('btnDice');
+		for (i = 0; i < x.length; i++){
+				x[i].style.borderColor = '#ddd';
+		}
+		document.getElementById('userCallNum22').value = document.getElementById(id).alt;
+		document.getElementById(id).style.borderColor = 'red';
+}
 </script>
 
 <script>
@@ -544,23 +560,23 @@ function openaction() {
 						<input class="button" type="button" id="callradio2" Name = "r2" value="Call" onclick="callaction2();">
 						<input class="button" type="button" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"></br>
 
-						<img class="btnNum" id="btn2Num2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btn2Num2')"/>
-						<img class="btnNum" id="btn2Num3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btn2Num3')"/>
-						<img class="btnNum" id="btn2Num4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btn2Num4')"/>
-						<img class="btnNum" id="btn2Num5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btn2Num5')"/>
-						<img class="btnNum" id="btn2Num6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btn2Num6')"/>
-						<img class="btnNum" id="btn2Num7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btn2Num7')"/>
-						<img class="btnNum" id="btn2Num8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btn2Num8')"/>
-						<img class="btnNum" id="btn2Num9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btn2Num9')"/>
+						<img class="btnNum" id="btn2Num2" src="/img/dice/num2.png" alt="2"onclick="selected2Num('btn2Num2')"/>
+						<img class="btnNum" id="btn2Num3" src="/img/dice/num3.png" alt="3"onclick="selected2Num('btn2Num3')"/>
+						<img class="btnNum" id="btn2Num4" src="/img/dice/num4.png" alt="4"onclick="selected2Num('btn2Num4')"/>
+						<img class="btnNum" id="btn2Num5" src="/img/dice/num5.png" alt="5"onclick="selected2Num('btn2Num5')"/>
+						<img class="btnNum" id="btn2Num6" src="/img/dice/num6.png" alt="6"onclick="selected2Num('btn2Num6')"/>
+						<img class="btnNum" id="btn2Num7" src="/img/dice/num7.png" alt="7"onclick="selected2Num('btn2Num7')"/>
+						<img class="btnNum" id="btn2Num8" src="/img/dice/num8.png" alt="8"onclick="selected2Num('btn2Num8')"/>
+						<img class="btnNum" id="btn2Num9" src="/img/dice/num9.png" alt="9"onclick="selected2Num('btn2Num9')"/>
 						<img class="btnNum" id="btn2Num10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btn2Num10')"/>
 						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
 						</br>
-						<img class="btnDice" id="btn2Dice1" src="/img/dice/dice_1.png" alt="1"onclick="selectedDice('btn2Dice1')"/>
-						<img class="btnDice" id="btn2Dice2" src="/img/dice/dice_2.png" alt="2"onclick="selectedDice('btn2Dice2')"/>
-						<img class="btnDice" id="btn2Dice3" src="/img/dice/dice_3.png" alt="3"onclick="selectedDice('btn2Dice3')"/>
-						<img class="btnDice" id="btn2Dice4" src="/img/dice/dice_4.png" alt="4"onclick="selectedDice('btn2Dice4')"/>
-						<img class="btnDice" id="btn2Dice5" src="/img/dice/dice_5.png" alt="5"onclick="selectedDice('btn2Dice5')"/>
-						<img class="btnDice" id="btn2Dice6" src="/img/dice/dice_6.png" alt="6"onclick="selectedDice('btn2Dice6')"/>
+						<img class="btnDice" id="btn2Dice1" src="/img/dice/dice_1.png" alt="1"onclick="selected2Dice('btn2Dice1')"/>
+						<img class="btnDice" id="btn2Dice2" src="/img/dice/dice_2.png" alt="2"onclick="selected2Dice('btn2Dice2')"/>
+						<img class="btnDice" id="btn2Dice3" src="/img/dice/dice_3.png" alt="3"onclick="selected2Dice('btn2Dice3')"/>
+						<img class="btnDice" id="btn2Dice4" src="/img/dice/dice_4.png" alt="4"onclick="selected2Dice('btn2Dice4')"/>
+						<img class="btnDice" id="btn2Dice5" src="/img/dice/dice_5.png" alt="5"onclick="selected2Dice('btn2Dice5')"/>
+						<img class="btnDice" id="btn2Dice6" src="/img/dice/dice_6.png" alt="6"onclick="selected2Dice('btn2Dice6')"/>
 						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
 
 						<label class="container">Only
