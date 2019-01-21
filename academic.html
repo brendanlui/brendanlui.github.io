@@ -271,8 +271,7 @@ function StartLiarDice(el) {
 		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
-	output2.innerHTML += "<br/>";
-	output2.innerHTML += "Computer: </br>";
+	output2.innerHTML += "<br/>Computer: </br>";
 
 	if (comp_start_first) {
 		alert("Computer goes first.");
@@ -370,15 +369,8 @@ function callaction() {
 						}
 
 						//print the data if open
-						output2.innerHTML = "You: </br>";
-						for (i = 0; i < player.length; i++){
-							output2.innerHTML +=
-							'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-								+player[i]+'_red.png" alt="'+player[i]+'"/>';
-						}
-						output2.innerHTML += "</br>Computer: </br>";
 						for (i = 0; i < computer.length; i++){
-							output2 +=
+							output2.innerHTML +=
 							'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 						}
@@ -440,10 +432,8 @@ function openaction() {
 				}
 			}
 
-				alert("HIHI.");
-			output2.innerHTML += "</br> Computer: </br>";
 			for (i = 0; i < computer.length; i++){
-				output2 +=
+				output2.innerHTML +=
 				'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 			}
