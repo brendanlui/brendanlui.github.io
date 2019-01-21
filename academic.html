@@ -536,17 +536,39 @@ function openaction() {
 
 
 
+					<div id="output22" style="display:none"></div>
+					<div id="output22_img"></div>
 					<form name = "f1">
 						<input class="button setting" type="button" id="startradio2" Name = "r2" Value = "Start" onClick="StartLiarDice2(this)">
 						<input class="button setting" type="button" id="resultradio2" Name = "r2" value="Result" onclick="resultaction2();"></br>
 						<input class="button" type="button" id="callradio2" Name = "r2" value="Call" onclick="callaction2();">
 						<input class="button" type="button" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"></br>
 
-						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-						<input type="checkbox" id="userCallOnly2" name="only" value="Only"> Only<br>
+						<img class="btnNum" id="btn2Num2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btn2Num2')"/>
+						<img class="btnNum" id="btn2Num3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btn2Num3')"/>
+						<img class="btnNum" id="btn2Num4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btn2Num4')"/>
+						<img class="btnNum" id="btn2Num5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btn2Num5')"/>
+						<img class="btnNum" id="btn2Num6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btn2Num6')"/>
+						<img class="btnNum" id="btn2Num7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btn2Num7')"/>
+						<img class="btnNum" id="btn2Num8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btn2Num8')"/>
+						<img class="btnNum" id="btn2Num9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btn2Num9')"/>
+						<img class="btnNum" id="btn2Num10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btn2Num10')"/>
+						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+						</br>
+						<img class="btnDice" id="btnDice1" src="/img/dice/dice_1.png" alt="1"onclick="selectedDice('btnDice1')"/>
+						<img class="btnDice" id="btnDice2" src="/img/dice/dice_2.png" alt="2"onclick="selectedDice('btnDice2')"/>
+						<img class="btnDice" id="btnDice3" src="/img/dice/dice_3.png" alt="3"onclick="selectedDice('btnDice3')"/>
+						<img class="btnDice" id="btnDice4" src="/img/dice/dice_4.png" alt="4"onclick="selectedDice('btnDice4')"/>
+						<img class="btnDice" id="btnDice5" src="/img/dice/dice_5.png" alt="5"onclick="selectedDice('btnDice5')"/>
+						<img class="btnDice" id="btnDice6" src="/img/dice/dice_6.png" alt="6"onclick="selectedDice('btnDice6')"/>
+						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum22" Name = "call22" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+
+						<label class="container">Only
+							<input type="checkbox" id="userCallOnly2">
+							<span class="checkmark"></span>
+						</label>
+
 					</form><!--</br>-->
-					<div id="output22"></div>
 
 <script>
 
@@ -574,6 +596,17 @@ function StartLiarDice2(el) {
 	is_only = false;
 	start_is_clicked = true;
 
+	var x = document.getElementsByClassName('btnNum');
+	for (i = 0; i < x.length; i++){
+			x[i].style.borderColor = '#ddd';
+	}
+
+	var y = document.getElementsByClassName('btnDice');
+	for (i = 0; i < y.length; i++){
+			y[i].style.borderColor = '#ddd';
+	}
+
+	document.getElementById("startradio2").value = "Restart";
 	document.getElementById("userCallNum12").value = "";
 	document.getElementById("userCallNum22").value = "";
 	document.getElementById("userCallOnly2").checked = false;
@@ -593,6 +626,14 @@ function StartLiarDice2(el) {
 	}
 	output22.innerHTML += "<br/>";
 	output22.innerHTML += "Computer: ";
+
+	document.getElementById('output22_img').innerHTML = "You:</br>";
+	for (i = 0; i < player.length; i++){
+		document.getElementById('output22_img').innerHTML +=
+		'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
+			+player[i]+'_red.png" alt="'+player[i]+'"/>';
+	}
+	document.getElementById('output22_img').innerHTML += "</br>Computer:</br>";
 
 	if (comp_start_first) {
 		alert("Computer goes first.");
@@ -990,6 +1031,19 @@ function callaction2() {
 						for (i = 0; i < 5; i++) {
 							output22.innerHTML += computer[i]; // set its content to the value of the "el"
 							output22.innerHTML += " ";
+						}
+
+						document.getElementById('output22_img').innerHTML = "You:</br>";
+						for (i = 0; i < player.length; i++){
+							document.getElementById('output22_img').innerHTML +=
+							'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
+								+player[i]+'_red.png" alt="'+player[i]+'"/>';
+						}
+						document.getElementById('output22_img').innerHTML += "</br>Computer:</br>";
+						for (i = 0; i < computer.length; i++){
+							document.getElementById('output22_img').innerHTML +=
+							'<img class="btnDice" id="btn2DiceComputer'+computer[i]+'" src="/img/dice/dice_'
+								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 						}
 
 						if (count >= number) {
@@ -1566,6 +1620,20 @@ function openaction2() {
 			for (i = 0; i < 5; i++) {
 				output22.innerHTML += computer[i]; // set its content to the value of the "el"
 				output22.innerHTML += " ";
+			}
+
+
+			document.getElementById('output22_img').innerHTML = "You:</br>";
+			for (i = 0; i < player.length; i++){
+				document.getElementById('output22_img').innerHTML +=
+				'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
+					+player[i]+'_red.png" alt="'+player[i]+'"/>';
+			}
+			document.getElementById('output22_img').innerHTML += "</br>Computer:</br>";
+			for (i = 0; i < computer.length; i++){
+				document.getElementById('output22_img').innerHTML +=
+				'<img class="btnDice" id="btn2DiceComputer'+computer[i]+'" src="/img/dice/dice_'
+					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
 			}
 
 			if (count >= number) {
