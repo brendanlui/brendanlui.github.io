@@ -452,7 +452,18 @@ function openaction() {
 			start_is_clicked = false;
 		}
 
+		output2.innerHTML = "You:";
+		for (i = 0; i < player.length; i++){
+			output2.innerHTML +=
+			'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+			output2.innerHTML +=
+			'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+				+player[i]+'_yellow.png" alt="'+player[i]+'"/>';
+		}
+		output2.innerHTML += "</br>Computer:";
 		for (i = 0; i < computer.length; i++){
+			output2.innerHTML +=
+			'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 			output2.innerHTML +=
 			'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
 				+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
