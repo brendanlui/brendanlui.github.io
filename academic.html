@@ -172,7 +172,12 @@ function closeNav() {
 						<input class="button" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();">
 						<input class="button" type="button" id="openradio" Name = "r2" value="Open" onclick="openaction();"></br>
 
-						<img class="btnDice" src="/img/dice/dice_1.png" onclick="StartLiarDice(this)"/>
+						<img class="btnDice" id="btnDice1" src="/img/dice/dice_1.png" onclick="selectedDice(this)"/>
+						<img class="btnDice" id="btnDice2" src="/img/dice/dice_2.png" onclick="selectedDice(this)"/>
+						<img class="btnDice" id="btnDice3" src="/img/dice/dice_3.png" onclick="selectedDice(this)"/>
+						<img class="btnDice" id="btnDice4" src="/img/dice/dice_4.png" onclick="selectedDice(this)"/>
+						<img class="btnDice" id="btnDice5" src="/img/dice/dice_5.png" onclick="selectedDice(this)"/>
+						<img class="btnDice" id="btnDice6" src="/img/dice/dice_6.png" onclick="selectedDice(this)"/>
 
 						Number: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
 						Point: </br><input style="clear:both;color:#888;text-align: center;" type = "text" id="userCallNum2" Name = "call2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
@@ -181,7 +186,12 @@ function closeNav() {
 					<div id="output2"></div>
 
 <script>
+function selectedDice(e1){
+	el.style = "border: 1px solid #black;";
+}
+</script>
 
+<script>
 var array_dice = output2.innerHTML.split(" ");
 var player = new Array(5);
 var computer = new Array(5);
