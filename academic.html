@@ -167,12 +167,12 @@ function closeNav() {
 
 			<h4> *LOSER GOES FIRST</h4></br>
 					<form name = "f1">
+						<div id="output2"></div>
 						<input class="button setting" type="button" id="startradio" Name = "r2" Value = "Start" onClick="StartLiarDice(this)">
 						<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction();"></br>
 						<input class="button" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();">
 						<input class="button" type="button" id="openradio" Name = "r2" value="Open" onclick="openaction();"></br>
 
-						Number: </br>
 						<img class="btnNum" id="btnNum2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btnNum2')"/>
 						<img class="btnNum" id="btnNum3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btnNum3')"/>
 						<img class="btnNum" id="btnNum4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btnNum4')"/>
@@ -184,7 +184,6 @@ function closeNav() {
 						<img class="btnNum" id="btnNum10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btnNum10')"/>
 						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
 
-						</br>Point:</br>
 						<img class="btnDice" id="btnDice1" src="/img/dice/dice_1.png" alt="1"onclick="selectedDice('btnDice1')"/>
 						<img class="btnDice" id="btnDice2" src="/img/dice/dice_2.png" alt="2"onclick="selectedDice('btnDice2')"/>
 						<img class="btnDice" id="btnDice3" src="/img/dice/dice_3.png" alt="3"onclick="selectedDice('btnDice3')"/>
@@ -195,7 +194,6 @@ function closeNav() {
 
 						<input type="checkbox" id="userCallOnly" name="only" value="Only"> Only<br>
 					</form><!--</br>-->
-					<div id="output2"></div>
 
 <script>
 function selectedNum(id){
