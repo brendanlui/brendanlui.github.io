@@ -119,7 +119,7 @@ button, input[type="submit"]{
 	font-size:1.1em;
 }
 
-#output, #output2, #output22{
+#output, #output2, #output22, #output2_img{
 	font-size:1.5em;
 	font-weight: bold;
 }
@@ -211,17 +211,17 @@ a:hover {
 
 
 #profile_picture{
-	border: 3px solid #706868; 
+	border: 3px solid #706868;
 	border-radius: 30px;
 }
 
 
 @media screen and (max-width: 1026px) {
-	
+
 	#page1{
 		margin-top: 0px;
 	}
-	
+
 	#nav_subtitle{
 		width: 110%;
 		margin-top: 30px;
@@ -246,7 +246,7 @@ a:hover {
 		border-radius: 3px;
 		margin-right: -20px;
 	}
-	
+
 	#nav_home{
 		margin-top: 0px;
 		margin-left: 0px;
@@ -266,20 +266,20 @@ a:hover {
 	}
 
 	#profile_picture{
-		max-width: 180px; 
+		max-width: 180px;
 		max-height: 180px;
 	}
-	
+
 	#logo{
 		margin-left: -40px;
 		margin-top: -3px;
 	}
-	
+
 	img {
-		max-width: 270px; 
+		max-width: 270px;
 		max-height: 180px;
 	}
-	
+
     dt {
 		font-size:1.3em;
     	text-align: left;
@@ -294,7 +294,7 @@ a:hover {
     	margin: 0;
     	padding: 0.5% 1.5% 0.5% 1.5%;
     }
-	
+
 	h2 {
 		font-size:2em;
 		font-weight:bold;
@@ -302,16 +302,16 @@ a:hover {
 	}
 
 	h4 {
-		font-size:1.1em;	
+		font-size:1.1em;
 		font-weight:bold;
 		margin: 0em 0 0 0;
 	}
-	
+
 	p {
 		font-size:1.1em;
 	}
 
-	
+
 	input{
 		font-size:0.65em;
 	}
