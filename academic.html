@@ -307,7 +307,7 @@ function callaction() {
 	for (i = 0; i < y.length; i++){
 			y[i].style.borderColor = '#ddd';
 	}
-	
+
 	if(start_is_clicked == true){
 		var num_call = document.getElementById("userCallNum1").value;
 		var point_call = document.getElementById("userCallNum2").value;
@@ -443,11 +443,6 @@ function openaction() {
 				}
 			}
 
-			for (i = 0; i < computer.length; i++){
-				output2.innerHTML +=
-				'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
-			}
 
 			if (count >= number) {
 				alert("You lose.");
