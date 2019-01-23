@@ -92,7 +92,6 @@ function closeNav() {
 							</script>
 					</form>
 					<script>
-
 						function factorial(n){
 							rval=1;
 							for (i = 2; i <= n; i++)
@@ -127,7 +126,7 @@ function closeNav() {
 							return printing;
 						}
 
-						function cal_get_value() {
+						function cal_value(total, larger_or_equal_to, dice) {
 							total = 10;
 							probability = 0;
 							larger_or_equal_to = 4;
@@ -135,9 +134,6 @@ function closeNav() {
 							printing = 0;
 							dice = 0;
 
-							var total = document.getElementById("userInput1").value;
-							var larger_or_equal_to = document.getElementById("userInput2").value;
-							var dice = document.getElementById("userInput3").value;
 							var save = 0;
 
 							if (dice > 6 || dice < 1) {
@@ -150,8 +146,16 @@ function closeNav() {
 								}
 								save = binomial(total, probability, larger_or_equal_to, prob, printing);
 							}
-							alert(save);
+							return save;
 						}
+
+						function cal_get_value(total, larger_or_equal_to, dice) {
+							var total = document.getElementById("userInput1").value;
+							var larger_or_equal_to = document.getElementById("userInput2").value;
+							var dice = document.getElementById("userInput3").value;
+							alert(cal_value(total, larger_or_equal_to, dice));
+						}
+
 					</script>
 	</div></br></br>
 
