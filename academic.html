@@ -180,15 +180,15 @@ function closeNav() {
 						<input class="button" type="button" id="callradio" Name = "r2" value="Call" onclick="callaction();">
 						<input class="button" type="button" id="openradio" Name = "r2" value="Open" onclick="openaction();"></br>
 
-						<img class="btnNum" id="btnNum2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btnNum2')"/>
-						<img class="btnNum" id="btnNum3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btnNum3')"/>
-						<img class="btnNum" id="btnNum4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btnNum4')"/>
-						<img class="btnNum" id="btnNum5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btnNum5')"/>
-						<img class="btnNum" id="btnNum6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btnNum6')"/>
-						<img class="btnNum" id="btnNum7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btnNum7')"/>
-						<img class="btnNum" id="btnNum8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btnNum8')"/>
-						<img class="btnNum" id="btnNum9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btnNum9')"/>
-						<img class="btnNum" id="btnNum10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btnNum10')"/>
+						<img class="btnNum" id="btnNum2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btnNum2', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btnNum3', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btnNum4', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btnNum5', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btnNum6', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btnNum7', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btnNum8', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btnNum9', 'userCallNum1')"/>
+						<img class="btnNum" id="btnNum10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btnNum10', 'userCallNum1')"/>
 						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum1" Name = "call1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
 						</br>
 						<img class="btnDice" id="btnDice1" src="/img/dice/dice_1.png" alt="1"onclick="selectedDice('btnDice1')"/>
@@ -204,16 +204,16 @@ function closeNav() {
 						  <span class="checkmark"></span>
 						</label>
 
-					</form><!--</br>-->
+					</form>
 
 <script>
-function selectedNum(id){
+function selectedNum(btnNumId, userCallNum){
 		var x = document.getElementsByClassName('btnNum');
 		for (i = 0; i < x.length; i++){
 				x[i].style.borderColor = '#ddd';
 		}
-		document.getElementById('userCallNum1').value = document.getElementById(id).alt;
-		document.getElementById(id).style.borderColor = 'red';
+		document.getElementById(userCallNum).value = document.getElementById(btnNumId).alt;
+		document.getElementById(btnNumId).style.borderColor = 'red';
 }
 function selectedDice(id){
 		var x = document.getElementsByClassName('btnDice');
@@ -221,14 +221,6 @@ function selectedDice(id){
 				x[i].style.borderColor = '#ddd';
 		}
 		document.getElementById('userCallNum2').value = document.getElementById(id).alt;
-		document.getElementById(id).style.borderColor = 'red';
-}
-function selected2Num(id){
-		var x = document.getElementsByClassName('btnNum');
-		for (i = 0; i < x.length; i++){
-				x[i].style.borderColor = '#ddd';
-		}
-		document.getElementById('userCallNum12').value = document.getElementById(id).alt;
 		document.getElementById(id).style.borderColor = 'red';
 }
 function selected2Dice(id){
@@ -566,15 +558,15 @@ function openaction() {
 						<input class="button" type="button" id="callradio2" Name = "r2" value="Call" onclick="callaction2();">
 						<input class="button" type="button" id="openradio2" Name = "r2" value="Open" onclick="openaction2();"></br>
 
-						<img class="btnNum" id="btn2Num2" src="/img/dice/num2.png" alt="2"onclick="selected2Num('btn2Num2')"/>
-						<img class="btnNum" id="btn2Num3" src="/img/dice/num3.png" alt="3"onclick="selected2Num('btn2Num3')"/>
-						<img class="btnNum" id="btn2Num4" src="/img/dice/num4.png" alt="4"onclick="selected2Num('btn2Num4')"/>
-						<img class="btnNum" id="btn2Num5" src="/img/dice/num5.png" alt="5"onclick="selected2Num('btn2Num5')"/>
-						<img class="btnNum" id="btn2Num6" src="/img/dice/num6.png" alt="6"onclick="selected2Num('btn2Num6')"/>
-						<img class="btnNum" id="btn2Num7" src="/img/dice/num7.png" alt="7"onclick="selected2Num('btn2Num7')"/>
-						<img class="btnNum" id="btn2Num8" src="/img/dice/num8.png" alt="8"onclick="selected2Num('btn2Num8')"/>
-						<img class="btnNum" id="btn2Num9" src="/img/dice/num9.png" alt="9"onclick="selected2Num('btn2Num9')"/>
-						<img class="btnNum" id="btn2Num10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btn2Num10')"/>
+						<img class="btnNum" id="btn2Num2" src="/img/dice/num2.png" alt="2"onclick="selectedNum('btn2Num2', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num3" src="/img/dice/num3.png" alt="3"onclick="selectedNum('btn2Num3', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num4" src="/img/dice/num4.png" alt="4"onclick="selectedNum('btn2Num4', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num5" src="/img/dice/num5.png" alt="5"onclick="selectedNum('btn2Num5', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num6" src="/img/dice/num6.png" alt="6"onclick="selectedNum('btn2Num6', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num7" src="/img/dice/num7.png" alt="7"onclick="selectedNum('btn2Num7', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num8" src="/img/dice/num8.png" alt="8"onclick="selectedNum('btn2Num8', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num9" src="/img/dice/num9.png" alt="9"onclick="selectedNum('btn2Num9', 'userCallNum12')"/>
+						<img class="btnNum" id="btn2Num10" src="/img/dice/num10.png" alt="10"onclick="selectedNum('btn2Num10', 'userCallNum12')"/>
 						<input style="clear:both;color:#888;text-align:center;display:none;" type = "text" id="userCallNum12" Name = "call12" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
 						</br>
 						<img class="btnDice" id="btn2Dice1" src="/img/dice/dice_1.png" alt="1"onclick="selected2Dice('btn2Dice1')"/>
