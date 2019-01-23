@@ -203,7 +203,7 @@ function closeNav() {
 							<input type="checkbox" id="userCallOnly">
 						  <span class="checkmark"></span>
 						</label>
-
+						<div id="output2_remarks"></div>
 					</form>
 
 <script>
@@ -245,6 +245,7 @@ function resultaction(){
 }
 
 function StartLiarDice(el) {
+	messageComp = "";
 	number = 1;
 	point = 6;
 	is_only = false;
@@ -307,13 +308,17 @@ function StartLiarDice(el) {
 			point = 6;
 			is_only = false;
 		}
-		if (is_only)
-			alert("Computer called " + number + " - " + point + " ONLY.");
-		else
-			alert("Computer called " + number + " - " + point + ".");
+		if (is_only){
+			messageComp = "Computer called " + number + " - " + point + " ONLY.";
+		}
+		else{
+			messageComp = "Computer called " + number + " - " + point + ".";
+		}
+		alert(messageComp);
 	}
 	else
 		alert("You go first.");
+	document.getElementById('output2_remarks').innerHTML = "Remarks: " + messageComp;
 }
 
 
@@ -371,6 +376,7 @@ function callaction() {
 								&& comp_is_only == true && is_only == true)
 						|| (comp_number == number && point == 1)) {
 
+					messageComp = "";
 					comp_number = 2;
 					comp_point = 1;
 					comp_is_only = true;
@@ -400,7 +406,6 @@ function callaction() {
 							}
 						}
 
-						//print the data if open
 						output2.innerHTML = "You: ";
 						for (i = 0; i < 5; i++) {
 							output2.innerHTML += player[i]; // set its content to the value of the "el"
@@ -427,11 +432,11 @@ function callaction() {
 						}
 
 						if (count >= number) {
-							alert("Computer opened. You win.");
+							messageComp = "Computer opened. You win.";
 							player_score_1++;
 							comp_start_first = true;
 						} else {
-							alert("Computer opened. You lose.");
+							messageComp = "Computer opened. You lose.";
 							computer_score_1++;
 							comp_start_first = false;
 						}
@@ -441,18 +446,20 @@ function callaction() {
 						document.getElementById("userCallNum1").value = "";
 						document.getElementById("userCallNum2").value = "";
 						if (comp_is_only)
-							alert("Computer called " + comp_number + " - " + comp_point + " ONLY.");
+							messageComp = "Computer called " + comp_number + " - " + comp_point + " ONLY.";
 						else
-							alert("Computer called " + comp_number + " - " + comp_point + ".");
+							messageComp = "Computer called " + comp_number + " - " + comp_point + ".";
 					}
 				} else {
 					document.getElementById("userCallNum1").value = "";
 					document.getElementById("userCallNum2").value = "";
 					if (comp_is_only)
-						alert("Computer called " + comp_number + " - " + comp_point + " ONLY.");
+						messageComp = "Computer called " + comp_number + " - " + comp_point + " ONLY.";
 					else
-						alert("Computer called " + comp_number + " - " + comp_point + ".");
+						messageComp = "Computer called " + comp_number + " - " + comp_point + ".";
 				}
+				alert(messageComp);
+				document.getElementById('output2_remarks').innerHTML = "Remarks: " + messageComp;
 				number = comp_number;
 				point = comp_point;
 				is_only = comp_is_only;
@@ -509,19 +516,20 @@ function openaction() {
 			}
 
 			if (count >= number) {
-				alert("You lose.");
+				messageComp = "You lose.";
 				computer_score_1++;
 				comp_start_first = false;
 			} else {
-				alert("You win.");
+				messageComp = "You win.";
 				player_score_1++;
 				comp_start_first = true;
 			}
+			alert(messageComp);
+			document.getElementById('output2_remarks').innerHTML = "Remarks: " + messageComp;
 			start_is_clicked = false;
 		}
 	}
 }
-
 </script>
 
 	</div></br>
