@@ -40,7 +40,7 @@ img.btnNum {
     border: 3px solid #ddd;
     border-radius: 4px;
     padding: 5px;
-    margin: 1px;
+    margin: 0.5px;
     width: 22px;
 }
 img.btnNum :hover {
