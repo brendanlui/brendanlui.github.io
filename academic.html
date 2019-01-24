@@ -1705,13 +1705,12 @@ function openaction2() {
 											<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction_shake();"></br>
 											<input class="button" type="button" id="shake_radio_lucky" Name = "r2" Value = "Shake" onClick="ShakeAction(this)"></br>
 
-											Keep: </br>
-											<input style="clear:both;text-align: center;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;" type = "text" id="userInputNum2" Name = "choose2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;" type = "text" id="userInputNum3" Name = "choose3" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;" type = "text" id="userInputNum4" Name = "choose4" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<button style="clear:both;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum2" Name = "choose2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum3" Name = "choose3" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum4" Name = "choose4" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
+											<button style="clear:both;display:none;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
 
 										</form><!--</br>-->
 										<div id="output_remarks"></div>
@@ -1744,7 +1743,7 @@ function resultaction_shake(){
 
 function ShakeAction(el) {
 	if(lucky_game_end == false){
-
+		messageComp	= "";
 		document.getElementById("start_radio_lucky").checked = false;
 
 		var array_dice = output.innerHTML.split(" ");
@@ -1836,22 +1835,10 @@ function ShakeAction(el) {
 				player[3][0], player[4][0], ipt) < return_value(
 				computer[0][0], computer[1][0], computer[2][0],
 				computer[3][0], computer[4][0], ipt)) {
-				output.innerHTML = "";
-				output.innerHTML = "You: ";
-				for (i = 0; i < 5; i++) {
-					output.innerHTML += player[i][0]; // set its content to the value of the "el"
-					output.innerHTML += " ";
-				}
-				output.innerHTML += "<br/>";
-				output.innerHTML += "Computer: ";
-				for (i = 0; i < 5; i++) {
-					output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-					output.innerHTML += " ";
-				}
-
 				printLuckyDice(computer, player);
-
-				alert("You lose.");
+				messageComp = "You lose.";
+				alert(messageComp);
+				document.getElementById('output_remarks').innerHTML = "Remarks: " + messageComp;
 				computer_score++;
 				document.getElementById("start_radio_lucky").checked = false;
 				lucky_game_end = true;
@@ -1950,22 +1937,10 @@ function ShakeAction(el) {
 									player[3][0], player[4][0], ipt) > return_value(
 									computer[0][0], computer[1][0], computer[2][0],
 									computer[3][0], computer[4][0], ipt)) {
-								output.innerHTML = "";
-								output.innerHTML = "You: ";
-								for (i = 0; i < 5; i++) {
-									output.innerHTML += player[i][0]; // set its content to the value of the "el"
-									output.innerHTML += " ";
-								}
-								output.innerHTML += "<br/>";
-								output.innerHTML += "Computer: ";
-								for (i = 0; i < 5; i++) {
-									output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-									output.innerHTML += " ";
-								}
-
 								printLuckyDice(computer, player);
-
-								alert("Computer shaked. You win.");
+								messageComp = "Computer shaked. You win.";
+								alert(messageComp);
+								document.getElementById('output_remarks').innerHTML = "Remarks: " + messageComp;
 								player_score++;
 								document.getElementById("start_radio_lucky").checked = false;
 								lucky_game_end = true;
@@ -1975,22 +1950,10 @@ function ShakeAction(el) {
 								player[3][0], player[4][0], ipt) == return_value(
 								computer[0][0], computer[1][0], computer[2][0],
 								computer[3][0], computer[4][0], ipt)) {
-							output.innerHTML = "";
-							output.innerHTML = "You: ";
-							for (i = 0; i < 5; i++) {
-								output.innerHTML += player[i][0]; // set its content to the value of the "el"
-								output.innerHTML += " ";
-							}
-							output.innerHTML += "<br/>";
-							output.innerHTML += "Computer: ";
-							for (i = 0; i < 5; i++) {
-								output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-								output.innerHTML += " ";
-							}
-
 							printLuckyDice(computer, player);
-
-							alert("Let's restart the game.");
+							messageComp = "Let's restart the game.";
+							alert(messageComp);
+							document.getElementById('output_remarks').innerHTML = "Remarks: " + messageComp;
 							lucky_game_end = true;
 						}
 				}
@@ -2010,6 +1973,7 @@ function StartAction(el) {
 	document.getElementById("userInputNum5").value = "";
 	document.getElementById("shake_radio_lucky").checked = false;
 	lucky_game_end = false;
+	messageComp = "";
 
 	output.innerHTML = "You: ";
 	for (k = 0; k < 5; k++) {
@@ -2152,75 +2116,42 @@ function StartAction(el) {
 				player[3][0], player[4][0], ipt) > return_value(
 				computer[0][0], computer[1][0], computer[2][0],
 				computer[3][0], computer[4][0], ipt)) {
-					output.innerHTML = "";
-					output.innerHTML = "You: ";
-					for (i = 0; i < 5; i++) {
-						output.innerHTML += player[i][0]; // set its content to the value of the "el"
-						output.innerHTML += " ";
-					}
-					output.innerHTML += "<br/>";
-					output.innerHTML += "Computer: ";
-					for (i = 0; i < 5; i++) {
-						output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-						output.innerHTML += " ";
-					}
-					alert("Computer shaked. You win.");
+					messageComp = "Computer shaked. You win.";
 					player_score++;
 					document.getElementById("start_radio_lucky").checked = false;
 					lucky_game_end = true;
 		}
 		else{
-			output.innerHTML = "";
-			output.innerHTML = "You: ";
-			for (i = 0; i < 5; i++) {
-				output.innerHTML += player[i][0]; // set its content to the value of the "el"
-				output.innerHTML += " ";
-			}
-			output.innerHTML += "<br/>";
-			output.innerHTML += "Computer: ";
-			for (i = 0; i < 5; i++) {
-				output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-				output.innerHTML += " ";
-			}
-			alert("Computer shaked. Your turn.");
+			messageComp = "Computer shaked. Your turn.";
 		}
 	}
 	else if (return_value(player[0][0], player[1][0], player[2][0],
 			player[3][0], player[4][0], ipt) == return_value(
 			computer[0][0], computer[1][0], computer[2][0],
 			computer[3][0], computer[4][0], ipt)) {
-		output.innerHTML = "";
-		output.innerHTML = "You: ";
-		for (i = 0; i < 5; i++) {
-			output.innerHTML += player[i][0]; // set its content to the value of the "el"
-			output.innerHTML += " ";
-		}
-		output.innerHTML += "<br/>";
-		output.innerHTML += "Computer: ";
-		for (i = 0; i < 5; i++) {
-			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-			output.innerHTML += " ";
-		}
-		alert("Let's restart the game.");
+		messageComp = "Let's restart the game.";
 	}else{
-		output.innerHTML = "";
-		output.innerHTML = "You: ";
-		for (i = 0; i < 5; i++) {
-			output.innerHTML += player[i][0]; // set its content to the value of the "el"
-			output.innerHTML += " ";
-		}
-		output.innerHTML += "<br/>";
-		output.innerHTML += "Computer: ";
-		for (i = 0; i < 5; i++) {
-			output.innerHTML += computer[i][0]; // set its content to the value of the "el"
-			output.innerHTML += " ";
-		}
-		alert("Computer shaked. Your turn.");
+		messageComp = "Computer shaked. Your turn.";
 	}
+	alert(messageComp);
+	document.getElementById('output_remarks').innerHTML = "Remarks: " + messageComp;
 	printLuckyDice(computer, player);
 }
 
 function printLuckyDice(computer, player){
+	output.innerHTML = "";
+	output.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output.innerHTML += player[i][0]; // set its content to the value of the "el"
+		output.innerHTML += " ";
+	}
+	output.innerHTML += "<br/>";
+	output.innerHTML += "Computer: ";
+	for (i = 0; i < 5; i++) {
+		output.innerHTML += computer[i][0]; // set its content to the value of the "el"
+		output.innerHTML += " ";
+	}
+
 	document.getElementById('output_img').innerHTML = "Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
