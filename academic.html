@@ -2221,13 +2221,13 @@ function StartAction(el) {
 }
 
 function printLuckyDice(){
-	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
+	document.getElementById('output_img').innerHTML = "Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DiceComputer'+(i+1)+'" src="/img/dice/dice_'
 			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 	}
-	document.getElementById('output_img').innerHTML = "You:</br>";
+	document.getElementById('output_img').innerHTML += "You:</br>";
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DicePlayer'+(i+1)+'" src="/img/dice/dice_'
