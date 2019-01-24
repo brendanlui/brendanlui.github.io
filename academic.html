@@ -317,7 +317,8 @@ function StartLiarDice(el) {
 		alert(messageComp);
 	}
 	else
-		alert("You go first.");
+		messageComp = "You go first.";
+	alert(messageComp);
 	document.getElementById('output2_remarks').innerHTML = "Remarks: " + messageComp;
 }
 
@@ -1704,16 +1705,15 @@ function openaction2() {
 											<input class="button setting" type="button" id="start_radio_lucky" Name = "r2" Value = "Start" onClick="StartAction(this)">
 											<input class="button setting" type="button" id="resultradio" Name = "r2" value="Result" onclick="resultaction_shake();"></br>
 											<input class="button" type="button" id="shake_radio_lucky" Name = "r2" Value = "Shake" onClick="ShakeAction(this)"></br>
+											<div id="output_remarks"></div>
 
-											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum2" Name = "choose2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum3" Name = "choose3" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum4" Name = "choose4" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/></br>
-											<button style="clear:both;display:none;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
-
-										</form><!--</br>-->
-										<div id="output_remarks"></div>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum1" Name = "choose1" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum2" Name = "choose2" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum3" Name = "choose3" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum4" Name = "choose4" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+											<input style="clear:both;text-align: center;display:none;" type = "text" id="userInputNum5" Name = "choose5" onfocus="inputFocus(this)" onblur="inputBlur(this)"/>
+											<button style="clear:both;display:none;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button>
+										</form>
 
 <script  type="text/javascript">
 		 // Grab the output eleent
