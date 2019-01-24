@@ -1849,7 +1849,7 @@ function ShakeAction(el) {
 					output.innerHTML += " ";
 				}
 
-				printLuckyDice();
+				printLuckyDice(computer, player);
 
 				alert("You lose.");
 				computer_score++;
@@ -1963,7 +1963,7 @@ function ShakeAction(el) {
 									output.innerHTML += " ";
 								}
 
-								printLuckyDice();
+								printLuckyDice(computer, player);
 
 								alert("Computer shaked. You win.");
 								player_score++;
@@ -1988,7 +1988,7 @@ function ShakeAction(el) {
 								output.innerHTML += " ";
 							}
 
-							printLuckyDice();
+							printLuckyDice(computer, player);
 
 							alert("Let's restart the game.");
 							lucky_game_end = true;
@@ -2039,7 +2039,7 @@ function StartAction(el) {
 		computer[i][1] = 0;
 	}
 
-	printLuckyDice();
+	printLuckyDice(computer, player);
 
 	var ipt = new Array(7776);
 	var inside = new Array(7776);
@@ -2217,10 +2217,10 @@ function StartAction(el) {
 		}
 		alert("Computer shaked. Your turn.");
 	}
-	printLuckyDice();
+	printLuckyDice(computer, player);
 }
 
-function printLuckyDice(){
+function printLuckyDice(computer, player){
 	document.getElementById('output_img').innerHTML = "Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
