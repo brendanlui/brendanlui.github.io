@@ -259,15 +259,15 @@ function resultaction(){
 }
 
 function printLiarDice1(computer, player){
-	output2.innerHTML += "Computer: ";
-	for (i = 0; i < 5; i++) {
-		output2.innerHTML += computer[i]; // set its content to the value of the "el"
-		output2.innerHTML += " ";
-	}
-	output2.innerHTML += "<br/>";
 	output2.innerHTML = "You: ";
 	for (i = 0; i < 5; i++) {
 		output2.innerHTML += player[i]; // set its content to the value of the "el"
+		output2.innerHTML += " ";
+	}
+	output2.innerHTML += "<br/>";
+	output2.innerHTML += "Computer: ";
+	for (i = 0; i < 5; i++) {
+		output2.innerHTML += computer[i]; // set its content to the value of the "el"
 		output2.innerHTML += " ";
 	}
 
@@ -610,15 +610,15 @@ function resultaction2(){
 }
 
 function printLiarDice2(computer, player){
-	output22.innerHTML += "Computer: ";
-	for (i = 0; i < 5; i++) {
-		output22.innerHTML += computer[i]; // set its content to the value of the "el"
-		output22.innerHTML += " ";
-	}
-	output22.innerHTML += "<br/>";
 	output22.innerHTML = "You: ";
 	for (i = 0; i < 5; i++) {
 		output22.innerHTML += player[i]; // set its content to the value of the "el"
+		output22.innerHTML += " ";
+	}
+	output22.innerHTML += "<br/>";
+	output22.innerHTML += "Computer: ";
+	for (i = 0; i < 5; i++) {
+		output22.innerHTML += computer[i]; // set its content to the value of the "el"
 		output22.innerHTML += " ";
 	}
 
@@ -674,16 +674,16 @@ function StartLiarDice2(el) {
 	output22.innerHTML += "<br/>";
 	output22.innerHTML += "Computer: ";
 
-	document.getElementById('output22_img').innerHTML = "You:</br>";
+	document.getElementById('output22_img').innerHTML = "Computer: </br>";
+	for (i = 0; i < computer.length; i++){
+		document.getElementById('output22_img').innerHTML +=
+		'<img class="btnDice" src="/img/dice/questionMark.png" alt="?"/>';
+	}
+	document.getElementById('output22_img').innerHTML += "</br>You:</br>";
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output22_img').innerHTML +=
 		'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
-	}
-	document.getElementById('output22_img').innerHTML += "</br>Computer: </br>";
-	for (i = 0; i < computer.length; i++){
-		document.getElementById('output22_img').innerHTML +=
-		'<img class="btnDice" src="/img/dice/questionMark.png" alt="?"/>';
 	}
 
 	if (comp_start_first) {
