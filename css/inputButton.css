@@ -115,9 +115,6 @@ img.btnNum :hover {
   transform: rotate(45deg);
 }
 
-.output2_remarks{
-  font-size: 10px;
-}
-.output22_remarks{
-  font-size: 10px;
+.output2_remarks, .output22_remarks, .output_remarks{
+  font-size: 8px;
 }
