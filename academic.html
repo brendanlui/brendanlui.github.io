@@ -2240,7 +2240,7 @@ function printLuckyDice(computer, player){
 
 function selectLuckyDice(diceId, inputId){
 			color = document.getElementById(diceId).style.borderColor;
-			if(color != null && document.getElementById(inputId).value != null){
+			if(color == null && document.getElementById(inputId).value == null){
 				document.getElementById(diceId).style.borderColor = 'red';
 				document.getElementById(inputId).value = document.getElementById(diceId).alt;
 			}else{
