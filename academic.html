@@ -2224,7 +2224,7 @@ function printLuckyDice(){
 	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
-		'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
+		'<img class="btnDice" id="btn2DiceComputer'+(i+1)+'" src="/img/dice/dice_'
 			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 	}
 	document.getElementById('output_img').innerHTML = "You:</br>";
