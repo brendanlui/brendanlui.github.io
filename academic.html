@@ -2128,10 +2128,10 @@ function printLuckyDice(computer, player){
 	}
 	document.getElementById('output_img').innerHTML += "</br>You:</br>";
 	for (i = 0; i < player.length; i++){
-		diceId = "'btn2DicePlayer"+(i+1)+"'";
+		diceId = "'btnLuckyPlayer"+(i+1)+"'";
 		inputId = "'userInputNum"+(i+1)+"'";
 		document.getElementById('output_img').innerHTML +=
-		'<img class="btnDice" id="btn2DicePlayer'+(i+1)+'" src="/img/dice/dice_'
+		'<img class="btnDice" id="btnLuckyPlayer'+(i+1)+'" src="/img/dice/dice_'
 			+player[i][0]+'.png" alt="'+player[i][0]
 			+'" onclick="selectLuckyDice('+diceId+', '+inputId+')"/>';
 	}
