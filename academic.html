@@ -258,6 +258,34 @@ function resultaction(){
 	alert("(BEGINNER) You v.s Computer is " + player_score_1 + " : " + computer_score_1 + ".")
 }
 
+function printLiarDice1(computer, player){
+	output2.innerHTML += "Computer: ";
+	for (i = 0; i < 5; i++) {
+		output2.innerHTML += computer[i]; // set its content to the value of the "el"
+		output2.innerHTML += " ";
+	}
+	output2.innerHTML += "<br/>";
+	output2.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output2.innerHTML += player[i]; // set its content to the value of the "el"
+		output2.innerHTML += " ";
+	}
+
+	document.getElementById('output2_img').innerHTML = "Computer:</br>";
+	for (i = 0; i < computer.length; i++){
+		document.getElementById('output2_img').innerHTML +=
+		'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
+			+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
+	}
+
+	document.getElementById('output2_img').innerHTML += "</br>You:</br>";
+	for (i = 0; i < player.length; i++){
+		document.getElementById('output2_img').innerHTML +=
+		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
+			+player[i]+'_red.png" alt="'+player[i]+'"/>';
+	}
+}
+
 function StartLiarDice(el) {
 	messageComp = "";
 	number = 1;
@@ -298,16 +326,16 @@ function StartLiarDice(el) {
 	output2.innerHTML += "<br/>";
 	output2.innerHTML += "Computer: ";
 
-	document.getElementById('output2_img').innerHTML = "You:</br>";
+	document.getElementById('output2_img').innerHTML = "Computer: </br>";
+	for (i = 0; i < computer.length; i++){
+		document.getElementById('output2_img').innerHTML +=
+		'<img class="btnDice" src="/img/dice/questionMark.png" alt="?"/>';
+	}
+	document.getElementById('output2_img').innerHTML += "</br>You:</br>";
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output2_img').innerHTML +=
 		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
-	}
-	document.getElementById('output2_img').innerHTML += "</br>Computer: </br>";
-	for (i = 0; i < computer.length; i++){
-		document.getElementById('output2_img').innerHTML +=
-		'<img class="btnDice" src="/img/dice/questionMark.png" alt="?"/>';
 	}
 
 	if (comp_start_first) {
@@ -420,31 +448,7 @@ function callaction() {
 									count++;
 							}
 						}
-
-						output2.innerHTML = "You: ";
-						for (i = 0; i < 5; i++) {
-							output2.innerHTML += player[i]; // set its content to the value of the "el"
-							output2.innerHTML += " ";
-						}
-						output2.innerHTML += "<br/>";
-						output2.innerHTML += "Computer: ";
-						for (i = 0; i < 5; i++) {
-							output2.innerHTML += computer[i]; // set its content to the value of the "el"
-							output2.innerHTML += " ";
-						}
-
-						document.getElementById('output2_img').innerHTML = "You:</br>";
-						for (i = 0; i < player.length; i++){
-							document.getElementById('output2_img').innerHTML +=
-							'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-								+player[i]+'_red.png" alt="'+player[i]+'"/>';
-						}
-						document.getElementById('output2_img').innerHTML += "</br>Computer:</br>";
-						for (i = 0; i < computer.length; i++){
-							document.getElementById('output2_img').innerHTML +=
-							'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
-						}
+						printLiarDice1(computer, player);
 
 						if (count >= number) {
 							messageComp = "Computer opened. You win.";
@@ -505,30 +509,7 @@ function openaction() {
 				}
 			}
 
-			output2.innerHTML = "You: ";
-			for (i = 0; i < 5; i++) {
-				output2.innerHTML += player[i]; // set its content to the value of the "el"
-				output2.innerHTML += " ";
-			}
-			output2.innerHTML += "<br/>";
-			output2.innerHTML += "Computer: ";
-			for (i = 0; i < 5; i++) {
-				output2.innerHTML += computer[i]; // set its content to the value of the "el"
-				output2.innerHTML += " ";
-			}
-
-			document.getElementById('output2_img').innerHTML = "You:</br>";
-			for (i = 0; i < player.length; i++){
-				document.getElementById('output2_img').innerHTML +=
-				'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-					+player[i]+'_red.png" alt="'+player[i]+'"/>';
-			}
-			document.getElementById('output2_img').innerHTML += "</br>Computer:</br>";
-			for (i = 0; i < computer.length; i++){
-				document.getElementById('output2_img').innerHTML +=
-				'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
-			}
+			printLiarDice1(computer, player);
 
 			if (count >= number) {
 				messageComp = "You lose.";
@@ -627,6 +608,33 @@ var player_score_2 = 0;
 
 function resultaction2(){
 	alert("(INTERMEDIATE) You v.s Computer is " + player_score_2 + " : " + computer_score_2 + ".")
+}
+
+function printLiarDice2(computer, player){
+	output22.innerHTML += "Computer: ";
+	for (i = 0; i < 5; i++) {
+		output22.innerHTML += computer[i]; // set its content to the value of the "el"
+		output22.innerHTML += " ";
+	}
+	output22.innerHTML += "<br/>";
+	output22.innerHTML = "You: ";
+	for (i = 0; i < 5; i++) {
+		output22.innerHTML += player[i]; // set its content to the value of the "el"
+		output22.innerHTML += " ";
+	}
+
+	document.getElementById('output22_img').innerHTML = "Computer:</br>";
+	for (i = 0; i < computer.length; i++){
+		document.getElementById('output22_img').innerHTML +=
+		'<img class="btnDice" id="btn2DiceComputer'+computer[i]+'" src="/img/dice/dice_'
+			+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
+	}
+	document.getElementById('output22_img').innerHTML += "</br>You:</br>";
+	for (i = 0; i < player.length; i++){
+		document.getElementById('output22_img').innerHTML +=
+		'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
+			+player[i]+'_red.png" alt="'+player[i]+'"/>';
+	}
 }
 
 function StartLiarDice2(el) {
@@ -1077,31 +1085,7 @@ function callaction2() {
 							}
 						}
 
-						//print the data if open
-						output22.innerHTML = "You: ";
-						for (i = 0; i < 5; i++) {
-							output22.innerHTML += player[i]; // set its content to the value of the "el"
-							output22.innerHTML += " ";
-						}
-						output22.innerHTML += "<br/>";
-						output22.innerHTML += "Computer: ";
-						for (i = 0; i < 5; i++) {
-							output22.innerHTML += computer[i]; // set its content to the value of the "el"
-							output22.innerHTML += " ";
-						}
-
-						document.getElementById('output22_img').innerHTML = "You:</br>";
-						for (i = 0; i < player.length; i++){
-							document.getElementById('output22_img').innerHTML +=
-							'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
-								+player[i]+'_red.png" alt="'+player[i]+'"/>';
-						}
-						document.getElementById('output22_img').innerHTML += "</br>Computer:</br>";
-						for (i = 0; i < computer.length; i++){
-							document.getElementById('output22_img').innerHTML +=
-							'<img class="btnDice" id="btn2DiceComputer'+computer[i]+'" src="/img/dice/dice_'
-								+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
-						}
+						printLiarDice2(computer, player);
 
 						if (count >= number) {
 							messageComp = "Computer opened. You win.";
@@ -1115,37 +1099,6 @@ function callaction2() {
 						alert(messageComp);
 						start_is_clicked = false;
 						document.getElementById("start_radio_lucky").checked = false;
-
-						//below: printing
-						/*
-						output22.innerHTML += "</br></br>---TESTING LOG---</br></br>Let me check the computer: </br>";
-						output22.innerHTML += "comp_number = "	+ comp_number +"</br>comp_point = " + comp_point+"</br>comp_is_only = " + comp_is_only + "</br>start = " + start+ "</br>";
-						if (dice_one_is_called) {
-							output22.innerHTML += "Using NOT_ONE method</br>";
-							if (save_i_should_be_a_liar_NOT_ONE)
-								output22.innerHTML += "Using i_should_be_a_liar_NOT_ONE method</br>";
-							else
-								output22.innerHTML += "Tell you the truth.</br>";
-							for (i = 0; i < max_numOF_choice_NOT_ONE; i++) {
-								output22.innerHTML += computer_choice_NOT_ONE[i][0] + " number of "
-										+ computer_choice_NOT_ONE[i][1] + " only</br>";
-							}
-						} else {
-							output22.innerHTML += "Using includeONE method</br>";
-							if (save_i_should_be_a_liar)
-								output22.innerHTML += "Using i_should_be_a_liar method</br>";
-							else
-								output22.innerHTML += "Tell you the truth.</br>";
-							for (i = 0; i < max_numOF_choice; i++) {
-								output22.innerHTML += computer_choice[i][0] + " number of "
-										+ computer_choice[i][1] + "</br>";
-							}
-						}
-						output22.innerHTML += "Player's Credibility is " + believe + "</br>";
-						*/
-						//above printing
-
-
 
 				} else {
 					document.getElementById("userCallNum12").value = "";
@@ -1670,32 +1623,7 @@ function openaction2() {
 						count++;
 				}
 			}
-
-			output22.innerHTML = "You: ";
-			for (i = 0; i < 5; i++) {
-				output22.innerHTML += player[i]; // set its content to the value of the "el"
-				output22.innerHTML += " ";
-			}
-			output22.innerHTML += "<br/>";
-			output22.innerHTML += "Computer: ";
-			for (i = 0; i < 5; i++) {
-				output22.innerHTML += computer[i]; // set its content to the value of the "el"
-				output22.innerHTML += " ";
-			}
-
-
-			document.getElementById('output22_img').innerHTML = "You:</br>";
-			for (i = 0; i < player.length; i++){
-				document.getElementById('output22_img').innerHTML +=
-				'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
-					+player[i]+'_red.png" alt="'+player[i]+'"/>';
-			}
-			document.getElementById('output22_img').innerHTML += "</br>Computer:</br>";
-			for (i = 0; i < computer.length; i++){
-				document.getElementById('output22_img').innerHTML +=
-				'<img class="btnDice" id="btn2DiceComputer'+computer[i]+'" src="/img/dice/dice_'
-					+computer[i]+'_red.png" alt="'+computer[i]+'"/>';
-			}
+			printLiarDice2(computer, player);
 
 			if (count >= number) {
 				messageComp = "You lose.";
