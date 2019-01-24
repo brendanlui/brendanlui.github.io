@@ -1714,6 +1714,7 @@ function openaction2() {
 											<button style="clear:both;" type="reset" value="Clear" onclick="clear_lucky_input();">Clear</button></br>
 
 										</form><!--</br>-->
+										<div id="output_remarks"></div>
 
 <script  type="text/javascript">
 		 // Grab the output eleent
@@ -1848,18 +1849,7 @@ function ShakeAction(el) {
 					output.innerHTML += " ";
 				}
 
-				document.getElementById('output_img').innerHTML = "You:</br>";
-				for (i = 0; i < player.length; i++){
-					document.getElementById('output_img').innerHTML +=
-					'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-						+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
-				}
-				document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
-				for (i = 0; i < computer.length; i++){
-					document.getElementById('output_img').innerHTML +=
-					'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-						+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
-				}
+				printLuckyDice();
 
 				alert("You lose.");
 				computer_score++;
@@ -1973,18 +1963,7 @@ function ShakeAction(el) {
 									output.innerHTML += " ";
 								}
 
-								document.getElementById('output_img').innerHTML = "You:</br>";
-								for (i = 0; i < player.length; i++){
-									document.getElementById('output_img').innerHTML +=
-									'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-										+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
-								}
-								document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
-								for (i = 0; i < computer.length; i++){
-									document.getElementById('output_img').innerHTML +=
-									'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-										+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
-								}
+								printLuckyDice();
 
 								alert("Computer shaked. You win.");
 								player_score++;
@@ -2009,18 +1988,7 @@ function ShakeAction(el) {
 								output.innerHTML += " ";
 							}
 
-							document.getElementById('output_img').innerHTML = "You:</br>";
-							for (i = 0; i < player.length; i++){
-								document.getElementById('output_img').innerHTML +=
-								'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-									+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
-							}
-							document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
-							for (i = 0; i < computer.length; i++){
-								document.getElementById('output_img').innerHTML +=
-								'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-									+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
-							}
+							printLuckyDice();
 
 							alert("Let's restart the game.");
 							lucky_game_end = true;
@@ -2071,18 +2039,7 @@ function StartAction(el) {
 		computer[i][1] = 0;
 	}
 
-	document.getElementById('output_img').innerHTML = "You:</br>";
-	for (i = 0; i < player.length; i++){
-		document.getElementById('output_img').innerHTML +=
-		'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-			+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
-	}
-	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
-	for (i = 0; i < computer.length; i++){
-		document.getElementById('output_img').innerHTML +=
-		'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
-	}
+	printLuckyDice();
 
 	var ipt = new Array(7776);
 	var inside = new Array(7776);
@@ -2260,21 +2217,36 @@ function StartAction(el) {
 		}
 		alert("Computer shaked. Your turn.");
 	}
+	printLuckyDice();
+}
 
-	document.getElementById('output_img').innerHTML = "You:</br>";
-	for (i = 0; i < player.length; i++){
-		document.getElementById('output_img').innerHTML +=
-		'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-			+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
-	}
+function printLuckyDice(){
 	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
 			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 	}
+	document.getElementById('output_img').innerHTML = "You:</br>";
+	for (i = 0; i < player.length; i++){
+		document.getElementById('output_img').innerHTML +=
+		'<img class="btnDice" id="btn2DicePlayer'+(i+1)+'" src="/img/dice/dice_'
+			+player[i][0]+'_red.png" alt="'+player[i][0]
+			+'" onclick=selectLuckyDice("btn2DicePlayer'+(i+1)+'", "userInputNum'+(i+1)+'")/>';
+	}
 }
 
+function selectLuckyDice(diceId, inputId){
+			color = document.getElementById(diceId).style.borderColor;
+		 	point = document.getElementById(diceId).alt;
+			if(color != null && value != null){
+				document.getElementById(diceId).style.borderColor = 'red';
+				document.getElementById(inputId).value = point;
+			}else{
+				document.getElementById(diceId).style.borderColor = '';
+				document.getElementById(inputId).value = '';
+			}
+}
 
 function genarate_array(ipt, inside, inside_num) {
 	for (i = 0; i < 7776; i++) {
