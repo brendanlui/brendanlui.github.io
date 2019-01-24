@@ -1698,7 +1698,7 @@ function openaction2() {
 								<h4> Press "Start" to restart the game. Type the number you keep in the box. One number for one box, and then press "Shake". Press "Clear" to clear the value you have typed. Press "Result" to view your score. </h4>
 
 								<h4> *LOSER GOES FIRST </h4></br>
-										<div id="output"></div>
+										<div id="output" style="display:none;"></div>
 										<div id="output_img"></div>
 										<form name = "f1"> <!-- the "this" in GetSelectedItem(this) is the input -->
 											<input class="button setting" type="button" id="start_radio_lucky" Name = "r2" Value = "Start" onClick="StartAction(this)">
@@ -1852,13 +1852,13 @@ function ShakeAction(el) {
 				for (i = 0; i < player.length; i++){
 					document.getElementById('output_img').innerHTML +=
 					'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-						+player[i][0]+'_yellow.png" alt="'+player[i][0]+'"/>';
+						+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
 				}
 				document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 				for (i = 0; i < computer.length; i++){
 					document.getElementById('output_img').innerHTML +=
 					'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-						+computer[i][0]+'_yellow.png" alt="'+computer[i][0]+'"/>';
+						+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 				}
 
 				alert("You lose.");
@@ -1977,13 +1977,13 @@ function ShakeAction(el) {
 								for (i = 0; i < player.length; i++){
 									document.getElementById('output_img').innerHTML +=
 									'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-										+player[i][0]+'_yellow.png" alt="'+player[i][0]+'"/>';
+										+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
 								}
 								document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 								for (i = 0; i < computer.length; i++){
 									document.getElementById('output_img').innerHTML +=
 									'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-										+computer[i][0]+'_yellow.png" alt="'+computer[i][0]+'"/>';
+										+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 								}
 
 								alert("Computer shaked. You win.");
@@ -2013,13 +2013,13 @@ function ShakeAction(el) {
 							for (i = 0; i < player.length; i++){
 								document.getElementById('output_img').innerHTML +=
 								'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-									+player[i][0]+'_yellow.png" alt="'+player[i][0]+'"/>';
+									+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
 							}
 							document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 							for (i = 0; i < computer.length; i++){
 								document.getElementById('output_img').innerHTML +=
 								'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-									+computer[i][0]+'_yellow.png" alt="'+computer[i][0]+'"/>';
+									+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 							}
 
 							alert("Let's restart the game.");
@@ -2075,13 +2075,13 @@ function StartAction(el) {
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-			+player[i][0]+'_yellow.png" alt="'+player[i][0]+'"/>';
+			+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
 	}
 	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-			+computer[i][0]+'_yellow.png" alt="'+computer[i][0]+'"/>';
+			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 	}
 
 	var ipt = new Array(7776);
@@ -2265,13 +2265,13 @@ function StartAction(el) {
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DicePlayer'+player[i][0]+'" src="/img/dice/dice_'
-			+player[i][0]+'_yellow.png" alt="'+player[i][0]+'"/>';
+			+player[i][0]+'_red.png" alt="'+player[i][0]+'"/>';
 	}
 	document.getElementById('output_img').innerHTML += "</br>Computer:</br>";
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output_img').innerHTML +=
 		'<img class="btnDice" id="btn2DiceComputer'+computer[i][0]+'" src="/img/dice/dice_'
-			+computer[i][0]+'_yellow.png" alt="'+computer[i][0]+'"/>';
+			+computer[i][0]+'_red.png" alt="'+computer[i][0]+'"/>';
 	}
 }
 
