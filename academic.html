@@ -2240,10 +2240,9 @@ function printLuckyDice(computer, player){
 
 function selectLuckyDice(diceId, inputId){
 			color = document.getElementById(diceId).style.borderColor;
-		 	point = document.getElementById(diceId).alt;
-			if(color != null && value != null){
+			if(color != null && document.getElementById(inputId).value != null){
 				document.getElementById(diceId).style.borderColor = 'red';
-				document.getElementById(inputId).value = point;
+				document.getElementById(inputId).value = document.getElementById(diceId).alt;
 			}else{
 				document.getElementById(diceId).style.borderColor = '';
 				document.getElementById(inputId).value = '';
