@@ -275,14 +275,14 @@ function printLiarDice1(computer, player){
 	for (i = 0; i < computer.length; i++){
 		document.getElementById('output2_img').innerHTML +=
 		'<img class="btnDice" id="btnDiceComputer'+computer[i]+'" src="/img/dice/dice_'
-			+computer[i]+'_red.png" alt="'+computer[i]+'"/>&nbsp;';
+			+computer[i]+'_red.png" alt="'+computer[i]+'"/>&ensp;';
 	}
 
 	document.getElementById('output2_img').innerHTML += "</br>You:</br>";
 	for (i = 0; i < player.length; i++){
 		document.getElementById('output2_img').innerHTML +=
 		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
-			+player[i]+'_red.png" alt="'+player[i]+'"/>&nbsp;';
+			+player[i]+'_red.png" alt="'+player[i]+'"/>&ensp;';
 	}
 }
 
