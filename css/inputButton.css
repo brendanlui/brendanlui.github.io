@@ -31,7 +31,7 @@ img.btnDice {
     border-radius: 4px;
     padding: 5px;
     margin: 0.5px;
-    width: 23px;
+    width: 24px;
 }
 img.btnDice :hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
@@ -41,7 +41,7 @@ img.btnNum {
     border-radius: 4px;
     padding: 5px;
     margin: 0.5px;
-    width: 23px;
+    width: 24px;
 }
 img.btnNum :hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
