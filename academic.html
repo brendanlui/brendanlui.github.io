@@ -90,6 +90,133 @@ function closeNav() {
 				}
 			</script>
 	</form>
+
+		<!--brendan start-->
+		<!-- <button style="clear:both;" type="submit" value="Submit" onclick="test()">TESTING</button> -->
+		<script>
+		var humanGetHumanCall = {};
+		var humanGetHumanCallOnly = {};
+		var compCallHumanGetHumanTrust = {};
+		var compCallHumanGetHumanTrustOnly = {};
+
+		function storeHumanGetHumanCall(getNum, callNum, only){
+			if(!only){
+				if(humanGetHumanCall[getNum + '_' + callNum] == null){
+					humanGetHumanCall[getNum + '_' + callNum] = 0;
+				}
+				humanGetHumanCall[getNum + '_' + callNum] += 1;
+			}else{
+				if(humanGetHumanCallOnly[getNum + '_' + callNum] == null){
+					humanGetHumanCallOnly[getNum + '_' + callNum] = 0;
+				}
+				humanGetHumanCallOnly[getNum + '_' + callNum] += 1;
+			}
+		}
+
+		function storeCompCallHumanGetHumanTrust(callNum, getNum, only){
+			if(!only){
+				if(compCallHumanGetHumanTrust[callNum + '_' + getNum] == null){
+					compCallHumanGetHumanTrust[callNum + '_' + getNum] = 0;
+				}
+				compCallHumanGetHumanTrust[callNum + '_' + getNum] += 1;
+			}else{
+				if(compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] == null){
+					compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] = 0;
+				}
+				compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] += 1;
+			}
+		}
+
+		function guessHumanGetByCall(callNum, only){
+			HumanGet = [0, 0];
+			total = 0;
+			if(!only){
+				Object.keys(humanGetHumanCall).map(function(key, index) {
+						if(key.includes('_' + callNum)){
+							total += humanGetHumanCall[key];
+						}
+				});
+
+				if(total > 0){
+					Object.keys(humanGetHumanCall).map(function(key, index) {
+							if(key.includes('_' + callNum)){
+								if(HumanGet[0] < humanGetHumanCall[key] / total){
+									HumanGet[0] = humanGetHumanCall[key] / total
+									HumanGet[1] = key.split('_')[0];
+								}
+							}
+					});
+				}
+			}else{
+				Object.keys(humanGetHumanCallOnly).map(function(key, index) {
+						if(key.includes('_' + callNum)){
+							total += humanGetHumanCallOnly[key];
+						}
+				});
+
+				if(total > 0){
+					Object.keys(humanGetHumanCallOnly).map(function(key, index) {
+							if(key.includes('_' + callNum)){
+								if(HumanGet[0] < humanGetHumanCallOnly[key] / total){
+									HumanGet[0] = humanGetHumanCallOnly[key] / total;
+									HumanGet[1] = key.split('_')[0];
+								}
+							}
+					});
+				}
+			}
+			return HumanGet;
+		}
+
+		function guessHumanGetByTrust(callNum, only){
+			HumanGet = [0, 0];
+			total = 0;
+			if(!only){
+				Object.keys(compCallHumanGetHumanTrust).map(function(key, index) {
+						if(key.includes(callNum + '_')){
+							total += compCallHumanGetHumanTrust[key];
+						}
+				});
+
+				if(total > 0){
+					Object.keys(compCallHumanGetHumanTrust).map(function(key, index) {
+							if(key.includes(callNum + '_')){
+								if(HumanGet[0] < compCallHumanGetHumanTrust[key] / total){
+									HumanGet[0] = compCallHumanGetHumanTrust[key] / total;
+									HumanGet[1] = key.split('_')[1];
+								}
+							}
+					});
+				}
+			}else{
+				Object.keys(compCallHumanGetHumanTrustOnly).map(function(key, index) {
+						if(key.includes(callNum + '_')){
+							total += compCallHumanGetHumanTrustOnly[key];
+						}
+				});
+
+				if(total > 0){
+					Object.keys(compCallHumanGetHumanTrustOnly).map(function(key, index) {
+							if(key.includes(callNum + '_')){
+								if(HumanGet[0] < compCallHumanGetHumanTrustOnly[key] / total){
+									HumanGet[0] = compCallHumanGetHumanTrustOnly[key] / total;
+									HumanGet[1] = key.split('_')[1];
+								}
+							}
+					});
+				}
+			}
+			return HumanGet;
+		}
+
+		function test(){
+				storeHumanGetHumanCall(2, 4, false);
+				console.log(humanGetHumanCall);
+				console.log(guessHumanGetByCall(4, false));
+		}
+		</script>
+		<!--brendan end-->
+
 	<script>
 	function factorial(n){
 		rval=1;
