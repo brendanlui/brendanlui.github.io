@@ -205,9 +205,9 @@ function closeNav() {
 			result = 0;
 			Object.keys(object["analysisDiff"]).map(function(key, index) {
 				if(key == diffNum){
-					count++;
+					count += object["analysisDiff"][key];
 				}
-				total++;
+				total += object["analysisDiff"][key];
 			});
 
 			if(total != 0){
@@ -224,9 +224,9 @@ function closeNav() {
 			result = 0;
 			Object.keys(object["analysisCall"]).map(function(key, index) {
 				if(key == callNum){
-					count++;
+					count += object["analysisCall"][key];
 				}
-				total++;
+				total += object["analysisCall"][key];
 			});
 
 			if(total != 0){
