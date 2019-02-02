@@ -189,34 +189,58 @@ function closeNav() {
 			return {"analysisDiff" : analysisDiff, "analysisCall" : analysisCall};
 		}
 
-		function guessHumanGetByCall(callNum, only){
-			HumanGet = [0, 0];
+		function getProbExact(getNum, only){
+			prob = 1/3;
+			if(only){
+				prob = 1/6;
+			}
+			return exactProb(5, getNum, prob);
+		}
+
+		function diffProbExact(diffNum, only){
+			object = analysisProGetCallDiff(only);
+			count = 0;
 			total = 0;
-			object = {};
-			if(!only){
-				object = humanGetHumanCall;
+			Object.keys(object["analysisDiff"]).map(function(key, index) {
+				if(key == diffNum){
+					count++;
+				}
+				total++;
+			}
+			if(total != 0){
+				return count / total;
 			}else{
-				object = humanGetHumanCallOnly;
+				return 0;
 			}
+		}
 
-			Object.keys(object).map(function(key, index) {
-					if(key.includes('_' + callNum)){
-						total += object[key];
-					}
-			});
-
-			if(total > 0){
-				Object.keys(object).map(function(key, index) {
-						if(key.includes('_' + callNum)){
-							if(HumanGet[0] < object[key] / total){
-								HumanGet[0] = object[key] / total
-								HumanGet[1] = key.split('_')[0];
-							}
-						}
-				});
+		function callProbExact(callNum, only){
+			object = analysisProGetCallDiff(only);
+			count = 0;
+			total = 0;
+			Object.keys(object["analysisCall"]).map(function(key, index) {
+				if(key == callNum){
+					count++;
+				}
+				total++;
 			}
+			if(total != 0){
+				return count / total;
+			}else{
+				return 0;
+			}
+		}
 
-			return HumanGet;
+		function givenProbExact(getNum, callNum, only){
+			return getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only);
+		}
+
+		function expectedGetNum(callNum, only){
+			expectedValue = 0;
+			for(int i = 0; i <= 5; i++){
+				expectedValue += i * givenProbExact(i, callNum, only);
+			}
+			return expectedValue;
 		}
 		</script>
 		<!--brendan end-->
@@ -524,7 +548,7 @@ function callaction() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
-				console.log(guessHumanGetByCall(number, is_only));
+				console.log(expectedGetNum(number, is_only));
 
 				//comp_do_think
 				comp_number = 4;
@@ -855,7 +879,7 @@ function callaction2() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
-				console.log(guessHumanGetByCall(number, is_only));
+				console.log(expectedGetNum(number, is_only));
 
 				//below: comp_do_think (cpp to javascript by hand)
 				var believe = 50;
