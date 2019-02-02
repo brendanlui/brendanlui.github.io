@@ -163,6 +163,7 @@ function closeNav() {
 
 		function analysisProGetCallDiff(only){
 			object = {};
+			result = {};
 			if(only){
 				object = humanGetHumanCallOnly;
 			}else{
@@ -186,7 +187,8 @@ function closeNav() {
 				}
 				analysisCall[callNum]++;
 			});
-			return {"analysisDiff" : analysisDiff, "analysisCall" : analysisCall};
+			result = {"analysisDiff" : analysisDiff, "analysisCall" : analysisCall}
+			return result;
 		}
 
 		function getProbExact(getNum, only){
@@ -226,6 +228,7 @@ function closeNav() {
 			result = 0;
 			objectAnalysisCall = object["analysisCall"];
 			count = objectAnalysisCall[callNum];
+			console.log("objectAnalysisCall: " + objectAnalysisCall);
 			if(count = null){
 				count = 0;
 			}
