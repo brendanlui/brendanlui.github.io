@@ -202,6 +202,7 @@ function closeNav() {
 			object = analysisProGetCallDiff(only);
 			count = 0;
 			total = 0;
+			result = 0;
 			Object.keys(object["analysisDiff"]).map(function(key, index) {
 				if(key == diffNum){
 					count++;
@@ -209,19 +210,18 @@ function closeNav() {
 				total++;
 			});
 
-			console.log("diffProbExact(diffNum, only): " + count / total);
-
 			if(total != 0){
-				return count / total;
-			}else{
-				return 0;
+				result =  count / total;
 			}
+			console.log("diffProbExact(diffNum, only): " + result);
+			return result;
 		}
 
 		function callProbExact(callNum, only){
 			object = analysisProGetCallDiff(only);
 			count = 0;
 			total = 0;
+			result = 0;
 			Object.keys(object["analysisCall"]).map(function(key, index) {
 				if(key == callNum){
 					count++;
@@ -229,25 +229,21 @@ function closeNav() {
 				total++;
 			});
 
-			console.log("callProbExact(callNum, only): " + count / total);
-
 			if(total != 0){
-				return count / total;
-			}else{
-				return 0;
+				result =  count / total;
 			}
+			console.log("callProbExact(callNum, only): " + result);
+			return result;
 		}
 
 		function givenProbExact(getNum, callNum, only){
-
-			console.log("getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only): " +
-			getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only));
-
-			if(callProbExact(callNum, only) == 0){
-				return 0;
-			}else{
-				return getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only);
+			result = 0;
+			if(callProbExact(callNum, only) != 0){
+				result = getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only);
 			}
+			console.log("getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only): " +
+			result);
+			return result;
 		}
 
 		function expectedGetNum(callNum, only){
