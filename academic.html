@@ -120,9 +120,9 @@ function closeNav() {
 			Object.keys(playerCallPerRound).map(function(key, index) {
 					if(playerCallPerRound[key] == 1){
 						getNum = 0;
-						callNum = playerCallPerRound[key].split("_")[0];
-						diceNum = playerCallPerRound[key].split("_")[1];
-						only = playerCallPerRound[key].split("_")[2];
+						callNum = key.split("_")[0];
+						diceNum = key.split("_")[1];
+						only = key.split("_")[2];
 						if (only == 1) {
 							for (i = 0; i < 5; i++) {
 								if (player[i] == diceNum)
