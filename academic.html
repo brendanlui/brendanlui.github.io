@@ -108,6 +108,7 @@ function closeNav() {
 					only = 0;
 				}
 				playerCallPerRound[callNum + '_' + diceNum + '_' + only] = 1;
+				console.log(playerCallPerRound);
 		}
 
 		function clearPlayerCallPerRound(){
@@ -134,6 +135,7 @@ function closeNav() {
 									getNum++;
 							}
 						}
+						console.log(humanGetHumanCall);
 						storeHumanGetHumanCall(getNum, callNum, only);
 						clearPlayerCallPerRound();
 					}
