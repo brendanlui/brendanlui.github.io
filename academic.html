@@ -92,12 +92,49 @@ function closeNav() {
 	</form>
 
 		<!--brendan start-->
-		<!-- <button style="clear:both;" type="submit" value="Submit" onclick="test()">TESTING</button> -->
+		<button style="clear:both;" type="submit" value="Submit" onclick="test()">TESTING</button>
 		<script>
+
 		var humanGetHumanCall = {};
 		var humanGetHumanCallOnly = {};
 		var compCallHumanGetHumanTrust = {};
 		var compCallHumanGetHumanTrustOnly = {};
+		var playerCallPerRound = {};
+
+		function storePlayerCallPerRound(callNum, diceNum, only){
+				playerCallPerRound[callNum + '_' + diceNum + '_' + only] = 1;
+		}
+
+		function clearPlayerCallPerRound(){
+			Object.keys(playerCallPerRound).map(function(key, index) {
+					playerCallPerRound[key] = 0;
+			});
+		}
+
+		function countPlayer(player){
+			Object.keys(playerCallPerRound).map(function(key, index) {
+					if(playerCallPerRound[key] == 1){
+						getNum = 0;
+						callNum = playerCallPerRound[key].split[0];
+						diceNum = playerCallPerRound[key].split[1];
+						only = playerCallPerRound[key].split[2];
+						if (only == "true") {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == diceNum)
+									getNum++;
+							}
+						} else {
+							for (i = 0; i < 5; i++) {
+								if (player[i] == diceNum || player[i] == 1)
+									getNum++;
+							}
+						}
+						storeHumanGetHumanCall(getNum, callNum, only);
+						clearPlayerCallPerRound();
+					}
+			});
+		}
+
 
 		function storeHumanGetHumanCall(getNum, callNum, only){
 			if(!only){
@@ -398,6 +435,7 @@ function printLiarDice1(computer, player){
 		'<img class="btnDice" id="btnDicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
+	countPlayer(player);
 }
 
 function StartLiarDice(el) {
@@ -518,6 +556,7 @@ function callaction() {
 					alert("You called " + number + " - " + point + " ONLY.");
 				else
 					alert("You called " + number + " - " + point + ".");
+				storePlayerCallPerRound(number, point, is_only);
 
 				//comp_do_think
 				comp_number = 4;
@@ -735,6 +774,7 @@ function printLiarDice2(computer, player){
 		'<img class="btnDice" id="btn2DicePlayer'+player[i]+'" src="/img/dice/dice_'
 			+player[i]+'_red.png" alt="'+player[i]+'"/>';
 	}
+	countPlayer(player);
 }
 
 function StartLiarDice2(el) {
@@ -846,6 +886,7 @@ function callaction2() {
 					alert("You called " + number + " - " + point + " ONLY.");
 				else
 					alert("You called " + number + " - " + point + ".");
+				storePlayerCallPerRound(number, point, is_only);
 
 				//below: comp_do_think (cpp to javascript by hand)
 				var believe = 50;
