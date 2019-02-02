@@ -176,15 +176,15 @@ function closeNav() {
 				callNum = key.split("_")[1];
 
 				diff = callNum - getNum;
-				if(analysisDiff.[diff] == null){
-					analysisDiff.[diff] = 0;
+				if(analysisDiff[diff] == null){
+					analysisDiff[diff] = 0;
 				}
-				analysisDiff.[diff]++;
+				analysisDiff[diff]++;
 
-				if(analysisCall.[callNum] == null){
-					analysisCall.[callNum] = 0;
+				if(analysisCall[callNum] == null){
+					analysisCall[callNum] = 0;
 				}
-				analysisCall.[callNum]++;
+				analysisCall[callNum]++;
 			});
 			return {"analysisDiff" : analysisDiff, "analysisCall" : analysisCall};
 		}
