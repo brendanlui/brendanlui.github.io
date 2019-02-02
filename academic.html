@@ -194,6 +194,7 @@ function closeNav() {
 			if(only){
 				prob = 1/6;
 			}
+			console.log("exactProb(5, getNum, prob): " + exactProb(5, getNum, prob));
 			return exactProb(5, getNum, prob);
 		}
 
@@ -207,6 +208,9 @@ function closeNav() {
 				}
 				total++;
 			});
+
+			console.log("diffProbExact(diffNum, only): " + count / total);
+
 			if(total != 0){
 				return count / total;
 			}else{
@@ -224,6 +228,9 @@ function closeNav() {
 				}
 				total++;
 			});
+
+			console.log("callProbExact(callNum, only): " + count / total);
+
 			if(total != 0){
 				return count / total;
 			}else{
@@ -232,7 +239,15 @@ function closeNav() {
 		}
 
 		function givenProbExact(getNum, callNum, only){
-			return getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only);
+
+			console.log("getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only): " +
+			getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only));
+
+			if(callProbExact(callNum, only) == 0){
+				return 0;
+			}else{
+				return getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact(callNum, only);
+			}
 		}
 
 		function expectedGetNum(callNum, only){
