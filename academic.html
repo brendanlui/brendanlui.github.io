@@ -563,6 +563,7 @@ function callaction() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
+				console.log(guessHumanGetByCall(number, is_only));
 
 				//comp_do_think
 				comp_number = 4;
@@ -893,6 +894,7 @@ function callaction2() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
+				console.log(guessHumanGetByCall(number, is_only));
 
 				//below: comp_do_think (cpp to javascript by hand)
 				var believe = 50;
