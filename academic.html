@@ -102,6 +102,11 @@ function closeNav() {
 		var playerCallPerRound = {};
 
 		function storePlayerCallPerRound(callNum, diceNum, only){
+				if(only){
+					only = 1;
+				}else{
+					only = 0;
+				}
 				playerCallPerRound[callNum + '_' + diceNum + '_' + only] = 1;
 		}
 
@@ -115,10 +120,10 @@ function closeNav() {
 			Object.keys(playerCallPerRound).map(function(key, index) {
 					if(playerCallPerRound[key] == 1){
 						getNum = 0;
-						callNum = playerCallPerRound[key].split[0];
-						diceNum = playerCallPerRound[key].split[1];
-						only = playerCallPerRound[key].split[2];
-						if (only == "true") {
+						callNum = playerCallPerRound[key].split("_")[0];
+						diceNum = playerCallPerRound[key].split("_")[1];
+						only = playerCallPerRound[key].split("_")[2];
+						if (only == 1) {
 							for (i = 0; i < 5; i++) {
 								if (player[i] == diceNum)
 									getNum++;
