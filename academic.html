@@ -242,9 +242,9 @@ function closeNav() {
 
 		function givenProbExact(getNum, callNum, only){
 			result = 0;
-			callProbExact = callProbExact(callNum, only);
-			if(callProbExact != 0){
-				result = getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExact;
+			callProbExactValue = callProbExact(callNum, only);
+			if(callProbExactValue != 0){
+				result = getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExactValue;
 			}
 			console.log("getProbExact("+getNum+", only) * diffProbExact("+callNum - getNum+", only) / callProbExact("+callNum+", only): " + result);
 			return result;
