@@ -135,8 +135,15 @@ function closeNav() {
 									getNum++;
 							}
 						}
+						if(only == 1){
+							only = true;
+						}else{
+							only = false;
+						}
 						console.log(humanGetHumanCall);
+						console.log("getNum: " + getNum + ", callNum: " + callNum + ", only" + only);
 						storeHumanGetHumanCall(getNum, callNum, only);
+						console.log(humanGetHumanCall);
 						clearPlayerCallPerRound();
 					}
 			});
