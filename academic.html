@@ -148,17 +148,17 @@ function closeNav() {
 
 
 		function storeHumanGetHumanCall(getNum, callNum, only){
+			object = {};
 			if(!only){
-				if(humanGetHumanCall[getNum + '_' + callNum] == null){
-					humanGetHumanCall[getNum + '_' + callNum] = 0;
-				}
-				humanGetHumanCall[getNum + '_' + callNum] += 1;
+				object = humanGetHumanCall;
 			}else{
-				if(humanGetHumanCallOnly[getNum + '_' + callNum] == null){
-					humanGetHumanCallOnly[getNum + '_' + callNum] = 0;
-				}
-				humanGetHumanCallOnly[getNum + '_' + callNum] += 1;
+				object = humanGetHumanCallOnly;
 			}
+
+			if(object[getNum + '_' + callNum] == null){
+				object[getNum + '_' + callNum] = 0;
+			}
+			object[getNum + '_' + callNum] += 1;
 		}
 
 		function analysisProGetCallDiff(only){
@@ -192,41 +192,30 @@ function closeNav() {
 		function guessHumanGetByCall(callNum, only){
 			HumanGet = [0, 0];
 			total = 0;
+			object = {};
 			if(!only){
-				Object.keys(humanGetHumanCall).map(function(key, index) {
-						if(key.includes('_' + callNum)){
-							total += humanGetHumanCall[key];
-						}
-				});
-
-				if(total > 0){
-					Object.keys(humanGetHumanCall).map(function(key, index) {
-							if(key.includes('_' + callNum)){
-								if(HumanGet[0] < humanGetHumanCall[key] / total){
-									HumanGet[0] = humanGetHumanCall[key] / total
-									HumanGet[1] = key.split('_')[0];
-								}
-							}
-					});
-				}
+				object = humanGetHumanCall;
 			}else{
-				Object.keys(humanGetHumanCallOnly).map(function(key, index) {
+				object = humanGetHumanCallOnly;
+			}
+
+			Object.keys(object).map(function(key, index) {
+					if(key.includes('_' + callNum)){
+						total += object[key];
+					}
+			});
+
+			if(total > 0){
+				Object.keys(object).map(function(key, index) {
 						if(key.includes('_' + callNum)){
-							total += humanGetHumanCallOnly[key];
+							if(HumanGet[0] < object[key] / total){
+								HumanGet[0] = object[key] / total
+								HumanGet[1] = key.split('_')[0];
+							}
 						}
 				});
-
-				if(total > 0){
-					Object.keys(humanGetHumanCallOnly).map(function(key, index) {
-							if(key.includes('_' + callNum)){
-								if(HumanGet[0] < humanGetHumanCallOnly[key] / total){
-									HumanGet[0] = humanGetHumanCallOnly[key] / total;
-									HumanGet[1] = key.split('_')[0];
-								}
-							}
-					});
-				}
 			}
+
 			return HumanGet;
 		}
 		</script>
