@@ -96,8 +96,6 @@ function closeNav() {
 
 		var humanGetHumanCall = {};
 		var humanGetHumanCallOnly = {};
-		var compCallHumanGetHumanTrust = {};
-		var compCallHumanGetHumanTrustOnly = {};
 		var playerCallPerRound = {};
 
 		function storePlayerCallPerRound(callNum, diceNum, only){
@@ -144,6 +142,7 @@ function closeNav() {
 			console.log(playerCallPerRound);
 			console.log(humanGetHumanCall);
 			console.log(humanGetHumanCallOnly);
+			console.log(analysisProGetCallDiff(only));
 			clearPlayerCallPerRound();
 		}
 
@@ -162,18 +161,32 @@ function closeNav() {
 			}
 		}
 
-		function storeCompCallHumanGetHumanTrust(callNum, getNum, only){
-			if(!only){
-				if(compCallHumanGetHumanTrust[callNum + '_' + getNum] == null){
-					compCallHumanGetHumanTrust[callNum + '_' + getNum] = 0;
-				}
-				compCallHumanGetHumanTrust[callNum + '_' + getNum] += 1;
+		function analysisProGetCallDiff(only){
+			object = {};
+			if(only){
+				object = humanGetHumanCallOnly;
 			}else{
-				if(compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] == null){
-					compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] = 0;
-				}
-				compCallHumanGetHumanTrustOnly[callNum + '_' + getNum] += 1;
+				object = humanGetHumanCall;
 			}
+
+			analysisDiff = {};
+			analysisCall = {};
+			Object.keys(object).map(function(key, index) {
+				getNum = key.split("_")[0];
+				callNum = key.split("_")[1];
+
+				diff = callNum - getNum;
+				if(analysisDiff.[diff] == null){
+					analysisDiff.[diff] = 0;
+				}
+				analysisDiff.[diff]++;
+
+				if(analysisCall.[callNum] == null){
+					analysisCall.[callNum] = 0;
+				}
+				analysisCall.[callNum]++;
+			});
+			return {"analysisDiff" : analysisDiff, "analysisCall" : analysisCall};
 		}
 
 		function guessHumanGetByCall(callNum, only){
@@ -209,47 +222,6 @@ function closeNav() {
 								if(HumanGet[0] < humanGetHumanCallOnly[key] / total){
 									HumanGet[0] = humanGetHumanCallOnly[key] / total;
 									HumanGet[1] = key.split('_')[0];
-								}
-							}
-					});
-				}
-			}
-			return HumanGet;
-		}
-
-		function guessHumanGetByTrust(callNum, only){
-			HumanGet = [0, 0];
-			total = 0;
-			if(!only){
-				Object.keys(compCallHumanGetHumanTrust).map(function(key, index) {
-						if(key.includes(callNum + '_')){
-							total += compCallHumanGetHumanTrust[key];
-						}
-				});
-
-				if(total > 0){
-					Object.keys(compCallHumanGetHumanTrust).map(function(key, index) {
-							if(key.includes(callNum + '_')){
-								if(HumanGet[0] < compCallHumanGetHumanTrust[key] / total){
-									HumanGet[0] = compCallHumanGetHumanTrust[key] / total;
-									HumanGet[1] = key.split('_')[1];
-								}
-							}
-					});
-				}
-			}else{
-				Object.keys(compCallHumanGetHumanTrustOnly).map(function(key, index) {
-						if(key.includes(callNum + '_')){
-							total += compCallHumanGetHumanTrustOnly[key];
-						}
-				});
-
-				if(total > 0){
-					Object.keys(compCallHumanGetHumanTrustOnly).map(function(key, index) {
-							if(key.includes(callNum + '_')){
-								if(HumanGet[0] < compCallHumanGetHumanTrustOnly[key] / total){
-									HumanGet[0] = compCallHumanGetHumanTrustOnly[key] / total;
-									HumanGet[1] = key.split('_')[1];
 								}
 							}
 					});
