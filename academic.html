@@ -251,6 +251,7 @@ function closeNav() {
 			for(i = 0; i <= 5; i++){
 				expectedValue += i * givenProbExact(i, callNum, only);
 			}
+			console.log("expectedValue: " + expectedValue);
 			return expectedValue;
 		}
 		</script>
@@ -441,6 +442,7 @@ function printLiarDice1(computer, player){
 }
 
 function StartLiarDice(el) {
+	document.getElementById('output2_remarks').innerHTML = "Remarks: ";
 	messageComp = "";
 	number = 1;
 	point = 6;
@@ -559,7 +561,7 @@ function callaction() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
-				console.log(expectedGetNum(number, is_only));
+				expectedGetNum(number, is_only);
 
 				//comp_do_think
 				comp_number = 4;
@@ -781,6 +783,7 @@ function printLiarDice2(computer, player){
 }
 
 function StartLiarDice2(el) {
+	document.getElementById('output22_remarks').innerHTML = "Remarks: ";
 	number = 1;
 	point = 6;
 	is_only = false;
@@ -890,7 +893,7 @@ function callaction2() {
 				else
 					alert("You called " + number + " - " + point + ".");
 				storePlayerCallPerRound(number, point, is_only);
-				console.log(expectedGetNum(number, is_only));
+				expectedGetNum(number, is_only);
 
 				//below: comp_do_think (cpp to javascript by hand)
 				var believe = 50;
