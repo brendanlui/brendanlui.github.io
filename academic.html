@@ -237,9 +237,11 @@ function closeNav() {
 				console.log(total);
 			});
 			console.log("total: " + total);
+			console.log("count: " + count);
+			console.log("result: " + (count / total));
 
 			if(total != 0){
-				result =  count / total;
+				result = count / total;
 			}
 			console.log("callProbExact("+callNum+", only): " + result);
 			return result;
