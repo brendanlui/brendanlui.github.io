@@ -256,24 +256,18 @@ function closeNav() {
 			expectedValue = 0;
 			getNum = 0;
 
-			i = 0;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
-			i = 1;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
-			i = 2;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
-			i = 3;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
-			i = 4;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
-			i = 5;
-			givenProb = givenProbExact(i, callNum, only);
-			console.log("p(" + i + "): " + givenProb);
+			givenProb = givenProbExact(0, callNum, only);
+			console.log("p(0): " + givenProb);
+			givenProb = givenProbExact(1, callNum, only);
+			console.log("p(1): " + givenProb);
+			givenProb = givenProbExact(2, callNum, only);
+			console.log("p(2): " + givenProb);
+			givenProb = givenProbExact(3, callNum, only);
+			console.log("p(3): " + givenProb);
+			givenProb = givenProbExact(4, callNum, only);
+			console.log("p(4): " + givenProb);
+			givenProb = givenProbExact(5, callNum, only);
+			console.log("p(5): " + givenProb);
 
 				//expectedValue += givenProb;
 
