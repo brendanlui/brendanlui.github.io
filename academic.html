@@ -254,12 +254,11 @@ function closeNav() {
 
 		function expectedGetNum(callNum, only){
 			expectedValue = 0;
-			givenProb = 0;
 			getNum = 0;
 			while(getNum <= 5){
-				givenProb = givenProbExact(getNum, callNum, only);
-				expectedValue += getNum * givenProb;
-				console.log("p(" + getNum + "): " + getNum * givenProb);
+				givenProb = getNum * givenProbExact(getNum, callNum, only);
+				expectedValue += givenProb;
+				console.log("p(" + getNum + "): " + givenProb);
 				getNum++;
 			}
 			console.log("expectedValue: " + expectedValue);
