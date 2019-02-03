@@ -256,8 +256,7 @@ function closeNav() {
 			expectedValue = 0;
 			getNum = 0;
 			while(getNum <= 5){
-				givenProb = 0;
-			//givenProb = getNum * givenProbExact(getNum, callNum, only);
+				givenProb = givenProbExact(getNum, callNum, only);
 				//expectedValue += givenProb;
 				console.log("p(" + getNum + "): " + givenProb);
 				getNum++;
