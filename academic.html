@@ -256,22 +256,26 @@ function closeNav() {
 			expectedValue = 0;
 			getNum = 0;
 
-			givenProb = givenProbExact(0, callNum, only);
-			console.log("p(0): " + givenProb);
-			givenProb = givenProbExact(1, callNum, only);
-			console.log("p(1): " + givenProb);
-			givenProb = givenProbExact(2, callNum, only);
-			console.log("p(2): " + givenProb);
-			givenProb = givenProbExact(3, callNum, only);
-			console.log("p(3): " + givenProb);
-			givenProb = givenProbExact(4, callNum, only);
-			console.log("p(4): " + givenProb);
-			givenProb = givenProbExact(5, callNum, only);
-			console.log("p(5): " + givenProb);
+			givenProb = {0 : givenProbExact(0, callNum, only),
+									 1 : givenProbExact(1, callNum, only),
+						 			 2 : givenProbExact(2, callNum, only),
+						 			 3 : givenProbExact(3, callNum, only),
+						 			 4 : givenProbExact(4, callNum, only),
+						 			 5 : givenProbExact(5, callNum, only)}
+			total = 0;
+ 			Object.keys(givenProb).map(function(key, index) {
+ 				total += givenProb[key];
+ 			});
+			console.log(givenProb);
+			Object.keys(givenProb).map(function(key, index) {
+				givenProb[key] = givenProb[key] / total;
+			});
+			console.log(givenProb);
 
-				//expectedValue += givenProb;
-
-
+			Object.keys(givenProb).map(function(key, index) {
+				expectedValue += key * givenProb[key];
+			});
+			
 			console.log("expectedValue: " + expectedValue);
 			return expectedValue;
 		}
