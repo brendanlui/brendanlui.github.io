@@ -255,12 +255,30 @@ function closeNav() {
 		function expectedGetNum(callNum, only){
 			expectedValue = 0;
 			getNum = 0;
-			while(getNum <= 5){
-				givenProb = givenProbExact(getNum, callNum, only);
+
+			i = 0;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+			givenProb = givenProbExact(i, callNum, only);
+			console.log("p(" + i + "): " + givenProb);
+			i++;
+
 				//expectedValue += givenProb;
-				console.log("p(" + getNum + "): " + givenProb);
-				getNum++;
-			}
+
+
 			console.log("expectedValue: " + expectedValue);
 			return expectedValue;
 		}
