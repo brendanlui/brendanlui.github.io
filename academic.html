@@ -275,9 +275,9 @@ function closeNav() {
 			Object.keys(givenProb).map(function(key, index) {
 				expectedValue += key * givenProb[key];
 			});
-			
+
 			console.log("expectedValue: " + expectedValue);
-			return expectedValue;
+			return Math.round(expectedValue);
 		}
 		</script>
 		<!--brendan end-->
