@@ -197,7 +197,7 @@ function closeNav() {
 				prob = 1/6;
 			}
 			result = exactProb(5, getNum, prob);
-			console.log("exactProb(5, "+getNum+", "+prob+"): " + result);
+			console.log("getProbExact("+getNum+"): " + result);
 			return result;
 		}
 
@@ -215,10 +215,10 @@ function closeNav() {
 				total += objectAnalysisDiff[key];
 			});
 
-			if(total != 0){
+			if(total != 0 && count != 0){
 				result =  count / total;
 			}
-			console.log("diffProbExact("+diffNum+", only): " + result);
+			console.log("diffProbExact("+diffNum+"): " + result);
 			return result;
 		}
 
@@ -227,24 +227,18 @@ function closeNav() {
 			total = 0;
 			result = 0;
 			objectAnalysisCall = object["analysisCall"];
-			console.log(callNum);
 			count = objectAnalysisCall[callNum];
-			console.log(objectAnalysisCall);
 			if(count == null){
 				count = 0;
 			}
 			Object.keys(objectAnalysisCall).map(function(key, index) {
 				total += objectAnalysisCall[key];
-				console.log(total);
 			});
-			console.log("total: " + total);
-			console.log("count: " + count);
-			console.log("result: " + (count / total));
 
 			if(total != 0){
 				result = count / total;
 			}
-			console.log("callProbExact("+callNum+", only): " + result);
+			console.log("callProbExact("+callNum+"): " + result);
 			return result;
 		}
 
@@ -254,14 +248,17 @@ function closeNav() {
 			if(callProbExactValue != 0){
 				result = getProbExact(getNum, only) * diffProbExact(callNum - getNum, only) / callProbExactValue;
 			}
-			console.log("getProbExact("+getNum+", only) * diffProbExact("+(callNum - getNum)+", only) / callProbExact("+callNum+", only): " + result);
+			console.log("getProbExact("+getNum+") * diffProbExact("+(callNum - getNum)+") / callProbExact("+callNum+"): " + result);
 			return result;
 		}
 
 		function expectedGetNum(callNum, only){
 			expectedValue = 0;
+			givenProb = 0;
 			for(i = 0; i <= 5; i++){
-				expectedValue += i * givenProbExact(i, callNum, only);
+				givenProb = givenProbExact(i, callNum, only);
+				expectedValue += i * givenProb;
+				console.log("p(" + i + "): " + i * givenProb);
 			}
 			console.log("expectedValue: " + expectedValue);
 			return expectedValue;
