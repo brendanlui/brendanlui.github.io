@@ -234,7 +234,9 @@ function closeNav() {
 			}
 			Object.keys(objectAnalysisCall).map(function(key, index) {
 				total += objectAnalysisCall[key];
+				console.log(total);
 			});
+			console.log("total: " + total);
 
 			if(total != 0){
 				result =  count / total;
