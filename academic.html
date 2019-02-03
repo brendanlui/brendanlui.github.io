@@ -207,7 +207,7 @@ function closeNav() {
 			result = 0;
 			objectAnalysisDiff = object["analysisDiff"];
 			count = objectAnalysisDiff[diffNum];
-			if(count = null){
+			if(count == null){
 				count = 0;
 			}
 
@@ -230,7 +230,7 @@ function closeNav() {
 			console.log(callNum);
 			count = objectAnalysisCall[callNum];
 			console.log(objectAnalysisCall);
-			if(count = null){
+			if(count == null){
 				count = 0;
 			}
 			Object.keys(objectAnalysisCall).map(function(key, index) {
