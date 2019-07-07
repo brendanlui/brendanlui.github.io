@@ -23,18 +23,20 @@
 	  margin: 4px 2px;
 	  cursor: pointer;
   	border: thick solid white;
+		width: 20%;
 	}
 
 	.showText{
 		border: thick solid grey;
 		background-color: white;
+		text-align: center;
 	}
 	</style>
 </head>
 
 <title>Dadiu | Japanese</title>
 
-<body>
+<body onload="restart();">
 	<div id="head">
 		<a href="/">
 		<div id="logo">
@@ -173,7 +175,7 @@
 	<button id="mc1" class="button" type="button" onclick="showResult(1)"></button>
 	<button id="mc2" class="button" type="button" onclick="showResult(2)"></button>
 	<button id="mc3" class="button" type="button" onclick="showResult(3)"></button>
-	<button id="next" class="button" type="button" onclick="restart()">Next</button>
+	<p><button id="next" class="button round" type="button" onclick="restart()">Next</button></p>
 	<h4 id="result"></h4>
 
 </body>
