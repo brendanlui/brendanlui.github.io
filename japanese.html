@@ -24,6 +24,11 @@
 	  cursor: pointer;
   	border: thick solid white;
 	}
+
+	.showText{
+		border: thick solid grey;
+		background-color: white;
+	}
 	</style>
 </head>
 
@@ -151,12 +156,9 @@
 
 		function shuffle(array) {
 		  var currentIndex = array.length, temporaryValue, randomIndex;
-		  // While there remain elements to shuffle...
 		  while (0 !== currentIndex) {
-		    // Pick a remaining element...
 		    randomIndex = Math.floor(Math.random() * currentIndex);
 		    currentIndex -= 1;
-		    // And swap it with the current element.
 		    temporaryValue = array[currentIndex];
 		    array[currentIndex] = array[randomIndex];
 		    array[randomIndex] = temporaryValue;
@@ -166,7 +168,7 @@
 		//copy from google end
 	</script>
 
-	<h2 id="textJapan"></h2>
+	<h2 class="showText" style="font-size:10vw;" id="textJapan"></h2>
 	<button id="mc0" class="button" type="button" onclick="showResult(0)"></button>
 	<button id="mc1" class="button" type="button" onclick="showResult(1)"></button>
 	<button id="mc2" class="button" type="button" onclick="showResult(2)"></button>
