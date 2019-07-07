@@ -48,7 +48,7 @@
 
 	.btnFilter{
 		width: 32%;
-		text-overflow: ellipsis; 
+		text-overflow: ellipsis;
 	}
 	</style>
 </head>
@@ -114,7 +114,6 @@
 		var filterHira = false;
 
 		function filterSelection(text){
-
 			var element = document.getElementById("btnFilterHiragana");
 	   	element.classList.remove("active");
 			element = document.getElementById("btnFilterKatakana");
@@ -133,7 +132,6 @@
 			}else if("All" == text){
 				filtered = false;
 			}
-			restart();
 		}
 
 		function restart(){
