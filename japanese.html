@@ -29,7 +29,7 @@
 		var japanese = ["あ", "い", "う", "え", "お"];
 		var total = japanese.length;
 		function btnClick(){
-			document.getElementById("textJapan") = japanese[Math.random() * (total - 1)];
+			document.getElementById("textJapan").innerHTML = japanese[parseInt(Math.random() * (total - 1), 10) + 1];
 		}
 	</script>
 	<h2 id="textJapan">あ	い	う	え	お</h2>
