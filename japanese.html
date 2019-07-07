@@ -26,12 +26,18 @@
 	  font-size: 16px;
   	border: thick solid white;
 		width: 49%;
+		font-weight: bold;
 	}
 
 	.showText{
 		border: thick solid grey;
 		background-color: white;
 		text-align: center;
+	}
+
+	.next{
+		background-color: #555555;
+  	color: white;
 	}
 	</style>
 </head>
@@ -184,7 +190,7 @@
 			<button id="mc2" class="buttonJp" type="button" onclick="showResult(2)"></button>
 			<button id="mc3" class="buttonJp" type="button" onclick="showResult(3)"></button>
 	</div>
-	<p><button id="next" class="buttonJp round" type="button" onclick="restart()">Next</button></p>
+	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">Next</button></p>
 	<h4 style="text-align: center;" id="result"></h4>
 
 </body>
