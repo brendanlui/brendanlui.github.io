@@ -12,6 +12,19 @@
 	  href="/img/d01.png">
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
+	<style>
+	.button {
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+  	border: thick solid white;
+	}
+	</style>
 </head>
 
 <title>Dadiu | Japanese</title>
@@ -65,6 +78,17 @@
 		var showText = "";
 		var correct = 0;
 		var ttlAns = 0;
+		var mc = {};
+		var answered = true;
+
+		function restart(){
+			genShowJpText();
+			genMC();
+			answered = false;
+			for(var i = 0; i < mc.length; i ++){
+					document.getElementById("mc" + i).style.borderColor  = "#ffffff";
+			}
+		}
 
 		function genShowJpText(){
 			if(Math.random() > 0.5){
@@ -79,12 +103,11 @@
 				showText = jpSimple[index];
 			}
 			document.getElementById("textJapan").innerHTML = showText;
-			genMC();
 		}
 
 		function genMC(){
 			var correctAns = jpChar[index];
-			var mc = getRandom(jpChar, 4);
+			mc = getRandom(jpChar, 4);
 			var exist = mc.includes(correctAns);
 			if(!exist){
 				mc[0] = jpChar[index];
@@ -92,7 +115,22 @@
 			shuffle(mc);
 
 			for(var i = 0; i < mc.length; i++){
-				document.getElementById("mc" + (i + 1)).innerHTML = mc[i];
+				document.getElementById("mc" + i).innerHTML = mc[i];
+			}
+		}
+
+		function showResult(mcChoose){
+			if(!answered){
+				var mcIndex = mc.indexOf(jpChar[index]);
+				if(mcIndex != mcChoose){
+					document.getElementById("mc" + mcChoose).style.borderColor  = "#FF0000";
+				}else{
+					correct++;
+				}
+				document.getElementById("mc" + mcIndex).style.borderColor  = "#4CAF50";
+				answered = true;
+				ttlAns++;
+				document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
 			}
 		}
 
@@ -129,10 +167,12 @@
 	</script>
 
 	<h2 id="textJapan"></h2>
-	<button id="mc1" type="button" onclick="genShowJpText()">Click Me!</button>
-	<button id="mc2" type="button" onclick="genShowJpText()">Click Me!</button>
-	<button id="mc3" type="button" onclick="genShowJpText()">Click Me!</button>
-	<button id="mc4" type="button" onclick="genShowJpText()">Click Me!</button>
+	<button id="mc0" class="button" type="button" onclick="showResult(0)"></button>
+	<button id="mc1" class="button" type="button" onclick="showResult(1)"></button>
+	<button id="mc2" class="button" type="button" onclick="showResult(2)"></button>
+	<button id="mc3" class="button" type="button" onclick="showResult(3)"></button>
+	<button id="next" class="button" type="button" onclick="restart()">Next</button>
+	<h4 id="result"></h4>
 
 </body>
 </html>
