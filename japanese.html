@@ -18,6 +18,7 @@
 	.buttonBox{
 		width: 100%;
 	}
+
 	.buttonJp {
 	  padding: 15px 0px;
 	  text-align: center;
@@ -38,6 +39,15 @@
 	.next{
 		background-color: #555555;
   	color: white;
+	}
+
+	.buttonJp.active {
+	  background-color: #666;
+	  color: white;
+	}
+
+	.btnFilter{
+		width: 32%;
 	}
 	</style>
 </head>
@@ -99,6 +109,30 @@
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
+		var filtered = false;
+		var filterHira = false;
+
+		function filterSelection(text){
+
+			var element = document.getElementById("btnFilterHiragana");
+	   	element.classList.remove("active");
+			element = document.getElementById("btnFilterKatakana");
+	   	element.classList.remove("active");
+			element = document.getElementById("btnFilterAll");
+	   	element.classList.remove("active");
+
+	   	element = document.getElementById("btnFilter" + text);
+	   	element.classList.add("active");
+			if("Hiragana" == text){
+				filtered = true;
+				filterHira = true;
+			}else if("Katakana" == text){
+				filtered = true;
+				filterHira = false;
+			}else if("All" == text){
+				filtered = false;
+			}
+		}
 
 		function restart(){
 			genShowJpText();
@@ -110,10 +144,14 @@
 		}
 
 		function genShowJpText(){
-			if(Math.random() > 0.5){
-				full = true;
+			if(!filtered){
+				if(Math.random() > 0.5){
+					full = true;
+				}else{
+					full = false;
+				}
 			}else{
-				full = false;
+				full = filterHira;
 			}
 			index = parseInt(Math.random() * (total - 1) + 1, 10);
 			if(full){
@@ -179,10 +217,27 @@
 		  }
 		  return array;
 		}
+
+		// Add active class to the current button (highlight it)
+		var btns = document.getElementsByClassName("btnFilter");
+		for (var i = 0; i < btns.length; i++) {
+		  btns[i].addEventListener("click", function(){
+		    var current = document.getElementsByClassName("active");
+		    current[0].className = current[0].className.replace(" active", "");
+		    this.className += " active";
+		  });
+		}
 		//copy from google end
 	</script>
 
+	<div id="myBtnContainer">
+	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">All</button>
+	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">Hiragana</button>
+	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">Katakana</button>
+	</div>
+
 	<h2 class="showText" style="font-size:10vw;" id="textJapan"></h2>
+
 	<div class="buttonBox">
 			<button id="mc0" class="buttonJp" type="button" onclick="showResult(0)"></button>
 			<button id="mc1" class="buttonJp" type="button" onclick="showResult(1)"></button>
