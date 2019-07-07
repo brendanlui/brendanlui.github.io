@@ -25,7 +25,15 @@
 		</a>
 	</div>
 
-	<h2>あ	い	う	え	お</h2>
+	<script>
+		var japanese = ["あ", "い", "う", "え", "お"];
+		var total = japanese.length;
+		function btnClick(){
+			document.getElementById("textJapan") = japanese[Math.random() * (total - 1)];
+		}
+	</script>
+	<h2 id="textJapan">あ	い	う	え	お</h2>
+	<button type="button" onclick="btnClick()">Click Me!</button>
 
 </body>
 </html>
