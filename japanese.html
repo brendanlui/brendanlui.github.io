@@ -26,14 +26,113 @@
 	</div>
 
 	<script>
-		var japanese = ["あ", "い", "う", "え", "お"];
-		var total = japanese.length;
-		function btnClick(){
-			document.getElementById("textJapan").innerHTML = japanese[parseInt(Math.random() * (total - 1), 10) + 1];
+		var jpFull = ["あ", "い", "う", "え", "お",
+										"か", "き", "く", "け", "こ",
+										"さ", "し", "す", "せ", "そ",
+										"た", "ち", "つ", "て", "と",
+										"な", "に", "ぬ", "ね", "の",
+										"は", "ひ", "ふ", "へ", "ほ",
+										"ま", "み", "む", "め", "も",
+										"や", "ゆ", "よ",
+										"ら", "り", "る", "れ", "ろ",
+										"わ", "を",
+										"ん"];
+		var jpSimple = ["ア", "イ", "ウ", "エ", "オ",
+										"カ", "キ", "ク", "ケ", "コ",
+										"サ", "シ", "ス", "セ", "ソ",
+										"タ", "チ", "ツ", "テ", "ト",
+										"ナ", "ニ", "ヌ", "ネ", "ノ",
+										"ハ", "ヒ", "フ", "ヘ", "ホ",
+										"マ", "ミ", "ム", "メ", "モ",
+										"ヤ", "ユ", "ヨ",
+										"ラ", "リ", "ル", "レ", "ロ",
+										"ワ", "ヲ",
+										"ン"];
+		var jpChar = ["a", "i", "u", "e", "o",
+									"ka", "ki", "ku", "ke", "ko",
+									"sa", "shi", "su", "se", "so",
+									"ta", "chi", "tsu", "te", "to",
+									"na", "ni", "nu", "ne", "no",
+									"ha", "hi", "fu", "he", "ho",
+									"ma", "mi", "mu", "me", "mo",
+									"ya", "yu", "yo",
+									"ra", "ri", "ru", "re", "ro",
+									"wa", "wo",
+									"n"];
+		var total = jpFull.length;
+		var full;
+		var index = parseInt(Math.random() * (total - 1) + 1, 10);
+		var showText = "";
+		var correct = 0;
+		var ttlAns = 0;
+
+		function genShowJpText(){
+			if(Math.random() > 0.5){
+				full = true;
+			}else{
+				full = false;
+			}
+			index = parseInt(Math.random() * (total - 1) + 1, 10);
+			if(full){
+				showText = jpFull[index];
+			}else{
+				showText = jpSimple[index];
+			}
+			document.getElementById("textJapan").innerHTML = showText;
+			genMC();
 		}
+
+		function genMC(){
+			var correctAns = jpChar[index];
+			var mc = getRandom(jpChar, 4);
+			var exist = mc.includes(correctAns);
+			if(!exist){
+				mc[0] = jpChar[index];
+			}
+			shuffle(mc);
+
+			for(var i = 0; i < mc.length; i++){
+				document.getElementById("mc" + (i + 1)).innerHTML = mc[i];
+			}
+		}
+
+		//copy from google start
+		function getRandom(arr, n) {
+		    var result = new Array(n),
+		        len = arr.length,
+		        taken = new Array(len);
+		    if (n > len)
+		        throw new RangeError("getRandom: more elements taken than available");
+		    while (n--) {
+		        var x = Math.floor(Math.random() * len);
+		        result[n] = arr[x in taken ? taken[x] : x];
+		        taken[x] = --len in taken ? taken[len] : len;
+		    }
+		    return result;
+		}
+
+		function shuffle(array) {
+		  var currentIndex = array.length, temporaryValue, randomIndex;
+		  // While there remain elements to shuffle...
+		  while (0 !== currentIndex) {
+		    // Pick a remaining element...
+		    randomIndex = Math.floor(Math.random() * currentIndex);
+		    currentIndex -= 1;
+		    // And swap it with the current element.
+		    temporaryValue = array[currentIndex];
+		    array[currentIndex] = array[randomIndex];
+		    array[randomIndex] = temporaryValue;
+		  }
+		  return array;
+		}
+		//copy from google end
 	</script>
-	<h2 id="textJapan">あ	い	う	え	お</h2>
-	<button type="button" onclick="btnClick()">Click Me!</button>
+
+	<h2 id="textJapan"></h2>
+	<button id="mc1" type="button" onclick="genShowJpText()">Click Me!</button>
+	<button id="mc2" type="button" onclick="genShowJpText()">Click Me!</button>
+	<button id="mc3" type="button" onclick="genShowJpText()">Click Me!</button>
+	<button id="mc4" type="button" onclick="genShowJpText()">Click Me!</button>
 
 </body>
 </html>
