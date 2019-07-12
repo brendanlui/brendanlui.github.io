@@ -62,7 +62,7 @@
 
 	.slider {
 	  -webkit-appearance: none;
-	  width: 100%;
+	  width: 97%;
 	  height: 25px;
 	  background: #d3d3d3;
 	  outline: none;
@@ -108,11 +108,16 @@
 	<div class="topnav" id="myTopnav">
 	  <a href="/">Home</a>
 	</div>
-
+	<div id="buttonBox">
+	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">All</button>
+	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">Hiragana</button>
+	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">Katakana</button>
+	</div>
 	<div class="slidecontainer">
 	  <input type="range" min="1" max="46" value="46" class="slider" id="myRange">
 	  <b>Word(s) : <span id="demo"></span></b>
 	</div>
+
 
 	<script>
 		var jpFull = ["あ", "い", "う", "え", "お",
@@ -288,12 +293,6 @@
 	  output.innerHTML = this.value;
 	}
 	</script>
-
-	<div id="buttonBox">
-	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">All</button>
-	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">Hiragana</button>
-	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">Katakana</button>
-	</div>
 
 	<p class="showText" style="font-size:10vw;" id="textJapan"></p>
 
