@@ -47,27 +47,18 @@
 	<script>
 	function loadDoc()
 	{
-			var txt = '';
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-			    	txt = xmlhttp.responseText;
+			    	var txt = xmlhttp.responseText;
 
 						var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 					  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 						var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 						var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						var arrWordClass = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 
 						for(i = 0; i < arr.length; i++){
 							arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
-
-							var wordClassText = arr[i].split('<span class="wordClass" style="">《');
-							if(wordClassText.length == 2){
-								arrWordClass[i] = wordClassText[1].substr(0, wordClassText[1].indexOf('</span>')).replace('》','');
-							}else{
-								arrWordClass[i] = '';
-							}
 
 							var zhText = arr[i].split('<p class="txt-zh zh">');
 							if(zhText.length == 2){
@@ -83,7 +74,7 @@
 								arrEn[i] = '';
 							}
 
-							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + arrWordClass[i] + wordClassText +  '</br>'
+							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
 						}
 
 			  }
