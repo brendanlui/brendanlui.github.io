@@ -123,19 +123,6 @@
 			}
 		}
 
-		function changeWay(){
-				var arrTemp = {};
-				for(i = 0; i < arrJp.length; i++){
-					arrTemp[i] = arrJp[i];
-				}
-				for(i = 0; i < arrJp.length; i++){
-					arrJp[i] = arrEn[i];
-				}
-				for(i = 0; i < arrJp.length; i++){
-					arrEn[i] = arrTemp[i];
-				}
-		}
-
 		function loadDoc(type)
 		{
 				var xmlhttp = new XMLHttpRequest();
@@ -172,7 +159,16 @@
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
 							if(changeWay){
-								changeWay();
+									var arrTemp = {};
+									for(i = 0; i < arrJp.length; i++){
+										arrTemp[i] = arrJp[i];
+									}
+									for(i = 0; i < arrJp.length; i++){
+										arrJp[i] = arrEn[i];
+									}
+									for(i = 0; i < arrJp.length; i++){
+										arrEn[i] = arrTemp[i];
+									}
 							}
 							total = arr.length;
 							genShowJpText();
