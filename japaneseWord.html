@@ -48,7 +48,7 @@
 		}
 
 		.btnFilter{
-			width: 32%;
+			width: 100%;
 			text-overflow: ellipsis;
 	  	overflow: hidden;
 			padding: 2px 0px;
@@ -93,29 +93,7 @@
 
 
 	<div id="buttonBox">
-		<button id="btnFilterNumber" class="buttonJp btnFilter active" onclick="filterSelection('Number')">數字</button>
-		<button id="btnFilterTraditionalQty" class="buttonJp btnFilter" onclick="filterSelection('TraditionalQty')">傳統數量詞</button>
-		<button id="btnFilterWeek" class="buttonJp btnFilter" onclick="filterSelection('Week')">星期</button>
-		<button id="btnFilterTiming" class="buttonJp btnFilter" onclick="filterSelection('Timing')">時候</button>
-		<button id="btnFilterTime" class="buttonJp btnFilter" onclick="filterSelection('Time')">時間</button>
-		<button id="btnFilterMonth" class="buttonJp btnFilter" onclick="filterSelection('Month')">日期(月)</button>
-		<button id="btnFilterDay" class="buttonJp btnFilter" onclick="filterSelection('Day')">日期(日)</button>
-		<button id="btnFilterPplNum" class="buttonJp btnFilter" onclick="filterSelection('PplNum')">人數的計算</button>
-		<button id="btnFilterDirection" class="buttonJp btnFilter" onclick="filterSelection('Direction')">方向</button>
-		<button id="btnFilterSeasonWeather" class="buttonJp btnFilter" onclick="filterSelection('SeasonWeather')">季節、天氣</button>
-		<button id="btnFilterNewStandard1" class="buttonJp btnFilter" onclick="filterSelection('NewStandard1')">新標準日本語(1)</button>
-		<button id="btnFilterNewStandard2" class="buttonJp btnFilter" onclick="filterSelection('NewStandard2')">新標準日本語(2)</button>
-		<button id="btnFilterNewStandard3" class="buttonJp btnFilter" onclick="filterSelection('NewStandard3')">新標準日本語(3)</button>
-		<button id="btnFilterNewStandard4" class="buttonJp btnFilter" onclick="filterSelection('NewStandard4')">新標準日本語(4)</button>
-		<button id="btnFilterNewStandard5" class="buttonJp btnFilter" onclick="filterSelection('NewStandard5')">新標準日本語(5)</button>
-		<button id="btnFilterNewStandard6" class="buttonJp btnFilter" onclick="filterSelection('NewStandard6')">新標準日本語(6)</button>
-		<button id="btnFilterNewStandard7" class="buttonJp btnFilter" onclick="filterSelection('NewStandard7')">新標準日本語(7)</button>
-		<button id="btnFilterEveryone1" class="buttonJp btnFilter" onclick="filterSelection('Everyone1')">大家的日本語(1)</button>
-		<button id="btnFilterEveryone2" class="buttonJp btnFilter" onclick="filterSelection('Everyone2')">大家的日本語(2)</button>
-		<button id="btnFilterEveryone3" class="buttonJp btnFilter" onclick="filterSelection('Everyone3')">大家的日本語(3)</button>
-		<button id="btnFilterEveryone4" class="buttonJp btnFilter" onclick="filterSelection('Everyone4')">大家的日本語(4)</button>
-		<button id="btnFilterEveryone5" class="buttonJp btnFilter" onclick="filterSelection('Everyone5')">大家的日本語(5)</button>
-		<button id="btnFilterEveryone6" class="buttonJp btnFilter" onclick="filterSelection('Everyone6')">大家的日本語(6)</button>
+		<button id="btnFilterShow" href="#" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
 	</div>
 
 	<p class="showText" style="font-size:10vw;" id="textJapan"></p>
@@ -216,6 +194,8 @@
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
+
+			document.getElementById("btnFilterShow").innerHTML =  element.innerHTML;
 		}
 
 		function restart(){
