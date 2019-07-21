@@ -1,0 +1,1795 @@
+<html lang="zh-Hant-TW"><head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Language" content="zh-tw">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keyword" content="最專業的學日文網站，能聽、能寫、能說、還能唱，以及豐富的線上測驗功能">
+<meta name="description" content="最專業的學日文網站，能聽、能寫、能說、還能唱，以及豐富的線上測驗功能">
+<meta property="og:image" content="https://www.jpmarumaru.com/images/marumaru.jpg">
+<meta property="og:title" content="JP MARUMARU">
+<meta property="og:description" content="最專業的學日文網站，能聽、能寫、能說、還能唱，以及豐富的線上測驗功能">
+<link rel="image_src" href="https://www.jpmarumaru.com/images/marumaru.jpg">
+<link rel="shortcut icon" href="https://www.jpmarumaru.com/favicon.ico">
+<title>新標準日本語(4)-詞庫-日語教學-MARUMARU</title>
+<script async="" src="//www.google-analytics.com/analytics.js"></script><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-43859952-1', 'jpmarumaru.com');
+ga('send', 'pageview');
+</script><script src="../jquery-new/fuckadblock.js"></script>
+<link href="../jquery-new/bootstrap/theme/darkly/bootstrap.min.css" rel="stylesheet">
+<link href="../css-new/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="../css-new/bootstrap.custom.css?v=20171009" rel="stylesheet">
+<link href="../css-new/ruby.css" rel="stylesheet">
+<script src="../jquery-new/jquery-last.min.js"></script>
+<script src="../jquery-new/jquery.mobile.custom.min.js"></script>
+<script src="../jquery-new/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="../jquery-new/bootbox.min.js"></script>-->
+
+<link href="../jquery-new/bootstrap3-dialog/css/bootstrap-dialog.min.css" rel="stylesheet">
+<script src="../jquery-new/bootstrap3-dialog/js/bootstrap-dialog.min.js"></script>
+
+<link href="../jquery-new/toastr/toastr.min.css" rel="stylesheet">
+<script src="../jquery-new/toastr/toastr.min.js"></script>
+
+<link href="../jquery-new/ladda/ladda-themeless.min.css" rel="stylesheet">
+<script src="../jquery-new/ladda/spin.min.js"></script><style type="text/css"></style>
+<script src="../jquery-new/ladda/ladda.min.js"></script>
+
+<link href="../jquery-new/backTop/css/backTop.css" rel="stylesheet">
+<script src="../jquery-new/backTop/jquery.backTop.min.js"></script>
+
+<link href="../jquery-new/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+<script src="../jquery-new/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+
+<script src="../jquery-new/dotimeout/jquery.ba-dotimeout.min.js"></script>
+<script src="../jquery-new/js.cookie.js"></script>
+<script src="js-new/common.js?v=20180710"></script>
+<link href="../jquery-new/icheck/skins/flat/blue.css" rel="stylesheet">
+<script src="../jquery-new/icheck/icheck.min.js"></script>
+<link href="../jquery-new/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+<script src="../jquery-new/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../jquery-new/bootstrap-select/i18n/defaults-zh_TW.min.js"></script>
+<script src="../jquery-new/jquery-ui-dnd.min.js"></script>
+<script type="text/javascript" src="js-new/wordStockDetail.js?v=20171202"></script>
+<style>
+.ulList{padding:0px;margin:0px;list-style:none;}
+.ulList li{padding:4px 4px;margin:0px;border-bottom:1px dotted #555;}
+
+#panelNews ul{padding:0px;margin:0px;list-style:none;}
+#panelNews .news-item{max-height:105px;overflow:hidden;padding:4px 4px;margin:0px;border-bottom:1px dotted #555;}
+
+.floatmenu {overflow: hidden;position: fixed !important;left:1px;top:40%;height:auto;width:auto;}
+
+.bootstrap-select a{font-size:1em;}
+
+.jpfont1 span[class^=tone],.jpfont1 .furigana,.jpfont1 ruby > rt{font-family:"Aiko-R";}
+.jpfont2 span[class^=tone],.jpfont2 .furigana,.jpfont2 ruby > rt{font-family:"fgflop";}
+.jpfont6 span[class^=tone],.jpfont6 .furigana,.jpfont6 ruby > rt{font-family:"Noto Sans Japanese";font-weight:200;}
+
+.wordClass{font-size:1.3em;}
+#modalAutoPlay .modal-header-primary {
+color:#fff;padding:9px 15px;background-color: #428bca;-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;-moz-border-radius-topleft: 5px;-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;border-top-right-radius: 5px;
+}
+#modalAutoPlay .modal-header{cursor:move;}
+#modalAutoPlay .modal-body{height:auto;text-align:center;padding:0;line-height:2.4em;}
+#modalAutoPlay .kana{font-size:2.4em;margin:30px 0;}
+#modalAutoPlay .tone{font-size:2em;margin:25px 0;}
+#modalAutoPlay .kanji{font-size:2em;margin:25px 0;}
+#modalAutoPlay .furigana{font-size:2em;margin:25px 0;}
+#modalAutoPlay .zh{font-size:2em;margin:25px 0;}
+</style>
+<script type="text/javascript" async="" src="../js15_gif_as.js"></script></head>
+<body>
+<header>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-menu">
+      <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.asp" style="font-family:Georgia;">JP MARUMARU</a>
+  </div>
+  <div class="collapse navbar-collapse" id="nav-menu">
+    <ul class="nav navbar-nav">
+      <li><a href="JPClass.asp">日語教室</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">工具<strong class="caret"></strong></a>
+        <ul class="dropdown-menu">
+          <li><a href="toolKanjiFurigana.html">日文漢字標註假名</a></li>
+          <li><a href="toolJPAnalysis.html">日文分詞</a></li>
+          <li><a href="toolJPDic.html">日文辭書索引</a></li>
+          <li class="divider"></li>
+          <li><a href="toolZHConvert.html">中文繁簡體轉換</a></li>
+          <li class="divider"></li>
+          <li><a href="toolChinesePinyin.html" lang="ja">中国語を拼音、注音に変換する</a></li>
+        </ul>
+      </li>
+      <li><a href="forum.asp">討論群組</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search" action="https://cse.google.com/cse" target="_blank">
+      <div class="input-group">
+        <input type="text" id="inputGoogleSearch" name="q" class="form-control" placeholder="Google Search" style="width: 100%;">
+        <input type="hidden" name="cx" value="006433377945535362806:1gjgvl5smaa">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+      </div>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="dropdown">
+        <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="false">
+          <img src="../images/guest100.jpg" alt="user-img" class="img-circle">
+        </a>
+        <ul class="dropdown-menu">
+          <div class="user-name">訪客</div>
+          <li><a href="MemberLogin.asp">登入</a></li>
+          <li><a href="MemberLogin.asp">註冊</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
+	  <p>先上線，主要單詞先上，例句後補，頁面及功能還再調整中，所以可能有時會壞掉XD</p>
+	  <p>詞庫以辭書方式顯示，同一個單詞，有多少漢字、中文意思，都會全部顯示，但以最常用的會排在第一個位置。</p>
+	  <p>動詞也以原形(字典形)顯示，日本人都是從原形學起，市面上的教科書通常都是從ます型學起(希望外國人講日語時能先禮貌一些吧)
+	  但所有的動詞變化皆來自於原形，先學ます型的話，要做動詞變化，還得先轉成原形再換成其他形
+	  (之後我會再加上自選動詞要顯示原形還是ます型)
+	  </p>
+	</div>
+    <div class="col-lg-7 col-md-9">
+      <div>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="JPClass.html">日語教室</a></li>
+		  <li><a href="wordStockList.html">詞庫</a></li>
+          <li class="active">新標準日本語(4)</li>
+        </ul>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">新標準日本語(4)</h4>
+        </div>
+        <div class="panel-body">
+		  <p></p>
+
+		  <div style="margin-bottom:30px;">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                自動播放 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:;" id="btnAutoPlay">單詞自動播放</a></li>
+                <li><a href="javascript:;" id="btnAutoPlay2">例句自動播放</a></li>
+              </ul>
+            </div>
+            <div class="btn-group hidden-sm hidden-xs">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                排序 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+			    <li><a href="wordStockDetail.html?sn=19&amp;ord=1">預設(目前的排序)</a></li>
+			    <li><a href="wordStockDetail.html?sn=19&amp;ord=2">依假名</a></li>
+			    <li><a href="wordStockDetail.html?sn=19&amp;ord=3">隨機</a></li>
+              </ul>
+            </div>
+            <div class="btn-group hidden-sm hidden-xs">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                設定 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:;" class="btnOpenFuncNav">功能設定</a></li>
+                <li><a href="javascript:;" class="btnOpenVoiceNav">語音設定</a></li>
+              </ul>
+            </div>
+		  </div>
+		  <div class="line"></div>
+
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">へや</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">へ</span><span class="tone4">や</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="917" data-vt="JP" data-txt="部屋|部屋" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【部屋】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">房間・屋子・室</p>
+			  <p class="txt-zh en">(英) room</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">にわ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">に</span><span class="tone4">わ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="918" data-vt="JP" data-txt="庭|庭" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【庭】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">院子・庭園・家庭</p>
+			  <p class="txt-zh en">(英) garden・yard</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">いえ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">い</span><span class="tone4">え</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="919" data-vt="JP" data-txt="家|家" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【家】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">房子・家・家庭・家世・門第</p>
+			  <p class="txt-zh en">(英) house・home・family・household</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">いま</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">い</span><span class="tone4">ま</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>②</span> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="920" data-vt="JP" data-txt="居間|居間" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【居間】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">起居室・客廳</p>
+			  <p class="txt-zh en">(英) living room</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">れいぞうこ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">れ</span><span class="tone2">いぞ</span><span class="tone3">うこ</span></span>
+				<span class="txt-ja toneNum"> <span>③</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="921" data-vt="JP" data-txt="冷蔵庫|冷蔵庫" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【冷蔵庫】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">冰箱・冷藏室</p>
+			  <p class="txt-zh en">(英) refrigerator・cold storage chamber</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">かべ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">か</span><span class="tone4">べ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="922" data-vt="JP" data-txt="壁|壁" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【壁】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">牆壁・障礙・困難</p>
+			  <p class="txt-zh en">(英) paries・wall・roadblock・barrier・barrier</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">スイッチ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ス</span><span class="tone2">イ</span><span class="tone3">ッチ</span></span>
+				<span class="txt-ja toneNum"> <span>②</span> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="923" data-vt="JP" data-txt="スイッチ|スイッチ" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【switch】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">開關・轉換・切換・改變</p>
+			  <p class="txt-zh en">(英) switch</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ほんだな</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ほ</span><span class="tone3">んだな</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="924" data-vt="JP" data-txt="本棚|本棚" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【本棚】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">書架</p>
+			  <p class="txt-zh en">(英) bookshelf</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ベッド</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ベ</span><span class="tone3">ッド</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="925" data-vt="JP" data-txt="ベッド|ベッド" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【bed】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">床</p>
+			  <p class="txt-zh en">(英) bed</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ねこ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ね</span><span class="tone3">こ</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="926" data-vt="JP" data-txt="猫|猫" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【猫】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">猫</p>
+			  <p class="txt-zh en">(英) cat</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">いぬ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">い</span><span class="tone4">ぬ</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="927" data-vt="JP" data-txt="犬|犬" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【犬・狗】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞・接頭語》</span>
+
+              </p>
+              <p class="txt-zh zh">狗・走狗・奴才</p>
+			  <p class="txt-zh en">(英) dog</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">はこ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">は</span><span class="tone4">こ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="928" data-vt="JP" data-txt="箱|箱" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【箱・函・筥・匣・筐】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞・接尾語》</span>
+
+              </p>
+              <p class="txt-zh zh">箱子・盒子</p>
+			  <p class="txt-zh en">(英) box・case</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>用於接尾時，為計數單位(助數詞)幾箱、幾盒</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">めがね</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">め</span><span class="tone3">がね</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="929" data-vt="JP" data-txt="眼鏡|眼鏡" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【眼鏡】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">眼鏡・識別・判斷・估計</p>
+			  <p class="txt-zh en">(英) glasses・spectacles・judgment</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ビデオ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ビ</span><span class="tone3">デオ</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="930" data-vt="JP" data-txt="ビデオ|ビデオ" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【video】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">影像・錄像・視頻</p>
+			  <p class="txt-zh en">(英) video</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">サッカー</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">サ</span><span class="tone3">ッカー</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="931" data-vt="JP" data-txt="サッカー|サッカー" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【soccer】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">足球</p>
+			  <p class="txt-zh en">(英) soccer</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ビール</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ビ</span><span class="tone3">ール</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="932" data-vt="JP" data-txt="ビール|ビール" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【bier】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">啤酒</p>
+			  <p class="txt-zh en">(英) beer</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ウイスキー</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ウ</span><span class="tone2">イス</span><span class="tone3">キー</span></span>
+				<span class="txt-ja toneNum"> <span>③</span> <span>④</span> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="933" data-vt="JP" data-txt="ウイスキー|ウイスキー" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【whisky】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">威士忌酒</p>
+			  <p class="txt-zh en">(英) whisky</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">こども</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">こ</span><span class="tone4">ども</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="934" data-vt="JP" data-txt="子供|子供" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【子供】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">自己的孩子・小孩・兒童・幼稚・孩子氣</p>
+			  <p class="txt-zh en">(英) child・childish・childlike</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">きょうだい</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">きょ</span><span class="tone3">うだい</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="935" data-vt="JP" data-txt="兄弟|兄弟" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【兄弟】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">兄弟姐妹・哥兒們</p>
+			  <p class="txt-zh en">(英) brother・sister・brethren</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">りょうしん</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">りょ</span><span class="tone3">うしん</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="936" data-vt="JP" data-txt="両親|両親" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【両親】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">雙親・父母</p>
+			  <p class="txt-zh en">(英) parents・father and mother</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">いもうと</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">い</span><span class="tone4">もうと</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>④</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="937" data-vt="JP" data-txt="妹|妹" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【妹】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">妹妹・堂表妹・小姑・小姨・弟妺</p>
+			  <p class="txt-zh en"></p>
+
+			  <blockquote class="blockquote intro">
+			    <p>小姑是丈夫的妹妹<br>小姨是妻子的妹妹<br>弟妹是弟弟的老婆<br>反正只要是有親戚關係，年紀比你小的女生，都可以叫「いもうと」</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">おとこ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">お</span><span class="tone4">とこ</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>③</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="938" data-vt="JP" data-txt="男|男" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【男】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">男人・男性・雄性・男子漢・男朋友・情夫</p>
+			  <p class="txt-zh en">(英) man・male・manliness・lover</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">おんな</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">お</span><span class="tone4">んな</span><span class="tone2"></span></span>
+				<span class="txt-ja toneNum"> <span>③</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="939" data-vt="JP" data-txt="女|女" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【女】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">女子・女性・雌性・女人味・嬌氣・情婦</p>
+			  <p class="txt-zh en">(英) woman・female・ladylike・womanly・mistress</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">せいと</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">せ</span><span class="tone3">いと</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="940" data-vt="JP" data-txt="生徒|生徒" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【生徒】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">學生</p>
+			  <p class="txt-zh en">(英) student</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>在中文裡，只要是在學校唸書都通稱為學生，在日語中「生徒」與「学生」<br>雖然都有學生的意思，但還是有些差別的<br>「生徒(せいと)」是指國中及高中的學生，而「学生(がくせい)」是指高中畢業後繼續接受高等教育，如專門學校、大學、研究所等的學生。</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">うえ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">う</span><span class="tone4">え</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="941" data-vt="JP" data-txt="上|上" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【上】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞・接尾語》</span>
+
+              </p>
+              <p class="txt-zh zh">上面・表面・(地位、能力)高、好・(年紀)年長・加上・而且・在…上・在…方面・之後・經過</p>
+			  <p class="txt-zh en">(英) upper part・top・higher position・better・older・more・since…・now that…・seeing that…</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>用於接尾時，是稱呼長輩時附加的敬語，例：父上(ちちうえ)</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">そと</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">そ</span><span class="tone3">と</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="942" data-vt="JP" data-txt="外|外" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【外】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">外面・屋外・外部・表面</p>
+			  <p class="txt-zh en">(英) outside・exterior</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">なか</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">な</span><span class="tone3">か</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="943" data-vt="JP" data-txt="なか|なか" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【中】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">裡面・内部・中間・之中・當中・其中</p>
+			  <p class="txt-zh en">(英) inside・within・between</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">した</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">し</span><span class="tone4">た</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="944" data-vt="JP" data-txt="下|下" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【下】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">下面・底下</p>
+			  <p class="txt-zh en">(英) lower part・bottom</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>1.場所・位置 ⇒ 下；下面；底下<br>2.地位・身分 ⇒ 下面；下級；手下<br>3.程度 ⇒ 低；差<br>4.内側 ⇒ 裡面<br>5.年齡 ⇒ 年紀小<br></p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">まえ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">ま</span><span class="tone3">え</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="945" data-vt="JP" data-txt="まえ|前" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【前】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞・接尾語》</span>
+
+              </p>
+              <p class="txt-zh zh">前面・前方・面前・以前・之前・上次・事先</p>
+			  <p class="txt-zh en">(英) front・in the face of・forward・ago・before</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">うしろ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">う</span><span class="tone4">しろ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="946" data-vt="JP" data-txt="後ろ|後ろ" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【後ろ】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">後面・背影・背地裡</p>
+			  <p class="txt-zh en">(英) hind・rear・back</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ちかく</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ち</span><span class="tone2">か</span><span class="tone3">く</span></span>
+				<span class="txt-ja toneNum"> <span>②</span> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="947" data-vt="JP" data-txt="近く|近く" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【近く】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞・副詞》</span>
+
+              </p>
+              <p class="txt-zh zh">附近・旁邊・就近・不久・即將・接近・大概・大約・差不多</p>
+			  <p class="txt-zh en">(英) near・close to・shortly・nearly・almost</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ばしょ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ば</span><span class="tone4">しょ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="948" data-vt="JP" data-txt="場所|場所" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【場所】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">地點・地方・所在地・場合・場面・位置</p>
+			  <p class="txt-zh en">(英) location・place・spot・room</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">きょうしつ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">きょ</span><span class="tone4">うしつ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="949" data-vt="JP" data-txt="教室|教室" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【教室】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">教室・課堂</p>
+			  <p class="txt-zh en">(英) classroom・schoolroom</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">かいぎしつ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">か</span><span class="tone2">いぎ</span><span class="tone3">しつ</span></span>
+				<span class="txt-ja toneNum"> <span>③</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="950" data-vt="JP" data-txt="会議室|会議室" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【会議室】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">會議室</p>
+			  <p class="txt-zh en">(英) conference room・board room</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">としょしつ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">と</span><span class="tone2">しょ</span><span class="tone3">しつ</span></span>
+				<span class="txt-ja toneNum"> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="951" data-vt="JP" data-txt="図書室|図書室" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【図書室】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">圖書室</p>
+			  <p class="txt-zh en">(英) library</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">こうえん</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">こ</span><span class="tone4">うえん</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="952" data-vt="JP" data-txt="公園|公園" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【公園】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">公園</p>
+			  <p class="txt-zh en">(英) park</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">はなや</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">は</span><span class="tone2">な</span><span class="tone3">や</span></span>
+				<span class="txt-ja toneNum"> <span>②</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="953" data-vt="JP" data-txt="花屋|花屋" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【花屋】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">花店・花商</p>
+			  <p class="txt-zh en">(英) flower shop・florist</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ばいてん</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ば</span><span class="tone4">いてん</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="954" data-vt="JP" data-txt="売店|売店" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【売店】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">小賣店・售貨亭</p>
+			  <p class="txt-zh en">(英) stall・stand</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">えき</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">え</span><span class="tone3">き</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="955" data-vt="JP" data-txt="駅|駅" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【駅】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">車站</p>
+			  <p class="txt-zh en">(英) station</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ちかてつ</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ち</span><span class="tone4">かてつ</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="956" data-vt="JP" data-txt="地下鉄|地下鉄" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【地下鉄】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">地鐵</p>
+			  <p class="txt-zh en">(英) subway</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>地鐵是在城市內部運行的大客流量、主要以電力驅動的軌道交通，不是在地底下運行才叫地鐵，在台灣則稱為「捷運」。</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">き</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">き</span><span class="tone3"></span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="957" data-vt="JP" data-txt="木|木" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【木・樹】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">樹木・木材</p>
+			  <p class="txt-zh en">(英) tree・wood</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ひとりぐらし</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ひ</span><span class="tone2">とりぐ</span><span class="tone3">らし</span></span>
+				<span class="txt-ja toneNum"> <span>④</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="958" data-vt="JP" data-txt="一人暮らし|一人暮らし" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【一人暮らし・独り暮らし】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">單身生活・一個人過日子・獨居</p>
+			  <p class="txt-zh en">(英) single life・solitary life・living alone</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ある</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">あ</span><span class="tone3">る</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="959" data-vt="JP" data-txt="有る|有る" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【有る・在る】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《Ⅰ類動詞 [五段]》</span>
+
+              </p>
+              <p class="txt-zh zh">有・在・存在・持有</p>
+			  <p class="txt-zh en">(英) there is・be・exist</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">いる</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">い</span><span class="tone4">る</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="960" data-vt="JP" data-txt="居る|居る" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【居る】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《Ⅱ類動詞 [上一段]》</span>
+
+              </p>
+              <p class="txt-zh zh">(人、動物)有・在・存在・生活・居住・始終停留・保持・正在…</p>
+			  <p class="txt-zh en">(英) stay、stick、stick around、stay put、exist、be、be、live、abide、bide</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ええと</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">え</span><span class="tone4">えと</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="961" data-vt="JP" data-txt="ええと|ええと" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《感動詞》</span>
+
+              </p>
+              <p class="txt-zh zh">嗯…</p>
+			  <p class="txt-zh en">(英) Let me see・Well</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>在思考接下來要說的話時所發出的詞</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">よこはま</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">よ</span><span class="tone4">こはま</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="962" data-vt="JP" data-txt="横浜|横浜" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【横浜】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">橫濱</p>
+			  <p class="txt-zh en">(英) Yokohama</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>位於日本神奈川縣東部的港口都市</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">おおさか</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">お</span><span class="tone4">おさか</span></span>
+				<span class="txt-ja toneNum"> <span>⓪</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="963" data-vt="JP" data-txt="大阪|大阪" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【大阪・大坂】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">大阪</p>
+			  <p class="txt-zh en">(英) Osaka</p>
+
+              <div class="line"></div>
+            </div>
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">なごや</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone2">な</span><span class="tone3">ごや</span></span>
+				<span class="txt-ja toneNum"> <span>①</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="964" data-vt="JP" data-txt="名古屋|名古屋" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【名古屋】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">名古屋</p>
+			  <p class="txt-zh en">(英) Nagoya</p>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+
+            <div lang="ja" class="col-sm-12 divAutoPlay">
+              <p style="line-height:250%;">
+			    <span class="txt-ja txt-ls1 kana" style="display:none;">ジェーアール</span>
+				<span class="txt-ja txt-ls1 tone"><span class="tone1">ジ</span><span class="tone2">ェー</span><span class="tone3">アール</span></span>
+				<span class="txt-ja toneNum"> <span>③</span> </span>
+              	<a href="javascript:;" lang="" class="voiceWord ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="965" data-vt="JP" data-txt="ジェーアール|ジェーアール" style="font-size:1.3em;"><i class="fa fa-volume-up"></i></a>
+
+			    <span class="txt-ja txt-ls1 kanji">【JR】</span>
+
+				<br class="hidden-lg hidden-md hidden-sm">
+			    <span class="wordClass" style="">《名詞》</span>
+
+              </p>
+              <p class="txt-zh zh">JR(日本的鐵路)</p>
+			  <p class="txt-zh en">(英) Japan Railway</p>
+
+			  <blockquote class="blockquote intro">
+			    <p>JR是日本國有鐵道在1987年4月1日施行分割民營化後，所成立的7家鐵路公司之合稱；如果再加上相關法人機構，目前共有12家成員。中文社群有時會譯為日本旅客鐵道(然而JR中也有貨運鐵道公司)，或直譯為日本鐵道、日本鐵路公司。7家JR公司各自獨立經營，在股權上也沒有從屬關係，但因成立的源流相同，在強調其整體的場合，也會合稱為JR集團。</p>
+			  </blockquote>
+
+              <div class="line"></div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">相關類別</h4>
+        </div>
+        <div class="panel-body">
+	      <ul class="ulList">
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=8">新標準日本語(1)</a>
+            </li>
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=15">新標準日本語(2)</a>
+            </li>
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=16">新標準日本語(3)</a>
+            </li>
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=25">新標準日本語(5)</a>
+            </li>
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=26">新標準日本語(6)</a>
+            </li>
+
+            <li class="col-md-12 col-sm-4 col-xs-12">
+              <a href="wordStockDetail.html?sn=29">新標準日本語(7)</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div id="panelNews" class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">YouTube相關教學</h4>
+        </div>
+        <div class="panel-body">
+	      <ul id="ulYouTube">
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=1rd7ywh7xBI" target="_blank"><img src="https://i.ytimg.com/vi/1rd7ywh7xBI/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=1rd7ywh7xBI" target="_blank">新标日 - 初级 第4课 部屋に机といすがあります</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=9aT3ed97gfs" target="_blank"><img src="https://i.ytimg.com/vi/9aT3ed97gfs/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=9aT3ed97gfs" target="_blank">【日语学习】用动漫学新标日单词：第四课</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=AqRnmvFsS8o" target="_blank"><img src="https://i.ytimg.com/vi/AqRnmvFsS8o/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=AqRnmvFsS8o" target="_blank">4、新標日初級課程 第四課:房間裡有桌椅（存在句）</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=eY5GgpxKL6w" target="_blank"><img src="https://i.ytimg.com/vi/eY5GgpxKL6w/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=eY5GgpxKL6w" target="_blank">【日语学习】跟动漫学新标日单词：第五课</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=COQq4Zt5_PY" target="_blank"><img src="https://i.ytimg.com/vi/COQq4Zt5_PY/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=COQq4Zt5_PY" target="_blank">新标日初级上册 第4课</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=oZr-K-5JdNw" target="_blank"><img src="https://i.ytimg.com/vi/oZr-K-5JdNw/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=oZr-K-5JdNw" target="_blank">新标日 - 初级 第5课 森さんは７時に起きます</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=zTfEJFM0bzs" target="_blank"><img src="https://i.ytimg.com/vi/zTfEJFM0bzs/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=zTfEJFM0bzs" target="_blank">【學日語】入門I 第4課之0 「單字」</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=xKrGYzYnzMo" target="_blank"><img src="https://i.ytimg.com/vi/xKrGYzYnzMo/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=xKrGYzYnzMo" target="_blank">新标日 - 初级 第6课 吉田さんは来月中国へ行きます</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=oKiq1IT5RpE" target="_blank"><img src="https://i.ytimg.com/vi/oKiq1IT5RpE/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=oKiq1IT5RpE" target="_blank">新标日 - 初级 第40课 これから友達と食事に行くところです</a>
+              </p>
+            </li>
+
+            <li class="news-item col-md-12 col-sm-4 col-xs-12">
+              <p class="clearfix" style="margin:5px 0;">
+                <a href="https://www.youtube.com/watch?v=HG3KFwdxrCk" target="_blank"><img src="https://i.ytimg.com/vi/HG3KFwdxrCk/default.jpg" class="img-rounded img-responsive" style="float:left;margin-right:4px;"></a>
+                <a href="https://www.youtube.com/watch?v=HG3KFwdxrCk" target="_blank">新标日 - 初级 第7课 李さんは毎日コーヒーを飲みます</a>
+              </p>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="side-nav">
+  <div class="side-navi-item"><div><a href="javascript:;" class="btnOpenFuncNav">功<br>能<br>設<br>定</a></div></div>
+  <div class="side-navi-item"><div><a href="javascript:;" onclick="openVoiceNav()">語<br>音<br>設<br>定</a></div></div>
+</div>
+<div id="divFuncSet" class="side-nav-content ps ps--theme_default ps--active-y" data-ps-id="21f1f092-2d73-078a-e915-dacd37ab74b3">
+  <a href="javascript:;" class="btnCloseFuncNav closebtn" onclick="closeFuncNav()">×</a>
+  <div style="padding:0 15px;">
+    <form id="formFuncSet">
+      <div class="form-group">
+        <label>顯示：</label>
+        <div>
+          <label class="checkbox-inline">
+            <span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="tone" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 音調</span>&nbsp;
+			<span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="kanji" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 漢字</span>&nbsp;
+            <span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="sentences" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 例句</span>&nbsp;
+			<span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="wordClass" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 品詞(詞類)</span>&nbsp;
+            <span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="zh" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 中譯</span>
+			<span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="en" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 英譯</span>
+			<span style="display:inline-block;padding:2px;"><div class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" name="intro" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 說明</span>
+          </label>
+        </div>
+      </div>
+	  <p class="line" style="margin-top:8px;"></p>
+      <div class="form-group">
+        <label>重複播放：</label>
+        <div>
+          <div class="radio">
+            <label>
+              <div class="iradio_flat-blue checked" style="position: relative;"><input type="radio" name="hasRepeat" value="1" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 是&nbsp;&nbsp;
+              <div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="hasRepeat" value="0" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 否
+            </label>
+          </div>
+        </div>
+      </div>
+      <p class="line" style="margin-top:8px;"></p>
+      <div class="form-group">
+        <label>重複播放間隔秒數：</label>
+        <div>
+          <input type="text" name="Interval" class="form-control" value="8" maxlength="3">
+        </div>
+		<p class="help-block">請輸入半形數字1-999</p>
+		<p class="help-block">輸入1為代表間隔100毫秒也就是0.1秒</p>
+		<p class="help-block">輸入10為代表間隔1秒，類推</p>
+      </div>
+      <p class="line" style="margin-top:8px;"></p>
+      <div class="form-group">
+        <label>字體：</label>
+        <div>
+          <label class="checkbox-inline">
+            <span style="display:inline-block;padding:2px;"><div class="iradio_flat-blue checked" style="position: relative;"><input type="radio" name="font" value="" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 印刷體(<span lang="ja">あいうえお</span>)</span>
+            <span style="display:inline-block;padding:2px;"><div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="font" value="jpfont1" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 手寫體(<span lang="ja" class="jpfont1">あいうえお</span>)</span>
+            <span style="display:inline-block;padding:2px;"><div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="font" value="jpfont2" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 手寫體(<span lang="ja" class="jpfont2">あいうえお</span>)</span>
+            <span style="display:inline-block;padding:2px;"><div class="iradio_flat-blue" style="position: relative;"><input type="radio" name="font" value="jpfont6" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> 手寫體(<span lang="ja" class="jpfont6">あいうえお</span>)</span>
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <a href="javascript:;" class="btnCloseFuncNav" style="font-size:36px;margin-top:-30px;">×</a>
+<div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 610px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 108px;"></div></div></div>
+<div id="modalAutoPlay" tabindex="-1" class="modal fade ui-draggable" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header modal-header-primary ui-draggable-handle">
+	    <button class="close" type="button" data-dismiss="modal" style="margin-top:6px;">×</button>
+	    <h3 class="modal-title">自動播放</h3>
+      </div>
+      <div class="modal-body">
+      	<div lang="ja" class="kana" style="display: none;"></div>
+		<div lang="ja" class="tone"></div>
+    	<div lang="ja" class="kanji"></div>
+		<div lang="ja" class="txt-ja furigana"></div>
+		<div lang="ja" class="txt-zh zh"></div>
+		<div lang="ja" class="txt-en en"></div>
+      </div>
+      <div class="modal-footer">
+	    <div class="text-center">
+		  <div class="txt-num" style="margin-bottom:10px;"><span id="curAutoNum">1</span> / <span id="totAuto">1</span></div>
+		  <button type="button" id="btnAutoBackward" class="btn btn-default btn-sm"><i class="fa fa-backward" aria-hidden="true"></i></button>
+          <button type="button" id="btnAutoPause" class="btn btn-default btn-sm"><i class="fa fa-pause" aria-hidden="true"></i></button>
+		  <button type="button" id="btnAutoForward" class="btn btn-default btn-sm"><i class="fa fa-forward" aria-hidden="true"></i></button>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="divStopSound" class="floatmenu" style="display:none;">
+  <a href="javascript:;" id="btnStopSound" class="btn btn-info btn-sm" style="border-radius:0 3px 3px 0;"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span><br><span>停<br>止</span></a>
+</div>
+<link href="../css-new/side-voice.css?v=6" rel="stylesheet">
+<script type="text/javascript" src="../jquery-new/soundmanager/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript" src="js-new/side-voice.js?v=20170922"></script>
+<div id="divVoiceSet" class="side-nav-content ps ps--theme_default ps--active-y" data-ps-id="abbd2468-75a8-df91-b405-beee0674d0d8">
+  <a href="javascript:;" class="closebtn" onclick="closeVoiceNav()">×</a>
+  <div class="input-group" style="padding:0 15px;">
+    <div class="input-group-addon">速度</div>
+    <select id="VoiceSpeed" name="VoiceSpeed" class="form-control">
+      <option value="SLOWEST">最慢(SLOWEST)</option>
+      <option value="SLOW">慢(SLOW)</option>
+      <option value="NORMAL" selected="">正常(NORMAL)</option>
+      <option value="FAST">快(FAST)</option>
+      <option value="FASTEST">最快(FASTEST)</option>
+    </select>
+  </div>
+  <div class="btn-toolbar" role="toolbar" style="padding:0 15px;margin-top:6px;">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-sm" onclick="doVoiceSelectAll()">全選</button>
+      <button type="button" class="btn btn-primary btn-sm" onclick="doVoiceUnSelectAll()">全不選</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-primary btn-sm" onclick="doVoiceSelectFemale()">女聲</button>
+      <button type="button" class="btn btn-primary btn-sm" onclick="doVoiceSelectMale()">男聲</button>
+    </div>
+  </div>
+
+  <div id="divVoiceList">
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP501" data-gender="F" src="../images/voice/nozomi.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">のぞみ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP501" data-txt="のぞみ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP503" data-gender="F" src="../images/voice/akari.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">あかり</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP503" data-txt="あかり" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP506" data-gender="F" src="../images/voice/kaho.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">かほ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP506" data-txt="かほ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP508" data-gender="F" src="../images/voice/maki.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">まき</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP508" data-txt="まき" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP509" data-gender="F" src="../images/voice/nanako.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">ななこ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP509" data-txt="ななこ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP511" data-gender="F" src="../images/voice/sumire.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">すみれ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP511" data-txt="すみれ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP504" data-gender="F" src="../images/voice/anzu.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">あんず</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP504" data-txt="あんず" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP502" data-gender="M" src="../images/voice/seiji.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">せいじ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP502" data-txt="せいじ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP505" data-gender="M" src="../images/voice/hiroshi.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">ひろし</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP505" data-txt="ひろし" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP510" data-gender="M" src="../images/voice/osamu.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">おさむ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP510" data-txt="おさむ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP507" data-gender="M" src="../images/voice/koutarou.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">はやと</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP507" data-txt="はやと" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP403" data-gender="F" src="../images/voice/hikari.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">ひかり</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP403" data-txt="ひかり" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP402" data-gender="F" src="../images/voice/haruka.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">はるか</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP402" data-txt="はるか" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP401" data-gender="M" src="../images/voice/show.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">かずや</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP401" data-txt="かずや" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP404" data-gender="M" src="../images/voice/takeru.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">たける</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP404" data-txt="たける" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP405" data-gender="M" src="../images/voice/santa.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">サンタ</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP405" data-txt="サンタ" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+    <div>
+	  <img style="" data-vt="JP" data-vid="JP406" data-gender="M" src="../images/voice/bear.jpg">
+	  <div class="div-voice">
+	    <span lang="ja" class="txt-voice-name">くま</span>
+	    <a href="javascript:;" class="voice-sample ladda-button" data-vt="JP" data-vid="JP406" data-txt="くま" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract"><i class="fa fa-volume-up"></i></a>
+	  </div>
+    </div>
+
+  </div>
+<div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 610px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 162px;"></div></div></div><link href="../css-new/side-nav.css" rel="stylesheet">
+<script src="js-new/side-nav.js"></script>
+<div id="wrapper">
+  <div class="overlay"></div>
+  <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+  </button>
+  <div id="sidebar-wrapper" class="navbar navbar-inverse navbar-fixed-top ps ps--theme_default" role="navigation" data-ps-id="0a49e87b-9481-4e1d-86c1-9c6e6d047ced">
+    <div class="sidebar">
+      <div class="title"></div>
+      <ul class="nav">
+
+        <li><a href="#" class="">日語教學</a>
+          <ul>
+            <li><a href="teachLetterTable.html">認識假名</a></li>
+            <li><a href="teachLetterWrite.html">假名筆順</a></li>
+            <li><a href="teachKanji.html">漢字</a></li>
+            <li><a href="teachKanjiComparison.html">中日漢字對照表</a></li>
+            <!--<li><a href="teachSymbolic.html">擬聲擬態詞</a></li>-->
+          </ul>
+        </li>
+
+        <li><a href="#" class="active">庫詞</a>
+          <ul style="display: block;">
+            <li><a href="wordStockList.html">庫詞列表</a></li>
+          </ul>
+        </li>
+
+<!--
+        <li><a href="#" class="">大家的日本語</a>
+          <ul>
+            <li><a href="minnanoChapter-1.html">初級Ⅰ</a></li>
+            <li><a href="minnanoChapter-2.html">初級Ⅱ</a></li>
+            <li><a href="minnanoChapter-3.html">進階Ⅰ</a></li>
+            <li><a href="minnanoChapter-4.html">進階Ⅱ</a></li>
+            <li><a href="minnanoWordIndex.html">單詞索引</a></li>
+          </ul>
+        </li>
+-->
+
+        <li><a href="#" class="">常用日語</a>
+          <ul>
+
+            <li><a href="pictureBook-1.html">野菜</a></li>
+
+            <li><a href="pictureBook-2.html">果物</a></li>
+
+            <li><a href="pictureBook-3.html">陸上動物</a></li>
+
+            <li><a href="pictureBook-4.html">水生動物</a></li>
+
+            <li><a href="pictureBook-5.html">飛行動物</a></li>
+
+            <li><a href="pictureBook-6.html">昆蟲</a></li>
+
+            <li><a href="pictureBook-7.html">乗物</a></li>
+
+            <li><a href="pictureBook-8.html">調味料</a></li>
+
+            <li><a href="pictureBook-9.html">事務用品</a></li>
+
+            <li><a href="pictureBook-10.html">電器</a></li>
+
+          </ul>
+        </li>
+
+        <li><a href="#" class="">線上練習</a>
+          <ul>
+            <li><a href="exeKanaInput.html" target="_blank">假名輸入</a></li>
+      	    <li><a href="exeKana.html" target="_blank">假名聽力</a></li>
+      	    <!--<li><a href="exeKanaSpeak.html" target="_blank">假名發音</a></li>-->
+            <li><a href="exeLesson.html">日本語聽力</a></li>
+      	    <li><a href="exeLessonSpeak.html" target="_blank">日本語發音</a></li>
+      	    <li><a href="exeVerbGroup.html" target="_blank">動詞分類</a></li>
+      	    <li><a href="exeNumber.html" target="_blank">數字聽力</a></li>
+      	    <li><a href="exeNumberSpeak.html" target="_blank">數字發音</a></li>
+            <li><a href="exeWeek.html" target="_blank">星期聽力</a></li>
+            <li><a href="exeWeekSpeak.html" target="_blank">星期發音</a></li>
+            <li><a href="exeQuantity.html" target="_blank">量詞聽力</a></li>
+            <li><a href="exeQuantitySpeak.html" target="_blank">量詞發音</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" class="">唱歌學日語</a>
+          <ul>
+            <li><a href="JPSongList.asp">歌曲列表</a></li>
+            <li><a href="JPSongPlayHistory.asp">播放記錄</a></li>
+            <li><a href="JPSongPlayList.asp">播放清單</a></li>
+            <li><a href="JPSongFavorites.asp">我的最愛</a></li>
+            <li><a href="JPSongYouTubeAdd.asp" target="_blank">新增 YouTube 歌曲</a></li>
+
+            <li><a href="JPSongCertify.asp" target="_blank">歌曲版權說明</a></li>
+          </ul>
+        </li>
+
+<!--
+        <li><a href="#" class="">カラオケ(Beta)</a>
+          <ul>
+            <li><a href="JPKaraokeList.asp">歌曲列表</a></li>
+            <li><a href="JPKaraokeSongList.asp">發佈的單曲</a></li>
+            <li><a href="JPKaraokeMySongList.asp">我的單曲</a></li>
+            <li><a href="JPKaraokeOrder.asp">點歌單</a></li>
+          </ul>
+        </li>
+-->
+
+        <li><a href="#" class="">工具</a>
+          <ul>
+            <li><a href="toolKanjiFurigana.html" target="_blank">漢字標註假名</a></li>
+            <li><a href="toolJPAnalysis.html" target="_blank">日文分詞</a></li>
+            <li><a href="toolJPDic.html" target="_blank">日文辭書索引</a></li>
+            <li><a href="toolZHConvert.html" target="_blank">中文繁簡體轉換</a></li>
+            <li><a href="toolChinesePinyin.html" lang="ja" target="_blank">拼音(注音)変換</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+</div>
+<footer class="footer-distributed">
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.startgif', '1,2448634,4,10045,"div#histatsC {position: absolute;top:0px;left:0px;}body>div#histatsC {position: fixed;}"']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+//hs.src = ('//s10.histats.com/js15_gif_as.js');
+hs.src = ('../js15_gif_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<div class="footer-right">
+  <a href="http://www.facebook.com/share.php?u=https%3A%2F%2Fwww%2Ejpmarumaru%2Ecom" title="分享到臉書" target="_blank"><i class="fa fa-facebook"></i></a>
+  <a href="https://plus.google.com/share?url=https%3A%2F%2Fwww%2Ejpmarumaru%2Ecom" title="分享到Google+" target="_blank"><i class="fa fa-google-plus"></i></a>
+  <a href="http://twitter.com/home/?status=https%3A%2F%2Fwww%2Ejpmarumaru%2Ecom" title="分享到推特" target="_blank"><i class="fa fa-twitter"></i></a>
+</div>
+<div class="footer-left">
+  <p class="footer-links">
+    </p><div id="histats_counter" style="display:inline-block;margin-right:10px;">
+      <noscript>
+	    <a href="/" alt="best counter" target="_blank" ><div id="histatsC"><img border="0" src="https://s4is.histats.com/stats/i/2448634.gif?2448634&103"></div></a>
+      </noscript>
+	<div id="histats_counter_5044" style="display: block;"><div id="histatsC"><a target="_blank" href="http://www.histats.com/viewstats/?SID=2448634&amp;f=2"><img border="0" src="https://s4i.histats.com/stats/i/2448634.gif?2448634&amp;@f16&amp;@g0&amp;@h26&amp;@i3&amp;@j1563685042981&amp;@k4360&amp;@l57&amp;@m%E6%96%B0%E6%A8%99%E6%BA%96%E6%97%A5%E6%9C%AC%E8%AA%9E(4)-%E8%A9%9E%E5%BA%AB-%E6%97%A5%E8%AA%9E%E6%95%99%E5%AD%B8-MARUMARU&amp;@n0&amp;@ohttps%3A%2F%2Fwww.google.com%2F&amp;@q0&amp;@r0&amp;@s10045&amp;@ten-US&amp;@u1280&amp;@vhttps%3A%2F%2Fwww.jpmarumaru.com%2Ftw%2FwordStockDetail.html%3Fsn%3D19&amp;@w"></a></div></div></div>
+    <a href="index.asp">首頁</a>．<a href="contact.html">與我聯絡</a>
+  <p></p>
+  <p>語音合成由 <!-- Credit of docomo Developer support API --><a href="https://dev.smt.docomo.ne.jp" target="blank">Powered by docomo Developer support</a><!-- Credit of docomo Developer support API --> 技術提供</p>
+  <p>JP MARUMARU © 2016</p>
+</div>
+<a id="backTop" class="white" style="right: 10px; bottom: 10px; position: fixed;">Back To Top</a>
+</footer>
+
+
+</body></html>
