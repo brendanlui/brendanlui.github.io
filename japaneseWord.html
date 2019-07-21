@@ -116,17 +116,17 @@
 
 
 	<div id="buttonBox">
-		<button id="btnFilterNumber" class="buttonJp btnFilter active" onclick="loadDoc('number')">Number</button>
-		<button id="btnFilterTraditionalQty" class="buttonJp btnFilter" onclick="loadDoc('traditionalQty')">Traditional Quantity</button>
-		<button id="btnFilterWeek" class="buttonJp btnFilter" onclick="loadDoc('week')">Week</button>
-		<button id="btnFilterTiming" class="buttonJp btnFilter" onclick="loadDoc('timing')">Timing</button>
-		<button id="btnFilterTime" class="buttonJp btnFilter" onclick="loadDoc('time')">Time</button>
-		<button id="btnFilterMonth" class="buttonJp btnFilter" onclick="loadDoc('month')">Month</button>
-		<button id="btnFilterDay" class="buttonJp btnFilter" onclick="loadDoc('day')">Day</button>
-		<button id="btnFilterPplNum" class="buttonJp btnFilter" onclick="loadDoc('pplNum')">People Count</button>
-		<button id="btnFilterDirection" class="buttonJp btnFilter" onclick="loadDoc('direction')">Direction</button>
-		<button id="btnFilterSeasonWeather" class="buttonJp btnFilter" onclick="loadDoc('seasonWeather')">Season & Weather</button>
-		<button id="btnFilterNewStandard1" class="buttonJp btnFilter" onclick="loadDoc('newStandard1')">New Standard 1</button>
+		<button id="btnFilterNumber" class="buttonJp btnFilter active" onclick="loadDoc('Number')">Number</button>
+		<button id="btnFilterTraditionalQty" class="buttonJp btnFilter" onclick="loadDoc('TraditionalQty')">Traditional Quantity</button>
+		<button id="btnFilterWeek" class="buttonJp btnFilter" onclick="loadDoc('Week')">Week</button>
+		<button id="btnFilterTiming" class="buttonJp btnFilter" onclick="loadDoc('Timing')">Timing</button>
+		<button id="btnFilterTime" class="buttonJp btnFilter" onclick="loadDoc('Time')">Time</button>
+		<button id="btnFilterMonth" class="buttonJp btnFilter" onclick="loadDoc('Month')">Month</button>
+		<button id="btnFilterDay" class="buttonJp btnFilter" onclick="loadDoc('Day')">Day</button>
+		<button id="btnFilterPplNum" class="buttonJp btnFilter" onclick="loadDoc('PpplNum')">People Count</button>
+		<button id="btnFilterDirection" class="buttonJp btnFilter" onclick="loadDoc('Direction')">Direction</button>
+		<button id="btnFilterSeasonWeather" class="buttonJp btnFilter" onclick="loadDoc('SeasonWeather')">Season & Weather</button>
+		<button id="btnFilterNewStandard1" class="buttonJp btnFilter" onclick="loadDoc('NewStandard1')">New Standard 1</button>
 	</div>
 
 	<p class="showText" style="font-size:10vw;" id="textJapan"></p>
@@ -142,81 +142,86 @@
 	<h4 style="text-align: center;" id="result"></h4>
 
 	<script>
-	function loadDoc(type)
-	{
-			document.getElementById("textJapan").innerHTML = '';
-			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function(){
-			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-			    	var txt = xmlhttp.responseText;
+		function loadDoc(type)
+		{
+				document.getElementById("textJapan").innerHTML = '';
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+				    	var txt = xmlhttp.responseText;
 
-						var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-					  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						arr.shift();
-						arrJp.shift();
-						arrZh.shift();
-						arrEn.shift();
+							var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+						  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							arr.shift();
+							arrJp.shift();
+							arrZh.shift();
+							arrEn.shift();
 
-						for(i = 0; i < arr.length; i++){
-							arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
+							for(i = 0; i < arr.length; i++){
+								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 
-							var zhText = arr[i].split('<p class="txt-zh zh">');
-							if(zhText.length == 2){
-								arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>'));
-							}else{
-								arrZh[i] = '';
+								var zhText = arr[i].split('<p class="txt-zh zh">');
+								if(zhText.length == 2){
+									arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>'));
+								}else{
+									arrZh[i] = '';
+								}
+
+								var enText = arr[i].split('<p class="txt-zh en">');
+								if(enText.length == 2){
+									arrEn[i] = enText[1].substr(0, enText[1].indexOf('</p>')).replace('(英) ','');
+								}else{
+									arrEn[i] = '';
+								}
+
+								// document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
 							}
 
-							var enText = arr[i].split('<p class="txt-zh en">');
-							if(enText.length == 2){
-								arrEn[i] = enText[1].substr(0, enText[1].indexOf('</p>')).replace('(英) ','');
-							}else{
-								arrEn[i] = '';
-							}
-
-							// document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
-						}
-
-			  }
-			};
-			xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
-			xmlhttp.send();
-	}
+				  }
+				};
+				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
+				xmlhttp.send();
+		}
 
 		var jpFull = arrJp;
 		var jpChar = arrEn;
 		var total = jpFull.length;
-		var full;
 		var index = parseInt(Math.random() * (total - 1) + 1, 10);
 		var showText = "";
 		var correct = 0;
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
-		var filtered = false;
-		var filterHira = false;
 
 		function filterSelection(text){
-			var element = document.getElementById("btnFilterHiragana");
+			var element = document.getElementById("btnFilterNumber");
 			element.classList.remove("active");
-			element = document.getElementById("btnFilterKatakana");
+			element = document.getElementById("btnFilterTraditionalQty");
 			element.classList.remove("active");
-			element = document.getElementById("btnFilterAll");
+			element = document.getElementById("btnFilterWeek");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterTiming");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterTime");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterMonth");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterDay");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterPplNum");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterDirection");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterSeasonWeather");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterNewStandard1");
 			element.classList.remove("active");
 
 			element = document.getElementById("btnFilter" + text);
 			element.classList.add("active");
-			if("Hiragana" == text){
-				filtered = true;
-				filterHira = true;
-			}else if("Katakana" == text){
-				filtered = true;
-				filterHira = false;
-			}else if("All" == text){
-				filtered = false;
-			}
+			loadDoc(text);
 		}
 
 		function restart(){
@@ -231,16 +236,6 @@
 		function genShowJpText(){
 			var output = document.getElementById("myRange");
 			total = output.value;
-
-			if(!filtered){
-				if(Math.random() > 0.5){
-					full = true;
-				}else{
-					full = false;
-				}
-			}else{
-				full = filterHira;
-			}
 			index = parseInt(Math.random() * (total - 0) + 0, 10);
 			showText = jpFull[index];
 			document.getElementById("textJapan").innerHTML = showText;
