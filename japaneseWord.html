@@ -143,9 +143,9 @@
 
 	<script>
 
-		var arrJp;
-		var arrEn;
-		var total;
+		var arrJp = {};
+		var arrEn = {};
+		var total = 0;
 		var filterSelected = "Number";
 
 		var index = parseInt(Math.random() * (total - 1) + 1, 10);
@@ -238,8 +238,7 @@
 		}
 
 		function genShowJpText(){
-			console.log(arrJp.length);
-			index = parseInt(Math.random() * (arrJp.length - 0) + 0, 10);
+			index = parseInt(Math.random() * (total - 0) + 0, 10);
 			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
 		}
