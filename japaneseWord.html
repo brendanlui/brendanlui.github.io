@@ -157,7 +157,6 @@
 
 		function loadDoc(type)
 		{
-				document.getElementById("textJapan").innerHTML = '';
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
@@ -188,7 +187,7 @@
 								}else{
 									arrEn[i] = '';
 								}
-								
+
 								arrEn[i] = arrZh[i].replace('・', ' / ') + '</br>' + arrEn[i].replace('・', ' / ');
 							}
 
