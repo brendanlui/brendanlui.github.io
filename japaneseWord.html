@@ -146,6 +146,7 @@
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
 
+							console.log(arrJp);
 							total = arr.length;
 				  }
 				};
@@ -154,31 +155,7 @@
 		}
 
 		function filterSelection(text){
-			var element = document.getElementById("btnFilterNumber");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterTraditionalQty");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterWeek");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterTiming");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterTime");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterMonth");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterDay");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterPplNum");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterDirection");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterSeasonWeather");
-			element.classList.remove("active");
-			element = document.getElementById("btnFilterNewStandard1");
-			element.classList.remove("active");
-
-			element = document.getElementById("btnFilter" + text);
-			element.classList.add("active");
+			var element = document.getElementById("btnFilter" + text);
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
@@ -186,7 +163,6 @@
 		}
 
 		function restart(){
-			console.log(filterSelected);
 			filterSelection(filterSelected);
 			genShowJpText();
 			genMC();
@@ -198,6 +174,7 @@
 
 		function genShowJpText(){
 			index = parseInt(Math.random() * (total - 0) + 0, 10);
+			console.log(arrJp);
 			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
 		}
