@@ -92,7 +92,7 @@
 	</style>
 </head>
 
-<title>Dadiu | Gojūon</title>
+<title>Dadiu | 日語50音</title>
 
 <body onload="restart();">
 	<div id="head">
@@ -108,12 +108,12 @@
 	  <a href="/">Home</a>
 	</div>
 	<div id="buttonBox">
-	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">All</button>
-	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">Hiragana</button>
-	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">Katakana</button>
+	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">所有</button>
+	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">平假名</button>
+	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">片假名</button>
 	</div>
 	<div class="slidecontainer">
-		<b>Word(s) : <span id="demo"></span></b>
+		<b>數目 : <span id="demo"></span></b>
 	  <input type="range" min="1" max="46" value="46" class="slider" id="myRange">
 	</div>
 
@@ -302,7 +302,7 @@
 			<button id="mc2" class="buttonJp" type="button" onclick="showResult(2)"></button>
 			<button id="mc3" class="buttonJp" type="button" onclick="showResult(3)"></button>
 	</div>
-	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">Next</button></p>
+	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">下一個</button></p>
 	<h4 style="text-align: center;" id="result"></h4>
 
 	<ul id="foot">
