@@ -238,7 +238,8 @@
 		}
 
 		function genShowJpText(){
-			index = parseInt(Math.random() * (total - 0) + 0, 10);
+			console.log(arrJp.length);
+			index = parseInt(Math.random() * (arrJp.length - 0) + 0, 10);
 			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
 		}
