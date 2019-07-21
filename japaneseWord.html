@@ -82,7 +82,7 @@
 
 	<div id="buttonBox">
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
-		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWay()">-></button>
+		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()"><-></button>
 	</div>
 
 	<p class="showText" style="font-size:8vw;" id="textJapan"></p>
@@ -103,6 +103,7 @@
 		var arrEn = {};
 		var total = 0;
 		var filterSelected = "Number";
+		var changeWay = 0;
 
 		var index = parseInt(Math.random() * (total - 1) + 1, 10);
 		var showText = "";
@@ -111,17 +112,28 @@
 		var mc = {};
 		var answered = true;
 
-		function changeWay(){
-			var arrTemp = {};
-			for(i = 0; i < arrJp.length; i++){
-				arrTemp[i] = arrJp[i];
+		function changeWayUI(){
+			var btn = document.getElementById("btnTraslateWay");
+			if(changeWay == 0){
+				changeWay = 1;
+				btn.className += " active";
+			}else{
+				changeWay = 0
+				btn.className = btn.className.replace(" active", "");
 			}
-			for(i = 0; i < arrJp.length; i++){
-				arrJp[i] = arrEn[i];
-			}
-			for(i = 0; i < arrJp.length; i++){
-				arrEn[i] = arrTemp[i];
-			}
+		}
+
+		function changeWay)(){
+				var arrTemp = {};
+				for(i = 0; i < arrJp.length; i++){
+					arrTemp[i] = arrJp[i];
+				}
+				for(i = 0; i < arrJp.length; i++){
+					arrJp[i] = arrEn[i];
+				}
+				for(i = 0; i < arrJp.length; i++){
+					arrEn[i] = arrTemp[i];
+				}
 		}
 
 		function loadDoc(type)
@@ -159,7 +171,9 @@
 
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
-							changeWay();
+							if(changeWay){
+								changeWay();
+							}
 							total = arr.length;
 							genShowJpText();
 							genMC();
