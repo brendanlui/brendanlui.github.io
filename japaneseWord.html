@@ -57,28 +57,40 @@
 			    	txt = xmlhttp.responseText;
 
 						var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						var value = '';
+					  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+						var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+						var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+						var arrWordClass = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 
-					  var arrJp = arr;
 						for(i = 0; i < arr.length; i++){
-							value = arr[i].substr(0, arrJp[i].indexOf('</span>'));
-							arrJp[i] = value;
-						}
+							arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 
-						var arrZh = arr;
-						for(i = 0; i < arr.length; i++){
-							var tempArr = arr[i].split('<p class="txt-zh zh">');
-							if(tempArr.length == 2){
-								value = tempArr.substr(0, tempArr[1].indexOf('</p>'));
+							var zhText = arr[i].split('<p class="txt-zh zh">');
+							if(zhText.length == 2){
+								arrZh[i] = zhText.substr(0, zhText[1].indexOf('</p>'));
 							}else{
-								value = '';
+								arrZh[i] = '';
 							}
-							arrZh[i] = value;
+
+							var enText = arr[i].split('<p class="txt-zh en">');
+							if(enText.length == 2){
+								arrEn[i] = enText.substr(0, enText[1].indexOf('</p>')).replace('(英) ','');
+							}else{
+								arrEn[i] = '';
+							}
+
+							var wordClassText = arr[i].split('<span class="wordClass" style="">');
+							if(wordClassText.length == 2){
+								arrWordClass[i] = wordClassText.substr(0, wordClassText[1].indexOf('</p>')).replace('《','').replace('》','');
+							}else{
+								arrWordClass[i] = '';
+							}
 						}
-
-
+						
 					  document.getElementById("demo1").innerHTML = arrJp;
 						document.getElementById("demo2").innerHTML = arrZh;
+						document.getElementById("demo3").innerHTML = arrEn;
+						document.getElementById("demo4").innerHTML = arrWordClass;
 
 			  }
 			};
