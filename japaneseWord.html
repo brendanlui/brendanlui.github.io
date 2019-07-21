@@ -146,6 +146,14 @@
 		var arrJp;
 		var arrEn;
 		var total;
+		var filterSelected = "Number";
+
+		var index = parseInt(Math.random() * (total - 1) + 1, 10);
+		var showText = "";
+		var correct = 0;
+		var ttlAns = 0;
+		var mc = {};
+		var answered = true;
 
 		function loadDoc(type)
 		{
@@ -180,22 +188,14 @@
 								}else{
 									arrEn[i] = '';
 								}
-
-								// document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
 							}
+
 							total = arr.length;
 				  }
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 				xmlhttp.send();
 		}
-
-		var index = parseInt(Math.random() * (total - 1) + 1, 10);
-		var showText = "";
-		var correct = 0;
-		var ttlAns = 0;
-		var mc = {};
-		var answered = true;
 
 		function filterSelection(text){
 			var element = document.getElementById("btnFilterNumber");
@@ -223,10 +223,12 @@
 
 			element = document.getElementById("btnFilter" + text);
 			element.classList.add("active");
+			filterSelected = text;
 			loadDoc(text);
 		}
 
 		function restart(){
+			filterSelection(filterSelected);
 			genShowJpText();
 			genMC();
 			answered = false;
