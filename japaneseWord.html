@@ -145,6 +145,7 @@
 
 		var jpFull;
 		var jpChar;
+		var total;
 
 		function loadDoc(type)
 		{
@@ -186,12 +187,12 @@
 				  }
 					jpFull = arrJp;
 					jpChar = arrEn;
+					total = jpFull.length;
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 				xmlhttp.send();
 		}
 
-		var total = jpFull.length;
 		var index = parseInt(Math.random() * (total - 1) + 1, 10);
 		var showText = "";
 		var correct = 0;
