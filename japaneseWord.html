@@ -71,7 +71,6 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
-	  <a href="#toppest" onclick="openNav()">過濾</a>
 	</div>
 
 
@@ -183,8 +182,6 @@
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
-
-			document.getElementById("btnFilterShow").innerHTML =  element.innerHTML;
 		}
 
 		function restart(){
@@ -308,6 +305,7 @@
 	function closeNav() {
 	    document.getElementById("mySidenav").style.width = "0";
 	    document.body.style.backgroundColor = "white";
+			document.getElementById("btnFilterShow").innerHTML =  '過濾 (' + element.innerHTML + ')';
 	}
 	</script>
 
