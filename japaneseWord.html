@@ -122,8 +122,6 @@
 			for(i = 0; i < arrJp.length; i++){
 				arrEn[i] = arrTemp[i];
 			}
-			console.log(arrEn);
-			restart();
 		}
 
 		function loadDoc(type)
@@ -161,7 +159,7 @@
 
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
-
+							changeWay();
 							total = arr.length;
 							genShowJpText();
 							genMC();
