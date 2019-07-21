@@ -138,7 +138,7 @@
 			<button id="mc2" class="buttonJp" type="button" onclick="showResult(2)"></button>
 			<button id="mc3" class="buttonJp" type="button" onclick="showResult(3)"></button>
 	</div>
-	<p><button id="next" class="buttonJp next" type="button" onclick="start()">Next</button></p>
+	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">Next</button></p>
 	<h4 style="text-align: center;" id="result"></h4>
 
 	<script>
@@ -154,21 +154,6 @@
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
-
-		function start(){
-			arrJp = {};
-			arrEn = {};
-			total = 0;
-		  filterSelected = "Number";
-
-			index = parseInt(Math.random() * (total - 1) + 1, 10);
-			showText = "";
-			correct = 0;
-			ttlAns = 0;
-			mc = {};
-			answered = true;
-			restart();
-		}
 
 		function loadDoc(type)
 		{
