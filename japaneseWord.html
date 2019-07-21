@@ -188,7 +188,7 @@
 									arrEn[i] = '';
 								}
 
-								arrEn[i] = arrZh[i].replace('・', ' / ') + '</br>' + arrEn[i].replace('・', ' / ');
+								arrEn[i] = arrZh[i].replace(/・/g, ' / ') + '</br>' + arrEn[i].replace('・', ' / ');
 							}
 
 							total = arr.length;
