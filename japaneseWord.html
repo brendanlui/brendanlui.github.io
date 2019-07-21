@@ -186,10 +186,15 @@
 			loadDoc(text);
 			closeNav();
 			document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [過濾]";
-			restart();
+			clear();
 		}
 
 		function restart(){
+			filterSelection(filterSelected);
+			clear();
+		}
+
+		function clear(){
 			answered = false;
 			for(var i = 0; i < mc.length; i ++){
 					document.getElementById("mc" + i).style.borderColor  = "#ffffff";
