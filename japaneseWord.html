@@ -78,13 +78,13 @@
 
 							var wordClassText = arr[i].split('<span class="wordClass" style="">');
 							arrWordClass[i] = wordClassText.length;
-							if(wordClassText.length == 2){
-								arrWordClass[i] = wordClassText[1].substr(0, wordClassText[1].indexOf('</span>')).replace('《','').replace('》','');
+							if(wordClassText.length == 1){
+								arrWordClass[i] = wordClassText[0].substr(0, wordClassText[1].indexOf('</span>')).replace('《','').replace('》','');
 							}else{
 								arrWordClass[i] = '';
 							}
 
-							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + arrWordClass[i] +wordClassText.length +  '</br>'
+							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + arrWordClass[i] +  '</br>'
 						}
 
 			  }
