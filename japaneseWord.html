@@ -64,7 +64,7 @@
 
 							var zhText = arr[i].split('<p class="txt-zh zh">');
 							if(zhText.length == 2){
-								arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>')).replace('・','; ');
+								arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>'));
 							}else{
 								arrZh[i] = '';
 							}
@@ -84,7 +84,7 @@
 								arrWordClass[i] = '';
 							}
 
-							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + arrWordClass[i] + '</br>'
+							document.getElementById("demo1").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + arrWordClass[i] +wordClassText.length +  '</br>'
 						}
 
 			  }
