@@ -184,7 +184,6 @@
 								// document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
 							}
 							total = arr.length;
-							console.log(total);
 				  }
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
@@ -228,7 +227,6 @@
 		}
 
 		function restart(){
-			genShowJpText();
 			genMC();
 			answered = false;
 			for(var i = 0; i < mc.length; i ++){
@@ -237,8 +235,6 @@
 		}
 
 		function genShowJpText(){
-			var output = document.getElementById("myRange");
-			total = output.value;
 			index = parseInt(Math.random() * (total - 0) + 0, 10);
 			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
