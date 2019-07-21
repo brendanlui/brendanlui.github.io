@@ -40,27 +40,26 @@
 
 	<!--TODO-->
 
-	<div id="keyValue"></div>
-	<button id="btnFilterAll" class="buttonJp btnFilter active" onclick="btnClick()">All</button>
-	<script>
-	function btnClick(){
-		fetch('./json/number.json')
-	  .then(response => {
+	<div id="demo">
+	<h2>The XMLHttpRequest Object</h2>
+	<button type="button" onclick="loadDoc()">Change Content</button>
+	</div>
 
-	    return response;
-	  })
-	  .then(data => {
-	    // Work with JSON data here
-			document.getElementById("keyValue").innerHTML = data;
-	    console.log(data)
-	  })
-	  .catch(err => {
-	    // Do something for an error here
-	  })
+	<script>
+	function loadDoc()
+	{
+			var txt = '';
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+			    txt = xmlhttp.responseText;
+					document.getElementById("demo").innerHTML = txt;
+			  }
+			};
+			xmlhttp.open("GET","./txt/number.txt",true);
+			xmlhttp.send();
 	}
 	</script>
-
-
 
 
 
