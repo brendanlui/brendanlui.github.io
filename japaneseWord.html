@@ -176,7 +176,7 @@
 								arrEn[i] = '';
 							}
 
-							document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
+							// document.getElementById("textJapan").innerHTML += arrJp[i] + arrZh[i] + arrEn[i] + '</br>'
 						}
 
 			  }
@@ -184,6 +184,134 @@
 			xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 			xmlhttp.send();
 	}
+
+		var jpFull = arrJp;
+		var jpChar = arrEn;
+		var total = jpFull.length;
+		var full;
+		var index = parseInt(Math.random() * (total - 1) + 1, 10);
+		var showText = "";
+		var correct = 0;
+		var ttlAns = 0;
+		var mc = {};
+		var answered = true;
+		var filtered = false;
+		var filterHira = false;
+
+		function filterSelection(text){
+			var element = document.getElementById("btnFilterHiragana");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterKatakana");
+			element.classList.remove("active");
+			element = document.getElementById("btnFilterAll");
+			element.classList.remove("active");
+
+			element = document.getElementById("btnFilter" + text);
+			element.classList.add("active");
+			if("Hiragana" == text){
+				filtered = true;
+				filterHira = true;
+			}else if("Katakana" == text){
+				filtered = true;
+				filterHira = false;
+			}else if("All" == text){
+				filtered = false;
+			}
+		}
+
+		function restart(){
+			genShowJpText();
+			genMC();
+			answered = false;
+			for(var i = 0; i < mc.length; i ++){
+					document.getElementById("mc" + i).style.borderColor  = "#ffffff";
+			}
+		}
+
+		function genShowJpText(){
+			var output = document.getElementById("myRange");
+			total = output.value;
+
+			if(!filtered){
+				if(Math.random() > 0.5){
+					full = true;
+				}else{
+					full = false;
+				}
+			}else{
+				full = filterHira;
+			}
+			index = parseInt(Math.random() * (total - 0) + 0, 10);
+			showText = jpFull[index];
+			document.getElementById("textJapan").innerHTML = showText;
+		}
+
+		function genMC(){
+			var correctAns = jpChar[index];
+			mc = getRandom(jpChar, 4);
+			var exist = mc.includes(correctAns);
+			if(!exist){
+				mc[0] = jpChar[index];
+			}
+			shuffle(mc);
+
+			for(var i = 0; i < mc.length; i++){
+				document.getElementById("mc" + i).innerHTML = mc[i];
+			}
+		}
+
+		function showResult(mcChoose){
+			if(!answered){
+				var mcIndex = mc.indexOf(jpChar[index]);
+				if(mcIndex != mcChoose){
+					document.getElementById("mc" + mcChoose).style.borderColor  = "#FF0000";
+				}else{
+					correct++;
+				}
+				document.getElementById("mc" + mcIndex).style.borderColor  = "#4CAF50";
+				answered = true;
+				ttlAns++;
+				document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
+			}
+		}
+
+		//copy from google start
+		function getRandom(arr, n) {
+				var result = new Array(n),
+						len = arr.length,
+						taken = new Array(len);
+				if (n > len)
+						throw new RangeError("getRandom: more elements taken than available");
+				while (n--) {
+						var x = Math.floor(Math.random() * len);
+						result[n] = arr[x in taken ? taken[x] : x];
+						taken[x] = --len in taken ? taken[len] : len;
+				}
+				return result;
+		}
+
+		function shuffle(array) {
+			var currentIndex = array.length, temporaryValue, randomIndex;
+			while (0 !== currentIndex) {
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+			return array;
+		}
+
+		// Add active class to the current button (highlight it)
+		var btns = document.getElementsByClassName("btnFilter");
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function(){
+				var current = document.getElementsByClassName("active");
+				current[0].className = current[0].className.replace(" active", "");
+				this.className += " active";
+			});
+		}
+		//copy from google end
 	</script>
 
 
