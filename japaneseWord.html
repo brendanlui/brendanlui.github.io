@@ -143,8 +143,8 @@
 
 	<script>
 
-		var jpFull;
-		var jpChar;
+		var arrJp;
+		var arrEn;
 		var total;
 
 		function loadDoc(type)
@@ -156,9 +156,9 @@
 				    	var txt = xmlhttp.responseText;
 
 							var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-						  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+						  arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-							var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							arr.shift();
 							arrJp.shift();
 							arrZh.shift();
@@ -185,9 +185,8 @@
 							}
 
 				  }
-					jpFull = arrJp;
-					jpChar = arrEn;
-					total = jpFull.length;
+
+					total = arrJp.length;
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 				xmlhttp.send();
@@ -242,16 +241,16 @@
 			var output = document.getElementById("myRange");
 			total = output.value;
 			index = parseInt(Math.random() * (total - 0) + 0, 10);
-			showText = jpFull[index];
+			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
 		}
 
 		function genMC(){
-			var correctAns = jpChar[index];
-			mc = getRandom(jpChar, 4);
+			var correctAns = arrEn[index];
+			mc = getRandom(arrEn, 4);
 			var exist = mc.includes(correctAns);
 			if(!exist){
-				mc[0] = jpChar[index];
+				mc[0] = arrEn[index];
 			}
 			shuffle(mc);
 
@@ -262,7 +261,7 @@
 
 		function showResult(mcChoose){
 			if(!answered){
-				var mcIndex = mc.indexOf(jpChar[index]);
+				var mcIndex = mc.indexOf(arrEn[index]);
 				if(mcIndex != mcChoose){
 					document.getElementById("mc" + mcChoose).style.borderColor  = "#FF0000";
 				}else{
