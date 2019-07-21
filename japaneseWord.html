@@ -112,9 +112,16 @@
 		var answered = true;
 
 		function changeWay(){
-			var arrTemp = arrJp;
-			arrJp = arrEn;
-			arrEn = arrTemp;
+			var arrTemp = {};
+			for(i = 0; i < arrJp.length; i++){
+				arrTemp[i] = arrJp[i];
+			}
+			for(i = 0; i < arrJp.length; i++){
+				arrJp[i] = arrEn[i];
+			}
+			for(i = 0; i < arrJp.length; i++){
+				arrEn[i] = arrTemp[i];
+			}
 			restart();
 		}
 
