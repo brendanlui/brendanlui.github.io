@@ -182,6 +182,8 @@
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
+
+			document.getElementById("btnFilterShow").innerHTML =  "過濾 (" + element.innerHTML + ")";
 		}
 
 		function restart(){
@@ -305,7 +307,6 @@
 	function closeNav() {
 	    document.getElementById("mySidenav").style.width = "0";
 	    document.body.style.backgroundColor = "white";
-			document.getElementById("btnFilterShow").innerHTML =  '過濾 (' + element.innerHTML + ')';
 	}
 	</script>
 
