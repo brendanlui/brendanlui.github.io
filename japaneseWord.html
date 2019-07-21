@@ -148,6 +148,8 @@
 
 							console.log(arrJp);
 							total = arr.length;
+							genShowJpText();
+							genMC();
 				  }
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
@@ -164,8 +166,6 @@
 
 		function restart(){
 			filterSelection(filterSelected);
-			genShowJpText();
-			genMC();
 			answered = false;
 			for(var i = 0; i < mc.length; i ++){
 					document.getElementById("mc" + i).style.borderColor  = "#ffffff";
