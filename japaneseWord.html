@@ -38,14 +38,25 @@
 
 
 
-	<!--TODO-->
+	<div id="buttonBox">
+		<button id="btnFilterNumber" class="buttonJp btnFilter active" onclick="loadDoc('number')">Number</button>
+		<button id="btnFilterNewStandard" class="buttonJp btnFilter" onclick="loadDoc('newStandard')">New Standard 1</button>
+	</div>
 
-	<h2>The XMLHttpRequest Object</h2>
-	<button type="button" onclick="loadDoc()">Change Content</button>
-		<div id="demo1"></div>
+	<p class="showText" style="font-size:10vw;" id="textJapan"></p>
+
+	<div class="buttonBox">
+			<button id="mc0" class="buttonJp" type="button" onclick="showResult(0)"></button>
+			<button id="mc1" class="buttonJp" type="button" onclick="showResult(1)"></button>
+			<br>
+			<button id="mc2" class="buttonJp" type="button" onclick="showResult(2)"></button>
+			<button id="mc3" class="buttonJp" type="button" onclick="showResult(3)"></button>
+	</div>
+	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">Next</button></p>
+	<h4 style="text-align: center;" id="result"></h4>
 
 	<script>
-	function loadDoc()
+	function loadDoc(type)
 	{
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function(){
@@ -79,7 +90,7 @@
 
 			  }
 			};
-			xmlhttp.open("GET","./txt/numberHtml.txt",true);
+			xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 			xmlhttp.send();
 	}
 	</script>
