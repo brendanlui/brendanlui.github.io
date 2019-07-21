@@ -71,8 +71,20 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
+	  <a href="#toppest" onclick="openNav()">過濾</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 
+	<script>
+	function myFunction() {
+	    var x = document.getElementById("myTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+	</script>
 
 
 
@@ -203,6 +215,7 @@
 			element.classList.add("active");
 			filterSelected = text;
 			loadDoc(text);
+			closeNav();
 		}
 
 		function restart(){
@@ -289,6 +302,51 @@
 		//copy from google end
 	</script>
 
+	<link rel="stylesheet" href="/css/side_bar_style.css">
+	<div id="nav_subtitle">
+		<div id="mySidenav" class="sidenav">
+			 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			 <a href="#calculator"onclick="closeNav()">Calculator</a>
+			 <a href="#liar"onclick="closeNav()">Liar Dice 1</a>
+			 <a href="#liar2"onclick="closeNav()">Liar Dice 2</a>
+			 <a href="#lucky"onclick="closeNav()">Lucky</a>
+		 		<button id="btnFilterNumber" class="buttonJp btnFilter active" onclick="filterSelection('Number')">數字</button>
+		 		<button id="btnFilterTraditionalQty" class="buttonJp btnFilter" onclick="filterSelection('TraditionalQty')">傳統數量詞</button>
+		 		<button id="btnFilterWeek" class="buttonJp btnFilter" onclick="filterSelection('Week')">星期</button>
+		 		<button id="btnFilterTiming" class="buttonJp btnFilter" onclick="filterSelection('Timing')">時候</button>
+		 		<button id="btnFilterTime" class="buttonJp btnFilter" onclick="filterSelection('Time')">時間</button>
+		 		<button id="btnFilterMonth" class="buttonJp btnFilter" onclick="filterSelection('Month')">日期(月)</button>
+		 		<button id="btnFilterDay" class="buttonJp btnFilter" onclick="filterSelection('Day')">日期(日)</button>
+		 		<button id="btnFilterPplNum" class="buttonJp btnFilter" onclick="filterSelection('PplNum')">人數的計算</button>
+		 		<button id="btnFilterDirection" class="buttonJp btnFilter" onclick="filterSelection('Direction')">方向</button>
+		 		<button id="btnFilterSeasonWeather" class="buttonJp btnFilter" onclick="filterSelection('SeasonWeather')">季節、天氣</button>
+		 		<button id="btnFilterNewStandard1" class="buttonJp btnFilter" onclick="filterSelection('NewStandard1')">新標準日本語(1)</button>
+		 		<button id="btnFilterNewStandard2" class="buttonJp btnFilter" onclick="filterSelection('NewStandard2')">新標準日本語(2)</button>
+		 		<button id="btnFilterNewStandard3" class="buttonJp btnFilter" onclick="filterSelection('NewStandard3')">新標準日本語(3)</button>
+		 		<button id="btnFilterNewStandard4" class="buttonJp btnFilter" onclick="filterSelection('NewStandard4')">新標準日本語(4)</button>
+		 		<button id="btnFilterNewStandard5" class="buttonJp btnFilter" onclick="filterSelection('NewStandard5')">新標準日本語(5)</button>
+		 		<button id="btnFilterNewStandard6" class="buttonJp btnFilter" onclick="filterSelection('NewStandard6')">新標準日本語(6)</button>
+		 		<button id="btnFilterNewStandard7" class="buttonJp btnFilter" onclick="filterSelection('NewStandard7')">新標準日本語(7)</button>
+		 		<button id="btnFilterEveryone1" class="buttonJp btnFilter" onclick="filterSelection('Everyone1')">大家的日本語(1)</button>
+		 		<button id="btnFilterEveryone2" class="buttonJp btnFilter" onclick="filterSelection('Everyone2')">大家的日本語(2)</button>
+		 		<button id="btnFilterEveryone3" class="buttonJp btnFilter" onclick="filterSelection('Everyone3')">大家的日本語(3)</button>
+		 		<button id="btnFilterEveryone4" class="buttonJp btnFilter" onclick="filterSelection('Everyone4')">大家的日本語(4)</button>
+		 		<button id="btnFilterEveryone5" class="buttonJp btnFilter" onclick="filterSelection('Everyone5')">大家的日本語(5)</button>
+		 		<button id="btnFilterEveryone6" class="buttonJp btnFilter" onclick="filterSelection('Everyone6')">大家的日本語(6)</button>
+		</div>
+	</div>
+	<script>
+	function openNav() {
+	    document.getElementById("mySidenav").style.width = "250px";
+	    document.getElementById("main").style.marginLeft = "250px";
+	    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+	}
+	function closeNav() {
+	    document.getElementById("mySidenav").style.width = "0";
+	    document.getElementById("main").style.marginLeft = "0";
+	    document.body.style.backgroundColor = "white";
+	}
+	</script>
 
 
 
