@@ -136,11 +136,16 @@
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 
-								var zhText = arr[i].split('<p class="txt-zh zh">');
-								if(zhText.length == 2){
-									arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>'));
+								var zhTextNoTras = arr[i].split('<span class="txt-ja txt-ls1 kanji">【');
+								if(zhTextNoTras.length == 2){
+									arrZh[i] = zhTextNoTras[1].substr(0, zhTextNoTras[1].indexOf('】</span>'));
 								}else{
 									arrZh[i] = '';
+								}
+
+								var zhText = arr[i].split('<p class="txt-zh zh">');
+								if(zhText.length == 2){
+									arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>')) + '*';
 								}
 
 								var enText = arr[i].split('<p class="txt-zh en">');
@@ -152,6 +157,7 @@
 
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
+
 							if(changeWay){
 									var arrTemp = {};
 									for(i = 0; i < arrJp.length; i++){
