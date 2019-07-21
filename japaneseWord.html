@@ -136,18 +136,11 @@
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 
-								var zhTextNoTras = arr[i].split('<span class="txt-ja txt-ls1 kanji">【');
-								if(zhTextNoTras.length == 2){
-									arrZh[i] = zhTextNoTras[1].substr(0, zhTextNoTras[1].indexOf('】</span>'));
-								}else{
-									arrZh[i] = '';
-								}
-
 								var zhText = arr[i].split('<p class="txt-zh zh">');
 								if(zhText.length == 2){
 									arrZh[i] = zhText[1].substr(0, zhText[1].indexOf('</p>'));
 								}else{
-									arrZh[i] += '*';
+									arrZh[i] = '';
 								}
 
 								var enText = arr[i].split('<p class="txt-zh en">');
@@ -159,7 +152,6 @@
 
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
-
 							if(changeWay){
 									var arrTemp = {};
 									for(i = 0; i < arrJp.length; i++){
@@ -293,9 +285,11 @@
 		 		<a href="#" id="btnFilterEveryone4" onclick="filterSelection('Everyone4')">大家的日本語(4)</a>
 		 		<a href="#" id="btnFilterEveryone5" onclick="filterSelection('Everyone5')">大家的日本語(5)</a>
 		 		<a href="#" id="btnFilterEveryone6" onclick="filterSelection('Everyone6')">大家的日本語(6)</a>
+				<!--
 		 		<a href="#" id="btnFilterN5Noun" onclick="filterSelection('N5Noun')">N5 名詞</a>
 		 		<a href="#" id="btnFilterN5Adj" onclick="filterSelection('N5Adj')">N5 形容詞</a>
 		 		<a href="#" id="btnFilterN5Verb" onclick="filterSelection('N5Verb')">N5 動詞</a>
+				-->
 		</div>
 	</div>
 	<script>
