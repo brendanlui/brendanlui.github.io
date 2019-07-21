@@ -188,10 +188,11 @@
 								}else{
 									arrEn[i] = '';
 								}
+								
+								arrEn[i] = arrZh[i].replace('・', ' / ') + '</br>' + arrEn[i].replace('・', ' / ');
 							}
 
 							total = arr.length;
-							arrEn[i] = arrZh[i].replace('・', ' / ') + '</br>' + arrEn[i].replace('・', ' / ');
 				  }
 				};
 				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
