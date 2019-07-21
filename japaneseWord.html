@@ -81,7 +81,8 @@
 
 
 	<div id="buttonBox">
-		<button id="btnFilterShow" href="#" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
+		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWay()">-></button>
 	</div>
 
 	<p class="showText" style="font-size:8vw;" id="textJapan"></p>
@@ -109,6 +110,13 @@
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
+
+		function changeWay(){
+			var arrTemp = arrJp;
+			arrJp = arrEn;
+			arrEn = arrTemp;
+			restart();
+		}
 
 		function loadDoc(type)
 		{
@@ -173,7 +181,6 @@
 
 		function genShowJpText(){
 			index = parseInt(Math.random() * (total - 0) + 0, 10);
-			console.log(arrJp);
 			showText = arrJp[index];
 			document.getElementById("textJapan").innerHTML = showText;
 		}
