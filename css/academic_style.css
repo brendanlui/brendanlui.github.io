@@ -270,9 +270,8 @@ a:hover {
 		max-height: 180px;
 	}
 
-
 	img {
-		max-height: 180px;
+		max-height: 40px;
 	}
 
     dt {
