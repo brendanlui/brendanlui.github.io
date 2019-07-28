@@ -134,14 +134,7 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
-							document.getElementById("source").innerHTML =
-								'<tr>
-									<th>日文</th>
-									<th>中文</th>
-									<th>英文</th>
-									<th>日文</th>
-									<th>詞性</th>
-								</tr>';
+							document.getElementById("source").innerHTML = '<tr><th>日文</th><th>中文</th><th>英文</th><th>日文</th><th>詞性</th></tr>';
 
 				    	var txt = xmlhttp.responseText;
 
