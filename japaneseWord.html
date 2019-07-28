@@ -214,7 +214,7 @@
 									typeValue = typeText[1].substr(0, typeText[1].indexOf('</span>'))
 									.replace(' ','')
 									.replace(/・/g, ' / ')
-									.replace('《', '');
+									.replace('《', '')
 									.replace('》', '');
 								}
 								dir[i] += '<td>' + typeValue + '</td>';
