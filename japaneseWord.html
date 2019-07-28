@@ -111,7 +111,7 @@
 	<div id="buttonBox">
 		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
-		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()"><-></button>
+		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日文 -> 中文</button>
 	</div>
 
 	<p class="showText" style="font-size:8vw;" id="textJapan"></p>
@@ -147,9 +147,11 @@
 			if(changeWay == 0){
 				changeWay = 1;
 				btn.className += " active";
+				btn.innerHTML = "中文 -> 日文";
 			}else{
 				changeWay = 0
 				btn.className = btn.className.replace(" active", "");
+				btn.innerHTML = "日文 -> 中文";
 			}
 			restart();
 		}
@@ -240,7 +242,8 @@
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
-			document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [過濾]";
+			document.getElementById("btnFilterShow").innerHTML = "過濾 [" + element.innerHTML + "]";
+			document.getElementById("btnOpenModal").innerHTML = "內容 [" + element.innerHTML + "]";
 			clear();
 		}
 
