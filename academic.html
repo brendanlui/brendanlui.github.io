@@ -2436,6 +2436,20 @@ function return_value(a,  b, c, d, e, ipt) {
 </script>
 
 
+<script type="text/javascript">
+$(function(){
+  $("#nav a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+$(function(){
+  $("#nav_subtitle a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+</script>
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
 		<div id="nav">
@@ -2460,21 +2474,6 @@ function return_value(a,  b, c, d, e, ipt) {
 			</br>
 			<li>© Copyright 2019. All Rights Reserved.</li>
 		</ul></br>
-
-<script type="text/javascript">
-$(function(){
-  $("#nav a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-$(function(){
-  $("#nav_subtitle a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-</script>
 
 </body>
 </html>
