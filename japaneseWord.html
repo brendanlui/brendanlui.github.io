@@ -23,12 +23,12 @@
 		  text-align: center;
 		  text-decoration: none;
 		  display: inline-block;
-		  font-size: 12px;
+		  font-size: 16px;
 	  	border: thick solid white;
 			width: 100%;
 			font-weight: bold;
 			overflow: hidden;
-			height: 80px;
+			height: 60px;
 		}
 
 		.showText{
@@ -53,7 +53,6 @@
 	  	overflow: hidden;
 			padding: 2px 0px;
 			height: 35px;
-		  font-size: 12px;
 		}
 		</style>
 </head>
@@ -93,6 +92,7 @@
 
 	<script>
 
+		var dir = {};
 		var arrJp = {};
 		var arrEn = {};
 		var total = 0;
@@ -123,6 +123,7 @@
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+							dir = [];
 				    	var txt = xmlhttp.responseText;
 
 							var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
@@ -136,37 +137,44 @@
 
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
-
-								var enText = arr[i].split('<p class="txt-zh en">');
-								if(enText.length == 2){
-									arrEn[i] = enText[1].substr(0, enText[1].indexOf('</p>')).replace('(英) ','');
-								}else{
-									arrEn[i] = '';
-								}
-
-								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
-								if(jpText.length == 2){
-									arrZh[i] = jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','');
-								}else{
-									arrZh[i] = '';
-								}
+								dir[i] = '<tr>' + ;
 
 								var zhText = arr[i].split('<p class="txt-zh zh">');
+								var zhValue = '';
 								if(zhText.length == 2){
-									arrZh[i] += zhText[1].substr(0, zhText[1].indexOf('</p>'));
+									zhValue = zhText[1].substr(0, zhText[1].indexOf('</p>'));
 								}else{
-									arrZh[i] += '';
+									zhValue = '';
 								}
+								arrZh[i] = zhValue;
+								dir[i] += '<td>' + zhValue + '</td>';
+
+								var enText = arr[i].split('<p class="txt-zh en">');
+								var enValue = '';
+								if(enText.length == 2){
+									enValue = enText[1].substr(0, enText[1].indexOf('</p>')).replace('(英) ','');
+								}
+								dir[i] += '<td>' + enValue + '</td>';
+
+								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
+								var jpValue = '';
+								if(jpText.length == 2){
+									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','')
+								}
+								arrJp[i] = jpValue;
+								dir[i] += '<td>' + jpValue + '</td>';
 
 								var typeText = arr[i].split('<span class="wordClass" style="">');
+								var typeValue = '';
 								if(typeText.length == 2){
-									arrZh[i] += typeText[1].substr(0, typeText[1].indexOf('</span>')).replace(' ','');
-								}else{
-									arrZh[i] += '';
+									typeValue = typeText[1].substr(0, typeText[1].indexOf('</span>')).replace(' ','');
 								}
+								dir[i] += '<td>' + typeValue + '</td>';
 
+								dir[i] += '</tr>';
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
+
 							if(changeWay){
 									var arrTemp = {};
 									for(i = 0; i < arrJp.length; i++){
