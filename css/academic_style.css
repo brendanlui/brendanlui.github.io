@@ -270,6 +270,11 @@ a:hover {
 		max-height: 180px;
 	}
 
+
+	img {
+		max-height: 180px;
+	}
+
     dt {
 		font-size:1.3em;
     	text-align: left;
