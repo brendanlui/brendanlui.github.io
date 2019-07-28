@@ -157,6 +157,12 @@
 									arrZh[i] += '';
 								}
 
+								var typeText = arr[i].split('<span class="wordClass" style="">');
+								if(typeText.length == 2){
+									arrZh[i] += typeText[1].substr(0, typeText[1].indexOf('</span>')).replace(' ','');
+								}else{
+									arrZh[i] += '';
+								}
 
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
