@@ -72,9 +72,15 @@
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
 	</div>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+	  <div class="modal-content">
+	    <span class="close">&times;</span>
+	  </div>
+	</div>
 
 	<div id="buttonBox">
-		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="openModal()">資源</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter">資源</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
 		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()"><-></button>
 	</div>
@@ -106,11 +112,6 @@
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
-
-
-		function openModal(){
-			modal.style.display = "block";
-		}
 
 		function changeWayUI(){
 			var btn = document.getElementById("btnTraslateWay");
@@ -284,6 +285,29 @@
 			return array;
 		}
 		//copy from google end
+
+		//open source start
+		// Get the modal
+		var modal = document.getElementById('myModal');
+		// Get the button that opens the modal
+		var btnOpenModal = document.getElementById("btnOpenModal");
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		// When the user clicks on the button, open the modal
+		btnOpenModal.onclick = function() {
+		    modal.style.display = "block";
+		}
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		    modal.style.display = "none";
+		}
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+		//open source end
 	</script>
 
 	<link rel="stylesheet" href="/css/side_bar_style.css">
