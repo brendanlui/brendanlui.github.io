@@ -194,7 +194,8 @@
 								var zhText = arr[i].split('<p class="txt-zh zh">');
 								var zhValue = '';
 								if(zhText.length == 2){
-									zhValue = zhText[1].substr(0, zhText[1].indexOf('</p>')).replace(/・/g, ' / ');
+									zhValue = zhText[1].substr(0, zhText[1].indexOf('</p>'))
+									.replace(/・/g, ' / ');
 								}else{
 									zhValue = '';
 								}
@@ -204,7 +205,9 @@
 								var enText = arr[i].split('<p class="txt-zh en">');
 								var enValue = '';
 								if(enText.length == 2){
-									enValue = enText[1].substr(0, enText[1].indexOf('</p>')).replace('(英) ','').replace(/・/g, ' / ');
+									enValue = enText[1].substr(0, enText[1].indexOf('</p>'))
+									.replace('(英) ','')
+									.replace(/・/g, ' / ');
 								}
 								dir[i] += '<td>' + enValue + '</td>';
 
@@ -348,12 +351,14 @@
 				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		}
 		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
+
+
+		window.addEventListener('click', function (event) {
 		    if (event.target == modal) {
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		    }
-		}
+		});
 		//open source end
 	</script>
 
