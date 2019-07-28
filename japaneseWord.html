@@ -79,6 +79,19 @@
 		  background-color: #949494;
 		  color: white;
 		}
+
+		.close-thik {
+		  color: #777;
+		  font: 14px/100% arial, sans-serif;
+		  position: absolute;
+		  right: 5px;
+		  text-decoration: none;
+		  text-shadow: 0 1px 0 #fff;
+		  top: 5px;
+		}
+		.close-thik:after {
+		  content: 'X'; /* ANSI X letter */
+		}
 		</style>
 </head>
 
@@ -100,7 +113,7 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
-	    <span id="close">&times;</span>
+	    <span id="closeModel" class="close-thik">&times;</span>
 			<table id="source">
 			</table>
 	  </div>
@@ -323,14 +336,14 @@
 		// Get the button that opens the modal
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		// Get the <span> element that closes the modal
-		var close = document.getElementById("close");
+		var closeModel = document.getElementById("closeModel");
 		// When the user clicks on the button, open the modal
 		btnOpenModal.onclick = function() {
 		    modal.style.display = "block";
 				btnOpenModal.className += " active";
 		}
 		// When the user clicks on <span> (x), close the modal
-		close.onclick = function() {
+		closeModel.onclick = function() {
 		    modal.style.display = "none";
 				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		}
