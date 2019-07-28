@@ -82,7 +82,7 @@
 		</style>
 </head>
 
-<title>Dadiu | 日語常用詞庫</title>
+<title>Dadiu | 日語常用詞庫 - 測驗</title>
 
 <body onload="restart();">
 	<div id="head">
@@ -108,10 +108,11 @@
 	  </div>
 	</div>
 
+	<link id="stylecall3" rel="stylesheet" href="/css/arrows.css" />
 	<div id="buttonBox">
 		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
-		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日文 -> 中文</button>
+		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日語 <i class="icono-arrow1-left"></i> 中文</button>
 	</div>
 
 	<p class="showText" style="font-size:8vw;" id="textJapan"></p>
@@ -147,11 +148,11 @@
 			if(changeWay == 0){
 				changeWay = 1;
 				btn.className += " active";
-				btn.innerHTML = "中文 -> 日文";
+				btn.innerHTML = "中文 -> 日語";
 			}else{
 				changeWay = 0
 				btn.className = btn.className.replace(" active", "");
-				btn.innerHTML = "日文 -> 中文";
+				btn.innerHTML = "日語 -> 中文";
 			}
 			restart();
 		}
@@ -162,7 +163,7 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
-							document.getElementById("source").innerHTML = '<tr><th>日文</th><th>中文</th><th>英文</th><th>其他</th><th>詞性</th></tr>';
+							document.getElementById("source").innerHTML = '<tr><th>日語</th><th>中文</th><th>英語</th><th>其他</th><th>詞性</th></tr>';
 
 				    	var txt = xmlhttp.responseText;
 
@@ -242,8 +243,8 @@
 			filterSelected = text;
 			loadDoc(text);
 			closeNav();
-			document.getElementById("btnFilterShow").innerHTML = "過濾 [" + element.innerHTML + "]";
-			document.getElementById("btnOpenModal").innerHTML = "內容 [" + element.innerHTML + "]";
+			document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " - 過濾";
+			document.getElementById("btnOpenModal").innerHTML = element.innerHTML + " - 內容";
 			clear();
 		}
 
