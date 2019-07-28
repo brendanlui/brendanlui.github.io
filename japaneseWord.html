@@ -335,10 +335,12 @@
 				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		}
 		// When the user clicks anywhere outside of the modal, close it
-		window.addEventListener('click', function () {
-				modal.style.display = "none";
-				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
-		});
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+		    }
+		}
 		//open source end
 	</script>
 
