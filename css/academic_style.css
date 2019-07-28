@@ -271,7 +271,8 @@ a:hover {
 	}
 
 	#logo{
-		width: 100%;
+		margin-left: -40px;
+		margin-top: -3px;
 	}
 
 	img {
