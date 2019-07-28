@@ -103,8 +103,21 @@
 	    <span id="closeModel">&times;</span>
 			<table id="source">
 			</table>
+			<button id="myBtn" class="subtitle" >X</button>
 	  </div>
 	</div>
+
+	<script>
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+	</script>
 
 	<div id="buttonBox">
 		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
