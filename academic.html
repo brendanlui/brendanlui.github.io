@@ -12,6 +12,7 @@
 	  href="/img/d01.png">
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTop.js"></script>
 </head>
 
 <title>Dadiu | Dice Battle</title>
@@ -2460,22 +2461,6 @@ function return_value(a,  b, c, d, e, ipt) {
 			</br>
 			<li>© Copyright 2019. All Rights Reserved.</li>
 		</ul></br>
-
-<script type="text/javascript">
-$(function(){
-  $("#nav a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-$(function(){
-  $("#nav_subtitle a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-$('a[href^="#"]').on('click', function(event) { var target = $(this.getAttribute('href')); if( target.length ) { event.preventDefault(); $('html, body').stop().animate({ scrollTop: target.offset().top }, 1000); } });
-</script>
 
 </body>
 </html>
