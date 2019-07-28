@@ -7,7 +7,6 @@
 	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
 	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
 	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
-	<link rel="stylesheet" href="/css/modal_box_style.css">
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -80,9 +79,6 @@
 		  background-color: #949494;
 		  color: white;
 		}
-		#closeModel {
-				font-weight: bold;
-		}
 		</style>
 </head>
 
@@ -101,10 +97,12 @@
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
 	</div>
+
+	<link rel="stylesheet" href="/css/modal_box_style.css">
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
-	    <span id="closeModel">&times;</span>
+	    <span id="close">&times;</span>
 			<table id="source">
 			</table>
 	  </div>
@@ -327,14 +325,14 @@
 		// Get the button that opens the modal
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		// Get the <span> element that closes the modal
-		var closeModel = document.getElementById("closeModel");
+		var close = document.getElementById("close");
 		// When the user clicks on the button, open the modal
 		btnOpenModal.onclick = function() {
 		    modal.style.display = "block";
 				btnOpenModal.className += " active";
 		}
 		// When the user clicks on <span> (x), close the modal
-		closeModel.onclick = function() {
+		close.onclick = function() {
 		    modal.style.display = "none";
 				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		}
