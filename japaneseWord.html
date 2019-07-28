@@ -200,7 +200,7 @@
 								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
 								var jpValue = '';
 								if(jpText.length == 2){
-									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','').replace(/・/g, ' / ');
+									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','').replace(/・/g, ' / ').replace('【', '').replace('】', '');
 								}
 								dir[i] += '<td>' + jpValue + '</td>';
 
