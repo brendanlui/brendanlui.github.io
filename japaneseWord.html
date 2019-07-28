@@ -74,6 +74,7 @@
 	</div>
 
 	<div id="buttonBox">
+		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="openModal()">資源</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">數字</button>
 		<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()"><-></button>
 	</div>
@@ -105,6 +106,11 @@
 		var ttlAns = 0;
 		var mc = {};
 		var answered = true;
+
+
+		function openModal(){
+			modal.style.display = "block";
+		}
 
 		function changeWayUI(){
 			var btn = document.getElementById("btnTraslateWay");
