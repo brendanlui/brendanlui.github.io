@@ -2436,20 +2436,6 @@ function return_value(a,  b, c, d, e, ipt) {
 </script>
 
 
-<script type="text/javascript">
-$(function(){
-  $("#nav a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-$(function(){
-  $("#nav_subtitle a").click(function(e){
-    e.preventDefault();
-    $('html,body').scrollTo(this.hash,this.hash);
-  });
-});
-</script>
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
 		<div id="nav">
@@ -2474,6 +2460,22 @@ $(function(){
 			</br>
 			<li>© Copyright 2019. All Rights Reserved.</li>
 		</ul></br>
+
+<script type="text/javascript">
+$(function(){
+  $("#nav a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+$(function(){
+  $("#nav_subtitle a").click(function(e){
+    e.preventDefault();
+    $('html,body').scrollTo(this.hash,this.hash);
+  });
+});
+$('a[href^="#"]').on('click', function(event) { var target = $(this.getAttribute('href')); if( target.length ) { event.preventDefault(); $('html, body').stop().animate({ scrollTop: target.offset().top }, 1000); } });
+</script>
 
 </body>
 </html>
