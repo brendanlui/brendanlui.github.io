@@ -162,7 +162,7 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
-							document.getElementById("source").innerHTML = '<tr><th>日語</th><th>中文</th><th>英語</th><th>其他</th><th>詞性</th></tr>';
+							document.getElementById("source").innerHTML = '<tr><th>日語</th><th>其他</th><th>中文</th><th>英語</th><th>詞性</th></tr>';
 
 				    	var txt = xmlhttp.responseText;
 
@@ -179,6 +179,17 @@
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 								dir[i] = '<tr>';
 								dir[i] += '<td>' + arrJp[i] + '</td>';
+
+								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
+								var jpValue = '';
+								if(jpText.length == 2){
+									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>'))
+									.replace(' ','')
+									.replace(/・/g, ' / ')
+									.replace('【', '')
+									.replace('】', '');
+								}
+								dir[i] += '<td>' + jpValue + '</td>';
 
 								var zhText = arr[i].split('<p class="txt-zh zh">');
 								var zhValue = '';
@@ -197,17 +208,14 @@
 								}
 								dir[i] += '<td>' + enValue + '</td>';
 
-								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
-								var jpValue = '';
-								if(jpText.length == 2){
-									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','').replace(/・/g, ' / ').replace('【', '').replace('】', '');
-								}
-								dir[i] += '<td>' + jpValue + '</td>';
-
 								var typeText = arr[i].split('<span class="wordClass" style="">');
 								var typeValue = '';
 								if(typeText.length == 2){
-									typeValue = typeText[1].substr(0, typeText[1].indexOf('</span>')).replace(' ','').replace(/・/g, ' / ');
+									typeValue = typeText[1].substr(0, typeText[1].indexOf('</span>'))
+									.replace(' ','')
+									.replace(/・/g, ' / ')
+									.replace('《', '');
+									.replace('》', '');
 								}
 								dir[i] += '<td>' + typeValue + '</td>';
 
