@@ -78,13 +78,6 @@
 	  <div class="modal-content">
 	    <span class="close">&times;</span>
 			<table id="source">
-			  <tr>
-			    <th>日文</th>
-			    <th>中文</th>
-			    <th>英文</th>
-			    <th>日文</th>
-			    <th>詞性</th>
-			  </tr>
 			</table>
 	  </div>
 	</div>
@@ -141,6 +134,15 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
+							document.getElementById("source").innerHTML =
+								'<tr>
+									<th>日文</th>
+									<th>中文</th>
+									<th>英文</th>
+									<th>日文</th>
+									<th>詞性</th>
+								</tr>';
+
 				    	var txt = xmlhttp.responseText;
 
 							var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
@@ -189,6 +191,7 @@
 								dir[i] += '<td>' + typeValue + '</td>';
 
 								dir[i] += '</tr>';
+								document.getElementById("source").innerHTML += dir[i];
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
 
@@ -318,6 +321,7 @@
 		window.onclick = function(event) {
 		    if (event.target == modal) {
 		        modal.style.display = "none";
+						btnOpenModal.className.replace(" active", "");
 		    }
 		}
 		//open source end
