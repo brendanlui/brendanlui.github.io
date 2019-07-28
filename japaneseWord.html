@@ -150,6 +150,14 @@
 									arrEn[i] = '';
 								}
 
+								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
+								if(jpText.length == 2){
+									arrZh[i] += jpText[1].substr(0, jpText[1].indexOf('</span>')).replace(' ','');
+								}else{
+									arrZh[i] += '';
+								}
+
+
 								arrEn[i] = arrZh[i].replace(/・/g, ' / ');
 							}
 							if(changeWay){
