@@ -66,7 +66,6 @@
 
 		#source td, #source th {
 		  border: 1px solid #ddd;
-		  padding: 8px;
 		}
 
 		#source tr:nth-child(even){background-color: #f2f2f2;}
@@ -101,7 +100,7 @@
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
-	    <span class="close">&times;</span>
+	    <span id="closeModel">&times;</span>
 			<table id="source">
 			</table>
 	  </div>
@@ -324,14 +323,14 @@
 		// Get the button that opens the modal
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
+		var closeModel = document.getElementById("closeModel");
 		// When the user clicks on the button, open the modal
 		btnOpenModal.onclick = function() {
 		    modal.style.display = "block";
 				btnOpenModal.className += " active";
 		}
 		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
+		closeModel.onclick = function() {
 		    modal.style.display = "none";
 				btnOpenModal.className.replace(" active", "");
 		}
