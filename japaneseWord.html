@@ -336,7 +336,6 @@
 		//open source start
 		// Get the modal
 		var modal = document.getElementById('myModal');
-		var mySidenav = document.getElementById("mySidenav");
 		// Get the button that opens the modal
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		// Get the <span> element that closes the modal
@@ -359,11 +358,11 @@
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		    }
 				console.log(event.target);
-				console.log(mySidenav);
+				console.log(document.getElementById("mySidenav"));
 				console.log(document.getElementById("mySidenav").style.width);
-				console.log((event.target != mySidenav)
+				console.log((event.target != document.getElementById("mySidenav"))
 					 && (document.getElementById("mySidenav").style.width != "0px"));
-	 				console.log(event.target != mySidenav);
+	 				console.log(event.target != document.getElementById("mySidenav"));
 		 				console.log(document.getElementById("mySidenav").style.width != "0px");
 		}
 
