@@ -357,12 +357,9 @@
 		    if (event.target == modal) {
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
-		    }else if(event.target != mySidenav
-					 && document.getElementById("mySidenav").style.width != "0px"){
-							closeNav();
-				}
-				console.log(document.getElementById("mySidenav").style.width != "0px");
-				console.log(event.target != mySidenav);
+		    }
+				console.log(event.target != mySidenav
+					 && document.getElementById("mySidenav").style.width != "0px");
 		}
 
 		window.onclick = function(event) {
