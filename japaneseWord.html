@@ -361,10 +361,16 @@
 
 		window.onclick = function(event) {
 		    closeSourcePage(event);
+				if(document.getElementById("mySidenav").style.width != "0px"){
+					closeNav();
+				}
 		}
 
 		window.addEventListener('touchstart', function (event) {
 		    closeSourcePage(event);
+				if(document.getElementById("mySidenav").style.width != "0px"){
+					closeNav();
+				}
 		});
 		//open source end
 	</script>
