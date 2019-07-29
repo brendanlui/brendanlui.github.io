@@ -359,18 +359,22 @@
 		    }
 		}
 
+		var btnFilterShow = document.getElementById('btnFilterShow');
 		window.onclick = function(event) {
 		    closeSourcePage(event);
 				console.log(document.getElementById("mySidenav").style.width);
-				if(document.getElementById("mySidenav").style.width != "0px"){
-					closeNav();
+				if (event.target != btnFilterShow
+						&& document.getElementById("mySidenav").style.width != "0px") {
+							closeNav();
 				}
 		}
 
 		window.addEventListener('touchstart', function (event) {
 		    closeSourcePage(event);
-				if(document.getElementById("mySidenav").style.width != "0px"){
-					closeNav();
+				console.log(document.getElementById("mySidenav").style.width);
+				if (event.target != btnFilterShow
+						&& document.getElementById("mySidenav").style.width != "0px") {
+							closeNav();
 				}
 		});
 		//open source end
