@@ -358,6 +358,9 @@
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		    }
+				console.log(event.target);
+				console.log(mySidenav);
+				console.log(document.getElementById("mySidenav").style.width);
 				console.log((event.target != mySidenav)
 					 && (document.getElementById("mySidenav").style.width != "0px"));
 	 				console.log(event.target != mySidenav);
