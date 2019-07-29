@@ -361,8 +361,8 @@
 					 && document.getElementById("mySidenav").style.width != "0px"){
 							closeNav();
 				}
-				console.log(document.getElementById("mySidenav").style.width);
-				console.log(event.target);
+				console.log(document.getElementById("mySidenav").style.width != "0px");
+				console.log(event.target != mySidenav);
 		}
 
 		window.onclick = function(event) {
