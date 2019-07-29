@@ -352,17 +352,20 @@
 		}
 		// When the user clicks anywhere outside of the modal, close it
 
-		var mySidenav = document.getElementById("mySidenav")
 		function closeSourcePage(event){
 		    if (event.target == modal) {
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
-		    }else if(event.target != mySidenav){
-						closeNav();
+		    }else if(event.target != mySidenav
+					 && document.getElementById("mySidenav").style.width != "0px"){
+							closeNav();
 				}
+				console.log(ocument.getElementById("mySidenav").style.width);
 				console.log(event.target);
 		}
 
+		var mySidenav = document.getElementById("mySidenav")
+		var btnFilterShow = document.getElementById('btnFilterShow');
 		window.onclick = function(event) {
 		    closeSourcePage(event);
 		}
