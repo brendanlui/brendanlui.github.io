@@ -357,18 +357,13 @@
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 		    }else if(event.target != document.getElementById("btnFilterShow")
+						&& event.target != document.getElementById("btnFilterNumber")
 						&& event.target != document.getElementById("mySidenav")
 						&& document.getElementById("mySidenav").style.width != "0px"
+
 					){
 						closeNav();
 				}
-				console.log(event.target);
-				console.log(document.getElementById("btnFilterShow"));
-				console.log(document.getElementById("mySidenav").style.width);
-				console.log((event.target != document.getElementById("mySidenav"))
-					 && (document.getElementById("mySidenav").style.width != "0px"));
-	 				console.log(event.target != document.getElementById("mySidenav"));
-		 				console.log(document.getElementById("mySidenav").style.width != "0px");
 		}
 
 		window.onclick = function(event) {
