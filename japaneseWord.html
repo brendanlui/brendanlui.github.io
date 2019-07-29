@@ -359,12 +359,15 @@
 		    }
 		}
 
+		var mySidenav = document.getElementById("mySidenav")
 		var btnFilterShow = document.getElementById('btnFilterShow');
 		window.onclick = function(event) {
 		    closeSourcePage(event);
 				console.log(document.getElementById("mySidenav").style.width);
 				if (event.target != btnFilterShow
-						&& document.getElementById("mySidenav").style.width != "0px") {
+						&& document.getElementById("mySidenav").style.width != "0px"
+						&& event.target != mySidenav
+					) {
 							closeNav();
 				}
 		}
@@ -373,7 +376,9 @@
 		    closeSourcePage(event);
 				console.log(document.getElementById("mySidenav").style.width);
 				if (event.target != btnFilterShow
-						&& document.getElementById("mySidenav").style.width != "0px") {
+						&& document.getElementById("mySidenav").style.width != "0px"
+						&& event.target != mySidenav
+					) {
 							closeNav();
 				}
 		});
