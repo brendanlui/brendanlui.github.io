@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="/css/responsive_bar_style.css">
 <div class="topnav" id="myTopnav">
   <a href="/">Home</a>
-  <a href="#toppest" onclick="openNav()">Menu</a>
+  <a href="#toppest" id="btnFilterShow" onclick="openNav()">Menu</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 <script>
@@ -44,7 +44,8 @@ function myFunction() {
 }
 
 function closeSourcePage(event){
-		if(event.target != document.getElementById("btnFilterCalculator")
+		if(event.target != document.getElementById("btnFilterShow")
+				&& event.target != document.getElementById("btnFilterCalculator")
 				&& event.target != document.getElementById("btnFilterLiar")
 				&& event.target != document.getElementById("btnFilterLiar2")
 				&& event.target != document.getElementById("btnFilterLucky")
