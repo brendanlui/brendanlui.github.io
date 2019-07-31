@@ -403,6 +403,7 @@
 	<link rel="stylesheet" href="/css/side_bar_style.css">
 	<div id="nav_subtitle">
 		<div id="mySidenav" class="sidenav">
+				<a id="toppestNav" class="smooth"></a>
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		 		<a href="#" id="btnFilterNumber" onclick="filterSelection('Number')">數字</a>
 		 		<a href="#" id="btnFilterTraditionalQty" onclick="filterSelection('TraditionalQty')">傳統數量詞</a>
@@ -451,19 +452,22 @@
 	<div id="head">
 		<div id="nav">
 			 <ul>
-				 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
+				 	<li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
+					<li><a id="myBtnNav" href="#toppestNav" class="subtitle" >Top</a></li>
 			 </ul>
 		</div>
 	</div>
 	<script>
-		var modal = document.getElementById('myModal');
-		modal.onscroll = function() {scrollFunction()};
+		var myModal = document.getElementById('myModal');
+		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
+		var mySidenav = document.getElementById('mySidenav');
+		mySidenav.onscroll = function() {scrollFunction(modal, "myBtnNav")};
 
-		function scrollFunction() {
-			if (modal.scrollTop > 100) {
-				document.getElementById("myBtn").style.display = "block";
+		function scrollFunction(body, id) {
+			if (body.scrollTop > 100) {
+				document.getElementById("id").style.display = "block";
 			} else {
-				document.getElementById("myBtn").style.display = "none";
+				document.getElementById("id").style.display = "none";
 			}
 		}
 	</script>
