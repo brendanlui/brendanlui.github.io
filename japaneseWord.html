@@ -440,16 +440,6 @@
 				-->
 		</div>
 	</div>
-	<script>
-	function openNav() {
-			document.getElementById("mySidenav").style.width = "280px";
-	    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-	}
-	function closeNav() {
-	    document.getElementById("mySidenav").style.width = "0";
-	    document.body.style.backgroundColor = "#fbf7ff";
-	}
-	</script>
 
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
@@ -460,19 +450,31 @@
 			 </ul>
 		</div>
 	</div>
-	<script>
-		var myModal = document.getElementById('myModal');
-		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
-		var mySidenav = document.getElementById('mySidenav');
-		mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
 
-		function scrollFunction(body, id) {
-			if (body.scrollTop > 100) {
-				document.getElementById(id).style.display = "block";
-			} else {
-				document.getElementById(id).style.display = "none";
-			}
+	<script>
+	function openNav() {
+			document.getElementById("mySidenav").style.width = "280px";
+	    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+			var mySidenav = document.getElementById('mySidenav');
+			scrollFunction(mySidenav, "mySidenav");
+	}
+	function closeNav() {
+	    document.getElementById("mySidenav").style.width = "0";
+	    document.body.style.backgroundColor = "#fbf7ff";
+	}
+
+	var myModal = document.getElementById('myModal');
+	myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
+	var mySidenav = document.getElementById('mySidenav');
+	mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
+
+	function scrollFunction(body, id) {
+		if (body.scrollTop > 100) {
+			document.getElementById(id).style.display = "block";
+		} else {
+			document.getElementById(id).style.display = "none";
 		}
+	}
 	</script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
