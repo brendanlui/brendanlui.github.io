@@ -346,6 +346,7 @@
 		btnOpenModal.onclick = function() {
 		    modal.style.display = "block";
 				btnOpenModal.className += " active";
+				scrollFunction(modal, "myBtn")
 		}
 		// When the user clicks on <span> (x), close the modal
 		close.onclick = function() {
@@ -465,9 +466,9 @@
 
 		function scrollFunction(body, id) {
 			if (body.scrollTop > 100) {
-				document.getElementById("id").style.display = "block";
+				document.getElementById(id).style.display = "block";
 			} else {
-				document.getElementById("id").style.display = "none";
+				document.getElementById(id).style.display = "none";
 			}
 		}
 	</script>
