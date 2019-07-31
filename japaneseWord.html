@@ -318,13 +318,11 @@
 						throw new RangeError("getRandom: more elements taken than available");
 				while (n--) {
 						var x = Math.floor(Math.random() * len);
-						result[n] = arr[x in taken ? taken[x] : x];
-						taken[x] = --len in taken ? taken[len] : len;
-
-						console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
-						if(arrEn[x] == arrEn[index] && x != index){
-								taken[x] = '';
-								result[n] = '';
+						if(!(arrEn[x] == arrEn[index] && x != index)){
+							result[n] = arr[x in taken ? taken[x] : x];
+							taken[x] = --len in taken ? taken[len] : len;
+						}else{
+								console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
 								n++;
 						}
 				}
