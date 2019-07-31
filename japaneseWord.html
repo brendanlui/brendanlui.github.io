@@ -459,11 +459,17 @@
 			scrollFunction(mySidenav, "myBtnNav");
 			mySidenav.style.width = "280px";
 			document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			btnFilterShow.className += " active";
 	}
 	function closeNav() {
 			document.getElementById("mySidenav").style.width = "0";
 			document.body.style.backgroundColor = "#fbf7ff";
 			document.getElementById("myBtnNav").style.display = "none";
+
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			btnFilterShow.className = btnFilterShow.className.replace(" active", "");
 	}
 
 	function scrollFunction(body, id) {
