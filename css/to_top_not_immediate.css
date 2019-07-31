@@ -1,4 +1,4 @@
-#myBtn {
+#myBtn, #myBtnNav {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
     bottom: 20px; /* Place the button at the bottom of the page */
@@ -13,6 +13,6 @@
     border-radius: 20px; /* Rounded corners */
 }
 
-#myBtn:hover {
+#myBtn, #myBtnNav:hover {
     background-color: #555; /* Add a dark-grey background on hover */
 }
