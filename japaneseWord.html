@@ -306,8 +306,9 @@
 		//copy from google start
 		function getRandom(arr, n) {
 
-				var arrEn1 = ['じっぷん', 'じゅっぷん', 'きゅうふん', 'はっぷん', 'しちふん'];
 				arr = ['十分鐘', '十分鐘', '九分鐘', '八分鐘', '七分鐘'];
+				arrEn = ['十分鐘', '十分鐘', '九分鐘', '八分鐘', '七分鐘'];
+				arrJp = ['じっぷん', 'じゅっぷん', 'きゅうふん', 'はっぷん', 'しちふん'];
 				index = 1;
 
 				var result = new Array(n),
@@ -321,7 +322,7 @@
 						taken[x] = --len in taken ? taken[len] : len;
 
 						console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
-						if(arrEn1[x] == arrEn1[index] && x != index){
+						if(arrEn[x] == arrEn[index] && x != index){
 								taken[x] = '';
 								result[n] = '';
 								n++;
