@@ -356,30 +356,7 @@
 		    if (event.target == modal) {
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
-		    }else if(event.target != document.getElementById("btnFilterShow")
-						&& event.target != document.getElementById("btnFilterNumber")
-						&& event.target != document.getElementById("btnFilterTraditionalQty")
-						&& event.target != document.getElementById("btnFilterWeek")
-						&& event.target != document.getElementById("btnFilterTiming")
-						&& event.target != document.getElementById("btnFilterTime")
-						&& event.target != document.getElementById("btnFilterMonth")
-						&& event.target != document.getElementById("btnFilterDay")
-						&& event.target != document.getElementById("btnFilterPplNum")
-						&& event.target != document.getElementById("btnFilterDirection")
-						&& event.target != document.getElementById("btnFilterSeasonWeather")
-						&& event.target != document.getElementById("btnFilterNewStandard1")
-						&& event.target != document.getElementById("btnFilterNewStandard2")
-						&& event.target != document.getElementById("btnFilterNewStandard3")
-						&& event.target != document.getElementById("btnFilterNewStandard4")
-						&& event.target != document.getElementById("btnFilterNewStandard5")
-						&& event.target != document.getElementById("btnFilterNewStandard6")
-						&& event.target != document.getElementById("btnFilterNewStandard7")
-						&& event.target != document.getElementById("btnFilterEveryone1")
-						&& event.target != document.getElementById("btnFilterEveryone2")
-						&& event.target != document.getElementById("btnFilterEveryone3")
-						&& event.target != document.getElementById("btnFilterEveryone4")
-						&& event.target != document.getElementById("btnFilterEveryone5")
-						&& event.target != document.getElementById("btnFilterEveryone6")
+		    }else if(!event.target.includes('id="btnFilter')
 						&& event.target != document.getElementById("mySidenav")
 						&& document.getElementById("mySidenav").style.width != "0px"
 					){
