@@ -101,6 +101,7 @@
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
 	    <span id="close" class="close">&times;</span>
+			<a id="toppest" class="smooth"></a>
 			<table id="source">
 			</table>
 	  </div>
@@ -443,6 +444,28 @@
 	    document.getElementById("mySidenav").style.width = "0";
 	    document.body.style.backgroundColor = "#fbf7ff";
 	}
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
+			 </ul>
+		</div>
+	</div>
+	<script>
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if ((document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
+					&& document.getElementById('myModal').style.display = "block";
+				) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
 	</script>
 
 	<ul id="foot">
