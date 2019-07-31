@@ -42,16 +42,36 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+function closeSourcePage(event){
+		if(event.target != document.getElementById("btnFilterCalculator")
+				&& event.target != document.getElementById("btnFilterLiar")
+				&& event.target != document.getElementById("btnFilterLiar2")
+				&& event.target != document.getElementById("btnFilterLucky")
+				&& event.target != document.getElementById("mySidenav")
+				&& document.getElementById("mySidenav").style.width != "0px"
+			){
+				closeNav();
+		}
+}
+
+window.onclick = function(event) {
+		closeSourcePage(event);
+}
+
+window.addEventListener('touchstart', function (event) {
+		closeSourcePage(event);
+});
 </script>
 
 <link rel="stylesheet" href="/css/side_bar_style.css">
 <div id="nav_subtitle">
 	<div id="mySidenav" class="sidenav">
 		 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		 <a href="#calculator"onclick="closeNav()">Calculator</a>
-		 <a href="#liar"onclick="closeNav()">Liar Dice Battle 1</a>
-		 <a href="#liar2"onclick="closeNav()">Liar Dice Battle 2</a>
-		 <a href="#lucky"onclick="closeNav()">Lucky Battle</a>
+		 <a href="#calculator" id="btnFilterCalculator" onclick="closeNav()">Calculator</a>
+		 <a href="#liar" id="btnFilterLiar" onclick="closeNav()">Liar Dice Battle 1</a>
+		 <a href="#liar2" id="btnFilterLiar2" onclick="closeNav()">Liar Dice Battle 2</a>
+		 <a href="#lucky" id="btnFilterLucky" onclick="closeNav()">Lucky Battle</a>
 	</div>
 </div>
 <script>
