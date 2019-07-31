@@ -389,7 +389,6 @@
 						&& document.getElementById("mySidenav").style.width != "0px"
 					){
 						closeNav();
-						document.getElementById("myBtnNav").style.display = "none";
 				}
 		}
 
@@ -465,6 +464,7 @@
 	function closeNav() {
 			document.getElementById("mySidenav").style.width = "0";
 			document.body.style.backgroundColor = "#fbf7ff";
+			document.getElementById("myBtnNav").style.display = "none";
 	}
 
 	function scrollFunction(body, id) {
