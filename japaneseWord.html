@@ -278,7 +278,7 @@
 			var correctAns = arrEn[index];
 			mc = getRandom(arrEn, 4);
 			var exist = mc.includes(correctAns);
-			
+
 			shuffle(mc);
 
 			for(var i = 0; i < mc.length; i++){
@@ -303,12 +303,6 @@
 
 		//copy from google start
 		function getRandom(arr, n) {
-
-				arr = ['十分鐘', '十分鐘', '九分鐘', '八分鐘', '七分鐘'];
-				arrEn = ['十分鐘', '十分鐘', '九分鐘', '八分鐘', '七分鐘'];
-				arrJp = ['じっぷん', 'じゅっぷん', 'きゅうふん', 'はっぷん', 'しちふん'];
-				index = 1;
-
 				var result = new Array(n),
 						len = arr.length,
 						taken = new Array(len);
@@ -322,7 +316,7 @@
 						}else{
 								n++;
 						}
-						console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
+						//console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
 				}
 				return result;
 		}
