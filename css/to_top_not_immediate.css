@@ -13,6 +13,6 @@
     border-radius: 20px; /* Rounded corners */
 }
 
-#myBtn, #myBtnNav:hover {
+#myBtn:hover, #myBtnNav:hover {
     background-color: #555; /* Add a dark-grey background on hover */
 }
