@@ -104,29 +104,6 @@
 			<a id="toppest" class="smooth"></a>
 			<table id="source">
 			</table>
-
-			<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
-			<div id="head">
-				<div id="nav">
-					 <ul>
-						 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
-					 </ul>
-				</div>
-			</div>
-			<script>
-				var modal = document.getElementById('myModal');
-				modal.onscroll = function() {scrollFunction()};
-
-				function scrollFunction() {
-					if (modal.scrollTop > 100) {
-						document.getElementById("myBtn").style.display = "block";
-					} else {
-						document.getElementById("myBtn").style.display = "none";
-					}
-				}
-			</script>
-			<script type="text/javascript" src="/js/jquery.scrollTop.js"></script>
-
 	  </div>
 	</div>
 
@@ -468,6 +445,28 @@
 	    document.body.style.backgroundColor = "#fbf7ff";
 	}
 	</script>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 <li><a id="myBtn" href="#toppest" class="subtitle" >Top</a></li>
+			 </ul>
+		</div>
+	</div>
+	<script>
+		var modal = document.getElementById('myModal');
+		modal.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (modal.scrollTop > 100) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+	</script>
+	<script type="text/javascript" src="/js/jquery.scrollTop.js"></script>
 
 	<ul id="foot">
 		</br>
