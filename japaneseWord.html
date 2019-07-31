@@ -318,6 +318,9 @@
 						}
 						//console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
 				}
+				if(!result.includes(arrEn[index])){
+					result[0] = arrEn[index];
+				}
 				return result;
 		}
 
