@@ -278,9 +278,7 @@
 			var correctAns = arrEn[index];
 			mc = getRandom(arrEn, 4);
 			var exist = mc.includes(correctAns);
-			if(!exist){
-				mc[0] = arrEn[index];
-			}
+			
 			shuffle(mc);
 
 			for(var i = 0; i < mc.length; i++){
