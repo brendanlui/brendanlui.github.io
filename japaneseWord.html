@@ -453,8 +453,10 @@
 
 	<script>
 	function openNav() {
-			document.getElementById("mySidenav").style.width = "280px";
+			var mySideNav = document.getElementById('mySidenav');
+			mySideNav.style.width = "280px";
 	    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+			scrollFunction(mySideNav, "mySidenav");
 	}
 	function closeNav() {
 	    document.getElementById("mySidenav").style.width = "0";
