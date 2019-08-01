@@ -81,6 +81,15 @@
 		  background-color: #949494;
 		  color: white;
 		}
+
+		.accentValue{
+			font-size:1.5vw;
+		}
+		@media screen and (max-height: 450px) {
+		    .accentValue {
+					font-size:2.5vw;
+				}
+		}
 		</style>
 </head>
 
@@ -210,7 +219,7 @@
 								dir[i] += '<td>';
 								if(accentValue != ''){
 									dir[i] += '[' + accentValue + ']';
-									arrJp[i] += ' <span style="font-size:1.5vw;">[' + accentValue + ']</span>';
+									arrJp[i] += ' <span class="accentValue">[' + accentValue + ']</span>';
 								}
 								dir[i] += '</td>';
 
