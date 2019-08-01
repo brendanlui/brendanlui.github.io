@@ -85,9 +85,6 @@
 		.accentJpValue{
 			font-size:1.5vw;
 		}
-		.accentEnValue{
-			font-size:2.5vw;
-		}
 		</style>
 </head>
 
@@ -156,20 +153,10 @@
 				changeWay = 1;
 				btn.className += " active";
 				btn.innerHTML = "中文 => 日語";
-				console.log(arrJp);
-				for(var i=0; i < arrJp.length; i++) {
-				 arrJp[i] = arrJp[i].replace('accentJpValue', 'accentEnValue');
-				}
-				console.log(arrJp[1].replace('accentJpValue', 'accentEnValue'))
-				console.log(arrJp);
 			}else{
 				changeWay = 0
 				btn.className = btn.className.replace(" active", "");
 				btn.innerHTML = "日語 => 中文";
-				console.log(arrEn);
-				for(var i=0; i < arrEn.length; i++) {
-					arrEn[i] = arrEn[i].replace('accentEnValue', 'accentJpValue');
-				}
 			}
 			restart();
 		}
