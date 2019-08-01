@@ -169,7 +169,6 @@
 												+ '<th>中文</th>'
 												+ '<th>英語</th>'
 												+ '<th>詞性</th>'
-												+ '<th>重音</th>'
 												+ '</tr>';
 
 				    	var txt = xmlhttp.responseText;
@@ -186,7 +185,26 @@
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 								dir[i] = '<tr>';
-								dir[i] += '<td>' + arrJp[i] + '</td>';
+								dir[i] += '<td>' + arrJp[i] + ' ';
+								var accentText = arr[i].split('<span class="txt-ja toneNum">');
+								var accentValue = '';
+								if(accentText.length == 2){
+									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
+									.replace(' ','')
+									.replace('⓪','0')
+									.replace('①','1')
+									.replace('②','2')
+									.replace('③','3')
+									.replace('④','4')
+									.replace('⑤','5')
+									.replace('⑥','6')
+									.replace('⑦','7')
+									.replace('⑧','8')
+									.replace('⑨','9')
+									.replace('⑩','10');
+								}
+								dir[i] += '[' + accentValue + ']';
+								dir[i] += '</td>';
 
 								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
 								var jpValue = '';
@@ -229,25 +247,6 @@
 									.replace('》', '');
 								}
 								dir[i] += '<td>' + typeValue + '</td>';
-
-								var accentText = arr[i].split('<span class="txt-ja toneNum">');
-								var accentValue = '';
-								if(accentText.length == 2){
-									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
-									.replace(' ','')
-									.replace('⓪','0')
-									.replace('①','1')
-									.replace('②','2')
-									.replace('③','3')
-									.replace('④','4')
-									.replace('⑤','5')
-									.replace('⑥','6')
-									.replace('⑦','7')
-									.replace('⑧','8')
-									.replace('⑨','9')
-									.replace('⑩','10');
-								}
-								dir[i] += '<td>' + accentValue + '</td>';
 
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
