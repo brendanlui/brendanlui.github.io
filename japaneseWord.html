@@ -192,7 +192,7 @@
 								var accentValue = '';
 								if(accentText.length == 2){
 									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
-									.replace(' ','')
+									.trim()
 									.replace('⓪','0')
 									.replace('①','1')
 									.replace('②','2')
@@ -215,7 +215,7 @@
 								var jpValue = '';
 								if(jpText.length == 2){
 									jpValue = jpText[1].substr(0, jpText[1].indexOf('</span>'))
-									.replace(' ','')
+									.trim()
 									.replace(/・/g, ' / ')
 									.replace('【', '')
 									.replace('】', '');
@@ -246,7 +246,7 @@
 								var typeValue = '';
 								if(typeText.length == 2){
 									typeValue = typeText[1].substr(0, typeText[1].indexOf('</span>'))
-									.replace(' ','')
+									.trim()
 									.replace(/・/g, ' / ')
 									.replace('《', '')
 									.replace('》', '');
