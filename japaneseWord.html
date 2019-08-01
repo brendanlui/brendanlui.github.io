@@ -163,7 +163,14 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
-							document.getElementById("source").innerHTML = '<tr><th>日語</th><th>來源</th><th>中文</th><th>英語</th><th>詞性</th></tr>';
+							document.getElementById("source").innerHTML = '<tr>'
+												+	'<th>日語</th>' 
+												+ '<th>來源</th>'
+												+ '<th>中文</th>'
+												+ '<th>英語</th>'
+												+ '<th>詞性</th>'
+												+ '<th>重音</th>'
+												+ '</tr>';
 
 				    	var txt = xmlhttp.responseText;
 
@@ -222,6 +229,14 @@
 									.replace('》', '');
 								}
 								dir[i] += '<td>' + typeValue + '</td>';
+
+								var accentText = arr[i].split('<span class="txt-ja toneNum">');
+								var accentValue = '';
+								if(accentText.length == 2){
+									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
+									.replace(' ','');
+								}
+								dir[i] += '<td>' + accentValue + '</td>';
 
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
