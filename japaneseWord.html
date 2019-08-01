@@ -156,14 +156,16 @@
 				changeWay = 1;
 				btn.className += " active";
 				btn.innerHTML = "中文 => 日語";
-				for(var i=0; i < arr.length; i++) {
+				for(var i=0; i < arrJp.length; i++) {
 				 arrJp[i] = arrJp[i].replace('accentJpValue', 'accentEnValue');
 				}
 			}else{
 				changeWay = 0
 				btn.className = btn.className.replace(" active", "");
 				btn.innerHTML = "日語 => 中文";
-				arrEn[i] = arrEn[i].replace('accentEnValue', 'accentJpValue');
+				for(var i=0; i < arrEn.length; i++) {
+					arrEn[i] = arrEn[i].replace('accentEnValue', 'accentJpValue');
+				}
 			}
 			restart();
 		}
