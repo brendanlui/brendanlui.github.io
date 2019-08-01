@@ -165,6 +165,7 @@
 							dir = [];
 							document.getElementById("source").innerHTML = '<tr>'
 												+	'<th>日語</th>'
+												+ '<th>重音</th>'
 												+ '<th>來源</th>'
 												+ '<th>中文</th>'
 												+ '<th>英語</th>'
@@ -185,7 +186,8 @@
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
 								dir[i] = '<tr>';
-								dir[i] += '<td>' + arrJp[i] + ' ';
+								dir[i] += '<td>' + arrJp[i] + '</td>';
+
 								var accentText = arr[i].split('<span class="txt-ja toneNum">');
 								var accentValue = '';
 								if(accentText.length == 2){
@@ -203,6 +205,7 @@
 									.replace('⑨','9')
 									.replace('⑩','10');
 								}
+								dir[i] += '<td>';
 								if(accentValue != ''){
 									dir[i] += '[' + accentValue + ']';
 								}
