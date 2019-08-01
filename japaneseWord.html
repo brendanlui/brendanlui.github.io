@@ -203,7 +203,9 @@
 									.replace('⑨','9')
 									.replace('⑩','10');
 								}
-								dir[i] += '[' + accentValue + ']';
+								if(accentValue != ''){
+									dir[i] += '[' + accentValue + ']';
+								}
 								dir[i] += '</td>';
 
 								var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
