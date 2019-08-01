@@ -193,6 +193,7 @@
 								if(accentText.length == 2){
 									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
 									.trim()
+									.replace('<span>','')
 									.replace('⓪','0')
 									.replace('①','1')
 									.replace('②','2')
