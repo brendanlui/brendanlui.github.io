@@ -82,13 +82,11 @@
 		  color: white;
 		}
 
-		.accentValue{
+		.accentJpValue{
 			font-size:1.5vw;
 		}
-		@media screen and (max-height: 650px) {
-		    .accentValue {
-					font-size:2.5vw;
-				}
+		.accentEnValue{
+			font-size:2.5vw;
 		}
 		</style>
 </head>
@@ -158,10 +156,14 @@
 				changeWay = 1;
 				btn.className += " active";
 				btn.innerHTML = "中文 => 日語";
+				for(var i=0; i < arr.length; i++) {
+				 arrJp[i] = arrJp[i].replace('accentJpValue', 'accentEnValue');
+				}
 			}else{
 				changeWay = 0
 				btn.className = btn.className.replace(" active", "");
 				btn.innerHTML = "日語 => 中文";
+				arrEn[i] = arrEn[i].replace('accentEnValue', 'accentJpValue');
 			}
 			restart();
 		}
@@ -219,7 +221,7 @@
 								dir[i] += '<td>';
 								if(accentValue != ''){
 									dir[i] += '[' + accentValue + ']';
-									arrJp[i] += ' <span class="accentValue">[' + accentValue + ']</span>';
+									arrJp[i] += ' <span class="accentJpValue">[' + accentValue + ']</span>';
 								}
 								dir[i] += '</td>';
 
