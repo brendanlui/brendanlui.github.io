@@ -191,8 +191,9 @@
 								var accentText = arr[i].split('<span class="txt-ja toneNum">');
 								var accentValue = '';
 								if(accentText.length == 2){
-									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
+									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span> </span>'))
 									.trim()
+									.replace('</span> <span>','][')
 									.replace('<span>','')
 									.replace('⓪','0')
 									.replace('①','1')
