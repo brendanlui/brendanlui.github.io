@@ -164,7 +164,7 @@
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							dir = [];
 							document.getElementById("source").innerHTML = '<tr>'
-												+	'<th>日語</th>' 
+												+	'<th>日語</th>'
 												+ '<th>來源</th>'
 												+ '<th>中文</th>'
 												+ '<th>英語</th>'
@@ -234,7 +234,18 @@
 								var accentValue = '';
 								if(accentText.length == 2){
 									accentValue = accentText[1].substr(0, accentText[1].indexOf('</span>'))
-									.replace(' ','');
+									.replace(' ','')
+									.replace('⓪','0')
+									.replace('①','1')
+									.replace('②','2')
+									.replace('③','3')
+									.replace('④','4')
+									.replace('⑤','5')
+									.replace('⑥','6')
+									.replace('⑦','7')
+									.replace('⑧','8')
+									.replace('⑨','9')
+									.replace('⑩','10');
 								}
 								dir[i] += '<td>' + accentValue + '</td>';
 
