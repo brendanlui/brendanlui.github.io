@@ -188,7 +188,7 @@
 							arrEn.shift();
 
 							for(i = 0; i < arr.length; i++){
-								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>'));
+								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 								dir[i] = '<tr>';
 								dir[i] += '<td>' + arrJp[i] + '</td>';
 
