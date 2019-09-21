@@ -28,17 +28,133 @@
 	  <a href="/">Home</a>
 	</div>
 
-	<!--TODO-->
 	<div>
+		<style>
+			/* The container */
+			.container {
+			position: relative;
+			padding-left: 35px;
+			margin-bottom: 12px;
+			cursor: pointer;
+			font-size: 22px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			}
 
-			<form>
-			  		<label for="lname">Month</label>
-						<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
-			</form>
-			<div class="upload-btn-wrapper">
-				<input type="file" id="fileUpload" />
-				<input type="button" id="upload" value="Input" onclick="Upload()" />
-			</div>
+			/* Hide the browser's default checkbox */
+			.container input {
+			position: absolute;
+			opacity: 0;
+			cursor: pointer;
+			height: 0;
+			width: 0;
+			}
+
+			/* Create a custom checkbox */
+			.checkmark {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 25px;
+			width: 25px;
+			background-color: #eee;
+			}
+
+			/* On mouse-over, add a grey background color */
+			.container:hover input ~ .checkmark {
+			background-color: #ccc;
+			}
+
+			/* When the checkbox is checked, add a blue background */
+			.container input:checked ~ .checkmark {
+			background-color: #2196F3;
+			}
+
+			/* Create the checkmark/indicator (hidden when not checked) */
+			.checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+			}
+
+			/* Show the checkmark when checked */
+			.container input:checked ~ .checkmark:after {
+			display: block;
+			}
+
+			/* Style the checkmark/indicator */
+			.container .checkmark:after {
+			left: 9px;
+			top: 5px;
+			width: 5px;
+			height: 10px;
+			border: solid white;
+			border-width: 0 3px 3px 0;
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+			}
+			</style>
+
+			<label class="container">Jan
+			<input type="checkbox" id="month1" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Feb
+			<input type="checkbox" id="month2" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Mar
+			<input type="checkbox" id="month3" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Apr
+			<input type="checkbox" id="month4" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">May
+			<input type="checkbox" id="month5" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Jun
+			<input type="checkbox" id="month6" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Jul
+			<input type="checkbox" id="month7" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Aug
+			<input type="checkbox" id="month8" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Sep
+			<input type="checkbox" id="month9" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Oct
+			<input type="checkbox" id="month10" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Nov
+			<input type="checkbox" id="month11" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+			<label class="container">Dec
+			<input type="checkbox" id="month12" onclick="return false;">
+			<span class="checkmark"></span>
+			</label>
+
+			<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
+			<input type="text" id="departmentFieldName" placeholder="Department Field Name"/>
+			<input type="text" id="itemnoFieldName" placeholder="Item No. Field Name"/>
+			<input type="text" id="amtFieldName" placeholder="Amount Field Name"/>
+
+			<input type="file" id="fileUpload" />
+			<input type="button" id="upload" value="Input" onclick="Upload()" />
+
 			<table id="tableData"></table>
 
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
@@ -136,7 +252,7 @@
 
 			<style>
 			input[type=text] {
-			  width: 100%;
+			  width: 24%;
 			  padding: 12px 20px;
 			  margin: 8px 0;
 			  box-sizing: border-box;
