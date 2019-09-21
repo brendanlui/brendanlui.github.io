@@ -327,6 +327,8 @@
 				monthMap.set(11, month11Map);
 				monthMap.set(12, month12Map);
 
+				var deptList = [];
+
 				function createGrid(keyNames, excelRows) {
 
 					//clear map with particular month
@@ -372,6 +374,9 @@
 									storeDept = newValue;
 								}
 								thisDept = newValue;
+								if(deptList.indexOf(thisDept) < 0){
+									deptList.push(thisDept);
+								}
 							}else if(keyNames[j] == document.getElementById("itemnoFieldName").value){
 								thisItemno = newValue;
 							}else if(keyNames[j] == document.getElementById("amtFieldName").value){
@@ -418,8 +423,60 @@
 					console.log(deptMap);
 				}
 
-				function Calculate(){
+				var resultMap = new Map([]);
+				var restart = true;
+				function assignElements(value, key, map) {	//brendan here
+						var txnSuccess = true;
+						var deptKey = key.split('^.^')[0];
+						var codeKey = key.split('^.^')[1];
+						for(i = 1; i <= 12; i++){
+								if(deptMap.get(i).has(deptKey)){
+									if(restart){
 
+										continue;
+									}
+									if((deptMap.get(i).get(deptKey) < value)){
+										txnSuccess = false;
+										if(deptList.indexOf(deptKey) == deptList.length){
+											deptKey = "ADDITIONAL_FEE";
+										}else{
+											deptKey = deptList[deptList.indexOf(deptKey) + 1];
+										}
+										var newKey = deptKey + "^.^" + codeKey;
+										resultMap.set(key, newKey);
+										if(map.has(newKey)){
+											map.set(newKey, value + map.get(newKey))
+										}else{
+											map.set(newKey, value);
+										}
+										map.delete(key);
+										restart = true;
+									}
+								}
+						}
+
+						if(txnSuccess){
+							for(i = 1; i <= 12; i++){
+									if(deptMap.get(i).has(deptKey)){
+										deptMap.get(i).set(deptKey, deptMap.get(i).get(deptKey) - value);
+									}
+							}
+						}
+				}
+
+				function Calculate(){
+					restart = true;
+					console.log(deptMap);
+					console.log(monthMap);
+					console.log(deptList);
+					while(restart){
+						restart = false;
+						for(i = 1; i <= 12; i++){
+							monthMap.get(i).forEach(assignElements);
+						}
+						console.log(resultMap);
+					}
+					console.log(resultMap);
 				}
 
 			</script>
