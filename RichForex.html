@@ -160,13 +160,6 @@
 			<label id="month12text"></label>
 			</label>
 
-			<script>
-				function handleMonth(input) {
-					if (isNaN(input.value)) input.value = 1;
-					if (input.value < 1) input.value = 1;
-					if (input.value > 12) input.value = 12;
-				}
-			</script>
 			<input type="text" id="monthInput" value = "1" onchange="handleMonth(this);" placeholder="Month"/>
 			<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
 			<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
@@ -180,6 +173,12 @@
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 			<script type="text/javascript">
+
+				function handleMonth(input) {
+					if (isNaN(input.value)) input.value = 1;
+					if (input.value < 1) input.value = 1;
+					if (input.value > 12) input.value = 12;
+				}
 
 		    function Upload() {
 		        //Reference the FileUpload element.
@@ -228,13 +227,18 @@
 
 		        //Read all rows from First Sheet into an JSON array.
 		        var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
-
 						var keyNames = Object.keys(excelRows[0]);
+
+						//create table
 						createGrid(keyNames, excelRows);
-						console.log(keyNames);
+
+						//comment later
+						console.log("Field Name: " + keyNames);
+						console.log("New Import Data: ");
 						console.log(excelRows);
 		    };
 
+				//part of important data
 				var monthMap = new Map([]);
 				var month1Map = new Map([]);
 				var month2Map = new Map([]);
@@ -267,6 +271,7 @@
 					var monthInput = parseInt(document.getElementById("monthInput").value);
 					monthMap.get(monthInput).clear();
 
+					//set table column field name
 					var tableString = "";
 					tableString = "";
 					tableString += "<tr>";
@@ -279,6 +284,7 @@
 					}
 					tableString += "</tr>";
 
+					//set data and UI
 					var oldDept = "";
 					for(i = 0; i < excelRows.length; i++){
 						tableString += "<tr>";
