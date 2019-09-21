@@ -163,6 +163,9 @@
 
 
 			<h2>User Input:</h2>
+			<input type="text" id="numOfDept" placeholder="No. of Department in this Month" onchange="handleNumOfDept(this);" style="width:98%"/></h2>
+			<div id="deptCond"></div>
+
 			<input type="text" id="monthInput" onchange="handleMonth(this);" placeholder="Month"/>
 			<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
 			<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
@@ -171,6 +174,7 @@
 			<a href="./sample/itemAmountDetailPerMonth.xlsx" download>Download Sample</a>
 			<input type="file" id="fileUpload" />
 			<input type="button" id="upload" value="Input" onclick="Upload()" />
+			<input type="button" id="calculate" value="Calculate" onclick="Calculate()" />
 
 			<h2>Latest Updated Excel Table:</h2>
 			<table id="tableData"></table>
@@ -178,6 +182,57 @@
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 			<script type="text/javascript">
+				var deptMap = new Map([]);
+				var dept1Map = new Map([]);
+				var dept2Map = new Map([]);
+				var dept3Map = new Map([]);
+				var dept4Map = new Map([]);
+				var dept5Map = new Map([]);
+				var dept6Map = new Map([]);
+				var dept7Map = new Map([]);
+				var dept8Map = new Map([]);
+				var dept9Map = new Map([]);
+				var dept10Map = new Map([]);
+				var dept11Map = new Map([]);
+				var dept12Map = new Map([]);
+				deptMap.set(1, dept1Map);
+				deptMap.set(2, dept2Map);
+				deptMap.set(3, dept3Map);
+				deptMap.set(4, dept4Map);
+				deptMap.set(5, dept5Map);
+				deptMap.set(6, dept6Map);
+				deptMap.set(7, dept7Map);
+				deptMap.set(8, dept8Map);
+				deptMap.set(9, dept9Map);
+				deptMap.set(10, dept10Map);
+				deptMap.set(11, dept11Map);
+				deptMap.set(12, dept12Map);
+
+				function handleNumOfDept(input){
+
+					if (isNaN(input.value)) input.value = 0;
+					input.value = Math.round(input.value);
+					if (input.value < 0) input.value = 0;
+					if (input.value > 10) input.value = 10;
+
+					document.getElementById("deptCond").innerHTML = "";
+					for(i = 1; i <= input.value; i++){
+						document.getElementById("deptCond").innerHTML += '<input type="text" id="dept' + i
+													+ '" placeholder="Department Name '  + i
+													+ '" style="width:49%"/>'
+													+ '	<input type="text" id="dept' + i
+													+ 'maxTtlAmt" onchange="handleAmt(this);" placeholder="Max Total Amount in this Month" style="width:48%"/>';
+					}
+					if(input.value == 0){
+						input.value = "";
+					}
+				}
+
+				function handleAmt(input) {
+					if (isNaN(input.value)) input.value = "";
+					if (input.value <= 0) input.value = "";
+					if (input.value > 999999999999) input.value = 999999999999;
+				}
 
 				function handleMonth(input) {
 					if (isNaN(input.value)) input.value = 1;
@@ -333,6 +388,14 @@
 
 						tableString += "</tr>";
 					}
+
+					var numOfDept = document.getElementById("numOfDept").value;
+					for(i = 1; i <= numOfDept; i++){
+							var dept = document.getElementById("dept" + i).value;
+							var totalAmt = document.getElementById("dept" + i + "maxTtlAmt").value;
+							deptMap.get(monthInput).set(dept, totalAmt);
+					}
+
 					document.getElementById("month" + monthInput).checked = true;
 					print12monthMap();
 					document.getElementById("tableData").innerHTML = tableString;
@@ -346,7 +409,12 @@
 					for(i = 1; i <= 12; i++){
 						console.log(i + ": ");
 						monthMap.get(i).forEach(logMapElements);
+						console.log(deptMap);
 					}
+				}
+
+				function Calculate(){
+					
 				}
 			</script>
 
