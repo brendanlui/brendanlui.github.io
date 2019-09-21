@@ -262,6 +262,11 @@
 				monthMap.set(12, month12Map);
 
 				function createGrid(keyNames, excelRows) {
+
+					//clear map with particular month
+					var monthInput = parseInt(document.getElementById("monthInput").value);
+					monthMap.get(monthInput).clear();
+
 					var tableString = "";
 					tableString = "";
 					tableString += "<tr>";
@@ -305,8 +310,6 @@
 
 						var key = thisDept.trim().replace(/^\|+|\|+$/g, '') + "^.^" + thisItemno.trim().replace(/^\|+|\|+$/g, '');
 
-						var monthInput = parseInt(document.getElementById("monthInput").value);
-
 						if(monthMap.get(monthInput).has(key)){
 							monthMap.get(monthInput).set(key, parseFloat(monthMap.get(monthInput).get(key)) + parseFloat(thisAmt));
 						}else{
@@ -315,8 +318,8 @@
 
 						tableString += "</tr>";
 					}
-					print12monthMap();
 					document.getElementById("month" + monthInput).checked = true;
+					print12monthMap();
 					document.getElementById("tableData").innerHTML = tableString;
 				}
 
