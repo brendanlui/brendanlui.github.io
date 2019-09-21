@@ -160,10 +160,10 @@
 			<label id="month12text"></label>
 			</label>
 
-			<input type="text" id="monthInput" value = "1" onchange="handleMonth(this);" placeholder="Month"/>
+			<input type="text" id="monthInput" onchange="handleMonth(this);" placeholder="Month"/>
 			<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
 			<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
-			<input type="text" id="amtFieldName" value = "Amt. Per Qty." placeholder="Amount Field Name"/>
+			<input type="text" id="amtFieldName" value = "Amount" placeholder="Amount Field Name"/>
 
 			<input type="file" id="fileUpload" />
 			<input type="button" id="upload" value="Input" onclick="Upload()" />
@@ -269,6 +269,10 @@
 
 					//clear map with particular month
 					var monthInput = parseInt(document.getElementById("monthInput").value);
+					if(!monthInput){
+						alert("Please input a Month.");
+						return;
+					}
 					monthMap.get(monthInput).clear();
 
 					//set table column field name
