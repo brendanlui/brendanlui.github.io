@@ -32,6 +32,7 @@
 		<style>
 			/* The container */
 			.container {
+  		display: block;
 			position: relative;
 			padding-left: 35px;
 			margin-bottom: 12px;
@@ -101,56 +102,75 @@
 			<label class="container">Jan
 			<input type="checkbox" id="month1" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month1text"></label>
 			</label>
 			<label class="container">Feb
 			<input type="checkbox" id="month2" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month2text"></label>
 			</label>
 			<label class="container">Mar
 			<input type="checkbox" id="month3" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month3text"></label>
 			</label>
 			<label class="container">Apr
 			<input type="checkbox" id="month4" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month4text"></label>
 			</label>
 			<label class="container">May
 			<input type="checkbox" id="month5" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month5text"></label>
 			</label>
 			<label class="container">Jun
 			<input type="checkbox" id="month6" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month6text"></label>
 			</label>
 			<label class="container">Jul
 			<input type="checkbox" id="month7" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month7text"></label>
 			</label>
 			<label class="container">Aug
 			<input type="checkbox" id="month8" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month8text"></label>
 			</label>
 			<label class="container">Sep
 			<input type="checkbox" id="month9" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month9text"></label>
 			</label>
 			<label class="container">Oct
 			<input type="checkbox" id="month10" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month10text"></label>
 			</label>
 			<label class="container">Nov
 			<input type="checkbox" id="month11" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month11text"></label>
 			</label>
 			<label class="container">Dec
 			<input type="checkbox" id="month12" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month12text"></label>
 			</label>
 
-			<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
-			<input type="text" id="departmentFieldName" placeholder="Department Field Name"/>
-			<input type="text" id="itemnoFieldName" placeholder="Item No. Field Name"/>
-			<input type="text" id="amtFieldName" placeholder="Amount Field Name"/>
+			<script>
+				function handleMonth(input) {
+					if (isNaN(input.value)) input.value = 1;
+					if (input.value < 1) input.value = 1;
+					if (input.value > 12) input.value = 12;
+				}
+			</script>
+			<input type="text" id="monthInput" value = "1" onchange="handleMonth(this);" placeholder="Month"/>
+			<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
+			<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
+			<input type="text" id="amtFieldName" value = "Amt. Per Qty." placeholder="Amount Field Name"/>
 
 			<input type="file" id="fileUpload" />
 			<input type="button" id="upload" value="Input" onclick="Upload()" />
@@ -160,12 +180,6 @@
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
 			<script type="text/javascript">
-
-				function handleMonth(input) {
-					if (isNaN(input.value)) input.value = 1;
-					if (input.value < 1) input.value = 1;
-					if (input.value > 12) input.value = 12;
-				}
 
 		    function Upload() {
 		        //Reference the FileUpload element.
@@ -216,11 +230,36 @@
 		        var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
 
 						var keyNames = Object.keys(excelRows[0]);
+						createGrid(keyNames, excelRows);
 						console.log(keyNames);
 						console.log(excelRows);
-						createGrid(keyNames, excelRows);
 		    };
 
+				var monthMap = new Map([]);
+				var month1Map = new Map([]);
+				var month2Map = new Map([]);
+				var month3Map = new Map([]);
+				var month4Map = new Map([]);
+				var month5Map = new Map([]);
+				var month6Map = new Map([]);
+				var month7Map = new Map([]);
+				var month8Map = new Map([]);
+				var month9Map = new Map([]);
+				var month10Map = new Map([]);
+				var month11Map = new Map([]);
+				var month12Map = new Map([]);
+				monthMap.set(1, month1Map);
+				monthMap.set(2, month2Map);
+				monthMap.set(3, month3Map);
+				monthMap.set(4, month4Map);
+				monthMap.set(5, month5Map);
+				monthMap.set(6, month6Map);
+				monthMap.set(7, month7Map);
+				monthMap.set(8, month8Map);
+				monthMap.set(9, month9Map);
+				monthMap.set(10, month10Map);
+				monthMap.set(11, month11Map);
+				monthMap.set(12, month12Map);
 
 				function createGrid(keyNames, excelRows) {
 					var tableString = "";
@@ -235,18 +274,61 @@
 					}
 					tableString += "</tr>";
 
+					var oldDept = "";
 					for(i = 0; i < excelRows.length; i++){
 						tableString += "<tr>";
+
+						var thisDept = "";
+						var thisItemno = "";
+						var thisAmt = 0;
+
 						for(j = 0; j < keyNames.length; j++){
-							var value = excelRows[i][keyNames[j]];
-							if(!value){
-								value = "";
+							var newValue = excelRows[i][keyNames[j]];
+							if(!newValue){
+								newValue = "";
 							}
-							tableString += "<td>" + value + "</td>";
+							if(keyNames[j] == document.getElementById("departmentFieldName").value){
+								if(newValue == ""){
+									newValue = storeDept;
+									excelRows[i][keyNames[j]] = storeDept;
+								}else{
+									storeDept = newValue;
+								}
+								thisDept = newValue;
+							}else if(keyNames[j] == document.getElementById("itemnoFieldName").value){
+								thisItemno = newValue;
+							}else if(keyNames[j] == document.getElementById("amtFieldName").value){
+								thisAmt = newValue;
+							}
+							tableString += "<td>" + newValue + "</td>";
 						}
+
+						var key = thisDept.trim().replace(/^\|+|\|+$/g, '') + "^.^" + thisItemno.trim().replace(/^\|+|\|+$/g, '');
+
+						var monthInput = parseInt(document.getElementById("monthInput").value);
+
+						if(monthMap.get(monthInput).has(key)){
+							monthMap.get(monthInput).set(key, parseFloat(monthMap.get(monthInput).get(key)) + parseFloat(thisAmt));
+						}else{
+							monthMap.get(monthInput).set(key, parseFloat(thisAmt));
+						}
+
 						tableString += "</tr>";
 					}
+					print12monthMap();
+					document.getElementById("month" + monthInput).checked = true;
 					document.getElementById("tableData").innerHTML = tableString;
+				}
+
+				function logMapElements(value, key, map) {
+						console.log(`m[${key}] = ${value}`);
+				}
+
+				function print12monthMap(){
+					for(i = 1; i <= 12; i++){
+						console.log(i + ": ");
+						monthMap.get(i).forEach(logMapElements);
+					}
 				}
 			</script>
 
