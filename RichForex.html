@@ -31,23 +31,26 @@
 	<!--TODO-->
 	<div>
 
-			<script>
+			<form>
+			  		<label for="lname">Month</label>
+						<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
+			</form>
+			<div class="upload-btn-wrapper">
+				<input type="file" id="fileUpload" />
+				<input type="button" id="upload" value="Input" onclick="Upload()" />
+			</div>
+			<table id="tableData"></table>
+
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+			<script type="text/javascript">
+
 				function handleMonth(input) {
 					if (isNaN(input.value)) input.value = 1;
 					if (input.value < 1) input.value = 1;
 					if (input.value > 12) input.value = 12;
 				}
-			</script>
-			<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
 
-			<table id="tableData"></table>
-		<!--brendan-->
-			<input type="file" id="fileUpload" />
-			<input type="button" id="upload" value="Input" onclick="Upload()" />
-
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
-			<script type="text/javascript">
 		    function Upload() {
 		        //Reference the FileUpload element.
 		        var fileUpload = document.getElementById("fileUpload");
@@ -129,33 +132,40 @@
 					}
 					document.getElementById("tableData").innerHTML = tableString;
 				}
-		</script>
+			</script>
 
-		<style>
-		#tableData {
-		  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-		  border-collapse: collapse;
-		  width: 100%;
-		}
+			<style>
+			input[type=text] {
+			  width: 100%;
+			  padding: 12px 20px;
+			  margin: 8px 0;
+			  box-sizing: border-box;
+			}
 
-		#tableData td, #tableData th {
-		  border: 1px solid #ddd;
-		  padding: 8px;
-		}
+			#tableData {
+			  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			  border-collapse: collapse;
+			  width: 100%;
+			}
 
-		#tableData tr:nth-child(even){background-color: #f2f2f2;}
+			#tableData td, #tableData th {
+			  border: 1px solid #ddd;
+			  padding: 8px;
+			}
 
-		#tableData tr:hover {background-color: #ddd;}
+			#tableData tr:nth-child(even){background-color: #f2f2f2;}
 
-		#tableData th {
-		  padding-top: 12px;
-		  padding-bottom: 12px;
-		  text-align: left;
-		  background-color: #737373;
-		  color: white;
-		}
-		</style>
-</div>
+			#tableData tr:hover {background-color: #ddd;}
+
+			#tableData th {
+			  padding-top: 12px;
+			  padding-bottom: 12px;
+			  text-align: left;
+			  background-color: #737373;
+			  color: white;
+			}
+			</style>
+	</div>
 
 	<ul id="foot">
 		</br>
