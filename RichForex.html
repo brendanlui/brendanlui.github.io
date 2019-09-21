@@ -79,7 +79,7 @@
 			</script>
 			<input type="text" id="month" onchange="handleMonth(this);" placeholder="Month"/>
 
-			<table id="grid1"></table>
+			<table id="tableData"></table>
 <!--brendan-->
 	<input type="file" id="fileUpload" />
 	<input type="button" id="upload" value="Upload" onclick="Upload()" />
@@ -134,33 +134,65 @@
         //Read all rows from First Sheet into an JSON array.
         var excelRows = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[firstSheet]);
 
-				var gridColumns = [];
 				var keyNames = Object.keys(excelRows[0]);
-				// Iterating through cells in first row and use the cell text as key and header text for the grid columns
-				for (columnIndex = 0; columnIndex < keyNames.length; columnIndex++) {
-						column = keyNames[columnIndex];
-						gridColumns.push({ headerText: column, key: column });
-				}
-
 				console.log(keyNames);
 				console.log(excelRows);
-				createGrid(excelRows, gridColumns);
+				createGrid(keyNames, excelRows);
     };
 
 
-		function createGrid(data, gridColumns) {
-				if ($("#grid1").data("igGrid") !== undefined) {
-						$("#grid1").igGrid("destroy");
-				}
+		function createGrid(keyNames, excelRows) {
 
-				$("#grid1").igGrid({
-						columns: gridColumns,
-						autoGenerateColumns: true,
-						dataSource: data,
-						width: "100%"
-				});
+			var tableString = "";
+			tableString = "";
+			tableString += "<tr>";
+			for(i = 0; i < keyNames.length; i++){
+					var value = keyNames[i];
+					if(!value){
+						value = "";
+					}
+					tableString += "<th>" + keyNames[i] + "</th>";
+			}
+			tableString += "</tr>";
+
+			for(i = 0; i < excelRows.length; i++){
+				tableString += "<tr>";
+				for(j = 0; j < keyNames.length; j++){
+					var value = excelRows[i][keyNames[j]];
+					if(!value){
+						value = "";
+					}
+					tableString += "<td>" + value + "</td>";
+				}
+				tableString += "</tr>";
+			}
+			document.getElementById("tableData").innerHTML = tableString;
 		}
 </script>
+<style>
+#tableData {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tableData td, #tableData th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tableData tr:nth-child(even){background-color: #f2f2f2;}
+
+#tableData tr:hover {background-color: #ddd;}
+
+#tableData th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #737373;
+  color: white;
+}
+</style>
 </div>
 
 
