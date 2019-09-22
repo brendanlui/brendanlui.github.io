@@ -137,6 +137,10 @@
 			}
 			</style>
 
+			<input class="buttonJp btnFilter" type="button" id="calculate" value="Calculate" onclick="Calculate()" />
+			<h2 id="resultTitle" style="display:none;">Solution:</h2>
+			<table id="finalResult"></table>
+
 			<br><div class="divider1">&nbsp;</div>
 			<h2>Monthly Status:</h2>
 			<label class="container">Jan
@@ -199,9 +203,6 @@
 			<span class="checkmark"></span>
 			<label id="month12text"></label>
 			</label>
-			<input class="buttonJp btnFilter" type="button" id="calculate" value="Calculate" onclick="Calculate()" />
-			<h2 id="resultTitle" style="display:none;">Calculated Result:</h2>
-			<table id="finalResult"></table>
 
 			<br><div class="divider1">&nbsp;</div>
 			<h2>User Input:</h2>
@@ -501,6 +502,7 @@
 					createResultGrid();
 					document.getElementById("resultTitle").style.display = "block";
 					document.getElementById("calculate").disabled = true;
+					document.getElementById("calculate").value = "Done";
 				}
 
 				function checkOneYear(deptItem, itemnoItem){
