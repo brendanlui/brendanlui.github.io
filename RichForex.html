@@ -161,8 +161,7 @@
 			<label id="month12text"></label>
 			</label>
 			<input type="button" id="calculate" value="Calculate" onclick="Calculate()" />
-			<div id="finalResult">
-			</div>
+			<table id="finalResult"></table>
 
 
 			<h2>User Input:</h2>
@@ -458,6 +457,7 @@
 						});
 					});
 					console.log(resultMap);
+					createResultGrid();
 				}
 
 				function checkOneYear(deptItem, itemnoItem){
@@ -525,6 +525,32 @@
 					return settle;
 				}
 
+				function getMapElements(value, key, map) {
+						return key + "^.^" + value;
+				}
+
+				function createResultGrid(){
+					//clear map with particular month
+					document.getElementById("finalResult").innerHTML = "";
+
+					//set table column field name
+					var tableString = "";
+					tableString = "";
+					tableString += "<tr>";
+
+					var deptField = document.getElementById("departmentFieldName").value;
+					var itemnoField = document.getElementById("itemnoFieldName").value;
+					tableString += "<th>" + itemnoField + "</th>"
+										+ "<th>" + deptField + " (From)</th>"
+										+ "<th>" + deptField + " (To)</th>";
+					tableString += "</tr>";
+
+					tableString += "<tr>";
+					//TODO brendan
+					tableString += "</tr>";
+					document.getElementById("finalResult").innerHTML = tableString;
+				}
+
 			</script>
 
 			<style>
@@ -535,22 +561,22 @@
 			  box-sizing: border-box;
 			}
 
-			#tableData {
+			#tableData, #finalResult {
 			  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 			  border-collapse: collapse;
 			  width: 100%;
 			}
 
-			#tableData td, #tableData th {
+			#tableData td, #tableData th, #finalResult td, , #finalResult th {
 			  border: 1px solid #ddd;
 			  padding: 8px;
 			}
 
-			#tableData tr:nth-child(even){background-color: #f2f2f2;}
+			#tableData tr:nth-child(even), #finalResult tr:nth-child(even){background-color: #f2f2f2;}
 
-			#tableData tr:hover {background-color: #ddd;}
+			#tableData tr:hover , #finalResult tr:hover{background-color: #ddd;}
 
-			#tableData th {
+			#tableData th, #finalResult th{
 			  padding-top: 12px;
 			  padding-bottom: 12px;
 			  text-align: left;
