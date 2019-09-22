@@ -204,19 +204,22 @@
 			<label id="month12text"></label>
 			</label>
 
-			<br><div class="divider1">&nbsp;</div>
-			<h2>User Input:</h2>
-			<input type="text" id="numOfDept" placeholder="No. of Department in this Month" onchange="handleNumOfDept(this);" style="width:98%"/></h2>
-			<div id="deptCond"></div>
+			<div id="userInput">
+				<br><div class="divider1">&nbsp;</div>
+				<h2>User Input:</h2>
+				<input type="text" id="numOfDept" placeholder="No. of Department in this Month" onchange="handleNumOfDept(this);" style="width:98%"/></h2>
+				<div id="deptCond"></div>
 
-			<input type="text" id="monthInput" onchange="handleMonth(this);" placeholder="Month"/>
-			<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
-			<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
-			<input type="text" id="amtFieldName" value = "Amount" placeholder="Amount Field Name"/>
+				<input type="text" id="monthInput" onchange="handleMonth(this);" placeholder="Month"/>
+				<input type="text" id="departmentFieldName" value = "Department" placeholder="Department Field Name"/>
+				<input type="text" id="itemnoFieldName" value = "Item No." placeholder="Item No. Field Name"/>
+				<input type="text" id="amtFieldName" value = "Amount" placeholder="Amount Field Name"/>
 
-			<input type="file" id="fileUpload" />
-			<input class="buttonJp btnFilter" type="button" id="upload" value="Click to Input" onclick="Upload()" /></br>
-			<a href="./sample/itemAmountDetailPerMonth.xlsx" download>Click to Download Template</a>
+				<input type="file" id="fileUpload" />
+				<input class="buttonJp btnFilter" type="button" id="upload" value="Click to Input" onclick="Upload()" /></br>
+				<a href="./sample/itemAmountDetailPerMonth.xlsx" download>Click to Download Template</a></br>
+				<a href="./doc/rich_forex_tutorial.docx" download>Click to Download Tutorial</a>
+			</div>
 
 			<br><div class="divider1">&nbsp;</div>
 			<h2>Latest Excel Input Table:</h2>
@@ -503,6 +506,7 @@
 					document.getElementById("resultTitle").style.display = "block";
 					document.getElementById("calculate").disabled = true;
 					document.getElementById("calculate").value = "Done";
+					document.getElementById("userInput").innerHTML = "";
 				}
 
 				function checkOneYear(deptItem, itemnoItem){
