@@ -487,6 +487,11 @@
 				}
 
 				function Calculate(){
+					if(document.getElementById("calculate").value == "Click to Reset"){
+						location.reload();
+						return;
+					}
+
 					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
 						var settle = false;
 						//try original
@@ -509,8 +514,7 @@
 					console.log(resultMap);
 					createResultGrid();
 					document.getElementById("resultTitle").style.display = "block";
-					document.getElementById("calculate").disabled = true;
-					document.getElementById("calculate").value = "Done";
+					document.getElementById("calculate").value = "Click to Reset";
 					document.getElementById("userInput").innerHTML = "";
 				}
 
