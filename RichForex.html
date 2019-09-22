@@ -99,11 +99,19 @@
 			}
 			</style>
 
+			<style>
+			.label {
+			  color: white;
+			  padding: 4px;
+			  font-family: Arial;
+			}
+			.info {background-color: #2196F3;} /* Blue */
+			</style>
+
 			<h2>Monthly Status:</h2>
 			<label class="container">Jan
 			<input type="checkbox" id="month1" onclick="return false;">
 			<span class="checkmark"></span>
-			<label id="month1text"></label>
 			</label>
 			<label class="container">Feb
 			<input type="checkbox" id="month2" onclick="return false;">
@@ -161,6 +169,7 @@
 			<label id="month12text"></label>
 			</label>
 			<input type="button" id="calculate" value="Calculate" onclick="Calculate()" />
+			<h2 id="resultTitle" style="display:none;">Calculated Result:</h2>
 			<table id="finalResult"></table>
 
 
@@ -177,7 +186,7 @@
 			<input type="file" id="fileUpload" />
 			<input type="button" id="upload" value="Input" onclick="Upload()" />
 
-			<h2>Last Import Excel Table:</h2>
+			<h2>Latest Excel Input Table:</h2>
 			<table id="tableData"></table>
 
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
@@ -405,10 +414,10 @@
 							var dept = document.getElementById("dept" + i).value;
 							var totalAmt = document.getElementById("dept" + i + "maxTtlAmt").value;
 							deptMap.get(monthInput).set(dept, totalAmt);
-							tempStringMaxAmt += "{" + dept + ":" + totalAmt + "}";
+							tempStringMaxAmt += '<span class="label info">' + dept + ":" + totalAmt + '</span> ';
 					}
 
-					document.getElementById("month" + monthInput + "text").innerHTML = " - [" + tempStringMaxAmt + "]";
+					document.getElementById("month" + monthInput + "text").innerHTML = " - " + tempStringMaxAmt ;
 					document.getElementById("month" + monthInput).checked = true;
 					print12monthMap();
 					document.getElementById("tableData").innerHTML = tableString;
@@ -458,6 +467,8 @@
 					});
 					console.log(resultMap);
 					createResultGrid();
+					document.getElementById("resultTitle").style.display = "block";
+					document.getElementById("calculate").disabled = true;
 				}
 
 				function checkOneYear(deptItem, itemnoItem){
@@ -525,8 +536,11 @@
 					return settle;
 				}
 
+				var changeString = "";
 				function getMapElements(value, key, map) {
-						return key + "^.^" + value;
+						changeString += "<tr><td>" + key.split("^.^")[1] + "</td>"
+												+ "<td>" + key.split("^.^")[0] + "</td>"
+												+ "<td>" + value.split("^.^")[0] + "</td></tr>";
 				}
 
 				function createResultGrid(){
@@ -544,10 +558,8 @@
 										+ "<th>" + deptField + " (From)</th>"
 										+ "<th>" + deptField + " (To)</th>";
 					tableString += "</tr>";
-
-					tableString += "<tr>";
-					//TODO brendan
-					tableString += "</tr>";
+					resultMap.forEach(getMapElements);
+					tableString += changeString;
 					document.getElementById("finalResult").innerHTML = tableString;
 				}
 
