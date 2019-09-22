@@ -428,77 +428,101 @@
 				}
 
 				var resultMap = new Map([]);
+				var checkDept = "";
+				var checkItemno = "";
+
+				function getOriginalDept(value, key, map) {
+						if(key.split("^.^")[1] == checkItemno && checkDept == ""){
+							checkDept = key.split("^.^")[0];
+						}
+				}
+
 				function Calculate(){
 					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
 						var settle = false;
+						//try original
+						checkItemno = itemnoItem;
+						for(i = 1; i <= 12; i++){
+							monthMap.get(i).forEach(getOriginalDept);
+						}
+						settle = checkOneYear(checkDept, checkItemno);
+						checkDept = "";
+						checkItemno = "";
+
+						//try other
 						deptList.forEach(function(deptItem, ideptIndex, deptArray) {
 							if(settle){
 								return;
 							}
-
-							for(i = 1; i <= 12; i++){
-									var value = 0;
-									if(deptMap.get(i).has(deptItem) && monthMap.get(i).has(deptItem + "^.^" + itemnoItem)){
-										value = parseFloat(monthMap.get(i).get(deptItem + "^.^" + itemnoItem));
-										if(parseFloat(deptMap.get(i).get(deptItem)) < parseFloat(value)){
-											var newKey = "";
-											var tempMon = 0;
-											deptList.forEach(function(deptItem2, ideptIndex2, deptArray2) {
-
-														if(newKey != "" && tempMon == 12){
-															return;
-														}
-
-														for(j = 1; j <= 12; j++){
-																if(deptMap.get(j).has(deptItem2) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-																	if((parseFloat(deptMap.get(j).get(deptItem2)) < parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)))){
-																			tempMon = 0;
-																			break;
-																	}else{
-																		tempMon++;
-																	}
-																}else{
-																	tempMon++;
-																}
-
-																if(tempMon == 12 && j == 12){
-																	newKey = deptItem2 + "^.^" + itemnoItem;
-																}
-														}
-											});
-
-											if(newKey == "" || tempMon != 12){
-													newKey = "ADDITIONAL_FEE" + "^.^" + itemnoItem;
-											}
-
-											resultMap.set(deptItem + "^.^" + itemnoItem, newKey);
-
-											var oldDept = deptItem;
-											var newDept = newKey.split("^.^")[0];
-
-											for(j = 1; j <= 12; j++){
-												if(deptMap.get(j).has(newDept)){
-													deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));
-												}
-											}
-											settle = true;
-											break;
-										}
-									}else {
-										if(i == 12){
-												for(j = 1; j <= 12; j++){
-													if(deptMap.get(j).has(deptItem) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-														deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)));
-													}
-												}
-												settle = true;
-										}
-									}
-							}
-
+							settle = checkOneYear(deptItem, itemnoItem);
 						});
 					});
 					console.log(resultMap);
+				}
+
+				function checkOneYear(deptItem, itemnoItem){
+
+					var settle = false;
+					for(i = 1; i <= 12; i++){
+							var value = 0;
+							if(deptMap.get(i).has(deptItem) && monthMap.get(i).has(deptItem + "^.^" + itemnoItem)){
+								value = parseFloat(monthMap.get(i).get(deptItem + "^.^" + itemnoItem));
+								if(parseFloat(deptMap.get(i).get(deptItem)) < parseFloat(value)){
+									var newKey = "";
+									var tempMon = 0;
+									deptList.forEach(function(deptItem2, ideptIndex2, deptArray2) {
+
+												if(newKey != "" && tempMon == 12){
+													return;
+												}
+
+												for(j = 1; j <= 12; j++){
+														if(deptMap.get(j).has(deptItem2) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
+															if((parseFloat(deptMap.get(j).get(deptItem2)) < parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)))){
+																	tempMon = 0;
+																	break;
+															}else{
+																tempMon++;
+															}
+														}else{
+															tempMon++;
+														}
+
+														if(tempMon == 12 && j == 12){
+															newKey = deptItem2 + "^.^" + itemnoItem;
+														}
+												}
+									});
+
+									if(newKey == "" || tempMon != 12){
+											newKey = "ADDITIONAL_FEE" + "^.^" + itemnoItem;
+									}
+
+									resultMap.set(deptItem + "^.^" + itemnoItem, newKey);
+
+									var oldDept = deptItem;
+									var newDept = newKey.split("^.^")[0];
+
+									for(j = 1; j <= 12; j++){
+										if(deptMap.get(j).has(newDept)){
+											deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));
+										}
+									}
+									settle = true;
+									break;
+								}
+							}else {
+								if(i == 12){
+										for(j = 1; j <= 12; j++){
+											if(deptMap.get(j).has(deptItem) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
+												deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)));
+											}
+										}
+										settle = true;
+								}
+							}
+					}
+					return settle;
 				}
 
 			</script>
