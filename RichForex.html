@@ -614,10 +614,15 @@
 
 			<style>
 			input[type=text] {
-			  width: 23%;
+			  width: 24%;
 			  padding: 12px 20px;
 			  margin: 8px 0;
 			  box-sizing: border-box;
+			}
+			@media screen and (max-width: 600px) {
+				input[type=text] {
+				  width: 46%;
+				}
 			}
 
 			#tableData, #finalResult {
