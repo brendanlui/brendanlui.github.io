@@ -133,8 +133,7 @@
 		  	overflow: hidden;
 				height: 35px;
 				padding: 1px 0px;
-			  background-color: #878787;
-			  color: white;
+			  color: #6b6b6b;
 			}
 			</style>
 
@@ -142,6 +141,7 @@
 			<label class="container">Jan
 			<input type="checkbox" id="month1" onclick="return false;">
 			<span class="checkmark"></span>
+			<label id="month1text"></label>
 			</label>
 			<label class="container">Feb
 			<input type="checkbox" id="month2" onclick="return false;">
@@ -621,6 +621,8 @@
 			#tableData th, #finalResult th{
 			  padding-top: 12px;
 			  padding-bottom: 12px;
+				padding-left: 12px;
+				padding-right: 12px;
 			  text-align: left;
 			  background-color: #737373;
 			  color: white;
