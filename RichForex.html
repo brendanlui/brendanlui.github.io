@@ -102,7 +102,7 @@
 			<style>
 			.label {
 			  color: white;
-			  padding: 4px;
+			  padding: 1px;
 			  font-family: Arial;
 			}
 			.info {background-color: #2196F3;} /* Blue */
@@ -222,8 +222,8 @@
 				<input class="buttonJp btnFilter" type="button" id="upload" value="Click to Input" onclick="Upload()" />
 				</br>
 				</br>
-				Click to Download <a href="./sample/itemAmountDetailPerMonth.xlsx" download>Excel Template</a> and
-				<a href="./doc/rich_forex_tutorial.docx" download>Tutorial</a>
+				Click to Download <a href="./doc/richforex/sample/itemAmountDetailPerMonth.xlsx" download>Excel Template</a> and
+				<a href="./doc/richforex/tutorial.docx" download>Tutorial</a>
 			</div>
 
 			<br><div class="divider1">&nbsp;</div>
@@ -281,7 +281,7 @@
 
 				function handleAmt(input) {
 					if (isNaN(input.value)) input.value = "";
-					if (input.value <= 0) input.value = "";
+					if (input.value < 0) input.value = "";
 					if (input.value > 999999999999) input.value = 999999999999;
 				}
 
@@ -292,6 +292,10 @@
 				}
 
 		    function Upload() {
+						document.getElementById("resultTitle").style.display = "none";
+						document.getElementById("finalResult").innerHTML = "";
+						document.getElementById("calculate").value = "Click to Calculate";
+
 		        //Reference the FileUpload element.
 		        var fileUpload = document.getElementById("fileUpload");
 
@@ -491,6 +495,7 @@
 						location.reload();
 						return;
 					}
+					resultMap.clear();
 
 					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
 						var settle = false;
@@ -515,7 +520,19 @@
 					createResultGrid();
 					document.getElementById("resultTitle").style.display = "block";
 					document.getElementById("calculate").value = "Click to Reset";
-					document.getElementById("userInput").innerHTML = "";
+					resetDeptMap();
+					console.log(deptMap);
+				}
+
+				function resetDeptMap(){
+					for (i = 1; i <= 12; i++){
+						deptMap.get(i).clear();
+						var string = document.getElementById("month" + i + "text").innerHTML;
+						var arr = string.split('<span class="label info">');
+						for (j = 1; j < arr.length; j++){
+							deptMap.get(i).set(arr[j].split(":")[0], parseFloat(arr[j].split(":")[1].split("</span> ")[0]));
+						}
+					}
 				}
 
 				function checkOneYear(deptItem, itemnoItem){
@@ -605,6 +622,7 @@
 										+ "<th>" + deptField + " (From)</th>"
 										+ "<th>" + deptField + " (To)</th>";
 					tableString += "</tr>";
+					changeString = "";
 					resultMap.forEach(getMapElements);
 					tableString += changeString;
 					document.getElementById("finalResult").innerHTML = tableString;
