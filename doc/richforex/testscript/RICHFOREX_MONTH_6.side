@@ -220,7 +220,7 @@
         ["xpath=//div[@id='deptCond']/input[14]", "xpath:idRelative"],
         ["xpath=//input[14]", "xpath:position"]
       ],
-      "value": "0.1"
+      "value": "0"
     }, {
       "id": "8e5f77ac-ca4a-4aa8-9e0c-c4651aedbc35",
       "comment": "",
