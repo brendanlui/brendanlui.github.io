@@ -348,9 +348,9 @@
 						createGrid(keyNames, excelRows);
 
 						//comment later
-						console.log("Field Name: " + keyNames);
-						console.log("New Import Data: ");
-						console.log(excelRows);
+						//console.log("Field Name: " + keyNames);
+						//console.log("New Import Data: ");
+						//console.log(excelRows);
 		    };
 
 				//part of important data
@@ -469,15 +469,15 @@
 				}
 
 				function logMapElements(value, key, map) {
-						console.log(`m[${key}] = ${value}`);
+						//console.log(`m[${key}] = ${value}`);
 				}
 
 				function print12monthMap(){
 					for(i = 1; i <= 12; i++){
-						console.log(i + ": ");
+						//console.log(i + ": ");
 						monthMap.get(i).forEach(logMapElements);
 					}
-					console.log(deptMap);
+					//console.log(deptMap);
 				}
 
 				var resultMap = new Map([]);
@@ -517,12 +517,12 @@
 						});
 					});
 
-					console.log(resultMap);
+					//console.log(resultMap);
 					createResultGrid();
 					document.getElementById("resultTitle").style.display = "block";
 					document.getElementById("calculate").value = "Click to Reset";
 					resetDeptMap();
-					console.log(deptMap);
+					//console.log(deptMap);
 				}
 
 				var p = [];
@@ -561,8 +561,8 @@
 							}
 						}
 					});
-					console.log(p);
-					console.log(c);
+					//console.log(p);
+					//console.log(c);
 				}
 
 				function runMultiKnapsack(){
@@ -657,6 +657,34 @@
 												+ "<td>" + value.split("^.^")[0] + "</td></tr>";
 				}
 
+				function getAmountResult(){
+
+						var amtResult = [];
+						for(i = 0; i < 12; i++){
+							amtResult.push([]);
+							deptList.forEach(function(deptItem, ideptIndex, deptArray) {
+								amtResult[i].push(0);
+							}
+						}
+
+						itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
+							deptList.forEach(function(deptItem, ideptIndex, deptArray) {
+								for(i = 1; i <= 12; i++){
+									if(monthMap.get(i).has(deptItem + "^.^" + itemnoItem)){
+										value = parseFloat(monthMap.get(i).get(deptItem + "^.^" + itemnoItem));
+										if(resultMap.has(deptItem + "^.^" + itemnoItem)){
+											amtResult[i][deptList.indexOf(resultMap.get(deptItem + "^.^" + itemnoItem).split("^.^")[0])] += value;
+										}else{
+											amtResult[i][ideptIndex] += value;
+										}
+									}
+								}
+							});
+						});
+
+						console.log(amtResult);
+				}
+
 				function createResultGrid(){
 					//clear map with particular month
 					document.getElementById("finalResult").innerHTML = "";
@@ -695,6 +723,7 @@
 						}
 					}
 					resultMap.forEach(getMapElements);
+					getAmountResult();
 					//brendan end
 
 					tableString += changeString;
