@@ -860,7 +860,7 @@
 				        // Set the initial greedy distribution
 				        var c_hat = c.slice(0);
 				        for (i = 0; i < m; i++) {
-				           z = greedy(n, p, w, y, z, i, c_hat[i]);
+				           assign(z, greedy(n, p, w, y, z, i, c_hat[i]));
 				        }
 
 				        // Rearrange
@@ -907,7 +907,7 @@
 
 				        // Greedy fill again after rearranging
 				        for (var i=0; i<m; i++) {
-				           z = greedy(n, p, w, y, z, i, c_hat[i]);
+				           assign(z, greedy(n, p, w, y, z, i, c_hat[i]));
 				        }
 
 				        // First improvement
