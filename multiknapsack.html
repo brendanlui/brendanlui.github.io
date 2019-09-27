@@ -106,6 +106,7 @@
 			  font-family: Arial;
 			}
 			.info {background-color: #2196F3;} /* Blue */
+			.amtResult {background-color: #7dc930;} /* green */
 			</style>
 
 			<style>
@@ -148,61 +149,73 @@
 			<input type="checkbox" id="month1" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month1text"></label>
+			<label id="month1result"></label>
 			</label>
 			<label class="container">Feb
 			<input type="checkbox" id="month2" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month2text"></label>
+			<label id="month2result"></label>
 			</label>
 			<label class="container">Mar
 			<input type="checkbox" id="month3" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month3text"></label>
+			<label id="month3result"></label>
 			</label>
 			<label class="container">Apr
 			<input type="checkbox" id="month4" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month4text"></label>
+			<label id="month4result"></label>
 			</label>
 			<label class="container">May
 			<input type="checkbox" id="month5" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month5text"></label>
+			<label id="month5result"></label>
 			</label>
 			<label class="container">Jun
 			<input type="checkbox" id="month6" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month6text"></label>
+			<label id="month6result"></label>
 			</label>
 			<label class="container">Jul
 			<input type="checkbox" id="month7" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month7text"></label>
+			<label id="month7result"></label>
 			</label>
 			<label class="container">Aug
 			<input type="checkbox" id="month8" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month8text"></label>
+			<label id="month8result"></label>
 			</label>
 			<label class="container">Sep
 			<input type="checkbox" id="month9" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month9text"></label>
+			<label id="month9result"></label>
 			</label>
 			<label class="container">Oct
 			<input type="checkbox" id="month10" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month10text"></label>
+			<label id="month10result"></label>
 			</label>
 			<label class="container">Nov
 			<input type="checkbox" id="month11" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month11text"></label>
+			<label id="month11result"></label>
 			</label>
 			<label class="container">Dec
 			<input type="checkbox" id="month12" onclick="return false;">
 			<span class="checkmark"></span>
 			<label id="month12text"></label>
+			<label id="month12result"></label>
 			</label>
 
 			<div id="userInput">
@@ -682,6 +695,19 @@
 								}
 							});
 						});
+
+
+						for(i = 0; i < 12; i++){
+							var tempStringMaxAmt = "";
+							for(j = 0; j < amtResult[i].length; j++){
+									if(j != amtResult[i].length - 1){
+											tempStringMaxAmt += '<span class="label amtResult">' + deptList.get(j) + ":" + amtResult[i][j] + '</span> ';
+									}else{
+											tempStringMaxAmt += '<span class="label amtResult">ADDITIONAL_FEE:' + totalAmt + '</span> ';
+									}
+							}
+							document.getElementById("month" + i + "result").innerHTML = " - " + tempStringMaxAmt ;
+						}
 
 						console.log(amtResult);
 				}
