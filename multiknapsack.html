@@ -630,7 +630,7 @@
 
 									for(j = 1; j <= 12; j++){
 										if(deptMap.get(j).has(newDept)){
-											deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));
+											//deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));	//brendan
 										}
 									}
 									settle = true;
@@ -640,7 +640,7 @@
 								if(i == 12){
 										for(j = 1; j <= 12; j++){
 											if(deptMap.get(j).has(deptItem) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-												deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)));
+												//deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem))); //brendan
 											}
 										}
 										settle = true;
@@ -738,7 +738,7 @@
 
 							let result = [];
 							for(var i = 0; i < a.length; i++){
-								result.push(a[i] + b[i]);
+								result.push(parseFloat(a[i]) + parseFloat(b[i]));
 							}
 							return result;
 						}
@@ -750,7 +750,7 @@
 
 							let result = [];
 							for(var i = 0; i < a.length; i++){
-								result.push(a[i] - b[i]);
+								result.push(parseFloat(a[i]) - parseFloat(b[i]));
 							}
 							return result;
 						}
@@ -763,7 +763,7 @@
 
 							let result = [];
 							for(var i = 0; i < a.length; i++){
-								result.push(a[i] * b[i]);
+								result.push(parseFloat(a[i]) * parseFloat(b[i]));
 							}
 							return result;
 						}
@@ -775,7 +775,7 @@
 					   else{
 					   // comapring each element of array
 					    for(var i=0;i<a.length;i++)
-					    if(a[i]!=b[i])
+					    if(parseFloat(a[i])!=parseFloat(b[i]))
 					     return false;
 					   }
 						 return true;
@@ -788,7 +788,7 @@
  					   else{
  					   // comapring each element of array
  					    for(var i=0;i<a.length;i++)
- 					    if(a[i]>=b[i])
+ 					    if(parseFloat(a[i])>=parseFloat(b[i]))
  					     return false;
  					   }
  						 return true;
@@ -801,7 +801,7 @@
  					   else{
  					   // comapring each element of array
  					    for(var i=0;i<a.length;i++)
- 					    if(a[i]>b[i])
+ 					    if(parseFloat(a[i])>parseFloat(b[i]))
  					     return false;
  					   }
  						 return true;
@@ -814,7 +814,7 @@
  					   else{
  					   // comapring each element of array
  					    for(var i=0;i<a.length;i++)
- 					    if(a[i]<=b[i])
+ 					    if(parseFloat(a[i])<=parseFloat(b[i]))
  					     return false;
  					   }
  						 return true;
@@ -827,7 +827,7 @@
  					   else{
  					   // comapring each element of array
  					    for(var i=0;i<a.length;i++)
- 					    if(a[i]<b[i])
+ 					    if(parseFloat(a[i])<parseFloat(b[i]))
  					     return false;
  					   }
  						 return true;
@@ -906,6 +906,8 @@
 				           assign(z, greedy(n, p, w, y, z, i, c_hat[i]));
 				        }
 
+																//brendan
+																/*
 				        // First improvement
 				        for (var j=0; j<n; j++) {
 				            if (morethan(y[j], negaOne)) {
@@ -999,6 +1001,8 @@
 				                }
 				            }
 				        }
+
+								*/
 								return [p, c, z, y, itemnoList, deptList];
 				    }
 
