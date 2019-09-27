@@ -704,7 +704,7 @@
 									if(j != amtResult[i].length - 1){
 											tempStringMaxAmt += '<span class="label amtResult">' + deptList[j] + ":" + amtResult[i][j] + '</span> ';
 									}else{
-											tempStringMaxAmt += '<span class="label amtResult">ADDITIONAL_FEE:' + totalAmt + '</span> ';
+											tempStringMaxAmt += '<span class="label amtResult">ADDITIONAL_FEE:' + amtResult[i][j] + '</span> ';
 									}
 							}
 							document.getElementById("month" + i + "result").innerHTML = " - " + tempStringMaxAmt ;
