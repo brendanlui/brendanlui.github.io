@@ -888,11 +888,7 @@
 				                    assign(y[j], zero);
 				                }
 				                else {
-														var lv = [];
-														for(k = 0; k < y[j].length; k++){
-															lv.push(l);
-														}
-				                    assign(y[j], lv);
+				                    y[j] = l;
 				                    assign(c_hat[l], minus(c_hat[l], w[j]));
 				                    assign(z, add(z, p[j]));
 				                    if (l == m-1) {
@@ -915,7 +911,11 @@
 				            if (morethan(y[j], negaOne)) {
 				                for (var k=j+1; k<n; k++) {
 				                   if (morethan(y[k], negaOne) && !equal(y[k], y[j])) {
-				                        w_slice = w.slice(j, k+1);
+														 		var w_slice = [];
+																for(t = 0; t < w.slice(j, k+1).length; t++){
+																	w_slice.push(0);
+																}
+				                        assign(w_slice, w.slice(j, k+1));
 				                        var h = j + argmax(w_slice);
 				                        var l = j + argmin(w_slice);
 				                        var d = [];
