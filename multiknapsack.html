@@ -673,9 +673,9 @@
 										+ "<th>" + deptField + " (To)</th>";
 					tableString += "</tr>";
 					changeString = "";
-					resultMap.forEach(getMapElements);
 
 					//brenda start
+					//resultMap.forEach(getMapElements);
 					resultMap.clear();
 					setMultiKnapsackVar();
 					var multiknapsack = runMultiKnapsack();
@@ -691,6 +691,7 @@
 							}
 						}
 					}
+					resultMap.forEach(getMapElements);
 					//brendan end
 
 					tableString += changeString;

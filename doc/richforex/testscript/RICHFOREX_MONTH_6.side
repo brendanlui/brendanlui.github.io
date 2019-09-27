@@ -10,7 +10,7 @@
       "id": "14039da2-b229-400d-88b7-3268b37160c1",
       "comment": "",
       "command": "open",
-      "target": "/RichForex",
+      "target": "/multiknapsack",
       "targets": [],
       "value": ""
     }, {
@@ -274,9 +274,16 @@
       ],
       "value": "6"
     }, {
+      "id": "d2a1b9ec-ccbf-49b5-b355-4d6f2544ff6c",
+      "comment": "",
+      "command": "type",
+      "target": "id=fileUpload",
+      "targets": [],
+      "value": "C:\\Users\\brend\\Documents\\GitHub\\brendanlui.github.io\\doc\\richforex\\testcase\\201906.xlsx"
+    }, {
       "id": "9c57e022-2b5b-4100-b6e8-e30ccd2314f1",
       "comment": "",
-      "command": "//click",
+      "command": "click",
       "target": "id=upload",
       "targets": [],
       "value": ""
