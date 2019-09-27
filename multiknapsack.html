@@ -630,7 +630,7 @@
 
 									for(j = 1; j <= 12; j++){
 										if(deptMap.get(j).has(newDept)){
-											//deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));	//brendan
+											deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));
 										}
 									}
 									settle = true;
@@ -640,7 +640,7 @@
 								if(i == 12){
 										for(j = 1; j <= 12; j++){
 											if(deptMap.get(j).has(deptItem) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-												//deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem))); //brendan
+												deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)));
 											}
 										}
 										settle = true;
@@ -677,6 +677,7 @@
 					//brenda start
 					//resultMap.forEach(getMapElements);
 					resultMap.clear();
+					resetDeptMap();
 					setMultiKnapsackVar();
 					var multiknapsack = runMultiKnapsack();
 					for(j = 0; j < multiknapsack[4].length; j++){
