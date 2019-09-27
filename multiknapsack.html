@@ -684,10 +684,12 @@
 						for(k = 0; k < multiknapsack[5].length; k++){
 							for(i = 1; i <= 12; i++){
 								if(monthMap.get(i).has(multiknapsack[5][k] + "^.^" + multiknapsack[4][j])){
-									resultMap.set(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]
-															, (multiknapsack[3][j] == -1 ? "ADDITIONAL FEE" : deptList[multiknapsack[3][j]] )
-																	+ "^.^" + multiknapsack[4][j]);
-															break;
+									if((multiknapsack[5][k] != deptList[multiknapsack[3][j]]) || multiknapsack[3][j] == -1){
+											resultMap.set(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]
+																	, (multiknapsack[3][j] == -1 ? "ADDITIONAL FEE" : deptList[multiknapsack[3][j]] )
+																			+ "^.^" + multiknapsack[4][j]);
+																	break;
+									}
 								}
 							}
 						}
