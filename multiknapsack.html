@@ -687,7 +687,8 @@
 									if(monthMap.get(i).has(deptItem + "^.^" + itemnoItem)){
 										value = parseFloat(monthMap.get(i).get(deptItem + "^.^" + itemnoItem));
 										if(resultMap.has(deptItem + "^.^" + itemnoItem)){
-											amtResult[i][deptList.indexOf(resultMap.get(deptItem + "^.^" + itemnoItem).split("^.^")[0])] += value;
+											var index = deptList.indexOf(resultMap.get(deptItem + "^.^" + itemnoItem).split("^.^")[0]);
+											amtResult[i][index == -1 ? amtResult[i].length - 1: index] += value;
 										}else{
 											amtResult[i][ideptIndex] += value;
 										}
