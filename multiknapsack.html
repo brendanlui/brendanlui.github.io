@@ -361,11 +361,6 @@
 
 						//create table
 						createGrid(keyNames, excelRows);
-
-						//comment later
-						//console.log("Field Name: " + keyNames);
-						//console.log("New Import Data: ");
-						//console.log(excelRows);
 		    };
 
 				//part of important data
@@ -397,6 +392,8 @@
 
 				var deptList = [];
 				var itemnoList = [];
+
+				var resultMap = new Map([]);
 
 				function createGrid(keyNames, excelRows) {
 
@@ -479,23 +476,14 @@
 
 					document.getElementById("month" + monthInput + "text").innerHTML = " - " + tempStringMaxAmt ;
 					document.getElementById("month" + monthInput).checked = true;
-					print12monthMap();
 					document.getElementById("tableData").innerHTML = tableString;
-				}
 
-				function logMapElements(value, key, map) {
-						//console.log(`m[${key}] = ${value}`);
-				}
-
-				function print12monthMap(){
-					for(i = 1; i <= 12; i++){
-						//console.log(i + ": ");
-						monthMap.get(i).forEach(logMapElements);
+					for(i = 0; i < 12; i++){
+							document.getElementById("month" + i + "result").innerHTML = "";
 					}
-					//console.log(deptMap);
+					resultMap.clear();
 				}
 
-				var resultMap = new Map([]);
 				var checkDept = "";
 				var checkItemno = "";
 
@@ -511,33 +499,10 @@
 						return;
 					}
 					resultMap.clear();
-
-					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
-						var settle = false;
-						//try original
-						checkItemno = itemnoItem;
-						for(i = 1; i <= 12; i++){
-							monthMap.get(i).forEach(getOriginalDept);
-						}
-						settle = checkOneYear(checkDept, checkItemno);
-						checkDept = "";
-						checkItemno = "";
-
-						//try other
-						deptList.forEach(function(deptItem, ideptIndex, deptArray) {
-							if(settle){
-								return;
-							}
-							settle = checkOneYear(deptItem, itemnoItem);
-						});
-					});
-
-					//console.log(resultMap);
 					createResultGrid();
 					document.getElementById("resultTitle").style.display = "block";
 					document.getElementById("calculate").value = "Click to Reset";
 					resetDeptMap();
-					//console.log(deptMap);
 				}
 
 				var p = [];
@@ -576,8 +541,6 @@
 							}
 						}
 					});
-					//console.log(p);
-					//console.log(c);
 				}
 
 				function runMultiKnapsack(){
@@ -598,71 +561,6 @@
 							deptMap.get(i).set(arr[j].split(":")[0], parseFloat(arr[j].split(":")[1].split("</span> ")[0]));
 						}
 					}
-				}
-
-				function checkOneYear(deptItem, itemnoItem){
-
-					var settle = false;
-					for(i = 1; i <= 12; i++){
-							var value = 0;
-							if(deptMap.get(i).has(deptItem) && monthMap.get(i).has(deptItem + "^.^" + itemnoItem)){
-								value = parseFloat(monthMap.get(i).get(deptItem + "^.^" + itemnoItem));
-								if(parseFloat(deptMap.get(i).get(deptItem)) < parseFloat(value)){
-									var newKey = "";
-									var tempMon = 0;
-									deptList.forEach(function(deptItem2, ideptIndex2, deptArray2) {
-
-												if(newKey != "" && tempMon == 12){
-													return;
-												}
-
-												for(j = 1; j <= 12; j++){
-														if(deptMap.get(j).has(deptItem2) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-															if((parseFloat(deptMap.get(j).get(deptItem2)) < parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)))){
-																	tempMon = 0;
-																	break;
-															}else{
-																tempMon++;
-															}
-														}else{
-															tempMon++;
-														}
-
-														if(tempMon == 12 && j == 12){
-															newKey = deptItem2 + "^.^" + itemnoItem;
-														}
-												}
-									});
-
-									if(newKey == "" || tempMon != 12){
-											newKey = "ADDITIONAL_FEE" + "^.^" + itemnoItem;
-									}
-
-									resultMap.set(deptItem + "^.^" + itemnoItem, newKey);
-
-									var oldDept = deptItem;
-									var newDept = newKey.split("^.^")[0];
-
-									for(j = 1; j <= 12; j++){
-										if(deptMap.get(j).has(newDept)){
-											deptMap.get(j).set(newDept, parseFloat(deptMap.get(j).get(newDept)) - parseFloat(value));
-										}
-									}
-									settle = true;
-									break;
-								}
-							}else {
-								if(i == 12){
-										for(j = 1; j <= 12; j++){
-											if(deptMap.get(j).has(deptItem) && monthMap.get(j).has(deptItem + "^.^" + itemnoItem)){
-												deptMap.get(j).set(deptItem, parseFloat(deptMap.get(j).get(deptItem)) - parseFloat(monthMap.get(j).get(deptItem + "^.^" + itemnoItem)));
-											}
-										}
-										settle = true;
-								}
-							}
-					}
-					return settle;
 				}
 
 				var changeString = "";
@@ -737,8 +635,6 @@
 					tableString += "</tr>";
 					changeString = "";
 
-					//brenda start
-					//resultMap.forEach(getMapElements);
 					resultMap.clear();
 					resetDeptMap();
 					setMultiKnapsackVar();
@@ -749,7 +645,7 @@
 								if(monthMap.get(i).has(multiknapsack[5][k] + "^.^" + multiknapsack[4][j])){
 									if((multiknapsack[5][k] != deptList[multiknapsack[3][j]]) || multiknapsack[3][j] == -1){
 											resultMap.set(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]
-																	, (multiknapsack[3][j] == -1 ? "ADDITIONAL FEE" : deptList[multiknapsack[3][j]] )
+																	, (multiknapsack[3][j] == -1 ? "ADDITIONAL_FEE" : deptList[multiknapsack[3][j]] )
 																			+ "^.^" + multiknapsack[4][j]);
 																	break;
 									}
@@ -759,7 +655,6 @@
 					}
 					resultMap.forEach(getMapElements);
 					getAmountResult();
-					//brendan end
 
 					tableString += changeString;
 					document.getElementById("finalResult").innerHTML = tableString;

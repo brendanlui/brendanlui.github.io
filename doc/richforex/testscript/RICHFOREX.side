@@ -283,7 +283,7 @@
     }]
   }, {
     "id": "bfc38183-9be3-46c5-ba47-c927e17adc14",
-    "name": "INPUT_AND_CAL",
+    "name": "RUN",
     "commands": [{
       "id": "d8fe0ac1-fda9-4017-9f20-54a5fb3ffb99",
       "comment": "",
