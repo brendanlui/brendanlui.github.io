@@ -611,7 +611,11 @@
 									if(j != amtResult[i].length - 1){
 											tempStringMaxAmt += '<span class="label amtResult">' + deptList[j] + ":" + amtResult[i][j] + '</span> ';
 									}else{
-											tempStringMaxAmt += '<span class="label amtResult">ADDITIONAL_FEE:' + amtResult[i][j] + '</span> ';
+											tempStringMaxAmt += '<span class="label amtResult"';
+											if(amtResult[i][j] > 0){
+												tempStringMaxAmt += ' style="background-color: #ff5252;"';
+											}
+											tempStringMaxAmt += '>ADDITIONAL_FEE:' + amtResult[i][j] + '</span> ';
 									}
 							}
 							document.getElementById("month" + (i + 1) + "result").innerHTML = " - " + tempStringMaxAmt ;
