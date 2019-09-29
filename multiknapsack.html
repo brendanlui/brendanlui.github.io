@@ -563,18 +563,30 @@
 						return rmsA - rmsB;
 					});
 
-					c.sort(function(a, b){
+					//1) combine the arrays:
+					var list = [];
+					for (var j = 0; j < itemnoList.length; j++)
+					    list.push({'itemnoList': itemnoList[j], 'p': p[j]});
+
+					//2) sort:
+					list.sort(function(a, b){
 						var rmsA = 0;
 						var rmsB = 0;
 						for(i = 0; i < 12; i++){
-							rmsA += parseFloat(a[i]) * parseFloat(a[i]);
-							rmsB += parseFloat(b[i]) * parseFloat(b[i]);
+							rmsA += parseFloat(a.p[i]) * parseFloat(a.p[i]);
+							rmsB += parseFloat(b.p[i]) * parseFloat(b.p[i]);
 						}
 						rmsA = Math.sqrt(rmsA / 12);
 						rmsB = Math.sqrt(rmsB / 12);
 
 						return rmsA - rmsB;
 					});
+
+					//3) separate them back out:
+					for (var k = 0; k < list.length; k++) {
+					    itemnoList[k] = list[k].itemnoList;
+					    p[k] = list[k].p;
+					}
 					//brendan end
 				}
 
