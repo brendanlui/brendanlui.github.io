@@ -558,9 +558,7 @@
 								rmsTemp += p[itemnoIndex][i] * p[itemnoIndex][i];
 							}
 							rmsTemp = Math.sqrt(rmsTemp / 12);
-							if(rmsTemp != 0){
-					    	listMix.push({'itemnoIndex': itemnoIndex, 'itemnoList': itemnoList[itemnoIndex], 'p': p[itemnoIndex], 'rms': rmsTemp});
-							}
+					    listMix.push({'itemnoIndex': itemnoIndex, 'itemnoList': itemnoList[itemnoIndex], 'p': p[itemnoIndex], 'rms': rmsTemp});
 					});
 
 					//2) sort:
