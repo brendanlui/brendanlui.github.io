@@ -586,8 +586,10 @@
 							});
 							amtResult[i].push(0);
 						}
-
-						itemnoList.sort(function(a, b){	//brendan
+						
+						//brendan start
+						console.log(itemnoList);
+						itemnoList.sort(function(a, b){
 							var rmsA = 0;
 							var rmsB = 0;
 							for(i = 0; i < 12; i++){
@@ -601,6 +603,7 @@
 						});
 
 						console.log(itemnoList);
+						//brendan end
 
 						itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
 							deptList.forEach(function(deptItem, ideptIndex, deptArray) {
