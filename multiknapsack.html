@@ -553,25 +553,42 @@
 					//1) combine the arrays:
 					var list = [];
 					for (var j = 0; j < itemnoList.length; j++)
-					    list.push({'itemnoList': itemnoList[j], 'p': p[j]});
+					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': calRMS(p[j])});
 
 					//2) sort:
 					list.sort(function(a, b){
-						var rmsA = 0;
-						var rmsB = 0;
-						for(i = 0; i < 12; i++){
-							rmsA += parseFloat(a.p[i]) * parseFloat(a.p[i]);
-							rmsB += parseFloat(b.p[i]) * parseFloat(b.p[i]);
-						}
-						rmsA = Math.sqrt(rmsA / 12);
-						rmsB = Math.sqrt(rmsB / 12);
-
-						return rmsA - rmsB;
+						return a.rms - b.rms;
 					});
 
+					//3) separate them back out:
+					for (var k = 0; k < list.length; k++) {
+						if(list.rms == 0){
+								p.splice(list[k].itemnoIndex, 1);
+								itemnoList.splice(list[k].itemnoIndex, 1);
+  							list.splice(k, 1);
+						}
+					}
+
+					for (var k = 0; k < list.length; k++) {
+					    itemnoList[k] = list[k].itemnoList;
+							for(l = 0; l < 12; l++){
+								p[k][l] = (list[k].p)[l];
+							}
+					}
 
 					console.log([list, p, itemnoList]);
 					//brendan end
+				}
+
+				function calRMS(arr){
+
+						var rms = 0;
+						for(i = 0; i < arr.length; i++){
+							rms += parseFloat(arr[i]) * parseFloat(arr[i]);
+						}
+						rms = Math.sqrt(rms / 12);
+
+						return rms;
 				}
 
 				function runMultiKnapsack(){
