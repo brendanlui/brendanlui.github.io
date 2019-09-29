@@ -559,8 +559,9 @@
 								rmsTemp += parseFloat(p[j][i]) * parseFloat(p[j][i]);
 							}
 							rmsTemp = Math.sqrt(rmsTemp / 12);
-
-					    listMix.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': rmsTemp});
+							if(rmsTemp != 0){
+					    	listMix.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': rmsTemp});
+							}
 					}
 
 					//2) sort:
