@@ -553,9 +553,7 @@
 					//1) combine the arrays:
 					var list = [];
 					for (var j = 0; j < itemnoList.length; j++){
-							var tempRMS = 0;
-							tempRMS = calRMS(p[j]);
-					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': tempRMS});
+					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': calRMS(p[j])});
 						}
 
 					//2) sort:
@@ -586,7 +584,7 @@
 				function calRMS(arr){
 
 						var rms = 0;
-						for(i = 0; i < arr.length; i++){
+						for(i = 0; i < 12; i++){
 							rms += parseFloat(arr[i]) * parseFloat(arr[i]);
 						}
 						rms = Math.sqrt(rms / 12);
