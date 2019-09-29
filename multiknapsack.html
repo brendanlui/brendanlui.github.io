@@ -646,6 +646,11 @@
 							for(i = 1; i <= 12; i++){
 								if(monthMap.get(i).has(multiknapsack[5][k] + "^.^" + multiknapsack[4][j])){
 									if((multiknapsack[5][k] != deptList[multiknapsack[3][j]]) || multiknapsack[3][j] == -1){
+											if(monthMap.get(i).get(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]) == 0
+													|| multiknapsack[4][j] == ""){
+												continue;
+											}
+
 											resultMap.set(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]
 																	, (multiknapsack[3][j] == -1 ? "ADDITIONAL_FEE" : deptList[multiknapsack[3][j]] )
 																			+ "^.^" + multiknapsack[4][j]);
