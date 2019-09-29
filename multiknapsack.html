@@ -585,7 +585,9 @@
 					//3) separate them back out:
 					for (var k = 0; k < list.length; k++) {
 					    itemnoList[k] = list[k].itemnoList;
-					    p[k] = list[k].p;
+							for(l = 0; l < p[k].length; l++){
+								p[k][l] = list[k].p[l];
+							}
 					}
 					//brendan end
 				}
