@@ -568,13 +568,14 @@
 						return a.rms - b.rms;
 					});
 
+					console.log([listMix, p, itemnoList]);
 					//3) separate them back out:
-					for (var k = 0; k < listMix.length; k++) {
+					for (k = 0; k < listMix.length; k++) {
 					    itemnoList[k] = listMix[k].itemnoList;
 							for(l = 0; l < 12; l++){
 								p[k][l] = (listMix[k].p)[l];
 							}
-					} 
+					}
 
 					console.log([listMix, p, itemnoList]);
 					//brendan end
