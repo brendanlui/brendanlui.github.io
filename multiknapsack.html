@@ -570,14 +570,6 @@
 
 					//3) separate them back out:
 					for (var k = 0; k < listMix.length; k++) {
-						if(listMix.rms == 0){
-								p.splice(list[k].itemnoIndex, 1);
-								itemnoList.splice(listMix[k].itemnoIndex, 1);
-  							listMix.splice(k, 1);
-						}
-					}
-
-					for (var k = 0; k < listMix.length; k++) {
 					    itemnoList[k] = listMix[k].itemnoList;
 							for(l = 0; l < 12; l++){
 								p[k][l] = (listMix[k].p)[l];
