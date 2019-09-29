@@ -573,7 +573,8 @@
 					for (var k = 0; k < list.length; k++) {
 					    itemnoList[k] = list[k].itemnoList;
 							for(l = 0; l < p[k].length; l++){
-								p[k][l] = list[k].p[l];
+								p[k][l] = (list[k].p)[l];
+								console.log(list[k].p);
 							}
 					}
 
