@@ -551,45 +551,41 @@
 
 					//brendan start
 					//1) combine the arrays:
-					var list = [];
+					var listMix = [];
 					for (var j = 0; j < itemnoList.length; j++){
-					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': calRMS(p[j])});
-						}
+
+							let rmsTemp = 0;
+							for(i = 0; i < 12; i++){
+								rmsTemp += parseFloat(p[j][i]) * parseFloat(p[j][i]);
+							}
+							rmsTemp = Math.sqrt(rmsTemp / 12);
+
+					    listMix.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': rmsTemp});
+					}
 
 					//2) sort:
-					list.sort(function(a, b){
+					listMix.sort(function(a, b){
 						return a.rms - b.rms;
 					});
 
 					//3) separate them back out:
-					for (var k = 0; k < list.length; k++) {
-						if(list.rms == 0){
+					for (var k = 0; k < listMix.length; k++) {
+						if(listMix.rms == 0){
 								p.splice(list[k].itemnoIndex, 1);
-								itemnoList.splice(list[k].itemnoIndex, 1);
-  							list.splice(k, 1);
+								itemnoList.splice(listMix[k].itemnoIndex, 1);
+  							listMix.splice(k, 1);
 						}
 					}
 
-					for (var k = 0; k < list.length; k++) {
-					    itemnoList[k] = list[k].itemnoList;
+					for (var k = 0; k < listMix.length; k++) {
+					    itemnoList[k] = listMix[k].itemnoList;
 							for(l = 0; l < 12; l++){
-								p[k][l] = (list[k].p)[l];
+								p[k][l] = (listMix[k].p)[l];
 							}
 					}
 
-					console.log([list, p, itemnoList]);
+					console.log([listMix, p, itemnoList]);
 					//brendan end
-				}
-
-				function calRMS(arr){
-
-						let rmsTemp = 0;
-						for(i = 0; i < 12; i++){
-							rmsTemp += parseFloat(arr[i]) * parseFloat(arr[i]);
-						}
-						rmsTemp = Math.sqrt(rmsTemp / 12);
-
-						return rmsTemp;
 				}
 
 				function runMultiKnapsack(){
