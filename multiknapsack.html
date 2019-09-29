@@ -548,7 +548,6 @@
 						}
 					});
 
-
 					//brendan start
 					//1) combine the arrays:
 					var listMix = [];
@@ -563,10 +562,9 @@
 
 					//2) sort:
 					listMix.sort(function(a, b){
-						return a.rmsValue - b.rmsValue;
+						return b.rmsValue - a.rmsValue;
 					});
 
-					console.log([listMix, p, itemnoList]);
 					//3) separate them back out:
 					itemnoList = [];
 					p = [];
