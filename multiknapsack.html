@@ -480,7 +480,7 @@
 					document.getElementById("tableData").innerHTML = tableString;
 
 					for(i = 0; i < 12; i++){
-							document.getElementById("month" + i + "result").innerHTML = "";
+							document.getElementById("month" + (i+1) + "result").innerHTML = "";
 					}
 					resultMap.clear();
 				}
@@ -509,6 +509,7 @@
 				var p = [];
 				var c = [];
 				function setMultiKnapsackVar(){
+
 					p = [];
 					c = [];
 					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
@@ -664,13 +665,7 @@
 				/*
 				 * An implementation of the Martello and Toth Heuristic Method
 				 * to solve the multiple knapsack problem
-				 *
-				 *  By Daniel Schmidt, Copyright 2014
-				 *
-				 *  Source: http://www.or.deis.unibo.it/kp/Chapter6.pdf
 				 */
-
-
 				var multiknapsack = new function() {
 				    /*
 				     * n is the number of items
