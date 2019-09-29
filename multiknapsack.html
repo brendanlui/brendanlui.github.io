@@ -571,6 +571,9 @@
 					itemnoList = [];
 					p = [];
 					for (k = 0; k < listMix.length; k++) {
+							if(listMix[k].rmsValue == 0){
+								continue;
+							}
 					    itemnoList.push(listMix[k].value);
 							p.push([]);
 							for(l = 0; l < 12; l++){
