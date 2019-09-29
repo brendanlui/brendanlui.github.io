@@ -552,8 +552,11 @@
 					//brendan start
 					//1) combine the arrays:
 					var list = [];
-					for (var j = 0; j < itemnoList.length; j++)
-					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': calRMS(p[j])});
+					for (var j = 0; j < itemnoList.length; j++){
+							var tempRMS = 0;
+							tempRMS = calRMS(p[j]);
+					    list.push({'itemnoIndex': j, 'itemnoList': itemnoList[j], 'p': p[j], 'rms': tempRMS});
+						}
 
 					//2) sort:
 					list.sort(function(a, b){
