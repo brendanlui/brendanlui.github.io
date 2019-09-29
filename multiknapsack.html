@@ -568,14 +568,16 @@
 
 					console.log([listMix, p, itemnoList]);
 					//3) separate them back out:
-					/*
+					itemnoList = [];
+					p = [];
 					for (k = 0; k < listMix.length; k++) {
-					    itemnoList[k] = listMix[k].itemnoList;
+					    itemnoList.push(listMix[k].value);
+							p.push([]);
 							for(l = 0; l < 12; l++){
-								p[k][l] = (listMix[k].p)[l];
+								p.push(listMix[k].pValue[l]);
 							}
 					}
-					*/
+					console.log([listMix, p, itemnoList]);
 					//brendan end
 				}
 
