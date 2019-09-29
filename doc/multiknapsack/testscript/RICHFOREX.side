@@ -333,6 +333,18 @@
       "target": "MONTH6",
       "targets": [],
       "value": ""
+    }, {
+      "id": "eede7f42-8253-4049-9784-c468646b02c4",
+      "comment": "",
+      "command": "click",
+      "target": "id=calculate",
+      "targets": [
+        ["id=calculate", "id"],
+        ["css=#calculate", "css:finder"],
+        ["xpath=//input[@id='calculate']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
     }]
   }, {
     "id": "70a29afa-eae0-4a30-8c38-081f537e42de",
