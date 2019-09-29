@@ -510,6 +510,7 @@
 				var p = [];
 				var c = [];
 				var rms = 0;
+				var mapRMS = new Map([]);
 				function setMultiKnapsackVar(){
 
 					p = [];
@@ -549,18 +550,19 @@
 					});
 
 					//brendan start
-					/*
 					//1) combine the arrays:
-					var listMix = [];
+					//var listMix = [];
 					itemnoList.forEach(function(itemnoItem, itemnoIndex, itemnoArray) {
 							var rmsTemp = 0;
 							for(i = 0; i < 12; i++){
 								rmsTemp += p[itemnoIndex][i] * p[itemnoIndex][i];
 							}
 							rmsTemp = Math.sqrt(rmsTemp / 12);
-					    listMix.push({'index': itemnoIndex, 'value': itemnoList[itemnoIndex], 'pValue': p[itemnoIndex], 'rmsValue': rmsTemp});
+					    //listMix.push({'index': itemnoIndex, 'value': itemnoList[itemnoIndex], 'pValue': p[itemnoIndex], 'rmsValue': rmsTemp});
+							mapRMS.set(itemnoItem, rmsTemp);
 					});
 
+					/*
 					//2) sort:
 					listMix.sort(function(a, b){
 						return b.rmsValue - a.rmsValue;
@@ -693,7 +695,7 @@
 								if(monthMap.get(i).has(multiknapsack[5][k] + "^.^" + multiknapsack[4][j])){
 									if((multiknapsack[5][k] != deptList[multiknapsack[3][j]]) || multiknapsack[3][j] == -1){
 											if(monthMap.get(i).get(multiknapsack[5][k] + "^.^" + multiknapsack[4][j]) == 0
-													|| multiknapsack[4][j] == ""){
+													|| multiknapsack[4][j] == "" || mapRMS.get(multiknapsack[4][j]) == 0){
 												continue;
 											}
 
