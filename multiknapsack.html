@@ -550,19 +550,6 @@
 
 
 					//brendan start
-					p.sort(function(a, b){
-						var rmsA = 0;
-						var rmsB = 0;
-						for(i = 0; i < 12; i++){
-							rmsA += parseFloat(a[i]) * parseFloat(a[i]);
-							rmsB += parseFloat(b[i]) * parseFloat(b[i]);
-						}
-						rmsA = Math.sqrt(rmsA / 12);
-						rmsB = Math.sqrt(rmsB / 12);
-
-						return rmsA - rmsB;
-					});
-
 					//1) combine the arrays:
 					var list = [];
 					for (var j = 0; j < itemnoList.length; j++)
