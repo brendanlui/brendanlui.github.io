@@ -126,10 +126,8 @@
 
 	<script>
 
-			var searchKey = '';
-
 			function searchAll(){
-				searchKey = document.getElementById("searchKey").value;
+				var searchKey = document.getElementById("searchKey").value;
 				document.getElementById("source").innerHTML = '<tr>'
 								+	'<th>日語</th>'
 								+ '<th>重音</th>'
@@ -140,12 +138,14 @@
 								+ '<th>課文</th>'
 								+ '</tr>';
 
-				for(i = 1; i <= 50; i++){
-					searchEach('Old' + i);
+				if(searchKey != ""){
+					for(i = 1; i <= 50; i++){
+						searchEach('Old' + i, searchKey);
+					}
 				}
 			}
 
-			function searchEach(type)
+			function searchEach(type, searchKey)
 			{
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
