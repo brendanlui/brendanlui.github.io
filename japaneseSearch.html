@@ -33,8 +33,6 @@
 	<script>
 
 			loadDoc('Old1');
-			var arrJp = {};
-			var arrEn = {};
 			function loadDoc(type)
 			{
 					var xmlhttp = new XMLHttpRequest();
@@ -43,9 +41,9 @@
 					    	var txt = xmlhttp.responseText;
 
 								var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-							  arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
-								arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+								var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								arr.shift();
 								arrJp.shift();
 								arrZh.shift();
