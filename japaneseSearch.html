@@ -46,12 +46,12 @@
 	  height: 20px;
 	  border-radius: 5px 0 0 5px;
 	  outline: none;
-	  color: #000000;
+	  color: #616161;
 	  font-size: 14px;
 	}
 
 	.searchTerm:focus{
-	  color: #c9c9c9;
+	  color: #4d4d4d;
 	}
 
 	.searchButton {
@@ -98,19 +98,17 @@
 
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value;
-				document.getElementById("source").innerHTML = "";
+				document.getElementById("source").innerHTML = '<tr>'
+							+	'<th>日語</th>'
+							+ '<th>重音</th>'
+							+ '<th>來源</th>'
+							+ '<th>中文</th>'
+							+ '<th>英語</th>'
+							+ '<th>詞性</th>'
+							+ '<th>課文</th>'
+							+ '</tr>';
 
 				if(searchKey != ""){
-					document.getElementById("source").innerHTML = '<tr>'
-								+	'<th>日語</th>'
-								+ '<th>重音</th>'
-								+ '<th>來源</th>'
-								+ '<th>中文</th>'
-								+ '<th>英語</th>'
-								+ '<th>詞性</th>'
-								+ '<th>課文</th>'
-								+ '</tr>';
-
 					for(i = 1; i <= 50; i++){
 						searchEach('Old' + i, searchKey);
 					}
