@@ -28,14 +28,9 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
-		  <div class="search-container">
-		      <input type="text" id="searchKey" placeholder="Search.." name="search">
-		      <button type="submit" onclick="searchAll()"><i class="fa fa-search"></i></button>
-		  </div>
 	</div>
 
 	<!--TODO-->
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 	* {box-sizing: border-box;}
@@ -114,6 +109,11 @@
 	}
 	</style>
 
+	<div class="search-container">
+			<input type="text" id="searchKey" placeholder="Search.." name="search"/>
+			<button type="submit" onclick="searchAll()"><i class="fa fa-search"></i></button>
+	</div>
+
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
 			<a id="toppest" class="smooth"></a>
@@ -126,6 +126,7 @@
 
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value;
+				console.log(searchKey);
 				document.getElementById("source").innerHTML = '<tr>'
 								+	'<th>日語</th>'
 								+ '<th>重音</th>'
