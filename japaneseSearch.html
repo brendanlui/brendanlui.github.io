@@ -147,7 +147,7 @@
 									dir[i] += '</tr>';
 
 									arrEn[i] = arrZh[i];
-									if(arrEn[i].contains(searchKey) || arrJp[i].contains(searchKey)){
+									if(arrEn[i].includes(searchKey) || arrJp[i].includes(searchKey)){
 										document.getElementById("source").innerHTML += dir[i];
 									}
 								}
