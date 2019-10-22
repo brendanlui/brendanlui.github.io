@@ -1,0 +1,74 @@
+
+.buttonBox{
+	width: 100%;
+}
+
+.buttonJp {
+	padding: 5px 0px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: thick solid white;
+	width: 100%;
+	font-weight: bold;
+	overflow: hidden;
+	height: 60px;
+}
+
+.showText{
+	border: thick solid grey;
+	background-color: white;
+	text-align: center;
+}
+
+.next{
+	background-color: #555555;
+	color: white;
+}
+
+.buttonJp.active {
+	background-color: #4d4d4d;
+	color: white;
+}
+
+.btnFilter{
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 35px;
+	padding: 1px 0px;
+	background-color: #878787;
+	color: white;
+}
+
+
+
+
+
+#source {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	font-size: 16px;
+	width: 100%;
+}
+
+#source td, #source th {
+	border: 1px solid #ddd;
+}
+
+#source tr:nth-child(even){background-color: #f2f2f2;}
+
+#source tr:hover {background-color: #ddd;}
+
+#source th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #949494;
+	color: white;
+}
+
+.accentJpValue{
+	font-size:1.5vw;
+}
