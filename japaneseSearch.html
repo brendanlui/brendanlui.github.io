@@ -96,6 +96,8 @@
 
 	<script>
 
+			var existSearchKey = "";
+
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				document.getElementById("source").innerHTML = '<tr>'
@@ -108,7 +110,8 @@
 							+ '<th>課文</th>'
 							+ '</tr>';
 
-				if(searchKey != ""){
+				if(searchKey != "" && searchKey != existSearchKey){
+					existSearchKey = searchKey;
 					for(i = 1; i <= 50; i++){
 						searchEach('Old' + i, searchKey);
 					}
