@@ -100,21 +100,23 @@
 
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
-				document.getElementById("source").innerHTML = '<tr>'
-							+	'<th>日語</th>'
-							+ '<th>重音</th>'
-							+ '<th>來源</th>'
-							+ '<th>中文</th>'
-							+ '<th>英語</th>'
-							+ '<th>詞性</th>'
-							+ '<th>課文</th>'
-							+ '</tr>';
+				if(searchKey != existSearchKey){
+						document.getElementById("source").innerHTML = '<tr>'
+									+	'<th>日語</th>'
+									+ '<th>重音</th>'
+									+ '<th>來源</th>'
+									+ '<th>中文</th>'
+									+ '<th>英語</th>'
+									+ '<th>詞性</th>'
+									+ '<th>課文</th>'
+									+ '</tr>';
 
-				if(searchKey != "" && searchKey != existSearchKey){
-					existSearchKey = searchKey;
-					for(i = 1; i <= 50; i++){
-						searchEach('Old' + i, searchKey);
-					}
+						if(searchKey != ""){
+							existSearchKey = searchKey;
+							for(i = 1; i <= 50; i++){
+								searchEach('Old' + i, searchKey);
+							}
+						}
 				}
 			}
 
