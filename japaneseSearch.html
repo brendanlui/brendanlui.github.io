@@ -237,8 +237,7 @@
 
 									dir[i] += '</tr>';
 
-									arrEn[i] = arrZh[i];
-									if(arrEn[i].includes(searchKey) || arrJp[i].includes(searchKey)){
+									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey)){
 										document.getElementById("source").innerHTML += dir[i];
 									}
 								}
@@ -248,6 +247,7 @@
 					};
 					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 					xmlhttp.send();
+					console.log("Done");
 			}
 	</script>
 
