@@ -97,7 +97,7 @@
 	<script>
 
 			function searchAll(){
-				var searchKey = document.getElementById("searchKey").value;
+				var searchKey = document.getElementById("searchKey").value.trim();
 				document.getElementById("source").innerHTML = '<tr>'
 							+	'<th>日語</th>'
 							+ '<th>重音</th>'
@@ -211,6 +211,15 @@
 
 									dir[i] += '</tr>';
 
+									if(arrZh[i].includes("<")){
+										arrZh[i] = arrZh[i].split("<")[0];
+									}
+									if(arrJp[i].includes("<")){
+										arrJp[i] = arrJp[i].split("<")[0];
+									}
+									if(arrJpS[i].includes("<")){
+										arrJpS[i] = arrJpS[i].split("<")[0];
+									}
 									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey) || arrJpS[i].includes(searchKey)){
 										document.getElementById("source").innerHTML += dir[i];
 									}
