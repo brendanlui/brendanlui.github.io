@@ -28,6 +28,12 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">首頁</a>
+		<div class="search-container">
+    	<form action="/action_page.php">
+				<input type="text" id="searchKey" placeholder="搜尋.." name="search"/>
+				<button type="submit" onclick="searchAll()"><i class="fa fa-search"></i></button>
+    	</form>
+		</div>
 	</div>
 
 	<!--TODO-->
@@ -76,6 +82,7 @@
 
 								var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							  var arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							  var arrJpS = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								arr.shift();
@@ -123,6 +130,7 @@
 										.replace('【', '')
 										.replace('】', '');
 									}
+									arrJpS[i] = jpValue;
 									dir[i] += '<td>' + jpValue + '</td>';
 
 									var zhText = arr[i].split('<p class="txt-zh zh">');
@@ -159,7 +167,7 @@
 
 									dir[i] += '</tr>';
 
-									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey)){
+									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey) || arrJpS[i].includes(searchKey)){
 										document.getElementById("source").innerHTML += dir[i];
 									}
 								}
