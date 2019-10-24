@@ -79,11 +79,35 @@
 	</style>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+	<style>
+	.loader {
+	  border: 16px solid #f3f3f3;
+	  border-radius: 50%;
+	  border-top: 16px solid #3498db;
+	  width: 120px;
+	  height: 120px;
+	  -webkit-animation: spin 2s linear infinite; /* Safari */
+	  animation: spin 2s linear infinite;
+	}
+
+	/* Safari */
+	@-webkit-keyframes spin {
+	  0% { -webkit-transform: rotate(0deg); }
+	  100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+	  0% { transform: rotate(0deg); }
+	  100% { transform: rotate(360deg); }
+	}
+	</style>
+
 	<div class="wrap">
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
+		<div class="loader" id="loader"></div>
 	</div>
 
 	<div id="myModal" class="modal">
@@ -97,6 +121,7 @@
 	<script>
 
 			var existSearchKey = "";
+			var responseTotal = 50;
 
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
@@ -112,6 +137,7 @@
 									+ '</tr>';
 
 						if(searchKey != ""){
+							document.getElementById("loader").style.display = "block";
 							existSearchKey = searchKey;
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
@@ -231,10 +257,15 @@
 										document.getElementById("source").innerHTML += dir[i];
 									}
 								}
+								responseTotal--;
 					  }
 					};
 					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 					xmlhttp.send();
+
+					if(responseTotal == 0){
+						document.getElementById("loader").style.display = "none";
+					}
 			}
 	</script>
 
