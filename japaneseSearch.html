@@ -79,28 +79,6 @@
 	</style>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<style>
-	.loader {
-	  border: 16px solid #f3f3f3;
-	  border-radius: 50%;
-	  border-top: 16px solid #3498db;
-	  width: 40px;
-	  height: 40px;
-	  -webkit-animation: spin 2s linear infinite; /* Safari */
-	  animation: spin 2s linear infinite;
-	}
-
-	/* Safari */
-	@-webkit-keyframes spin {
-	  0% { -webkit-transform: rotate(0deg); }
-	  100% { -webkit-transform: rotate(360deg); }
-	}
-
-	@keyframes spin {
-	  0% { transform: rotate(0deg); }
-	  100% { transform: rotate(360deg); }
-	}
-	</style>
 
 	<div class="wrap">
 		<div class="search">
@@ -108,8 +86,10 @@
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
-	
-	<div class="loader" id="loader" style="display:none;"></div>
+
+	<div class="w3-light-grey">
+	  <div id="myBar" class="w3-container w3-green" style="display:none; height:24px;width:20%"></div>
+	</div>
 
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
@@ -260,8 +240,21 @@
 								}
 								responseTotal--;
 								if(responseTotal == 0){
-									document.getElementById("loader").style.display = "none";
+									document.getElementById("myBar").style.display = "none";
 									responseTotal = 50;
+								}else{
+								  var elem = document.getElementById("myBar");
+								  var width = 0;
+								  var id = setInterval(frame, 10);
+								  function frame() {
+								    if (width >= 100) {
+								      clearInterval(id);
+								    } else {
+								      width++;
+								      elem.style.width = width + '%';
+								      document.getElementById("demo").innerHTML = (50 - responseTotal) * 2  + '%';
+								    }
+								  }
 								}
 					  }
 					};
