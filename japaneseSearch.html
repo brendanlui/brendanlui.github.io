@@ -84,8 +84,8 @@
 	  border: 16px solid #f3f3f3;
 	  border-radius: 50%;
 	  border-top: 16px solid #3498db;
-	  width: 120px;
-	  height: 120px;
+	  width: 40px;
+	  height: 40px;
 	  -webkit-animation: spin 2s linear infinite; /* Safari */
 	  animation: spin 2s linear infinite;
 	}
@@ -106,8 +106,8 @@
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
+				<div class="loader" id="loader" style="display:none;"></div>
 		</div>
-		<div class="loader" id="loader" style="display:none;"></div>
 	</div>
 
 	<div id="myModal" class="modal">
@@ -258,14 +258,13 @@
 									}
 								}
 								responseTotal--;
+								if(responseTotal == 0){
+									document.getElementById("loader").style.display = "none";
+								}
 					  }
 					};
 					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 					xmlhttp.send();
-
-					if(responseTotal == 0){
-						document.getElementById("loader").style.display = "none";
-					}
 			}
 	</script>
 
