@@ -88,7 +88,7 @@
 	</div>
 
 	<div class="w3-light-grey">
-	  <div id="myBar" class="w3-container w3-green" style="display:none; height:24px;width:20%"></div>
+	  <div id="myBar" class="w3-container w3-green" style="display:none; height:24px; background-color: #ffc2c2"></div>
 	</div>
 
 	<div id="myModal" class="modal">
@@ -102,7 +102,7 @@
 	<script>
 
 			var existSearchKey = "";
-			var responseTotal = 50;
+			var responseTotal = 0;
 
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
@@ -238,23 +238,14 @@
 										document.getElementById("source").innerHTML += dir[i];
 									}
 								}
-								responseTotal--;
-								if(responseTotal == 0){
+								responseTotal++;
+								if(responseTotal == 50){
 									document.getElementById("myBar").style.display = "none";
-									responseTotal = 50;
+									responseTotal = 0;
 								}else{
 								  var elem = document.getElementById("myBar");
-								  var width = 0;
-								  var id = setInterval(frame, 10);
-								  function frame() {
-								    if (width >= 100) {
-								      clearInterval(id);
-								    } else {
-								      width++;
-								      elem.style.width = width + '%';
-								      document.getElementById("myBar").style.width = ((50 - responseTotal) * 2)  + '%';
-								    }
-								  }
+									elem.style.width = (responseTotal * 2) + '%';
+									document.getElementById("myBar").innerHTML = (responseTotal * 2)  + '%';
 								}
 					  }
 					};
