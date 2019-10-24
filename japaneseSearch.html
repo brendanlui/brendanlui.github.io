@@ -106,9 +106,10 @@
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
-				<div class="loader" id="loader" style="display:none;"></div>
 		</div>
 	</div>
+	
+	<div class="loader" id="loader" style="display:none;"></div>
 
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
@@ -260,6 +261,7 @@
 								responseTotal--;
 								if(responseTotal == 0){
 									document.getElementById("loader").style.display = "none";
+									responseTotal = 50;
 								}
 					  }
 					};
