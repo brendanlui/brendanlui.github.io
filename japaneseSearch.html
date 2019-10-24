@@ -16,7 +16,7 @@
 
 </head>
 
-<title>Dadiu | 大家的日本語 - 搜尋</title>
+<title>Dadiu | 大家的日本語 - 詞典</title>
 
 <body onload="">
 	<div id="head">
@@ -81,7 +81,7 @@
 
 	<div class="wrap">
 		<div class="search">
-				<input type="text" class="searchTerm" id="searchKey" placeholder="搜尋..." name="search"/>
+				<input type="text" class="searchTerm" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
@@ -108,7 +108,7 @@
 									+ '<th>解釋</th>'
 									//+ '<th>英語</th>'
 									+ '<th>詞性</th>'
-									+ '<th>課</th>'
+									+ '<th>單元</th>'
 									+ '</tr>';
 
 						if(searchKey != ""){
@@ -193,6 +193,7 @@
 									arrZh[i] = zhValue;
 									dir[i] += '<td>' + zhValue + '</td>';
 
+									/*
 									var enText = arr[i].split('<p class="txt-zh en">');
 									var enValue = '';
 									if(enText.length == 2){
@@ -200,7 +201,8 @@
 										.replace('(英) ','')
 										.replace(/・/g, ' / ');
 									}
-									//dir[i] += '<td>' + enValue + '</td>';
+									dir[i] += '<td>' + enValue + '</td>';
+									*/
 
 									var typeText = arr[i].split('<span class="wordClass" style="">');
 									var typeValue = '';
