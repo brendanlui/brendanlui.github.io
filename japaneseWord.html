@@ -98,9 +98,9 @@
 							document.getElementById("source").innerHTML = '<tr>'
 												+	'<th>日語</th>'
 												+ '<th>重音</th>'
-												+ '<th>來源</th>'
-												+ '<th>中文</th>'
-												+ '<th>英語</th>'
+												+ '<th>漢字</th>'
+												+ '<th>解釋</th>'
+												//+ '<th>英語</th>'
 												+ '<th>詞性</th>'
 												+ '</tr>';
 
@@ -175,7 +175,7 @@
 									.replace('(英) ','')
 									.replace(/・/g, ' / ');
 								}
-								dir[i] += '<td>' + enValue + '</td>';
+								//dir[i] += '<td>' + enValue + '</td>';
 
 								var typeText = arr[i].split('<span class="wordClass" style="">');
 								var typeValue = '';
