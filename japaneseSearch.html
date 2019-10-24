@@ -86,8 +86,7 @@
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
-	
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<div class="w3-light-grey">
 	  <div id="myBar" class="w3-container w3-green" style="display:none; height:24px;width:20%"></div>
 	</div>
@@ -119,7 +118,7 @@
 									+ '</tr>';
 
 						if(searchKey != ""){
-							document.getElementById("loader").style.display = "block";
+							document.getElementById("myBar").style.display = "block";
 							existSearchKey = searchKey;
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
