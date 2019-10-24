@@ -239,15 +239,15 @@
 									}
 								}
 								responseTotal++;
+								var elem = document.getElementById("myBar");
 								if(responseTotal == 50){
-									document.getElementById("myBar").style.display = "none";
+									elem.style.display = "none";
 									elem.style.width = '0%';
-									document.getElementById("myBar").innerHTML = '0%';
+									elem.innerHTML = '0%';
 									responseTotal = 0;
 								}else{
-									var elem = document.getElementById("myBar");
 									elem.style.width = (responseTotal * 2) + '%';
-									document.getElementById("myBar").innerHTML = (responseTotal * 2)  + '%';
+									elem.innerHTML = (responseTotal * 2)  + '%';
 								}
 					  }
 					};
