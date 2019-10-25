@@ -104,6 +104,14 @@
 			var existSearchKey = "";
 			var responseTotal = 0;
 
+			function wait(ms){
+			   var start = new Date().getTime();
+			   var end = start;
+			   while(end < start + ms) {
+			     end = new Date().getTime();
+			  }
+			}
+
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey){
@@ -122,6 +130,7 @@
 							existSearchKey = searchKey;
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
+								wait(10);
 							}
 						}
 				}
