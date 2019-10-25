@@ -78,17 +78,32 @@
 	}
 	</style>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<style>
+	.buttonload {
+	  background-color: #4CAF50; /* Green background */
+	  border: none; /* Remove borders */
+	  color: white; /* White text */
+	  padding: 12px 24px; /* Some padding */
+	  font-size: 16px; /* Set a font-size */
+	  width: 100%;
+	}
 
+	/* Add a right margin to each icon */
+	.fa {
+	  margin-left: -12px;
+	  margin-right: 8px;
+	}
+	</style>
 
 	<div class="wrap">
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
+				<button id="myBar" class="buttonload" style="display:none; height:24px; background-color: #cfcfcf; color: #999999; font-weight: bold;">
+				  <i class="fa fa-refresh fa-spin"></i>Loading
+				</button>
 		</div>
-	</div>
-
-	<div class="w3-light-grey">
-	  <div id="myBar" class="w3-container w3-green" style="display:none; height:24px; background-color: #cfcfcf; color: #999999; font-weight: bold;"></div>
 	</div>
 
 	<div id="myModal" class="modal">
@@ -130,7 +145,6 @@
 							existSearchKey = searchKey;
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
-								wait(100);
 							}
 						}
 				}
@@ -251,12 +265,7 @@
 								var elem = document.getElementById("myBar");
 								if(responseTotal == 50){
 									elem.style.display = "none";
-									elem.style.width = '0%';
-									elem.innerHTML = '0%';
 									responseTotal = 0;
-								}else{
-									elem.style.width = (responseTotal * 2) + '%';	//brendan
-									elem.innerHTML = (responseTotal * 2)  + '%';
 								}
 					  }
 					};
