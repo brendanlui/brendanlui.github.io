@@ -239,20 +239,21 @@
 									}
 								}
 					  }
+
+						responseTotal++;
+						var elem = document.getElementById("myBar");
+						if(responseTotal == 50){
+							elem.style.display = "none";
+							elem.style.width = '0%';
+							elem.innerHTML = '0%';
+							responseTotal = 0;
+						}else{
+							elem.style.width = (responseTotal * 2) + '%';	//brendan
+							elem.innerHTML = (responseTotal * 2)  + '%';
+						}
 					};
 					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 					xmlhttp.send();
-					responseTotal++;
-					var elem = document.getElementById("myBar");
-					if(responseTotal == 50){
-						elem.style.display = "none";
-						elem.style.width = '0%';
-						elem.innerHTML = '0%';
-						responseTotal = 0;
-					}else{
-						elem.style.width = (responseTotal * 2) + '%';	//brendan
-						elem.innerHTML = (responseTotal * 2)  + '%';
-					}
 			}
 	</script>
 
