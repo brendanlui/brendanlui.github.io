@@ -99,7 +99,7 @@
 		</div>
 	</div>
 	<button id="myBar" class="buttonload">
-		<i class="fa fa-refresh fa-spin"></i>Loading
+		<i class="fa fa-refresh fa-spin"></i> Loading
 	</button>
 
 	<div id="myModal" class="modal">
@@ -114,15 +114,6 @@
 
 			var existSearchKey = "";
 			var responseTotal = 0;
-
-			function wait(ms){
-			   var start = new Date().getTime();
-			   var end = start;
-			   while(end < start + ms) {
-			     end = new Date().getTime();
-			  }
-			}
-
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey){
