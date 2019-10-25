@@ -81,18 +81,14 @@
 
 	<style>
 	.buttonload {
-	  background-color: #4CAF50; /* Green background */
+	  background-color: #cfcfcf; /* Green background */
 	  border: none; /* Remove borders */
 	  color: white; /* White text */
 	  padding: 12px 24px; /* Some padding */
 	  font-size: 16px; /* Set a font-size */
 	  width: 100%;
-	}
-
-	/* Add a right margin to each icon */
-	.fa {
-	  margin-left: -12px;
-	  margin-right: 8px;
+		color: #999999;
+		display:none;
 	}
 	</style>
 
@@ -102,7 +98,7 @@
 				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
-	<button id="myBar" class="buttonload" style="display:none; height:24px; background-color: #cfcfcf; color: #999999; font-weight: bold;">
+	<button id="myBar" class="buttonload">
 		<i class="fa fa-refresh fa-spin"></i>Loading
 	</button>
 
