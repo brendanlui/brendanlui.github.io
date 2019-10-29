@@ -95,7 +95,7 @@
 	<div class="wrap">
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
-				<button type="submit" class="searchButton" onclick="searchAll()"><i class="fa fa-search"></i></button>
+				<button type="submit" class="searchButton" id="searchClick" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
 	<button id="myBar" class="buttonload">
@@ -111,6 +111,18 @@
 	</div>
 
 	<script>
+			var input = document.getElementById("searchKey");
+			// Execute a function when the user releases a key on the keyboard
+			input.addEventListener("keyup", function(event) {
+				// Number 13 is the "Enter" key on the keyboard
+				if (event.keyCode === 13) {
+				// Cancel the default action, if needed
+				event.preventDefault();
+				// Trigger the button element with a click
+				document.getElementById("searchClick").click();
+				}
+			});
+
 
 			var existSearchKey = "";
 			var responseTotal = 0;
