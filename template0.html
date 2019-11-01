@@ -148,6 +148,47 @@
 			    closeSourcePage(event);
 			});
 			//open source end
+
+			function changeWayUI(){
+				var btn = document.getElementById("btnTraslateWay");
+				if(changeWay == 0){
+					changeWay = 1;
+					btn.className += " active";
+					btn.innerHTML = "中文 => 日語";
+				}else{
+					changeWay = 0
+					btn.className = btn.className.replace(" active", "");
+					btn.innerHTML = "日語 => 中文";
+				}
+				restart();
+			}
+
+			function loadDoc(type)
+			{
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function(){
+					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+							//TODO
+					  }
+					};
+					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
+					xmlhttp.send();
+			}
+
+			function filterSelection(text){
+				var element = document.getElementById("btnFilter" + text);
+				filterSelected = text;
+				loadDoc(text);
+				closeNav();
+				document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [過濾]";
+				document.getElementById("btnOpenModal").innerHTML = element.innerHTML + " [內容]";
+				clear();
+			}
+
+			function restart(){
+				filterSelection(filterSelected);
+				clear();
+			}
 		</script>
 		<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
 		<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
