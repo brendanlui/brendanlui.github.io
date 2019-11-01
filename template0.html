@@ -86,6 +86,8 @@
 		var total = 0;
 		var filterSelected = "Number";
 		var changeWay = 0;
+		var arrPos = {};
+		var arrNeg = {};
 
 		var myModal = document.getElementById('myModal');
 		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
@@ -189,10 +191,46 @@
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-							//TODO
+								dir = [];
+								document.getElementById("source").innerHTML = '<tr>'
+													+	'<th>日語</th>'
+													+ '<th>重音</th>'
+													+ '</tr>';
+
+					    	var txt = xmlhttp.responseText;
+
+								var arr = txt.split(']="');
+								arr.shift();
+
+								for(i = 0; i < arr.length; i++){
+									if(i % 2 == 0){
+										dir[i] = '<tr>';
+										arrPos[i / 2] = arr[i].substr(0, arrJp[i].indexOf('";')).trim();
+										dir[i] += '<td>' + arrPos[i] + '</td>';
+									}else{
+										dir[i] = '</tr>';
+										arrNeg[i / 2] = arr[i].substr(0, arrJp[i].indexOf('";')).trim();
+										dir[i] += '<td>' + arrNeg[i] + '</td>';
+									}
+									document.getElementById("source").innerHTML += dir[i];
+								}
+
+								if(changeWay){
+										var arrTemp = {};
+										for(i = 0; i < arrPos.length; i++){
+											arrTemp[i] = arrPos[i];
+										}
+										for(i = 0; i < arrPos.length; i++){
+											arrPos[i] = arrNeg[i];
+										}
+										for(i = 0; i < arrPos.length; i++){
+											arrNeg[i] = arrTemp[i];
+										}
+								}
+								total = arrPos.length;
 					  }
 					};
-					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
+					xmlhttp.open("GET","./verb/" + type + "01.txt",true);
 					xmlhttp.send();
 			}
 
