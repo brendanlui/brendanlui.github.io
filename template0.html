@@ -60,8 +60,8 @@
 
 		<p class="showText" style="font-size:8vw;" id="textJapan"></p>
 		<input type="text" id="inputKey"/>
-		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()" style="width:50%;">確定</button>
-			<button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:50%;">下一個</button></p>
+		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()" style="width:49%;">確定</button>
+			<button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:49%;">下一個</button></p>
 		<h4 style="text-align: center;" id="result"></h4>
 
 		<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
@@ -75,140 +75,82 @@
 		</div>
 
 		<script>
-			function openNav() {
-					var btnFilterShow = document.getElementById("btnFilterShow");
-					if(btnFilterShow.className.includes("active")){
-						closeNav();
-					}else{
-						scrollFunction(mySidenav, "myBtnNav");
-						mySidenav.style.width = "300px";
-						document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-						btnFilterShow.className += " active";
-					}
+		var myModal = document.getElementById('myModal');
+		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
+		var mySidenav = document.getElementById('mySidenav');
+		mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
+
+		function openNav() {
+				var btnFilterShow = document.getElementById("btnFilterShow");
+				if(btnFilterShow.className.includes("active")){
+					closeNav();
+				}else{
+					scrollFunction(mySidenav, "myBtnNav");
+					mySidenav.style.width = "300px";
+					document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+					btnFilterShow.className += " active";
+				}
+		}
+		function closeNav() {
+				document.getElementById("mySidenav").style.width = "0px";
+				document.body.style.backgroundColor = "#fbf7ff";
+				document.getElementById("myBtnNav").style.display = "none";
+
+				var btnFilterShow = document.getElementById("btnFilterShow");
+				btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+		}
+
+		function scrollFunction(body, id) {
+			if (body.scrollTop > 100) {
+				document.getElementById(id).style.display = "block";
+			} else {
+				document.getElementById(id).style.display = "none";
 			}
-			function closeNav() {
-					document.getElementById("mySidenav").style.width = "0px";
-					document.body.style.backgroundColor = "#fbf7ff";
-					document.getElementById("myBtnNav").style.display = "none";
+		}
 
-					var btnFilterShow = document.getElementById("btnFilterShow");
-					btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+			//open source start
+			var modal = document.getElementById('myModal');
+			var btnOpenModal = document.getElementById("btnOpenModal");
+			var close = document.getElementById("close");
+			// When the user clicks on the button, open the modal
+			btnOpenModal.onclick = function() {
+			    modal.style.display = "block";
+					btnOpenModal.className += " active";
+					scrollFunction(modal, "myBtn")
 			}
+			// When the user clicks on <span> (x), close the modal
+			close.onclick = function() {
+			    modal.style.display = "none";
+					btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+			}
+			// When the user clicks anywhere outside of the modal, close it
 
-
-					//open source start
-					var modal = document.getElementById('myModal');
-					var btnOpenModal = document.getElementById("btnOpenModal");
-					var close = document.getElementById("close");
-					// When the user clicks on the button, open the modal
-					btnOpenModal.onclick = function() {
-					    modal.style.display = "block";
-							btnOpenModal.className += " active";
-							scrollFunction(modal, "myBtn")
-					}
-					// When the user clicks on <span> (x), close the modal
-					close.onclick = function() {
-					    modal.style.display = "none";
+			function closeSourcePage(event){
+			    if (event.target == modal) {
+			        modal.style.display = "none";
 							btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+							document.getElementById("myBtn").style.display = "none";
+			    }else if(event.target != document.getElementById("btnFilterShow")
+							&& event.target != document.getElementById("btnFilterNumber")
+							&& event.target != document.getElementById("mySidenav")
+							&& event.target != document.getElementById("myBtnNav")
+							&& document.getElementById("mySidenav").style.width != "0px"
+						){
+							closeNav();
 					}
-					// When the user clicks anywhere outside of the modal, close it
+			}
 
-					function closeSourcePage(event){
-					    if (event.target == modal) {
-					        modal.style.display = "none";
-									btnOpenModal.className = btnOpenModal.className.replace(" active", "");
-									document.getElementById("myBtn").style.display = "none";
-					    }else if(event.target != document.getElementById("btnFilterShow")
-									&& event.target != document.getElementById("btnFilterNumber")
-									&& event.target != document.getElementById("btnFilterTraditionalQty")
-									&& event.target != document.getElementById("btnFilterWeek")
-									&& event.target != document.getElementById("btnFilterTiming")
-									&& event.target != document.getElementById("btnFilterTime")
-									&& event.target != document.getElementById("btnFilterMonth")
-									&& event.target != document.getElementById("btnFilterDay")
-									&& event.target != document.getElementById("btnFilterPplNum")
-									&& event.target != document.getElementById("btnFilterDirection")
-									&& event.target != document.getElementById("btnFilterSeasonWeather")
-									&& event.target != document.getElementById("btnFilterNewStandard1")
-									&& event.target != document.getElementById("btnFilterNewStandard2")
-									&& event.target != document.getElementById("btnFilterNewStandard3")
-									&& event.target != document.getElementById("btnFilterNewStandard4")
-									&& event.target != document.getElementById("btnFilterNewStandard5")
-									&& event.target != document.getElementById("btnFilterNewStandard6")
-									&& event.target != document.getElementById("btnFilterNewStandard7")
-									&& event.target != document.getElementById("btnFilterEveryone1")
-									&& event.target != document.getElementById("btnFilterEveryone2")
-									&& event.target != document.getElementById("btnFilterEveryone3")
-									&& event.target != document.getElementById("btnFilterEveryone4")
-									&& event.target != document.getElementById("btnFilterEveryone5")
-									&& event.target != document.getElementById("btnFilterEveryone6")
-									&& event.target != document.getElementById("btnFilterOld1")
-									&& event.target != document.getElementById("btnFilterOld2")
-									&& event.target != document.getElementById("btnFilterOld3")
-									&& event.target != document.getElementById("btnFilterOld4")
-									&& event.target != document.getElementById("btnFilterOld5")
-									&& event.target != document.getElementById("btnFilterOld6")
-									&& event.target != document.getElementById("btnFilterOld7")
-									&& event.target != document.getElementById("btnFilterOld8")
-									&& event.target != document.getElementById("btnFilterOld9")
-									&& event.target != document.getElementById("btnFilterOld10")
-									&& event.target != document.getElementById("btnFilterOld11")
-									&& event.target != document.getElementById("btnFilterOld12")
-									&& event.target != document.getElementById("btnFilterOld13")
-									&& event.target != document.getElementById("btnFilterOld14")
-									&& event.target != document.getElementById("btnFilterOld15")
-									&& event.target != document.getElementById("btnFilterOld16")
-									&& event.target != document.getElementById("btnFilterOld17")
-									&& event.target != document.getElementById("btnFilterOld18")
-									&& event.target != document.getElementById("btnFilterOld19")
-									&& event.target != document.getElementById("btnFilterOld20")
-									&& event.target != document.getElementById("btnFilterOld21")
-									&& event.target != document.getElementById("btnFilterOld22")
-									&& event.target != document.getElementById("btnFilterOld23")
-									&& event.target != document.getElementById("btnFilterOld24")
-									&& event.target != document.getElementById("btnFilterOld25")
-									&& event.target != document.getElementById("btnFilterOld26")
-									&& event.target != document.getElementById("btnFilterOld27")
-									&& event.target != document.getElementById("btnFilterOld28")
-									&& event.target != document.getElementById("btnFilterOld29")
-									&& event.target != document.getElementById("btnFilterOld30")
-									&& event.target != document.getElementById("btnFilterOld31")
-									&& event.target != document.getElementById("btnFilterOld32")
-									&& event.target != document.getElementById("btnFilterOld33")
-									&& event.target != document.getElementById("btnFilterOld34")
-									&& event.target != document.getElementById("btnFilterOld35")
-									&& event.target != document.getElementById("btnFilterOld36")
-									&& event.target != document.getElementById("btnFilterOld37")
-									&& event.target != document.getElementById("btnFilterOld38")
-									&& event.target != document.getElementById("btnFilterOld39")
-									&& event.target != document.getElementById("btnFilterOld40")
-									&& event.target != document.getElementById("btnFilterOld41")
-									&& event.target != document.getElementById("btnFilterOld42")
-									&& event.target != document.getElementById("btnFilterOld43")
-									&& event.target != document.getElementById("btnFilterOld44")
-									&& event.target != document.getElementById("btnFilterOld45")
-									&& event.target != document.getElementById("btnFilterOld46")
-									&& event.target != document.getElementById("btnFilterOld47")
-									&& event.target != document.getElementById("btnFilterOld48")
-									&& event.target != document.getElementById("btnFilterOld49")
-									&& event.target != document.getElementById("btnFilterOld50")
-									&& event.target != document.getElementById("mySidenav")
-									&& event.target != document.getElementById("myBtnNav")
-									&& document.getElementById("mySidenav").style.width != "0px"
-								){
-									closeNav();
-							}
-					}
+			window.onclick = function(event) {
+			    closeSourcePage(event);
+			}
 
-					window.onclick = function(event) {
-					    closeSourcePage(event);
-					}
-
-					window.addEventListener('touchstart', function (event) {
-					    closeSourcePage(event);
-					});
-					//open source end
+			window.addEventListener('touchstart', function (event) {
+			    closeSourcePage(event);
+			});
+			//open source end
 		</script>
+		<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
+		<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
 
 	<ul id="foot">
 		</br>
