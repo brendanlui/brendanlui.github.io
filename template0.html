@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
+</head>
+
+<title>Dadiu | Template</title>
+
+<body onload="">
+	<div id="head">
+		<div id="logo">
+			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="/css/responsive_bar_style.css">
+	<div class="topnav" id="myTopnav">
+	  <a href="/">Home</a>
+	</div>
+
+	<!--TODO-->
+
+		<!-- The Modal -->
+		<link rel="stylesheet" href="/css/modal_box_style.css">
+		<div id="myModal" class="modal">
+		  <div class="modal-content">
+		    <span id="close" class="close">&times;</span>
+				<a id="toppest" class="smooth"></a>
+				<table id="source">
+				</table>
+		  </div>
+		</div>
+
+		<div id="buttonBox">
+			<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
+			<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">過濾</button>
+			<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日語 => 中文</button>
+		</div>
+
+		<p class="showText" style="font-size:8vw;" id="textJapan"></p>
+	
+		<div class="buttonBox">
+					<input type="text" class="searchTerm" id="inputKey" name="search"/>
+		</div>
+		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()">確定</button></p>
+		<p><button id="next" class="buttonJp next" type="button" onclick="restart()">下一個</button></p>
+		<h4 style="text-align: center;" id="result"></h4>
+
+
+	<ul id="foot">
+		</br>
+		<li>© Copyright 2019. All Rights Reserved.</li>
+	</ul></br>
+</body>
+</html>

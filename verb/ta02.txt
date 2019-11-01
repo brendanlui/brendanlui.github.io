@@ -1,0 +1,984 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ja">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>線上日本語練習</title>
+<meta name="keywords" content="日本,日語,線上,Japanese,language,learn,study,free,online,NIHON MURA">
+<meta name="description" content="Let's learn and practice Japanese on line !! FREE !!">
+<STYLE type="text/css">
+<!--
+A:link {text-decoration:none;}
+A:visited {text-decoration:none;}
+A:active {text-decoration:none;}
+A:hover {color:#FF0000; text-decoration:underline;}
+-->
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+defaultStatus = "線上日本語練習 powered by NIHON MURA";
+//-->
+</SCRIPT>
+<STYLE type="text/css">
+<!--
+body {scrollbar-face-color:#FFFFFF; scrollbar-track-color:#FFFFFF; scrollbar-arrow-color:#33CC33; scrollbar-highlight-color:#FFFFFF; scrollbar-shadow-color:#33CC33; scrollbar-3dlight-color:#33CC33; scrollbar-darkshadow-color:#FFFFFF}
+-->
+</STYLE>
+<!---------------------------------------------------------
+ このファイルは WEB問題作成ツールによって出力されました。
+ WEB問題作成ツールは以下のURLから参照できます。
+    http://www.iwai-h.ed.jp/~irie/javascript/webquiz/
+    Copyright (c) 1998-2001 入江 利明 <irie@iwai-h.ed.jp>
+------------------------------------------------------------>
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+//-->
+</script>
+
+<script language="JavaScript">
+<!--
+var NUM=92;               // 問題数
+var snum=10;             // 出題数
+var ignore_space=1;     // スペースを無視 1:する  0:しない
+var shuffle=1;           // 問題の順番をランダムに 1:する、0:しない
+var seigo_button=0;
+var kaisetsu_type=0;     // 0:解説なし, 1:解説一覧のみ, 2:各問いに解説ボタンあり
+
+var refresh=0;           // 試行ごとに refresh する:1 しない:0
+var gokaku=80;           // 合格点（次の問題に進める）
+var page_fwd=0;          // 1:合格点に達したら次に進む  0:何もしない
+var nextfile=".html";       // 次のページのファイル名
+var ans="た形";                // 解答欄の前につく文字
+var boxsize=30;          // 解答欄のサイズ
+var tbl_width=600;         // 問題欄の幅
+
+
+// 変数初期化
+var flg_kWin0=false;     // 結果window 開いているか
+var flg_kWin1=false;     // 解説window
+var flg_kWin2=false;     // 解説一覧window
+var flg_kWin3=false;     // 解答一覧window
+var flg_try=false;       // 採点ボタンを押したか
+
+// １次元配列作成
+function MakeArray(n){
+	this.length=n;
+}
+
+// ２次元配列作成
+function DIM(dimx,dimy){
+	var i;
+	var myArray = new Array(dimy);
+	for (i=0; i<=dimx; i++) myArray[i] = new Array(dimx);
+	return myArray;
+}
+
+var q=new MakeArray(NUM);  // 問題文データ配列
+var s=new MakeArray(2);    // 選択肢データ配列
+var v=new MakeArray(NUM);  // 選択肢値　正解=1  不正解=0
+var c=new MakeArray(NUM);  // 選択したかどうかのチェック
+var kd=new MakeArray(NUM); // 解説カードデータ配列
+
+
+// 問題データ  q[]:問題文, s[]:答え
+q[1]="くらべます（比べます）";
+s[1]="くらべた";
+
+q[2]="きます（来ます）";
+s[2]="きた";
+
+q[3]="くれます";
+s[3]="くれた";
+
+q[4]="くれます（暮れます）";
+s[4]="くれた";
+
+q[5]="けがします";
+s[5]="けがした";
+
+q[6]="けします（消します）";
+s[6]="けした";
+
+q[7]="けんかします";
+s[7]="けんかした";
+
+q[8]="こたえます（答えます）";
+s[8]="こたえた";
+
+q[9]="こまります（困ります）";
+s[9]="こまった";
+
+q[10]="こみます（込みます）";
+s[10]="こんだ";
+
+q[11]="ごらんになります";
+s[11]="ごらんになった";
+
+q[12]="こわします（壊します）";
+s[12]="こわした";
+
+q[13]="こわれます（壊れます）";
+s[13]="こわれた";
+
+q[14]="さがします（探します）";
+s[14]="さがした";
+
+q[15]="さがります（下がります）";
+s[15]="さがった";
+
+q[16]="さきます（咲きます）";
+s[16]="さいた";
+
+q[17]="さげます（下げます）";
+s[17]="さげた";
+
+q[18]="さしあげます（差し上げます）";
+s[18]="さしあげた";
+
+q[19]="さします";
+s[19]="さした";
+
+q[20]="さわぎます（騒ぎます）";
+s[20]="さわいだ";
+
+q[21]="さわります（触ります）";
+s[21]="さわった";
+
+q[22]="しにます（死にます）";
+s[22]="しんだ";
+
+q[23]="しまいます";
+s[23]="しまった";
+
+q[24]="しまります（閉まります）";
+s[24]="しまった";
+
+q[25]="しめます（閉めます）";
+s[25]="しめた";
+
+q[26]="しめます（締めます）";
+s[26]="しめた";
+
+q[27]="しょくじします（食事します）";
+s[27]="しょくじした";
+
+q[28]="しらせます（知らせます）";
+s[28]="しらせた";
+
+q[29]="しらべます（調べます）";
+s[29]="しらべた";
+
+q[30]="しります（知ります）";
+s[30]="しった";
+
+q[31]="しんぱいします（心配します）";
+s[31]="しんぱいした";
+
+q[32]="すいます（吸います）";
+s[32]="すった";
+
+q[33]="すぎます（過ぎます）";
+s[33]="すぎた";
+
+q[34]="すきます";
+s[34]="すいた";
+
+q[35]="すてます（捨てます）";
+s[35]="すてた";
+
+q[36]="すべります";
+s[36]="すべった";
+
+q[37]="すみます（住みます）";
+s[37]="すんだ";
+
+q[38]="すみます（済みます）";
+s[38]="すんだ";
+
+q[39]="します";
+s[39]="した";
+
+q[40]="すわります（座ります）";
+s[40]="すわった";
+
+q[41]="せいかつします（生活します）";
+s[41]="せいかつした";
+
+q[42]="そうじします（掃除します）";
+s[42]="そうじした";
+
+q[43]="そうだんします（相談します）";
+s[43]="そうだんした";
+
+q[44]="そだてます（育てます）";
+s[44]="そだてた";
+
+q[45]="たおれます（倒れます）";
+s[45]="たおれた";
+
+q[46]="たします（足します）";
+s[46]="たした";
+
+q[47]="だします（出します）";
+s[47]="だした";
+
+q[48]="たずねます（訪ねます）";
+s[48]="たずねた";
+
+q[49]="たずねます（尋ねます）";
+s[49]="たずねた";
+
+q[50]="たちます（立ちます）";
+s[50]="たった";
+
+q[51]="たてます（立てます）";
+s[51]="たてた";
+
+q[52]="たてます（建てます）";
+s[52]="たてた";
+
+q[53]="たのみます（頼みます）";
+s[53]="たのんだ";
+
+q[54]="たべます（食べます）";
+s[54]="たべた";
+
+q[55]="たります";
+s[55]="たりた";
+
+q[56]="ちがいます（違います）";
+s[56]="ちがった";
+
+q[57]="つかいます（使います）";
+s[57]="つかった";
+
+q[58]="つかまえます（捕まえます）";
+s[58]="つかまえた";
+
+q[59]="つかれます（疲れます）";
+s[59]="つかれた";
+
+q[60]="つきます（着きます）";
+s[60]="ついた";
+
+q[61]="つきます";
+s[61]="ついた";
+
+q[62]="つくります（作ります）";
+s[62]="つくった";
+
+q[63]="つけます";
+s[63]="つけた";
+
+q[64]="つけます（漬けます）";
+s[64]="つけた";
+
+q[65]="つたえます（伝えます）";
+s[65]="つたえた";
+
+q[66]="つづきます（続きます）";
+s[66]="つづいた";
+
+q[67]="つづけます（続けます）";
+s[67]="つづけた";
+
+q[68]="つつみます（包みます）";
+s[68]="つつんだ";
+
+q[69]="つとめます（勤めます）";
+s[69]="つとめた";
+
+q[70]="つります（釣ります）";
+s[70]="つった";
+
+q[71]="つれます（連れます）";
+s[71]="つれた";
+
+q[72]="でかけます（出かけます）";
+s[72]="でかけた";
+
+q[73]="できます";
+s[73]="できた";
+
+q[74]="てつだいます（手伝います）";
+s[74]="てつだった";
+
+q[75]="でます（出ます）";
+s[75]="でた";
+
+q[76]="とおります（通ります）";
+s[76]="とおった";
+
+q[77]="とどけます（届けます）";
+s[77]="とどけた";
+
+q[78]="とびます（飛びます）";
+s[78]="とんだ";
+
+q[79]="とまります（止まります）";
+s[79]="とまった";
+
+q[80]="とまります（泊まります）";
+s[80]="とまった";
+
+q[81]="とめます（泊めます）";
+s[81]="とめた";
+
+q[82]="とりかえます（取り替えます）";
+s[82]="とりかえた";
+
+q[83]="とります（取ります）";
+s[83]="とった";
+
+q[84]="とります（撮ります）";
+s[84]="とった";
+
+q[85]="なおします（直します）";
+s[85]="なおした";
+
+q[86]="なおります（直ります）";
+s[86]="なおった";
+
+q[87]="なおります（治ります）";
+s[87]="なおった";
+
+q[88]="なきます（鳴きます）";
+s[88]="ないた";
+
+q[89]="なきます（泣きます）";
+s[89]="ないた";
+
+q[90]="なくします（無くします）";
+s[90]="なくした";
+
+q[91]="なくなります（無くなります）";
+s[91]="なくなった";
+
+q[92]="なくなります（亡くなります）";
+s[92]="なくなった";
+
+
+
+// 解説カードデータ
+
+
+// n までの整数をランダムに発生  戻り値 x[]
+function ransu(n) {
+	var k=1, l,  bingo;
+	var x=new MakeArray(snum);
+
+	x[k] = Math.floor(n * Math.random())+1;
+	k++;
+	while ( k<=n ) {
+    	x[k] = Math.floor(n * Math.random())+1;
+	    bingo = 0;
+	    for (l=1; l<k; l++) {  // すでに同じ数字がないかチェック
+	        if ( x[k] == x[l] ) { bingo=1; break; }
+	    }
+	    if (bingo==0) k++;  	// 同じ数字がなければ k++
+	}
+	return x;
+}
+
+
+
+// 正解数カウント用配列 a[] 初期化
+var a=new MakeArray(NUM);
+for (i=1;i<=NUM;i++) { a[i]=0; }
+
+// 解答したかどうかチェック用配列 c[] 初期化
+for (i=1;i<=NUM;i++) { c[i] = 0; }
+
+// Netscape 3 でsubstring() が全角文字を２文字でカウントするための補正
+var nn=1;
+if (navigator.appName=="Netscape" && navigator.appVersion.substring(0,1)=="3") nn=2;
+
+// 解答欄の値が変化したときの処理
+function ans_check(){
+    var mm=0;
+    var box_data;
+    var pointer;
+    var dl;        // 文字列長さ
+    if (kaisetsu_type==1) mm=mm+1;
+    if (seigo_button==1) mm=mm+1;
+    for (i=1;i<=snum;i++) {
+        j=x[i];
+        box_data = document.myForm.elements[(i-1)*(mm+1)].value;
+        if (ignore_space==1) {
+        // 全角スペースを取り除く
+        pointer=box_data.indexOf("　",0);
+        while (pointer>=0) {
+            box_data = box_data.substring(0,pointer) + box_data.substring(pointer+nn,99);
+            pointer = box_data.indexOf("　",0);
+        }
+        //半角スペースを取り除く
+        pointer=box_data.indexOf(" ",0);
+        while (pointer>=0) {
+            box_data = box_data.substring(0,pointer) + box_data.substring(pointer+1,99);
+            pointer = box_data.indexOf(" ",0);
+        }
+        }
+        // 解答欄が空欄でなければ正誤判定(a[])し，c[]=1 に
+        if (box_data != "") {
+            if (box_data == s[j]) {
+                a[j]=1;
+            } else {
+                a[j]=0;
+            }
+            c[j]=1;
+        // 解答欄が空欄なら c[]=0 に
+        } else {
+            c[j]=0;
+        }
+    }
+}
+
+
+// 採点ボタンが押されたときの処理（結果window）
+function kekka(f){
+    // refresh モードのときはズルなし
+    if (flg_try && refresh) {
+       result = confirm('若不重新答題將無法計分。要重新答題嗎？');
+       if (result) {
+          location.reload();
+          return;
+       } else  return;
+    }
+
+    // 未回答の問題があったら確認する
+    var kaito=0;
+    for (i=1;i<=NUM;i++) { kaito += c[i]; }
+    if (kaito != snum) {
+        result=confirm("尚有未回答的問題。要以此計分嗎？");
+        if (!result) return;
+    }
+
+    // 結果データ処理
+    var data="", seikai=0 ,j, i, yy, score, scb=0;
+    flg_try = true;
+    data += "<html><head><title>成績<\/title><\/head>";
+    data += "<bo" + "dy bgcolor=pink text=black>";
+    data += "<font size=4><b>成績<\/b><\/font>";
+    data += "<br><br><table border=0 cellspacing=2 cellpadding=5><tr>";
+    for(i=1;i<=snum;i++){
+        j=x[i];
+        data += "<td width=55 align=center bgcolor=white>問"+i;
+        if (!c[j]) {
+            data += "<td width=25 align=center bgcolor=white>　<\/font>";
+        } else {
+            if (a[j]==1) {
+                data += "<td width=25 align=center bgcolor=white><font color=blue><b>○<\/b><\/font>";
+            } else {
+                data += "<td width=25 align=center bgcolor=white><font color=red><b>×<\/b><\/font>";
+            }
+        }
+        if (i%5==0) {data += "<tr>";}
+        seikai=seikai+eval(a[j]);      // 正解数をカウント
+    }
+    data += "<\/table><br>  <table><tr><td width=420><blockquote><font color=green>";
+    score = Math.floor(100*seikai/snum+0.5);
+    if (score != 100) data += snum+"題中答對 "+seikai+"題";
+    if (score == 100) data += "所有問題之正確解答";
+    data += "<\/font><br>";
+    if (score < gokaku) data += "<font color=green> 再加油吧!　(￣□￣||| <\/font>";
+    if (score >= gokaku && score < 100) data += "<font color=green> 不錯喔!　（*＾＾*)  <\/font>";
+    if (score == 100) data += "<font color=red> 恭喜您!　＼＼( ⌒▽⌒ )／／  <\/font>";
+    data += "<\/blockquote><\/td>";
+    data += "<td nowrap><u><font size=7 color=red>" + score + "分<\/font><\/u>";
+    data += "<\/table>";
+    data += "<center><form>";
+    if (score < gokaku && !refresh || score>=gokaku && !page_fwd) data += "<input type=button value='關閉' onClick='window.close();'>";
+    if (score < gokaku && refresh) data += " <input type=button onClick='window.opener.document.location.reload();' value='重新再來'>";
+    if (score >= gokaku && page_fwd) data += "<input type=button onClick=window.opener.document.location='" + nextfile + "' value='進入下一組'>";
+    data += "<\/form><\/center><\/bo" + "dy><\/html>";
+
+    flg_kWin0=1;
+    yy=280+35*(Math.floor(snum/5-0.1));
+    if (yy > 480) { yy=480; scb=1; }
+    kWin0=window.open("","kekkaWin","width=560,height=" + yy + ",toolbar=0,menubar=0,resizable=1,scrollbars=" + scb + ",location=0,directories=0,status=0");
+    kWin0.focus();
+    kWin0.document.open();
+    kWin0.document.write(data);
+    kWin0.document.close();
+}
+
+
+// 解説一覧ボタンを押したときの処理
+function kaisetsu_view() {
+    flg_kWin1=1;
+    var data="";
+    data += "<html><head><title>解説カード<\/title><\/head>";
+    data += "<bo" + "dy bgcolor=lavender text=black>";
+    data += "<dl>";
+    for(i=1;i<=snum;i++) {
+        j = x[i];
+        data += "<dt><table cellpadding=3 align=left><td bgcolor=pink> 問" + i + "<\/table>";
+        data += "<table><tr><td>" + kd[j] + "<\/table><p>";
+    }
+    data += "<\/dl> <\/bo" + "dy><\/html>";
+    kWin1 = window.open("","kWin1","width=500,height=400,scrollbars=1,resizable=1,directoies=0");
+    kWin1.focus();
+    kWin1.document.open();
+    kWin1.document.write(data);
+    kWin1.document.close();
+}
+
+// 解説ボタンを押した時の処理
+function single_kaisetsu(m) {
+    flg_kWin2=1;
+    var data="";
+    data += "<html><head><title>解説<\/title><\/head>";
+    data += "<bo" + "dy bgcolor=lavender text=black>";
+    data += "<form><table width=320>";
+    data += "<tr><th height=100>" +  kd[m] + "<\/tr>";
+    data += "<tr><th><input type=button value='閉じる' onClick='window.close()'><\/form>";
+    data += "<\/table><\/form><\/bo" + "dy><\/html>";
+    kWin2 = window.open("","kWin2","width=350,height=180,scrollbars=1,resizable=1");
+    kWin2.focus();
+    kWin2.document.open();
+    kWin2.document.write(data);
+    kWin2.document.close();
+}
+
+
+// 正誤ボタンを押したときの処理
+function seigo(m) {
+    if (!c[m]) { alert("請選擇答案");
+    } else {
+        if (a[m] == 1) { alert("○　正確　○"); } else { alert("×　錯誤　×"); }
+    }
+}
+
+
+// 解答ボタンを押したときの処理
+function kaito(){
+    if (!flg_try) { alert('仔細回答且計分完後再看解答喔!'); return; }
+    flg_kWin3 = true;
+    flg_try = false;
+    var data="";
+    data += "<html><head><title>解答<\/title><\/head>";
+    data += "<bo" + "dy bgcolor=lightcyan>";
+    data += "<center><h1>解答<\/h1>";
+    data += "<table border=1 cellpadding=3 cellspacing=0 width=150>";
+    for(i=1;i<=snum;i++){
+        j=x[i];
+        data += "<tr><th>" + i + "<td> " + s[j] + "<\/tr>";
+    }
+    data += "<\/table>";
+    data += "<br><form><input type=button value='關閉' onClick='window.close()'>";
+    data += "<\/form><\/center><\/bo" + "dy><\/html>";
+    kWin3 = window.open("","kWin3","width=200,height=250,scrollbars=1,resizable=1");
+    kWin3.focus();
+    kWin3.document.open();
+    kWin3.document.write(data);
+    kWin3.document.close();
+}
+
+
+// sub windowを閉じる
+function byebye(){
+    if (flg_kWin0 && !kWin0.closed) kWin0.close();
+    if (flg_kWin1 && !kWin1.closed) kWin1.close();
+    if (flg_kWin2 && !kWin2.closed) kWin2.close();
+    if (flg_kWin3 && !kWin3.closed) kWin3.close();
+}
+
+
+//-->
+</script>
+</head>
+
+<body onCopy="alert('Copyright NIHON MURA. All rights reserved.');return false" style="font-size: 12pt onLoad=" onUnload="byebye()" document.myForm.reset()">
+
+  <div align="center">
+    <center>
+    <table border="0" width="800">
+      <tr>
+        <td width="100%" colspan="5" valign="top"><html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body>
+
+    <center>
+    <table border="0" width="800">
+      <tr>
+        <td width="20%"></td>
+        <td width="20%"></td>
+        <td width="20%"></td>
+        <td width="20%"></td>
+        <td width="20%"></td>
+      </tr>
+      <tr>
+        <td width="40%" colspan="2" rowspan="3"><font size="5"><a href="http://www.nihonmura.net/"><img alt="Online Japanese Practice　オンライン日本語練習" src="http://www.nihonmura.net/common/image/newlogo.gif" border="0" width="302" height="103"></a></font></td>
+        <td width="60%" colspan="3" valign="middle">
+          <p align="center">
+
+
+
+<!-- 広告 -->
+<table border="0" width="468" id="table1" height="60" style="border: 1px solid #FF6600">
+	<tr>
+		<td><a href="http://books.nihonmura.tw">日本語能力測驗考古題</a></td>
+		<td>
+		<a href="http://books.nihonmura.tw/2007/10/12005200616k2cd_78da.html">
+		<img height="60" alt="日本語能力測驗考古題1級2005年~2006年（16K+2CD）" src="http://www.nihonmura.com/tc/books/covers/0010382192.jpg" width="42" border="1"></a></td>
+		<td>
+		<a href="http://books.nihonmura.tw/2007/10/22005200616k2cd_0a43.html">
+		<img height="60" alt="日本語能力測驗考古題2級2005年~2006年（16K+2CD）" src="http://www.nihonmura.com/tc/books/covers/0010382195.jpg" width="42" border="1"></a></td>
+		<td><a href="http://books.nihonmura.tw/2007/10/post_8.html">
+		<img height="60" alt="日本語能力測驗考古題3級2005-2006 （16K＋1CD）" src="http://www.nihonmura.com/tc/books/covers/0010379801.jpg" width="42" border="1"></a></td>
+		<td><a href="http://books.nihonmura.tw/2007/10/post_6.html">
+		<img height="60" alt="日本語能力測驗考古題4級2005年~2006年(16K+1CD)" src="http://www.nihonmura.com/tc/books/covers/0010380684.jpg" width="42" border="1"></a></td>
+	</tr>
+</table>
+<!-- 広告 -->
+
+
+
+          </td>
+      </tr>
+      <tr>
+        <td width="60%" colspan="3">
+        </td>
+      </tr>
+      <tr>
+        <td width="60%" colspan="3" align="center">
+<INPUT type="button" value="設為首頁" onClick="javascript:this.style.behavior='url(#default#homepage)'; this.setHomePage('http://www.nihonmura.net/');" style="border-style:solid; border-width:2px; border-color:#3333FF; background:#F0F0F0; font-size:10pt; color:#3333FF">
+<INPUT type="button" value="加入我ㄉ最愛" onClick="javascript:window.external.addFavorite('http://www.nihonmura.net/','線上日本語練習 powered by NIHON MURA');" style="border-style:solid; border-width:2px; border-color:#3333FF; background:#F0F0F0; font-size:10pt; color:#3333FF">
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="5">
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="5">
+        <table border="0" width="100%">
+          <tr>
+            <td colspan="2">
+        <a href="http://www.nihonmura.net/tc/" style="color: #0000FF">HOME</a> <font color="#33CC33"> |</font>
+        <a href="http://www.nihonmura.net/tc/nyuryoku/" style="color: #0000FF">“平假名””片假名”輸入練習</a><font color="#33CC33">｜</font><a href="http://www.nihonmura.net/tc/verbs/" style="color: #0000FF">動詞的活用形</a><font color="#33CC33">｜</font><a href="http://www.nihonmura.net/tc/kanji/" style="color: #0000FF">漢字的讀音</a><font color="#33CC33">｜</font><a href="http://www.nihonmura.net/tc/josu/" style="color: #0000FF">順序數詞的讀音</a>
+            </td>
+    </center>
+        </tr>
+          <tr>
+            <td colspan="2">
+        <font color="#33CC33">[ 語彙 ] &gt;&gt; <a style="color: #0000FF" href="http://goi4.nihonmura.tw/">日本語能力試驗4級</a>&nbsp;
+        | <a style="color: #0000FF" href="http://goi3.nihonmura.tw/">日本語能力試驗3級</a>
+        | <a style="color: #0000FF" href="http://goi2.nihonmura.tw/">日本語能力試驗2級</a>
+        | <a style="color: #0000FF" href="http://goi1.nihonmura.tw/">日本語能力試驗1級</a></font>
+            </td>
+        </tr>
+          <tr>
+            <td>
+        <a href="http://www.nihonmura.net/advanced/1hyogen/" style="color: #0000FF">上級者向け練習</a>
+            </td>
+            <td>
+        <p align="right"><font size="2"><a href="http://www.nihonmura.net/news/" style="color: #FF6600"><b>日本のニュース</b></a></font>
+            </td>
+        </tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="5">
+        <hr size="5" color="#33CC33">
+        </td>
+      </tr>
+      <tr>
+        <td width="20%">
+        <html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body>
+<div align="center"><span style="font-family:Times New Roman;color:#0066FF;font-size:14px;font-weight:bold;"> 50 visitors online now!</span></div>
+</body>
+
+</html>
+
+        </td>
+        <td width="80%" colspan="4" style="font-size: 10pt">
+
+        <p align="center">
+  <html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<body>
+
+
+<p align="right"><b><font size="2">
+<a target="_blank" style="color: #FF6600" href="http://mockexam.nihonmura.tw">
+日本語能力測驗模擬考試</a></font></b></p>
+
+
+</body>
+
+</html>
+        </td>
+      </tr>
+    </table>
+
+</body>
+
+</html>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" rowspan="3" valign="top"><html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body>
+
+<div align="center">
+  <center>
+  <table border="0" width="100%" style="font-size: 12pt; border: 2 solid #33CC33">
+    <tr>
+      <td width="100%" bgcolor="#33CC33">
+        <p align="center"><font color="#FFFFFF"><b>動詞的活用形</b></font></p>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <p align="center"><a href="http://www.nihonmura.net/tc/verbs/" style="color: #0000FF">TOP</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/te/" style="color: #0000FF">て形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■　</font><a href="http://www.nihonmura.net/tc/verbs/jisho/" style="color: #0000FF">辭書形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/nai/" style="color: #0000FF">ない形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/ta/" style="color: #0000FF">た形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/iko/" style="color: #0000FF">意向形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/meirei/" style="color: #0000FF">命令形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/joken/" style="color: #0000FF">條件形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/kano/" style="color: #0000FF">可能形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/ukemisonkei/" style="color: #0000FF">被動、尊敬形</a></td>
+    </tr>
+    <tr>
+      <td width="100%"><font color="#FF6600">■</font>　<a href="http://www.nihonmura.net/tc/verbs/shieki/" style="color: #0000FF">使役形</a></td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<div align="center">
+  <center>
+  <table border="0" width="100%">
+    <tr>
+      <td width="100%">
+
+      </td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+</body>
+
+</html>
+
+
+        </td>
+        <td width="80%" colspan="4" valign="top" bgcolor="#FF6600"><b><font color="#FFFFFF">た形　PART
+          2</font></b></td>
+      </tr>
+      <tr>
+        <td width="80%" colspan="4" valign="top"><br>
+          <b>「ひらがな（全角）」で<font color="#FF6600">た形</font>を入力してください。<br>
+          請用”平假名(全形)”輸入<font color="#FF6600">た形</font><br>
+          <font color="#FF0000">例：　あいさつします</font>　　　<input type="text" name="example" size="30" value="あいさつした"></b></td>
+      </tr>
+      <tr>
+        <td width="80%" colspan="4" valign="top">
+<noscript>
+<br>
+線上日本語練習是以JavaScript 1.1所制作而成<br>
+請使用Netscape Navigator 3.0以上或 Internet Explorer 4.0以上系統
+<br>
+</noscript>
+
+
+<script language="JavaScript">
+<!--
+var x=new MakeArray(NUM);
+var m=new MakeArray(4);
+var str="", k;
+
+if (shuffle) {
+    x = ransu(NUM);
+} else {
+    for (i=1;i<=NUM;i++) { x[i]=i; }
+}
+str += "<form name='myForm'>";
+str += "<table border=0 cellpadding=5 cellspacing=0>";
+for (j=1; j<=snum; j++){
+    k=x[j];
+    if (j % 2 > 0) {
+        bgc1="blue"; bgc2="lightcyan"; textc1="white"; textc2="black";
+    } else {
+        bgc1="blue"; bgc2="lightyellow"; textc1="white";textc2="black";
+    }
+    str += "<tr><td bgcolor=" + bgc2 + " valign=top width=50>";
+    str += "<table border=4 cellpadding=2 cellspacing=0 width=40>";
+    str += "  <tr><td bgcolor=" + bgc1 + " valign=top nowrap align=center>";
+    str += "      <b><font size=4 color=" + textc1 + ">" + j +"<\/font><\/b>";
+    str += "  <\/th><\/tr><\/table>";
+    str += "<td width=" + (tbl_width - 50) + " bgcolor=" + bgc2 + "><br><font color=" +textc2 + ">" + q[k] + "<\/font>";
+    str += "<br><div align=right>";
+    str += ans + " <input size=" + boxsize + " name=box" + k;
+    str += " onChange='ans_check();' onFocus='byebye();'>";
+    if (kaisetsu_type == 1) {
+       str += " <input type=button value='Hint' onClick='single_kaisetsu(" + k + ")'>";
+    }
+    if (seigo_button) {
+       str += "<input type=button value='正確與錯誤' onClick='seigo(" + k + ")'><br>";
+    }
+    str += "<\/div><\/td>";
+
+    if (j!=NUM) str += "<tr><td><td>";
+}
+str += "<\/table>";
+str += "<table border=0 cellspacing=0 cellpadding=2>";
+str += "<tr><td colspan=2 align=center width=" + tbl_width + "><br>";
+str += "<input type=button onClick='kekka(this.form)' value=' 看成績 '>　";
+str += "<input type=button onClick='location.reload()' value=' 再一次'>";
+str += "　<input type=button onClick='kaito()' value=' 解答 '>";
+if (snum < NUM) str += "<br><small><br>按下“再一次”鍵，將會出現其他不同的題目<\/small>";
+str += "<!--------------- 以下のリンクは消さないでください --------------->";
+str += "<tr><td><td align=right>";
+str += "  <a href='http://www.iwai-h.ed.jp/~irie/javascript/webquiz/'>";
+str += "  <font size=1><i>created by WEB問題作成ツール<\/i><\/font><\/a>";
+str += "<\/table><br>";
+str += "<\/form>";
+document.write( str );
+//-->
+</script>
+</td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="5" valign="top"><html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title></title>
+</head>
+
+<body>
+
+<div align="center">
+  <center>
+  <table border="0" width="800" style="font-size: 12pt">
+    <tr>
+      <td width="100%" valign="top" colspan="5">
+        <hr size="5" color="#33CC33">
+      </td>
+    </tr>
+  </center>
+  <center>
+    <tr>
+      <td width="100%" valign="top" colspan="5">
+      <p align="center"><font size="2">Online Japanese Practice in <a href="http://www.nihonmura.net/jp/" style="color: #0000FF">Japanese</a>
+      | <a href="http://www.nihonmura.net/en/" style="color: #0000FF">English</a>
+      | <a href="http://www.nihonmura.net/tc/" style="color: #0000FF">Traditional
+      Chinese</a> | <a href="http://www.nihonmura.net/sc/" style="color: #0000FF">Simplified
+      Chinese</a> | <a href="http://www.nihonmura.net/th/" style="color: #0000FF">Thai</a></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" valign="top" colspan="5">
+      <p align="center"><font size="2">Copyright &copy; 2001-2008 NIHON MURA. All rights reserved.<br>
+      日本村有限公司 <font face="Times New Roman">NIHON MURA
+      CO.,LTD.<br>
+      106</font>台北市羅斯福路二段<font face="Times New Roman">79</font>號<font face="Times New Roman">806</font>室
+      <font face="Times New Roman"> TEL</font>：<font face="Times New Roman">(02)2369-3245 FAX</font>：<font face="Times New Roman">(02)8369-2713</font><br></font>
+		<img height="15" src="http://www.nihonmura.com/common/mailimages/aiueo.jpg" width="140">
+      </td>
+    </tr>
+    <tr>
+      <td width="20%" valign="top"></td>
+      <td width="20%" valign="top"></td>
+      <td width="20%" valign="top"></td>
+      <td width="20%" valign="top"></td>
+      <td width="20%" valign="top"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<!-- google Analytics -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-51019-2";
+urchinTracker();
+</script>
+<!-- google Analytics -->
+</body>
+
+</html>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" valign="top"></td>
+        <td width="20%" valign="top"></td>
+        <td width="20%" valign="top"></td>
+        <td width="20%" valign="top"></td>
+        <td width="20%" valign="top"></td>
+      </tr>
+    </table>
+    </center>
+  </div>
+
+</body>
+
+</html>
