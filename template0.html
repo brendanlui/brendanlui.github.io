@@ -188,28 +188,29 @@
 
 			function loadDoc(type)
 			{
+					document.getElementById("source").innerHTML = '<tr>'
+										+	'<th>日語</th>'
+										+ '<th>重音</th>'
+										+ '</tr>';
+
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-								document.getElementById("source").innerHTML = '<tr>'
-													+	'<th>日語</th>'
-													+ '<th>重音</th>'
-													+ '</tr>';
-
 					    	var txt = xmlhttp.responseText;
-
+								var dir = "";
 								var arr = txt.split(']="');
 								arr.shift();
 
 								for(i = 0; i < arr.length; i++){
 									if(i % 2 == 0){
 										arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										document.getElementById("source").innerHTML += '<tr><td>' + arrPos[i / 2] + '</td>';
+										dir += '<tr><td>' + arrPos[i / 2] + '</td>';
 									}else{
 										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										document.getElementById("source").innerHTML += '<td>' + arrNeg[(i - 1) / 2] + '</td></tr>';
+										dir += '<td>' + arrNeg[(i - 1) / 2] + '</td></tr>';
 									}
 								}
+								document.getElementById("source").innerHTML += dir;
 
 								if(changeWay){
 										var arrTemp = {};
