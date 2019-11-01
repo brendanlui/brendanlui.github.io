@@ -37,8 +37,16 @@
 			<div id="mySidenav" class="sidenav">
 					<a id="toppestNav" class="smooth"></a>
 					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			 		<a href="#" id="btnFilterNumber" onclick="filterSelection('Number')">數字</a>
-			 		<a href="#" id="btnFilterTraditionalQty" onclick="filterSelection('TraditionalQty')">傳統數量詞</a>
+			 		<a href="#" id="btnFilterte" onclick="filterSelection('te')">て形</a>
+			 		<a href="#" id="btnFilterjisho" onclick="filterSelection('jisho')">辭書形</a>
+			 		<a href="#" id="btnFilternai" onclick="filterSelection('nai')">ない形</a>
+			 		<a href="#" id="btnFilterta" onclick="filterSelection('ta')">た形</a>
+			 		<a href="#" id="btnFilteriko" onclick="filterSelection('iko')">意向形</a>
+			 		<a href="#" id="btnFiltermeirei" onclick="filterSelection('meirei')">命令形</a>
+			 		<a href="#" id="btnFilterjoken" onclick="filterSelection('joken')">條件形</a>
+			 		<a href="#" id="btnFilterkano" onclick="filterSelection('kano')">可能形</a>
+			 		<a href="#" id="btnFilterukemisonkei" onclick="filterSelection('ukemisonkei')">被動 、尊敬形</a>
+			 		<a href="#" id="btnFiltershieki" onclick="filterSelection('shieki')">使役形</a>
 			</div>
 		</div>
 		<!-- The Modal -->
@@ -135,7 +143,16 @@
 							btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 							document.getElementById("myBtn").style.display = "none";
 			    }else if(event.target != document.getElementById("btnFilterShow")
-							&& event.target != document.getElementById("btnFilterNumber")
+							&& event.target != document.getElementById("btnFilterte")
+							&& event.target != document.getElementById("btnFilterjisho")
+							&& event.target != document.getElementById("btnFilternai")
+							&& event.target != document.getElementById("btnFilterta")
+							&& event.target != document.getElementById("btnFilteriko")
+							&& event.target != document.getElementById("btnFiltermeirei")
+							&& event.target != document.getElementById("btnFilterjoken")
+							&& event.target != document.getElementById("btnFilterkano")
+							&& event.target != document.getElementById("btnFilterukemisonkei")
+							&& event.target != document.getElementById("btnFiltershieki")
 							&& event.target != document.getElementById("mySidenav")
 							&& event.target != document.getElementById("myBtnNav")
 							&& document.getElementById("mySidenav").style.width != "0px"
