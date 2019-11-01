@@ -209,10 +209,10 @@
 										dir[i] += '<td>' + arrPos[i] + '</td>';
 									}else{
 										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										dir[i] = '<td>' + arrNeg[i] + '</td>';
+										dir[i] += '<td>' + arrNeg[i] + '</td>';
 										dir[i] += '</tr>';
+										document.getElementById("source").innerHTML += dir[i];
 									}
-									document.getElementById("source").innerHTML += dir[i];
 								}
 
 								if(changeWay){
