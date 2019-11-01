@@ -189,8 +189,10 @@
 			function loadDoc(type)
 			{
 					document.getElementById("source").innerHTML = '<tr>'
-										+	'<th>日語</th>'
-										+ '<th>重音</th>'
+										+	'<th>'
+										+ "jisho" == type ? "辭書形" : "ます形 、辭書形"
+										+ '</th>'
+										+ '<th>' + type + '</th>'
 										+ '</tr>';
 
 					var xmlhttp = new XMLHttpRequest();
