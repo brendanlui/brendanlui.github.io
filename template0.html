@@ -16,7 +16,7 @@
 
 </head>
 
-<title>Dadiu | Template</title>
+<title>Dadiu | 動詞的活用 - 測驗</title>
 
 <body onload="">
 	<div id="head">
@@ -31,53 +31,6 @@
 	</div>
 
 	<!--TODO-->
-	<style>
-	.search {
-	  width: 100%;
-	  position: relative;
-	  display: flex;
-	}
-
-	.searchTerm {
-	  width: 100%;
-	  border: 3px solid #c9c9c9;
-	  border-right: none;
-	  padding: 5px;
-	  height: 20px;
-	  border-radius: 5px 0 0 5px;
-	  outline: none;
-	  color: #616161;
-	  font-size: 14px;
-	}
-
-	.searchTerm:focus{
-	  color: #4d4d4d;
-	}
-
-	.searchButton {
-	  width: 40px;
-	  height: 36px;
-	  border: 1px solid #c9c9c9;
-	  background: #c9c9c9;
-	  text-align: center;
-	  color: #fff;
-	  border-radius: 0 5px 5px 0;
-	  cursor: pointer;
-	  font-size: 20px;
-		margin-top: 5px;
-		margin-bottom: 5px;
-	}
-
-	/*Resize the wrap to see the search bar change!*/
-	.wrap{
-	  width: 100%;
-	}
-
-	input[type="text"]{
-		width: 100%;
-	}
-	</style>
-
 		<!-- The Modal -->
 		<link rel="stylesheet" href="/css/modal_box_style.css">
 		<div id="myModal" class="modal">
@@ -96,14 +49,42 @@
 		</div>
 
 		<p class="showText" style="font-size:8vw;" id="textJapan"></p>
-
-		<div class="buttonBox">
-					<input type="text" class="searchTerm" id="inputKey" name="search"/>
-		</div>
-		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()">確定</button></p>
-		<p><button id="next" class="buttonJp next" type="button" onclick="restart()">下一個</button></p>
+		<input type="text" id="inputKey"/>
+		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()" style="width:50%;">確定</button></p>
+		<p><button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:50%;">下一個</button></p>
 		<h4 style="text-align: center;" id="result"></h4>
 
+		<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+		<div id="head">
+			<div id="nav">
+				 <ul>
+					 	<li><a id="myBtn" href="#toppest" class="subtitle" >置頂</a></li>
+						<li><a id="myBtnNav" href="#toppestNav" class="subtitle" >置頂</a></li>
+				 </ul>
+			</div>
+		</div>
+
+		<script>
+			function openNav() {
+					var btnFilterShow = document.getElementById("btnFilterShow");
+					if(btnFilterShow.className.includes("active")){
+						closeNav();
+					}else{
+						scrollFunction(mySidenav, "myBtnNav");
+						mySidenav.style.width = "300px";
+						document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+						btnFilterShow.className += " active";
+					}
+			}
+			function closeNav() {
+					document.getElementById("mySidenav").style.width = "0px";
+					document.body.style.backgroundColor = "#fbf7ff";
+					document.getElementById("myBtnNav").style.display = "none";
+
+					var btnFilterShow = document.getElementById("btnFilterShow");
+					btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+			}
+		</script>
 
 	<ul id="foot">
 		</br>
