@@ -191,7 +191,6 @@
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-								dir = [];
 								document.getElementById("source").innerHTML = '<tr>'
 													+	'<th>日語</th>'
 													+ '<th>重音</th>'
@@ -204,15 +203,11 @@
 
 								for(i = 0; i < arr.length; i++){
 									if(i % 2 == 0){
-										dir[i / 2] = '<tr>';
 										arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										dir[i / 2] += '<td>' + arrPos[i] + '</td>';
-										document.getElementById("source").innerHTML += dir[i / 2];
+										document.getElementById("source").innerHTML += '<tr><td>' + arrPos[i / 2] + '</td>';
 									}else{
 										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										dir[(i - 1) / 2] = '<td>' + arrNeg[i] + '</td>';
-										dir[(i - 1) / 2] += '</tr>';
-										document.getElementById("source").innerHTML += dir[(i - 1) / 2];
+										document.getElementById("source").innerHTML += '<td>' + arrNeg[(i - 1) / 2] + '</td></tr>';
 									}
 								}
 
