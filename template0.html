@@ -209,7 +209,7 @@
 										dir[i] += '<td>' + arrPos[i] + '</td>';
 									}else{
 										dir[i] = '</tr>';
-										arrNeg[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 										dir[i] += '<td>' + arrNeg[i] + '</td>';
 									}
 									document.getElementById("source").innerHTML += dir[i];
