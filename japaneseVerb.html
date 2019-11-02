@@ -259,17 +259,36 @@
 
 			function showResult(){
 				if(answered == 0){
-					if(document.getElementById("inputKey").value != arrNeg[index]){
-						document.getElementById("inputKey").style.borderColor  = "#FF0000";
-						document.getElementById("textJapan").innerHTML += "</br> => </br><span style='color:red;'>" + arrNeg[index] + "</span>";
-					}else{
-						correct++;
-						document.getElementById("inputKey").style.borderColor  = "#4CAF50";
-					}
-					ttlAns++;
-					document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
-					answered = 1;
-					document.getElementById("inputKey").disabled = true;
+
+						var ques_1 = "";
+						var ques_2 = "";
+						var sameString = "";
+						var firstAns = "";
+						var secondAns = "";
+
+						if(arrPos[index].includes("（") && changeWay = 0){
+							ques_1 = arrPos[index].split("（")[0];
+							ques_2 = arrPos[index].split("（")[1].replace("）", "");
+							sameString = findLongestWithEndCommonSubstring(ques_1, ques_2);
+							firstAns = arrNeg[index];
+							secondAns = firstAns.replace(ques_1.replace(sameString, ""), ques_2.replace(sameString, ""));
+						}else if(arrNeg[index].includes("（") && changeWay = 1){
+							firstAns = arrNeg[index].split("（")[0];
+							secondAns = arrNeg[index].split("（")[1].replace("）", "");
+						}
+
+						if(document.getElementById("inputKey").value != firstAns
+							&& document.getElementById("inputKey").value != secondAns){
+							document.getElementById("inputKey").style.borderColor  = "#FF0000";
+							document.getElementById("textJapan").innerHTML += "</br> => </br><span style='color:red;'>" + arrNeg[index] + "</span>";
+						}else{
+							correct++;
+							document.getElementById("inputKey").style.borderColor  = "#4CAF50";
+						}
+						ttlAns++;
+						document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
+						answered = 1;
+						document.getElementById("inputKey").disabled = true;
 				}
 			}
 
@@ -284,6 +303,34 @@
 				document.getElementById("inputKey").value = "";
 				answered = 0;
 			}
+
+			//copy from web start
+			var findLongestWithEndCommonSubstring = function(a,b) {
+			  var longest = "";
+			  // loop through the first string
+			  for (var i = 0; i < a.length; ++i) {
+			    // loop through the second string
+			    for (var j = 0; j < b.length; ++j) {
+			      // if it's the same letter
+			      if (a[i] === b[j]) {
+			        var str = a[i];
+			        var k = 1;
+			        // keep going until the letters no longer match, or we reach end
+			        while (i+k < a.length && j+k < b.length // haven't reached end
+			               && a[i+k] === b[j+k]) { // same letter
+			          str += a[i+k];
+			          ++k;
+			        }
+			        // if this substring is longer than the longest, save it as the longest
+			        if (str.length > longest.length
+								&& a.endsWith(str) && b.endsWith(str)
+							) { longest = str }
+			      }
+			    }
+			  }
+			  return longest;
+			};
+			//copy from web end
 		</script>
 		<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
 		<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
