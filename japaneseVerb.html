@@ -341,6 +341,7 @@
 						document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
 						answered = 1;
 						document.getElementById("inputKey").disabled = true;
+						document.getElementById("submit").disabled = true;
 				}
 			}
 
@@ -352,6 +353,7 @@
 			function clear(){
 				document.getElementById("inputKey").style.borderColor  = "#ffffff";
 				document.getElementById("inputKey").disabled = false;
+				document.getElementById("submit").disabled = false;
 				document.getElementById("inputKey").value = "";
 				answered = 0;
 			}
