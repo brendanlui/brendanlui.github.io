@@ -68,8 +68,12 @@
 			 		<a href="#" id="btnFilterjisho01" onclick="filterSelection('jisho01')">辭書形 (ます形) I</a>
 			 		<a href="#" id="btnFilterjisho02" onclick="filterSelection('jisho02')">辭書形 (ます形) II</a>
 			 		<a href="#" id="btnFilterjisho03" onclick="filterSelection('jisho03')">辭書形 (ます形) III</a>
-
-			 		<a href="#" id="btnFilternai" onclick="filterSelection('nai')">ない形 (ます形) I</a>
+			 		<a href="#" id="btnFilternai01" onclick="filterSelection('nai01')">ない形 (ます形) I</a>
+					<a href="#" id="btnFilternai02" onclick="filterSelection('nai02')">ない形 (ます形) II</a>
+					<a href="#" id="btnFilternai03" onclick="filterSelection('nai03')">ない形 (ます形) III</a>
+			 		<a href="#" id="btnFilternai04" onclick="filterSelection('nai04')">ない形 (辭書形) I</a>
+			 		<a href="#" id="btnFilternai05" onclick="filterSelection('nai05')">ない形 (辭書形) II</a>
+			 		<a href="#" id="btnFilternai06" onclick="filterSelection('nai06')">ない形 (辭書形) III</a>
 
 			 		<a href="#" id="btnFilterta" onclick="filterSelection('ta')">た形</a>
 			 		<a href="#" id="btnFilteriko" onclick="filterSelection('iko')">意向形</a>
@@ -188,7 +192,7 @@
 
 			function changeWayUI(){
 				var btn = document.getElementById("btnTraslateWay");
-				name = document.getElementById("btnFilter" + type).innerHTML;
+				name = document.getElementById("btnFilterShow").innerHTML;
 				pos = name.split(" (")[1].split(") ")[0];
 				neg = name.split(" (")[0];
 				if(changeWay == 0){
