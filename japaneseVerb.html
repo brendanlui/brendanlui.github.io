@@ -263,6 +263,7 @@
 				if(answered = 0){
 					if(document.getElementById("inputKey").value != arrNeg[index]){
 						document.getElementById("inputKey").style.borderColor  = "#FF0000";
+						document.getElementById("inputKey").value += "X => " + arrNeg[index];
 					}else{
 						correct++;
 						document.getElementById("inputKey").style.borderColor  = "#4CAF50";
@@ -270,6 +271,7 @@
 					ttlAns++;
 					document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
 					answered = 1;
+					document.getElementById("inputKey").disabled = true;
 				}
 			}
 
@@ -280,6 +282,7 @@
 
 			function clear(){
 				document.getElementById("inputKey").style.borderColor  = "#ffffff";
+				document.getElementById("inputKey").disabled = false;
 				answered = 0;
 			}
 		</script>
