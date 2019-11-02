@@ -221,15 +221,18 @@
 			{
 					arrPos = {};
 					arrNeg = {};
+					pos = name.split(" (")[1].split(") ")[0];
+					neg = name.split(" (")[0];
 					name = document.getElementById("btnFilter" + type).innerHTML;
 					document.getElementById("source").innerHTML = '<tr>'
 										+	'<th>'
-										+ name.split(" (")[1].split(") ")[0]
+										+ pos
 										+ '</th>'
 										+ '<th>'
-										+ name.split(" (")[0]
+										+ neg
 										+ '</th>'
 										+ '</tr>';
+					document.getElementById("btnTraslateWay").innerHTML = pos + " => " + neg;
 
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
