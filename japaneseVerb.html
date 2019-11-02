@@ -132,9 +132,9 @@
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
 		    if (keycode == '13' && answered == 1) {
 					restart();
-		    }else if(keycode == '13' && answered == 0 && !document.getElementById('inputKey').hasFocus()){
+		    }else if(keycode == '13' && answered == 0 && document.activeElement.tagName != 'INPUT'){
 					document.getElementById('inputKey').focus();
-				}else if(keycode == '13' && answered == 0 && document.getElementById('inputKey').hasFocus()){
+				}else if(keycode == '13' && answered == 0 && document.activeElement.tagName == 'INPUT'){
 					showResult();
 				}
 		}
