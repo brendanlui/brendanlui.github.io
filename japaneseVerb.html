@@ -140,13 +140,13 @@
 			}
 		});
 		// detect enter keypress
-		$(document).keypress(function(e) {
+	 function handleEnter(e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
 		    if (keycode == '13' && answered == 1) {
 					restart();
 					document.getElementById('inputKey').trigger("focus");
 		    }
-		});
+		}
 
 
 		var total = 0;
