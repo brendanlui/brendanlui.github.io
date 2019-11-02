@@ -45,7 +45,7 @@
 		<div id="buttonBox">
 			<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
 			<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">過濾</button>
-			<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日語 => 中文</button>
+			<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">ます形 => て形</button>
 		</div>
 
 		<p class="showText" style="font-size:6vw;" id="textJapan"></p>
@@ -68,7 +68,9 @@
 			 		<a href="#" id="btnFilterjisho01" onclick="filterSelection('jisho01')">辭書形 (ます形) I</a>
 			 		<a href="#" id="btnFilterjisho02" onclick="filterSelection('jisho02')">辭書形 (ます形) II</a>
 			 		<a href="#" id="btnFilterjisho03" onclick="filterSelection('jisho03')">辭書形 (ます形) III</a>
-			 		<a href="#" id="btnFilternai" onclick="filterSelection('nai')">ない形</a>
+
+			 		<a href="#" id="btnFilternai" onclick="filterSelection('nai')">ない形 (ます形) I</a>
+
 			 		<a href="#" id="btnFilterta" onclick="filterSelection('ta')">た形</a>
 			 		<a href="#" id="btnFilteriko" onclick="filterSelection('iko')">意向形</a>
 			 		<a href="#" id="btnFiltermeirei" onclick="filterSelection('meirei')">命令形</a>
@@ -186,14 +188,17 @@
 
 			function changeWayUI(){
 				var btn = document.getElementById("btnTraslateWay");
+				name = document.getElementById("btnFilter" + type).innerHTML;
+				pos = name.split(" (")[1].split(") ")[0];
+				neg = name.split(" (")[0];
 				if(changeWay == 0){
 					changeWay = 1;
 					btn.className += " active";
-					btn.innerHTML = "中文 => 日語";
+					btn.innerHTML = pos + " => " + neg;
 				}else{
 					changeWay = 0
 					btn.className = btn.className.replace(" active", "");
-					btn.innerHTML = "日語 => 中文";
+					btn.innerHTML = neg + " => " + pos;
 				}
 				restart();
 			}
@@ -202,11 +207,14 @@
 			{
 					arrPos = {};
 					arrNeg = {};
+					name = document.getElementById("btnFilter" + type).innerHTML;
 					document.getElementById("source").innerHTML = '<tr>'
 										+	'<th>'
-										+ ("jisho" == type ? "辭書形" : "ます形 、辭書形")
+										+ name.split(" (")[1].split(") ")[0]
 										+ '</th>'
-										+ '<th>' + document.getElementById("btnFilter" + type).innerHTML + '</th>'
+										+ '<th>'
+										+ name.split(" (")[0]
+										+ '</th>'
 										+ '</tr>';
 
 					var xmlhttp = new XMLHttpRequest();
