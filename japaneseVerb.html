@@ -68,7 +68,7 @@
 
 		<p class="showText" style="font-size:8vw;" id="textJapan"></p>
 		<input type="text" id="inputKey"/>
-		<p><button id="submit" class="buttonJp next" type="button" onclick="submit()" style="width:49%;">確定</button>
+		<p><button id="submit" class="buttonJp next" type="button" onclick="showResult()" style="width:49%;">確定</button>
 			<button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:49%;">下一個</button></p>
 		<h4 style="text-align: center;" id="result"></h4>
 
@@ -88,6 +88,11 @@
 		var changeWay = 0;
 		var arrPos = {};
 		var arrNeg = {};
+		var index = parseInt(Math.random() * (total - 1) + 1, 10);
+		var showText = "";
+		var correct = 0;
+		var ttlAns = 0;
+		var answered = true;
 
 		var myModal = document.getElementById('myModal');
 		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
@@ -188,6 +193,8 @@
 
 			function loadDoc(type)
 			{
+					arrPos = {};
+					arrNeg = {};
 					document.getElementById("source").innerHTML = '<tr>'
 										+	'<th>'
 										+ ("jisho" == type ? "辭書形" : "ます形 、辭書形")
@@ -245,14 +252,33 @@
 				clear();
 			}
 
+			function genShowJpText(){
+				index = parseInt(Math.random() * (total - 0) + 0, 10);
+				showText = arrPos[index];
+				document.getElementById("textJapan").innerHTML = showText;
+			}
+
+			function showResult(){
+				if(!answered){	//brendan
+					if(document.getElementById("inputKey").value != arrNeg[index]){
+						document.getElementById("inputKey").style.borderColor  = "#FF0000";
+					}else{
+						correct++;
+					}
+					document.getElementById("inputKey").style.borderColor  = "#4CAF50";
+					answered = true;
+					ttlAns++;
+					document.getElementById("result").innerHTML  = correct + " / " + ttlAns;
+				}
+			}
+
 			function restart(){
 				filterSelection(filterSelected);
 				clear();
 			}
 
 			function clear(){
-				arrPos = {};
-				arrNeg = {};
+				answered = false;
 			}
 		</script>
 		<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
