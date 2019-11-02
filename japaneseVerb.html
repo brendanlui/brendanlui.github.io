@@ -368,7 +368,7 @@
 							ques_2 = arrPos[index].split("（")[1].replace("）", "");
 							sameString = findLongestWithEndCommonSubstring(ques_1, ques_2);
 							firstAns = arrNeg[index];
-							secondAns = firstAns.replace(new RegExp(ques_1.replace(sameString, ""), "g"), ques_2.replace(sameString, ""));
+							secondAns = firstAns.replace(/ques_1.replace(sameString, "")/g, ques_2.replace(sameString, ""));
 						}else if(arrNeg[index].includes("（") && changeWay == 1){
 							firstAns = arrNeg[index].split("（")[0];
 							secondAns = arrNeg[index].split("（")[1].replace("）", "");
