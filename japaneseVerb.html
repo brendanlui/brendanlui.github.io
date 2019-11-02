@@ -18,7 +18,7 @@
 
 <title>Dadiu | 動詞的活用形 - 測驗</title>
 
-<body onload="restart();" onkeypress="handleEnter(event)">
+<body onload="restart();">
 	<div id="head">
 		<div id="logo">
 			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
@@ -128,7 +128,7 @@
 
 		<script>
 		// detect enter keypress
-	 function handleEnter(e) {
+	 $(document).keypress(function (e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
 		    if (keycode == '13' && answered == 1) {
 					restart();
@@ -137,7 +137,7 @@
 				}else if(keycode == '13' && answered == 0 && document.activeElement.tagName == 'INPUT'){
 					showResult();
 				}
-		}
+		});
 			document.getElementById('inputKey').focus();
 		console.log(document.getElementById('inputKey').activeElement);
 
