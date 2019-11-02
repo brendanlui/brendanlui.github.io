@@ -74,10 +74,20 @@
 			 		<a href="#" id="btnFilternai04" onclick="filterSelection('nai04')">ない形 (辭書形) I</a>
 			 		<a href="#" id="btnFilternai05" onclick="filterSelection('nai05')">ない形 (辭書形) II</a>
 			 		<a href="#" id="btnFilternai06" onclick="filterSelection('nai06')">ない形 (辭書形) III</a>
-
-			 		<a href="#" id="btnFilterta" onclick="filterSelection('ta')">た形</a>
-			 		<a href="#" id="btnFilteriko" onclick="filterSelection('iko')">意向形</a>
-			 		<a href="#" id="btnFiltermeirei" onclick="filterSelection('meirei')">命令形</a>
+			 		<a href="#" id="btnFilterta01" onclick="filterSelection('ta01')">た形 (ます形) I</a>
+					<a href="#" id="btnFilterta02" onclick="filterSelection('ta02')">た形 (ます形) II</a>
+					<a href="#" id="btnFilterta03" onclick="filterSelection('ta03')">た形 (ます形) III</a>
+					<a href="#" id="btnFilterta04" onclick="filterSelection('ta04')">た形 (辭書形) I</a>
+					<a href="#" id="btnFilterta05" onclick="filterSelection('ta05')">た形 (辭書形) II</a>
+					<a href="#" id="btnFilterta06" onclick="filterSelection('ta06')">た形 (辭書形) III</a>
+			 		<a href="#" id="btnFilteriko01" onclick="filterSelection('iko01')">意向形 (ます形) I</a>
+			 		<a href="#" id="btnFilteriko02" onclick="filterSelection('iko02')">意向形 (ます形) II</a>
+			 		<a href="#" id="btnFilteriko03" onclick="filterSelection('iko03')">意向形 (辭書形) I</a>
+			 		<a href="#" id="btnFilteriko04" onclick="filterSelection('iko04')">意向形 (辭書形) II</a>
+			 		<a href="#" id="btnFiltermeirei01" onclick="filterSelection('meirei01')">命令形 (ます形) I</a>
+			 		<a href="#" id="btnFiltermeirei02" onclick="filterSelection('meirei02')">命令形 (ます形) II</a>
+			 		<a href="#" id="btnFiltermeirei03" onclick="filterSelection('meirei03')">命令形 (辭書形) I</a>
+			 		<a href="#" id="btnFiltermeirei04" onclick="filterSelection('meirei04')">命令形 (辭書形) II</a>
 			 		<a href="#" id="btnFilterjoken" onclick="filterSelection('joken')">條件形</a>
 			 		<a href="#" id="btnFilterkano" onclick="filterSelection('kano')">可能形</a>
 			 		<a href="#" id="btnFilterukemisonkei" onclick="filterSelection('ukemisonkei')">被動 、尊敬形</a>
@@ -192,17 +202,17 @@
 
 			function changeWayUI(){
 				var btn = document.getElementById("btnTraslateWay");
-				name = document.getElementById("btnFilterShow").innerHTML;
-				pos = name.split(" (")[1].split(") ")[0];
-				neg = name.split(" (")[0];
+				name = document.getElementById("btnTraslateWay").innerHTML;
+				pos = name.split(" => ")[0];
+				neg = name.split(" => ")[1];
 				if(changeWay == 0){
 					changeWay = 1;
 					btn.className += " active";
-					btn.innerHTML = pos + " => " + neg;
+					btn.innerHTML = neg + " => " + pos;
 				}else{
 					changeWay = 0
 					btn.className = btn.className.replace(" active", "");
-					btn.innerHTML = neg + " => " + pos;
+					btn.innerHTML = pos + " => " + neg;
 				}
 				restart();
 			}
