@@ -48,8 +48,8 @@
 			<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日語 => 中文</button>
 		</div>
 
-		<p class="showText" style="font-size:4vw;" id="textJapan"></p>
-		<input type="text" style="font-size:4vw; padding: 0px 0px; width: 99%;" id="inputKey"/>
+		<p class="showText" style="font-size:6vw;" id="textJapan"></p>
+		<input type="text" style="font-size:6vw; padding: 0px 0px; width: 99%;" id="inputKey"/>
 		<p><button id="submit" class="buttonJp next" type="button" onclick="showResult()" style="width:49%;">確定</button>
 			<button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:49%;">下一個</button></p>
 		<h4 style="text-align: center;" id="result"></h4>
@@ -234,8 +234,6 @@
 										}
 								}
 								total = arr.length / 2;
-								console.log(arrPos);
-								console.log(arrNeg);
 								genShowJpText();
 					  }
 					};
