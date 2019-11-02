@@ -128,23 +128,20 @@
 
 		<script>
 
-		var input = document.getElementById("inputKey");
-		// Execute a function when the user releases a key on the keyboard
-		input.addEventListener("keyup", function(event) {
-			// Number 13 is the "Enter" key on the keyboard
-			if (event.keyCode === 13 && answered == 0) {
-					// Cancel the default action, if needed
-					event.preventDefault();
-					// Trigger the button element with a click
-					showResult();
-			}
-		});
+		var enterClicked = 0;
 		// detect enter keypress
 	 function handleEnter(e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
-		    if (keycode == '13' && answered == 1) {
+		    if (keycode == '13' && answered == 1 && enterClicked == 1) {
 					restart();
-		    }
+					enterClicked++;
+		    }else if(keycode == '13' && answered == 0 && enterClicked == 2){
+					document.getElementById('inputKey').focus();
+					enterClicked = 0;
+				}else if(keycode == '13' && answered == 0 && enterClicked == 0){
+					showResult();
+					enterClicked++;
+				}
 		}
 
 
@@ -353,7 +350,6 @@
 								}
 								total = arr.length / 2;
 								genShowJpText();
-								document.getElementById('inputKey').focus();
 					  }
 					};
 					xmlhttp.open("GET","./verb/" + type + ".txt",true);
