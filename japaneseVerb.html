@@ -222,17 +222,12 @@
 
 			function changeWayUI(){
 				var btn = document.getElementById("btnTraslateWay");
-				name = btn.innerHTML;
-				pos = name.split(" =&gt; ")[0];
-				neg = name.split(" =&gt; ")[1];
 				if(changeWay == 0){
 					changeWay = 1;
 					btn.className += " active";
-					btn.innerHTML = neg + " => " + pos;
 				}else{
 					changeWay = 0
 					btn.className = btn.className.replace(" active", "");
-					btn.innerHTML = pos + " => " + neg;
 				}
 				restart();
 			}
@@ -252,7 +247,12 @@
 										+ neg
 										+ '</th>'
 										+ '</tr>';
-					document.getElementById("btnTraslateWay").innerHTML = pos + " => " + neg;
+
+					if(changeWay == 1){
+						document.getElementById("btnTraslateWay").innerHTML = neg + " => " + pos;
+					}else{
+						document.getElementById("btnTraslateWay").innerHTML = pos + " => " + neg;
+					}
 
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
