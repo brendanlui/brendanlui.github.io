@@ -303,7 +303,8 @@
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
-								txt = 'かわります（変わります）]="かわって";';//debug
+								txt = 'かわります（変わります）";
+								s[1]="かわって";';//debug
 								var arr = txt.split(']="');
 								arr.shift();
 
