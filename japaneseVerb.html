@@ -223,17 +223,17 @@
 
 								if(changeWay){
 										var arrTemp = {};
-										for(i = 0; i < arrPos.length; i++){
+										for(i = 0; i < (arr.length / 2); i++){
 											arrTemp[i] = arrPos[i];
 										}
-										for(i = 0; i < arrPos.length; i++){
+										for(i = 0; i < (arr.length / 2); i++){
 											arrPos[i] = arrNeg[i];
 										}
-										for(i = 0; i < arrPos.length; i++){
+										for(i = 0; i < (arr.length / 2); i++){
 											arrNeg[i] = arrTemp[i];
 										}
 								}
-								total = arrPos.length;
+								total = arr.length / 2;
 								console.log(arrPos);
 								console.log(arrNeg);
 								genShowJpText();
