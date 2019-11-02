@@ -132,18 +132,18 @@
 		// detect enter keypress
 	 function handleEnter(e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
-		    if (keycode == '13' && answered == 1 && enterClicked == 1) {
+		    if (keycode == '13' && answered == 1) {
 					restart();
-					enterClicked++;
-		    }else if(keycode == '13' && answered == 0 && enterClicked == 2){
+		    }else if(keycode == '13' && answered == 0){
 					document.getElementById('inputKey').focus();
-					enterClicked = 0;
-				}else if(keycode == '13' && answered == 0 && enterClicked == 0){
+					enterClicked = 1;
+				}else if(keycode == '13' && answered == 0 && enterClicked == 1){
 					showResult();
 					enterClicked++;
 				}
 		}
-
+			document.getElementById('inputKey').focus();
+		console.log(document.getElementById('inputKey').activeElement);
 
 		var total = 0;
 		var filterSelected = "te01";
