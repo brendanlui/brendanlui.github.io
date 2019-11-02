@@ -48,8 +48,8 @@
 			<button id="btnTraslateWay" class="buttonJp btnFilter" onclick="changeWayUI()">日語 => 中文</button>
 		</div>
 
-		<p class="showText" style="font-size:8vw;" id="textJapan"></p>
-		<input type="text" id="inputKey"/>
+		<p class="showText" style="font-size:4vw;" id="textJapan"></p>
+		<input type="text" style="font-size:4vw;" id="inputKey"/>
 		<p><button id="submit" class="buttonJp next" type="button" onclick="showResult()" style="width:49%;">確定</button>
 			<button id="next" class="buttonJp next" type="button" onclick="restart()" style="width:49%;">下一個</button></p>
 		<h4 style="text-align: center;" id="result"></h4>
@@ -263,7 +263,7 @@
 				if(answered == 0){
 					if(document.getElementById("inputKey").value != arrNeg[index]){
 						document.getElementById("inputKey").style.borderColor  = "#FF0000";
-						document.getElementById("inputKey").value += "X => " + arrNeg[index];
+						document.getElementById("inputKey").value += " X => " + arrNeg[index];
 					}else{
 						correct++;
 						document.getElementById("inputKey").style.borderColor  = "#4CAF50";
