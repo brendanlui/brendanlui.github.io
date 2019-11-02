@@ -127,19 +127,15 @@
 		</div>
 
 		<script>
-
-		var enterClicked = 0;
 		// detect enter keypress
 	 function handleEnter(e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
 		    if (keycode == '13' && answered == 1) {
 					restart();
-		    }else if(keycode == '13' && answered == 0){
+		    }else if(keycode == '13' && answered == 0 && !document.getElementById('inputKey').hasFocus()){
 					document.getElementById('inputKey').focus();
-					enterClicked = 1;
-				}else if(keycode == '13' && answered == 0 && enterClicked == 1){
+				}else if(keycode == '13' && answered == 0 && document.getElementById('inputKey').hasFocus()){
 					showResult();
-					enterClicked++;
 				}
 		}
 			document.getElementById('inputKey').focus();
