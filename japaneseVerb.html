@@ -138,26 +138,17 @@
 					event.preventDefault();
 					// Trigger the button element with a click
 					showResult();
-				}else{
-					restart();
-					document.getElementById('inputKey').click();
 				}
 			}
 		});
 		// detect enter keypress
 		$(document).keypress(function(e) {
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
-		    if (keycode == '13') {
-		      alert('You pressed enter! - keypress');
+		    if (keycode == '13' && answered == 1) {
+					restart();
+					document.getElementById('inputKey').click();
 		    }
 		});
-		// handle enter plain javascript
-		function handleEnter(e){
-		    var keycode = (e.keyCode ? e.keyCode : e.which);
-		    if (keycode == '13') {
-		      alert('You pressed enter! - plain javascript');
-		    }
-		}
 
 
 		var total = 0;
