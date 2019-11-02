@@ -144,6 +144,7 @@
 		    var keycode = (e.keyCode ? e.keyCode : e.which);
 		    if (keycode == '13' && answered == 1) {
 					restart();
+					document.getElementById('inputKey').trigger("focus");
 		    }
 		});
 
@@ -415,7 +416,6 @@
 			function restart(){
 				filterSelection(filterSelected);
 				clear();
-				document.getElementById('inputKey').click();
 			}
 
 			function clear(){
