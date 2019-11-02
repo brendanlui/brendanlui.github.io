@@ -272,7 +272,7 @@
 							sameString = findLongestWithEndCommonSubstring(ques_1, ques_2);
 							firstAns = arrNeg[index];
 							secondAns = firstAns.replace(ques_1.replace(sameString, ""), ques_2.replace(sameString, ""));
-						}else if(arrNeg[index].includes("（") && changeWay = 1){
+						}else if(arrNeg[index].includes("（") && changeWay == 1){
 							firstAns = arrNeg[index].split("（")[0];
 							secondAns = arrNeg[index].split("（")[1].replace("）", "");
 						}
