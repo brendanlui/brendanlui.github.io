@@ -222,7 +222,7 @@
 
 			function changeWayUI(){
 				var btn = document.getElementById("btnTraslateWay");
-				name = document.getElementById("btnTraslateWay").innerHTML;
+				name = btn.innerHTML;
 				pos = name.split(" => ")[0];
 				neg = name.split(" => ")[1];
 				if(changeWay == 0){
@@ -241,9 +241,9 @@
 			{
 					arrPos = {};
 					arrNeg = {};
+					name = document.getElementById("btnFilter" + type).innerHTML;
 					pos = name.split(" (")[1].split(") ")[0];
 					neg = name.split(" (")[0];
-					name = document.getElementById("btnFilter" + type).innerHTML;
 					document.getElementById("source").innerHTML = '<tr>'
 										+	'<th>'
 										+ pos
