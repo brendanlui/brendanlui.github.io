@@ -28,7 +28,22 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">上一頁</a>
+	  <a href="/japanese">日語50音 - 測驗</a>
+	  <a href="/japaneseWord">日語常用詞庫 - 測驗</a>
+	  <a href="/japaneseSearch">大家的日本語 - 詞典</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
+	<script>
+	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+	function myFunction() {
+	    var x = document.getElementById("myTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+	</script>
 
 	<!--TODO-->
 		<!-- The Modal -->
