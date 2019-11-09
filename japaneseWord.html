@@ -79,6 +79,7 @@
 		var dir = {};
 		var arrJp = {};
 		var arrEn = {};
+		var arrSen = {};
 		var total = 0;
 		var filterSelected = "Number";
 		var changeWay = 0;
@@ -125,10 +126,12 @@
 						  arrJp = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+							arrSen = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 							arr.shift();
 							arrJp.shift();
 							arrZh.shift();
 							arrEn.shift();
+							arrSen.shift();
 
 							for(i = 0; i < arr.length; i++){
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
@@ -208,7 +211,15 @@
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
 								arrEn[i] = arrZh[i];
+
+								//Save Sentence
+								var arrSenTemp_i = arrSen[i].split('"><i class="fa fa-volume-up">');
+								if(arrSenTemp_i.length >= 3){
+									var arrSenTemp_i_i = arrSenTemp_i[1].split('|');
+									arrSen[i] = arrSenTemp_i_i[arrSenTemp_i_i.length - 1];
+								}
 							}
+							console.log(arrSen);
 
 							if(changeWay){
 									var arrTemp = {};
