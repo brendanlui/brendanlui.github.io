@@ -213,10 +213,13 @@
 								arrEn[i] = arrZh[i];
 
 								//Save Sentence
-								var arrSenTemp_i = arrSen[i].split('"><i class="fa fa-volume-up">');
-								if(arrSenTemp_i.length >= 3){
-									var arrSenTemp_i_i = arrSenTemp_i[1].split('|');
-									arrSen[i] = arrSenTemp_i_i[arrSenTemp_i_i.length - 1];
+								arrSen[i] = "";
+								var arrSenTemp_i = arrSen[i].split('<div class="panel-body">');
+								if(arrSenTemp_i.length == 2){
+									var arrSenTemp_j = arrSenTemp_i.split('"><i class="fa fa-volume-up">');
+									if(arrSenTemp_j.length == 2){
+										arrSen[i] = arrSenTemp_j.split('|')[1];
+									}
 								}
 							}
 							console.log(arrSen);
