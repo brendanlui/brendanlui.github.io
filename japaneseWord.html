@@ -361,8 +361,6 @@
 		//copy from google end
 
 		//open source start
-		var myTopnav = document.getElementById('myTopnav');
-
 		var modal = document.getElementById('myModal');
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		var close = document.getElementById("close");
@@ -408,7 +406,9 @@
 		        modal.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 						document.getElementById("myBtn").style.display = "none";
-		    }else if(event.target != document.getElementById("btnFilterShow")
+		    }else if(event.target == modal2) {
+								modal2.style.display = "none";
+				}else if(event.target != document.getElementById("btnFilterShow")
 						&& event.target != document.getElementById("btnFilterNumber")
 						&& event.target != document.getElementById("btnFilterTraditionalQty")
 						&& event.target != document.getElementById("btnFilterWeek")
@@ -487,12 +487,6 @@
 						&& document.getElementById("mySidenav").style.width != "0px"
 					){
 						closeNav();
-					}else if(event.target == modal2) {
-					        modal2.style.display = "none";
-					}else if(event.target == myTopnav){
-						if (myTopnav.className === "topnav responsive") {
-								x.className = "topnav";
-						}
 					}
 		}
 
