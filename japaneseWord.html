@@ -216,9 +216,9 @@
 								arrSen[i] = "";
 								var arrSenTemp_i = arr[i].split('<span class="furigana">');
 								if(arrSenTemp_i.length == 2){
-									var arrSenTemp_j = arrSenTemp_i[1].split('"><i class="fa fa-volume-up">');
+									var arrSenTemp_j = arrSenTemp_i[1].split('</span>');
 									if(arrSenTemp_j.length >= 2){
-										arrSen[i] = arrSenTemp_j[0].split('|')[1];
+										arrSen[i] = arrSenTemp_j[0];
 									}
 								}
 							}
