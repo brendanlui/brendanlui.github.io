@@ -361,6 +361,8 @@
 		//copy from google end
 
 		//open source start
+		var myTopnav = document.getElementById('myTopnav');
+
 		var modal = document.getElementById('myModal');
 		var btnOpenModal = document.getElementById("btnOpenModal");
 		var close = document.getElementById("close");
@@ -487,6 +489,10 @@
 						closeNav();
 					}else if(event.target == modal2) {
 					        modal2.style.display = "none";
+					}else if(event.target == myTopnav){
+						if (myTopnav.className === "topnav responsive") {
+								x.className = "topnav";
+						}
 					}
 		}
 
