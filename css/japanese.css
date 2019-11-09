@@ -46,7 +46,9 @@
 
 
 
-#source, #source2 {
+#source
+, #source2
+, #source3 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	font-size: 16px;
