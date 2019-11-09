@@ -60,8 +60,8 @@
 	<div id="myModal2" class="modal2">
 	  <div class="modal-content2">
 	    <span id="close2" class="close2">&times;</span>
-			<p id="source2">
-			</p>
+			<table id="source2">
+			</table>
 	  </div>
 	</div>
 
@@ -373,7 +373,7 @@
 		// When the user clicks on the button, open the modal
 		function btnOpenModal2(rowIndex) {
 		    modal2.style.display = "block";
-				document.getElementById("source2").innerHTML = '例句: ' + arrSen[rowIndex];
+				document.getElementById("source2").innerHTML = '<tr><th>例句</th></tr><tr><td>' + arrSen[rowIndex] + '</td></tr>';
 		}
 		// When the user clicks on <span> (x), close the modal
 		close2.onclick = function() {
