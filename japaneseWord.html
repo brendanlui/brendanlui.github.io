@@ -56,6 +56,15 @@
 	  </div>
 	</div>
 
+	<link rel="stylesheet" href="/css/modal_box_style2.css">
+	<div id="myModal2" class="modal2">
+	  <div class="modal-content2">
+	    <span id="close2" class="close2">&times;</span>
+			<p id="source2">
+			</p>
+	  </div>
+	</div>
+
 	<div id="buttonBox">
 		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">過濾</button>
@@ -134,9 +143,29 @@
 							arrSen.shift();
 
 							for(i = 0; i < arr.length; i++){
+
+								//Save Sentence start
+								arrSen[i] = "";
+								var arrSenTemp_i = arr[i].split('<span class="furigana">');
+								if(arrSenTemp_i.length == 2){
+									var arrSenTemp_j = arrSenTemp_i[1].split('</span>');
+									if(arrSenTemp_j.length >= 2){
+										arrSen[i] = arrSenTemp_j[0];
+									}
+								}
+								//Save Sentence end
+
 								arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 								dir[i] = '<tr>';
-								dir[i] += '<td>' + arrJp[i] + '</td>';
+								dir[i] += '<td>';
+								if(arrSen[i] != ""){
+									dir[i] += '<a onclick="btnOpenModal2(' + i + ')">';
+								}
+								dir[i] += arrJp[i];
+								if(arrSen[i] != ""){
+									dir[i] += '</a>';
+								}
+								dir[i] += '</td>';
 
 								var accentText = arr[i].split('<span class="txt-ja toneNum">');
 								var accentValue = '';
@@ -211,16 +240,6 @@
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
 								arrEn[i] = arrZh[i];
-
-								//Save Sentence
-								arrSen[i] = "";
-								var arrSenTemp_i = arr[i].split('<span class="furigana">');
-								if(arrSenTemp_i.length == 2){
-									var arrSenTemp_j = arrSenTemp_i[1].split('</span>');
-									if(arrSenTemp_j.length >= 2){
-										arrSen[i] = arrSenTemp_j[0];
-									}
-								}
 							}
 							console.log(arrSen);
 
@@ -347,6 +366,19 @@
 		close.onclick = function() {
 		    modal.style.display = "none";
 				btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+		}
+		// When the user clicks anywhere outside of the modal, close it
+
+		var modal2 = document.getElementById('myModal2');
+		var close2 = document.getElementById("close2");
+		// When the user clicks on the button, open the modal
+		function btnOpenModal2(rowIndex) {
+		    modal2.style.display = "block";
+				document.getElementById("source2").innerHTML = arrSen[rowIndex];
+		}
+		// When the user clicks on <span> (x), close the modal
+		close2.onclick = function() {
+		    modal2.style.display = "none";
 		}
 		// When the user clicks anywhere outside of the modal, close it
 
