@@ -241,7 +241,6 @@
 								document.getElementById("source").innerHTML += dir[i];
 								arrEn[i] = arrZh[i];
 							}
-							console.log(arrSen);
 
 							if(changeWay){
 									var arrTemp = {};
@@ -374,7 +373,7 @@
 		// When the user clicks on the button, open the modal
 		function btnOpenModal2(rowIndex) {
 		    modal2.style.display = "block";
-				document.getElementById("source2").innerHTML = arrSen[rowIndex];
+				document.getElementById("source2").innerHTML = '例句: ' + arrSen[rowIndex];
 		}
 		// When the user clicks on <span> (x), close the modal
 		close2.onclick = function() {
@@ -466,7 +465,9 @@
 						&& document.getElementById("mySidenav").style.width != "0px"
 					){
 						closeNav();
-				}
+					}else if(event.target == modal2) {
+					        modal2.style.display = "none";
+					}
 		}
 
 		window.onclick = function(event) {
