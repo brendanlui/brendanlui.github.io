@@ -154,7 +154,7 @@
 								arrSenExpl[i] = "";
 								var arrSenTemp_i = arr[i].split('<span class="furigana">');
 								var arrSenExplTemp_i = arr[i].split('<p lang="ja" class="txt-zh zh">');
-								if(arrSenTemp_i.length == 2 && arrSenExplTemp_i.length == 2){
+								if(arrSenTemp_i.length >= 2 && arrSenExplTemp_i.length >= 2){
 									var arrSenTemp_j = arrSenTemp_i[1].split('</span>');
 									var arrSenExplTemp_j = arrSenExplTemp_i[1].split('</p>');
 									if(arrSenTemp_j.length >= 2 && arrSenExplTemp_j.length >= 2){
