@@ -147,13 +147,13 @@
 						document.getElementById("displayNone").innerHTML = "";
 						resultSetExpl.clear();
 						document.getElementById("source").innerHTML = '<tr>'
-									+ '<th>單元</th>'
 									+	'<th>日語</th>'
 									+ '<th>重音</th>'
 									+ '<th>漢字</th>'
 									+ '<th>解釋</th>'
 									//+ '<th>英語</th>'
 									+ '<th>詞性</th>'
+									+ '<th>單元</th>'
 									+ '</tr>';
 
 						if(searchKey != ""){
@@ -206,7 +206,6 @@
 									//Save Sentence end
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
-									string[i] = type.replace("Old", "") + ";";
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
 										string[i] += '<a onclick="btnOpenModal2(\'' + arrJp[i] + '\')">';
 										resultSetExpl.set(arrJp[i], arrSen[i] + ";" + arrSenExpl[i]);
@@ -286,6 +285,7 @@
 										.replace('》', '');
 									}
 									string[i] += typeValue + ";";
+									string[i] = type.replace("Old", "");
 
 									if(arrZh[i].includes("<")){
 										arrZh[i] = arrZh[i].split("<")[0];
@@ -306,7 +306,7 @@
 									elem.style.display = "none";
 									responseTotal = 0;
 									resultSet = document.getElementById("displayNone").innerHTML.split("^.^");
-									resultSet.sort(function(a, b){return a.split(';')[0] - b.split(';')[0]});
+									resultSet.sort(function(a, b){return a.split(';')[a.length - 1] - b.split(';')[b.length - 1]});
 
 									var finalResult = "";
 									for(i = 0; i < resultSet.length; i++){
