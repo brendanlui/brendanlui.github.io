@@ -140,12 +140,10 @@
 			var existSearchKey = "";
 			var responseTotal = 0;
 			var resultSet = {};
-			var resultSetExpl = new Map();
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey){
 						document.getElementById("displayNone").innerHTML = "";
-						resultSetExpl.clear();
 						document.getElementById("source").innerHTML = '<tr>'
 									+	'<th>日語</th>'
 									+ '<th>重音</th>'
@@ -208,8 +206,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\'' + arrJp[i] + '\')">';
-										resultSetExpl.set(arrJp[i], arrSen[i] + ";" + arrSenExpl[i]);
+										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + ';' + arrSenExpl[i] + '\')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
@@ -337,7 +334,7 @@
 			// When the user clicks on the button, open the modal
 			function btnOpenModal2(str) {
 			    modal2.style.display = "block";
-					var arr = resultSetExpl.get(str).split(";");
+					var arr = str.get(str).split(";");
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
 					+ '</tr>'
