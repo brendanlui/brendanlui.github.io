@@ -205,7 +205,14 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									string[i] = type.replace("Old", "") + ";";
-									string[i] += '<a onclick="btnOpenModal2(\''+ arrSen[i] + '\', \'' + arrSenExpl[i] + '\')">' + arrJp[i] + "</a>;";
+									if(arrSen[i] != '' && arrSenExpl[i] != ''){
+										string[i] += '<a onclick="btnOpenModal2(\''+ arrSen[i] + '\', \'' + arrSenExpl[i] + '\')">';
+									}
+									string[i] += arrJp[i];
+									if(arrSen[i] != '' && arrSenExpl[i] != ''){
+										string[i] += "</a>";
+									}
+									string[i] += ";";
 
 									var accentText = arr[i].split('<span class="txt-ja toneNum">');
 									var accentValue = '';
