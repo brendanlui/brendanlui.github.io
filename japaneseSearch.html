@@ -205,7 +205,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									string[i] = type.replace("Old", "") + ";";
-									string[i] += arrJp[i] + ";";
+									string[i] += '<a onclick="btnOpenModal2('+arrSen[i]+ ', ' + arrSenExpl[i] + ')">' + arrJp[i] + "</a>;";
 
 									var accentText = arr[i].split('<span class="txt-ja toneNum">');
 									var accentValue = '';
@@ -319,6 +319,44 @@
 					xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
 					xmlhttp.send();
 			}
+
+			var modal2 = document.getElementById('myModal2');
+			var close2 = document.getElementById("close2");
+			// When the user clicks on the button, open the modal
+			function btnOpenModal2(str1, str2) {
+			    modal2.style.display = "block";
+					document.getElementById("source2").innerHTML = '<tr>'
+					+ '<th>例句</th>'
+					+ '</tr>'
+					+ '<tr>'
+					+ '<td>' + str1 + '</td>'
+					+ '</tr>';
+					document.getElementById("source3").innerHTML = '<tr>'
+					+ '<th>解釋</th>'
+					+ '</tr>'
+					+ '<tr>'
+					+ '<td>' + str2 + '</td>'
+					+ '</tr>';
+			}
+			// When the user clicks on <span> (x), close the modal
+			close2.onclick = function() {
+			    modal2.style.display = "none";
+			}
+			// When the user clicks anywhere outside of the modal, close it
+
+			function closeSourcePage(event){
+			    if(event.target == modal2) {
+						modal2.style.display = "none";
+					}
+			}
+
+			window.onclick = function(event) {
+			    closeSourcePage(event);
+			}
+
+			window.addEventListener('touchstart', function (event) {
+			    closeSourcePage(event);
+			});
 	</script>
 
 	<ul id="foot">
