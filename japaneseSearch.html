@@ -207,10 +207,11 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\'' + arrJp[i] + '\')">';
+										string[i] = '<a onclick="btnOpenModal2(\'' + arrJp[i] + '\')">';
 										resultSetExpl.set(arrJp[i], arrSen[i] + ";" + arrSenExpl[i]);
+									}else{
+										string[i] = arrJp[i];
 									}
-									string[i] = arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
 										string[i] += "</a>";
 									}
