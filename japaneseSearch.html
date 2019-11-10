@@ -139,6 +139,7 @@
 
 			var existSearchKey = "";
 			var responseTotal = 0;
+			var resultSet = {};
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey){
@@ -286,7 +287,7 @@
 									dir[i] += '<td>' + type.replace("Old", "") + '</td>';
 
 									dir[i] += '</tr>';
-									
+
 									string[i] += arrSen[i] + ";";
 									string[i] += arrSenExpl[i] + ";";
 
@@ -309,6 +310,9 @@
 								if(responseTotal == 50){
 									elem.style.display = "none";
 									responseTotal = 0;
+									resultSet = document.getElementById("displayNone").innerHTML.split("^.^");
+									resultSet.sort(function(a, b){return a.split(';')[0] - b.split(';')[0]});
+									console.log(resultSet);
 								}
 					  }
 					};
