@@ -206,7 +206,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + ';' + arrSenExpl[i] + '\')">';
+										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
@@ -332,20 +332,20 @@
 			var modal2 = document.getElementById('myModal2');
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
-			function btnOpenModal2(str) {
+			function btnOpenModal2(str1, str2) {
 			    modal2.style.display = "block";
 					var arr = str.split(";");
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
 					+ '</tr>'
 					+ '<tr>'
-					+ '<td>' + arr[0] + '</td>'
+					+ '<td>' + str1 + '</td>'
 					+ '</tr>';
 					document.getElementById("source3").innerHTML = '<tr>'
 					+ '<th>解釋</th>'
 					+ '</tr>'
 					+ '<tr>'
-					+ '<td>' + arr[1] + '</td>'
+					+ '<td>' + str2 + '</td>'
 					+ '</tr>';
 			}
 			// When the user clicks on <span> (x), close the modal
