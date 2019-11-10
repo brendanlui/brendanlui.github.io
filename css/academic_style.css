@@ -103,7 +103,7 @@ input{
 	font-size:1em;
 }
 
-input[type="text"]{
+input[type="text"], input[type="search"]{
 	width: 15%;
     padding: 5px 20px;
 	margin-top: 5px;
@@ -306,7 +306,7 @@ a:hover {
 		font-size:0.65em;
 	}
 
-	input[type="text"]{
+	input[type="text"], input[type="search"]{
 		width: 70%;
 	}
 	input[type="radio"]{
