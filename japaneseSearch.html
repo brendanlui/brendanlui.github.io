@@ -306,7 +306,11 @@
 									elem.style.display = "none";
 									responseTotal = 0;
 									resultSet = document.getElementById("displayNone").innerHTML.split("^.^");
-									resultSet.sort(function(a, b){return a.split(';')[a.length - 1] - b.split(';')[b.length - 1]});
+									resultSet.sort(function(a, b){
+										var arrA = a.split(';');
+										var arrB = b.split(';');
+										return arrA[arrA.length - 1] - arrB[arrB.length - 1];
+									});
 
 									var finalResult = "";
 									for(i = 0; i < resultSet.length; i++){
