@@ -107,6 +107,19 @@
 			<a id="toppest" class="smooth"></a>
 			<table id="source">
 			</table>
+			<span style="display:none;" id="displayNone"></sapn>
+	  </div>
+	</div>
+
+	<link rel="stylesheet" href="/css/modal_box_style2.css">
+	<div id="myModal2" class="modal2">
+	  <div class="modal-content2">
+	    <span id="close2" class="close2">&times;</span>
+			<table id="source2">
+			</table>
+			</br>
+			<table id="source3">
+			</table>
 	  </div>
 	</div>
 
@@ -155,6 +168,7 @@
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 								var dir = [];
+								var string = [];
 					    	var txt = xmlhttp.responseText;
 
 								var arr = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
@@ -162,16 +176,37 @@
 							  var arrJpS = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								var arrZh = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								var arrEn = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+								var arrSen = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
+								var arrSenExpl = txt.split('<span class="txt-ja txt-ls1 kana" style="display:none;">');
 								arr.shift();
 								arrJp.shift();
 								arrJpS.shift();
 								arrZh.shift();
 								arrEn.shift();
+								arrSen.shift();
+								arrSenExpl.shift();
 
 								for(i = 0; i < arr.length; i++){
+									//Save Sentence start
+									arrSen[i] = "";
+									arrSenExpl[i] = "";
+									var arrSenTemp_i = arr[i].split('<span class="furigana">');
+									var arrSenExplTemp_i = arr[i].split('<p lang="ja" class="txt-zh zh">');
+									if(arrSenTemp_i.length >= 2 && arrSenExplTemp_i.length >= 2){
+										var arrSenTemp_j = arrSenTemp_i[1].split('</span>');
+										var arrSenExplTemp_j = arrSenExplTemp_i[1].split('</p>');
+										if(arrSenTemp_j.length >= 2 && arrSenExplTemp_j.length >= 2){
+												arrSen[i] = arrSenTemp_j[0];
+												arrSenExpl[i] = arrSenExplTemp_j[0];
+										}
+									}
+									//Save Sentence end
+
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									dir[i] = '<tr>';
 									dir[i] += '<td>' + arrJp[i] + '</td>';
+									string[i] = type.replace("Old", "") + ";";
+									string[i] += arrJp[i] + ";";
 
 									var accentText = arr[i].split('<span class="txt-ja toneNum">');
 									var accentValue = '';
@@ -195,9 +230,11 @@
 									dir[i] += '<td>';
 									if(accentValue != ''){
 										dir[i] += '[' + accentValue + ']';
+										string[i] += '[' + accentValue + ']';
 										arrJp[i] += '<span class="accentJpValue">[' + accentValue + ']</span>';
 									}
 									dir[i] += '</td>';
+									string[i] += ";";
 
 									var jpText = arr[i].split('<span class="txt-ja txt-ls1 kanji">');
 									var jpValue = '';
@@ -210,6 +247,7 @@
 									}
 									arrJpS[i] = jpValue;
 									dir[i] += '<td>' + jpValue + '</td>';
+									string[i] += jpValue + ";";
 
 									var zhText = arr[i].split('<p class="txt-zh zh">');
 									var zhValue = '';
@@ -221,6 +259,7 @@
 									}
 									arrZh[i] = zhValue;
 									dir[i] += '<td>' + zhValue + '</td>';
+									string[i] += zhValue + ";";
 
 									/*
 									var enText = arr[i].split('<p class="txt-zh en">');
@@ -243,9 +282,13 @@
 										.replace('》', '');
 									}
 									dir[i] += '<td>' + typeValue + '</td>';
-									dir[i] += '<td>' + type.replace("Old", ""); + '</td>';
+									string[i] += typeValue + ";";
+									dir[i] += '<td>' + type.replace("Old", "") + '</td>';
 
 									dir[i] += '</tr>';
+									
+									string[i] += arrSen[i] + ";";
+									string[i] += arrSenExpl[i] + ";";
 
 									if(arrZh[i].includes("<")){
 										arrZh[i] = arrZh[i].split("<")[0];
@@ -257,7 +300,8 @@
 										arrJpS[i] = arrJpS[i].split("<")[0];
 									}
 									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey) || arrJpS[i].includes(searchKey)){
-										document.getElementById("source").innerHTML += dir[i];
+											document.getElementById("source").innerHTML += dir[i];
+											document.getElementById("displayNone").innerHTML += string[i] + "^.^";
 									}
 								}
 								responseTotal++;
