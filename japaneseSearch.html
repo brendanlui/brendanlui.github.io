@@ -140,6 +140,7 @@
 			var existSearchKey = "";
 			var responseTotal = 0;
 			var resultSet = {};
+			var resultSetExpl = new Map();
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey){
@@ -206,11 +207,13 @@
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									string[i] = type.replace("Old", "") + ";";
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\''+ arrSen[i] + '\', \'' + arrSenExpl[i] + '\')">';
+										//string[i] += '<a onclick="btnOpenModal2(\''+ arrSen[i] + '\', \'' + arrSenExpl[i] + '\')">';
+										string[i] += '<a onclick="btnOpenModal2(' + arrJp[i] + ')">';
+										resultSetExpl.set(arrJp[i], arrSen[i] + ";" + arrSenExpl[i]);
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += "</a>";
+										//string[i] += "</a>";
 									}
 									string[i] += ";";
 
@@ -327,19 +330,20 @@
 			var modal2 = document.getElementById('myModal2');
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
-			function btnOpenModal2(str1, str2) {
+			function btnOpenModal2(str) {
 			    modal2.style.display = "block";
+					var arr = resultSetExpl.get(str).split(";");
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
 					+ '</tr>'
 					+ '<tr>'
-					+ '<td>' + str1 + '</td>'
+					+ '<td>' + arr[0] + '</td>'
 					+ '</tr>';
 					document.getElementById("source3").innerHTML = '<tr>'
 					+ '<th>解釋</th>'
 					+ '</tr>'
 					+ '<tr>'
-					+ '<td>' + str2 + '</td>'
+					+ '<td>' + arr[1] + '</td>'
 					+ '</tr>';
 			}
 			// When the user clicks on <span> (x), close the modal
