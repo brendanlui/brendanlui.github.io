@@ -205,7 +205,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									string[i] = type.replace("Old", "") + ";";
-									string[i] += '<a onclick="btnOpenModal2('+arrSen[i]+ ', ' + arrSenExpl[i] + ')">' + arrJp[i] + "</a>;";
+									string[i] += '<a onclick="btnOpenModal2(\''+ arrSen[i] + '\', \'' + arrSenExpl[i] + '\')">' + arrJp[i] + "</a>;";
 
 									var accentText = arr[i].split('<span class="txt-ja toneNum">');
 									var accentValue = '';
@@ -277,9 +277,6 @@
 									}
 									string[i] += typeValue + ";";
 
-									string[i] += arrSen[i] + ";";
-									string[i] += arrSenExpl[i] + ";";
-
 									if(arrZh[i].includes("<")){
 										arrZh[i] = arrZh[i].split("<")[0];
 									}
@@ -305,7 +302,7 @@
 									for(i = 0; i < resultSet.length; i++){
 										finalResult += "<tr>";
 										var resultSet_i = resultSet[i].split(";");
-										for(j = 0; j < resultSet_i.length-2; j++){
+										for(j = 0; j < resultSet_i.length; j++){
 											finalResult += "<td>";
 											finalResult += resultSet_i[j];
 											finalResult += "</td>";
