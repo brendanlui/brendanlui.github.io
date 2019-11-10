@@ -302,14 +302,15 @@
 									resultSet.sort(function(a, b){return a.split(';')[0] - b.split(';')[0]});
 
 									var finalResult = "";
-									finalResult += "<tr>";
 									for(i = 0; i < resultSet.length; i++){
+										finalResult += "<tr>";
 										var resultSet_i = resultSet[i].split(";");
 										for(j = 0; j < resultSet_i.length-2; j++){
 											finalResult += "<td>";
 											finalResult += resultSet_i[j];
 											finalResult += "</td>";
 										}
+										finalResult += "</tr>";
 									}
 									document.getElementById("source").innerHTML += finalResult;
 								}
