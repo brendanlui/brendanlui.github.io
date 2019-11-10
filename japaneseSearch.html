@@ -210,7 +210,7 @@
 										string[i] += '<a onclick="btnOpenModal2(\'' + arrJp[i] + '\')">';
 										resultSetExpl.set(arrJp[i], arrSen[i] + ";" + arrSenExpl[i]);
 									}
-									string[i] += arrJp[i];
+									string[i] = arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
 										string[i] += "</a>";
 									}
@@ -285,7 +285,7 @@
 										.replace('》', '');
 									}
 									string[i] += typeValue + ";";
-									string[i] = type.replace("Old", "");
+									string[i] += type.replace("Old", "");
 
 									if(arrZh[i].includes("<")){
 										arrZh[i] = arrZh[i].split("<")[0];
