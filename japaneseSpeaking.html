@@ -17,7 +17,7 @@
 
 <title>Dadiu | 日語會話</title>
 
-<body onload="">
+<body onload="loadDoc('1_1');">
 	<div id="head">
 		<div id="logo">
 			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
@@ -31,7 +31,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-		<button id="btnPlay" class="buttonJp btnFilter">播放</button>
+		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">會話課文</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="openNav()">中文翻譯</button>
 	</div>
@@ -168,8 +168,6 @@
 	</div>
 
 	<script>
-	loadDoc("1_1"); //testing brendan
-
 	var arrAudio = [];
 
 	function loadDoc(type)
