@@ -18,7 +18,7 @@
 
 <title>Dadiu | 日語會話</title>
 
-<body onload="loadDoc('1_1');">
+<body onload="restart()">
 	<div id="head">
 		<div id="logo">
 			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
@@ -33,36 +33,13 @@
 	<!--TODO-->
 	<div id="buttonBox">
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
-		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">會話課文</button>
-		<button id="btnExplan" class="buttonJp btnFilter">中文翻譯</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">會話單元</button>
+		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
 	</div>
 
 	<link rel="stylesheet" href="/css/side_bar_style.css">
 	<div id="nav_subtitle">
 		<div id="mySidenav" class="sidenav">
-				<a id="toppestNav" class="smooth"></a>
-				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('1_1')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
-				</br></br></br>
-				</br></br></br>
-		</div>
-	</div>
-
-	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
-	<div id="head">
-		<div id="nav">
-			 <ul>
-				 	<li><a id="myBtnNav" href="#toppest" class="subtitle" >置頂</a></li>
-			 </ul>
 		</div>
 	</div>
 
@@ -88,6 +65,11 @@
 
 			var btnFilterShow = document.getElementById("btnFilterShow");
 			btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+	}
+
+	function addChinese(){
+			//// TODO:
+			//chinese
 	}
 
 	function scrollFunction(body, id) {
@@ -122,10 +104,40 @@
 		filterSelected = text;
 		loadDoc(text);
 		closeNav();
-		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話課文]";
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話單元]";
+	}
+
+	function loadFilter(){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function(){
+			if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+					var txt = xmlhttp.responseText;
+					var dir = "";
+					dir += '<a id="toppestNav" class="smooth"></a>';
+					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+
+					var arr = txt.split('<ul><li>');
+					arr.shift();
+
+					for(i = 0; i < arr.length; i++){
+						var arr_in = arr[i].split(' <a href="/tw/ka/');
+						var title = arr_in[0];
+						for(j = 1; j < arr_in.length; j++){
+							var number = arr_in.split('.html">')[0].replace('/', '_');
+							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + number.replace('_', '.') + '</a>'
+						}
+					}
+
+					dir += '</br></br></br></br></br></br>';
+					document.getElementById("mySidenav").innerHTML = dir;
+			}
+		};
+		xmlhttp.open("GET","./speaking/text/1_1.html",true);
+		xmlhttp.send();
 	}
 
 	function restart(){
+		loadFilter();
 		filterSelection(filterSelected);
 	}
 	</script>
@@ -209,8 +221,8 @@
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) == 2 ? 'class="right" ' : '') + 'style="width:100%;">';
-								dir += '<p>' + arrJp[i] + '</p>';
-								dir += '<p style="display:none">' + arrZn[i] + '</p>';
+								dir += '<p class="japanese">' + arrJp[i] + '</p>';
+								dir += '<p class="chinese" style="display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
 
 								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
@@ -251,7 +263,14 @@
 	}
 	</script>
 
-	<button onclick="playAll()">Click me</button>
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 	<li><a id="myBtnNav" href="#toppest" class="subtitle" >置頂</a></li>
+			 </ul>
+		</div>
+	</div>
 
 	<ul id="foot">
 		</br>
