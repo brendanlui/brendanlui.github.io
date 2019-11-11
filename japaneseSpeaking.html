@@ -138,9 +138,19 @@
 
 	function playAll(){
 
-			var audio = document.getElementById(arrAudio[0]);
+			var index = 0;
+			var audio = document.getElementById(arrAudio[index]);
 			audio.currentTime = 0;
-			document.getElementById(arrAudio[0]).addEventListener("ended", playAudio(arrAudio[1]));
+			audio.play();
+
+			audio.onended = function() {
+			    if(index < arrAudio.length){
+							index++;
+			        audio =  document.getElementById(arrAudio[index]);
+							audio.currentTime = 0;
+			        audio.play();
+			    }
+			};
 
 	}
 	</script>
