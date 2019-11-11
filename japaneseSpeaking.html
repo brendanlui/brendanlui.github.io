@@ -73,6 +73,7 @@
 	loadDoc("1_1"); //testing brendan
 
 	var arrAudio = [];
+
 	function loadDoc(type)
 	{
 			var xmlhttp = new XMLHttpRequest();
@@ -115,7 +116,7 @@
 								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
 								dir += '<source src="./speaking/audio/' + arrSource[i] + '"></audio>';
 
-								arrAudio[i] = arrSource[i];
+								arrAudio[i] = document.getElementById(arrSource[i]);
 						}
 
 						playerMap.clear();
@@ -135,14 +136,18 @@
 	}
 
 	function playAll(){
-			for(i = 0; i < arrAudio.length; i++){
-					audio = document.getElementById(arrAudio[i]);
-					audio.currentTime = 0;
-					playAudio(arrAudio[i]);
-					while(audio.currentTime != 0) {
-						a = 1;
-					}
-			}
+			var index = 0;
+
+			audio = arrAudio[index];
+			audio.play();
+
+			audio.onended = function() {
+			    if(index < strings.length){
+			        audio =  arrAudio[index];
+			        audio.play();
+			        index++;
+			    }
+			};
 	}
 	</script>
 
