@@ -135,7 +135,7 @@
 			audio.play();
 	}
 
-	function playAll(){//
+	function playAll(){
 			var index = 0;
 
 			var audio = document.getElementById(arrAudio[index]);
@@ -143,7 +143,7 @@
 
 			audio.onended = function() {
 			    if(index < arrAudio.length){
-			        audio =  document.getElementById(arrAudio[index]);
+			        audio.src = "./speaking/audio/" + arrAudio[index];
 			        audio.play();
 			        index++;
 			    }
