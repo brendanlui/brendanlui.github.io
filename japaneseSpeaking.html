@@ -125,7 +125,8 @@
 	function playAudio(id){
 			var sounds = document.getElementsByTagName('audio');
 		  for(i=0; i<sounds.length; i++) sounds[i].pause();
-			document.getElementById(id).play();
+			var audio = document.getElementById(id);
+			audio.play();
 	}
 	</script>
 
