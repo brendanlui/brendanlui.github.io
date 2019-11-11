@@ -137,18 +137,19 @@
 	function playAll(){
 
 			var index = 0;
-			var audio = document.getElementById(arrAudio[index]);
-			audio.currentTime = 0;
-			audio.play();
-
-			audio.onended = function() {
-					index++;
-			    if(index < arrAudio.length){
-			        audio =  document.getElementById(arrAudio[index]);
-							audio.currentTime = 0;
-			        audio.play();
-			    }
-			};
+			for(i = 0; i < arrAudio.length; i++){
+					var audio = document.getElementById(arrAudio[i]);
+					audio.currentTime = 0;
+					audio.play();
+					audio.onended = function() {
+						i++;
+				    if(i < arrAudio.length){
+				        audio =  document.getElementById(arrAudio[i]);
+								audio.currentTime = 0;
+				        audio.play();
+				    }
+					};
+			}
 
 	}
 	</script>
