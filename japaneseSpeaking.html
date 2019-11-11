@@ -71,6 +71,7 @@
 
 	<script>
 	loadDoc("1_1");
+	var arrAudio = {};
 	function loadDoc(type)
 	{
 			var xmlhttp = new XMLHttpRequest();
@@ -112,6 +113,8 @@
 
 								dir += '<audio id="' + arrSource[i] + '" preload="auto">';
 								dir += '<source src="./speaking/audio/' + arrSource[i] + '"></audio>';
+
+								arrAudio[i] = arrSource[i];
 						}
 
 						playerMap.clear();
