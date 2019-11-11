@@ -71,6 +71,8 @@
 
 	<script>
 	loadDoc("1_1");
+	playAll();
+	
 	var arrAudio = {};
 	function loadDoc(type)
 	{
@@ -131,6 +133,18 @@
 			var audio = document.getElementById(id);
 			audio.currentTime = 0;
 			audio.play();
+	}
+
+	function playAll(){
+			var audio = document.getElementById(arrAudio[0]);
+			audio.currentTime = 0;
+			audio.onended = function() {
+			    if(index < arrAudio.length){
+			        audio.src = document.getElementById(arrAudio[index]);
+			        audio.play();
+			        index++;
+			    }
+			};
 	}
 	</script>
 
