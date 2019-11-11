@@ -39,7 +39,7 @@
 
 	<div id="buttonBox">
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
-		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">會話單元</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">じこしょうかい 1 [會話單元]</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
 	</div>
 
@@ -131,6 +131,8 @@
 		filterSelected = text;
 		loadDoc(text);
 		closeNav();
+		var element = document.getElementById("btnFilter" + filterSelected);
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話單元]";
 	}
 
 	function loadFilter(){
@@ -156,9 +158,6 @@
 
 					dir += '</br></br></br></br></br></br>';
 					document.getElementById("mySidenav").innerHTML = dir;
-
-					var element = document.getElementById("btnFilter" + filterSelected);
-					document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話單元]";
 			}
 		};
 		xmlhttp.open("GET","./speaking/text/1_1.html",true);
@@ -167,7 +166,7 @@
 
 	function restart(){
 		loadFilter();
-		filterSelection(filterSelected);
+		loadDoc();
 	}
 	</script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
