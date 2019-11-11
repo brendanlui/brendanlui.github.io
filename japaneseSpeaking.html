@@ -139,8 +139,8 @@
 					audio = document.getElementById(arrAudio[i]);
 					audio.currentTime = 0;
 					audio.play();
-					while(!audio.paused) {
-						setTimeout(500); 
+					while(audio.currentTime != 0) {
+						setTimeout(500);
 					}
 			}
 	}
