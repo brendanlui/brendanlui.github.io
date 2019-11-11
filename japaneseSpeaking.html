@@ -72,7 +72,7 @@
 	<script>
 	loadDoc("1_1"); //testing brendan
 
-	var arrAudio = {};
+	var arrAudio = [];
 
 	function loadDoc(type)
 	{
@@ -116,7 +116,7 @@
 								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
 								dir += '<source src="./speaking/audio/' + arrSource[i] + '"></audio>';
 
-								arrAudio[i] = document.getElementById(arrSource[i]);
+								arrAudio[i] = arrSource[i];
 						}
 
 						playerMap.clear();
@@ -138,7 +138,7 @@
 	function playAll(){
 			var index = 0;
 
-			audio = arrAudio[index];
+			var audio = document.getElementById(arrAudio[index]);
 			audio.play();
 
 			audio.onended = function() {
