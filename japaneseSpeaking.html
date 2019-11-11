@@ -121,10 +121,10 @@
 
 					for(i = 0; i < arr.length; i++){
 						var arr_in = arr[i].split(' <a href="/tw/ka/');
-						var title = arr_in[0];
+						var title = arr_in[0].replace(/ +/g, "");
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '_');
-							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + number.replace('_', '.') + '</a>'
+							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.replace('_', '.') + '</a>'
 						}
 					}
 
@@ -232,7 +232,7 @@
 						}
 
 						playerMap.clear();
-						document.getElementById("chatBox").innerHTML += dir;
+						document.getElementById("chatBox").innerHTML = dir;
 			  }
 			};
 			xmlhttp.open("GET","./speaking/text/" + type + ".html",true);
