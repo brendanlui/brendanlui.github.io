@@ -84,27 +84,34 @@
 						var arrJp = txt.split('<span class="kanji" style="display:none;">');
 						var arrZn = txt.split('<span class="kanji" style="display:none;">');
 						var arrPlayer = txt.split('<span class="kanji" style="display:none;">');
+						var arrSource = txt.split('<span class="kanji" style="display:none;">');
 
 						arrJp.shift();
 						arrZn.shift();
 						arrPlayer.shift();
+						arrSource.shift();
 
 						for(i = 0; i < arrJp.length; i++){
 								arrJp[i] = arrJp[i].split("</span>")[0];
 								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrPlayer[i] = arrPlayer[i].split('<audio id="audio')[1].split('data-player="')[1].split('", data-image="')[0];
+								arrSource[i] = arrSource[i].split('<source src="../../../sound/ka/')[1].split('" />')[0].replace("/", '_');
 
 								if(!playerMap.get(arrPlayer[i])){
 										playerCount++;
 										playerMap.set(arrPlayer[i], playerCount);
 								}
 
-								dir += '<div class="container' + (playerMap.get(arrPlayer[i]) == 2 ? ' darker' : '') + '">';
+								dir += '<div class="container' + (playerMap.get(arrPlayer[i]) == 2 ? ' darker' : '')
+										+ '" onclick="playAudio(' + arrSource[i] + ')" ' + 'id="'arrSource[i] + '">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) == 2 ? 'class="right" ' : '') + 'style="width:100%;">';
 								dir += '<p>' + arrJp[i] + '</p>';
 								dir += '<p style="display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
+
+								dir += '<audio id="' + arrSource[i] + '" preload="auto">';
+								dir += '<source src="./speaking/audio/' + arrSource[i] + '"></audio>';
 						}
 
 						playerMap.clear();
@@ -114,11 +121,13 @@
 			xmlhttp.open("GET","./speaking/text/" + type + ".html",true);
 			xmlhttp.send();
 	}
-	</script>
 
-	<audio id="audio1" data-player="たなか" ,="" preload="auto">
-	  <source src="./speaking/audio/1_1_1.mp3">
-	</audio>
+	function playAudio(id){
+			var sounds = document.getElementsByTagName('audio');
+		  for(i=0; i<sounds.length; i++) sounds[i].pause();
+			document.getElementById(id).play();
+	}
+	</script>
 
 	<ul id="foot">
 		</br>
