@@ -142,10 +142,10 @@
 			audio.play();
 
 			audio.onended = function() {
+					index++;
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
 			        audio.play();
-			        index++;
 			    }
 			};
 	}
