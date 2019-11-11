@@ -141,14 +141,13 @@
 			var index = 0;
 			var audio = document.getElementById(arrAudio[index]);
 			audio.currentTime = 0;
-			audio.play();
 
 			audio.onended = function() {
 			    if(index < arrAudio.length){
-							index++;
 			        audio =  document.getElementById(arrAudio[index]);
 							audio.currentTime = 0;
 			        audio.play();
+							index++;
 			    }
 			};
 
