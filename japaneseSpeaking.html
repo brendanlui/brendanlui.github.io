@@ -139,7 +139,7 @@
 			for(i = 0; i < arrAudio.length; i++){
 					audio[i] = document.getElementById(arrAudio[i]);
 					audio[i].currentTime = 0;
-					audio[i].play();
+					playAudio(arrAudio[i]);
 					while(audio[i].currentTime != 0) {
 						a = 1;
 					}
