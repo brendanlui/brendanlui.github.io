@@ -30,6 +30,104 @@
 	</div>
 
 	<!--TODO-->
+	<div id="buttonBox">
+		<button id="btnPlay" class="buttonJp btnFilter">播放</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">會話課文</button>
+		<button id="btnExplan" class="buttonJp btnFilter" onclick="openNav()">中文翻譯</button>
+	</div>
+
+	<script>
+	var filterSelected = "1_1";
+	var mySidenav = document.getElementById('mySidenav');
+	mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
+
+	function openNav() {
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			if(btnFilterShow.className.includes("active")){
+				closeNav();
+			}else{
+				scrollFunction(mySidenav, "myBtnNav");
+				mySidenav.style.width = "300px";
+				document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+				btnFilterShow.className += " active";
+			}
+	}
+	function closeNav() {
+			document.getElementById("mySidenav").style.width = "0px";
+			document.body.style.backgroundColor = "#fbf7ff";
+
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+	}
+
+	function scrollFunction(body, id) {
+		if (body.scrollTop > 100) {
+			document.getElementById(id).style.display = "block";
+		} else {
+			document.getElementById(id).style.display = "none";
+		}
+	}
+
+	function closeSourcePage(event){
+	    if(event.target != document.getElementById("btnFilterShow")
+					&& event.target != document.getElementById("btnPlay")
+					&& event.target != document.getElementById("btnExplan")
+					&& event.target != document.getElementById("myBtnNav")
+					&& document.getElementById("mySidenav").style.width != "0px"
+				){
+					closeNav();
+				}
+	}
+
+	window.onclick = function(event) {
+	    closeSourcePage(event);
+	}
+
+	window.addEventListener('touchstart', function (event) {
+	    closeSourcePage(event);
+	});
+
+	function filterSelection(text){
+		var element = document.getElementById("btnFilter" + text);
+		filterSelected = text;
+		loadDoc(text);
+		closeNav();
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [過濾]";
+	}
+	</script>
+	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
+	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
+
+
+	<link rel="stylesheet" href="/css/side_bar_style.css">
+	<div id="nav_subtitle">
+		<div id="mySidenav" class="sidenav">
+				<a id="toppestNav" class="smooth"></a>
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('1_1')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+		 		<a href="#" id="btnFilterOld50" onclick="filterSelection('Old50')">日本語進階 Ⅱ (50)</a>
+				</br></br></br>
+				</br></br></br>
+		</div>
+	</div>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 	<li><a id="myBtnNav" href="#toppest" class="subtitle" >置頂</a></li>
+			 </ul>
+		</div>
+	</div>
+
 	<style>
 	.container {
 	  border: 2px solid #dedede;
