@@ -103,7 +103,7 @@
 								}
 
 								dir += '<div class="container' + (playerMap.get(arrPlayer[i]) == 2 ? ' darker' : '')
-										+ '" onclick="playAudio(' + arrSource[i] + ')" ' + 'id="' + arrSource[i] + '">';
+										+ '" onclick="playAudio("' + arrSource[i] + '")" ' + 'id="' + arrSource[i] + '">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) == 2 ? 'class="right" ' : '') + 'style="width:100%;">';
 								dir += '<p>' + arrJp[i] + '</p>';
