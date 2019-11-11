@@ -120,8 +120,8 @@
 
 						playerMap.clear();
 						document.getElementById("chatBox").innerHTML += dir;
+
 						playAll();
-						
 			  }
 			};
 			xmlhttp.open("GET","./speaking/text/" + type + ".html",true);
@@ -141,7 +141,8 @@
 			audio.currentTime = 0;
 			audio.onended = function() {
 			    if(index < arrAudio.length){
-			        audio.src = document.getElementById(arrAudio[index]);
+			        audio = document.getElementById(arrAudio[index]);
+							audio.currentTime = 0;
 			        audio.play();
 			        index++;
 			    }
