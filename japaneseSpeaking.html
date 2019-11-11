@@ -110,13 +110,25 @@
 	}
 
 	function closeSourcePage(event){
+			var arrFilter = document.getElementsByClassName("filter");
+
 	    if(event.target != document.getElementById("btnFilterShow")
 					&& event.target != document.getElementById("btnPlay")
 					&& event.target != document.getElementById("btnExplan")
 					&& event.target != document.getElementById("myBtnNav")
 					&& document.getElementById("mySidenav").style.width != "0px"
 				){
-					closeNav();
+					var close = 1;
+					for(i = 0; i < arrFilter.length; i++){
+						if(event.target == arrFilter[i]){
+							close = 0;
+							break;
+						}
+					}
+
+					if(close == 1){
+						closeNav();
+					}
 				}
 	}
 
@@ -153,7 +165,7 @@
 						var title = arr_in[0].replace(/ +/g, "").replace(/　+/g, "");
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '_');
-							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.split('_')[1] + '</a>'
+							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.split('_')[1] + '</a>'
 						}
 					}
 
