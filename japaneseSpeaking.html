@@ -45,6 +45,7 @@
 
 	<script>
 	var filterSelected = "1_1";
+	var chinese = 0;
 	var mySidenav = document.getElementById('mySidenav');
 	mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
 
@@ -68,8 +69,23 @@
 	}
 
 	function addChinese(){
-			//// TODO:
-			//chinese
+		if(chinese){
+					var btnExplan = document.getElementById("btnExplan");
+					btnExplan.className = btnExplan.className.replace(" active", "");
+					chinese = 0;
+					var arr = document.getElementsByClassName("chinese");
+					for(i = 0; i < arr.length; i++){
+							arr[i].style = arr[i].style.replace("none", "block");
+					}
+		}else{
+					var btnExplan = document.getElementById("btnExplan");
+					btnExplan.className += " active";
+					chinese = 1;
+					var arr = document.getElementsByClassName("chinese");
+					for(i = 0; i < arr.length; i++){
+							arr[i].style = arr[i].style.replace("block", "none");
+					}
+		}
 	}
 
 	function scrollFunction(body, id) {
