@@ -112,7 +112,7 @@
 								dir += '<p style="display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
 
-								dir += '<audio id="' + arrSource[i] + '" preload="auto">';
+								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
 								dir += '<source src="./speaking/audio/' + arrSource[i] + '"></audio>';
 
 								arrAudio[i] = arrSource[i];
@@ -137,18 +137,16 @@
 	}
 
 	function playAll(){
-			var audio = document.getElementById(arrAudio[0]);
-			audio.currentTime = 0;
-			audio.play();
-			
-			audio.onended = function() {
-			    if(index < arrAudio.length){
-			        audio = document.getElementById(arrAudio[index]);
-							audio.currentTime = 0;
-			        audio.play();
-			        index++;
-			    }
-			};
+			var audioArray = document.getElementsByClassName('songs');
+			var i = 0;
+			audioArray[i].play();
+			for (i = 0; i < audioArray.length - 1; ++i) {
+			    audioArray[i].addEventListener('ended', function(e){
+			        var currentSong = e.target;
+			        var next = $(currentSong).nextAll('audio');
+			        if (next.length) $(next[0]).trigger('play');
+			    });
+			}
 	}
 	</script>
 
