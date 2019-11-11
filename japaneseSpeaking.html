@@ -135,12 +135,13 @@
 	}
 
 	function playAll(){
+			var audio = [];
 			for(i = 0; i < arrAudio.length; i++){
-					audio = document.getElementById(arrAudio[i]);
-					audio.currentTime = 0;
-					audio.play();
-					while(audio.currentTime != 0) {
-						setTimeout(500);
+					audio[i] = document.getElementById(arrAudio[i]);
+					audio[i].currentTime = 0;
+					audio[i].play();
+					while(audio[i].currentTime != 0) {
+						a = 1;
 					}
 			}
 	}
