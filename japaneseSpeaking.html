@@ -137,16 +137,11 @@
 	}
 
 	function playAll(){
-			var audioArray = document.getElementsByClassName('songs');
-			var i = 0;
-			audioArray[i].play();
-			for (i = 0; i < audioArray.length - 1; ++i) {
-			    audioArray[i].addEventListener('ended', function(e){
-			        var currentSong = e.target;
-			        var next = $(currentSong).nextAll('audio');
-			        if (next.length) $(next[0]).trigger('play');
-			    });
-			}
+
+			var audio = document.getElementById(arrAudio[0]);
+			audio.currentTime = 0;
+			document.getElementById(arrAudio[0]).addEventListener("ended", playAudio(arrAudio[1]));
+
 	}
 	</script>
 
