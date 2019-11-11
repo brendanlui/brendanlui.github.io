@@ -37,6 +37,7 @@
 	  border-radius: 5px;
 	  padding: 10px;
 	  margin: 10px 0;
+		font-size: 16px;
 	}
 
 	.darker {
@@ -64,25 +65,55 @@
 	  margin-right:0;
 	}
 	</style>
-	<div class="container">
-	  <img src="/img/P1.jpg" alt="Avatar" style="width:100%;">
-	  <p>Hello. How are you today?</p>
+
+	<div id="chatBox">
 	</div>
 
-	<div class="container darker">
-	  <img src="/img/P2.jpg" alt="Avatar" class="right" style="width:100%;">
-	  <p>Hey! I'm fine. Thanks for asking!</p>
-	</div>
+	<script>
+	loadDoc("1_1");
+	function loadDoc(type)
+	{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+			    	var txt = xmlhttp.responseText;
+						var dir = "";
+						var playerMap = new Map();
+						var playerCount = 0;
 
-	<div class="container">
-	  <img src="/img/P1.jpg" alt="Avatar" style="width:100%;">
-	  <p>Sweet! So, what do you wanna do today?</p>
-	</div>
+						var arrJp = txt.split('<span class="kanji" style="display:none;">');
+						var arrZn = txt.split('<span class="kanji" style="display:none;">');
+						var arrPlayer = txt.split('<span class="kanji" style="display:none;">');
 
-	<div class="container darker">
-	  <img src="/img/P2.jpg" alt="Avatar" class="right" style="width:100%;">
-	  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-	</div>
+						arrJp.shift();
+						arrZn.shift();
+						arrPlayer.shift();
+
+						for(i = 0; i < arrJp.length; i++){
+								arrJp[i] = arrJp[i].split("</span>")[0];
+								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
+								arrPlayer[i] = arrPlayer[i].split('<audio id="audio')[1].split('data-player="')[1].split('", data-image="')[0];
+
+								if(!playerMap.get(arrPlayer[i])){
+										playerCount++;
+										playerMap.set(arrPlayer[i], playerCount);
+								}
+
+								dir += '<div class="container">';
+								dir += '<img src="/img/P1.jpg" alt="' + arrPlayer[i] + '" style="width:100%;">';
+								dir += '<p>' + arrJp[i] + '</p>';
+								dir += '<p style="display:none">' + arrZn[i] + '</p>';
+								dir += '</div>';
+						}
+
+						playerMap.clear();
+						document.getElementById("chatBox").innerHTML += dir;
+			  }
+			};
+			xmlhttp.open("GET","./speaking/text/" + type + ".html",true);
+			xmlhttp.send();
+	}
+	</script>
 
 	<ul id="foot">
 		</br>
