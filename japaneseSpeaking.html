@@ -126,6 +126,7 @@
 			var sounds = document.getElementsByTagName('audio');
 		  for(i=0; i<sounds.length; i++) sounds[i].pause();
 			var audio = document.getElementById(id);
+			audio.currentTime = 0;
 			audio.play();
 	}
 	</script>
