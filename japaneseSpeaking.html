@@ -75,7 +75,7 @@
 					chinese = 0;
 					var arr = document.getElementsByClassName("chinese");
 					for(i = 0; i < arr.length; i++){
-							arr[i].style = arr[i].style.replace("none", "block");
+							arr[i].style.display = "block";
 					}
 		}else{
 					var btnExplan = document.getElementById("btnExplan");
@@ -83,7 +83,7 @@
 					chinese = 1;
 					var arr = document.getElementsByClassName("chinese");
 					for(i = 0; i < arr.length; i++){
-							arr[i].style = arr[i].style.replace("block", "none");
+							arr[i].style.display = "none";
 					}
 		}
 	}
@@ -140,7 +140,7 @@
 						var title = arr_in[0].replace(/ +/g, "").replace(/　+/g, "");
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '_');
-							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.replace('_', '.') + '</a>'
+							dir += '<a href="#" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.split('_')[1] + '</a>'
 						}
 					}
 
