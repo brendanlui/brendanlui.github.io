@@ -120,8 +120,6 @@
 
 						playerMap.clear();
 						document.getElementById("chatBox").innerHTML += dir;
-
-						playAll(); //testing brendan
 			  }
 			};
 			xmlhttp.open("GET","./speaking/text/" + type + ".html",true);
@@ -141,6 +139,7 @@
 			var index = 0;
 			var audio = document.getElementById(arrAudio[index]);
 			audio.currentTime = 0;
+			audio.play();
 
 			audio.onended = function() {
 			    if(index < arrAudio.length){
@@ -153,6 +152,8 @@
 
 	}
 	</script>
+
+	<button onclick="playAll()">Click me</button>
 
 	<ul id="foot">
 		</br>
