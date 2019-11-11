@@ -136,11 +136,9 @@
 
 	function playAll(){
 
-			var index = 0;
 			for(i = 0; i < arrAudio.length; i++){
 					var audio = document.getElementById(arrAudio[i]);
 					audio.currentTime = 0;
-					audio.play();
 					audio.onended = function() {
 						i++;
 				    if(i < arrAudio.length){
