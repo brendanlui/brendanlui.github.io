@@ -31,12 +31,6 @@
 	</div>
 
 	<!--TODO-->
-	<link rel="stylesheet" href="/css/side_bar_style.css">
-	<div id="nav_subtitle">
-		<div id="mySidenav" class="sidenav">
-		</div>
-	</div>
-
 	<div id="buttonBox">
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter active" onclick="openNav()">じこしょうかい 1 [會話單元]</button>
@@ -46,6 +40,12 @@
 	<div id="chatBox">
 	</div>
 
+	<link rel="stylesheet" href="/css/side_bar_style.css">
+	<div id="nav_subtitle">
+		<div id="mySidenav" class="sidenav">
+		</div>
+	</div>
+	
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
 		<div id="nav">
@@ -166,7 +166,7 @@
 
 	function restart(){
 		loadFilter();
-		loadDoc();
+		loadDoc(filterSelected);
 	}
 	</script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
