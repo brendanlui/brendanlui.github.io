@@ -140,12 +140,14 @@
 			var audio = document.getElementById(arrAudio[index]);
 			audio.currentTime = 0;
 			audio.play();
+			console.log('昌' + index);
 
 			audio.onended = function() {
 			    if(index < arrAudio.length){
 			        audio =  document.getElementById(arrAudio[index]);
 							audio.currentTime = 0;
 			        audio.play();
+							console.log(index);
 							index++;
 			    }
 			};
