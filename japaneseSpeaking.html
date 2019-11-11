@@ -102,7 +102,7 @@
 								dir += '<div class="container' + (playerMap.get(arrPlayer[i]) == 2 ? ' darker' : '') + '">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) == 2 ? 'class="right" ' : '') + 'style="width:100%;">';
-								dir += '<p>' + arrJp[i] + '</p>';
+								dir += '<p' + (playerMap.get(arrPlayer[i]) == 2 ? ' style="float: right;"' : '') + '>' + arrJp[i] + '</p>';
 								dir += '<p style="display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
 						}
