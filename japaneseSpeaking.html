@@ -135,15 +135,14 @@
 	}
 
 	function playAll(){
-			var audio = [];
 			for(i = 0; i < arrAudio.length; i++){
-					audio[i] = document.getElementById(arrAudio[i]);
-					if(i < arrAudio.length - 1){
-						audio[i].onended = function() {playAudio(arrAudio[i+1])};
+					audio = document.getElementById(arrAudio[i]);
+					audio.currentTime = 0;
+					audio.play();
+					while(!audio.paused) {
+						a = 1;
 					}
 			}
-			audio[0].play();
-
 	}
 	</script>
 
