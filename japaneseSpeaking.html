@@ -116,11 +116,9 @@
 	});
 
 	function filterSelection(text){
-		var element = document.getElementById("btnFilter" + text);
 		filterSelected = text;
 		loadDoc(text);
 		closeNav();
-		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話單元]";
 	}
 
 	function loadFilter(){
@@ -146,6 +144,9 @@
 
 					dir += '</br></br></br></br></br></br>';
 					document.getElementById("mySidenav").innerHTML = dir;
+
+					var element = document.getElementById("btnFilter" + filterSelected);
+					document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [會話單元]";
 			}
 		};
 		xmlhttp.open("GET","./speaking/text/1_1.html",true);
