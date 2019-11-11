@@ -95,7 +95,7 @@
 								arrJp[i] = arrJp[i].split("</span>")[0];
 								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrPlayer[i] = arrPlayer[i].split('<audio id="audio')[1].split('data-player="')[1].split('", data-image="')[0];
-								arrSource[i] = arrSource[i].split('<source src="../../../sound/ka/')[1].split('" />')[0].replaceAll("/", '_');
+								arrSource[i] = arrSource[i].split('<source src="../../../sound/ka/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
 
 								if(!playerMap.get(arrPlayer[i])){
 										playerCount++;
