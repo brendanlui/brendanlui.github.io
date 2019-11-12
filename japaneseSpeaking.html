@@ -194,11 +194,6 @@
 		font-size: 16px;
 	}
 
-	.darker {
-	  border-color: #ccc;
-	  background-color: #ddd;
-	}
-
 	.container::after {
 	  content: "";
 	  clear: both;
@@ -232,6 +227,8 @@
 						var dir = "";
 						var playerMap = new Map();
 						var playerCount = 0;
+						var color = parseInt('ffffff', 16);
+						var colorDiff = parseInt('ffffff', 16) - parseInt('eeeeee', 16);
 						arrAudio = [];
 
 						var arrJp = txt.split('<span class="kanji" style="display:none;">');
@@ -255,10 +252,10 @@
 										playerMap.set(arrPlayer[i], playerCount);
 								}
 
-								dir += '<div class="container' + (playerMap.get(arrPlayer[i]) == 2 ? ' darker' : '')
+								dir += '<div class="container" style="background-color: #' + (color - i * colorDiff).toString(16)
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
-												+ '" ' + (playerMap.get(arrPlayer[i]) == 2 ? 'class="right" ' : '') + 'style="width:100%;">';
+												+ '" ' + (playerMap.get(arrPlayer[i]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
 								dir += '<p class="japanese">' + arrJp[i] + '</p>';
 								dir += '<p class="chinese" style="color:grey; display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
