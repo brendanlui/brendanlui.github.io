@@ -270,6 +270,8 @@
 								arrAudio[i] = arrSource[i];
 						}
 
+						dir += '<audio id="playAll" class="songs" preload="auto">';
+						dir += '<source src="./speaking/audio/1_1_1-1.mp3"></audio>';
 						playerMap.clear();
 						document.getElementById("chatBox").innerHTML = dir;
 			  }
@@ -286,14 +288,13 @@
 			}
 
 			var audio = document.getElementById(id);
-			audio.src = "./speaking/audio/" + id;
 			audio.play();
 	}
 
 	function playAll(){
 			var index = 0;
-			var audio = document.getElementById(arrAudio[index]);
-			audio.src = "./speaking/audio/" + arrAudio[index];
+			var audio = document.getElementById("playAll");
+			audio.src = "./speaking/audio/" + arrAudio[0];
 			audio.play();
 
 			audio.onended = function() {
@@ -301,9 +302,7 @@
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
 			        audio.play();
-			    }else{
-			        audio.src = "./speaking/audio/" + arrAudio[0];
-					}
+			    }
 			};
 	}
 	</script>
