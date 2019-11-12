@@ -285,13 +285,9 @@
 		  for(i = 0; i < sounds.length; i++) {
 				sounds[i].pause();
 				sounds[i].currentTime = 0;
-				if(i != sounds.length - 1){
-					document.getElementById('chat_' + i).style.borderColor = "#ddd";
-				}
 			}
 
 			var audio = document.getElementById(id);
-			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#6eefe0";
 			audio.play();
 	}
 
@@ -299,14 +295,14 @@
 			var index = 0;
 			var audio = document.getElementById("playAll");
 			audio.src = "./speaking/audio/" + arrAudio[0];
-			document.getElementById('chat_0').style.borderColor = "#6eefe0";
+			document.getElementById('chat_0').style.borderColor = "#00c71a";
 			audio.play();
 
 			audio.onended = function() {
 					index++;
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
-							document.getElementById('chat_' + index).style.borderColor = "#6eefe0";
+							document.getElementById('chat_' + index).style.borderColor = "#00c71a";
 			        audio.play();
 			    }
 					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
