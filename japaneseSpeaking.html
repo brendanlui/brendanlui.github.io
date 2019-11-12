@@ -280,12 +280,13 @@
 
 	function playAudio(id){
 			var sounds = document.getElementsByTagName('audio');
-		  for(i=0; i<sounds.length; i++) sounds[i].pause();
-			var audio = document.getElementById(id);
-			if(id == arrAudio[0]){
-					audio.src = "./speaking/audio/" + arrAudio[0];
+		  for(i = 0; i < sounds.length; i++) {
+				sounds[i].pause();
+				sounds[i].currentTime = 0;
 			}
-			audio.currentTime = 0;
+
+			var audio = document.getElementById(id);
+			audio.src = "./speaking/audio/" + id;
 			audio.play();
 	}
 
