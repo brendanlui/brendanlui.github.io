@@ -146,7 +146,7 @@
 		closeNav();
 		var element = document.getElementById("btnFilter" + filterSelected);
 		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [單元]";
-		
+
 		var btnExplan = document.getElementById("btnExplan");
 		btnExplan.className = btnExplan.className.replace(" active", "");
 		chinese = 0;
@@ -282,6 +282,9 @@
 			var sounds = document.getElementsByTagName('audio');
 		  for(i=0; i<sounds.length; i++) sounds[i].pause();
 			var audio = document.getElementById(id);
+			if(id == arrAudio[0]){
+					audio.src = "./speaking/audio/" + arrAudio[0];
+			}
 			audio.currentTime = 0;
 			audio.play();
 	}
