@@ -293,7 +293,9 @@
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
 			        audio.play();
-			    }
+			    }else{
+			        audio.src = "./speaking/audio/" + arrAudio[0];
+					}
 			};
 	}
 	</script>
