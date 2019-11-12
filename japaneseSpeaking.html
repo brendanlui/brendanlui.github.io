@@ -314,9 +314,11 @@
 			        audio.src = "./speaking/audio/" + arrAudio[index];
 							document.getElementById('chat_' + index).style.borderColor = "#00c71a";
 			        audio.play();
-			    }
+			    }else if(index == arrAudio.length){
+						btnPlay.className = btnPlay.className.replace(" active", "");
+					}
 					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
-					btnPlay.className = btnPlay.className.replace(" active", "");
+
 			};
 	}
 	</script>
