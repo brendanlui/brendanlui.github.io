@@ -285,7 +285,9 @@
 		  for(i = 0; i < sounds.length; i++) {
 				sounds[i].pause();
 				sounds[i].currentTime = 0;
-				document.getElementById('chat_' + i).style.borderColor = "#ddd";
+				if(i != sounds.length - 1){
+					document.getElementById('chat_' + i).style.borderColor = "#ddd";
+				}
 			}
 
 			var audio = document.getElementById(id);
