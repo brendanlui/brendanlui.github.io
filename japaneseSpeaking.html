@@ -256,7 +256,7 @@
 										playerMap.set(arrPlayer[i], playerCount);
 								}
 
-								dir += '<div class="container" style="background-color: #' + (color - (playerMap.get(arrPlayer[i])-1) * colorDiff).toString(16)
+								dir += '<div class="container" id="chat_' + i + '" style="background-color: #' + (color - (playerMap.get(arrPlayer[i])-1) * colorDiff).toString(16)
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
@@ -271,7 +271,7 @@
 						}
 
 						dir += '<audio id="playAll" class="songs" preload="auto">';
-						dir += '<source src="./speaking/audio/1_1_1-1.mp3"></audio>';
+						dir += '<source src="./speaking/audio/10_3_2.mp3"></audio>';
 						playerMap.clear();
 						document.getElementById("chatBox").innerHTML = dir;
 			  }
@@ -285,9 +285,11 @@
 		  for(i = 0; i < sounds.length; i++) {
 				sounds[i].pause();
 				sounds[i].currentTime = 0;
+				document.getElementById('chat_' + i).style.borderColor = "#ddd";
 			}
 
 			var audio = document.getElementById(id);
+			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#6eefe0";
 			audio.play();
 	}
 
@@ -295,14 +297,17 @@
 			var index = 0;
 			var audio = document.getElementById("playAll");
 			audio.src = "./speaking/audio/" + arrAudio[0];
+			document.getElementById('chat_0').style.borderColor = "#6eefe0";
 			audio.play();
 
 			audio.onended = function() {
 					index++;
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
+							document.getElementById('chat_' + index).style.borderColor = "#6eefe0";
 			        audio.play();
 			    }
+					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
 			};
 	}
 	</script>
