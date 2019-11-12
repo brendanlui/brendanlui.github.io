@@ -252,7 +252,7 @@
 										playerMap.set(arrPlayer[i], playerCount);
 								}
 
-								dir += '<div class="container" style="background-color: #' + (color - i * colorDiff).toString(16)
+								dir += '<div class="container" style="background-color: #' + (color - arrSource[i] * colorDiff).toString(16)
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
