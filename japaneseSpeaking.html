@@ -146,6 +146,10 @@
 		closeNav();
 		var element = document.getElementById("btnFilter" + filterSelected);
 		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [單元]";
+		
+		var btnExplan = document.getElementById("btnExplan");
+		btnExplan.className = btnExplan.className.replace(" active", "");
+		chinese = 0;
 	}
 
 	function loadFilter(){
