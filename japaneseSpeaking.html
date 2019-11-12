@@ -299,6 +299,11 @@
 			var audio = document.getElementById("playAll");
 			audio.src = "./speaking/audio/" + arrAudio[0];
 			document.getElementById('chat_0').style.borderColor = "#00c71a";
+
+			var btnPlay = document.getElementById("btnPlay");
+			if(!btnPlay.className.includes("active")){
+				btnPlay.className += " active";
+			}
 			audio.play();
 
 			audio.onended = function() {
@@ -309,6 +314,7 @@
 			        audio.play();
 			    }
 					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
+					btnPlay.className.replace(" active", "");
 			};
 	}
 	</script>
