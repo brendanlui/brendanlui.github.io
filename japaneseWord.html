@@ -288,6 +288,9 @@
 
 		function genMC(){
 			mc = getRandom(arrEn, 4);
+			while(checkIfDuplicateExists(mc)){
+				mc = getRandom(arrEn, 4);
+			}
 			shuffle(mc);
 
 			for(var i = 0; i < mc.length; i++){
@@ -335,7 +338,6 @@
 				if(!result.includes(arrEn[index])){
 					result[0] = arrEn[index];
 				}
-				console.log(checkIfDuplicateExists(result));
 				return result;
 		}
 
