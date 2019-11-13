@@ -317,27 +317,25 @@
 				for(i = 0; i < n; i++){
 					result[i] = "0";
 				}
-				while(checkIfDuplicateExists(result)){
 
-						var len = arr.length,
-						taken = new Array(len);
-						if (n > len)
-								throw new RangeError("getRandom: more elements taken than available");
-						while (n--) {
-								var x = Math.floor(Math.random() * len);
-								if(!(arrEn[x] == arrEn[index] && x != index)){
-									result[n] = arr[x in taken ? taken[x] : x];
-									taken[x] = --len in taken ? taken[len] : len;
-								}else{
-										n++;
-								}
-								//console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
+				var len = arr.length,
+				taken = new Array(len);
+				if (n > len)
+						throw new RangeError("getRandom: more elements taken than available");
+				while (n--) {
+						var x = Math.floor(Math.random() * len);
+						if(!(arrEn[x] == arrEn[index] && x != index)){
+							result[n] = arr[x in taken ? taken[x] : x];
+							taken[x] = --len in taken ? taken[len] : len;
+						}else{
+								n++;
 						}
-						if(!result.includes(arrEn[index])){
-							result[0] = arrEn[index];
-						}
+						//console.log("n: " + n + "; x: " + x + "; taken: " + taken + "; result: " + result + "; value: " + arrJp[x] + "..." + arrEn[x]);
 				}
-
+				if(!result.includes(arrEn[index])){
+					result[0] = arrEn[index];
+				}
+				console.log(checkIfDuplicateExists(result));
 				return result;
 		}
 
