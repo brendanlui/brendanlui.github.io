@@ -485,7 +485,7 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
 			    <span class="txt-ja txt-ls1 kanji">【住んでいます】</span>
 
               </p>
-              <p class="txt-zh zh">居住</p>
+              <p class="txt-zh zh">居住(狀態)</p>
 
               <div class="panel panel-default panel-horizontal sentences" style="margin-top: 10px;">
                 <div class="panel-heading" style="width:20px;">
