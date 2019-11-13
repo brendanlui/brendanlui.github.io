@@ -301,7 +301,7 @@
 			var btnPlay = document.getElementById("btnPlay");
 			btnPlay.className = btnPlay.className.replace(" active", "");
 
-			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#00c71a";
+			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
 			audio.play();
 			audio.onended = function() {
 					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
@@ -312,7 +312,7 @@
 			var index = 0;
 			var audio = document.getElementById("playAll");
 			audio.src = "./speaking/audio/" + arrAudio[0];
-			document.getElementById('chat_0').style.borderColor = "#00c71a";
+			document.getElementById('chat_0').style.borderColor = "#4caf50";
 
 			var btnPlay = document.getElementById("btnPlay");
 			if(!btnPlay.className.includes("active")){
@@ -324,7 +324,7 @@
 					index++;
 			    if(index < arrAudio.length){
 			        audio.src = "./speaking/audio/" + arrAudio[index];
-							document.getElementById('chat_' + index).style.borderColor = "#00c71a";
+							document.getElementById('chat_' + index).style.borderColor = "#4caf50";
 			        audio.play();
 			    }else if(index == arrAudio.length){
 						btnPlay.className = btnPlay.className.replace(" active", "");
