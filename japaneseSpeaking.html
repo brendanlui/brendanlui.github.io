@@ -168,7 +168,7 @@
 					for(i = 0; i < arr.length; i++){
 						var arrTitle_in = arrTitle[i].split('.html">');
 						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split('. ')[1];
-						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('（２）', '（二）').replace('（１）', '（一）');
+						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('（２）', '(2)').replace('（１）', '(1)');
 
 						var arr_in = arr[i].split(' <a href="/tw/ka/');
 						for(j = 1; j < arr_in.length; j++){
