@@ -300,7 +300,12 @@
 			var audio = document.getElementById(id);
 			var btnPlay = document.getElementById("btnPlay");
 			btnPlay.className = btnPlay.className.replace(" active", "");
+
+			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#00c71a";
 			audio.play();
+			audio.onended = function() {
+					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+			};
 	}
 
 	function playAll(){
