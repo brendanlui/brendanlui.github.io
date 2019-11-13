@@ -168,7 +168,7 @@
 					for(i = 0; i < arr.length; i++){
 						var arrTitle_in = arrTitle[i].split('.html">');
 						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split('. ')[1];
-						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('1', '').replace('(', '').replace(')', '');
+						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('（１）', '');
 
 						var arr_in = arr[i].split(' <a href="/tw/ka/');
 						for(j = 1; j < arr_in.length; j++){
@@ -176,7 +176,7 @@
 							if(number == '27_8'){
 								continue;
 							}
-							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' - ' + number.split('_')[1] + '</a>'
+							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.split('_')[1] + '</a>'
 						}
 					}
 
