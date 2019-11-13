@@ -16,7 +16,7 @@
 
 </head>
 
-<title>Dadiu | 日語會話</title>
+<title>Dadiu | 日語聆聽會話</title>
 
 <body onload="restart()">
 	<div id="head">
@@ -33,7 +33,7 @@
 	<!--TODO-->
 	<div id="buttonBox">
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
-		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">じこしょうかい 1 [單元]</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">どうぞよろしく 1 [單元]</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
 	</div>
 
@@ -161,12 +161,16 @@
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
+					var arrTitle = txt.split('</a></dt>');
 					var arr = txt.split('<ul><li>');
 					arr.shift();
 
 					for(i = 0; i < arr.length; i++){
+						var arrTitle_in = arrTitle[i].split('.html">');
+						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1];
+						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "");
+
 						var arr_in = arr[i].split(' <a href="/tw/ka/');
-						var title = arr_in[0].replace(/ +/g, "").replace(/　+/g, "");
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '_');
 							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + ' ' + number.split('_')[1] + '</a>'
