@@ -33,7 +33,7 @@
 	<!--TODO-->
 	<div id="buttonBox">
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
-		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">N1はN2です [過濾]</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">N1はN2です [單元]</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
 	</div>
 
@@ -145,7 +145,7 @@
 		loadDoc(text);
 		closeNav();
 		var element = document.getElementById("btnFilter" + filterSelected);
-		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [過濾]";
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [單元]";
 
 		var btnExplan = document.getElementById("btnExplan");
 		btnExplan.className = btnExplan.className.replace(" active", "");
@@ -161,13 +161,14 @@
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
-					var arrTitle = txt.split('</a></li>');
+					var arrTitle = txt.split('<li><a href="/tw/bu/');//</a></li>
 					var arr = txt.split('<li><a href="/tw/bu/');
+					arrTitle.shift();
 					arr.shift();
 
 					for(i = 0; i < arr.length; i++){
-						var arrTitle_in = arrTitle[i].split('.html">');
-						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split('. ')[1];
+						var arrTitle_in = arrTitle[i].split('.html">')[1].split('</a></li>').split('-');
+						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split(' ')[1];
 						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "");
 
 						var arr_in = arr[i].split('.html">')[0];
