@@ -145,6 +145,7 @@
 	    if(event.target != document.getElementById("btnFilterShow")
 					&& event.target != document.getElementById("btnPlay")
 					&& event.target != document.getElementById("btnExplan")
+					&& event.target != document.getElementById("mySidenav")
 					&& event.target != document.getElementById("myBtnNav")
 					&& document.getElementById("mySidenav").style.width != "0px"
 				){
@@ -159,7 +160,8 @@
 					if(close == 1){
 						closeNav();
 					}
-				}
+				}else if(event.target == modal2) {
+						modal2.style.display = "none";
 	}
 
 	window.onclick = function(event) {
