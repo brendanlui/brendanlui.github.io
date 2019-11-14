@@ -37,9 +37,6 @@
 	    <span id="close2" class="close2">&times;</span>
 			<table id="source2">
 			</table>
-			</br>
-			<table id="source3">
-			</table>
 	  </div>
 	</div>
 
@@ -69,6 +66,32 @@
 	</div>
 
 	<script>
+	var modal2 = document.getElementById('myModal2');
+	var close2 = document.getElementById("close2");
+	// When the user clicks on the button, open the modal
+	function btnOpenModal2(rowIndex) {
+	    modal2.style.display = "block";
+			document.getElementById("source2").innerHTML = '<tr>'
+			+ '<th>例句</th>'
+			+ '</tr>'
+			+ '<tr>'
+			+ '<td>' + arrSen[rowIndex] + '</td>'
+			+ '</tr>';
+			document.getElementById("source3").innerHTML = '<tr>'
+			+ '<th>解釋</th>'
+			+ '</tr>'
+			+ '<tr>'
+			+ '<td>' + arrSenExpl[rowIndex] + '</td>'
+			+ '</tr>';
+	}
+	// When the user clicks on <span> (x), close the modal
+	close2.onclick = function() {
+	    modal2.style.display = "none";
+	}
+	// When the user clicks anywhere outside of the modal, close it
+
+
+
 	var filterSelected = "1-1-1";
 	var chinese = 0;
 	var mySidenav = document.getElementById('mySidenav');
