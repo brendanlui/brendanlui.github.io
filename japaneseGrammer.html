@@ -191,7 +191,6 @@
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
-					content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
 					var arrTitle = txt.split('<li><a href="/tw/bu/');//</a></li>
 					var arr = txt.split('<li><a href="/tw/bu/');
 					arrTitle.shift();
@@ -270,6 +269,7 @@
 						var color = parseInt('f0f0f0', 16);
 						arrAudio = [];
 
+						content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
 						var arrJp = txt.split('<span class="kanji">');
 						var arrZn = txt.split('<span class="kanji">');
 						var arrSource = txt.split('<span class="kanji">');
