@@ -41,9 +41,9 @@
 	</div>
 
 	<div id="buttonBox">
-		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="btnOpenModal2()">內容</button>
+		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()" style="text-overflow: ellipsis;">1. N1はN2です</button>
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
-		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()" style="text-overflow: ellipsis;">1. N1はN2です [單元]</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="btnOpenModal2()">內容</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
 	</div>
 
@@ -178,7 +178,7 @@
 		loadDoc(text);
 		closeNav();
 		var element = document.getElementById("btnFilter" + filterSelected);
-		document.getElementById("btnFilterShow").innerHTML = element.innerHTML + " [單元]";
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML;
 
 		var btnPlay = document.getElementById("btnPlay");
 		btnPlay.className = btnPlay.className.replace(" active", "");
