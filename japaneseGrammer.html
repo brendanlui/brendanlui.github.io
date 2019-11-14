@@ -167,8 +167,11 @@
 					arr.shift();
 
 					for(i = 0; i < arr.length; i++){
-						var arrTitle_in = arrTitle[i].split('.html">')[1].split('</a></li>')[0].split('-');
-						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split(' ')[1];
+						var arrTitle_in = arrTitle[i].split('</a></li>')[0].split(' ');
+						arrTitle[i] = "";
+						for(j = 1; j < arrTitle_in.length; j++){
+							arrTitle[i] += arrTitle_in[j];
+						}
 						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "");
 
 						var arr_in = arr[i].split('.html">')[0];
