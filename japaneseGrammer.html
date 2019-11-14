@@ -248,7 +248,7 @@
 						arrSource.shift();
 
 						for(i = 0; i < arrJp.length; i++){
-								arrJp[i] = arrJp[i].split("</span>")[0];
+								arrJp[i] = arrJp[i].split("</span>")[0].replace("<em style=\"color: #f00;font-weight: bold;\">", " <em>").replace("</em>", "</em> ");
 								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrSource[i] = arrSource[i].split('<source src="../../../sound/bu/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
 
