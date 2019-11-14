@@ -167,7 +167,7 @@
 					arr.shift();
 
 					for(i = 0; i < arr.length; i++){
-						var arrTitle_in = arrTitle[i].split('.html">')[1].split('</a></li>').split('-');
+						var arrTitle_in = arrTitle[i].split('.html">')[1].split('</a></li>')[0].split('-');
 						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split(' ')[1];
 						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "");
 
