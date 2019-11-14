@@ -41,7 +41,7 @@
 	</div>
 
 	<div id="buttonBox">
-		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="btnOpenModal2()">內容</button>
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">N1はN2です [單元]</button>
 		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()">中文翻譯</button>
@@ -69,19 +69,13 @@
 	var modal2 = document.getElementById('myModal2');
 	var close2 = document.getElementById("close2");
 	// When the user clicks on the button, open the modal
-	function btnOpenModal2(rowIndex) {
+	function btnOpenModal2() {
 	    modal2.style.display = "block";
 			document.getElementById("source2").innerHTML = '<tr>'
-			+ '<th>例句</th>'
+			+ '<th>內容</th>'
 			+ '</tr>'
 			+ '<tr>'
 			+ '<td>' + arrSen[rowIndex] + '</td>'
-			+ '</tr>';
-			document.getElementById("source3").innerHTML = '<tr>'
-			+ '<th>解釋</th>'
-			+ '</tr>'
-			+ '<tr>'
-			+ '<td>' + arrSenExpl[rowIndex] + '</td>'
 			+ '</tr>';
 	}
 	// When the user clicks on <span> (x), close the modal
@@ -91,7 +85,7 @@
 	// When the user clicks anywhere outside of the modal, close it
 
 
-
+	var content = "";
 	var filterSelected = "1-1-1";
 	var chinese = 0;
 	var mySidenav = document.getElementById('mySidenav');
@@ -197,6 +191,7 @@
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
+					content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
 					var arrTitle = txt.split('<li><a href="/tw/bu/');//</a></li>
 					var arr = txt.split('<li><a href="/tw/bu/');
 					arrTitle.shift();
