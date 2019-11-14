@@ -283,7 +283,8 @@
 
 						for(i = 0; i < arrJp.length; i++){
 								arrJp[i] = arrJp[i].replace(new RegExp("　", 'g'), '').replace(new RegExp(" ", 'g'), '');
-								arrJp[i] = arrJp[i].replace("<em>", " <em style=\"color: #f00;font-weight: bold;\">").replace("</em>", "</em> ").split("</span>")[0];
+								arrJp[i] = arrJp[i].replace(new RegExp("<em>", 'g'), " <em style=\"color: #f00;font-weight: bold;\">");
+								arrJp[i] = arrJp[i].replace(new RegExp("</em>", 'g'), "</em> ").split("</span>")[0];
 								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrSource[i] = arrSource[i].split('<source src="../../../sound/bu/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
 
