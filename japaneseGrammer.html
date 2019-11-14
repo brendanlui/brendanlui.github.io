@@ -209,8 +209,8 @@
 
 						var arr_in = arr[i].split('.html">')[0];
 						var number = arr_in.split('/')[1];
-						dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + title + '</a>'
-
+						dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">'
+									+ (i+1) + ". " + title + '</a>';
 					}
 
 					dir += '</br></br></br></br></br></br>';
