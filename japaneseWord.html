@@ -250,11 +250,11 @@
 							}
 							total = arr.length;
 							genShowJpText();
-							genMC();
+							genMC(4);
 				  }
 				};
-				xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
-				//xmlhttp.open("GET","./txt/Debug_1.txt",true);	//debug
+				// xmlhttp.open("GET","./txt/" + type + "Html.txt",true);
+				xmlhttp.open("GET","./txt/Debug_1.txt",true);	//debug
 				xmlhttp.send();
 		}
 
@@ -286,16 +286,25 @@
 			document.getElementById("textJapan").innerHTML = showText;
 		}
 
-		function genMC(){
-			mc = getRandom(arrEn, 4);
-			while(checkIfDuplicateExists(mc)){
-				mc = getRandom(arrEn, 4);
+		function genMC(num){
+			mc = getRandom(arrEn, num);
+
+			while(checkIfDuplicateExists(mc) && backCheckMC(mc, num)){
+				mc = getRandom(arrEn, num);
 			}
 			shuffle(mc);
 
 			for(var i = 0; i < mc.length; i++){
 				document.getElementById("mc" + i).innerHTML = mc[i];
 			}
+		}
+
+		function backCheckMC(arr, n){
+			var temp = {};
+			for(i = 0; i < n; i++){
+				temp[i] = arrJp[arrEn.indexOf(arr[i])];
+			}
+			return checkIfDuplicateExists(temp);
 		}
 
 		function showResult(mcChoose){
