@@ -301,7 +301,7 @@
 
 		function backCheckDupMC(arr){
 			var temp = new Array(arr.length);
-			for(i = 0; i < n; i++){
+			for(i = 0; i < arr.length; i++){
 				temp[i] = arrJp[arrEn.indexOf(arr[i])];
 			}
 			return checkIfDuplicateExists(temp);
