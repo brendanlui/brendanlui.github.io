@@ -243,7 +243,7 @@
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
 						sessionStorage.setItem("lastFilterKey",type);	//session
-						sessionStorage.setItem("lastFilterValue", element.getElementById("btnFilterShow").innerHTML);
+						sessionStorage.setItem("lastFilterValue", document.getElementById("btnFilterShow").innerHTML);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
