@@ -242,7 +242,7 @@
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-						sessionStorage.setItem("lastFilterKey",type);	//session
+						sessionStorage.setItem("lastFilterKey",type);
 						sessionStorage.setItem("lastFilterValue", document.getElementById("btnFilterShow").innerHTML);
 
 			    	var txt = xmlhttp.responseText;

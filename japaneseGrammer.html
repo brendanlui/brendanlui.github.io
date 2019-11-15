@@ -225,6 +225,13 @@
 
 	function restart(){
 		loadFilter();
+
+		var sessionKey = sessionStorage.getItem("lastFilterKey");
+		var sessionValue = sessionStorage.getItem("lastFilterValue");
+		if(sessionKey != null && sessionValue != null){
+			filterSelected = sessionKey;
+			document.getElementById("btnFilterShow").innerHTML = sessionValue;
+		}
 		loadDoc(filterSelected);
 	}
 	</script>
@@ -269,6 +276,10 @@
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+
+						sessionStorage.setItem("lastFilterKey",type);
+						sessionStorage.setItem("lastFilterValue", document.getElementById("btnFilterShow").innerHTML);
+						
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
 						var color = parseInt('f0f0f0', 16);
