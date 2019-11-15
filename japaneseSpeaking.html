@@ -190,6 +190,11 @@
 
 	function restart(){
 		loadFilter();
+
+		var session = sessionStorage.getItem("lastFilter");
+		if(session != null){
+			filterSelected = session;
+		}
 		loadDoc(filterSelected);
 	}
 	</script>
@@ -234,6 +239,9 @@
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+
+						sessionStorage.setItem("lastFilter",type);	//session
+
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
 						var playerMap = new Map();
