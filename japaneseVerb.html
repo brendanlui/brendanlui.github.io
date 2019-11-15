@@ -313,6 +313,11 @@
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+
+								sessionStorage.setItem("lastFilterKeyVerb",type);
+								sessionStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
+								sessionStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
+
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
 								// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
@@ -404,6 +409,16 @@
 			}
 
 			function restart(){
+
+				var sessionKey = sessionStorage.getItem("lastFilterKeyVerb");
+				var sessionValue1 = sessionStorage.getItem("lastFilterValue1Verb");
+				var sessionValue2 = sessionStorage.getItem("lastFilterValue2Verb");
+				if(sessionKey != null && sessionValue1 != null && sessionValue2 != null){
+					filterSelected = sessionKey;
+					//document.getElementById("btnOpenModal").innerHTML = sessionValue1;
+					//document.getElementById("btnFilterShow").innerHTML = sessionValue2;
+				}
+
 				filterSelection(filterSelected);
 				clear();
 			}
