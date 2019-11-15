@@ -243,6 +243,7 @@
 			var sessionKey = sessionStorage.getItem("lastFilterKeyJp");
 			if(sessionKey != null){
 					document.getElementById("myRange").value = sessionKey;
+					document.getElementById("demo").innerHTML = sessionKey;
 			}
 
 			genShowJpText();
