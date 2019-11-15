@@ -275,6 +275,7 @@
 						arrAudio = [];
 
 						content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
+						content = content.split('</p>')[0].split('<p>')[1];
 						var arrJp = txt.split('<span class="kanji">');
 						var arrZn = txt.split('<span class="kanji">');
 						var arrSource = txt.split('<span class="kanji">');
