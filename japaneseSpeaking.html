@@ -191,11 +191,13 @@
 	function restart(){
 		loadFilter();
 
-		var session = sessionStorage.getItem("lastFilter");
-		if(session != null){
+		var sessionKey = sessionStorage.getItem("lastFilterKey");
+		var sessionValue = sessionStorage.getItem("lastFilterValue");
+		if(sessionKey != null && sessionValue != null){
 			filterSelected = session;
+			document.getElementById("btnFilterShow").innerHTML = sessionValue;
 		}
-		filterSelection(filterSelected);
+		loadDoc(filterSelected);
 	}
 	</script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
@@ -240,7 +242,8 @@
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-						sessionStorage.setItem("lastFilter",type);	//session
+						sessionStorage.setItem("lastFilterKey",type);	//session
+						sessionStorage.setItem("lastFilterValue", element.getElementById("btnFilterShow").innerHTML);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
