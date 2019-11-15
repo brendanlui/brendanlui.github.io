@@ -113,7 +113,7 @@
 	</div>
 	<div class="slidecontainer">
 		<b>數目 : <span id="demo"></span></b>
-	  <input type="range" min="1" max="104" value="104" class="slider" id="myRange">
+	  <input type="range" min="1" max="104" value="104" class="slider" id="myRange" onchange="inputMyRange()">
 	</div>
 
 
@@ -234,10 +234,9 @@
 			}
 		}
 
-		var inputMyRange = document.getElementById("myRange");
-		inputMyRange.on("input", function() {
-				sessionStorage.setItem("lastFilterKeyWord",inputMyRange.value);
-		});
+		function inputMyRange(){
+				sessionStorage.setItem("lastFilterKeyJp",document.getElementById("myRange").value);
+		}
 
 		function restart(){
 
