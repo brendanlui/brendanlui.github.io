@@ -108,6 +108,11 @@
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+
+							sessionStorage.setItem("lastFilterKeyWord",type);
+							sessionStorage.setItem("lastFilterValue1Word", document.getElementById("btnOpenModal").innerHTML);
+							sessionStorage.setItem("lastFilterValue2Word", document.getElementById("btnFilterShow").innerHTML);
+
 							dir = [];
 							document.getElementById("source").innerHTML = '<tr>'
 												+	'<th>日語</th>'
@@ -269,6 +274,14 @@
 		}
 
 		function restart(){
+
+			var sessionKey = sessionStorage.getItem("lastFilterKeyWord");
+			var sessionValue1 = sessionStorage.getItem("lastFilterValue1Word");
+			var sessionValue2 = sessionStorage.getItem("lastFilterValue2Word");
+			if(sessionKey != null && sessionValue1 != null && sessionValue2 != null){
+				filterSelected = sessionKey;
+			}
+
 			filterSelection(filterSelected);
 			clear();
 		}
