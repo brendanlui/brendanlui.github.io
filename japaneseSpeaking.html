@@ -194,7 +194,7 @@
 		var sessionKey = sessionStorage.getItem("lastFilterKey");
 		var sessionValue = sessionStorage.getItem("lastFilterValue");
 		if(sessionKey != null && sessionValue != null){
-			filterSelected = session;
+			filterSelected = sessionKey;
 			document.getElementById("btnFilterShow").innerHTML = sessionValue;
 		}
 		loadDoc(filterSelected);
