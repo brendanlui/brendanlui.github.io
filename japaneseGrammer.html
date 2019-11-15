@@ -226,8 +226,8 @@
 	function restart(){
 		loadFilter();
 
-		var sessionKey = sessionStorage.getItem("lastFilterKey");
-		var sessionValue = sessionStorage.getItem("lastFilterValue");
+		var sessionKey = sessionStorage.getItem("lastFilterKeyGrammer");
+		var sessionValue = sessionStorage.getItem("lastFilterValueGrammer");
 		if(sessionKey != null && sessionValue != null){
 			filterSelected = sessionKey;
 			document.getElementById("btnFilterShow").innerHTML = sessionValue;
@@ -277,9 +277,9 @@
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-						sessionStorage.setItem("lastFilterKey",type);
-						sessionStorage.setItem("lastFilterValue", document.getElementById("btnFilterShow").innerHTML);
-						
+						sessionStorage.setItem("lastFilterKeyGrammer",type);
+						sessionStorage.setItem("lastFilterValueGrammer", document.getElementById("btnFilterShow").innerHTML);
+
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
 						var color = parseInt('f0f0f0', 16);
