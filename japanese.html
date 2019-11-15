@@ -234,7 +234,18 @@
 			}
 		}
 
+		var inputMyRange = document.getElementById("myRange");
+		inputMyRange.on("input", function() {
+				sessionStorage.setItem("lastFilterKeyWord",inputMyRange.value);
+		});
+
 		function restart(){
+
+			var sessionKey = sessionStorage.getItem("lastFilterKeyJp");
+			if(sessionKey != null){
+					document.getElementById("myRange").value = sessionKey;
+			}
+
 			genShowJpText();
 			genMC();
 			answered = false;
