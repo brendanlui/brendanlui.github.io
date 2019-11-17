@@ -236,7 +236,8 @@
 		var cookieKey = getCookie("lastFilterKeyGrammer");
 		if(cookieKey != ""){
 			filterSelected = cookieKey;
-			document.getElementById("btnFilterShow").innerHTML = document.getElementById('btnFilter'+cookieKey).innerHTML;
+			var temp = document.getElementById('btnFilter'+filterSelected);
+			document.getElementById("btnFilterShow").innerHTML = temp.innerHTML;
 		}
 		loadDoc(filterSelected);
 	}
