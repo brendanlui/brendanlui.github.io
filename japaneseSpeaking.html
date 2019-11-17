@@ -70,6 +70,13 @@
 				mySidenav.style.width = "300px";
 				document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 				btnFilterShow.className += " active";
+
+				//active current filter
+				var arrFilter = document.getElementsByClassName("filter");
+				for(i = 0; i < arrFilter.length; i++){
+					arrFilter[i].className = arrFilter[i].className.replace(' active', '');
+				}
+				document.getElementById('btnFilter' + filterSelected).className += ' active';
 			}
 	}
 	function closeNav() {
