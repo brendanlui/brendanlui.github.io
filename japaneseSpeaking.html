@@ -205,7 +205,7 @@
 		var cookieKey = getCookie("lastFilterKeySpeaking");
 		var cookieValue = getCookie("lastFilterValueSpeaking");
 
-		if(cookieKey != null && cookieValue != null){
+		if(cookieKey != "" && cookieValue != ""){
 			filterSelected = cookieKey;
 			document.getElementById("btnFilterShow").innerHTML = cookieValue;
 		}
