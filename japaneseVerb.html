@@ -451,9 +451,9 @@
 
 				if(cookieKey != ""){
 					filterSelected = cookieKey;
-					waitForElementToDisplay('#btnFilter'+filterSelected, 100, '#btnFilterShow')
 				}
 
+				waitForElementToDisplay('#btnFilter'+filterSelected, 100, '#btnFilterShow');
 				filterSelection(filterSelected);
 				clear();
 			}
