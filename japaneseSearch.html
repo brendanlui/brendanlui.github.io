@@ -323,7 +323,7 @@
 									}
 									document.getElementById("source").innerHTML += finalResult;
 
-									if(finalResult.split('</tr>').length >= 2){
+									if(finalResult != '<tr><td></td></tr>'){
 											for(i = 10; i > 1; i--){
 													var cookieKey = getCookie("lastFilterKeySearch" + (i-1));
 													if(cookieKey != ""){
