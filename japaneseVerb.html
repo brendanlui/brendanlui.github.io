@@ -325,10 +325,6 @@
 								setCookie('lastFilterValue1Verb', document.getElementById("btnOpenModal").innerHTML, 36500);
 								setCookie('lastFilterValue2Verb', document.getElementById("btnFilterShow").innerHTML, 36500);
 
-								// cookieStorage.setItem("lastFilterKeyVerb",type);
-								// cookieStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
-								// cookieStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
-
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
 								// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
@@ -448,9 +444,6 @@
 				var cookieValue1 = getCookie("lastFilterValue1Verb");
 				var cookieValue2 = getCookie("lastFilterValue2Verb");
 
-				// var cookieKey = cookieStorage.getItem("lastFilterKeyVerb");
-				// var cookieValue1 = cookieStorage.getItem("lastFilterValue1Verb");
-				// var cookieValue2 = cookieStorage.getItem("lastFilterValue2Verb");
 				if(cookieKey != "" && cookieValue1 != "" && cookieValue2 != ""){
 					filterSelected = cookieKey;
 				}
