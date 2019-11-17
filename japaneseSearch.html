@@ -324,6 +324,16 @@
 									document.getElementById("source").innerHTML += finalResult;
 
 									if(finalResult != '<tr><td></td></tr>'){
+											var arrCookie = [];
+											var cookieCount = 0;
+											for(i = i; i <= 10; i++){
+													var cookieKey = getCookie("lastFilterKeySearch" + i);
+													if(cookieKey != "" && arrCookie.indexOf(cookieKey) >= 0){
+															arrCookie[cookieCount] = cookieKey;
+															cookieCount++;
+													}
+											}
+
 											for(i = 10; i > 1; i--){
 													var cookieKey = getCookie("lastFilterKeySearch" + (i-1));
 													if(cookieKey != ""){
