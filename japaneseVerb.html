@@ -325,9 +325,9 @@
 								setCookie('lastFilterValue1Verb', document.getElementById("btnOpenModal").innerHTML, 36500);
 								setCookie('lastFilterValue2Verb', document.getElementById("btnFilterShow").innerHTML, 36500);
 
-								// sessionStorage.setItem("lastFilterKeyVerb",type);
-								// sessionStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
-								// sessionStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
+								// cookieStorage.setItem("lastFilterKeyVerb",type);
+								// cookieStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
+								// cookieStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
 
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
@@ -444,15 +444,15 @@
 
 			function restart(){
 
-				var sessionKey = getCookie("lastFilterKeyVerb");
-				var sessionValue1 = getCookie("lastFilterValue1Verb");
-				var sessionValue2 = getCookie("lastFilterValue2Verb");
+				var cookieKey = getCookie("lastFilterKeyVerb");
+				var cookieValue1 = getCookie("lastFilterValue1Verb");
+				var cookieValue2 = getCookie("lastFilterValue2Verb");
 
-				// var sessionKey = sessionStorage.getItem("lastFilterKeyVerb");
-				// var sessionValue1 = sessionStorage.getItem("lastFilterValue1Verb");
-				// var sessionValue2 = sessionStorage.getItem("lastFilterValue2Verb");
-				if(sessionKey != "" && sessionValue1 != "" && sessionValue2 != ""){
-					filterSelected = sessionKey;
+				// var cookieKey = cookieStorage.getItem("lastFilterKeyVerb");
+				// var cookieValue1 = cookieStorage.getItem("lastFilterValue1Verb");
+				// var cookieValue2 = cookieStorage.getItem("lastFilterValue2Verb");
+				if(cookieKey != "" && cookieValue1 != "" && cookieValue2 != ""){
+					filterSelected = cookieKey;
 				}
 
 				filterSelection(filterSelected);
