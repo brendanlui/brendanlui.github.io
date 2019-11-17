@@ -161,7 +161,7 @@
 								searchEach('Old' + i, searchKey);
 							}
 
-							for(i = 2; i <= 10; i++){
+							for(i = 10; i > 1; i--){
 									var cookieKey = getCookie("lastFilterKeySearch" + (i-1));
 									if(cookieKey != ""){
 										setCookie('lastFilterKeySearch' + i, cookieKey, 36500);
