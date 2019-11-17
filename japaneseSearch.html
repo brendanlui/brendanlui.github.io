@@ -142,25 +142,23 @@
 			var resultSet = {};
 			function searchAll(){
 				var searchKey = document.getElementById("searchKey").value.trim();
-				if(searchKey != existSearchKey){
-						document.getElementById("displayNone").innerHTML = "";
-						document.getElementById("source").innerHTML = '<tr>'
-									+	'<th>日語</th>'
-									+ '<th>重音</th>'
-									+ '<th>漢字</th>'
-									+ '<th>解釋</th>'
-									//+ '<th>英語</th>'
-									+ '<th>詞性</th>'
-									+ '<th>單元</th>'
-									+ '</tr>';
+				if(searchKey != existSearchKey && searchKey != ""){
+							document.getElementById("displayNone").innerHTML = "";
+							document.getElementById("source").innerHTML = '<tr>'
+										+	'<th>日語</th>'
+										+ '<th>重音</th>'
+										+ '<th>漢字</th>'
+										+ '<th>解釋</th>'
+										//+ '<th>英語</th>'
+										+ '<th>詞性</th>'
+										+ '<th>單元</th>'
+										+ '</tr>';
 
-						if(searchKey != ""){
 							document.getElementById("myBar").style.display = "block";
 							existSearchKey = searchKey;
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
 							}
-						}
 				}
 			}
 
