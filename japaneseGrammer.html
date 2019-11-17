@@ -234,10 +234,9 @@
 		loadFilter();
 
 		var cookieKey = getCookie("lastFilterKeyGrammer");
-		var cookieValue = getCookie("lastFilterValueGrammer");
-		if(cookieKey != "" && cookieValue != ""){
+		if(cookieKey != ""){
 			filterSelected = cookieKey;
-			document.getElementById("btnFilterShow").innerHTML = cookieValue;
+			document.getElementById("btnFilterShow").innerHTML = document.getElementById('btnFilter'+cookieKey).innerHTML;
 		}
 		loadDoc(filterSelected);
 	}
@@ -306,7 +305,6 @@
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
 						setCookie('lastFilterKeyGrammer', type, 36500);
-						setCookie('lastFilterValueGrammer', document.getElementById("btnFilterShow").innerHTML, 36500);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
