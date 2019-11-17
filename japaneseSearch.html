@@ -328,19 +328,23 @@
 											var cookieCount = 0;
 											for(i = i; i <= 10; i++){
 													var cookieKey = getCookie("lastFilterKeySearch" + i);
-													if(cookieKey != "" && arrCookie.indexOf(cookieKey) >= 0){
+													if(cookieKey != ""){
 															arrCookie[cookieCount] = cookieKey;
 															cookieCount++;
+													}else{
+															break;
 													}
 											}
 
-											for(i = 10; i > 1; i--){
-													var cookieKey = getCookie("lastFilterKeySearch" + (i-1));
-													if(cookieKey != ""){
-														setCookie('lastFilterKeySearch' + i, cookieKey, 36500);
+											if(arrCookie.indexOf(existSearchKey) < 0){
+													for(i = 10; i > 1; i--){
+															var cookieKey = getCookie("lastFilterKeySearch" + (i-1));
+															if(cookieKey != ""){
+																setCookie('lastFilterKeySearch' + i, cookieKey, 36500);
+															}
 													}
+													setCookie('lastFilterKeySearch1', existSearchKey, 36500);
 											}
-											setCookie('lastFilterKeySearch1', existSearchKey, 36500);
 									}
 								}
 					  }
