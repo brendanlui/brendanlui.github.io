@@ -212,7 +212,7 @@
 						var arr_in = arr[i].split('.html">')[0];
 						var number = arr_in.split('/')[1];
 						dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">'
-									+ number.replace(new RegExp("_", 'g'), '.') + ". " + title + '</a>';
+									+ number.replace(new RegExp("-", 'g'), '.') + ". " + title + '</a>';
 					}
 
 					dir += '</br></br></br></br></br></br>';
