@@ -236,7 +236,7 @@
 		var cookieKey = getCookie("lastFilterKeyGrammer");
 		if(cookieKey != ""){
 			filterSelected = cookieKey;
-			waitForElementToDisplay('#btnFilter'+filterSelected, 500, '#btnFilterShow')
+			waitForElementToDisplay('#btnFilter'+filterSelected, 200, '#btnFilterShow')
 		}
 		loadDoc(filterSelected);
 	}
