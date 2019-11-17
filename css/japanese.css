@@ -90,3 +90,7 @@
 .accentJpValue{
 	font-size:1.5vw;
 }
+
+a.active{
+	color: #FFFFA1;
+}
