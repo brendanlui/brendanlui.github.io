@@ -203,14 +203,25 @@
 		loadFilter();
 
 		var cookieKey = getCookie("lastFilterKeySpeaking");
-		var cookieValue = getCookie("lastFilterValueSpeaking");
 
-		if(cookieKey != "" && cookieValue != ""){
+		if(cookieKey != ""){
 			filterSelected = cookieKey;
-			document.getElementById("btnFilterShow").innerHTML = cookieValue;
+			waitForElementToDisplay('#btnFilter'+filterSelected, 100, '#btnFilterShow')
 		}
 		loadDoc(filterSelected);
 	}
+
+	function waitForElementToDisplay(selector, time, replaceSelector) {
+      if(document.querySelector(selector)!=null) {
+					document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
+          return;
+      }
+      else {
+          setTimeout(function() {
+              waitForElementToDisplay(selector, time, replaceSelector);
+          }, time);
+      }
+  }
 
 	//cookie start
 	function setCookie(cname, cvalue, exdays) {
@@ -224,12 +235,9 @@
 	  var name = cname + "=";
 	  var ca = document.cookie.split(';');
 	  for(var i = 0; i < ca.length; i++) {
-	    var c = ca[i];
-	    while (c.charAt(0) == ' ') {
-	      c = c.substring(1);
-	    }
+	    var c = ca[i].trim();
 	    if (c.indexOf(name) == 0) {
-	      return c.substring(name.length, c.length);
+	      return c.replace(name, "");
 	    }
 	  }
 	  return "";
@@ -279,7 +287,6 @@
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
 						setCookie('lastFilterKeySpeaking', type, 36500);
-						setCookie('lastFilterValueSpeaking', document.getElementById("btnFilterShow").innerHTML, 36500);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
