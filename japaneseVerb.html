@@ -321,9 +321,13 @@
 					xmlhttp.onreadystatechange = function(){
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-								sessionStorage.setItem("lastFilterKeyVerb",type);
-								sessionStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
-								sessionStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
+								setCookie('lastFilterKeyVerb', type, 36500);
+								setCookie('lastFilterValue1Verb', document.getElementById("btnOpenModal").innerHTML, 36500);
+								setCookie('lastFilterValue2Verb', document.getElementById("btnFilterShow").innerHTML, 36500);
+
+								// sessionStorage.setItem("lastFilterKeyVerb",type);
+								// sessionStorage.setItem("lastFilterValue1Verb", document.getElementById("btnOpenModal").innerHTML);
+								// sessionStorage.setItem("lastFilterValue2Verb", document.getElementById("btnFilterShow").innerHTML);
 
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
@@ -361,6 +365,30 @@
 					xmlhttp.open("GET","./verb/" + type + ".txt",true);
 					xmlhttp.send();
 			}
+
+			//cookie start
+			function setCookie(cname, cvalue, exdays) {
+			  var d = new Date();
+			  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			  var expires = "expires="+d.toUTCString();
+			  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+
+			function getCookie(cname) {
+			  var name = cname + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i = 0; i < ca.length; i++) {
+			    var c = ca[i];
+			    while (c.charAt(0) == ' ') {
+			      c = c.substring(1);
+			    }
+			    if (c.indexOf(name) == 0) {
+			      return c.substring(name.length, c.length);
+			    }
+			  }
+			  return "";
+			}
+			//cookie end
 
 			function filterSelection(text){
 				var element = document.getElementById("btnFilter" + text);
@@ -416,9 +444,13 @@
 
 			function restart(){
 
-				var sessionKey = sessionStorage.getItem("lastFilterKeyVerb");
-				var sessionValue1 = sessionStorage.getItem("lastFilterValue1Verb");
-				var sessionValue2 = sessionStorage.getItem("lastFilterValue2Verb");
+				var sessionKey = getCookie("lastFilterKeyVerb");
+				var sessionValue1 = getCookie("lastFilterValue1Verb");
+				var sessionValue2 = getCookie("lastFilterValue2Verb");
+
+				// var sessionKey = sessionStorage.getItem("lastFilterKeyVerb");
+				// var sessionValue1 = sessionStorage.getItem("lastFilterValue1Verb");
+				// var sessionValue2 = sessionStorage.getItem("lastFilterValue2Verb");
 				if(sessionKey != null && sessionValue1 != null && sessionValue2 != null){
 					filterSelected = sessionKey;
 				}
