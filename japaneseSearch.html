@@ -321,7 +321,6 @@
 										}
 										finalResult += "</tr>";
 									}
-									document.getElementById("source").innerHTML += finalResult;
 
 									if(finalResult != '<tr><td></td></tr>'){
 											var arrCookie = [];
@@ -345,6 +344,7 @@
 													}
 													setCookie('lastFilterKeySearch1', existSearchKey, 36500);
 											}
+											document.getElementById("source").innerHTML += finalResult;
 									}
 								}
 					  }
