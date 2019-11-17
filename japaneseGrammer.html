@@ -236,11 +236,22 @@
 		var cookieKey = getCookie("lastFilterKeyGrammer");
 		if(cookieKey != ""){
 			filterSelected = cookieKey;
-			var temp = document.getElementById('btnFilter'+filterSelected);
-			document.getElementById("btnFilterShow").innerHTML = temp.innerHTML;
+			waitForElementToDisplay('#btnFilter'+filterSelected, 500, '#btnFilterShow')
 		}
 		loadDoc(filterSelected);
 	}
+
+	function waitForElementToDisplay(selector, time, replaceSelector) {
+      if(document.querySelector(selector)!=null) {
+					document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
+          return;
+      }
+      else {
+          setTimeout(function() {
+              waitForElementToDisplay(selector, time);
+          }, time);
+      }
+  }
 
 	//cookie start
 	function setCookie(cname, cvalue, exdays) {
