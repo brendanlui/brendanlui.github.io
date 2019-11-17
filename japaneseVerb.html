@@ -322,8 +322,7 @@
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
 								setCookie('lastFilterKeyVerb', type, 36500);
-								setCookie('lastFilterValue1Verb', document.getElementById("btnOpenModal").innerHTML, 36500);
-								setCookie('lastFilterValue2Verb', document.getElementById("btnFilterShow").innerHTML, 36500);
+								setCookie('lastFilterValueVerb', document.getElementById("btnFilterShow").innerHTML, 36500);
 
 					    	var txt = xmlhttp.responseText;
 								var dir = "";
@@ -441,10 +440,9 @@
 			function restart(){
 
 				var cookieKey = getCookie("lastFilterKeyVerb");
-				var cookieValue1 = getCookie("lastFilterValue1Verb");
-				var cookieValue2 = getCookie("lastFilterValue2Verb");
+				var cookieValue = getCookie("lastFilterValueVerb");
 
-				if(cookieKey != "" && cookieValue1 != "" && cookieValue2 != ""){
+				if(cookieKey != "" && cookieValue != ""){
 					filterSelected = cookieKey;
 				}
 
