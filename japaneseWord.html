@@ -391,9 +391,9 @@
 
 				var arrFilter = document.getElementsByClassName("filter");
 				for(i = 0; i < arrFilter.length; i++){
-					arrFilter[i].class = arrFilter[i].class.replace(' active', '');
+					arrFilter[i].className = arrFilter[i].className.replace(' active', '');
 				}
-				document.getElementById('btnFilter' + filterSelected).class += ' active';
+				document.getElementById('btnFilter' + filterSelected).className += ' active';
 		}
 		// When the user clicks on <span> (x), close the modal
 		close.onclick = function() {
