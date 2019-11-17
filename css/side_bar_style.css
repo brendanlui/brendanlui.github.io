@@ -22,6 +22,10 @@
     transition: 0.3s
 }
 
+.sidenav a.active{
+	color: #FFFFA1;
+}
+
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
