@@ -235,15 +235,15 @@
 		}
 
 		function inputMyRange(){
-				sessionStorage.setItem("lastFilterKeyJp",document.getElementById("myRange").value);
+				setCookie('lastFilterKeyJp', document.getElementById("myRange").value, 36500);
 		}
 
 		function restart(){
 
-			var sessionKey = sessionStorage.getItem("lastFilterKeyJp");
-			if(sessionKey != null){
-					document.getElementById("myRange").value = sessionKey;
-					document.getElementById("demo").innerHTML = sessionKey;
+			var cookieKey = getCookie("lastFilterKeyJp");
+			if(cookieKey != ""){
+					document.getElementById("myRange").value = cookieKey;
+					document.getElementById("demo").innerHTML = cookieKey;
 			}
 
 			genShowJpText();

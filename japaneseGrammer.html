@@ -233,14 +233,38 @@
 	function restart(){
 		loadFilter();
 
-		var sessionKey = sessionStorage.getItem("lastFilterKeyGrammer");
-		var sessionValue = sessionStorage.getItem("lastFilterValueGrammer");
-		if(sessionKey != null && sessionValue != null){
-			filterSelected = sessionKey;
-			document.getElementById("btnFilterShow").innerHTML = sessionValue;
+		var cookieKey = getCookie("lastFilterKeyGrammer");
+		var cookieValue = getCookie("lastFilterValueGrammer");
+		if(cookieKey != "" && cookieValue != ""){
+			filterSelected = cookieKey;
+			document.getElementById("btnFilterShow").innerHTML = cookieValue;
 		}
 		loadDoc(filterSelected);
 	}
+
+	//cookie start
+	function setCookie(cname, cvalue, exdays) {
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	  var expires = "expires="+d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+	  var name = cname + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i = 0; i < ca.length; i++) {
+	    var c = ca[i];
+	    while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+	    }
+	    if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+	    }
+	  }
+	  return "";
+	}
+	//cookie end
 	</script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
 
@@ -284,8 +308,8 @@
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-						sessionStorage.setItem("lastFilterKeyGrammer",type);
-						sessionStorage.setItem("lastFilterValueGrammer", document.getElementById("btnFilterShow").innerHTML);
+						setCookie('lastFilterKeyGrammer', type, 36500);
+						setCookie('lastFilterValueGrammer', document.getElementById("btnFilterShow").innerHTML, 36500);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";

@@ -109,9 +109,8 @@
 				xmlhttp.onreadystatechange = function(){
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-							sessionStorage.setItem("lastFilterKeyWord",type);
-							sessionStorage.setItem("lastFilterValue1Word", document.getElementById("btnOpenModal").innerHTML);
-							sessionStorage.setItem("lastFilterValue2Word", document.getElementById("btnFilterShow").innerHTML);
+							setCookie('lastFilterKeyWord', type, 36500);
+							setCookie('lastFilterValueWord', document.getElementById("btnFilterShow").innerHTML, 36500);
 
 							dir = [];
 							document.getElementById("source").innerHTML = '<tr>'
@@ -274,11 +273,11 @@
 
 		function restart(){
 
-			var sessionKey = sessionStorage.getItem("lastFilterKeyWord");
-			var sessionValue1 = sessionStorage.getItem("lastFilterValue1Word");
-			var sessionValue2 = sessionStorage.getItem("lastFilterValue2Word");
-			if(sessionKey != null && sessionValue1 != null && sessionValue2 != null){
-				filterSelected = sessionKey;
+			var cookieKey = getCookie("lastFilterKeyWord");
+			var cookieValue = getCookie("lastFilterValueWord");
+
+			if(cookieKey != "" && cookieValue != ""){
+				filterSelected = cookieKey;
 			}
 
 			filterSelection(filterSelected);
