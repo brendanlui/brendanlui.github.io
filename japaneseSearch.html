@@ -92,6 +92,10 @@
 	}
 	</style>
 
+	<div id="buttonBox">
+		<button id="btnOpenModal" class="buttonJp btnFilter">最近搜索紀錄</button>
+	</div>
+
 	<div class="wrap">
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
@@ -111,6 +115,16 @@
 	  </div>
 	</div>
 
+	<!-- The Modal -->
+	<link rel="stylesheet" href="/css/modal_box_style.css">
+	<div id="myModal" class="modal">
+	  <div class="modal-content">
+	    <span id="close" class="close">&times;</span>
+			<table id="source">
+			</table>
+	  </div>
+	</div>
+
 	<link rel="stylesheet" href="/css/modal_box_style2.css">
 	<div id="myModal2" class="modal2">
 	  <div class="modal-content2">
@@ -124,6 +138,44 @@
 	</div>
 
 	<script>
+
+
+			//open source start
+			var modal = document.getElementById('myModal');
+			var btnOpenModal = document.getElementById("btnOpenModal");
+			var close = document.getElementById("close");
+			// When the user clicks on the button, open the modal
+			btnOpenModal.onclick = function() {
+			    modal.style.display = "block";
+					btnOpenModal.className += " active";
+
+
+					document.getElementById("source").innerHTML = '<tr>'
+					+ '<th>最近搜索紀錄</th>'
+					+ '</tr>';
+
+					for(i = 1; i <= 10; i++){
+								var cookieKey = getCookie("lastFilterKeySearch" + i);
+								document.getElementById("source").innerHTML += '<tr>'
+										+ '<td><a id="history' + i + '" onclick="onclickHistory(' + i + ')">' + cookieKey + '</a></td>'
+										+ '</tr>';
+					}
+			}
+
+			function onclickHistory(num){
+					document.getElementById("searchKey").value = document.getElementById('history'+num).innerHTML;
+					modal.style.display = "none";
+					btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+					searchAll();
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			close.onclick = function() {
+			    modal.style.display = "none";
+					btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+			}
+			// When the user clicks anywhere outside of the modal, close it
+
 			var input = document.getElementById("searchKey");
 			// Execute a function when the user releases a key on the keyboard
 			input.addEventListener("keyup", function(event) {
