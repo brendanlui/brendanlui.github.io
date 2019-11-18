@@ -92,6 +92,10 @@
 	}
 	</style>
 
+	<div id="buttonBox">
+		<button id="btnOpenModal" class="buttonJp btnFilter">最近搜索紀錄</button>
+	</div>
+
 	<div class="wrap">
 		<div class="search">
 				<input type="text" class="searchTerm" id="searchKey" name="search"/>
@@ -111,6 +115,16 @@
 	  </div>
 	</div>
 
+	<!-- The Modal -->
+	<link rel="stylesheet" href="/css/modal_box_style0.css">
+	<div id="myModal0" class="modal0">
+	  <div class="modal-content0">
+	    <span id="close0" class="close0">&times;</span>
+			<table id="source0">
+			</table>
+	  </div>
+	</div>
+
 	<link rel="stylesheet" href="/css/modal_box_style2.css">
 	<div id="myModal2" class="modal2">
 	  <div class="modal-content2">
@@ -124,6 +138,43 @@
 	</div>
 
 	<script>
+
+
+			//open source start
+			var modal0 = document.getElementById('myModal0');
+			var btnOpenModal = document.getElementById("btnOpenModal");
+			var close0 = document.getElementById("close0");
+			// When the user clicks on the button, open the modal
+			btnOpenModal.onclick = function() {
+			    modal0.style.display = "block";
+					btnOpenModal.className += " active";
+
+					document.getElementById("source0").innerHTML = '<tr>'
+							+ '<th>最近搜索紀錄</th>'
+							+ '</tr>';
+
+					for(i = 1; i <= 10; i++){
+								var cookieKey = getCookie("lastFilterKeySearch" + i);
+								document.getElementById("source0").innerHTML += '<tr>'
+										+ '<td><a id="history' + i + '" onclick="onclickHistory(' + i + ')">' + cookieKey + '</a></td>'
+										+ '</tr>';
+					}
+			}
+
+			function onclickHistory(num){
+					document.getElementById("searchKey").value = document.getElementById('history'+num).innerHTML;
+					modal0.style.display = "none";
+					btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+					searchAll();
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			close.onclick = function() {
+			    modal.style.display = "none";
+					btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+			}
+			// When the user clicks anywhere outside of the modal, close it
+
 			var input = document.getElementById("searchKey");
 			// Execute a function when the user releases a key on the keyboard
 			input.addEventListener("keyup", function(event) {
@@ -144,7 +195,7 @@
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey && searchKey != ""){
 							document.getElementById("displayNone").innerHTML = "";
-							document.getElementById("source").innerHTML = '<tr>'
+							document.getElementById("source0").innerHTML = '<tr>'
 										+	'<th>日語</th>'
 										+ '<th>重音</th>'
 										+ '<th>漢字</th>'
@@ -343,9 +394,9 @@
 													setCookie('lastFilterKeySearch1', existSearchKey, 36500);
 											}
 
-											document.getElementById("source").innerHTML += finalResult;
+											document.getElementById("source0").innerHTML += finalResult;
 									}else{
-											document.getElementById("source").innerHTML = "";
+											document.getElementById("source0").innerHTML = "";
 									}
 								}
 					  }
