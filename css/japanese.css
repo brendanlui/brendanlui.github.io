@@ -87,7 +87,7 @@
 }
 
 #source0 td, #source0 th
-#source2 td, #source2 th
+, #source2 td, #source2 th
 , #source3 td, #source3 th {
 	text-align: center;
 	font-size: 20px;
