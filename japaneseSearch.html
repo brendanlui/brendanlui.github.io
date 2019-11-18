@@ -106,10 +106,10 @@
 		<i class="fa fa-refresh fa-spin"></i> Loading
 	</button>
 
-	<div id="myModal" class="modal">
+	<div id="myModal0" class="modal">
 	  <div class="modal-content">
 			<a id="toppest" class="smooth"></a>
-			<table id="source">
+			<table id="source0">
 			</table>
 			<span style="display:none;" id="displayNone"></sapn>
 	  </div>
@@ -196,7 +196,7 @@
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey && searchKey != ""){
 							document.getElementById("displayNone").innerHTML = "";
-							document.getElementById("source").innerHTML = '<tr>'
+							document.getElementById("source0").innerHTML = '<tr>'
 										+	'<th>日語</th>'
 										+ '<th>重音</th>'
 										+ '<th>漢字</th>'
@@ -395,9 +395,9 @@
 													setCookie('lastFilterKeySearch1', existSearchKey, 36500);
 											}
 
-											document.getElementById("source").innerHTML += finalResult;
+											document.getElementById("source0").innerHTML += finalResult;
 									}else{
-											document.getElementById("source").innerHTML = "";
+											document.getElementById("source0").innerHTML = "";
 									}
 								}
 					  }
