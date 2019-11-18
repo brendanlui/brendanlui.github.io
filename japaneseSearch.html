@@ -109,7 +109,7 @@
 	<div id="myModal0" class="modal">
 	  <div class="modal-content">
 			<a id="toppest" class="smooth"></a>
-			<table id="source0">
+			<table id="source">
 			</table>
 			<span style="display:none;" id="displayNone"></sapn>
 	  </div>
@@ -120,7 +120,7 @@
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
 	    <span id="close" class="close">&times;</span>
-			<table id="source">
+			<table id="source0">
 			</table>
 	  </div>
 	</div>
@@ -149,10 +149,9 @@
 			    modal.style.display = "block";
 					btnOpenModal.className += " active";
 
-
 					document.getElementById("source").innerHTML = '<tr>'
-					+ '<th>最近搜索紀錄</th>'
-					+ '</tr>';
+							+ '<th>最近搜索紀錄</th>'
+							+ '</tr>';
 
 					for(i = 1; i <= 10; i++){
 								var cookieKey = getCookie("lastFilterKeySearch" + i);
