@@ -155,9 +155,11 @@
 
 					for(i = 1; i <= 10; i++){
 								var cookieKey = getCookie("lastFilterKeySearch" + i);
-								document.getElementById("source0").innerHTML += '<tr>'
-										+ '<td><a id="history' + i + '" onclick="onclickHistory(' + i + ')">' + cookieKey + '</a></td>'
-										+ '</tr>';
+								if(cookieKey != ""){
+									document.getElementById("source0").innerHTML += '<tr>'
+											+ '<td><a id="history' + i + '" onclick="onclickHistory(' + i + ')">' + cookieKey + '</a></td>'
+											+ '</tr>';
+								}
 					}
 			}
 
