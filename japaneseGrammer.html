@@ -71,6 +71,7 @@
 	var changeBook = 0;
 	var oldFilterOrder = [];
 	var newFilterOrder = [];
+	var orderMap = new Map();
 	function changeBookButton(){
 			if(oldFilterOrder.length == 0 && newFilterOrder == 0){
 							var arrFilter = document.getElementsByClassName("filter");
@@ -91,6 +92,7 @@
 														var filter = temp[temp.length - 1];
 														if(newFilterOrder.indexOf(filter) < 0){
 																newFilterOrder[newFilterOrder.length] = filter;
+																orderMap.set(filter, (i+1) + '-' + newFilterOrder.length);
 														}
 												}
 										}
@@ -101,6 +103,7 @@
 										}
 										console.log(oldFilterOrder);
 										console.log(newFilterOrder);
+										console.log(orderMap);
 								}
 							};
 							xmlhttp.open("GET","./grammer/text/0_0.html",true);
