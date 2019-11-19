@@ -41,7 +41,7 @@
 	</div>
 
 	<div id="buttonBox">
-		<button id="btnChangeBook" class="buttonJp btnFilter" onclick="changeBook()" style="white-space: nowrap;">初級日本語</button>
+		<button id="btnChangeBook" class="buttonJp btnFilter" onclick="changeBookButton()" style="white-space: nowrap;">初級日本語</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()" style="white-space: nowrap;">單元</button>
 		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="btnOpenModal2()">內容</button>
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
@@ -71,7 +71,7 @@
 	var changeBook = 0;
 	var oldFilterOrder = [];
 	var newFilterOrder = [];
-	function changeBook(){
+	function changeBookButton(){
 			if(oldFilterOrder.length == 0 && newFilterOrder == 0){
 							var arrFilter = document.getElementsByClassName("filter");
 							for(i = 0; i < arrFilter.length; i++){
