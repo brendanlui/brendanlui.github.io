@@ -79,7 +79,7 @@
 							for(i = 0; i < arrFilter.length; i++){
 									var filterId = arrFilter[i].id.replace('btnFilter', '');
 									oldFilterOrder[oldFilterOrder.length] = filterId;
-									filterMap.set(filterId, arrFilter[i].innerHTML.replace(filterId.replace(new RegExp("-", 'g'), '.') +' ', ''));
+									filterMap.set(filterId, arrFilter[i].innerHTML.replace(filterId.replace(new RegExp("-", 'g'), '.').trimRight('.') +' ', ''));
 							}
 
 							var xmlhttp = new XMLHttpRequest();
