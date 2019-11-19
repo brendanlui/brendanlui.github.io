@@ -117,7 +117,7 @@
 				dir += '<a id="toppestNav" class="smooth"></a>';
 				dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
-				var cookieGet = orderMap.get(getCookie("lastFilterKeyGrammer0"));
+				var cookieGet = getCookie("lastFilterKeyGrammer0");
 				if(changeBook == 0){
 						changeBook = 1;
 						for(i = 0; i < newFilterOrder.length; i++){
@@ -126,8 +126,8 @@
 						}
 						document.getElementById('btnChangeBook').className += " active";
 						document.getElementById('btnChangeBook').innerHTML = '大家的日本語';
-						if(cookieGet){
-								document.getElementById('btnFilterShow').innerHTML = cookieGet.replace(new RegExp("-", 'g'), '.')
+						if(orderMap.get(cookieGet)){
+								document.getElementById('btnFilterShow').innerHTML = orderMap.get(cookieGet).replace(new RegExp("-", 'g'), '.')
 												+ ". " + filterMap.get(cookieGet);
 						}else{
 								document.getElementById('btnFilterShow').innerHTML = newFilterOrder[0] + ". " + filterMap.get(newFilterOrder[0]);
