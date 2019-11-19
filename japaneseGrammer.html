@@ -86,13 +86,15 @@
 										var arr = txt.split('文型</td>');
 										arr.shift();
 										for(i = 0; i < arr.length; i++){
+												var count = 0;
 												arr_in = arr[i].split(".html'>JPLANG ");
 												for(j = 0; j < arr_in.length - 1; j++){
 														var temp = arr_in[j].split('/');
 														var filter = temp[temp.length - 1];
 														if(newFilterOrder.indexOf(filter) < 0){
 																newFilterOrder[newFilterOrder.length] = filter;
-																orderMap.set(filter, (i+1) + '-' + newFilterOrder.length);
+																count++;
+																orderMap.set(filter, (i+1) + '-' + count);
 														}
 												}
 										}
