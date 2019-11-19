@@ -74,68 +74,71 @@
 	var orderMap = new Map();
 	var filterMap = new Map();
 	function changeBookButton(){
-				oldFilterOrder = [];
-				newFilterOrder = [];
-				orderMap.clear();
-				filterMap.clear();
 
-							var arrFilter = document.getElementsByClassName("filter");
-							for(i = 0; i < arrFilter.length; i++){
-									var filterId = arrFilter[i].id.replace('btnFilter', '');
-									oldFilterOrder[oldFilterOrder.length] = filterId;
-									var filterContent = arrFilter[i].innerHTML;
-									filterMap.set(filterId, filterContent.replace(filterId.replace(new RegExp("-", 'g'), '.')+'. ', ''));
-							}
 
-							var xmlhttp = new XMLHttpRequest();
-							xmlhttp.onreadystatechange = function(){
-								if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-										var txt = xmlhttp.responseText;
-										var arr = txt.split('文型</td>');
-										arr.shift();
-										for(i = 0; i < arr.length; i++){
-												var count = 0;
-												arr_in = arr[i].split(".html'>JPLANG ");
-												for(j = 0; j < arr_in.length - 1; j++){
-														var temp1 = arr_in[j].split('/');
-														var filter = temp1[temp1.length - 1];
-														if(newFilterOrder.indexOf(filter) < 0){
-																newFilterOrder[newFilterOrder.length] = filter;
-																count++;
-																orderMap.set(filter, (i+1) + '-' + count);
+
+						var xmlhttp = new XMLHttpRequest();
+						xmlhttp.onreadystatechange = function(){
+							if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+									var txt = xmlhttp.responseText;
+
+									if(oldFilterOrder.length == 0 && newFilterOrder.length == 0){
+												var arrFilter = document.getElementsByClassName("filter");
+												for(i = 0; i < arrFilter.length; i++){
+														var filterId = arrFilter[i].id.replace('btnFilter', '');
+														oldFilterOrder[oldFilterOrder.length] = filterId;
+														var filterContent = arrFilter[i].innerHTML;
+														filterMap.set(filterId, filterContent.replace(filterId.replace(new RegExp("-", 'g'), '.')+'. ', ''));
+												}
+
+												var arr = txt.split('文型</td>');
+												arr.shift();
+												for(i = 0; i < arr.length; i++){
+														var count = 0;
+														arr_in = arr[i].split(".html'>JPLANG ");
+														for(j = 0; j < arr_in.length - 1; j++){
+																var temp1 = arr_in[j].split('/');
+																var filter = temp1[temp1.length - 1];
+																if(newFilterOrder.indexOf(filter) < 0){
+																		newFilterOrder[newFilterOrder.length] = filter;
+																		count++;
+																		orderMap.set(filter, (i+1) + '-' + count);
+																}
 														}
 												}
-										}
-										var dir = "";
-										dir += '<a id="toppestNav" class="smooth"></a>';
-										dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+									}
+									confirmChange();
+							}
+						};
+						xmlhttp.open("GET","./grammer/text/0_0.html",true);
+						xmlhttp.send();
+	}
 
-										if(changeBook == 0){
-												changeBook = 1;
-												for(i = 0; i < newFilterOrder.length; i++){
-													dir += '<a href="#" class="filter" id="btnFilter' + newFilterOrder[i] + '" onclick="filterSelection(\''+ newFilterOrder[i] +'\')">'
-																+ orderMap.get(newFilterOrder[i]).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]) + '</a>';
-												}
-										}else{
-												changeBook = 0;
-												for(i = 0; i < oldFilterOrder.length; i++){
-													dir += '<a href="#" class="filter" id="btnFilter' + oldFilterOrder[i] + '" onclick="filterSelection(\''+ oldFilterOrder[i] +'\')">'
-																+ oldFilterOrder[i].replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(oldFilterOrder[i]) + '</a>';
-												}
-										}
+	function confirmChange(){
+				var dir = "";
+				dir += '<a id="toppestNav" class="smooth"></a>';
+				dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
-										dir += '</br></br></br></br></br></br>';
-										console.log(oldFilterOrder);
-										console.log(newFilterOrder);
-										console.log(orderMap);
-										console.log(filterMap);
+				if(changeBook == 0){
+						changeBook = 1;
+						for(i = 0; i < newFilterOrder.length; i++){
+							dir += '<a href="#" class="filter" id="btnFilter' + newFilterOrder[i] + '" onclick="filterSelection(\''+ newFilterOrder[i] +'\')">'
+										+ orderMap.get(newFilterOrder[i]).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]) + '</a>';
+						}
+				}else{
+						changeBook = 0;
+						for(i = 0; i < oldFilterOrder.length; i++){
+							dir += '<a href="#" class="filter" id="btnFilter' + oldFilterOrder[i] + '" onclick="filterSelection(\''+ oldFilterOrder[i] +'\')">'
+										+ oldFilterOrder[i].replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(oldFilterOrder[i]) + '</a>';
+						}
+				}
 
-
-										document.getElementById("mySidenav").innerHTML = dir;
-								}
-							};
-							xmlhttp.open("GET","./grammer/text/0_0.html",true);
-							xmlhttp.send();
+				dir += '</br></br></br></br></br></br>';
+				console.log(oldFilterOrder);
+				console.log(newFilterOrder);
+				console.log(orderMap);
+				console.log(filterMap);
+				document.getElementById("mySidenav").innerHTML = dir;
 	}
 
 	var modal2 = document.getElementById('myModal2');
