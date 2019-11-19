@@ -74,7 +74,11 @@
 	var orderMap = new Map();
 	var filterMap = new Map();
 	function changeBookButton(){
-			if(oldFilterOrder.length == 0 && newFilterOrder == 0){
+				oldFilterOrder = [];
+				newFilterOrder = [];
+				orderMap.clear();
+				filterMap.clear();
+
 							var arrFilter = document.getElementsByClassName("filter");
 							for(i = 0; i < arrFilter.length; i++){
 									var filterId = arrFilter[i].id.replace('btnFilter', '');
@@ -132,7 +136,6 @@
 							};
 							xmlhttp.open("GET","./grammer/text/0_0.html",true);
 							xmlhttp.send();
-			}
 	}
 
 	var modal2 = document.getElementById('myModal2');
