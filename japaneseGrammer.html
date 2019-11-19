@@ -80,7 +80,7 @@
 									var filterId = arrFilter[i].id.replace('btnFilter', '');
 									oldFilterOrder[oldFilterOrder.length] = filterId;
 									var filterContent = arrFilter[i].innerHTML;
-									filterMap.set(filterId, filterContent.replace(filterId.replace(new RegExp("-", 'g'), '.').trimRight('.') +' ', ''));
+									filterMap.set(filterId, filterContent.replace(filterId.replace(new RegExp("-", 'g'), '.')+'. ', ''));
 							}
 
 							var xmlhttp = new XMLHttpRequest();
