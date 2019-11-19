@@ -117,6 +117,7 @@
 				dir += '<a id="toppestNav" class="smooth"></a>';
 				dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
+				var cookieGet = orderMap.get(getCookie("lastFilterKeyGrammer0"));
 				if(changeBook == 0){
 						changeBook = 1;
 						for(i = 0; i < newFilterOrder.length; i++){
@@ -125,8 +126,9 @@
 						}
 						document.getElementById('btnChangeBook').className += " active";
 						document.getElementById('btnChangeBook').innerHTML = '大家的日本語';
-						if(orderMap.get(getCookie("lastFilterKeyGrammer0"))){
-								document.getElementById('btnFilterShow').innerHTML = orderMap.get(getCookie("lastFilterKeyGrammer0")).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]);
+						if(cookieGet){
+								document.getElementById('btnFilterShow').innerHTML = cookieGet.replace(new RegExp("-", 'g'), '.')
+												+ ". " + filterMap.get(cookieGet);
 						}else{
 								document.getElementById('btnFilterShow').innerHTML = newFilterOrder[0] + ". " + filterMap.get(newFilterOrder[0]);
 						}
@@ -139,7 +141,7 @@
 						}
 						document.getElementById('btnChangeBook').className = document.getElementById('btnChangeBook').className.replace(" active", "");
 						document.getElementById('btnChangeBook').innerHTML = '初級日本語';
-						document.getElementById('btnFilterShow').innerHTML = getCookie("lastFilterKeyGrammer0").replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]);
+						document.getElementById('btnFilterShow').innerHTML = cookieGet.replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(cookieGet);
 				}
 
 				dir += '</br></br></br></br></br></br>';
