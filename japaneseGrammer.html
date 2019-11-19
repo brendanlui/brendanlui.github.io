@@ -102,15 +102,32 @@
 														}
 												}
 										}
+										var dir = "";
+										dir += '<a id="toppestNav" class="smooth"></a>';
+										dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+
 										if(changeBook == 0){
 												changeBook = 1;
+												for(i = 0; i < newFilterOrder.length; i++){
+													dir += '<a href="#" class="filter" id="btnFilter' + newFilterOrder[i] + '" onclick="filterSelection(\''+ newFilterOrder[i] +'\')">'
+																+ orderMap.get(newFilterOrder[i]).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]) + '</a>';
+												}
 										}else{
 												changeBook = 0;
+												for(i = 0; i < oldFilterOrder.length; i++){
+													dir += '<a href="#" class="filter" id="btnFilter' + oldFilterOrder[i] + '" onclick="filterSelection(\''+ oldFilterOrder[i] +'\')">'
+																+ oldFilterOrder[i].replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(oldFilterOrder[i]) + '</a>';
+												}
 										}
+
+										dir += '</br></br></br></br></br></br>';
 										console.log(oldFilterOrder);
 										console.log(newFilterOrder);
 										console.log(orderMap);
 										console.log(filterMap);
+
+
+										document.getElementById("mySidenav").innerHTML = dir;
 								}
 							};
 							xmlhttp.open("GET","./grammer/text/0_0.html",true);
