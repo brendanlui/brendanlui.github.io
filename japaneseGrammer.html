@@ -75,8 +75,6 @@
 	var filterMap = new Map();
 	function changeBookButton(){
 
-
-
 						var xmlhttp = new XMLHttpRequest();
 						xmlhttp.onreadystatechange = function(){
 							if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
@@ -125,19 +123,26 @@
 							dir += '<a href="#" class="filter" id="btnFilter' + newFilterOrder[i] + '" onclick="filterSelection(\''+ newFilterOrder[i] +'\')">'
 										+ orderMap.get(newFilterOrder[i]).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]) + '</a>';
 						}
+						document.getElementById('btnChangeBook').className += " active";
+						document.getElementById('btnChangeBook').innerHTML = '大家的日本語';
+						if(orderMap.get(getCookie("lastFilterKeyGrammer0"))){
+								document.getElementById('btnFilterShow').innerHTML = orderMap.get(getCookie("lastFilterKeyGrammer0")).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]);
+						}else{
+								document.getElementById('btnFilterShow').innerHTML = newFilterOrder[0] + ". " + filterMap.get(newFilterOrder[0]);
+						}
+
 				}else{
 						changeBook = 0;
 						for(i = 0; i < oldFilterOrder.length; i++){
 							dir += '<a href="#" class="filter" id="btnFilter' + oldFilterOrder[i] + '" onclick="filterSelection(\''+ oldFilterOrder[i] +'\')">'
 										+ oldFilterOrder[i].replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(oldFilterOrder[i]) + '</a>';
 						}
+						document.getElementById('btnChangeBook').className = document.getElementById('btnChangeBook').className.replace(" active", "");
+						document.getElementById('btnChangeBook').innerHTML = '初級日本語';
+						document.getElementById('btnFilterShow').innerHTML = getCookie("lastFilterKeyGrammer0").replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]);
 				}
 
 				dir += '</br></br></br></br></br></br>';
-				console.log(oldFilterOrder);
-				console.log(newFilterOrder);
-				console.log(orderMap);
-				console.log(filterMap);
 				document.getElementById("mySidenav").innerHTML = dir;
 	}
 
@@ -278,7 +283,7 @@
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
-					var arrTitle = txt.split('<li><a href="/tw/bu/');//</a></li>
+					var arrTitle = txt.split('<li><a href="/tw/bu/');
 					var arr = txt.split('<li><a href="/tw/bu/');
 					arrTitle.shift();
 					arr.shift();
@@ -308,7 +313,7 @@
 	function restart(){
 		loadFilter();
 
-		var cookieKey = getCookie("lastFilterKeyGrammer");
+		var cookieKey = getCookie("lastFilterKeyGrammer0");
 		if(cookieKey != ""){
 			filterSelected = cookieKey;
 		}
@@ -391,7 +396,7 @@
 			xmlhttp.onreadystatechange = function(){
 			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 
-						setCookie('lastFilterKeyGrammer', type, 36500);
+						setCookie('lastFilterKeyGrammer0', type, 36500);
 
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
