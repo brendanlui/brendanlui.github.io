@@ -86,7 +86,7 @@
 										arr.shift();
 										for(i = 0; i < arr.length; i++){
 												arr_in = arr[i].split(".html'>JPLANG ");
-												for(j = 0; j < arr_in.length; j++){
+												for(j = 0; j < arr_in.length - 1; j++){
 														var temp = arr_in[j].split('/');
 														var filter = temp[temp.length - 1];
 														if(newFilterOrder.indexOf(filter) < 0){
