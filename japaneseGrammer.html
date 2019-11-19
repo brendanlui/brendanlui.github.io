@@ -75,7 +75,7 @@
 			if(oldFilterOrder.length == 0 && newFilterOrder == 0){
 							var arrFilter = document.getElementsByClassName("filter");
 							for(i = 0; i < arrFilter.length; i++){
-									oldFilterOrder[oldFilterOrder.length] = arrFilter[i].id;
+									oldFilterOrder[oldFilterOrder.length] = arrFilter[i].id.replace('btnFilter', '');
 							}
 
 							var xmlhttp = new XMLHttpRequest();
