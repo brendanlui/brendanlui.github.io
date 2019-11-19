@@ -41,6 +41,7 @@
 	</div>
 
 	<div id="buttonBox">
+		<button id="btnChangeBook" class="buttonJp btnFilter" onclick="changeBook()" style="white-space: nowrap;">初級日本語</button>
 		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()" style="white-space: nowrap;">單元</button>
 		<button id="btnOpenModal" class="buttonJp btnFilter" onclick="btnOpenModal2()">內容</button>
 		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
@@ -66,6 +67,47 @@
 	</div>
 
 	<script>
+
+	var changeBook = 0;
+	var oldFilterOrder = [];
+	var newFilterOrder = [];
+	function changeBook(){
+			if(oldFilterOrder.length == 0 && newFilterOrder == 0){
+							var arrFilter = document.getElementsByClassName("filter");
+							for(i = 0; i < arrFilter.length; i++){
+									oldFilterOrder[oldFilterOrder.length] = arrFilter[i].id;
+							}
+
+							var xmlhttp = new XMLHttpRequest();
+							xmlhttp.onreadystatechange = function(){
+								if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+										var txt = xmlhttp.responseText;
+										var arr = txt.split('文型</td>');
+										arr.shift();
+										for(i = 0; i < arr.length; i++){
+												arr_in = arr[i].split(".html'>JPLANG ");
+												for(j = 0; j < arr_in.length; j++){
+														var temp = arr_in[j].split('/');
+														var filter = arr_in[j][temp.length - 1];
+														if(newFilterOrder.indexOf(filter) < 0){
+																newFilterOrder[newFilterOrder.length] = filter;
+														}
+												}
+										}
+										if(changeBook == 0){
+												changeBook = 1;
+										}else{
+												changeBook = 0;
+										}
+								}
+							};
+							xmlhttp.open("GET","./grammer/text/0_0.html",true);
+							xmlhttp.send();
+			}
+			console.log(oldFilterOrder);
+			console.log(newFilterOrder);
+	}
+
 	var modal2 = document.getElementById('myModal2');
 	var close2 = document.getElementById("close2");
 	// When the user clicks on the button, open the modal
