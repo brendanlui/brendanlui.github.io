@@ -283,8 +283,8 @@
 	function checkTitle(){
 
 				var btnChangeBook = document.getElementById('btnChangeBook');
-				if((newFilterOrder.indexOf(text) < 0 && changeBook == 0)
-						|| (oldFilterOrder.indexOf(text) < 0 && changeBook == 1)){
+				if((newFilterOrder.indexOf(filterSelected) < 0 && changeBook == 0)
+						|| (oldFilterOrder.indexOf(filterSelected) < 0 && changeBook == 1)){
 						btnChangeBook.disabled = true;
 						btnChangeBook.style.backgroundColor = "#b9b9b9";
 				}else{
