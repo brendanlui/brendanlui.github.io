@@ -282,16 +282,17 @@
 
 	function checkTitle(){
 
+				var btnChangeBook = document.getElementById('btnChangeBook');
 				if((newFilterOrder.indexOf(text) < 0 && changeBook == 0)
 						|| (oldFilterOrder.indexOf(text) < 0 && changeBook == 1)){
-						document.getElementById('btnChangeBook').disabled = true;
-						document.getElementById('btnChangeBook').style.backgroundColor = "#b9b9b9";
+						btnChangeBook.disabled = true;
+						btnChangeBook.style.backgroundColor = "#b9b9b9";
 				}else{
-						document.getElementById('btnChangeBook').disabled = false;
+						btnChangeBook.disabled = false;
 						if(changeBook = 1){
-								document.getElementById('btnChangeBook').style.backgroundColor = "#009bb9";
+								btnChangeBook.style.backgroundColor = "#009bb9";
 						}else{
-								document.getElementById('btnChangeBook').style.backgroundColor = "#ff4e4e";
+								btnChangeBook.style.backgroundColor = "#ff4e4e";
 						}
 				}
 	}
