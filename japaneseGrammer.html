@@ -120,6 +120,7 @@
 				var cookieGet = getCookie("lastFilterKeyGrammer0");
 				if(changeBook == 0){
 						changeBook = 1;
+						setCookie('lastFilterKeyGrammer1', changeBook, 36500);
 						for(i = 0; i < newFilterOrder.length; i++){
 							dir += '<a href="#" class="filter" id="btnFilter' + newFilterOrder[i] + '" onclick="filterSelection(\''+ newFilterOrder[i] +'\')">'
 										+ orderMap.get(newFilterOrder[i]).replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(newFilterOrder[i]) + '</a>';
@@ -135,6 +136,7 @@
 
 				}else{
 						changeBook = 0;
+						setCookie('lastFilterKeyGrammer1', changeBook, 36500);
 						for(i = 0; i < oldFilterOrder.length; i++){
 							dir += '<a href="#" class="filter" id="btnFilter' + oldFilterOrder[i] + '" onclick="filterSelection(\''+ oldFilterOrder[i] +'\')">'
 										+ oldFilterOrder[i].replace(new RegExp("-", 'g'), '.') + ". " + filterMap.get(oldFilterOrder[i]) + '</a>';
@@ -274,6 +276,13 @@
 		var btnExplan = document.getElementById("btnExplan");
 		btnExplan.className = btnExplan.className.replace(" active", "");
 		chinese = 0;
+
+		if((newFilterOrder.indexOf(text) < 0 && changeBook == 0)
+				|| oldFilterOrder.indexOf(text) < 0 && changeBook == 1){
+				document.getElementById('btnChangeBook').disabled = true;
+		}else{
+				document.getElementById('btnChangeBook').disabled = false;
+		}
 	}
 
 	function loadFilter(){
