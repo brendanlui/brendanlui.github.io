@@ -159,12 +159,6 @@
 		var btnExplan = document.getElementById("btnExplan");
 		btnExplan.className = btnExplan.className.replace(" active", "");
 		chinese = 0;
-
-		//brendan test
-		caches.keys().then(function(names) {
-		    for (let name of names)
-		        caches.delete(name);
-		});
 	}
 
 	function loadFilter(){
