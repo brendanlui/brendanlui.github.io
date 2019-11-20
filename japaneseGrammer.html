@@ -345,13 +345,13 @@
 		waitForElementToDisplay('#btnFilter'+filterSelected, 100, '#btnFilterShow')
 		loadDoc(filterSelected);
 
-		checkTitle();
 	}
 
 	function waitForElementToDisplay(selector, time, replaceSelector) {
       if(document.querySelector(selector)!=null) {
-					document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
-          return;
+							document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
+							checkTitle();
+          		return;
       }
       else {
           setTimeout(function() {
