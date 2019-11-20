@@ -160,7 +160,11 @@
 		btnExplan.className = btnExplan.className.replace(" active", "");
 		chinese = 0;
 
-		localStorage.clear();	//brendan test
+		//brendan test
+		caches.keys().then(function(names) {
+		    for (let name of names)
+		        caches.delete(name);
+		});
 	}
 
 	function loadFilter(){
