@@ -430,6 +430,8 @@
 						var dir = "";
 						var color = parseInt('f0f0f0', 16);
 						var colorDiff = parseInt('ffffff', 16) - parseInt('eeeeee', 16);
+						var playerMap = new Map();
+						var playerCount = 0;
 						arrAudio = [];
 
 						content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
@@ -450,15 +452,19 @@
 								arrSource[i] = arrSource[i].split('<source src="../../../sound/bu/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
 
 								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
-										color = color - (arrJp[i].charCodeAt(0) - 64) * colorDiff;
+										if(!playerMap.get(arrJp[i][0]){
+												playerCount++;
+												playerMap.set(arrJp[i][0], playerCount);
+										}
+										color = color - playerMap.get(arrPlayer[i]) * colorDiff;
 								}
 
 								dir += '<div class="container" id="chat_' + i + '" style="background-color: #' + color.toString(16)
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 
 								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
-											dir += '<img src="/img/P' + (arrJp[i].charCodeAt(0) - 64) + '.jpg" alt="' + arrJp[i][0]
-															+ '" ' + ((arrJp[i].charCodeAt(0) - 64) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
+											dir += '<img src="/img/P' + playerMap.get(arrJp[i][0]) + '.jpg" alt="' + arrJp[i][0]
+															+ '" ' + (playerMap.get(arrJp[i][0]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
 											arrJp[i] = arrJp[i].substr(1).substr(1);
 								}
 
