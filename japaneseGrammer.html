@@ -457,7 +457,7 @@
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 
 								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
-											dir += '<img src="/img/P' + (arrJp[i].charCodeAt(0) - 64) + '.jpg" alt="' + arrPlayer[i]
+											dir += '<img src="/img/P' + (arrJp[i].charCodeAt(0) - 64) + '.jpg" alt="' + arrJp[i][0]
 															+ '" ' + ((arrJp[i].charCodeAt(0) - 64) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
 											arrJp[i] = arrJp[i].substr(1).substr(1);
 								}
