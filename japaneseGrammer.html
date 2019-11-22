@@ -458,12 +458,10 @@
 										}
 								}
 
-								if(arrJp[i].indexOf("→") == 0){
-									arrJp[i] = arrJp[i].replace("→", "→ ");
-								}
+								arrJp[i] = arrJp[i].replace(new RegExp("→", 'g'), "→ ");
 
 								dir += '<div class="container" id="chat_' + i + '" style="background-color: #'
-										+ (arrJp[i][0] == "→" ? "ffffff" :
+										+ (arrJp[i][0].includes("→") ? "ffffff" :
 												((!playerMap.get(arrJp[i][0]) ? color : color - playerMap.get(arrJp[i][0]) * colorDiff).toString(16)))
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 
