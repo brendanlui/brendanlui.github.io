@@ -458,8 +458,13 @@
 										}
 								}
 
+								if(arrJp[i].indexOf("→") == 0){
+									arrJp[i] = arrJp[i].replace("→", "→ ");
+								}
+
 								dir += '<div class="container" id="chat_' + i + '" style="background-color: #'
-										+ (!playerMap.get(arrJp[i][0]) ? color : color - playerMap.get(arrJp[i][0]) * colorDiff).toString(16)
+										+ arrJp[i][0] == "→" ? "" :
+												((!playerMap.get(arrJp[i][0]) ? color : color - playerMap.get(arrJp[i][0]) * colorDiff).toString(16))
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
 
 								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
