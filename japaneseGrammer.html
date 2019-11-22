@@ -429,6 +429,7 @@
 			    	var txt = xmlhttp.responseText;
 						var dir = "";
 						var color = parseInt('f0f0f0', 16);
+						var colorDiff = parseInt('ffffff', 16) - parseInt('eeeeee', 16);
 						arrAudio = [];
 
 						content = txt.split('<div class="toggle_contents" style="display: none;">')[1].split('</div>')[0];
@@ -448,8 +449,19 @@
 								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrSource[i] = arrSource[i].split('<source src="../../../sound/bu/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
 
+								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
+										color = color - (arrJp[i].charCodeAt(0) - 64) * colorDiff;
+								}
+
 								dir += '<div class="container" id="chat_' + i + '" style="background-color: #' + color.toString(16)
 										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
+
+								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
+											dir += '<img src="/img/P' + (arrJp[i].charCodeAt(0) - 64) + '.jpg" alt="' + arrPlayer[i]
+															+ '" ' + ((arrJp[i].charCodeAt(0) - 64) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
+											arrJp[i] = arrJp[i].substr(1).substr(1);
+								}
+
 								dir += '<p class="japanese">' + arrJp[i] + '</p>';
 								dir += '<p class="chinese" style="color:#4a4a4a; display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
@@ -501,7 +513,7 @@
 	}
 
 	function playAll(){
-		
+
 			stopAllAudio();
 			var index = 0;
 			var audio = document.getElementById("playAll");
@@ -524,7 +536,6 @@
 						btnPlay.className = btnPlay.className.replace(" active", "");
 					}
 					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
-
 			};
 	}
 	</script>
