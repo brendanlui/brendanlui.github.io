@@ -469,28 +469,40 @@
 			xmlhttp.send();
 	}
 
-	function playAudio(id){
-			var sounds = document.getElementsByTagName('audio');
-		  for(i = 0; i < sounds.length; i++) {
-				sounds[i].pause();
-				sounds[i].currentTime = 0;
-				if(i < sounds.length - 1){
-					document.getElementById('chat_' + i).style.borderColor = "#ddd";
+	function stopAllAudio(){
+				var sounds = document.getElementsByTagName('audio');
+				for(i = 0; i < sounds.length; i++) {
+					sounds[i].pause();
+					sounds[i].currentTime = 0;
+					if(i < sounds.length - 1){
+						document.getElementById('chat_' + i).style.borderColor = "#ddd";
+					}
 				}
-			}
+	}
 
+	function playAudio(id){
+
+			stopAllAudio();
 			var audio = document.getElementById(id);
 			var btnPlay = document.getElementById("btnPlay");
 			btnPlay.className = btnPlay.className.replace(" active", "");
 
+			var played = 0;
 			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
+			audio.src = "./grammer/audio/" + arrAudio[arrAudio.indexOf(id)];
 			audio.play();
+
 			audio.onended = function() {
-					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+					if(played == 0){
+							document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+							played = 1;
+					}
 			};
 	}
 
 	function playAll(){
+		
+			stopAllAudio();
 			var index = 0;
 			var audio = document.getElementById("playAll");
 			audio.src = "./grammer/audio/" + arrAudio[0];
@@ -505,8 +517,8 @@
 			audio.onended = function() {
 					index++;
 			    if(index < arrAudio.length){
-			        audio.src = "./grammer/audio/" + arrAudio[index];
 							document.getElementById('chat_' + index).style.borderColor = "#4caf50";
+			        audio.src = "./grammer/audio/" + arrAudio[index];
 			        audio.play();
 			    }else if(index == arrAudio.length){
 						btnPlay.className = btnPlay.className.replace(" active", "");
