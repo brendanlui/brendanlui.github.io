@@ -93,7 +93,7 @@
 	</style>
 
 	<div id="buttonBox">
-		<button id="btnOpenModal" class="buttonJp btnFilter">最近搜索紀錄</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter">最近搜尋紀錄</button>
 	</div>
 
 	<div class="wrap">
@@ -112,6 +112,7 @@
 			<table id="source">
 			</table>
 			<span style="display:none;" id="displayNone"></sapn>
+			<span style="display:none;" id="displayNoneNum"></sapn>
 	  </div>
 	</div>
 
@@ -197,6 +198,7 @@
 				var searchKey = document.getElementById("searchKey").value.trim();
 				if(searchKey != existSearchKey && searchKey != ""){
 							document.getElementById("displayNone").innerHTML = "";
+							document.getElementById("displayNoneNum").innerHTML = "";
 							document.getElementById("source").innerHTML = '<tr>'
 										+	'<th>日語</th>'
 										+ '<th>重音</th>'
@@ -347,6 +349,7 @@
 									}
 									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey) || arrJpS[i].includes(searchKey)){
 											document.getElementById("displayNone").innerHTML += string[i] + "^.^";
+											document.getElementById("displayNoneNum").innerHTML += "1";
 									}
 								}
 								responseTotal++;
@@ -397,6 +400,10 @@
 											}
 
 											document.getElementById("source").innerHTML += finalResult;
+											document.getElementById("source").innerHTML += "<tr><th style='text-align: center;background-color: #c5c5c5;'>約 "
+																																	+ document.getElementById("displayNoneNum").innerHTML.length + " 個結果";
+
+
 									}else{
 											document.getElementById("source").innerHTML = "<tr><th style='text-align: center;background-color: #c5c5c5;'>找不到 : "
 																																	+ searchKey + "</th></tr>";
