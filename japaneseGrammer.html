@@ -509,16 +509,7 @@
 			btnPlay.className = btnPlay.className.replace(" active", "");
 
 			var played = 0;
-			// document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
 			audio.src = "./grammer/audio/" + arrAudio[arrAudio.indexOf(id)];
-			// audio.play();
-
-			// audio.onended = function() {
-			// 		if(played == 0){
-			// 				document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
-			// 				played = 1;
-			// 		}
-			// };
 
 			audio.play()
 			.then(function() {
@@ -542,25 +533,30 @@
 			var index = 0;
 			var audio = document.getElementById("playAll");
 			audio.src = "./grammer/audio/" + arrAudio[0];
-			document.getElementById('chat_0').style.borderColor = "#4caf50";
 
 			var btnPlay = document.getElementById("btnPlay");
 			if(!btnPlay.className.includes("active")){
 				btnPlay.className += " active";
 			}
-			audio.play();
-
-			audio.onended = function() {
-					index++;
-			    if(index < arrAudio.length){
-							document.getElementById('chat_' + index).style.borderColor = "#4caf50";
-			        audio.src = "./grammer/audio/" + arrAudio[index];
-			        audio.play();
-			    }else if(index == arrAudio.length){
-						btnPlay.className = btnPlay.className.replace(" active", "");
-					}
-					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
-			};
+			audio.play()
+			.then(function() {
+					document.getElementById('chat_0').style.borderColor = "#4caf50";
+			})
+			.then(function(){
+					audio.onended = function() {
+							index++;
+					    if(index < arrAudio.length){
+									document.getElementById('chat_' + index).style.borderColor = "#4caf50";
+					        audio.src = "./grammer/audio/" + arrAudio[index];
+					        audio.play();
+					    }else if(index == arrAudio.length){
+								btnPlay.className = btnPlay.className.replace(" active", "");
+							}
+							document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
+					};
+			}).catch(function(error) {
+			  	console.log(error);
+			});
 	}
 	</script>
 
