@@ -524,13 +524,11 @@
 			.then(function() {
 					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
 			})
-			.then(function{
-					audio.onended = function() {
-							if(played == 0){
-									document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
-									played = 1;
-							}
-					};
+			.onended(function(){
+					if(played == 0){
+							document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+							played = 1;
+					}
 			}).catch(function(error) {
 			  	console.log(error);
 			});
