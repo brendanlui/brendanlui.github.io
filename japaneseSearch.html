@@ -108,7 +108,6 @@
 
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
-			<a id="toppest" style="display:none;" class="smooth"></a>
 			<table id="source">
 			</table>
 			</br>
@@ -141,26 +140,7 @@
 	  </div>
 	</div>
 
-	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
-	<div id="head">
-		<div id="nav">
-			 <ul>
-					<li><a id="myBtnNav" href="#toppest" class="subtitle" >置頂</a></li>
-			 </ul>
-		</div>
-	</div>
-
 	<script>
-
-			var myModal = document.getElementById('myModal');
-			myModal.onscroll = function() {scrollFunction(myModal, "myBtnNav")};
-			function scrollFunction(body, id) {
-				if (body.scrollTop > 100) {
-					document.getElementById(id).style.display = "block";
-				} else {
-					document.getElementById(id).style.display = "none";
-				}
-			}
 
 			//open source start
 			var modal0 = document.getElementById('myModal0');
@@ -499,7 +479,27 @@
 			}
 			//cookie end
 	</script>
-	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 <li><a id="myBtn" href="#toppest" class="subtitle" >置頂</a></li>
+			 </ul>
+		</div>
+	</div>
+	<script>
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+	</script>
+	<script type="text/javascript" src="/js/jquery.scrollTop.js"></script>
 
 	<ul id="foot">
 		</br>
