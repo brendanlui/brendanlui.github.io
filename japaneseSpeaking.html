@@ -363,16 +363,22 @@
 			btnPlay.className = btnPlay.className.replace(" active", "");
 
 			var played = 0;
-			document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
 			audio.src = "./speaking/audio/" + arrAudio[arrAudio.indexOf(id)];
-			audio.play();
-
-			audio.onended = function() {
-					if(played == 0){
-							document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
-							played = 1;
-					}
-			};
+			audio.play()
+			.then(function() {
+					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
+			})
+			.then(function() {
+					audio.onended = function() {
+							if(played == 0){
+									document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+									played = 1;
+							}
+					};
+			})
+			.catch(function(error) {
+					console.log(error);
+			});
 	}
 
 	function playAll(){
@@ -388,20 +394,31 @@
 			}
 
 			audio.src = "./speaking/audio/" + arrAudio[0];
-			audio.play();
-			document.getElementById('chat_0').style.borderColor = "#4caf50";
-
-			audio.onended = function() {
-					index++;
-			    if(index < arrAudio.length){
-							document.getElementById('chat_' + index).style.borderColor = "#4caf50";
-			        audio.src = "./speaking/audio/" + arrAudio[index];
-			        audio.play();
-			    }else if(index == arrAudio.length){
-							btnPlay.className = btnPlay.className.replace(" active", "");
-					}
-					document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
-			};
+			audio.play()
+			.then(function() {
+					document.getElementById('chat_0').style.borderColor = "#4caf50";
+			})
+			.then(function() {
+					audio.onended = function() {
+							index++;
+					    if(index < arrAudio.length){
+					        audio.src = "./speaking/audio/" + arrAudio[index];
+					        audio.play()
+									.then(function() {
+											document.getElementById('chat_' + index).style.borderColor = "#4caf50";
+									})
+									.catch(function(error) {
+											console.log(error);
+									});
+					    }else if(index == arrAudio.length){
+									btnPlay.className = btnPlay.className.replace(" active", "");
+							}
+							document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
+					};
+			})
+			.catch(function(error) {
+					console.log(error);
+			});
 	}
 	</script>
 
