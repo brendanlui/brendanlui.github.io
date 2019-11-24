@@ -546,9 +546,14 @@
 					audio.onended = function() {
 							index++;
 					    if(index < arrAudio.length){
-									document.getElementById('chat_' + index).style.borderColor = "#4caf50";
 					        audio.src = "./grammer/audio/" + arrAudio[index];
-					        audio.play();
+					        audio.play()
+									.then(function() {
+											document.getElementById('chat_' + index).style.borderColor = "#4caf50";
+									})
+									.catch(function(error) {
+									  	console.log(error);
+									});
 					    }else if(index == arrAudio.length){
 								btnPlay.className = btnPlay.className.replace(" active", "");
 							}
