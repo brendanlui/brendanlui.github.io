@@ -112,7 +112,7 @@
 			<table id="source">
 			</table>
 			</br>
-			<table id="source1" style="padding-top: 5px;padding-bottom: 5px;">
+			<table id="source1">
 			</table>
 			<span style="display:none;" id="displayNone"></sapn>
 	  </div>
@@ -141,12 +141,6 @@
 	  </div>
 	</div>
 
-	<link rel="stylesheet" href="/css/side_bar_style.css">
-	<div id="nav_subtitle">
-		<div id="mySidenav" class="sidenav">
-		</div>
-	</div>
-
 	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
 	<div id="head">
 		<div id="nav">
@@ -158,8 +152,7 @@
 
 	<script>
 
-			var mySidenav = document.getElementById('mySidenav');
-			mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
+			document.onscroll = function() {scrollFunction(document, "myBtnNav")};
 			function scrollFunction(body, id) {
 				if (body.scrollTop > 100) {
 					document.getElementById(id).style.display = "block";
@@ -427,7 +420,7 @@
 											}
 
 											document.getElementById("source").innerHTML += finalResult;
-											document.getElementById("source1").innerHTML += "<tr><th style='text-align: center;background-color: #c5c5c5;'>約 "
+											document.getElementById("source1").innerHTML += "<tr><th style='text-align: center;background-color: #c5c5c5;padding-top: 5px;padding-bottom: 5px;'>約 "
 																																	+ document.getElementById("displayNoneNum").innerHTML.length + " 個結果";
 
 
