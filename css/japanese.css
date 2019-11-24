@@ -48,6 +48,7 @@
 
 #source
 , #source0
+, #source1
 , #source2
 , #source3 {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -58,6 +59,7 @@
 
 #source td, #source th
 , #source0 td, #source0 th
+, #source1 td, #source1 th
 , #source2 td, #source2 th
 , #source3 td, #source3 th{
 	border: 1px solid #ddd;
@@ -65,18 +67,21 @@
 
 #source tr:nth-child(even)
 , #source0 tr:nth-child(even)
+, #source1 tr:nth-child(even)
 , #source2 tr:nth-child(even)
 , #source3 tr:nth-child(even)
 {background-color: #f2f2f2;}
 
 #source tr:hover
 , #source0 tr:hover
+, #source1 tr:hover
 , #source2 tr:hover
 , #source3 tr:hover
 {background-color: #ddd;}
 
 #source th
 , #source0 th
+, #source1 th
 , #source2 th
 , #source3 th {
 	padding-top: 12px;
@@ -87,6 +92,7 @@
 }
 
 #source0 td, #source0 th
+, #source1 td, #source1 th
 , #source2 td, #source2 th
 , #source3 td, #source3 th {
 	text-align: center;
