@@ -97,17 +97,13 @@
 														for(j = 0; j < arr_in.length - 1; j++){
 																var temp1 = arr_in[j].split('/');
 																var filter = temp1[temp1.length - 1];
-																if(newFilterOrder.indexOf(filter) < 0){
+																if(newFilterOrder.indexOf(filter) < 0 && filter.includes('-')){
 																		newFilterOrder[newFilterOrder.length] = filter;
 																		count++;
 																		orderMap.set(filter, (i+1) + '-' + count);
 																}
 														}
 												}
-												console.log(oldFilterOrder);
-												console.log(newFilterOrder);
-												console.log(orderMap);
-												console.log(filterMap);
 									}
 									confirmChange();
 							}
