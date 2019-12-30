@@ -239,6 +239,7 @@
 					&& event.target != document.getElementById("btnExplan")
 					&& event.target != document.getElementById("mySidenav")
 					&& event.target != document.getElementById("myBtnNav")
+					&& event.target != document.getElementById("mySearch")
 					&& document.getElementById("mySidenav").style.width != "0px"
 				){
 					var close = 1;
@@ -306,6 +307,7 @@
 					var dir = "";
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+					dir += '<input type="text" id="mySearch" style="margin-left:32px;background:#000;color: #818181;" onkeyup="searchFilter()" placeholder="搜索" title="search">';
 
 					var arrTitle = txt.split('<li><a href="/tw/bu/');
 					var arr = txt.split('<li><a href="/tw/bu/');
@@ -334,6 +336,21 @@
 		};
 		xmlhttp.open("GET","./grammer/text/0.html",true);
 		xmlhttp.send();
+	}
+
+	function searchFilter(){
+		var input, filter, ul, li, a, i, txtValue;
+		input = document.getElementById("mySearch");
+		filter = input.value.toUpperCase();
+		filterClass = document.getElementsByClassName("filter");
+		for (i = 0; i < filterClass.length; i++) {
+				txtValue = filterClass[i].innerHTML;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						filterClass[i].style.display = "";
+				} else {
+						filterClass[i].style.display = "none";
+				}
+		}
 	}
 
 	function restart(){
