@@ -249,13 +249,12 @@
 							    {
 							        var temp = document.createElement("div");
 							        temp.id = "temp";
-							        temp.style = "color: black;margin:0px;font-size:20px;";
-							        phrase = utf_8_string_to_render;
-							        temp.innerHTML= phrase;
+							        temp.style = "color: black; margin:1px; font-size:20px;";
+							        temp.innerHTML= '<table>' + utf_8_string_to_render + '</table>';
 							        //need to render element, otherwise it won't be displayed
 							        document.body.appendChild(temp);
 
-							        html2canvas($("#source"), {
+							        html2canvas($("#temp"), {
 							        		onrendered: function(canvas) {
 							                $("#temp").remove();
 							            		resolve(canvas.toDataURL('image/png'));
