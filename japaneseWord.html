@@ -243,12 +243,34 @@
 							//pdf start
 							var doc = new jsPDF();
 
-							doc.text(20, 20, "昨杳屎昨");
+							var utf_8_string_to_render = '昨杳屎昨杳';
 
-							// Add new page
-							doc.addPage();
-							// Save the PDF
-							doc.save('document.pdf');
+							Promise.all(
+							[
+							    new Promise(function (resolve)
+							    {
+							        var temp = document.createElement("div");
+							        temp.id = "temp";
+							        temp.style = "color: black;margin:0px;font-size:20px;";
+							        phrase = utf_8_string_to_render;
+							        temp.innerHTML= phrase;
+							        //need to render element, otherwise it won't be displayed
+							        document.body.appendChild(temp);
+
+							        html2canvas($("#temp"), {
+							        		onrendered: function(canvas) {
+							                $("#temp").remove();
+							            		resolve(canvas.toDataURL('image/png'));
+							        		},
+							        });
+							    })
+							]).then(function (ru_text) {
+
+							    doc.addImage(ru_text[0], 'JPEG', 0,0);
+							    doc.text(0, 10, 'Non-utf-8-string' );
+
+							    doc.save('filename.pdf');
+							});
 							//pdf end
 
 							if(changeWay){
