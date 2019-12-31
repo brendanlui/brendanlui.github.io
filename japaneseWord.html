@@ -242,9 +242,7 @@
 
 							//pdf start
 							var doc = new jsPDF();
-
 							var utf_8_string_to_render = document.getElementById("source").innerHTML;
-
 							Promise.all(
 							[
 							    new Promise(function (resolve)
@@ -257,7 +255,7 @@
 							        //need to render element, otherwise it won't be displayed
 							        document.body.appendChild(temp);
 
-							        html2canvas($("#temp"), {
+							        html2canvas($("#source"), {
 							        		onrendered: function(canvas) {
 							                $("#temp").remove();
 							            		resolve(canvas.toDataURL('image/png'));
