@@ -260,15 +260,13 @@
 							        html2canvas($("#temp"), {
 							        		onrendered: function(canvas) {
 							                $("#temp").remove();
+															canvas.style.width = '100%';
 							            		resolve(canvas.toDataURL('image/png'));
 							        		},
 							        });
 							    })
 							]).then(function (ru_text) {
-
 							    doc.addImage(ru_text[0], 'JPEG', 0,0);
-							    doc.text(0, 10, 'Non-utf-8-string' );
-
 							    doc.save('filename.pdf');
 							});
 							//pdf end
