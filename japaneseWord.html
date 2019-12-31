@@ -241,7 +241,7 @@
 							}
 
 							//pdf start
-							var doc = new jsPDF();
+							var doc = new jsPDF("l", "mm", "a4");
 							var utf_8_string_to_render = document.getElementById("source").innerHTML;
 							Promise.all(
 							[
@@ -257,12 +257,12 @@
 							        html2canvas($("#temp"), {
 							        		onrendered: function(canvas) {
 							                $("#temp").remove();
-							            		resolve(canvas.toDataURL('image/png'));
+							            		resolve(canvas.toDataURL('image/png', 1.0));
 							        		},
 							        });
 							    })
 							]).then(function (ru_text) {
-							    doc.addImage(ru_text[0], 'JPEG', 0,0);
+							    doc.addImage(ru_text[0], 'JPEG', 10, 10);
 							    doc.save('filename.pdf');
 							});
 							//pdf end
