@@ -260,7 +260,7 @@
 							        html2canvas($("#temp"), {
 							        		onrendered: function(canvas) {
 							                $("#temp").remove();
-															canvas.style.width = '100%';
+															canvas.width = '100%';
 							            		resolve(canvas.toDataURL('image/png'));
 							        		},
 							        });
