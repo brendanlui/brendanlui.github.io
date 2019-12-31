@@ -283,7 +283,7 @@
         var pdf = new jsPDF('p', 'pt', 'letter');
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
-        source = $('#'+id)[0];
+        source = $('#'+id);
 
         // we support special element handlers. Register them with jQuery-style
         // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
