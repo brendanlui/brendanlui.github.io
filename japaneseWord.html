@@ -237,20 +237,19 @@
 
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
-
-								//pdf start
-								var doc = new jsPDF();
-
-								doc.text(20, 20, dir[i]);
-
-								// Add new page
-								doc.addPage();								
-								// Save the PDF
-								doc.save('document.pdf');
-								//pdf end
-
 								arrEn[i] = arrZh[i];
 							}
+
+							//pdf start
+							var doc = new jsPDF();
+
+							doc.text(20, 20, document.getElementById("source").innerHTML);
+
+							// Add new page
+							doc.addPage();
+							// Save the PDF
+							doc.save('document.pdf');
+							//pdf end
 
 							if(changeWay){
 									var arrTemp = {};
