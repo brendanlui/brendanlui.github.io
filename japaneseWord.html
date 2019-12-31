@@ -13,6 +13,7 @@
 	  href="/img/d01.png">
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="/js/jspdf.min.js"></script>
 
 </head>
 
@@ -236,6 +237,21 @@
 
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
+
+								//pdf start
+								var doc = new jsPDF();
+
+								doc.text(20, 20, 'Hello world!');
+								doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+
+								// Add new page
+								doc.addPage();
+								doc.text(20, 20, 'Visit CodexWorld.com');
+
+								// Save the PDF
+								doc.save('document.pdf');
+								//pdf end
+
 								arrEn[i] = arrZh[i];
 							}
 
