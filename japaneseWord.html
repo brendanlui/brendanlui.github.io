@@ -268,8 +268,9 @@
 			closeNav();
 			document.getElementById("btnFilterShow").innerHTML = element.innerHTML;
 			clear();
-			
-			myModal.scrollTop = 0;
+
+			var toppest = document.getElementById('toppest');
+			toppest.onClick();
 		}
 
 		function restart(){
