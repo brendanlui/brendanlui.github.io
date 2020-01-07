@@ -332,7 +332,7 @@
 						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "");
 
 						var arr_in = arr[i].split('.html">')[0];
-						var number = arr_in.split('/')[1];
+						var number = arr_in.replace(new RegExp("/", 'g'), '-');
 						dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">'
 									+ number.replace(new RegExp("-", 'g'), '.').replace(new RegExp("bu", 'g'), '1').replace(new RegExp("go", 'g'), '2')
 									+ ". " + title + '</a>';
