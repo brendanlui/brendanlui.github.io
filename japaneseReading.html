@@ -181,11 +181,8 @@
 
 						var arr_in = arr[i].split(' <a href="/tw/ka/');
 						for(j = 1; j < arr_in.length; j++){
-							var number = arr_in[j].split('.html">')[0].replace('/', '_');
-							if(number == '27_8'){
-								continue;
-							}
-							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + number.replace('_', '.') + ". " + title
+							var number = arr_in[j].split('.html">')[0].replace('/', '-');
+							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + number.replace('-', '.') + ". " + title
 										//+ ' ' + number.split('_')[1]
 										+ '</a>';
 						}
@@ -195,7 +192,7 @@
 					document.getElementById("mySidenav").innerHTML = dir;
 			}
 		};
-		xmlhttp.open("GET","./reading/text2/1_1.html",true);
+		xmlhttp.open("GET","./reading/text2/1-1.html",true);
 		xmlhttp.send();
 	}
 
