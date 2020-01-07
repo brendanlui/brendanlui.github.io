@@ -295,18 +295,18 @@
 						arrAudio = [];
 
 						var arrJp = txt.split('<span class="kanji">');
-						var arrZn = txt.split('<span class="kanji">');
+						//var arrZn = txt.split('<span class="kanji">');
 						var arrPlayer = txt.split('<span class="kanji">');
 						var arrSource = txt.split('<span class="kanji">');
 
 						arrJp.shift();
-						arrZn.shift();
+						//arrZn.shift();
 						arrPlayer.shift();
 						arrSource.shift();
 
 						for(i = 0; i < arrJp.length; i++){
 								arrJp[i] = arrJp[i].split("</span>")[0];
-								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
+								//arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrPlayer[i] = arrPlayer[i].split('<audio id="audio')[1].split('data-player="')[1].split('", data-image="')[0];
 								arrSource[i] = arrSource[i].split('<source src="../../../sound_int/yo/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '-');
 
@@ -320,7 +320,7 @@
 								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
 												+ '" ' + (playerMap.get(arrPlayer[i]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
 								dir += '<p class="japanese">' + arrJp[i] + '</p>';
-								dir += '<p class="chinese" style="color:#4a4a4a; display:none">' + arrZn[i] + '</p>';
+								//dir += '<p class="chinese" style="color:#4a4a4a; display:none">' + arrZn[i] + '</p>';
 								dir += '</div>';
 
 								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
