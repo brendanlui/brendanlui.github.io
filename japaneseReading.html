@@ -305,7 +305,7 @@
 						arrSource.shift();
 
 						for(i = 0; i < arrJp.length; i++){
-								arrJp[i] = ('<span class="kanji">' + arrJp[i].split("<audio id=")[0]).replace(new RegExp("　", 'g'), '');
+								arrJp[i] = ('<span class="kanji">' + arrJp[i].split("<audio id=")[0]).replace(new RegExp("　", 'g'), '').replace(new RegExp(" ", 'g'), '');
 								//arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
 								arrPlayer[i] = "0";
 								arrSource[i] = arrSource[i].split('<source src="../../../sound_int/yo/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '-');
