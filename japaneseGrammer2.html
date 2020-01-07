@@ -465,7 +465,7 @@
 						content = content.split('</p>')[0].split('<p>')[1];
 						var arrJp = txt.split(' class="text">');
 						//var arrZn = txt.split('<span class="kanji">');
-						var arrSource = txt.split('<span class="kanji">');
+						var arrSource = txt.split(' class="text">');
 
 						arrJp.shift();
 						//arrZn.shift();
@@ -476,7 +476,7 @@
 								arrJp[i] = arrJp[i].replace(new RegExp("<em>", 'g'), " <em style=\"color: #f00;font-weight: bold;\">");
 								arrJp[i] = arrJp[i].replace(new RegExp("</em>", 'g'), "</em> ").split("</span>")[0];
 								//arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
-								arrSource[i] = arrSource[i].split('<source src="../../../sound_int/bu/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
+								arrSource[i] = arrSource[i].split('<source src="../../../sound_int/bu/')[1].split('" />')[0];
 
 								if(arrJp[i].charCodeAt(0) <= 90 && arrJp[i].charCodeAt(0) >= 65 && arrJp[i].indexOf(':') == 1){
 										if(!playerMap.get(arrJp[i][0])){
