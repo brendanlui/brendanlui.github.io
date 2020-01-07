@@ -286,9 +286,9 @@
 		btnExplan.className = btnExplan.className.replace(" active", "");
 		chinese = 0;
 
-		checkTitle();
+		//checkTitle();
 	}
-
+/*
 	function checkTitle(){
 
 				var btnChangeBook = document.getElementById('btnChangeBook');
@@ -305,6 +305,7 @@
 						}
 				}
 	}
+	*/
 
 	function loadFilter(){
 		var xmlhttp = new XMLHttpRequest();
@@ -378,7 +379,7 @@
 	function waitForElementToDisplay(selector, time, replaceSelector) {
       if(document.querySelector(selector)!=null) {
 							document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
-							checkTitle();
+							//checkTitle();
           		return;
       }
       else {
