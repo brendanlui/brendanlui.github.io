@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/japanese.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
+</head>
+
+<title>Dadiu | 初級日本語 閱讀</title>
+
+<body onload="restart()">
+	<div id="head">
+		<div id="logo">
+			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="/css/responsive_bar_style.css">
+	<div class="topnav" id="myTopnav">
+	  <a href="/">首頁</a>
+	</div>
+
+	<!--TODO-->
+	<div id="buttonBox">
+		<button id="btnFilterShow" class="buttonJp btnFilter" onclick="openNav()">單元</button>
+		<button id="btnPlay" class="buttonJp btnFilter" onclick="playAll();">播放</button>
+		<button id="btnExplan" class="buttonJp btnFilter" onclick="addChinese()"style="disabled:true;">中文翻譯</button>
+	</div>
+
+	<div id="chatBox">
+	</div>
+
+	<link rel="stylesheet" href="/css/side_bar_style.css">
+	<div id="nav_subtitle">
+		<div id="mySidenav" class="sidenav">
+		</div>
+	</div>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+					<li><a id="myBtnNav" href="#toppestNav" class="subtitle" >置頂</a></li>
+			 </ul>
+		</div>
+	</div>
+
+	<script>
+	var filterSelected = "1_1";
+	var chinese = 0;
+	var mySidenav = document.getElementById('mySidenav');
+	mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
+
+	function openNav() {
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			if(btnFilterShow.className.includes("active")){
+				closeNav();
+			}else{
+				scrollFunction(mySidenav, "myBtnNav");
+				mySidenav.style.width = "300px";
+				document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+				btnFilterShow.className += " active";
+
+				//active current filter
+				var arrFilter = document.getElementsByClassName("filter");
+				for(i = 0; i < arrFilter.length; i++){
+					arrFilter[i].className = arrFilter[i].className.replace(' active', '');
+				}
+				document.getElementById('btnFilter' + filterSelected).className += ' active';
+			}
+	}
+	function closeNav() {
+			document.getElementById("mySidenav").style.width = "0px";
+			document.body.style.backgroundColor = "#fbf7ff";
+			document.getElementById("myBtnNav").style.display = "none";
+
+			var btnFilterShow = document.getElementById("btnFilterShow");
+			btnFilterShow.className = btnFilterShow.className.replace(" active", "");
+	}
+
+	function addChinese(){
+		if(chinese){
+					var btnExplan = document.getElementById("btnExplan");
+					btnExplan.className = btnExplan.className.replace(" active", "");
+					chinese = 0;
+					var arr = document.getElementsByClassName("chinese");
+					for(i = 0; i < arr.length; i++){
+							arr[i].style.display = "none";
+					}
+		}else{
+					var btnExplan = document.getElementById("btnExplan");
+					btnExplan.className += " active";
+					chinese = 1;
+					var arr = document.getElementsByClassName("chinese");
+					for(i = 0; i < arr.length; i++){
+							arr[i].style.display = "block";
+					}
+		}
+	}
+
+	function scrollFunction(body, id) {
+		if (body.scrollTop > 100) {
+			document.getElementById(id).style.display = "block";
+		} else {
+			document.getElementById(id).style.display = "none";
+		}
+	}
+
+	function closeSourcePage(event){
+			var arrFilter = document.getElementsByClassName("filter");
+
+	    if(event.target != document.getElementById("btnFilterShow")
+					&& event.target != document.getElementById("btnPlay")
+					&& event.target != document.getElementById("btnExplan")
+					&& event.target != document.getElementById("myBtnNav")
+					&& document.getElementById("mySidenav").style.width != "0px"
+				){
+					var close = 1;
+					for(i = 0; i < arrFilter.length; i++){
+						if(event.target == arrFilter[i]){
+							close = 0;
+							break;
+						}
+					}
+
+					if(close == 1){
+						closeNav();
+					}
+				}
+	}
+
+	window.onclick = function(event) {
+	    closeSourcePage(event);
+	}
+
+	window.addEventListener('touchstart', function (event) {
+	    closeSourcePage(event);
+	});
+
+	function filterSelection(text){
+		filterSelected = text;
+		loadDoc(text);
+		closeNav();
+		var element = document.getElementById("btnFilter" + filterSelected);
+		document.getElementById("btnFilterShow").innerHTML = element.innerHTML;
+
+		var btnPlay = document.getElementById("btnPlay");
+		btnPlay.className = btnPlay.className.replace(" active", "");
+		var btnExplan = document.getElementById("btnExplan");
+		btnExplan.className = btnExplan.className.replace(" active", "");
+		chinese = 0;
+	}
+
+	function loadFilter(){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function(){
+			if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+					var txt = xmlhttp.responseText;
+					var dir = "";
+					dir += '<a id="toppestNav" class="smooth"></a>';
+					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
+
+					var arrTitle = txt.split('</a></dt>');
+					var arr = txt.split('<ul><li>');
+					arr.shift();
+
+					for(i = 0; i < arr.length; i++){
+						var arrTitle_in = arrTitle[i].split('.html">');
+						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split('. ')[1];
+						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('（２）', '(2)').replace('（１）', '(1)');
+
+						var arr_in = arr[i].split(' <a href="/tw/ka/');
+						for(j = 1; j < arr_in.length; j++){
+							var number = arr_in[j].split('.html">')[0].replace('/', '_');
+							if(number == '27_8'){
+								continue;
+							}
+							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + number.replace('_', '.') + ". " + title
+										//+ ' ' + number.split('_')[1]
+										+ '</a>';
+						}
+					}
+
+					dir += '</br></br></br></br></br></br>';
+					document.getElementById("mySidenav").innerHTML = dir;
+			}
+		};
+		xmlhttp.open("GET","./reading/text2/1_1.html",true);
+		xmlhttp.send();
+	}
+
+	function restart(){
+		loadFilter();
+
+		var cookieKey = getCookie("lastFilterKeyReading");
+
+		if(cookieKey != ""){
+			filterSelected = cookieKey;
+		}
+
+		waitForElementToDisplay('#btnFilter'+filterSelected, 100, '#btnFilterShow');
+		loadDoc(filterSelected);
+	}
+
+	function waitForElementToDisplay(selector, time, replaceSelector) {
+      if(document.querySelector(selector)!=null) {
+					document.querySelector(replaceSelector).innerHTML = document.querySelector(selector).innerHTML;
+          return;
+      }
+      else {
+          setTimeout(function() {
+              waitForElementToDisplay(selector, time, replaceSelector);
+          }, time);
+      }
+  }
+
+	//cookie start
+	function setCookie(cname, cvalue, exdays) {
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	  var expires = "expires="+d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+	  var name = cname + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i = 0; i < ca.length; i++) {
+	    var c = ca[i].trim();
+	    if (c.indexOf(name) == 0) {
+	      return c.replace(name, "");
+	    }
+	  }
+	  return "";
+	}
+	//cookie end
+	</script>
+	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
+
+	<style>
+	.container {
+	  border: 2px solid #dedede;
+	  background-color: #f1f1f1;
+	  border-radius: 5px;
+	  padding: 10px;
+	  margin: 10px 0;
+		font-size: 16px;
+	}
+
+	.container::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	}
+
+	.container img {
+	  float: left;
+	  max-width: 30px;
+	  width: 100%;
+	  margin-right: 20px;
+	  border-radius: 50%;
+	}
+
+	.container img.right {
+	  float: right;
+	  margin-left: 20px;
+	  margin-right:0;
+	}
+	</style>
+
+	<script>
+	var arrAudio = [];
+
+	function loadDoc(type)
+	{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+
+						setCookie('lastFilterKeyReading', type, 36500);
+
+			    	var txt = xmlhttp.responseText;
+						var dir = "";
+						var playerMap = new Map();
+						var playerCount = 0;
+						var color = parseInt('f0f0f0', 16);
+						var colorDiff = parseInt('ffffff', 16) - parseInt('eeeeee', 16);
+						arrAudio = [];
+
+						var arrJp = txt.split('<span class="kanji" style="display:none;">');
+						var arrZn = txt.split('<span class="kanji" style="display:none;">');
+						var arrPlayer = txt.split('<span class="kanji" style="display:none;">');
+						var arrSource = txt.split('<span class="kanji" style="display:none;">');
+
+						arrJp.shift();
+						arrZn.shift();
+						arrPlayer.shift();
+						arrSource.shift();
+
+						for(i = 0; i < arrJp.length; i++){
+								arrJp[i] = arrJp[i].split("</span>")[0];
+								arrZn[i] = arrZn[i].split('<span class="translation" style="display:none;">')[1].split("</span>")[0];
+								arrPlayer[i] = arrPlayer[i].split('<audio id="audio')[1].split('data-player="')[1].split('", data-image="')[0];
+								arrSource[i] = arrSource[i].split('<source src="../../../sound/ka/')[1].split('" />')[0].replace(new RegExp("/", 'g'), '_');
+
+								if(!playerMap.get(arrPlayer[i])){
+										playerCount++;
+										playerMap.set(arrPlayer[i], playerCount);
+								}
+
+								dir += '<div class="container" id="chat_' + i + '" style="background-color: #' + (color - (playerMap.get(arrPlayer[i])-1) * colorDiff).toString(16)
+										+ '" onclick="playAudio(\'' + arrSource[i] + '\')">';
+								dir += '<img src="/img/P' + playerMap.get(arrPlayer[i]) + '.jpg" alt="' + arrPlayer[i]
+												+ '" ' + (playerMap.get(arrPlayer[i]) % 2 == 0 ? 'class="right" ' : '') + 'style="width:100%;">';
+								dir += '<p class="japanese">' + arrJp[i] + '</p>';
+								dir += '<p class="chinese" style="color:#4a4a4a; display:none">' + arrZn[i] + '</p>';
+								dir += '</div>';
+
+								dir += '<audio id="' + arrSource[i] + '" class="songs" preload="auto">';
+								dir += '<source src="./reading/audio2/' + arrSource[i] + '"></audio>';
+
+								arrAudio[i] = arrSource[i];
+						}
+
+						dir += '<audio id="playAll" class="songs" preload="auto">';
+						dir += '<source src="./reading/audio2/tt180400.mp3"></audio>';
+						playerMap.clear();
+						document.getElementById("chatBox").innerHTML = dir;
+			  }
+			};
+			xmlhttp.open("GET","./reading/text2/" + type + ".html",true);
+			xmlhttp.send();
+	}
+
+
+	function stopAllAudio(){
+				var sounds = document.getElementsByTagName('audio');
+				for(i = 0; i < sounds.length; i++) {
+					sounds[i].pause();
+					sounds[i].currentTime = 0;
+					if(i < sounds.length - 1){
+						document.getElementById('chat_' + i).style.borderColor = "#ddd";
+					}
+				}
+	}
+
+
+	function playAudio(id){
+
+			stopAllAudio();
+			var audio = document.getElementById(id);
+			var btnPlay = document.getElementById("btnPlay");
+			btnPlay.className = btnPlay.className.replace(" active", "");
+
+			var played = 0;
+			audio.src = "./reading/audio2/" + arrAudio[arrAudio.indexOf(id)];
+			audio.play()
+			.then(function() {
+					document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#4caf50";
+			})
+			.then(function() {
+					audio.onended = function() {
+							if(played == 0){
+									document.getElementById('chat_' + arrAudio.indexOf(id)).style.borderColor = "#ddd";
+									played = 1;
+							}
+					};
+			})
+			.catch(function(error) {
+					console.log(error);
+			});
+	}
+
+	function playAll(){
+
+			stopAllAudio();
+
+			var index = 0;
+			var audio = document.getElementById("playAll");
+
+			var btnPlay = document.getElementById("btnPlay");
+			if(!btnPlay.className.includes("active")){
+				btnPlay.className += " active";
+			}
+
+			audio.src = "./reading/audio2/" + arrAudio[0];
+			audio.play()
+			.then(function() {
+					document.getElementById('chat_0').style.borderColor = "#4caf50";
+			})
+			.then(function() {
+					audio.onended = function() {
+							index++;
+					    if(index < arrAudio.length){
+					        audio.src = "./reading/audio2/" + arrAudio[index];
+					        audio.play()
+									.then(function() {
+											document.getElementById('chat_' + index).style.borderColor = "#4caf50";
+									})
+									.catch(function(error) {
+											console.log(error);
+									});
+					    }else if(index == arrAudio.length){
+									btnPlay.className = btnPlay.className.replace(" active", "");
+							}
+							document.getElementById('chat_' + (index-1)).style.borderColor = "#ddd";
+					};
+			})
+			.catch(function(error) {
+					console.log(error);
+			});
+	}
+	</script>
+
+	<ul id="foot">
+		</br>
+		<li>© Copyright 2020. All Rights Reserved.</li>
+	</ul></br>
+</body>
+</html>
