@@ -167,6 +167,7 @@
 			if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 					var txt = xmlhttp.responseText;
 					var dir = "";
+					var tempNumber = "";
 					dir += '<a id="toppestNav" class="smooth"></a>';
 					dir += '<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>';
 
@@ -182,6 +183,11 @@
 						var arr_in = arr[i].split('<a href="/int2/yo/');
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '-');
+							if(tempNumber == number){
+								continue;
+							}else{
+								tempNumber = number;
+							}
 							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + number.replace('-', '.') + ". " + title
 										//+ ' ' + number.split('_')[1]
 										+ '</a>';
