@@ -179,7 +179,7 @@
 						arrTitle[i] = arrTitle_in[arrTitle_in.length - 1].split('. ')[1];
 						var title = arrTitle[i].replace(/ +/g, "").replace(/　+/g, "").replace('（２）', '(2)').replace('（１）', '(1)');
 
-						var arr_in = arr[i].split(' <a href="/tw/ka/');
+						var arr_in = arr[i].split(' <a href="/int2/yo/');
 						for(j = 1; j < arr_in.length; j++){
 							var number = arr_in[j].split('.html">')[0].replace('/', '-');
 							dir += '<a href="#" class="filter" id="btnFilter' + number + '" onclick="filterSelection(\''+ number +'\')">' + number.replace('-', '.') + ". " + title
@@ -294,10 +294,10 @@
 						var colorDiff = parseInt('ffffff', 16) - parseInt('eeeeee', 16);
 						arrAudio = [];
 
-						var arrJp = txt.split('<span class="kanji" style="display:none;">');
-						var arrZn = txt.split('<span class="kanji" style="display:none;">');
-						var arrPlayer = txt.split('<span class="kanji" style="display:none;">');
-						var arrSource = txt.split('<span class="kanji" style="display:none;">');
+						var arrJp = txt.split('<span class="kanji">');
+						var arrZn = txt.split('<span class="kanji">');
+						var arrPlayer = txt.split('<span class="kanji">');
+						var arrSource = txt.split('<span class="kanji">');
 
 						arrJp.shift();
 						arrZn.shift();
