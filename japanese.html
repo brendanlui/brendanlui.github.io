@@ -121,7 +121,7 @@
 	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">所有</button>
 	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">平假名</button>
 	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">片假名</button>
-		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter" style="width:100%">內容</button>
 	</div>
 	<div class="slidecontainer">
 		<b>數目 : <span id="demo"></span></b>
@@ -252,6 +252,7 @@
 
 		function restart(){
 
+			loadDoc();
 			var cookieKey = getCookie("lastFilterKeyJp");
 			if(cookieKey != ""){
 					document.getElementById("myRange").value = cookieKey;
@@ -264,6 +265,32 @@
 			for(var i = 0; i < mc.length; i ++){
 					document.getElementById("mc" + i).style.borderColor  = "#ffffff";
 			}
+		}
+
+
+		function loadDoc(){
+				var dir = "";
+				document.getElementById("source").innerHTML = '<tr>'
+									+	'<th>'
+									+ "平假名"
+									+ '</th>'
+									+ '<th>'
+									+ "片假名"
+									+ '</th>'
+									+ '<th>'
+									+ "發音"
+									+ '</th>'
+									+ '</tr>';
+
+				for(i = 0; i < jpFull.length; i++){
+						dir += '<tr>';
+						dir += '<td>' + jpFull[i] + '</td>';
+						dir += '<td>' + jpSimple[i] + '</td>';
+						dir += '<td>' + jpChar[i] + '</td>'
+						dir += '</tr>';
+					}
+				}
+				document.getElementById("source").innerHTML += dir;
 		}
 
 		function genShowJpText(){
@@ -395,7 +422,7 @@
 				// When the user clicks on the button, open the modal
 				btnOpenModal.onclick = function() {
 				    modal.style.display = "block";
-						btnOpenModal.className += " active";
+						// btnOpenModal.className += " active";
 						scrollFunction(modal, "myBtn")
 				}
 				// When the user clicks on <span> (x), close the modal
