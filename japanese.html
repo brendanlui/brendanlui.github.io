@@ -273,6 +273,9 @@
 				var dir = "";
 				document.getElementById("source").innerHTML = '<tr>'
 									+	'<th>'
+									+ ""
+									+ '</th>'
+									+	'<th>'
 									+ "平假名"
 									+ '</th>'
 									+ '<th>'
@@ -285,6 +288,7 @@
 
 				for(i = 0; i < jpFull.length; i++){
 						dir += '<tr>';
+						dir += '<td>' + (i+1) + '</td>';
 						dir += '<td>' + jpFull[i] + '</td>';
 						dir += '<td>' + jpSimple[i] + '</td>';
 						dir += '<td>' + jpChar[i] + '</td>'
