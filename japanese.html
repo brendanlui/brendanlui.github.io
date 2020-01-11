@@ -272,26 +272,26 @@
 		function loadDoc(){
 				var dir = "";
 				document.getElementById("source").innerHTML = '<tr>'
-									+	'<th>'
+									+	'<th class="sourceCenter">'
 									+ ""
 									+ '</th>'
-									+	'<th>'
+									+	'<th class="sourceCenter">'
 									+ "平假名"
 									+ '</th>'
-									+ '<th>'
+									+ '<th class="sourceCenter">'
 									+ "片假名"
 									+ '</th>'
-									+ '<th>'
+									+ '<th class="sourceCenter">'
 									+ "發音"
 									+ '</th>'
 									+ '</tr>';
 
 				for(i = 0; i < jpFull.length; i++){
 						dir += '<tr>';
-						dir += '<td>' + (i+1) + '</td>';
-						dir += '<td>' + jpFull[i] + '</td>';
-						dir += '<td>' + jpSimple[i] + '</td>';
-						dir += '<td>' + jpChar[i] + '</td>'
+						dir += '<td class="sourceCenter">' + (i+1) + '</td>';
+						dir += '<td class="sourceCenter">' + jpFull[i] + '</td>';
+						dir += '<td class="sourceCenter">' + jpSimple[i] + '</td>';
+						dir += '<td class="sourceCenter">' + jpChar[i] + '</td>'
 						dir += '</tr>';
 				}
 				document.getElementById("source").innerHTML += dir;
