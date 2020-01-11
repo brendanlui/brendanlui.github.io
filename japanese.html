@@ -106,10 +106,22 @@
 	  <a href="/">首頁</a>
 	</div>
 
+	<!-- The Modal -->
+	<link rel="stylesheet" href="/css/modal_box_style.css">
+	<div id="myModal" class="modal">
+	  <div class="modal-content">
+	    <span id="close" class="close">&times;</span>
+			<a id="toppest" class="smooth"></a>
+			<table id="source">
+			</table>
+	  </div>
+	</div>
+
 	<div id="buttonBox">
 	  <button id="btnFilterAll" class="buttonJp btnFilter active" onclick="filterSelection('All')">所有</button>
 	  <button id="btnFilterHiragana" class="buttonJp btnFilter" onclick="filterSelection('Hiragana')">平假名</button>
 	  <button id="btnFilterKatakana" class="buttonJp btnFilter" onclick="filterSelection('Katakana')">片假名</button>
+		<button id="btnOpenModal" class="buttonJp btnFilter">內容</button>
 	</div>
 	<div class="slidecontainer">
 		<b>數目 : <span id="demo"></span></b>
@@ -363,6 +375,53 @@
 		  return "";
 		}
 		//cookie end
+
+
+				var myModal = document.getElementById('myModal');
+				myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
+
+				function scrollFunction(body, id) {
+					if (body.scrollTop > 100) {
+						document.getElementById(id).style.display = "block";
+					} else {
+						document.getElementById(id).style.display = "none";
+					}
+				}
+
+				//open source start
+				var modal = document.getElementById('myModal');
+				var btnOpenModal = document.getElementById("btnOpenModal");
+				var close = document.getElementById("close");
+				// When the user clicks on the button, open the modal
+				btnOpenModal.onclick = function() {
+				    modal.style.display = "block";
+						btnOpenModal.className += " active";
+						scrollFunction(modal, "myBtn")
+				}
+				// When the user clicks on <span> (x), close the modal
+				close.onclick = function() {
+				    modal.style.display = "none";
+						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+				}
+				// When the user clicks anywhere outside of the modal, close it
+
+				function closeSourcePage(event){
+				    if (event.target == modal) {
+				        modal.style.display = "none";
+								btnOpenModal.className = btnOpenModal.className.replace(" active", "");
+								document.getElementById("myBtn").style.display = "none";
+				    }
+				}
+
+				window.onclick = function(event) {
+				    closeSourcePage(event);
+				}
+
+				window.addEventListener('touchstart', function (event) {
+				    closeSourcePage(event);
+				});
+				//open source end
+
 	</script>
 
 	<script>
@@ -386,6 +445,15 @@
 	</div>
 	<p><button id="next" class="buttonJp next" type="button" onclick="restart()">下一個</button></p>
 	<h4 style="text-align: center;" id="result"></h4>
+
+	<link rel="stylesheet" type="text/css" href="/css/to_top_not_immediate.css">
+	<div id="head">
+		<div id="nav">
+			 <ul>
+				 	<li><a id="myBtn" href="#toppest" class="subtitle" >置頂</a></li
+			 </ul>
+		</div>
+	</div>
 
 	<ul id="foot">
 		</br>
