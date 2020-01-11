@@ -42,6 +42,16 @@
 	color: white;
 }
 
+.btnFilter2{
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	height: 35px;
+	padding: 1px 0px;
+	background-color: #878787;
+	color: white;
+}
+
 
 
 
