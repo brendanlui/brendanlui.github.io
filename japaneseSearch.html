@@ -99,7 +99,7 @@
 
 	<div class="wrap">
 		<div class="search">
-				<input type="text" class="searchTerm" id="searchKey" name="search"/>
+				<input type="text" class="searchTerm" onClick="this.setSelectionRange(0, this.value.length)" id="searchKey" name="search"/>
 				<button type="submit" class="searchButton" id="searchClick" onclick="searchAll()"><i class="fa fa-search"></i></button>
 		</div>
 	</div>
