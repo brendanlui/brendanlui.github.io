@@ -289,10 +289,13 @@
 
 				for(i = 0; i < jpFull.length; i++){
 						var colorChoose = 0;
+						var charIndex = i + 1;
 						for(j = 0; j < jpBreak.length; j++){
-								if((i + 1) - jpBreak[j] < 0){
+								if(charIndex - jpBreak[j] < 0){
 										colorChoose = j % 2;
 										break;
+								}else{
+										charIndex -= jpBreak[j];
 								}
 						}
 
