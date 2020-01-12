@@ -131,6 +131,7 @@
 
 
 	<script>
+		var jpBreak = [5, 5, 5, 5, 5, 5, 5, 3, 5, 2, 1, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3];
 		var jpFull = ["あ", "い", "う", "え", "お",
 										"か", "き", "く", "け", "こ",
 										"さ", "し", "す", "せ", "そ",
@@ -287,11 +288,31 @@
 									+ '</tr>';
 
 				for(i = 0; i < jpFull.length; i++){
+						var colorChoose = 0;
+						for(j = 0; j < jpBreak.length; j++){
+								if((i + 1) - jpBreak[j] < 0){
+										colorChoose = j % 2;
+										break;
+								}
+						}
+
 						dir += '<tr>';
-						dir += '<td class="sourceCenter sourceRed">' + (i+1) + '</td>';
-						dir += '<td class="sourceCenter">' + jpFull[i] + '</td>';
-						dir += '<td class="sourceCenter">' + jpSimple[i] + '</td>';
-						dir += '<td class="sourceCenter">' + jpChar[i] + '</td>'
+						dir += '<td class="sourceCenter'
+								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ '">'
+								+ (i+1) + '</td>';
+						dir += '<td class="sourceCenter'
+								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ '">'
+								+ jpFull[i] + '</td>';
+						dir += '<td class="sourceCenter'
+								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ '">'
+								+ jpSimple[i] + '</td>';
+						dir += '<td class="sourceCenter'
+								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ '">'
+								+ jpChar[i] + '</td>'
 						dir += '</tr>';
 				}
 				document.getElementById("source").innerHTML += dir;
