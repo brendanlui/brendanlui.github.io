@@ -289,7 +289,7 @@
 
 				for(i = 0; i < jpFull.length; i++){
 						var colorChoose = 0;
-						var charIndex = i + 1;
+						var charIndex = i;
 						for(j = 0; j < jpBreak.length; j++){
 								if(charIndex - jpBreak[j] < 0){
 										colorChoose = j % 2;
@@ -301,19 +301,19 @@
 
 						dir += '<tr>';
 						dir += '<td class="sourceCenter'
-								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ (colorChoose == 1 ? " sourceColorOne" : " sourceColorTwo")
 								+ '">'
 								+ (i+1) + '</td>';
 						dir += '<td class="sourceCenter'
-								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ (colorChoose == 1 ? " sourceColorOne" : " sourceColorTwo")
 								+ '">'
 								+ jpFull[i] + '</td>';
 						dir += '<td class="sourceCenter'
-								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ (colorChoose == 1 ? " sourceColorOne" : " sourceColorTwo")
 								+ '">'
 								+ jpSimple[i] + '</td>';
 						dir += '<td class="sourceCenter'
-								+ (colorChoose == 1 ? " sourceGrey" : "")
+								+ (colorChoose == 1 ? " sourceColorOne" : " sourceColorTwo")
 								+ '">'
 								+ jpChar[i] + '</td>'
 						dir += '</tr>';
