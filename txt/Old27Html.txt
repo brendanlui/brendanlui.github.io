@@ -1105,7 +1105,7 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
                   <h4 class="panel-title">例</h4>
                 </div>
                 <div class="panel-body">
-                  <p lang="ja" class="txt-ja"><span class="furigana"><ruby><rb>私</rb><rt>わたし</rt></ruby>の<ruby><rb>夢</rb><rt>ゆめは</rt></ruby>は<ruby><rb>歯医者</rb><rt>いしゃ</rt></ruby>になることです。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="933" data-vt="JP" data-txt="私の夢は歯医者になることです。|私の夢は歯医者になることです。"><i class="fa fa-volume-up"></i></a></p>
+                  <p lang="ja" class="txt-ja"><span class="furigana"><ruby><rb>私</rb><rt>わたし</rt></ruby>の<ruby><rb>夢</rb><rt>ゆめ</rt></ruby>は<ruby><rb>歯医者</rb><rt>はいしゃ</rt></ruby>になることです。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="933" data-vt="JP" data-txt="私の夢は歯医者になることです。|私の夢は歯医者になることです。"><i class="fa fa-volume-up"></i></a></p>
                   <p lang="ja" class="txt-zh zh">我的夢想是成為牙醫。</p>
                 </div>
               </div>
