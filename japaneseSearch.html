@@ -307,7 +307,7 @@
 								}else{
 									arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 									if(searched == 1){
-											document.getElementById(this.typeChangedVerb + "Word" + id).innerHTML = arrNeg[(i - 1) / 2];
+											document.getElementById(this.typeChangedVerb.replace(/[0-9]/g, '') + "Word" + id).innerHTML = arrNeg[(i - 1) / 2];
 											break;
 									}
 								}
@@ -466,7 +466,7 @@
 													}
 
 													for (l = 0; l < typeArr.length; l++){
-														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l] + 'Word' + i + '" class="word' + i + '"></sapn>';
+														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l].replace(/[0-9]/g, '') + 'Word' + i + '" class="word' + i + ' ' + typeArr[l].replace(/[0-9]/g, '') + '"></sapn>';
 														searchVerb(i, typeArr[l], clearJp, clearJpS);
 													}
 											}
@@ -555,7 +555,16 @@
 					+ '</tr>';
 
 					var arrTable = document.getElementsByClassName("verbTable");
-					if(document.getElementById("teWord" + id) != null){
+					var arrTemp = document.getElementsByClassName('word' + id + ' te');
+					var verbFound = 0;
+					for(i = 0; i < arrTemp; i++){
+						if(arrTemp[i] != ""){
+							verbFound = 1;
+							break;
+						}
+					}
+
+					if(verbFound == 1){
 							for (i = 0; i < arrTable.length; i++){
 								var idTable = arrTable[i].id.replace("Table", "");
 								arrTable[i].innerHTML = '<tr>'
