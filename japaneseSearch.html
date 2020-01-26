@@ -253,7 +253,7 @@
 								}else{
 									arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 									if(searched == 1){
-											document.getElementById(this.typeChangedVerb + "Word" + id).innerHTML = this.typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + "^.^";
+											document.getElementById(this.typeChangedVerb + "Word" + id).innerHTML = arrNeg[(i - 1) / 2];
 											break;
 									}
 								}
