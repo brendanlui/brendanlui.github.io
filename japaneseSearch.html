@@ -254,10 +254,16 @@
 									}else{
 										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 										if(searched == 1){
+												var typeChangedVerb = typeArr[this.k];
 												if(mapVerb.has(id)){
-													mapVerb.set(id, mapVerb.get(id) + typeArr[this.k] + ':' + arrNeg[(i - 1) / 2]);
+													var oldValue = mapVerb.get(id);
+													if(oldValue.includes(typeChangedVerb)){
+															break;
+													}else{
+															mapVerb.set(id, oldValue + typeChangedVerb + ':' + arrNeg[(i - 1) / 2]);
+													}
 												}else{
-													mapVerb.set(id, typeArr[this.k] + ':' + arrNeg[(i - 1) / 2] + ';');
+													mapVerb.set(id, typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + ';');
 												}
 												break;
 										}
