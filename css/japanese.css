@@ -114,9 +114,9 @@
 
 .verbTable th
 {
-	padding-top: 4px;
-	padding-bottom: 4px;
-	background-color: #b0b0b0;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: #c5c5c5;
 }
 
 #source0 td, #source0 th
