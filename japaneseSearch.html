@@ -546,6 +546,7 @@
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
 			function btnOpenModal2(str1, str2, id) {
+					document.getElementById("myBtn").style.display = "none";	
 			    modal2.style.display = "block";
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
@@ -607,7 +608,8 @@
 			function closeSourcePage(event){
 			    if(event.target == modal2) {
 						modal2.style.display = "none";
-					}else if(event.target == modal0) {
+						scrollFunction();
+					}else if(event.target == modal0) {	//brendan
 						modal0.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 					}
