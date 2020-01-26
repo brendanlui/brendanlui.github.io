@@ -256,7 +256,7 @@
 									arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 									if(searched == 1){
 											var typeChangedVerb = typeArr[this.typeChangedVerb];
-											if(mapVerb.has(id)){
+											if(mapVerb.get(id) != null){
 												var oldValue = mapVerb.get(id);
 												if(oldValue.includes(typeChangedVerb)){
 														break;
