@@ -298,8 +298,12 @@
 							for(i = 0; i < arr.length; i++){
 								if(i % 2 == 0){
 									arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-									var first = arrPos[i / 2].split('（')[0];
-									var second = arrPos[i / 2].split('（')[1];
+									var first = arrPos[i / 2];
+									var second = "";
+									if(arrPos[i / 2].includes('（')){
+										first = arrPos[i / 2].split('（')[0];
+										second = arrPos[i / 2].split('（')[1];
+									}
 									if((jpS == "" && first == jp) || (jpS == second && first == jp)){
 										searched = 1;
 									}
