@@ -398,10 +398,10 @@
 											var clearJp = arrJp[i];
 											var clearJpS = arrJpS[i];
 
-											if(arrJp[i].contains('<span')){
+											if(arrJp[i].includes('<span')){
 												clearJp = arrJp[i].split('<span')[0];
 											}
-											if(arrJpS[i].contains('<span')){
+											if(arrJpS[i].includes('<span')){
 												clearJpS = arrJpS[i].split('<span')[0];
 											}
 											searchVerb(i, cleanJp, clearJpS);
