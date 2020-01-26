@@ -659,9 +659,6 @@
 		</div>
 	</div>
 	<script>
-		var myModal = document.getElementById('myModal');
-		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
-
 		function scrollFunction(body, id) {
 			if (body.scrollTop > 80) {
 				document.getElementById(id).style.display = "block";
@@ -669,9 +666,18 @@
 				document.getElementById(id).style.display = "none";
 			}
 		}
+
+		window.onscroll = function() {scrollFunctionWin()};
+		function scrollFunctionWin() {
+			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+				document.getElementById("myBtn").style.display = "block";
+
+			}
+		}
+
 	</script>
-	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
 	<script type="text/javascript" src="/js/jquery.scrollTopMyModel2.js"></script>
+	<script type="text/javascript" src="/js/jquery.scrollTopWindow.js"></script>
 
 	<ul id="foot">
 		</br>
