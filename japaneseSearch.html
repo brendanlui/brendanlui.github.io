@@ -140,33 +140,34 @@
 			<table id="source3">
 			</table>
 			</br>
+			
 			<table id="teTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="jishoTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="naiTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="taTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="ikoTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="meireiTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="jokenTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="kanoTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="ukemisonkeiTable" class="verbTable">
 			</table>
-			</br>
+			<br class="verbTableSpace">
 			<table id="shiekiTable" class="verbTable">
 			</table>
 	  </div>
@@ -557,6 +558,7 @@
 					+ '<td>' + str2 + '</td>'
 					+ '</tr>';
 
+					var arrSpace = document.getElementsByClassName("verbTableSpace");
 					var arrTable = document.getElementsByClassName("verbTable");
 					var arrTemp = document.getElementsByClassName('word' + id + ' te');
 					var verbFound = 0;
@@ -577,10 +579,12 @@
 								+ '<td>' + document.getElementById(idTable + "Word" + id).innerHTML + '</td>'
 								+ '</tr>';
 								arrTable[i].style.display = "";
+								arrSpace[i].style.display = "";
 							}
 					}else{
 							for (i = 0; i < arrTable.length; i++){
-								arrTable[i].style.display = "none";
+									arrTable[i].style.display = "none";
+									arrSpace[i].style.display = "none";
 							}
 					}
 			}
