@@ -466,7 +466,10 @@
 													}
 
 													for (l = 0; l < typeArr.length; l++){
-														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l].replace(/[0-9]/g, '') + 'Word' + i + '" class="word' + i + ' ' + typeArr[l].replace(/[0-9]/g, '') + '"></sapn>';
+														var wordId = typeArr[l].replace(/[0-9]/g, '') + 'Word' + i;
+														if(document.getElementById(wordId) == null){
+															document.getElementById("displayNoneVerb").innerHTML += '<span id="' + wordId + '" class="word' + i + ' ' + typeArr[l].replace(/[0-9]/g, '') + '"></sapn>';
+														}
 														searchVerb(i, typeArr[l], clearJp, clearJpS);
 													}
 											}
