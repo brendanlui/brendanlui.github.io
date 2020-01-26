@@ -61,6 +61,7 @@
 , #source1
 , #source2
 , #source3
+, #source4
 , .verbTable {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -73,6 +74,7 @@
 , #source1 td, #source1 th
 , #source2 td, #source2 th
 , #source3 td, #source3 th
+, #source4 td, #source4 th
 , .verbTable td, .verbTable th{
 	border: 1px solid #ddd;
 }
@@ -82,6 +84,7 @@
 , #source1 tr:nth-child(even)
 , #source2 tr:nth-child(even)
 , #source3 tr:nth-child(even)
+, #source4 tr:nth-child(even)
 , .verbTable tr:nth-child(even)
 {background-color: #f2f2f2;}
 
@@ -90,6 +93,7 @@
 , #source1 tr:hover
 , #source2 tr:hover
 , #source3 tr:hover
+, #source4 tr:hover
 , .verbTable tr:hover
 {background-color: #ddd;}
 
@@ -98,6 +102,7 @@
 , #source1 th
 , #source2 th
 , #source3 th
+, #source4 th
 , .verbTable th
 {
 	padding-top: 12px;
@@ -107,10 +112,18 @@
 	color: white;
 }
 
+.verbTable th
+{
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #b0b0b0;
+}
+
 #source0 td, #source0 th
 , #source1 td, #source1 th
 , #source2 td, #source2 th
 , #source3 td, #source3 th
+, #source4 td, #source4 th
 , .verbTable td, .verbTable th {
 	text-align: center;
 	font-size: 20px;
