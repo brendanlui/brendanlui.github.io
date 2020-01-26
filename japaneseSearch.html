@@ -611,8 +611,7 @@
 			function closeSourcePage(event){
 			    if(event.target == modal2) {
 						modal2.style.display = "none";
-						scrollFunction(myModal, "myBtn")
-					}else if(event.target == modal0) {	//brendan
+					}else if(event.target == modal0) {
 						modal0.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
 					}
@@ -671,7 +670,8 @@
 		function scrollFunctionWin() {
 			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
 				document.getElementById("myBtn").style.display = "block";
-
+			}else{
+				document.getElementById("myBtn").style.display = "none";
 			}
 		}
 
