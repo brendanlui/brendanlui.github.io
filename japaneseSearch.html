@@ -232,11 +232,10 @@
 
 				for (k = 0; k < typeArr.length; k++){
 					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.onreadystatechange = function(k){
+					xmlhttp.onreadystatechange = function(){
 
 						var arrPos = {};
 						var arrNeg = {};
-
 
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 					    	var txt = xmlhttp.responseText;
@@ -255,9 +254,9 @@
 										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 										if(searched == 1){
 												if(mapVerb.has(id)){
-													mapVerb.set(id, mapVerb.get(id) + typeArr[k] + ':' + arrNeg[(i - 1) / 2]);
+													mapVerb.set(id, mapVerb.get(id) + typeArr[searchTotal] + ':' + arrNeg[(i - 1) / 2]);
 												}else{
-													mapVerb.set(id, typeArr[k] + ':' + arrNeg[(i - 1) / 2] + ';');
+													mapVerb.set(id, typeArr[searchTotal] + ':' + arrNeg[(i - 1) / 2] + ';');
 												}
 												break;
 										}
@@ -270,7 +269,7 @@
 								}
 					  }
 					};
-					xmlhttp.open("GET","./verb/" + typeArr[k] + ".txt",true);
+					xmlhttp.open("GET","./verb/" + typeArr[searchTotal] + ".txt",true);
 					xmlhttp.send();
 				}
 			}
