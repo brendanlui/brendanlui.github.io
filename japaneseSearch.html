@@ -219,6 +219,57 @@
 				}
 			}
 
+			var mapVerb = new Map();
+			var typeArr = ['ta01', 'te01'];
+			var searchTotal = 0;
+
+			function searchVerb(id, arrJp[i], arrJpS[i]){
+				var id = 'word' + id;
+				var key = arrJpS[i];
+				if(arrJpS[i] == ""){
+					key = arrJp[i];
+				}
+
+				for (k = 0; k < typeArr.length; k++){
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function(){
+					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+					    	var txt = xmlhttp.responseText;
+								var searched = 0;
+								// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
+								var arr = txt.split(']="');
+								arr.shift();
+
+								for(i = 0; i < arr.length; i++){
+									if(i % 2 == 0){
+										arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+										if(key == arrPos[i / 2]){
+											searched = 1;
+										}
+									}else{
+										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+										if(searched == 1){
+												if(mapVerb.has(id)){
+													mapVerb.set(id, mapVerb.get(id) + typeArr[k] + ':' + arrNeg[(i - 1) / 2]);
+												}else{
+													mapVerb.set(id, typeArr[k] + ':' + arrNeg[(i - 1) / 2] + ';');
+												}
+												searchTotal++;
+												break;
+										}
+									}
+								}
+
+								if(searchTotal == typeArr.length){
+									console.log(mapVerb);
+								}
+					  }
+					};
+					xmlhttp.open("GET","./verb/" + typeArr[k] + ".txt",true);
+					xmlhttp.send();
+				}
+			}
+
 			function searchEach(type, searchKey)
 			{
 					var xmlhttp = new XMLHttpRequest();
@@ -261,7 +312,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
+										string[i] += '<a id="word' + i + '" onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
@@ -338,6 +389,11 @@
 										.replace('》', '');
 									}
 									string[i] += typeValue + ";";
+
+									if(typeValue.includes("動詞")){	//brendan
+											searchVerb(i, arrJp[i], arrJpS[i]);
+									}
+
 									string[i] += type.replace("Old", "");
 
 									if(arrZh[i].includes("<")){
