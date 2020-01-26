@@ -109,6 +109,8 @@
 
 	<div id="myModal" class="modal">
 	  <div class="modal-content">
+	    <span id="close" class="close">&times;</span>
+			<a id="toppestNav" class="smooth"></a>
 			<table id="source">
 			</table>
 			</br>
@@ -546,7 +548,7 @@
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
 			function btnOpenModal2(str1, str2, id) {
-					document.getElementById("myBtn").style.display = "none";	
+					document.getElementById("myBtn").style.display = "none";
 			    modal2.style.display = "block";
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
@@ -651,6 +653,7 @@
 		<div id="nav">
 			 <ul>
 				 <li><a id="myBtn" href="#toppest" class="subtitle" >置頂</a></li>
+				 <li><a id="myBtnNav" href="#toppestNav" class="subtitle" >置頂</a></li>
 			 </ul>
 		</div>
 	</div>
