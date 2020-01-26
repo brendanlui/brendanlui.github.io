@@ -223,11 +223,11 @@
 			var typeArr = ['ta01', 'te01'];
 			var searchTotal = 0;
 
-			function searchVerb(id, arrJp[i], arrJpS[i]){
+			function searchVerb(id, jp, jpS){
 				var id = 'word' + id;
-				var key = arrJpS[i];
+				var key = jpS;
 				if(arrJpS[i] == ""){
-					key = arrJp[i];
+					key = jp;
 				}
 
 				for (k = 0; k < typeArr.length; k++){
