@@ -610,7 +610,7 @@
 			function closeSourcePage(event){
 			    if(event.target == modal2) {
 						modal2.style.display = "none";
-						scrollFunction();
+						scrollFunction(myModal, "myBtn")
 					}else if(event.target == modal0) {	//brendan
 						modal0.style.display = "none";
 						btnOpenModal.className = btnOpenModal.className.replace(" active", "");
@@ -658,17 +658,21 @@
 		</div>
 	</div>
 	<script>
-		window.onscroll = function() {scrollFunction()};
+		var myModal = document.getElementById('myModal');
+		myModal.onscroll = function() {scrollFunction(myModal, "myBtn")};
+		var mySidenav = document.getElementById('mySidenav');
+		mySidenav.onscroll = function() {scrollFunction(mySidenav, "myBtnNav")};
 
-		function scrollFunction() {
-			if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-				document.getElementById("myBtn").style.display = "block";
+		function scrollFunction(body, id) {
+			if (body.scrollTop > 80) {
+				document.getElementById(id).style.display = "block";
 			} else {
-				document.getElementById("myBtn").style.display = "none";
+				document.getElementById(id).style.display = "none";
 			}
 		}
 	</script>
-	<script type="text/javascript" src="/js/jquery.scrollTopWindow.js"></script>
+	<script type="text/javascript" src="/js/jquery.scrollTopMyModel.js"></script>
+	<script type="text/javascript" src="/js/jquery.scrollTopMySidenav.js"></script>
 
 	<ul id="foot">
 		</br>
