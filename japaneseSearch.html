@@ -411,11 +411,8 @@
 														clearJpS = arrJpS[i].split('<span')[0];
 													}
 
-													for(j = 0; j < typeArr.length; j++){
-														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[i] + 'Word' + i + '" style="display:none;" id="displayNone"></sapn>' + "^.^";
-													}
-
 													for (l = 0; l < typeArr.length; l++){
+														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l] + 'Word' + i + '" style="display:none;"></sapn>' + "^.^";
 														searchVerb(i, typeArr[l], clearJp, clearJpS);
 													}
 											}
