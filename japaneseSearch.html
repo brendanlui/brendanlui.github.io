@@ -283,11 +283,6 @@
 
 
 			function searchVerb(id, type, jp, jpS){
-				var key = jpS;
-				if(jpS == ""){
-					key = jp;
-				}
-
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.typeChangedVerb = type;
 				xmlhttp.onreadystatechange = function(){
@@ -297,14 +292,15 @@
 				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 				    	var txt = xmlhttp.responseText;
 							var searched = 0;
-							// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
 							var arr = txt.split(']="');
 							arr.shift();
 
 							for(i = 0; i < arr.length; i++){
 								if(i % 2 == 0){
 									arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-									if(arrPos[i / 2].includes(key)){
+									var first = arrPos[i / 2].split('（')[0];
+									var second = arrPos[i / 2].split('（')[1];
+									if((jpS == "" && first == jp) || jpS == second && first == jp)){
 										searched = 1;
 									}
 								}else{
