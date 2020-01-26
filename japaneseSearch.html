@@ -393,20 +393,6 @@
 										.replace('》', '');
 									}
 									string[i] += typeValue + ";";
-
-									if(typeValue.includes("動詞")){	//brendan
-											var clearJp = arrJp[i];
-											var clearJpS = arrJpS[i];
-
-											if(arrJp[i].includes('<span')){
-												clearJp = arrJp[i].split('<span')[0];
-											}
-											if(arrJpS[i].includes('<span')){
-												clearJpS = arrJpS[i].split('<span')[0];
-											}
-											searchVerb(i, clearJp, clearJpS);
-									}
-
 									string[i] += type.replace("Old", "");
 
 									if(arrZh[i].includes("<")){
@@ -421,6 +407,19 @@
 									if(arrZh[i].includes(searchKey) || arrJp[i].includes(searchKey) || arrJpS[i].includes(searchKey)){
 											document.getElementById("displayNone").innerHTML += string[i] + "^.^";
 											document.getElementById("displayNoneNum").innerHTML += "1";
+
+											if(typeValue.includes("動詞")){	//brendan
+													var clearJp = arrJp[i];
+													var clearJpS = arrJpS[i];
+
+													if(arrJp[i].includes('<span')){
+														clearJp = arrJp[i].split('<span')[0];
+													}
+													if(arrJpS[i].includes('<span')){
+														clearJpS = arrJpS[i].split('<span')[0];
+													}
+													searchVerb(i, clearJp, clearJpS);
+											}
 									}
 								}
 								responseTotal++;
