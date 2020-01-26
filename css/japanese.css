@@ -60,7 +60,8 @@
 , #source0
 , #source1
 , #source2
-, #source3 {
+, #source3
+, .verbTable {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	font-size: 16px;
@@ -71,7 +72,8 @@
 , #source0 td, #source0 th
 , #source1 td, #source1 th
 , #source2 td, #source2 th
-, #source3 td, #source3 th{
+, #source3 td, #source3 th
+, .verbTable td, .verbTable th{
 	border: 1px solid #ddd;
 }
 
@@ -80,6 +82,7 @@
 , #source1 tr:nth-child(even)
 , #source2 tr:nth-child(even)
 , #source3 tr:nth-child(even)
+, .verbTable tr:nth-child(even)
 {background-color: #f2f2f2;}
 
 #source tr:hover
@@ -87,13 +90,16 @@
 , #source1 tr:hover
 , #source2 tr:hover
 , #source3 tr:hover
+, .verbTable tr:hover
 {background-color: #ddd;}
 
 #source th
 , #source0 th
 , #source1 th
 , #source2 th
-, #source3 th {
+, #source3 th
+, .verbTable th
+{
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;
@@ -104,7 +110,8 @@
 #source0 td, #source0 th
 , #source1 td, #source1 th
 , #source2 td, #source2 th
-, #source3 td, #source3 th {
+, #source3 td, #source3 th
+, .verbTable td, .verbTable th {
 	text-align: center;
 	font-size: 20px;
 }
