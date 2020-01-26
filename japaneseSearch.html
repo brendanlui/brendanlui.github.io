@@ -192,7 +192,6 @@
 				}
 			});
 
-			var mapVerb = new Map();
 			var typeArr = ['ta01', 'te01', 'shieki01'];
 			var searchTotal = 0;
 
@@ -217,7 +216,6 @@
 							document.getElementById("myBar").style.display = "block";
 							existSearchKey = searchKey;
 
-							mapVerb = {};
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
 							}
@@ -236,6 +234,7 @@
 				xmlhttp.typeChangedVerb = type;
 				xmlhttp.onreadystatechange = function(){
 
+					var mapVerb = new Map();
 					var arrPos = {};
 					var arrNeg = {};
 
