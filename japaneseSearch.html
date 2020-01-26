@@ -141,7 +141,7 @@
 			</table>
 			</br>
 
-			<table id="source3">
+			<table id="source4">
 			</table>
 			<table id="teTable" class="verbTable">
 			</table>
@@ -560,6 +560,11 @@
 					+ '<td>' + str2 + '</td>'
 					+ '</tr>';
 
+					var title = document.getElementById("source4");
+					title.innerHTML = '<tr>'
+							+ '<th>動詞形態</th>'
+							+ '</tr>';
+
 					var arrSpace = document.getElementsByClassName("verbTableSpace");
 					var arrTable = document.getElementsByClassName("verbTable");
 					var arrTemp = document.getElementsByClassName('word' + id + ' te');
@@ -572,6 +577,7 @@
 					}
 
 					if(verbFound == 1){
+							title.style.display = "";
 							for (i = 0; i < arrTable.length; i++){
 								var idTable = arrTable[i].id.replace("Table", "");
 								var finalValue = document.getElementById(idTable + "Word" + id).innerHTML;
@@ -585,6 +591,7 @@
 								arrSpace[i].style.display = "";
 							}
 					}else{
+							title.style.display = "none";
 							for (i = 0; i < arrTable.length; i++){
 									arrTable[i].style.display = "none";
 									arrSpace[i].style.display = "none";
