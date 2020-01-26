@@ -213,6 +213,8 @@
 
 							document.getElementById("myBar").style.display = "block";
 							existSearchKey = searchKey;
+
+							mapVerb = {};
 							for(i = 1; i <= 50; i++){
 								searchEach('Old' + i, searchKey);
 							}
@@ -223,62 +225,60 @@
 			var typeArr = ['ta01', 'te01', 'shieki01'];
 			var searchTotal = 0;
 
-			function searchVerb(id, jp, jpS){
+			function searchVerb(id, type, jp, jpS){
 				var id = 'word' + id;
 				var key = jpS;
 				if(jpS == ""){
 					key = jp;
 				}
 
-				for (k = 0; k < typeArr.length; k++){
-					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.k = k;
-					xmlhttp.onreadystatechange = function(){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.typeChangedVerb = type;
+				xmlhttp.onreadystatechange = function(){
 
-						var arrPos = {};
-						var arrNeg = {};
+					var arrPos = {};
+					var arrNeg = {};
 
-					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-					    	var txt = xmlhttp.responseText;
-								var searched = 0;
-								// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
-								var arr = txt.split(']="');
-								arr.shift();
+				  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+				    	var txt = xmlhttp.responseText;
+							var searched = 0;
+							// txt = '1]="かわります（変わります）";s[1]="かわっかかて";';		//brendan debug 0.1
+							var arr = txt.split(']="');
+							arr.shift();
 
-								for(i = 0; i < arr.length; i++){
-									if(i % 2 == 0){
-										arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										if(arrPos[i / 2].includes(key)){
-											searched = 1;
-										}
-									}else{
-										arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
-										if(searched == 1){
-												var typeChangedVerb = typeArr[this.k];
-												if(mapVerb.has(id)){
-													var oldValue = mapVerb.get(id);
-													if(oldValue.includes(typeChangedVerb)){
-															break;
-													}else{
-															mapVerb.set(id, oldValue + typeChangedVerb + ':' + arrNeg[(i - 1) / 2]);
-													}
+							for(i = 0; i < arr.length; i++){
+								if(i % 2 == 0){
+									arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+									if(arrPos[i / 2].includes(key)){
+										searched = 1;
+									}
+								}else{
+									arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+									if(searched == 1){
+											var typeChangedVerb = typeArr[this.typeChangedVerb];
+											if(mapVerb.has(id)){
+												var oldValue = mapVerb.get(id);
+												if(oldValue.includes(typeChangedVerb)){
+														break;
 												}else{
-													mapVerb.set(id, typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + ';');
+														mapVerb.set(id, oldValue + typeChangedVerb + ':' + arrNeg[(i - 1) / 2]);
 												}
-												break;
-										}
+											}else{
+												mapVerb.set(id, typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + ';');
+											}
+											break;
 									}
 								}
-								searchTotal++;
+							}
+							searchTotal++;
 
-								if(searchTotal == typeArr.length){
-									console.log(mapVerb);
-								}
-					  }
-					};
-					xmlhttp.open("GET","./verb/" + typeArr[k] + ".txt",true);
-					xmlhttp.send();
-				}
+							if(searchTotal == typeArr.length){
+								console.log(mapVerb);
+							}
+				  }
+				};
+				xmlhttp.open("GET","./verb/" + type + ".txt",true);
+				xmlhttp.send();
 			}
 
 			function searchEach(type, searchKey)
@@ -425,7 +425,9 @@
 													if(arrJpS[i].includes('<span')){
 														clearJpS = arrJpS[i].split('<span')[0];
 													}
-													searchVerb(i, clearJp, clearJpS);
+													for (l = 0; l < typeArr.length; l++){
+														searchVerb(i, typeArr[l], clearJp, clearJpS);
+													}
 											}
 									}
 								}
