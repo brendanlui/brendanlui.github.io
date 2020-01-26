@@ -139,6 +139,36 @@
 			</br>
 			<table id="source3">
 			</table>
+			</br>
+			<table id="teTable" class="verbTable">
+			</table>
+			</br>
+			<table id="jishoTable" class="verbTable">
+			</table>
+			</br>
+			<table id="naiTable" class="verbTable">
+			</table>
+			</br>
+			<table id="taTable" class="verbTable">
+			</table>
+			</br>
+			<table id="ikoTable" class="verbTable">
+			</table>
+			</br>
+			<table id="meireTable" class="verbTable">
+			</table>
+			</br>
+			<table id="jokenTable" class="verbTable">
+			</table>
+			</br>
+			<table id="kanoTable" class="verbTable">
+			</table>
+			</br>
+			<table id="ukemisonkeiTable" class="verbTable">
+			</table>
+			</br>
+			<table id="shiekiTable" class="verbTable">
+			</table>
 	  </div>
 	</div>
 
@@ -204,16 +234,20 @@
 											, 'ukemisonkei01', 'ukemisonkei02', 'ukemisonkei03'
 											, 'shieki01', 'shieki02', 'shieki03'];
 
-			var typeArrZn = ['て形', 'て形', 'て形'
-											, '辭書形', '辭書形', '辭書形'
-											, 'ない形', 'ない形', 'ない形'
-											, 'た形', 'た形', 'た形'
-											, '意向形', '意向形'
-											, '命令形', '命令形'
-											, '條件形', '條件形', '條件形'
-											, '可能形', '可能形', '可能形'
-											, '被動、尊敬形', '被動、尊敬形', '被動、尊敬形'
-											, '使役形', '使役形', '使役形'];
+
+			var typeMap = new Map([
+										  ['te', 'て形'],
+										  ['jisho', '辭書形'],
+										  ['nai', 'ない形'],
+										  ['ta', 'た形'],
+										  ['iko', '意向形'],
+										  ['meirei', '命令形'],
+										  ['joken', '條件形'],
+										  ['kano', '可能形'],
+										  ['ukemisonkei', '被動、尊敬形'],
+										  ['shieki', '使役形'],
+										]);
+
 			var searchTotal = 0;
 
 			var existSearchKey = "";
@@ -327,7 +361,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a id="word' + i + '" onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
+										string[i] += '<a id="word' + i + '" onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\', ' + i + ')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
@@ -419,7 +453,7 @@
 											document.getElementById("displayNone").innerHTML += string[i] + "^.^";
 											document.getElementById("displayNoneNum").innerHTML += "1";
 
-											if(typeValue.includes("動詞")){	//brendan
+											if(typeValue.includes("動詞")){
 
 													var clearJp = arrJp[i];
 													var clearJpS = arrJpS[i];
@@ -505,7 +539,7 @@
 			var modal2 = document.getElementById('myModal2');
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
-			function btnOpenModal2(str1, str2) {
+			function btnOpenModal2(str1, str2, id) {
 			    modal2.style.display = "block";
 					document.getElementById("source2").innerHTML = '<tr>'
 					+ '<th>例句</th>'
@@ -519,6 +553,24 @@
 					+ '<tr>'
 					+ '<td>' + str2 + '</td>'
 					+ '</tr>';
+
+					var arrTable = document.getElementsByClassName("verbTable");
+					if(document.getElementById("teWord" + id) != null){
+							for (i = 0; i < arrTable.length; i++){
+								var idTable = arrTable[i].id.replace("Table", "");
+								arrTable[i].innerHTML = '<tr>'
+								+ '<th>' + typeMap.get(idTable) + '</th>'
+								+ '</tr>'
+								+ '<tr>'
+								+ '<td>' + document.getElementById(idTable + "Word" + id) + '</td>'
+								+ '</tr>';
+								arrTable[i].style.display = "block";
+							}
+					}else{
+							for (i = 0; i < arrTable.length; i++){
+								arrTable[i].style.display = "none";
+							}
+					}
 			}
 			// When the user clicks on <span> (x), close the modal
 			close2.onclick = function() {
