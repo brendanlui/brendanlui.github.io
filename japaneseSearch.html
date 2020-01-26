@@ -232,10 +232,11 @@
 
 				for (k = 0; k < typeArr.length; k++){
 					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.onreadystatechange = function(){
+					xmlhttp.onreadystatechange = function(k){
 
 						var arrPos = {};
 						var arrNeg = {};
+
 
 					  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 					    	var txt = xmlhttp.responseText;
