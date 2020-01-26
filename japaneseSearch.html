@@ -307,7 +307,7 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
+										string[i] += '<a id="word' + i + '" onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
@@ -412,7 +412,7 @@
 													}
 
 													for (l = 0; l < typeArr.length; l++){
-														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l] + 'Word' + i + '" style="display:none;"></sapn>' + "^.^";
+														document.getElementById("displayNoneVerb").innerHTML += '<span id="' + typeArr[l] + 'Word' + i + '" class="word' + i + '"></sapn>';
 														searchVerb(i, typeArr[l], clearJp, clearJpS);
 													}
 											}
