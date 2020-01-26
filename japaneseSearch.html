@@ -192,6 +192,9 @@
 				}
 			});
 
+			var mapVerb = new Map();
+			var typeArr = ['ta01', 'te01', 'shieki01'];
+			var searchTotal = 0;
 
 			var existSearchKey = "";
 			var responseTotal = 0;
@@ -221,9 +224,6 @@
 				}
 			}
 
-			var mapVerb = new Map();
-			var typeArr = ['ta01', 'te01', 'shieki01'];
-			var searchTotal = 0;
 
 			function searchVerb(id, type, jp, jpS){
 				var id = 'word' + id;
