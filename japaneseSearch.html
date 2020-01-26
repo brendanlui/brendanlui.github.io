@@ -560,7 +560,7 @@
 					var arrTable = document.getElementsByClassName("verbTable");
 					var arrTemp = document.getElementsByClassName('word' + id + ' te');
 					var verbFound = 0;
-					for(i = 0; i < arrTemp; i++){
+					for(i = 0; i < arrTemp.length; i++){
 						if(arrTemp[i].innerHTML != ""){
 							verbFound = 1;
 							break;
