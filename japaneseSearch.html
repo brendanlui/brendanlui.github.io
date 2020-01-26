@@ -233,8 +233,6 @@
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.typeChangedVerb = type;
 				xmlhttp.onreadystatechange = function(){
-
-					var mapVerb = new Map();
 					var arrPos = {};
 					var arrNeg = {};
 
@@ -254,26 +252,12 @@
 								}else{
 									arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 									if(searched == 1){
-											var typeChangedVerb = typeArr[this.typeChangedVerb];
-											if(mapVerb.has(id)){
-												var oldValue = mapVerb.get(id);
-												if(oldValue.includes(typeChangedVerb)){
-														break;
-												}else{
-														mapVerb.set(id, oldValue + typeChangedVerb + ':' + arrNeg[(i - 1) / 2]);
-												}
-											}else{
-												mapVerb.set(id, typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + ';');
-											}
+											document.getElementById(this.typeChangedVerb + "Word" + id).innerHTML = this.typeChangedVerb + ':' + arrNeg[(i - 1) / 2] + "^.^";
 											break;
 									}
 								}
 							}
 							searchTotal++;
-
-							//if(searchTotal == typeArr.length){
-								console.log(mapVerb);
-							//}
 				  }
 				};
 				xmlhttp.open("GET","./verb/" + type + ".txt",true);
@@ -322,10 +306,13 @@
 
 									arrJp[i] = arr[i].substr(0, arrJp[i].indexOf('</span>')).trim();
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
-										string[i] += '<a id="word' + i + '" onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
+										string[i] += '<a onclick="btnOpenModal2(\'' + arrSen[i] + '\',\'' + arrSenExpl[i] + '\')">';
 									}
 									string[i] += arrJp[i];
 									if(arrSen[i] != '' && arrSenExpl[i] != ''){
+										for(j = 0; j < typeArr.length; j++){
+											string[i] += '<span id="' + typeArr[i] + 'Word' + i + '" style="display:none;" id="displayNone"></sapn>';
+										}
 										string[i] += "</a>";
 									}
 									string[i] += ";";
