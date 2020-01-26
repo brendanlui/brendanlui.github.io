@@ -140,7 +140,7 @@
 			<table id="source3">
 			</table>
 			</br>
-			
+
 			<table id="teTable" class="verbTable">
 			</table>
 			<br class="verbTableSpace">
@@ -572,12 +572,13 @@
 					if(verbFound == 1){
 							for (i = 0; i < arrTable.length; i++){
 								var idTable = arrTable[i].id.replace("Table", "");
+								var finalValue = document.getElementById(idTable + "Word" + id).innerHTML;
 								arrTable[i].innerHTML = '<tr>'
-								+ '<th>' + typeMap.get(idTable) + '</th>'
-								+ '</tr>'
-								+ '<tr>'
-								+ '<td>' + document.getElementById(idTable + "Word" + id).innerHTML + '</td>'
-								+ '</tr>';
+									+ '<th>' + typeMap.get(idTable) + '</th>'
+									+ '</tr>'
+									+ '<tr>'
+									+ '<td>' + (finalValue == "" ? "-" : finalValue) + '</td>'
+									+ '</tr>';
 								arrTable[i].style.display = "";
 								arrSpace[i].style.display = "";
 							}
