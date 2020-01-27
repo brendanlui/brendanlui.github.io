@@ -39,6 +39,7 @@
 			<table id="source">
 			</table>
 	  </div>
+		<div style="display:none;" id="displayNoneVerb"></div>
 	</div>
 
 	<link rel="stylesheet" href="/css/modal_box_style2.css">
@@ -103,6 +104,32 @@
 			restart();
 		}
 
+		//brendan
+		var typeArr = ['te01', 'te02', 'te03'
+										, 'jisho01', 'jisho02', 'jisho03'
+										, 'nai01', 'nai02', 'nai03'
+										, 'ta01', 'ta02', 'ta03'
+										, 'iko01', 'iko02'
+										, 'meirei01', 'meirei02'
+										, 'joken01', 'joken02', 'joken03'
+										, 'kano01', 'kano02', 'kano03'
+										, 'ukemisonkei01', 'ukemisonkei02', 'ukemisonkei03'
+										, 'shieki01', 'shieki02', 'shieki03'];
+
+
+		var typeMap = new Map([
+									  ['te', 'て形'],
+									  ['jisho', '辭書形'],
+									  ['nai', 'ない形'],
+									  ['ta', 'た形'],
+									  ['iko', '意向形'],
+									  ['meirei', '命令形'],
+									  ['joken', '條件形'],
+									  ['kano', '可能形'],
+									  ['ukemisonkei', '被動、尊敬形'],
+									  ['shieki', '使役形'],
+									]);
+
 		function loadDoc(type)
 		{
 				var xmlhttp = new XMLHttpRequest();
@@ -156,7 +183,7 @@
 								dir[i] = '<tr>';
 								dir[i] += '<td>';
 								if(arrSen[i] != "" && arrSenExpl != ""){
-									dir[i] += '<a onclick="btnOpenModal2(' + i + ')">';
+									dir[i] += '<a id="word' + i + '" onclick="btnOpenModal2(' + i + ')">';
 								}
 								dir[i] += arrJp[i];
 								if(arrSen[i] != ""){
@@ -237,6 +264,29 @@
 								dir[i] += '</tr>';
 								document.getElementById("source").innerHTML += dir[i];
 								arrEn[i] = arrZh[i];
+
+								//brendan
+								if(typeValue.includes("動詞")){
+
+										var clearJp = arrJp[i];
+										var clearJpS = jpValue;
+
+										if(arrJp[i].includes('<span')){
+											clearJp = arrJp[i].split('<span')[0];
+										}
+										if(arrJpS[i].includes('<span')){
+											clearJpS = jpValue;
+										}
+
+										for (l = 0; l < typeArr.length; l++){
+											var wordId = typeArr[l].replace(/[0-9]/g, '') + 'Word' + i;
+											if(document.getElementById(wordId) == null){
+												document.getElementById("displayNoneVerb").innerHTML += '<span id="' + wordId + '" class="word' + i + ' ' + typeArr[l].replace(/[0-9]/g, '') + '"></sapn>';
+											}
+											searchVerb(i, typeArr[l], clearJp, clearJpS);
+										}
+								}
+
 							}
 
 							if(changeWay){
@@ -261,7 +311,48 @@
 				xmlhttp.send();
 		}
 
+		function searchVerb(id, type, jp, jpS){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.typeChangedVerb = type;
+			xmlhttp.onreadystatechange = function(){
+				var arrPos = {};
+				var arrNeg = {};
+
+			  if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+			    	var txt = xmlhttp.responseText;
+						var searched = 0;
+						var arr = txt.split(']="');
+						arr.shift();
+
+						for(i = 0; i < arr.length; i++){
+							if(i % 2 == 0){
+								arrPos[i / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+								var first = arrPos[i / 2];
+								var second = "";
+								if(arrPos[i / 2].includes('（') && arrPos[i / 2].includes('）')){
+									first = arrPos[i / 2].split('（')[0];
+									second = arrPos[i / 2].split('（')[1].split('）')[0];
+								}
+								if((jpS == "" && first == jp) || (jpS == second && first == jp)){
+									searched = 1;
+								}
+							}else{
+								arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
+								if(searched == 1){
+										document.getElementById(this.typeChangedVerb.replace(/[0-9]/g, '') + "Word" + id).innerHTML = arrNeg[(i - 1) / 2];
+										break;
+								}
+							}
+						}
+						searchTotal++;
+			  }
+			};
+			xmlhttp.open("GET","./verb/" + type + ".txt",true);
+			xmlhttp.send();
+		}
+
 		function filterSelection(text){
+			document.getElementById("displayNoneVerb").innerHTML = "";
 			var element = document.getElementById("btnFilter" + text);
 			filterSelected = text;
 			loadDoc(text);
@@ -411,6 +502,44 @@
 				+ '<tr>'
 				+ '<td>' + arrSenExpl[rowIndex] + '</td>'
 				+ '</tr>';
+
+				var title = document.getElementById("source4");
+				title.innerHTML = '<tr>'
+						+ '<th>動詞形態</th>'
+						+ '</tr>';
+
+				//var arrSpace = document.getElementsByClassName("verbTableSpace");
+				var arrTable = document.getElementsByClassName("verbTable");
+				var arrTemp = document.getElementsByClassName('word' + rowIndex + ' te');
+				var verbFound = 0;
+				for(i = 0; i < arrTemp.length; i++){
+					if(arrTemp[i].innerHTML != ""){
+						verbFound = 1;
+						break;
+					}
+				}
+
+				if(verbFound == 1){
+						title.style.display = "";
+						for (i = 0; i < arrTable.length; i++){
+							var idTable = arrTable[i].id.replace("Table", "");
+							var finalValue = document.getElementById(idTable + "Word" + rowIndex).innerHTML;
+							arrTable[i].innerHTML = '<tr>'
+								+ '<th>' + typeMap.get(idTable) + '</th>'
+								+ '</tr>'
+								+ '<tr>'
+								+ '<td>' + (finalValue == "" ? "-" : finalValue) + '</td>'
+								+ '</tr>';
+							arrTable[i].style.display = "";
+							//arrSpace[i].style.display = "";
+						}
+				}else{
+						title.style.display = "none";
+						for (i = 0; i < arrTable.length; i++){
+								arrTable[i].style.display = "none";
+								//arrSpace[i].style.display = "none";
+						}
+				}
 		}
 		// When the user clicks on <span> (x), close the modal
 		close2.onclick = function() {
