@@ -133,7 +133,6 @@
 	<link rel="stylesheet" href="/css/modal_box_style2.css">
 	<div id="myModal2" class="modal2">
 	  <div class="modal-content2">
-			<a id="toppestNav" class="smooth"></a>
 	    <span id="close2" class="close2">&times;</span>
 			<table id="source2">
 			</table>
@@ -543,9 +542,6 @@
 					xmlhttp.send();
 			}
 
-			var modal2 = document.getElementById('myModal2');
-			modal2.onscroll = function() {scrollFunction(modal2, "myBtnNav")};
-
 			var close2 = document.getElementById("close2");
 			// When the user clicks on the button, open the modal
 			function btnOpenModal2(str1, str2, id) {
@@ -653,7 +649,6 @@
 		<div id="nav">
 			 <ul>
 				 <li><a id="myBtn" href="#toppest" class="subtitle" >置頂</a></li>
-				 <li><a id="myBtnNav" href="#toppestNav" class="subtitle" >置頂</a></li>
 			 </ul>
 		</div>
 	</div>
@@ -676,7 +671,6 @@
 		}
 
 	</script>
-	<script type="text/javascript" src="/js/jquery.scrollTopMyModel2.js"></script>
 	<script type="text/javascript" src="/js/jquery.scrollTopWindow2.js"></script>
 
 	<ul id="foot">
