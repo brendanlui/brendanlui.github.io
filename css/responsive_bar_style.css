@@ -52,18 +52,18 @@
 }
 
 
-.n6 a {
+.topnav a.n6 {
 	background-color: #c5c5c5;
 	color: #080808;
 }
-.n45 a {
+.topnav a.n45 {
 	background-color: #adadad;
 	color: #080808;
 }
-.n3 a {
+.topnav a.n3 {
 	background-color: #848484;
 	color: #080808;
 }
-.other a {
+.topnav a.other {
 	background-color: #080808;
 }
