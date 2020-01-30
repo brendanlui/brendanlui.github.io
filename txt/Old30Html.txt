@@ -1516,7 +1516,15 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
               </p>
               <p class="txt-zh zh">討厭</p>
 
-              <div class="line"></div>
+                <div class="panel panel-default panel-horizontal sentences" style="margin-top: 10px;">
+                  <div class="panel-heading" style="width:20px;">
+                    <h4 class="panel-title">例</h4>
+                  </div>
+                  <div class="panel-body">
+                    <p lang="ja" class="txt-ja"><span class="furigana"><ruby><rb>嫌</rb><rt>いや</rt></ruby>な<ruby><rb>音</rb><rt>おと</rt></ruby>が<ruby><rb>聞</rb><rt>き</rt></ruby>こえます。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="1077" data-vt="JP" data-txt="嫌な音が聞こえます。|嫌な音が聞こえます。"><i class="fa fa-volume-up"></i></a></p>
+                    <p lang="ja" class="txt-zh zh">聽見討厭的聲音。</p>
+                  </div>
+                </div>
             </div>
 
             <div lang="ja" class="col-sm-12 divAutoPlay">
@@ -1532,16 +1540,6 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
 
               </p>
               <p class="txt-zh zh">於是；這麼一來</p>
-
-              <div class="panel panel-default panel-horizontal sentences" style="margin-top: 10px;">
-                <div class="panel-heading" style="width:20px;">
-                  <h4 class="panel-title">例</h4>
-                </div>
-                <div class="panel-body">
-                  <p lang="ja" class="txt-ja"><span class="furigana"><ruby><rb>嫌</rb><rt>いや</rt></ruby>な<ruby><rb>音</rb><rt>おと</rt></ruby>が<ruby><rb>聞</rb><rt>き</rt></ruby>こえます。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="1077" data-vt="JP" data-txt="嫌な音が聞こえます。|嫌な音が聞こえます。"><i class="fa fa-volume-up"></i></a></p>
-                  <p lang="ja" class="txt-zh zh">聽見討厭的聲音。</p>
-                </div>
-              </div>
 
               <div class="panel panel-default panel-horizontal sentences" style="margin-top: 10px;">
                 <div class="panel-heading" style="width:20px;">
