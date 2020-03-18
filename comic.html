@@ -42,6 +42,7 @@
 	</br>
 	<div id="myModalFooter" class="modal" style="text-align: center;">
 	</div>
+	<div style="display:none;" id="displayNone"></div>
 
 	<script>
 	var comicId = "touch";
@@ -103,6 +104,7 @@
 					var str = txt.split('.jpg" style=\'display:none;\'></div><div id="ss-toolbar">')[0];
 					var arr = str.split('/');
 					var page = arr[arr.length-1];
+					downloadFutureImg(page);
 
 					var selectBox = "";
 					selectBox = 'Page : <select id="mySelectPage" onchange="changePage()">';
@@ -140,6 +142,13 @@
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
+	}
+
+	function downloadFutureImg(page){
+		document.getElementById("displayNone").innerHTML = "";
+		for(i = 1; i <= page; i++){
+			document.getElementById("displayNone").innerHTML += '<img src="./comic/'+comicId+'/img/'+set+"_"+i+'.jpg" width="100%">';
+		}
 	}
 
 	//cookie start
