@@ -37,6 +37,9 @@
 	<div id="myModalPage" class="modal" style="text-align: center;">
 	</div>
 	</br>
+	<button id="myBar" class="buttonload">
+		<i class="fa fa-refresh fa-spin"></i> Loading
+	</button>
 	<div id="myModalContent" class="modal">
 	</div>
 	</br>
@@ -117,7 +120,7 @@
 					selectBox += "</select>";
 					document.getElementById("myModalPage").innerHTML = selectBox;
 					document.getElementById("mySelectPage").value = curPage;
-					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg" width="100%">';
+					document.getElementById("myModalContent").innerHTML = '<img id="showedImg" src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg" width="100%">';
 
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')"><- Prev. Page</a>';
@@ -130,6 +133,7 @@
 
 					set = num;
 					totalPage = page;
+					showLoading();
 					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 					downloadFutureImg(page);
 			}
@@ -139,7 +143,7 @@
 	}
 
 	function nextPage(curPage){
-			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
+			document.getElementById("myModalContent").innerHTML = '<img id="showedImg" src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
 			if(curPage == totalPage){
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')"><- Prev. Page</a>';
@@ -149,14 +153,14 @@
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')"><- Prev. Page</a>'
 										+ '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page -></a>';
 			}
-
+			showLoading();
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 			document.getElementById("myModalContent").scrollIntoView();
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
-		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
+		  document.getElementById("myModalContent").innerHTML = '<img id="showedImg" src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			if(curPage == totalPage){
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')"><- Prev. Page</a>';
 			}else if(curPage == 1){
@@ -165,13 +169,22 @@
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')"><- Prev. Page</a>'
 										+ '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page -></a>';
 			}
+			showLoading();
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
 	function downloadFutureImg(page){
 		document.getElementById("displayNone").innerHTML = "";
 		for(i = 1; i <= page; i++){
-			document.getElementById("displayNone").innerHTML += '<img src="./comic/'+comicId+'/img/'+set+"_"+i+'.jpg" width="100%">';
+			document.getElementById("displayNone").innerHTML += '<img id="showedImg" src="./comic/'+comicId+'/img/'+set+"_"+i+'.jpg" width="100%">';
+		}
+	}
+
+	function showLoading(){
+		document.getElementById("myBar").style.display = "block";
+		var img = document.getElementById("showedImg");
+		img.onload = function() {
+	    document.getElementById("myBar").style.display = "none";
 		}
 	}
 
