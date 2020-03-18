@@ -138,6 +138,7 @@
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
+			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
