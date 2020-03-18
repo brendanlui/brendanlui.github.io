@@ -34,13 +34,13 @@
 	<div id="myModalHeader" class="modal">
 	</div>
 	</br>
-	<div id="myModalPage" class="modal">
+	<div id="myModalPage" class="modal" style="text-align: center;">
 	</div>
 	</br>
 	<div id="myModalContent" class="modal">
 	</div>
 	</br>
-	<div id="myModalFooter" class="modal">
+	<div id="myModalFooter" class="modal" style="text-align: center;">
 	</div>
 
 	<script>
@@ -87,7 +87,7 @@
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage("'+comicId+'", '+set+', '+(curPage+1)+')">Next Page</a>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(\''+comicId+'\', '+set+', '+(curPage+1)+')">Next Page</a>';
 					}
 
 					set = num;
