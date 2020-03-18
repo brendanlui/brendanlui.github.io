@@ -71,6 +71,7 @@
 	}
 
 	function restart(){
+		//add comic start
 		var touch = "";
 		touch += '<p id="'+comicId+'" class="topic">Touch : </p>';
 		for(i = 1; i <= 26; i++){
@@ -78,6 +79,7 @@
 				touch += " ";
 		}
 		document.getElementById("myModalHeader").innerHTML = touch;
+		//add comic end
 
 		chooseSet(comicId, set, page1);
 	}

@@ -215,6 +215,16 @@ a:hover {
 	border-radius: 30px;
 }
 
+a.list{
+	font-size: 16px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+p.topic{
+	font-size: 20px;
+}
+
 
 @media screen and (max-width: 1026px) {
 
