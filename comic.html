@@ -61,14 +61,14 @@
 
 					var setList = document.getElementsByClassName("list");
 					for(i = 0; i < setList.length; i++){
-						setList[0].color = "#024378";
+							setList[i].style.color = "#024378";
 					}
-					document.getElementById(comicId +"_"+ num).color = "#d7ae00";
+					document.getElementById(comicId +"_"+ num).style.color = "#d7ae00";
 
 					var string = [];
 					var txt = xmlhttp.responseText;
 
-					var str = txt.split('.jpg" style=\'display:none;\'></div><div id="ss-toolbar">')[0];
+					var str = txt.split('.jpg" width="100% style=\'display:none;\'></div><div id="ss-toolbar">')[0];
 					var arr = str.split('/');
 					var page = arr[arr.length-1];
 
@@ -78,13 +78,13 @@
 						selectBox += '<option value="'+i+'">'+i+'</option>';
 					}
 					selectBox += "</select>";
-					document.getElementById("myModalPage").innerHTML += selectBox;
-					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg">';
+					document.getElementById("myModalPage").innerHTML = selectBox;
+					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg" width="100%>';
 
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<button type="submit" class="nextPage" id="nextPage" onclick="nextPage("'+comicId+'", '+set+', '+(curPage+1)+')"></button>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage("'+comicId+'", '+set+', '+(curPage+1)+')"></a>';
 					}
 
 					set = num;
@@ -95,12 +95,12 @@
 	}
 
 	function nextPage(curPage){
-			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg">';
+			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%>';
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
-		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg">';
+		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%>';
 	}
 	</script>
 
