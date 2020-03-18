@@ -148,7 +148,6 @@
 					totalPage = page;
 					showLoading();
 					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
-					document.getElementById("myModalContent").scrollIntoView();
 					downloadFutureImg(page);
 			}
 		};
@@ -169,7 +168,6 @@
 			}
 			showLoading();
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
-			document.getElementById("myModalContent").scrollIntoView();
 	}
 
 	function changePage(){
@@ -199,6 +197,7 @@
 		var img = document.getElementById("showedImg");
 		img.onload = function() {
 	    document.getElementById("myBar").style.display = "none";
+			document.getElementById("myModalContent").scrollIntoView();
 		}
 	}
 
