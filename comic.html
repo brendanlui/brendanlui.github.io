@@ -48,6 +48,7 @@
 	var comicId = "touch";
 	var set = 1;
 	var page1 = 1;
+	var totalPage = 0;
 
 	var cookie = getCookie('comic');
 	if(cookie != ""){
@@ -122,6 +123,7 @@
 					}
 
 					set = num;
+					totalPage = page;
 					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 					downloadFutureImg(page);
 			}
@@ -133,7 +135,7 @@
 	function nextPage(curPage){
 			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
-			if(curPage == page){
+			if(curPage == totalPage){
 				document.getElementById("myModalFooter").innerHTML = "";
 			}else{
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
@@ -144,7 +146,7 @@
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
-			if(curPage == page){
+			if(curPage == totalPage){
 				document.getElementById("myModalFooter").innerHTML = "";
 			}else{
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
