@@ -120,7 +120,7 @@
 					}
 
 					set = num;
-					setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
+					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 			}
 		};
 		xmlhttp.open("GET","./comic/"+comicId+"/html/" + num + ".html",true);
@@ -131,13 +131,13 @@
 			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
 			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
-			setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
+			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
-			setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
+			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
 	//cookie start
