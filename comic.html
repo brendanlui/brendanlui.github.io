@@ -45,13 +45,13 @@
 	var set = 1;
 
 	function restart(){
-		var temp = "";
-		temp += "Touch : ";
+		var touch = "";
+		touch += "Touch : ";
 		for(i = 1; i <= 26; i++){
-				temp += '<a class="list" id="'+comicId+i+'" onclick="chooseSet("'+comicId+'", '+i+', 1)">'+i+'</a>'
-				temp += " ";
+				touch += '<a class="list" id="'+comicId+i+'" onclick="chooseSet("'+comicId+'", '+i+', 1)">'+i+'</a>'
+				touch += " ";
 		}
-		document.getElementById("myModalHeader").innerHTML = temp;
+		document.getElementById("myModalHeader").innerHTML = touch;
 	}
 
 	function chooseSet(comicId, num, curPage){
