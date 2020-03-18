@@ -87,7 +87,7 @@
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(\''+comicId+'\', '+set+', '+(curPage+1)+')">Next Page</a>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
 					}
 
 					set = num;
@@ -106,6 +106,28 @@
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 	}
+
+	//cookie start
+	function setCookie(cname, cvalue, exdays) {
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	  var expires = "expires="+d.toUTCString();
+	  document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+
+	  var name = cname + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i = 0; i < ca.length; i++) {
+	    var c = ca[i].trim();
+	    if (c.indexOf(name) == 0) {
+	      return decodeURIComponent(c.replace(name, ""));
+	    }
+	  }
+	  return "";
+	}
+	//cookie end
 	</script>
 
 	<ul id="foot">
