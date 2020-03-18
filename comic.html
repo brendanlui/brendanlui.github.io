@@ -35,6 +35,8 @@
 	</div>
 	<div id="myModalContent" class="modal">
 	</div>
+	<div id="myModalFooter" class="modal">
+	</div>
 
 	<script>
 	var comicId = "touch";
@@ -58,13 +60,19 @@
 
 					var selectBox = "";
 					selectBox = 'Page : <select id="mySelectPage" onchange="changePage()">';
-					for(i = 0; i < page; i++){
+					for(i = 1; i <= page; i++){
 						selectBox += '<option value="'+i+'">'+i+'</option>';
 					}
 					selectBox += "</select>";
 					document.getElementById("myModalHeader").innerHTML += selectBox;
 					set = num;
 					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'">';
+
+					if(curPage == page){
+						document.getElementById("myModalFooter").innerHTML = "";
+					}else{
+						document.getElementById("myModalFooter").innerHTML = '<button type="submit" class="nextPage" id="nextPage" onclick="nextPage("'+comicId+'", '+set+', '+(curPage+1)+')"></button>';
+					}
 			}
 		};
 		xmlhttp.open("GET","./comic/"+comicId+"/html/" + num + ".html",true);
