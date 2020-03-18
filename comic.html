@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
+</head>
+
+<title>Dadiu | Comic</title>
+
+<body onload="restart()">
+	<div id="head">
+		<div id="logo">
+			<img src="/img/dadiu.png" alt="dai01" class="logo_dadiu">
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="/css/responsive_bar_style.css">
+	<div class="topnav" id="myTopnav">
+	  <a href="/">Previous page</a>
+	</div>
+
+	<!--TODO-->
+
+	<div id="myModalHeader" class="modal">
+	</div>
+	<div id="myModalContent" class="modal">
+	</div>
+
+	<script>
+	var comicId = "touch";
+	var set = 1;
+
+	function restart(){
+		document.getElementById("myModalHeader").innerHTML = '<button type="submit" class="'+comicId+'" id="touch" onclick="chooseSet(touch, 1, 1)"></button>';
+	}
+
+	function chooseSet(comicId, num, curPage){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function(){
+			if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+					document.getElementById("myModalHeader").innerHTML = '<button type="submit" class="'+comicId+'" id="'+comicId+'" onclick="chooseSet("'+comicId+'", 1, 1)"></button>';
+					var string = [];
+					var txt = xmlhttp.responseText;
+
+					var str = txt.split('.jpg" style='display:none;'></div><div id="ss-toolbar">')[0];
+					var arr = str.split('/');
+					var page = arr[arr.length-1];
+
+					var selectBox = "";
+					selectBox = 'Page : <select id="mySelectPage" onchange="changePage()">';
+					for(i = 0; i < page; i++){
+						selectBox += '<option value="'+i+'">'+i+'</option>';
+					}
+					selectBox += "</select>";
+					document.getElementById("myModalHeader").innerHTML += selectBox;
+					set = num;
+					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'">';
+			}
+		};
+		xmlhttp.open("GET","./comic/"+comicId+"/html/" + num + ".html",true);
+		xmlhttp.send();
+	}
+
+	function changePage(){
+		  var curPage = document.getElementById("mySelectPage").value;
+		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'">';
+	}
+	</script>
+
+	<ul id="foot">
+		</br>
+		<li>© Copyright 2020. All Rights Reserved.</li>
+	</ul></br>
+</body>
+</html>
