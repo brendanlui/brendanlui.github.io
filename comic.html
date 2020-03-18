@@ -148,6 +148,7 @@
 					totalPage = page;
 					showLoading();
 					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
+					document.getElementById("myModalContent").scrollIntoView();
 					downloadFutureImg(page);
 			}
 		};
