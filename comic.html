@@ -40,7 +40,7 @@
 	<div id="myModalContent" class="modal">
 	</div>
 	</br>
-	<div id="myModalFooter" class="modal" style="text-align: center;">
+	<div id="myModalFooter" class="modal">
 	</div>
 	<div style="display:none;" id="displayNone"></div>
 
@@ -119,9 +119,12 @@
 					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg" width="100%">';
 
 					if(curPage == page){
-						document.getElementById("myModalFooter").innerHTML = "";
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>';
+					}else if(curPage == 1){
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>'
+												+ '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 					}
 
 					set = num;
@@ -138,10 +141,14 @@
 			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
 			if(curPage == totalPage){
-				document.getElementById("myModalFooter").innerHTML = "";
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>';
+			}else if(curPage == 1){
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			}else{
-				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>'
+										+ '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			}
+
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 			document.getElementById("myModalContent").scrollIntoView();
 	}
@@ -150,9 +157,12 @@
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			if(curPage == totalPage){
-				document.getElementById("myModalFooter").innerHTML = "";
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>';
+			}else if(curPage == 1){
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			}else{
-				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
+				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="prevPage" style="font-size: 16px; float: left;" onclick="nextPage(' + (parseInt(curPage)-1) + ')">Previous Page</a>'
+										+ '<a class="nextPage" id="nextPage" style="font-size: 16px; float: right;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			}
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
