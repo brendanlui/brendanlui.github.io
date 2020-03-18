@@ -12,7 +12,6 @@
 	  href="/img/d01.png">
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
-		<script type="text/javascript" src="/js/jquery.scrollTop.js"></script>
 
 </head>
 
@@ -38,8 +37,6 @@
 	<div id="myModalPage" class="modal" style="text-align: center;">
 	</div>
 	</br>
-
-	<a id="imgPosition" class="smooth" style="clear:both;color:#888;"></a>
 	<div id="myModalContent" class="modal">
 	</div>
 	</br>
@@ -124,7 +121,7 @@
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" href="#imgPosition" id="nextPage" style="font-size: 16px;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" style="font-size: 16px;" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 					}
 
 					set = num;
@@ -146,6 +143,7 @@
 				document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			}
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
+			document.getElementById("myModalContent").scrollIntoView();
 	}
 
 	function changePage(){
