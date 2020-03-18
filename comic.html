@@ -46,6 +46,27 @@
 	<script>
 	var comicId = "touch";
 	var set = 1;
+	var page1 = 1;
+
+	var cookie = getCookie('comic');
+	if(cookie != ""){
+		cookieArr = cookie.split("_");
+		if(cookieArr.length == 3){
+			var pass = 1;
+			for(i = 0; i < cookieArr.length; i++){
+				if(cookieArr[i] == ""){
+					pass = 0;
+					break;
+				}
+			}
+
+			if(pass == 1){
+				comicId = cookieArr[0];
+				set = cookieArr[1];
+				page1 = cookieArr[2];
+			}
+		}
+	}
 
 	function restart(){
 		var touch = "";
@@ -55,6 +76,8 @@
 				touch += " ";
 		}
 		document.getElementById("myModalHeader").innerHTML = touch;
+
+		chooseSet(comicId, set, page1);
 	}
 
 	function chooseSet(comicId, num, curPage){
@@ -91,6 +114,7 @@
 					}
 
 					set = num;
+					setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
 			}
 		};
 		xmlhttp.open("GET","./comic/"+comicId+"/html/" + num + ".html",true);
@@ -100,11 +124,13 @@
 	function nextPage(curPage){
 			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
+			setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
+			setCookie('comic', comicId + "_" + set + "_" curPage, 36500);
 	}
 
 	//cookie start
