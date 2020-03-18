@@ -48,7 +48,7 @@
 		var touch = "";
 		touch += "Touch : ";
 		for(i = 1; i <= 26; i++){
-				touch += '<a class="list" id="'+comicId+i+'" onclick="chooseSet(\''+comicId+'\', '+i+', 1)">'+i+'</a>'
+				touch += '<a class="list" id="'+comicId+"_"+i+'" onclick="chooseSet(\''+comicId+'\', '+i+', 1)">'+i+'</a>'
 				touch += " ";
 		}
 		document.getElementById("myModalHeader").innerHTML = touch;
@@ -63,7 +63,7 @@
 					for(i = 0; i < setList.length; i++){
 						setList[0].color = "#024378";
 					}
-					document.getElementById(comicId + num).color = "#d7ae00";
+					document.getElementById(comicId +"_"+ num).color = "#d7ae00";
 
 					var string = [];
 					var txt = xmlhttp.responseText;
