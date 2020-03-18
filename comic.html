@@ -104,7 +104,6 @@
 					var str = txt.split('.jpg" style=\'display:none;\'></div><div id="ss-toolbar">')[0];
 					var arr = str.split('/');
 					var page = arr[arr.length-1];
-					downloadFutureImg(page);
 
 					var selectBox = "";
 					selectBox = 'Page : <select id="mySelectPage" onchange="changePage()">';
@@ -124,6 +123,7 @@
 
 					set = num;
 					setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
+					downloadFutureImg(page);
 			}
 		};
 		xmlhttp.open("GET","./comic/"+comicId+"/html/" + num + ".html",true);
