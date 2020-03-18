@@ -79,7 +79,7 @@
 					}
 					selectBox += "</select>";
 					document.getElementById("myModalPage").innerHTML += selectBox;
-					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'">';
+					document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+num+"_"+curPage+'.jpg">';
 
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
@@ -95,12 +95,12 @@
 	}
 
 	function nextPage(curPage){
-			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'">';
+			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg">';
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
-		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'">';
+		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg">';
 	}
 	</script>
 
