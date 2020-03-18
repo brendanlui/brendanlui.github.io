@@ -70,7 +70,7 @@
 
 	function restart(){
 		var touch = "";
-		touch += "Touch : ";
+		touch += '<p id="'+comicId+'" class="topic">Touch : </p>';
 		for(i = 1; i <= 26; i++){
 				touch += '<a class="list" id="'+comicId+"_"+i+'" onclick="chooseSet(\''+comicId+'\', '+i+', 1)">'+i+'</a>'
 				touch += " ";
@@ -90,6 +90,12 @@
 							setList[i].style.color = "#024378";
 					}
 					document.getElementById(comicId +"_"+ num).style.color = "#d7ae00";
+
+					var topicList = document.getElementsByClassName("topic");
+					for(i = 0; i < topicList.length; i++){
+							topicList[i].style.color = "#000000";
+					}
+					document.getElementById(comicId).style.color = "#c17b05";
 
 					var string = [];
 					var txt = xmlhttp.responseText;
