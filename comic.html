@@ -117,7 +117,7 @@
 					if(curPage == page){
 						document.getElementById("myModalFooter").innerHTML = "";
 					}else{
-						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
+						document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 					}
 
 					set = num;
@@ -131,14 +131,14 @@
 	function nextPage(curPage){
 			document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
 			document.getElementById("mySelectPage").value = curPage;
-			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
+			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
 	function changePage(){
 		  var curPage = document.getElementById("mySelectPage").value;
 		  document.getElementById("myModalContent").innerHTML = '<img src="./comic/'+comicId+'/img/'+set+"_"+curPage+'.jpg" width="100%">';
-			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (curPage+1) + ')">Next Page</a>';
+			document.getElementById("myModalFooter").innerHTML = '<a class="nextPage" id="nextPage" onclick="nextPage(' + (parseInt(curPage)+1) + ')">Next Page</a>';
 			setCookie('comic', comicId + "_" + set + "_" + curPage, 36500);
 	}
 
