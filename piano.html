@@ -34,7 +34,28 @@
 	<div id="buttonBox">
 	  <button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">Click Me</button>
 	</div>
+
+
+  <input id="fileInput" type="file" name="file" />
+  <pre id="fileContent"></pre>
+
+
 	<script>
+	function init(){
+	  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+	}
+
+	function handleFileSelect(event){
+	  const reader = new FileReader()
+	  reader.onload = handleFileLoad;
+	  reader.readAsText(event.target.files[0])
+	}
+
+	function handleFileLoad(event){
+	  console.log(event);
+	  document.getElementById('fileContent').textContent = event.target.result;
+	}
+
 	function loadSrc(type){
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
