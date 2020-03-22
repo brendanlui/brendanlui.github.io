@@ -32,9 +32,26 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  <button id="btnClick" class="buttonJp btnFilter" onclick="playOneNote('C', 4, 2, 3000)">Click Me</button>
+	  <button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">Click Me</button>
 	</div>
 	<script>
+	function loadSrc(type){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+							var string = [];
+							var txt = xmlhttp.responseText;
+							var noteArr = txt.split(',');
+							for(i = 0; i < noteArr.length; i++){
+									var tempArr = noteArr.split('_');
+									playOneNote(tempArr[0], tempArr[1], tempArr[2], tempArr[3]);
+							}
+					}
+				};
+				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
+				xmlhttp.send();
+	}
+
 	function playOneNote(note, interval, duration, startTime){
 			setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
