@@ -43,7 +43,7 @@
 							var txt = xmlhttp.responseText;
 							var noteArr = txt.split(',');
 							for(i = 0; i < noteArr.length; i++){
-									var tempArr = noteArr.split('_');
+									var tempArr = noteArr[i].split('_');
 									playOneNote(tempArr[0], tempArr[1], tempArr[2], tempArr[3]);
 							}
 					}
