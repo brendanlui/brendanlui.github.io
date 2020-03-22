@@ -71,17 +71,20 @@
 
 	function loadText(text){
 			var noteArr = text.split(',');
+			var startTime = 0;
 			for(i = 0; i < noteArr.length; i++){
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
-							temp_2 = tempArr[2];
-							if(tempArr[2].includes("/")){
-								var divideArr = tempArr[2].split("/");
+
+							temp_3 = tempArr[3];
+							if(tempArr[3].includes("/")){
+								var divideArr = tempArr[3].split("/");
 								if(divideArr.length == 2){
-									temp_2 = divideArr[0] / divideArr[1];
+									temp_3 = divideArr[0] / divideArr[1];
 								}
 							}
-							playOneNote(tempArr[0].trim(), tempArr[1], temp_2, tempArr[3]);
+							startTime += temp_3 * 1000;
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
 	}
