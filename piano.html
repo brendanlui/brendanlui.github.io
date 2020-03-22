@@ -45,8 +45,8 @@
 		link.download = 'sample.txt';
 		let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
 		link.href = URL.createObjectURL(blob);
-		link.click();
-		//URL.revokeObjectURL(link.href);
+		//link.click();
+		URL.revokeObjectURL(link.href);
 	}
 
 	function init(){
@@ -64,7 +64,6 @@
 	function handleFileLoad(event){
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
-		editDownload();
 	}
 
 	function loadFile(){
