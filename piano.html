@@ -36,25 +36,17 @@
 		  <button id="btnClick" class="buttonJp btnFilter" onclick="loadFile()">File</button>
 	</div>
   <input id="fileInput" type="file" name="file" />
-	<a download="music.txt" id="downloadLink">Download</a>
+	<a onclick="editDownload()" id="downloadLink">Download</a>
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
-	var textFile = null;
-  function makeTextFile(text) {
-    var data = new Blob([text], {type: 'text/plain'});
-    // If we are replacing a previously generated file we need to
-    // manually revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
-    }
-    textFile = window.URL.createObjectURL(data);
-    return textFile;
-  }
-
 	function editDownload(){
-    var link = document.getElementById('downloadlink');
-    link.href = makeTextFile(document.getElementById('fileContent').textContent);
+		let link = document.createElement('downloadlink');
+		link.download = 'sample.txt';
+		let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
+		link.href = URL.createObjectURL(blob);
+		link.click();
+		//URL.revokeObjectURL(link.href);
 	}
 
 	function init(){
