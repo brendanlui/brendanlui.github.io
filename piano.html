@@ -36,13 +36,11 @@
 		  <button id="btnClick" class="buttonJp btnFilter" onclick="loadFile()">File</button>
 	</div>
 
-	<a download="music.txt" onclick="download()" id="downloadLink">Download</a>
+	<a download="music.txt" onclick="editDownload()" id="downloadLink">Download</a>
   <input id="fileInput" type="file" name="file" />
-  <pre  style="display:none" id="fileContent"></pre>
+  <pre style="display:none" id="fileContent"></pre>
 
 	<script>
-
-
 	var textFile = null,
   function makeTextFile(text) {
     var data = new Blob([text], {type: 'text/plain'});
