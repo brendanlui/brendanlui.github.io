@@ -73,11 +73,11 @@
 	  console.log(event);
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
+		editDownload();
 	}
 
 	function loadFile(){
 		loadText(document.getElementById('fileContent').textContent);
-		editDownload();
 	}
 
 	function loadSrc(type){
