@@ -88,16 +88,16 @@
 									temp_3 = divideArr[0] / divideArr[1];
 								}
 							}
-							startTime += temp_3 * 3000;
+							startTime += temp_3 * 4000;
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
 	}
 
-	function playOneNote(note, interval, duration, startTime){
+	function playOneNote(note, octave, duration, startTime){
 			setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
-						piano.play(note, interval, duration); // plays C4 for 2s using the 'piano' sound profile
+						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
 			}, startTime);
 	}
 	</script>
