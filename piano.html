@@ -32,7 +32,8 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  <button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">Click Me</button>
+	  	<button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">Default</button>
+		  <button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">File</button>
 	</div>
 
 
@@ -54,6 +55,10 @@
 	  console.log(event);
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
+	}
+
+	function loadFile(){
+		loadText(document.getElementById('fileContent').textContent);
 	}
 
 	function loadSrc(type){
