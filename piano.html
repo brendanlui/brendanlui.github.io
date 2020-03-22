@@ -31,9 +31,14 @@
 	</div>
 
 	<!--TODO-->
+	<div id="buttonBox">
+	  <button id="btnClick" class="buttonJp btnFilter" onclick="playOneNote('')">Click Me</button>
+	</div>
 	<script>
-	var piano = Synth.createInstrument('piano');
-	piano.play('C', 4, 2); // plays C4 for 2s using the 'piano' sound profile
+	function playOneNote(){
+			var piano = Synth.createInstrument('piano');
+			piano.play('C', 4, 2); // plays C4 for 2s using the 'piano' sound profile
+	}
 	</script>
 
 	<ul id="foot">
