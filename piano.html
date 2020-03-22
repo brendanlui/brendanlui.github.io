@@ -32,7 +32,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  	<button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('testing')">Default</button>
+	  	<button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('Default')">Default</button>
 		  <button id="btnClick" class="buttonJp btnFilter" onclick="loadFile()">File</button>
 	</div>
 
@@ -48,7 +48,9 @@
 	function handleFileSelect(event){
 	  const reader = new FileReader()
 	  reader.onload = handleFileLoad;
-	  reader.readAsText(event.target.files[0])
+		if(event.target.files.length > 0){
+		  reader.readAsText(event.target.files[0])
+		}
 	}
 
 	function handleFileLoad(event){
