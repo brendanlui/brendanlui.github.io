@@ -44,8 +44,8 @@
 
 
 	var textFile = null,
-  function makeTextFile() {
-    var data = new Blob([document.getElementById('fileContent').textContent], {type: 'text/plain'});
+  function makeTextFile(text) {
+    var data = new Blob([text], {type: 'text/plain'});
     // If we are replacing a previously generated file we need to
     // manually revoke the object URL to avoid memory leaks.
     if (textFile !== null) {
@@ -55,9 +55,9 @@
     return textFile;
   };
 
-	function download(){
+	function editDownload(){
     var link = document.getElementById('downloadlink');
-    link.href = makeTextFile();
+    link.href = makeTextFile(document.getElementById('fileContent').textContent);
 	}
 
 	function init(){
@@ -80,6 +80,7 @@
 
 	function loadFile(){
 		loadText(document.getElementById('fileContent').textContent);
+		editDownload();
 	}
 
 	function loadSrc(type){
