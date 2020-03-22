@@ -41,7 +41,7 @@
 
 	<script>
 	function editDownload(){
-		let link = document.createElement('downloadLink'); 
+		let link = document.createElement('downloadLink');
 		link.download = 'sample.txt';
 		let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
 		link.href = URL.createObjectURL(blob);
@@ -62,7 +62,6 @@
 	}
 
 	function handleFileLoad(event){
-	  console.log(event);
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
 		editDownload();
