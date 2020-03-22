@@ -37,8 +37,7 @@
 
 
   <input id="fileInput" type="file" name="file" />
-  <pre id="fileContent"></pre>
-
+  <pre  style="display:none" id="fileContent"></pre>
 
 	<script>
 	function init(){
@@ -54,6 +53,7 @@
 	function handleFileLoad(event){
 	  console.log(event);
 	  document.getElementById('fileContent').textContent = event.target.result;
+		loadText(event.target.result);
 	}
 
 	function loadSrc(type){
@@ -62,15 +62,19 @@
 					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							var string = [];
 							var txt = xmlhttp.responseText;
-							var noteArr = txt.split(',');
-							for(i = 0; i < noteArr.length; i++){
-									var tempArr = noteArr[i].split('_');
-									playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], tempArr[3]);
-							}
+							loadText(txt);
 					}
 				};
 				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
 				xmlhttp.send();
+	}
+
+	function loadText(text){
+			var noteArr = text.split(',');
+			for(i = 0; i < noteArr.length; i++){
+					var tempArr = noteArr[i].split('_');
+					playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], tempArr[3]);
+			}
 	}
 
 	function playOneNote(note, interval, duration, startTime){
