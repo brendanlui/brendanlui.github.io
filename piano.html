@@ -54,14 +54,16 @@
 	function init(){
 	  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 		displayPiano();
+		Synth.setSampleRate(20000);
+		Synth.setVolume(0.4);
 	}
 
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
-			var height = window.innerHeight * 0.8;
 			var width = window.innerWidth * 0.8;
+			var height = width * 4 / 35;
 			var svg = "";
 			var pieces = 35;
 			var start = 5;
@@ -122,7 +124,7 @@
 
 	function pressKey(id){
 			var idArr = id.split('_');
-			playOneNote(idArr[1], idArr[2], 3, 0);
+			playOneNote(idArr[1], idArr[2], 2, 0);
 	}
 
 	function handleFileSelect(event){
