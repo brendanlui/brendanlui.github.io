@@ -59,8 +59,8 @@
 	function displayPiano(){
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
-			var height = 400;
-			var width = 1000;
+			var height = window.screen.height * 0.8;
+			var width = window.screen.width * 0.8;
 			var svg = "";
 			var pieces = 35;
 			var start = 5;
@@ -73,21 +73,21 @@
 			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
 				svg += '<polygon id="key_'+keyNote[i%7]+'_'+((i+1)/7+2)+'" points="';
-				svg += start + pianoPieceWidth * i;
+				svg += start + pianoPieceWidth * i;	//x1
 				svg += ",";
-				svg += start + pianoPieceHeight * (i % 2);
+				svg += start + pianoPieceHeight * (i % 2);	//y1
 				svg += " ";
-				svg += start + pianoPieceWidth * (i + 1);
+				svg += start + pianoPieceWidth * (i + 1);	//x2
 				svg += ",";
-				svg += start + pianoPieceHeight * (i % 2);
+				svg += start + pianoPieceHeight * (i % 2);	//y1
 				svg += " ";
-				svg += start + pianoPieceWidth * (i + 1);
+				svg += start + pianoPieceWidth * (i + 1);	//x2
 				svg += ",";
-				svg += start + pianoPieceHeight * (i % 2 + 1);
+				svg += start + pianoPieceHeight * (i % 2 + 1);	//y2
 				svg += " ";
-				svg += start + pianoPieceWidth * i;
+				svg += start + pianoPieceWidth * i;	//x1
 				svg += ",";
-				svg += start + pianoPieceHeight * (i % 2 + 1);
+				svg += start + pianoPieceHeight * (i % 2 + 1);	//y2
 				//5,5 55,5 55,105 5,105
 				svg += '" class="whiteKey" style="fill:#ffffff;stroke:#000000;stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
