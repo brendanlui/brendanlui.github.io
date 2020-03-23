@@ -77,9 +77,10 @@
 							var txt = xmlhttp.responseText;
 							if(txt.includes("^.^")){
 									var arrTxt = txt.split("^.^");
-									if(arrTxt.length == 2){
-										Synth.setSampleRate(arrTxt[0]);
-										loadText(arrTxt[1]);
+									if(arrTxt.length == 3){
+										Synth.setSampleRate(arrTxt[0].trim());
+										Synth.setVolume(arrTxt[1].trim());
+										loadText(arrTxt[2]);
 									}
 							}else{
 									loadText(txt);
