@@ -35,7 +35,9 @@
 	  	<button id="btnClick" class="buttonJp btnFilter" onclick="loadSrc('Default')">Default</button>
 		  <button id="btnClick" class="buttonJp btnFilter" onclick="loadFile()">File</button>
 	</div>
-  <input id="fileInput" type="file" name="file" />
+	<div id="fileUploadDiv">
+  		<input id="fileInput" type="file" name="file" />
+	</div>
 	<a id="downloadLink">Download</a>
   <pre style="display:none" id="fileContent"></pre>
 
@@ -55,7 +57,7 @@
 	  const reader = new FileReader()
 	  reader.onload = handleFileLoad;
 		if(event.target.files.length > 0){
-		  reader.readAsText(event.target.files[0])
+		  reader.readAsText(event.target.files[0]);
 		}
 	}
 
@@ -63,6 +65,9 @@
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
 		editDownload();
+		var myobj = document.getElementById("fileInput");
+  	myobj.remove();
+		document.getElementById("fileUploadDiv").innerHTML = '<input id="fileInput" type="file" name="file" />';
 	}
 
 	function loadFile(){
