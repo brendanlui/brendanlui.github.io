@@ -46,6 +46,23 @@
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
+	//btn click start
+	var btnTesting = document.getElementById("btnTesting");
+	btnTesting.onclick = function() {
+			btnOpenModal.classList.add("active");
+			setTimeout(function() {
+					btnOpenModal.classList.remove("active");
+			}, 200);
+	}
+	var btnPlay = document.getElementById("btnPlay");
+	btnPlay.onclick = function() {
+			btnPlay.classList.add("active");
+			setTimeout(function() {
+					btnPlay.classList.remove("active");
+			}, 200);
+	}
+	//btn click end
+
 	function editDownload(){
 		let link = document.getElementById('downloadLink');
 		link.download = 'sample.txt';
