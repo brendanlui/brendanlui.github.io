@@ -34,7 +34,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  	<button id="btnTesting" class="buttonJp btnFilter" onclick="loadSrc('Default')">Testing</button>
+	  	<button id="btnTesting" class="buttonJp btnFilter" onclick="loadSrc('Default')">Play Testing File</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" onclick="loadFile()">Play Uploaded File</button>
 	</div>
 	<div id="fileUploadDiv">
@@ -49,9 +49,9 @@
 	//btn click start
 	var btnTesting = document.getElementById("btnTesting");
 	btnTesting.onclick = function() {
-			btnOpenModal.classList.add("active");
+			btnTesting.classList.add("active");
 			setTimeout(function() {
-					btnOpenModal.classList.remove("active");
+					btnTesting.classList.remove("active");
 			}, 200);
 	}
 	var btnPlay = document.getElementById("btnPlay");
