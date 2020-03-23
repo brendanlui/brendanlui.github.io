@@ -40,7 +40,7 @@
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
 	</div>
-	<a id="downloadLink">Download</a>
+	<a id="downloadLink" style="display:none;">Download</a>
 	<div id="displayPiano">
 	</div>
   <pre style="display:none" id="fileContent"></pre>
@@ -68,6 +68,7 @@
 		link.download = 'sample.txt';
 		let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
 		link.href = URL.createObjectURL(blob);
+		link.style.display = "block";
 	}
 
 	function init(){
