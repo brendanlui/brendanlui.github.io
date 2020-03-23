@@ -80,10 +80,10 @@
 									if(arrTxt.length == 3){
 										Synth.setSampleRate(arrTxt[0].trim());
 										Synth.setVolume(arrTxt[1].trim());
-										loadText(arrTxt[2]);
+										loadText(arrTxt[2].trim());
 									}
 							}else{
-									loadText(txt);
+									loadText(txt.trim());
 							}
 					}
 				};
