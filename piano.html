@@ -204,15 +204,15 @@
 	}
 
 	function playOneNote(note, octave, duration, startTime){
+			var note = document.getElementById("key_"+note+"_"+octave);
+			note.classList.add("pressed");
+			setTimeout(function() {
+					note.classList.remove("pressed");
+			}, duration);
+
 			setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
 						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
-
-						var note = document.getElementById("key_"+note+"_"+octave);
-						note.classList.add("pressed");
-						setTimeout(function() {
-								note.classList.remove("pressed");
-						}, duration);
 			}, startTime);
 	}
 	</script>
