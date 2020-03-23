@@ -71,7 +71,7 @@
 
 			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
-				svg += '<polygon points="';
+				svg += '<polygon id="key_'+i+'" points="';
 				svg += start + pianoPieceWidth * i;
 				svg += ",";
 				svg += start + pianoPieceHeight * (i % 2);
