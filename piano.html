@@ -7,6 +7,7 @@
 	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
 	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
 	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/piano.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -206,6 +207,12 @@
 			setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
 						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
+
+						var note = document.getElementById("key_"+note+"_"+octave);
+						note.classList.add("pressed");
+						setTimeout(function() {
+								note.classList.remove("pressed");
+						}, duration);
 			}, startTime);
 	}
 	</script>
