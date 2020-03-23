@@ -121,6 +121,9 @@
 			var blackNum = [1, 2, 4, 5, 6];
 			var blackKeyNote = ['C#', 'D#', '', 'F#', 'G#', 'A#', ''];
 			for(i = 0; i < pieces; i++){
+					if(i == pieces - 1){
+						break;
+					}
 					if(blackNum.includes(i % 7 + 1)){
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
 							svg += Math.round((start + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 100) / 100;	//x1
