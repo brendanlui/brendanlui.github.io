@@ -75,16 +75,7 @@
 					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							var string = [];
 							var txt = xmlhttp.responseText;
-							if(txt.includes("^.^")){
-									var arrTxt = txt.split("^.^");
-									if(arrTxt.length == 3){
-										Synth.setSampleRate(arrTxt[0].trim());
-										Synth.setVolume(arrTxt[1].trim());
-										loadText(arrTxt[2].trim());
-									}
-							}else{
-									loadText(txt.trim());
-							}
+							loadText(txt.trim());
 					}
 				};
 				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
@@ -92,6 +83,21 @@
 	}
 
 	function loadText(text){
+			var seperate = '//sample rate, volume, speed';
+			var speed = 1;
+			if(text.includes(seperate)){
+					var headerFooterArr = text.split(seperate);
+					if(headerFooterArr.length == 2){
+							var headerArr = headerFooterArr[0].trim().split(",");
+							if(headerArr.length == 3){
+									Synth.setSampleRate(headerArr[0].trim());
+									Synth.setVolume(headerArr[1].trim());
+									speed = headerArr[2].trim()
+							}
+							text = headerFooterArr[1].trim();
+					}
+			}
+
 			var noteArr = text.split(',');
 			var startTime = 500;
 			var addTime = 0;
@@ -107,7 +113,7 @@
 								}
 							}
 							startTime += addTime;
-							addTime = temp_3 * 4000;
+							addTime = temp_3 * (4000 / speed);
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
