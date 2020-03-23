@@ -195,6 +195,9 @@
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
+
+			Synth.setSampleRate(20000);
+			Synth.setVolume(0.4);
 	}
 
 	function playOneNote(note, octave, duration, startTime){
