@@ -34,8 +34,8 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  	<button id="btnTesting" class="buttonJp btnFilter" onclick="loadSrc('Default')">Play Testing File</button>
-		  <button id="btnPlay" class="buttonJp btnFilter" onclick="loadFile()">Play Uploaded File</button>
+	  	<button id="btnTesting" class="buttonJp btnFilter">Play Testing File</button>
+		  <button id="btnPlay" class="buttonJp btnFilter">Play Uploaded File</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -50,6 +50,7 @@
 	var btnTesting = document.getElementById("btnTesting");
 	btnTesting.onclick = function() {
 			btnTesting.classList.add("active");
+			loadSrc('Default');
 			setTimeout(function() {
 					btnTesting.classList.remove("active");
 			}, 200);
@@ -57,6 +58,7 @@
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
+			loadFile();
 			setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 200);
