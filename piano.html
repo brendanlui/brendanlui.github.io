@@ -86,15 +86,14 @@
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
-			var width = document.getElementById("myTopnav").clientWidth; 
+			var width = document.getElementById("myTopnav").clientWidth;
 			var height = width * 4 / 35;
 			var svg = "";
 			var pieces = 35;
 			var start = 5;
-			var end = 5;
 			var lineWidth = 1;
-			var pianoPieceHeight = Math.round((height - start - end - lineWidth * 2 + Number.EPSILON) * 100) / 100;
-			var pianoPieceWidth = Math.round(((width - start - end) / pieces - lineWidth * 2 + Number.EPSILON) * 100) / 100;
+			var pianoPieceHeight = Math.round((height - start + Number.EPSILON) * 100) / 100;
+			var pianoPieceWidth = Math.round(((width - start) / pieces + Number.EPSILON) * 100) / 100;
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
