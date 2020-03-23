@@ -168,7 +168,6 @@
 	}
 
 	function handleFileLoad(event){
-	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
 		var myobj = document.getElementById("fileInput");
   	myobj.remove();
@@ -195,6 +194,7 @@
 	}
 
 	function loadText(text){
+		  document.getElementById('fileContent').textContent = text;
 			editDownload();
 			var seperate = '//sample rate (4000-44100), volume, speed';
 			var speed = 1;
