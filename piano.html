@@ -59,8 +59,8 @@
 	function displayPiano(){
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
-			var height = window.screen.height * 0.8;
-			var width = window.screen.width * 0.8;
+			var height = window.innerHeight * 0.8;
+			var width = window.innerWidth * 0.8;
 			var svg = "";
 			var pieces = 35;
 			var start = 5;
@@ -88,7 +88,6 @@
 				svg += start + pianoPieceWidth * i;	//x1
 				svg += ",";
 				svg += start + pianoPieceHeight * ((i + 1) % 2);	//y2
-				//5,5 55,5 55,105 5,105
 				svg += '" class="whiteKey" style="fill:#ffffff;stroke:#000000;stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
 			svg += '</svg>';
