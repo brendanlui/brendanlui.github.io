@@ -17,3 +17,12 @@
     fill: #8e8e8e;
     stroke: #ffffff;
 }
+
+#fileInput{
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #fcc6c6;
+  display: inline-block;
+  width: 99%;
+}
