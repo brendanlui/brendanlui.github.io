@@ -99,19 +99,19 @@
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor((i+1)/7+2)+'" onClick="pressKey(this.id)" points="';
 							svg += start + pianoPieceWidth * (i + 0.5);	//x1
 							svg += ",";
-							svg += start + pianoPieceHeight * (i % 2) / 2;	//y1
+							svg += start + pianoPieceHeight * (i % 2) * 2 / 3;	//y1
 							svg += " ";
 							svg += start + pianoPieceWidth * (i + 0.5 + 0.5);	//x2
 							svg += ",";
-							svg += start + pianoPieceHeight * (i % 2) / 2;	//y1
+							svg += start + pianoPieceHeight * (i % 2) * 2 / 3;	//y1
 							svg += " ";
 							svg += start + pianoPieceWidth * (i + 0.5 + 0.5);	//x2
 							svg += ",";
-							svg += start + pianoPieceHeight * ((i + 1) % 2) / 2;	//y2
+							svg += start + pianoPieceHeight * ((i + 1) % 2) * 2 / 3;	//y2
 							svg += " ";
 							svg += start + pianoPieceWidth * (i + 0.5);	//x1
 							svg += ",";
-							svg += start + pianoPieceHeight * ((i + 1) % 2) / 2;	//y2
+							svg += start + pianoPieceHeight * ((i + 1) % 2) * 2 / 3;	//y2
 							svg += '" class="blackKey" style="fill:#000000;stroke:#ffffff;stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 					}
 			}
