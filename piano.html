@@ -68,11 +68,11 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = height - start - end - lineWidth * 2;
 			var pianoPieceWidth = (width - start - end) / pieces - lineWidth * 2;
-			var keyNote = {'C', 'D', 'E', 'F', 'G', 'A', 'B'};
+			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
-				svg += '<polygon id="key_'+keyNote[i%7]+'_'+((i+1)/7+2)+'" points="'; 
+				svg += '<polygon id="key_'+keyNote[i%7]+'_'+((i+1)/7+2)+'" points="';
 				svg += start + pianoPieceWidth * i;
 				svg += ",";
 				svg += start + pianoPieceHeight * (i % 2);
