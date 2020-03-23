@@ -75,7 +75,15 @@
 					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							var string = [];
 							var txt = xmlhttp.responseText;
-							loadText(txt);
+							if(txt.includes("^.^")){
+									var arrTxt = txt.split("^.^");
+									if(arrTxt.length == 2){
+										Synth.setSampleRate(arrTxt[0]);
+										loadText(arrTxt[1]);
+									}
+							}else{
+									loadText(txt);
+							}
 					}
 				};
 				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
