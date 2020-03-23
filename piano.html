@@ -30,7 +30,20 @@
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
 	  <a href="/">Home</a>
+	  <a onclick="loadSrc('Default');"class="other">Chromatic Scale</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
+	<script>
+	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+	function myFunction() {
+	    var x = document.getElementById("myTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+	</script>
 
 	<!--TODO-->
 	<div id="buttonBox">
@@ -177,6 +190,7 @@
 	}
 
 	function loadSrc(type){
+				myFunction();
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
 					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
