@@ -373,7 +373,10 @@
 							}else{
 								arrNeg[(i - 1) / 2] = arr[i].substr(0, arr[i].indexOf('";')).trim();
 								if(searched == 1){
-										document.getElementById(this.typeChangedVerb.replace(/[0-9]/g, '') + "Word" + id).innerHTML = arrNeg[(i - 1) / 2];
+										var tempWord = document.getElementById(this.typeChangedVerb.replace(/[0-9]/g, '') + "Word" + id);
+										if(tempWord != null){
+												tempWord.innerHTML = arrNeg[(i - 1) / 2];
+										}
 										break;
 								}
 							}
