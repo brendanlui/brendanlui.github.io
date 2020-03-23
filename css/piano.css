@@ -30,3 +30,7 @@
 .pianoList{
    text-align: center;
 }
+
+.active{
+  background-color: #6e6c6c;
+}
