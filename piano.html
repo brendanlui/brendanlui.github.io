@@ -48,7 +48,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
+		  <button id="btnPlay" class="buttonJp btnFilter" style="background-color: #c0c0c0;" disabled>Play</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -77,6 +77,7 @@
 		link.href = URL.createObjectURL(blob);
 		link.style.display = "block";
 		document.getElementById("btnPlay").disabled = false;
+		document.getElementById("btnPlay").style.backgroundColor = "#615f5f";
 	}
 
 	function init(){
