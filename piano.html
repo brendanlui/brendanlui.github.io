@@ -47,8 +47,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-	  	<button id="btnTesting" class="buttonJp btnFilter">Play Testing File</button>
-		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play Uploaded File</button>
+		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -60,14 +59,6 @@
 
 	<script>
 	//btn click start
-	var btnTesting = document.getElementById("btnTesting");
-	btnTesting.onclick = function() {
-			btnTesting.classList.add("active");
-			loadSrc('Default');
-			setTimeout(function() {
-					btnTesting.classList.remove("active");
-			}, 200);
-	}
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
@@ -178,7 +169,6 @@
 	function handleFileLoad(event){
 	  document.getElementById('fileContent').textContent = event.target.result;
 		loadText(event.target.result);
-		editDownload();
 		var myobj = document.getElementById("fileInput");
   	myobj.remove();
 		document.getElementById("fileUploadDiv").innerHTML = '<input id="fileInput" type="file" name="file" />';
@@ -204,6 +194,7 @@
 	}
 
 	function loadText(text){
+			editDownload();
 			var seperate = '//sample rate (4000-44100), volume, speed';
 			var speed = 1;
 			if(text.includes(seperate)){
