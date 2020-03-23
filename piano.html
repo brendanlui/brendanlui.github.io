@@ -73,7 +73,7 @@
 
 			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
-				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor((i+1)/7+2)+'" points="';
+				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor((i+1)/7+2)+'" onClick="pressKey(this.id)" points="';
 				svg += start + pianoPieceWidth * i;	//x1
 				svg += ",";
 				svg += start + pianoPieceHeight * (i % 2);	//y1
@@ -96,7 +96,7 @@
 			var blackKeyNote = ['C#', 'D#', 'F#', 'G#', 'A#'];
 			for(i = 0; i < pieces; i++){
 					if(blackNum.includes(pieces % 7 + 1)){
-							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor((i+1)/7+2)+'" points="';
+							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor((i+1)/7+2)+'" onClick="pressKey(this.id)" points="';
 							svg += start + pianoPieceWidth * (i + 0.5);	//x1
 							svg += ",";
 							svg += start + pianoPieceHeight * (i % 2);	//y1
@@ -118,6 +118,11 @@
 
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
+	}
+
+	function pressKey(id){
+		var idArr = id.split('_');
+		playOneNote(idArr[1], idArr[2], 3, 0);
 	}
 
 	function handleFileSelect(event){
