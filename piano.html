@@ -204,10 +204,10 @@
 	}
 
 	function playOneNote(note, octave, duration, startTime){
-			var note = document.getElementById("key_"+note+"_"+octave);
-			note.classList.add("pressed");
+			var noteSvg = document.getElementById("key_"+note+"_"+octave);
+			noteSvg.classList.add("pressed");
 			setTimeout(function() {
-					note.classList.remove("pressed");
+					noteSvg.classList.remove("pressed");
 			}, duration);
 
 			setTimeout(function() {
