@@ -48,7 +48,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-		  <button id="btnPlay" class="buttonJp btnFilter" style="background-color: #c0c0c0;" disabled>Play</button>
+		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -71,20 +71,18 @@
 	//btn click end
 
 	function editDownload(){
-		let link = document.getElementById('downloadLink');
-		link.download = 'sample.txt';
-		let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
-		link.href = URL.createObjectURL(blob);
-		link.style.display = "block";
-		document.getElementById("btnPlay").disabled = false;
-		document.getElementById("btnPlay").style.backgroundColor = "#615f5f";
+			let link = document.getElementById('downloadLink');
+			link.download = 'sample.txt';
+			let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
+			link.href = URL.createObjectURL(blob);
+			link.style.display = "block";
+			btnPlay.disabled = false;
+			btnPlay.style.backgroundColor = "#615f5f";
 	}
 
 	function init(){
-	  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
-		displayPiano();
-		Synth.setSampleRate(20000);
-		Synth.setVolume(0.4);
+			btnPlay.style.backgroundColor = "#c0c0c0";
+			displayPiano();
 	}
 
 	window.addEventListener("resize", displayPiano);
@@ -169,11 +167,12 @@
 	}
 
 	function handleFileLoad(event){
-		loadText(event.target.result);
-		var myobj = document.getElementById("fileInput");
-  	myobj.remove();
-		document.getElementById("fileUploadDiv").innerHTML = '<input id="fileInput" type="file" name="file" />';
-		init();
+			loadText(event.target.result);
+			document.getElementById("fileInput").remove();
+			document.getElementById("fileUploadDiv").innerHTML = '<input id="fileInput" type="file" name="file" />';
+		  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+			Synth.setSampleRate(20000);
+			Synth.setVolume(0.4);
 	}
 
 	function loadFile(){
