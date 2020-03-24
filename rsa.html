@@ -80,15 +80,18 @@
 	}
 
 	function primeFactorsTo(min, max){
-	    var store  = [], i, j, primes = [];
-	    for (i = min; i <= max; ++i){
-	        if (!store [i]){
+	    var store = [];
+			var primes = [];
+
+	    for (var i = min; i <= max; ++i){
+	        if (!store[i]){
 	            primes.push(i);
-	            for (j = i << 1; j <= max; j += i){
+	            for (var j = i << 1; j <= max; j += i){
 	                store[j] = true;
 	            }
 	        }
 	    }
+
 	    return primes;
 	}
 
