@@ -62,11 +62,12 @@
 			var start_y = 5;
 			var end = 5;
 			var lineWidth = 4;
+			var numOfPassword = 4;
 			var numberPieceHeight = Math.round(((height - start_y - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
 			var numberPieceWidth = Math.round(((width - start_x - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
-			svg += '<svg id="keyboard0" height="'+(height + height/8)+'px" width="'+width+'px">';
-			for(i = 0; i < pieces * 2; i++){
+			svg += '<svg id="keyboard0" height="'+(height + width/4)+'px" width="'+width+'px">';
+			for(i = 0; i < numOfPassword; i++){
 				svg += '<polygon id="key_display_'+(i+1)+'" points="';
 				svg += Math.round((start_x + numberPieceWidth / 2 * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
