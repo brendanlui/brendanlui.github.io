@@ -39,6 +39,7 @@
 	var publicKey_e = 0;
 	// var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
 	var testingNum = 173;
+	var numOfPassword = 4;
 
 	function init(){
 			//printKey(100, 999);
@@ -61,7 +62,6 @@
 			var start_y = 5;
 			var end = 5;
 			var lineWidth = 4;
-			var numOfPassword = 4;
 			var numberPieceHeight = Math.round(((height - start_y - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
 			var numberPieceWidth = Math.round(((width - start_x - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
@@ -150,7 +150,7 @@
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
 					keySvg.classList.add("pressed");
 
-					if(encryTyped == 6){
+					if(encryTyped == numOfPassword){
 							keySvg.classList.remove("pressed");
 							for(i = 0; i < keyText.length; i++){
 								keyText[i].onclick = null;
