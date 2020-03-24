@@ -85,6 +85,13 @@
 
 			for(h = 0; h < 4; h++){
 					for(i = 0; i < pieces; i++){
+  					svg += '<text x="'
+								+ Math.round((start_x + numberPieceWidth * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
+								+ '" y="'
+								+ Math.round((start_y + numberPieceHeight * ((i % 2) + ((i + 1) % 2)) / 2 + Number.EPSILON) * 1000) / 1000
+								+ '" class="keyText">'
+								+ ((i+1)*(h+1))
+								+ '</text>';
 						svg += '<polygon id="key_num_'+((i+1)*(h+1))+'" onClick="pressKey(this.id)" points="';
 						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 						svg += ",";
@@ -115,7 +122,7 @@
 			noteSvg.classList.add("pressed");
 			setTimeout(function() {
 					noteSvg.classList.remove("pressed");
-			}, 300);
+			}, 200);
 	}
 
 	function loadPublicKey(){
