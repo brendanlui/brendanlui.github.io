@@ -37,7 +37,7 @@
 	function isKeyCorrect(testingNum){
 			var privateKey_d = BigInt(generatePrivateKey());
 			var leftHandSide = (BigInt(Math.pow(testingNum, publicKey_e) % publicKey_n) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
-			var rightHandSide = BigInt(testingNum);
+			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
 
 			console.log(publicKey_n);
 			console.log(publicKey_e);
@@ -48,7 +48,7 @@
 			if(leftHandSide == rightHandSide){
 					return true;
 			}else{
-				return false;
+					return false;
 			}
 	}
 
