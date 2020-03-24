@@ -17,7 +17,7 @@
 
 <title>Dadiu | RSA</title>
 
-<body onload="isKeyCorrect()">
+<body onload="init()">
 	<div id="head">
 		<div id="logo">
 			<a href="/"><img src="/img/dadiu.png" alt="dai01" class="logo_dadiu"></a>
@@ -35,7 +35,41 @@
 	var publicKey_e = 0;
 	var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
 
-	function isKeyCorrect(){
+	function init(){
+			printKey();
+			loadPublicKey();
+			console.log(isKeyCorrect(165581));
+	}
+
+	function loadPublicKey(){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+						var string = [];
+						var txt = xmlhttp.responseText;
+						var arr = txt.split('_');
+						if(arr.length == 2){
+								publicKey_n = arr[0];
+								publicKey_e = arr[1];
+						}
+				}
+			};
+			xmlhttp.open("GET","./rsa/publicKey.txt", false);
+			xmlhttp.send();
+	}
+
+	function isKeyCorrect(privateKey_d){
+			var leftHandSide = (((BigInt(testingNum) ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
+			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
+
+			if(leftHandSide == rightHandSide){
+					return true;
+			}else{
+					return false;
+			}
+	}
+
+	function printKey(){
 			var privateKey_d = BigInt(generatePrivateKey());
 			var leftHandSide = (((BigInt(testingNum) ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
 			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
@@ -45,12 +79,6 @@
 			console.log(privateKey_d);
 			console.log(leftHandSide);
 			console.log(rightHandSide);
-
-			if(leftHandSide == rightHandSide){
-					return true;
-			}else{
-					return false;
-			}
 	}
 
 	function generatePrivateKey(){
