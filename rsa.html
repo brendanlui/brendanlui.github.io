@@ -159,6 +159,16 @@
 					setTimeout(function() {
 								keySvg.classList.remove("pressed");
 								if(encryTyped == 6){
+
+										var keyText = document.getElementsByClassName("keyText");
+										var numKey = document.getElementsByClassName("numKey");
+										for(i = 0; i < keyText.length; i++){
+											keyText[i].disabled = true;
+										}
+										for(i = 0; i < numKey.length; i++){
+											numKey[i].disabled = true;
+										}
+
 										if(isKeyCorrect(inputNum)){	//TODO
 												console.log(true);
 										}else{
@@ -166,6 +176,12 @@
 														document.getElementById('encry_' + i).innerHTML = "";
 												}
 												inputNum = "";
+												for(i = 0; i < keyText.length; i++){
+													keyText[i].disabled = false;
+												}
+												for(i = 0; i < numKey.length; i++){
+													numKey[i].disabled = false;
+												}
 												console.log(false);
 										}
 								}
