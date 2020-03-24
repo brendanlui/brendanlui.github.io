@@ -55,6 +55,7 @@
 			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
 			var start = 5;
+			var start_y = 5;
 			var end = 5;
 			var lineWidth = 4;
 			var numberPieceHeight = Math.round(((height - start - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
@@ -80,29 +81,29 @@
 				svg += Math.round((start + numberPieceHeight / 2 * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 				svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
-			start += numberPieceHeight / 2 * ((i + 1) % 2)
+			start_y += numberPieceHeight / 2 * ((i + 1) % 2)
 
 			for(h = 0; h < 4; h++){
 					for(i = 0; i < pieces; i++){
-						svg += '<polygon id="key_num_'+(i+1)+'" onClick="pressKey(this.id)" points="';
+						svg += '<polygon id="key_num_'+((i+1)*(h+1))+'" onClick="pressKey(this.id)" points="';
 						svg += Math.round((start + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 						svg += ",";
-						svg += Math.round((start + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
 						svg += " ";
 						svg += Math.round((start + numberPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
 						svg += ",";
-						svg += Math.round((start + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
 						svg += " ";
 						svg += Math.round((start + numberPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
 						svg += ",";
-						svg += Math.round((start + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 						svg += " ";
 						svg += Math.round((start + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 						svg += ",";
-						svg += Math.round((start + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 					}
-					start += numberPieceHeight * ((i + 1) % 2);
+					start_y += numberPieceHeight * ((i + 1) % 2);
 			}
 			svg += '</svg>';
 
