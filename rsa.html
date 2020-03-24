@@ -38,7 +38,7 @@
 	var publicKey_n = 0;
 	var publicKey_e = 0;
 	// var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
-	var testingNum = 173173173;
+	var testingNum = 173;
 
 	function init(){
 			//printKey(100, 999);
@@ -142,6 +142,8 @@
 			displayNumberBar.innerHTML = svg;
 	}
 
+	var keyText = document.getElementsByClassName("keyText");
+	var numKey = document.getElementsByClassName("numKey");
 	function pressKey(id){
 			var idArr = id.split('_');
 			if(idArr.length == 3){
@@ -158,38 +160,37 @@
 							document.getElementById('encry_' + encryTyped).innerHTML = ".";
 					}
 
-					setTimeout(function() {
-								keySvg.classList.remove("pressed");
-								if(encryTyped == 6){
+					if(encryTyped == 6){
+							keySvg.classList.remove("pressed");
+							for(i = 0; i < keyText.length; i++){
+								keyText[i].disabled = true;
+							}
+							for(i = 0; i < numKey.length; i++){
+								numKey[i].disabled = true;
+							}
 
-										var keyText = document.getElementsByClassName("keyText");
-										var numKey = document.getElementsByClassName("numKey");
-										for(i = 0; i < keyText.length; i++){
-											keyText[i].disabled = true;
-										}
-										for(i = 0; i < numKey.length; i++){
-											numKey[i].disabled = true;
-										}
-
-										if(isKeyCorrect(parseInt(inputNum))){
-												//TODO
-												console.log(true);
-										}else{
-												for(i = 1; i <= encryTyped; i++){
-														document.getElementById('encry_' + i).innerHTML = "";
-												}
-												inputNum = "";
-												encryTyped = 0;
-												for(i = 0; i < keyText.length; i++){
-													keyText[i].disabled = false;
-												}
-												for(i = 0; i < numKey.length; i++){
-													numKey[i].disabled = false;
-												}
-												console.log(false);
-										}
-								}
-					}, 200);
+							if(isKeyCorrect(parseInt(inputNum))){
+									//TODO
+									console.log(true);
+							}else{
+									for(i = 1; i <= encryTyped; i++){
+											document.getElementById('encry_' + i).innerHTML = "";
+									}
+									inputNum = "";
+									encryTyped = 0;
+									for(i = 0; i < keyText.length; i++){
+										keyText[i].disabled = false;
+									}
+									for(i = 0; i < numKey.length; i++){
+										numKey[i].disabled = false;
+									}
+									console.log(false);
+							}
+					}else{
+							setTimeout(function() {
+										keySvg.classList.remove("pressed");
+							}, 200);
+					}
 			}
 	}
 
