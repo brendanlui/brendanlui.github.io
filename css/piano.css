@@ -34,3 +34,9 @@
 .active{
   background-color: #6e6c6c;
 }
+.disabled{
+  background-color: #c0c0c0;
+}
+.abled{
+  background-color: #615f5f;
+}

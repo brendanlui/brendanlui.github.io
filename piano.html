@@ -77,11 +77,12 @@
 			link.href = URL.createObjectURL(blob);
 			link.style.display = "block";
 			btnPlay.disabled = false;
-			btnPlay.style.backgroundColor = "#615f5f";
+			btnPlay.classList.remove("disabled");
+			btnPlay.classList.add("abled");
 	}
 
 	function init(){
-			btnPlay.style.backgroundColor = "#c0c0c0";
+			btnPlay.classList.add("disabled");
 			displayPiano();
 	}
 
