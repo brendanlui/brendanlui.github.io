@@ -17,7 +17,7 @@
 
 <title>Dadiu | RSA</title>
 
-<body onload="isKeyCorrect(302312123123123123123124123123712830)">
+<body onload="isKeyCorrect()">
 	<div id="head">
 		<div id="logo">
 			<a href="/"><img src="/img/dadiu.png" alt="dai01" class="logo_dadiu"></a>
@@ -33,8 +33,9 @@
 	<script>
 	var publicKey_n = 0;
 	var publicKey_e = 0;
+	var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
 
-	function isKeyCorrect(testingNum){
+	function isKeyCorrect(){
 			var privateKey_d = BigInt(generatePrivateKey());
 			var leftHandSide = (((BigInt(testingNum) ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
 			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
