@@ -150,6 +150,16 @@
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
 					keySvg.classList.add("pressed");
 
+					if(idArr[2] == '<-' && encryTyped > 0){
+							inputNum = inputNum.substring(0, inputNum.length - 1);
+							document.getElementById('encry_' + encryTyped).innerHTML = "";
+							encryTyped--;
+					}else if(encryTyped >= 0 && encryTyped < numOfPassword){
+							inputNum += idArr[2];
+							encryTyped++;
+							document.getElementById('encry_' + encryTyped).innerHTML = ".";
+					}
+
 					if(encryTyped == numOfPassword){
 							keySvg.classList.remove("pressed");
 							for(i = 0; i < keyText.length; i++){
@@ -173,16 +183,6 @@
 											}
 							}, 200);
 					}else{
-							if(idArr[2] == '<-' && encryTyped > 0){
-									inputNum = inputNum.substring(0, inputNum.length - 1);
-									document.getElementById('encry_' + encryTyped).innerHTML = "";
-									encryTyped--;
-							}else if(encryTyped >= 0 && encryTyped < numOfPassword){
-									inputNum += idArr[2];
-									encryTyped++;
-									document.getElementById('encry_' + encryTyped).innerHTML = ".";
-							}
-
 							setTimeout(function() {
 										keySvg.classList.remove("pressed");
 							}, 200);
