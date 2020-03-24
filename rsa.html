@@ -104,7 +104,7 @@
 								displayText = "<-";
 						}
 
-						svg += '<polygon id="key_num_'+((i+1)+h*3)+'" '
+						svg += '<polygon id="key_num_' + displayText + '" '
 								+ (pressKeyAble ? 'onClick="pressKey(this.id)"' : '')
 								+' points="';
 						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
@@ -124,7 +124,7 @@
 						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
-  					svg += '<text x="'
+  					svg += '<text id="key_text_' + displayText + '" onClick="pressKey(this.id)" x="'
 								+ Math.round((start_x + numberPieceWidth * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
 								+ '" y="'
 								+ Math.round((start_y + numberPieceHeight * ((i % 2) + ((i + 1) % 2)) / 2 + Number.EPSILON) * 1000) / 1000
@@ -140,11 +140,14 @@
 	}
 
 	function pressKey(id){
-			var noteSvg = document.getElementById(id);
-			noteSvg.classList.add("pressed");
-			setTimeout(function() {
-					noteSvg.classList.remove("pressed");
-			}, 200);
+			var idArr = id.split('_');
+			if(idArr.length == 3){
+					var keySvg = document.getElementById('key_num_' + idArr[2]);
+					noteSvg.classList.add("pressed");
+					setTimeout(function() {
+							noteSvg.classList.remove("pressed");
+					}, 200);
+			}
 	}
 
 	function loadPublicKey(){
