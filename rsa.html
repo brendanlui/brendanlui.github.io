@@ -155,7 +155,7 @@
 							inputNum = inputNum.substring(0, inputNum.length - 1);
 							document.getElementById('encry_' + encryTyped).innerHTML = "";
 							encryTyped--;
-					}else if(encryTyped >= 0 && encryTyped < numOfPassword){
+					}else if(idArr[2] != '<-' && encryTyped >= 0 && encryTyped < numOfPassword){
 							inputNum += idArr[2];
 							encryTyped++;
 							document.getElementById('encry_' + encryTyped).innerHTML = ".";
@@ -201,7 +201,7 @@
 						if(arr.length == 2){
 								publicKey_n = arr[0];
 								publicKey_e = arr[1];
-								//console.log(isKeyCorrect(165581));
+								//console.log(isKeyCorrect(3149));
 						}
 				}
 			};
