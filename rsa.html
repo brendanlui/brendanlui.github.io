@@ -81,7 +81,7 @@
 				svg += Math.round((start_y + numberPieceHeight / 2 * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 				svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
-			start_y += numberPieceHeight / 2 * ((i + 1) % 2)
+			start_y += numberPieceHeight / 2;
 
 			for(h = 0; h < 4; h++){
 					for(i = 0; i < pieces; i++){
@@ -103,7 +103,7 @@
 						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 					}
-					start_y += numberPieceHeight * ((i + 1) % 2);
+					start_y += numberPieceHeight;
 			}
 			svg += '</svg>';
 
