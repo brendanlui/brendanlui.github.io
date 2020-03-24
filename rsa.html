@@ -170,14 +170,16 @@
 													inputNum = "";
 													encryTyped = 0;
 													for(i = 0; i < keyText.length; i++){
-																 keyText[i].addEventListener('click', function(){
-																		pressKey(keyText[i].id);
+																 var temp = i;
+																 keyText[temp].addEventListener('click', function(){
+																		pressKey(keyText[temp].id);
 																 });
 													}
 													for(i = 0; i < numKey.length; i++){
 														if(i != 10 - 1){
-																 numKey[i].addEventListener('click', function(){
-																		pressKey(numKey[i].id);
+																 var temp = i;
+																 numKey[temp].addEventListener('click', function(){
+																		pressKey(numKey[temp].id);
 																 });
 														}
 													}
