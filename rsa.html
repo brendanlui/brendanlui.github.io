@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+
+</head>
+
+<title>Dadiu | RSA</title>
+
+<body onload="isKeyCorrect(30)">
+	<div id="head">
+		<div id="logo">
+			<a href="/"><img src="/img/dadiu.png" alt="dai01" class="logo_dadiu"></a>
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="/css/responsive_bar_style.css">
+	<div class="topnav" id="myTopnav">
+	  <a href="/">Home</a>
+	</div>
+
+	<!--TODO-->
+	<script>
+	var publicKey_n = 0;
+	var publicKey_e = 0;
+
+	function isKeyCorrect(testingNum){
+			var privateKey_d = generatePrivateKey();
+			var leftHandSide = Math.pow(Math.pow(testingNum, publicKey_e) % publicKey_n, privateKey_d);
+			var rightHandSide = testingNum % publicKey_n;
+
+			console.logs(publicKey_n);
+			console.logs(publicKey_e);
+			console.logs(privateKey_d);
+			console.logs(leftHandSide);
+			console.logs(rightHandSide);
+
+			if(leftHandSide == rightHandSide){
+					return true;
+			}else{
+				return false;
+			}
+	}
+
+	function generatePrivateKey(){
+			var privateKey_d = 0;
+			var primeArr = primeNum(50, 100);
+			if(primeArr.length >= 2){
+					var temp_k = 2;
+					var arrP1P2 = getRandom(primeList, 2);
+					publicKey_n = arrP1P2[0] * arrP1P2[1];
+					var function_n = (arrP1P2[0] - 1) * (arrP1P2[1] - 1);
+					var function_n_factorArr = factors(function_n);
+
+					var publicKey_e_arr = primeNum(2, function_n);
+					for(i = 2; i < publicKey_e_arr.length; i++){
+							if(!publicKey_e_arr.includes(publicKey_e_arr[i])){
+									publicKey_e = publicKey_e_arr[i];
+									break;
+							}
+					}
+					privateKey_d = (temp_k * function_n + 1) / publicKey_e;
+			}
+			return privateKey_d;
+	}
+
+	function primeNum(min, max){
+	    var store  = [], i, j, primes = [];
+	    for (i = min; i <= max; ++i){
+	        if (!store[i]){
+	            primes.push(i);
+	            for (j = i << 1; j <= max; j += i){
+	                store[j] = true;
+	            }
+	        }
+	    }
+	    return primes;
+	}
+
+	function factors(n){
+		 var num_factors = [], i;
+		 for (i = 1; i <= Math.floor(Math.sqrt(n)); i += 1){
+			  if (n % i === 0){
+			   num_factors.push(i);
+			   if (n / i !== i)
+			    	num_factors.push(n / i);
+			  }
+		 }
+		 num_factors.sort(function(x, y){
+		     return x - y;
+		 });  // numeric sort
+		 return num_factors;
+  }
+	</script>
+
+	<ul id="foot">
+		</br>
+		<li>© Copyright 2020. All Rights Reserved.</li>
+	</ul></br>
+</body>
+</html>
