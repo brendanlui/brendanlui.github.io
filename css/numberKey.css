@@ -4,10 +4,10 @@
 }
 
 .numKey.pressed{
-    fill: #f3e7e7;
-    stroke: #f5cbcb;
+  fill: #f3e7e7;
+  stroke: #f5cbcb;
 }
 
 .keyText{
-  
+  font-weight: bold;
 }
