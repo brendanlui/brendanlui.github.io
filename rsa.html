@@ -89,7 +89,7 @@
 						+ Math.round((start_x + numberPieceWidth / 2 * (2 * i + 1) /2 + Number.EPSILON) * 1000) / 1000
 						+ '" y="'
 						+ Math.round((start_y + numberPieceHeight / 2 * ((i % 2) + ((i + 1) % 2)) / 2+ Number.EPSILON) * 1000) / 1000
-						+ '" class="keyText"></text>';
+						+ '" class="encryText"></text>';
 			}
 			start_y += numberPieceHeight / 2;
 
@@ -149,25 +149,15 @@
 			if(idArr.length == 3){
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
 					keySvg.classList.add("pressed");
-					keySvg.disabled = true;
-
-					if(idArr[2] == '<-'){
-							inputNum = inputNum.substring(0, inputNum.length - 1);
-							document.getElementById('encry_' + encryTyped).innerHTML = "";
-							encryTyped--;
-					}else{
-							inputNum += idArr[2];
-							encryTyped++;
-							document.getElementById('encry_' + encryTyped).innerHTML = ".";
-					}
+					keySvg.onclick = null;
 
 					if(encryTyped == 6){
 							keySvg.classList.remove("pressed");
 							for(i = 0; i < keyText.length; i++){
-								keyText[i].disabled = true;
+								keyText[i].onclick = null;
 							}
 							for(i = 0; i < numKey.length; i++){
-								numKey[i].disabled = true;
+								numKey[i].onclick = null;
 							}
 
 							setTimeout(function() {
@@ -181,19 +171,31 @@
 													inputNum = "";
 													encryTyped = 0;
 													for(i = 0; i < keyText.length; i++){
-														keyText[i].disabled = false;
+														keyText[i].onClick = "pressKey(this.id)";
 													}
 													for(i = 0; i < numKey.length; i++){
-														numKey[i].disabled = false;
+														if(i != 10 - 1)
+															numKey[i].onClick = "pressKey(this.id)";
 													}
 													console.log(false);
 											}
 							}, 200);
 					}else{
+
+							if(idArr[2] == '<-'){
+									inputNum = inputNum.substring(0, inputNum.length - 1);
+									document.getElementById('encry_' + encryTyped).innerHTML = "";
+									encryTyped--;
+							}else{
+									inputNum += idArr[2];
+									encryTyped++;
+									document.getElementById('encry_' + encryTyped).innerHTML = ".";
+							}
+
 							setTimeout(function() {
 										keySvg.classList.remove("pressed");
 										keySvg.disabled = false;
-							}, 100);
+							}, 200);
 					}
 
 			}

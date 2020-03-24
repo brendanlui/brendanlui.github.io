@@ -8,7 +8,7 @@
   stroke: #f5cbcb;
 }
 
-.keyText{
+.encryText, .keyText{
   font-weight: bold;
   fill: red;
 }
