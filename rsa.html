@@ -46,6 +46,7 @@
 	}
 
 	var encryTyped = 0;
+	var inputNum = '';
 	window.addEventListener("resize", displayNumberBar);
 	function displayNumberBar(){
 			var displayNumberBar = document.getElementById('displayNumberBar');
@@ -144,9 +145,28 @@
 			if(idArr.length == 3){
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
 					keySvg.classList.add("pressed");
+
+					if(idArr[2] == '<-'){
+							inputNum = inputNum.substring(0, inputNum.length - 1);
+							document.getElementById('encry_' + encryTyped).innerHTML = "";
+							encryTyped--;
+					}else{
+							inputNum += idArr[2];
+							encryTyped++;
+							document.getElementById('encry_' + encryTyped).innerHTML = "*";
+					}
+
 					setTimeout(function() {
 							keySvg.classList.remove("pressed");
 					}, 200);
+
+					if(encryTyped == 6){
+							if(isKeyCorrect(inputNum)){	//TODO
+									console.log(true);
+							}else{
+									console.log(false);
+							}
+					}
 			}
 	}
 
