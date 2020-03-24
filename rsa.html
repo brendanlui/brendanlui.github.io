@@ -95,9 +95,11 @@
 	    var store = [];
 			var primes = [];
 
-	    for (var i = min; i <= max; ++i){
+	    for (var i = 2; i <= max; ++i){
 	        if (!store[i]){
-	            primes.push(i);
+							if(i >= min){
+									primes.push(i);
+							}
 	            for (var j = i << 1; j <= max; j += i){
 	                store[j] = true;
 	            }
