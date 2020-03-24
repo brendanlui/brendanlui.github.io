@@ -81,7 +81,7 @@
 				svg += Math.round((start_x + numberPieceWidth / 2 * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
 				svg += Math.round((start_y + numberPieceHeight / 2 * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
-				svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+				svg += '" class="encryDisplay" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
   			svg += '<text id="encry_'+(i+1)+'" x="'
 						+ Math.round((start_x + numberPieceWidth / 2 * (2 * i + 1) /2 + Number.EPSILON) * 1000) / 1000
@@ -177,6 +177,7 @@
 														document.getElementById('encry_' + i).innerHTML = "";
 												}
 												inputNum = "";
+												encryTyped = 0;
 												for(i = 0; i < keyText.length; i++){
 													keyText[i].disabled = false;
 												}
