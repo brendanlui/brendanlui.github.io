@@ -149,6 +149,7 @@
 			if(idArr.length == 3){
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
 					keySvg.classList.add("pressed");
+					keySvg.disabled = true;
 
 					if(idArr[2] == '<-'){
 							inputNum = inputNum.substring(0, inputNum.length - 1);
@@ -189,6 +190,7 @@
 					}else{
 							setTimeout(function() {
 										keySvg.classList.remove("pressed");
+										keySvg.disabled = false;
 							}, 100);
 					}
 			}
