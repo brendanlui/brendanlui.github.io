@@ -157,20 +157,19 @@
 					}
 
 					setTimeout(function() {
-							keySvg.classList.remove("pressed");
+								keySvg.classList.remove("pressed");
+								if(encryTyped == 6){
+										if(isKeyCorrect(inputNum)){	//TODO
+												console.log(true);
+										}else{
+												for(i = 1; i <= encryTyped; i++){
+														document.getElementById('encry_' + i).innerHTML = "";
+												}
+												inputNum = "";
+												console.log(false);
+										}
+								}
 					}, 200);
-
-					if(encryTyped == 6){
-							if(isKeyCorrect(inputNum)){	//TODO
-									console.log(true);
-							}else{
-									for(i = 1; i <= encryTyped; i++){
-											document.getElementById('encry_' + i).innerHTML = "";
-									}
-									inputNum = "";
-									console.log(false);
-							}
-					}
 			}
 	}
 
