@@ -63,7 +63,7 @@
 
 			svg += '<svg id="keyboard0" height="'+(height/8)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces * 2; i++){
-				svg += '<polygon id="key_display_'+(i+1)+'" onClick="pressKey(this.id)" points="';
+				svg += '<polygon id="key_display_'+(i+1)+'" points="';
 				svg += Math.round((start + numberPieceWidth / 2 * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
 				svg += Math.round((start + numberPieceHeight / 2 * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
@@ -108,6 +108,14 @@
 			}
 
 			displayNumberBar.innerHTML = svg;
+	}
+
+	function pressKey(id){
+			var noteSvg = document.getElementById(id);
+			noteSvg.classList.add("pressed");
+			setTimeout(function() {
+					noteSvg.classList.remove("pressed");
+			}, 300);
 	}
 
 	function loadPublicKey(){
