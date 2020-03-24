@@ -63,6 +63,11 @@
 
 			svg += '<svg id="keyboard0" height="'+(height + height/8)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces * 2; i++){
+  			svg += '<text id="encry_'+(i+1)+'" x="'
+						+ Math.round((start_x + numberPieceWidth / 2 * (2 * i + 1) /2 + Number.EPSILON) * 1000) / 1000
+						+ '" y="'
+						+ Math.round((start_y + numberPieceHeight / 2 * ((i % 2) + ((i + 1) % 2)) / 2+ Number.EPSILON) * 1000) / 1000
+						+ '" class="keyText"></text>';
 				svg += '<polygon id="key_display_'+(i+1)+'" points="';
 				svg += Math.round((start_x + numberPieceWidth / 2 * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
