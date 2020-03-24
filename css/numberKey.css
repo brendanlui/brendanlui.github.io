@@ -1,9 +1,9 @@
 .numKey{
   fill:#ffffff;
-  stroke:#706e6e;
+  stroke:#f5e5e5;
 }
 
 .numKey.pressed{
     fill: #f3e7e7;
-    stroke: #ffffff;
+    stroke: #f5cbcb;
 }
