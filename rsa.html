@@ -80,7 +80,7 @@
 				svg += ",";
 				svg += Math.round((start_y + numberPieceHeight / 2 * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 				svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
-				
+
   			svg += '<text id="encry_'+(i+1)+'" x="'
 						+ Math.round((start_x + numberPieceWidth / 2 * (2 * i + 1) /2 + Number.EPSILON) * 1000) / 1000
 						+ '" y="'
@@ -91,7 +91,20 @@
 
 			for(h = 0; h < 4; h++){
 					for(i = 0; i < pieces; i++){
-						svg += '<polygon id="key_num_'+((i+1)+h*3)+'" onClick="pressKey(this.id)" points="';
+
+						var displayText = ((i+1)+h*3);
+						var pressKeyAble = true;
+						if(displayText == 10){
+								pressKeyAble = false;
+						}else if(displayText == 11){
+								displayText = 0;
+						}else if(displayText == 12){
+								displayText = "<-";
+						}
+
+						svg += '<polygon id="key_num_'+((i+1)+h*3)+'" '
+								+ (pressKeyAble ? 'onClick="pressKey(this.id)"' : '')
+								+' points="';
 						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 						svg += ",";
 						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
@@ -109,14 +122,6 @@
 						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
-						var displayText = ((i+1)+h*3);
-						if(displayText == 10){
-								continue;
-						}else if(displayText == 11){
-								displayText = 0;
-						}else if(displayText == 12){
-								displayText = "<-";
-						}
   					svg += '<text x="'
 								+ Math.round((start_x + numberPieceWidth * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
 								+ '" y="'
