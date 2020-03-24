@@ -36,8 +36,8 @@
 
 	function isKeyCorrect(testingNum){
 			var privateKey_d = generatePrivateKey();
-			var leftHandSide = privateKey_d * Math.log(Math.pow(testingNum, publicKey_e) % publicKey_n);
-			var rightHandSide = Math.log(testingNum % publicKey_n);
+			var leftHandSide = Math.pow(Math.pow(testingNum, publicKey_e) % publicKey_n, privateKey_d) % publicKey_n;
+			var rightHandSide = testingNum;
 
 			console.log(publicKey_n);
 			console.log(publicKey_e);
