@@ -90,9 +90,9 @@
 								+ '" y="'
 								+ Math.round((start_y + numberPieceHeight * ((i % 2) + ((i + 1) % 2)) / 2 + Number.EPSILON) * 1000) / 1000
 								+ '" class="keyText">'
-								+ ((i+1)*(h+1))
+								+ ((i+1)+h*3)
 								+ '</text>';
-						svg += '<polygon id="key_num_'+((i+1)*(h+1))+'" onClick="pressKey(this.id)" points="';
+						svg += '<polygon id="key_num_'+((i+1)+h*3)+'" onClick="pressKey(this.id)" points="';
 						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 						svg += ",";
 						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
