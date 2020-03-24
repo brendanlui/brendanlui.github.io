@@ -140,6 +140,7 @@
 			svg += '</svg>';
 
 			displayNumberBar.innerHTML = svg;
+			document.getElementById("numberBar").scrollIntoView();
 	}
 
 	var keyText = document.getElementsByClassName("keyText");
@@ -178,7 +179,6 @@
 													inputNum = "";
 													encryTyped = 0;
 													displayNumberBar();
-													document.getElementById("numberBar").scrollIntoView();
 													console.log(false);
 											}
 							}, 200);
