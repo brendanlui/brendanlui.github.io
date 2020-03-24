@@ -41,8 +41,8 @@
 
 	function init(){
 			//printKey();
-			displayNumberBar();
 			loadPublicKey();
+			displayNumberBar();
 	}
 
 	var encryTyped = 0;
@@ -201,11 +201,11 @@
 						if(arr.length == 2){
 								publicKey_n = arr[0];
 								publicKey_e = arr[1];
-								console.log(isKeyCorrect(165581));
+								//console.log(isKeyCorrect(165581));
 						}
 				}
 			};
-			xmlhttp.open("GET","./rsa/publicKey.txt", true);
+			xmlhttp.open("GET","./rsa/publicKey.txt", false);
 			xmlhttp.send();
 	}
 
