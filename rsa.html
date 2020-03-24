@@ -57,7 +57,7 @@
 			var primeArr = primeNum(50, 100);
 			if(primeArr.length >= 2){
 					var temp_k = 2;
-					var arrP1P2 = getRandom(primeList, 2);
+					var arrP1P2 = getRandom(primeArr, 2);
 					publicKey_n = arrP1P2[0] * arrP1P2[1];
 					var function_n = (arrP1P2[0] - 1) * (arrP1P2[1] - 1);
 					var function_n_factorArr = factors(function_n);
@@ -101,7 +101,7 @@
 		 });  // numeric sort
 		 return num_factors;
   }
-	
+
 	function getRandom(arr, n) {
 	    var result = new Array(n),
 	        len = arr.length,
