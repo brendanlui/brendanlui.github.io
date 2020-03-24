@@ -7,7 +7,7 @@
 	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
 	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
 	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
-	<link id="stylecall3" rel="stylesheet" href="/css/numberKey.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/numberKey.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -40,7 +40,7 @@
 	var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
 
 	function init(){
-			printKey();
+			//printKey();
 			loadPublicKey();
 			displayNumberBar();
 			console.log(isKeyCorrect(165581));
@@ -61,8 +61,7 @@
 			var numberPieceHeight = Math.round(((height - start - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
 			var numberPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
-
-			svg += '<svg id="keyboard'+0+'" height="'+height+'px" width="'+width+'px">';
+			svg += '<svg id="keyboard0" height="'+(height/8)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces * 2; i++){
 				svg += '<polygon id="key_display_'+(i+1)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start + numberPieceWidth / 2 * i + Number.EPSILON) * 1000) / 1000;	//x1
