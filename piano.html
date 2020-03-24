@@ -159,6 +159,7 @@
 			playOneNote(idArr[1], idArr[2], 2, 0);
 	}
 
+	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 	function handleFileSelect(event){
 	  const reader = new FileReader()
 	  reader.onload = handleFileLoad;
