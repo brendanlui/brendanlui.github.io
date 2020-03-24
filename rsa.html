@@ -39,11 +39,11 @@
 			var leftHandSide = Math.pow(Math.pow(testingNum, publicKey_e) % publicKey_n, privateKey_d);
 			var rightHandSide = testingNum % publicKey_n;
 
-			console.logs(publicKey_n);
-			console.logs(publicKey_e);
-			console.logs(privateKey_d);
-			console.logs(leftHandSide);
-			console.logs(rightHandSide);
+			console.log(publicKey_n);
+			console.log(publicKey_e);
+			console.log(privateKey_d);
+			console.log(leftHandSide);
+			console.log(rightHandSide);
 
 			if(leftHandSide == rightHandSide){
 					return true;
