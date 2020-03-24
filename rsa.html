@@ -40,7 +40,8 @@
 	var testingNum = BigInt(Math.floor(Math.random() * Math.floor(Math.pow(2, 53))) + '');
 
 	function init(){
-			//printKey();
+			//printKey(100, 999);
+			//printKey(20, 99);
 			loadPublicKey();
 			displayNumberBar();
 	}
@@ -220,8 +221,8 @@
 			}
 	}
 
-	function printKey(){
-			var privateKey_d = BigInt(generatePrivateKey());
+	function printKey(minP, maxP){
+			var privateKey_d = BigInt(generatePrivateKey(minP, maxP));
 			var leftHandSide = (((BigInt(testingNum) ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
 			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
 
@@ -233,12 +234,8 @@
 			console.log(rightHandSide);
 	}
 
-	function generatePrivateKey(){
+	function generatePrivateKey(primeMinP, primeMaxP){
 			var privateKey_d = 0;
-			var primeMinP = 20;
-			var primeMaxP = 99;
-			// var primeMinP = 100;
-			// var primeMaxP = 999;
 			while(!isPrime(primeMinP)){
 					primeMinP++;
 			}
