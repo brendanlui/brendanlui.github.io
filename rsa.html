@@ -35,9 +35,8 @@
 	var publicKey_e = 0;
 
 	function isKeyCorrect(testingNum){
-			var testdata = BigInt(testingNum);
 			var privateKey_d = BigInt(generatePrivateKey());
-			var leftHandSide = (((testdata ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
+			var leftHandSide = (((BigInt(testingNum) ** BigInt(publicKey_e)) % BigInt(publicKey_n)) ** BigInt(privateKey_d)) % BigInt(publicKey_n);
 			var rightHandSide = BigInt(testingNum) % BigInt(publicKey_n);
 
 			console.log(publicKey_n);
