@@ -54,8 +54,14 @@
 
 	function generatePrivateKey(){
 			var privateKey_d = 0;
+			var primeMinP = 29;
+			var primeMaxP = 200;
+			while(!isPrime(primeMinP)){
+					primeMinP++;
+			}
+
 			while(true){
-					var primeArr = primeFactorsTo(29, 200);
+					var primeArr = primeFactorsTo(primeMinP, primeMaxP);
 					if(primeArr.length >= 2){
 							var temp_k = 2;
 							var arrP1P2 = getRandom(primeArr, 2);
@@ -77,6 +83,12 @@
 					}
 			}
 			return privateKey_d;
+	}
+
+	function isPrime(num) {
+		  for(var i = 2; i < num; i++)
+		    if(num % i === 0) return false;
+		  return num > 1;
 	}
 
 	function primeFactorsTo(min, max){
