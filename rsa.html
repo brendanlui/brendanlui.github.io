@@ -55,7 +55,7 @@
 	function generatePrivateKey(){
 			var privateKey_d = 0;
 			while(true){
-					var primeArr = primeNum(50, 100);
+					var primeArr = primeFactorsTo(50, 100);
 					if(primeArr.length >= 2){
 							var temp_k = 2;
 							var arrP1P2 = getRandom(primeArr, 2);
@@ -63,7 +63,7 @@
 							var function_n = (arrP1P2[0] - 1) * (arrP1P2[1] - 1);
 							var function_n_factorArr = factors(function_n);
 
-							var publicKey_e_arr = primeNum(2, function_n);
+							var publicKey_e_arr = primeFactorsTo(2, function_n);
 							for(i = 2; i < publicKey_e_arr.length; i++){
 									if(!function_n_factorArr.includes(publicKey_e_arr[i])){
 											publicKey_e = publicKey_e_arr[i];
@@ -79,10 +79,10 @@
 			return privateKey_d;
 	}
 
-	function primeNum(min, max){
+	function primeFactorsTo(min, max){
 	    var store  = [], i, j, primes = [];
 	    for (i = min; i <= max; ++i){
-	        if (!store[i]){
+	        if (!store [i]){
 	            primes.push(i);
 	            for (j = i << 1; j <= max; j += i){
 	                store[j] = true;
