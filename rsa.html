@@ -64,7 +64,7 @@
 
 					var publicKey_e_arr = primeNum(2, function_n);
 					for(i = 2; i < publicKey_e_arr.length; i++){
-							if(!publicKey_e_arr.includes(publicKey_e_arr[i])){
+							if(!function_n_factorArr.includes(publicKey_e_arr[i])){
 									publicKey_e = publicKey_e_arr[i];
 									break;
 							}
