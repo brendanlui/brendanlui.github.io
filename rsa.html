@@ -45,6 +45,7 @@
 			loadPublicKey();
 	}
 
+	var encryTyped = 0;
 	window.addEventListener("resize", displayNumberBar);
 	function displayNumberBar(){
 			var displayNumberBar = document.getElementById('displayNumberBar');
@@ -96,6 +97,7 @@
 						var pressKeyAble = true;
 						if(displayText == 10){
 								pressKeyAble = false;
+								displayText = '';
 						}else if(displayText == 11){
 								displayText = 0;
 						}else if(displayText == 12){
