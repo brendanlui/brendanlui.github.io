@@ -55,7 +55,7 @@
 	function generatePrivateKey(){
 			var privateKey_d = 0;
 			while(true){
-					var primeArr = primeFactorsTo(50, 100);
+					var primeArr = primeFactorsTo(51, 100);
 					if(primeArr.length >= 2){
 							var temp_k = 2;
 							var arrP1P2 = getRandom(primeArr, 2);
@@ -91,7 +91,6 @@
 	            }
 	        }
 	    }
-
 	    return primes;
 	}
 
