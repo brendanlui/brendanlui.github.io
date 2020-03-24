@@ -34,7 +34,7 @@
 	var publicKey_n = 0;
 	var publicKey_e = 0;
 
-	function isKeyCorrect(testingNum){
+	function isKeyCorrect(testingNum){ 
 			var privateKey_d = generatePrivateKey();
 			var leftHandSide = Math.pow(Math.pow(testingNum, publicKey_e) % publicKey_n, privateKey_d);
 			var rightHandSide = testingNum % publicKey_n;
