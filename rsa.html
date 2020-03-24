@@ -54,22 +54,27 @@
 
 	function generatePrivateKey(){
 			var privateKey_d = 0;
-			var primeArr = primeNum(50, 100);
-			if(primeArr.length >= 2){
-					var temp_k = 2;
-					var arrP1P2 = getRandom(primeArr, 2);
-					publicKey_n = arrP1P2[0] * arrP1P2[1];
-					var function_n = (arrP1P2[0] - 1) * (arrP1P2[1] - 1);
-					var function_n_factorArr = factors(function_n);
+			while(true){
+					var primeArr = primeNum(50, 100);
+					if(primeArr.length >= 2){
+							var temp_k = 2;
+							var arrP1P2 = getRandom(primeArr, 2);
+							publicKey_n = arrP1P2[0] * arrP1P2[1];
+							var function_n = (arrP1P2[0] - 1) * (arrP1P2[1] - 1);
+							var function_n_factorArr = factors(function_n);
 
-					var publicKey_e_arr = primeNum(2, function_n);
-					for(i = 2; i < publicKey_e_arr.length; i++){
-							if(!function_n_factorArr.includes(publicKey_e_arr[i])){
-									publicKey_e = publicKey_e_arr[i];
+							var publicKey_e_arr = primeNum(2, function_n);
+							for(i = 2; i < publicKey_e_arr.length; i++){
+									if(!function_n_factorArr.includes(publicKey_e_arr[i])){
+											publicKey_e = publicKey_e_arr[i];
+											break;
+									}
+							}
+							privateKey_d = (temp_k * function_n + 1) / publicKey_e;
+							if(Number.isInteger(privateKey_d)){
 									break;
 							}
 					}
-					privateKey_d = (temp_k * function_n + 1) / publicKey_e;
 			}
 			return privateKey_d;
 	}
