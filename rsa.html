@@ -143,9 +143,9 @@
 			var idArr = id.split('_');
 			if(idArr.length == 3){
 					var keySvg = document.getElementById('key_num_' + idArr[2]);
-					noteSvg.classList.add("pressed");
+					keySvg.classList.add("pressed");
 					setTimeout(function() {
-							noteSvg.classList.remove("pressed");
+							keySvg.classList.remove("pressed");
 					}, 200);
 			}
 	}
