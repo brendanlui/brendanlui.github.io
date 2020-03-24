@@ -164,19 +164,9 @@
 													//TODO
 													console.log(true);
 											}else{
-													for(i = 1; i <= encryTyped; i++){
-															document.getElementById('encry_' + i).innerHTML = "";
-													}
 													inputNum = "";
 													encryTyped = 0;
-													for(i = 0; i < keyText.length; i++){
-																 keyText[i].onclick = function() {pressKey(keyText[i].id);};
-													}
-													for(i = 0; i < numKey.length; i++){
-														if(i != 10 - 1){
-																 numKey[i].onclick = function() {pressKey(numKey[i].id);};
-														}
-													}
+													displayNumberBar();
 													console.log(false);
 											}
 							}, 200);
