@@ -171,17 +171,11 @@
 													inputNum = "";
 													encryTyped = 0;
 													for(i = 0; i < keyText.length; i++){
-																 var temp = i;
-																 keyText[temp].addEventListener('click', function(){
-																		pressKey(keyText[temp].id);
-																 });
+																 keyText[i].onclick = function() {pressKey(keyText[i].id);};
 													}
 													for(i = 0; i < numKey.length; i++){
 														if(i != 10 - 1){
-																 var temp = i;
-																 numKey[temp].addEventListener('click', function(){
-																		pressKey(numKey[temp].id);
-																 });
+																 numKey[i].onclick = function() {pressKey(numKey[i].id);};
 														}
 													}
 													console.log(false);

@@ -10,5 +10,5 @@
 
 .encryText, .keyText{
   font-weight: bold;
-  fill: #cacaca;
+  fill: red;
 }
