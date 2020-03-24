@@ -173,11 +173,11 @@
 											}
 							}, 200);
 					}else{
-							if(idArr[2] == '<-'){
+							if(idArr[2] == '<-' && encryTyped > 0){
 									inputNum = inputNum.substring(0, inputNum.length - 1);
 									document.getElementById('encry_' + encryTyped).innerHTML = "";
 									encryTyped--;
-							}else{
+							}else if(encryTyped >= 0 && encryTyped < numOfPassword){
 									inputNum += idArr[2];
 									encryTyped++;
 									document.getElementById('encry_' + encryTyped).innerHTML = ".";
