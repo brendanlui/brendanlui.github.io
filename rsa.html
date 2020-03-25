@@ -142,7 +142,7 @@
 								+ displayText
 								+ '</text>';
 
-						//edit word start
+						//edit word start	//brendan
 						if(displayText == 1){
 							svg += '<line onClick="pressKey(this.id)" x1="'
 														+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000 / 1000
@@ -152,9 +152,7 @@
 														+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000 / 1000
 														+ '" y2="'
 														+ Math.round((y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000) / 1000
-														+ '" class="keyText">'
-														+ displayText
-														+ '</line>';
+														+ '" class="keyText"/>';
 						}
 						//edit word end
 
@@ -200,7 +198,7 @@
 
 							setTimeout(function() {
 											document.getElementById("inputResult").innerHTML = "0";
-											//if(detectChrome()){
+											//if(detectChrome()){	//brendan
 											//		result = isKeyCorrect(parseInt(inputNum));
 											//}else{
 													var xmlhttp = new XMLHttpRequest();
