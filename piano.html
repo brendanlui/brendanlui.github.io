@@ -272,8 +272,9 @@
 				xmlhttp.send();
 	}
 
+	var noteCount = 0;
 	function loadText(text){
-
+			noteCount = 0;
 			var person = document.getElementsByClassName("person");
 			for(i = 0; i < person.length; i++){
 					person[i].style.display = "block";
@@ -336,7 +337,6 @@
 				}
 	}
 
-	var noteCount = 0;
 	function playOneNote(note, octave, duration, startTime){
 			setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
