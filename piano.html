@@ -104,7 +104,7 @@
 			var pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-			svg += '<svg id="keyboard" height="'+height+'px" width="'+width+'px">';
+			svg += '<svg id="keyboard" height="'+(height+start_y)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
 				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
