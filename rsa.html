@@ -583,18 +583,18 @@
 
 	function breakSvg(){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						moveSection(numKey[i].id);
+						moveSection(numKey[i].id, 300);
 				}
 	}
 
-	function moveSection(idStr) {	//brendan
+	function moveSection(idStr, speed) {	//brendan
 			var domElemnt = document.getElementById(idStr);
 			var rect = domElemnt.getBoundingClientRect();
 			console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
-		  var id = setInterval(frame, 3000);
+		  var id = setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
 		      clearInterval(id);
