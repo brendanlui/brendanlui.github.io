@@ -91,12 +91,6 @@
 				svg += y2;;	//y2
 				svg += '" class="encryDisplay" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
-  			svg += '<text id="encry_'+(i+1)+'" x="'
-						+ Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
-						+ '" y="'
-						+ Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * ((i % 2) + ((i + 1) % 2)) / 2+ Number.EPSILON) * 1000) / 1000
-						+ '" class="encryText"></text>';
-
 				//edit word start
 				svg += '<line x1="'
 											+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -582,7 +576,7 @@
 				}
 	}
 
-	function moveSection(idStr, speed, direction, type) { 
+	function moveSection(idStr, speed, direction, type) {
 			var domElemnt = document.getElementById(idStr);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);

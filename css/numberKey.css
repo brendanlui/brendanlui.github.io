@@ -8,11 +8,6 @@
   stroke: #f5cbcb;
 }
 
-.encryText, .keyText{
-  font-weight: bold;
-  fill: #353600;
-}
-
 .loading{
   stroke: #f5f4f4;
   stroke-width: 2px;
