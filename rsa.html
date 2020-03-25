@@ -650,7 +650,9 @@
 			var interval = setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
-							pointArr[j].style.display = "none";
+							for(j = 0; j < pointArr.length; j++){
+								pointArr[j].style.display = "none";
+							}
 		      		clearInterval(interval);
 		    } else {
 				      pos++;
