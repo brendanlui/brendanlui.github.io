@@ -111,21 +111,25 @@
 						svg += '<polygon id="key_num_' + displayText + '" '
 								+ (pressKeyAble ? 'onClick="pressKey(this.id)"' : '')
 								+' points="';
-						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
+						var x1 = Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;
+						var x2 = Math.round((start_x + numberPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;
+						var y1 = Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;
+						var y2 = Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;
+						svg += x1;	//x1
 						svg += ",";
-						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+						svg += y1;	//y1
 						svg += " ";
-						svg += Math.round((start_x + numberPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+						svg += x2;	//x2
 						svg += ",";
-						svg += Math.round((start_y + numberPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+						svg += y1;	//y1
 						svg += " ";
-						svg += Math.round((start_x + numberPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+						svg += x2;	//x2
 						svg += ",";
-						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+						svg += y2;	//y2
 						svg += " ";
-						svg += Math.round((start_x + numberPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
+						svg += x1;	//x1
 						svg += ",";
-						svg += Math.round((start_y + numberPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+						svg += y2;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
   					svg += '<text id="key_text_' + displayText + '" onClick="pressKey(this.id)" x="'
@@ -135,6 +139,23 @@
 								+ '" class="keyText">'
 								+ displayText
 								+ '</text>';
+
+						//edit word start
+						if(displayText == 1){
+							svg += '<line onClick="pressKey(this.id)" x1="'
+														+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000) / 1000
+														+ '" y1="'
+														+ Math.round((y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000) / 1000
+														+ '" x2="'
+														+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000) / 1000
+														+ '" y2="'
+														+ Math.round((y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000) / 1000
+														+ '" class="keyText">'
+														+ displayText
+														+ '</line>';
+						}
+						//edit word end
+
 					}
 					start_y += numberPieceHeight;
 			}
@@ -185,7 +206,7 @@
 														if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 																var string = [];
 																var txt = xmlhttp.responseText;
-																if(txt == inputNum){
+																if(txt == inputNum){	//brendan
 																		result = true;
 																}
 														}
