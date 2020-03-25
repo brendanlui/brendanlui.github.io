@@ -10,7 +10,7 @@
 
 .encryText, .keyText{
   font-weight: bold;
-  fill: red;
+  fill: #353600;
 }
 
 .wrong{
