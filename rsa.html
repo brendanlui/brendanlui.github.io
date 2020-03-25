@@ -572,17 +572,17 @@
 
 	function breakSvg(speed){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						moveSection(numKey[i].id, speed, Math.floor(Math.random() * Math.floor(4));
+						moveSection(numKey[i].id, speed, Math.floor(Math.random() * Math.floor(4), 'polygon');
 				}
 				for(i = 0; i < encryDisplay.length; i++){
-						moveSection(encryDisplay[i].id, speed, Math.floor(Math.random() * Math.floor(4));
+						moveSection(encryDisplay[i].id, speed, Math.floor(Math.random() * Math.floor(4), 'polygon');
 				}
 				for(i = 0; i < displayLine.length; i++){
-						moveSection(displayLine[i].id, speed, Math.floor(Math.random() * Math.floor(4));
+						moveSection(displayLine[i].id, speed, Math.floor(Math.random() * Math.floor(4), 'line');
 				}
 	}
 
-	function moveSection(idStr, speed, direction) {
+	function moveSection(idStr, speed, direction, type) {
 			var domElemnt = document.getElementById(idStr);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
@@ -593,24 +593,60 @@
 		    } else {
 				      pos++;
 							if(direction == 0){
-									for(i = 0; i < domElemnt.points.length; i++){
-													domElemnt.points[i].x += pos;
-													domElemnt.points[i].y -= pos;
+									if(type == 'polygon'){
+											for(i = 0; i < domElemnt.points.length; i++){
+															domElemnt.points[i].x += pos;
+															domElemnt.points[i].y -= pos;
+											}
+									}else if(type == 'line'){
+											for(i = 0; i < domElemnt.line.length; i++){
+															domElemnt.points[i].x1 += pos;
+															domElemnt.points[i].x2 += pos;
+															domElemnt.points[i].y1 -= pos;
+															domElemnt.points[i].y2 -= pos;
+											}
 									}
 							}else if(direction == 1){
-									for(i = 0; i < domElemnt.points.length; i++){
-													domElemnt.points[i].x += pos;
-													domElemnt.points[i].y += pos;
+									if(type == 'polygon'){
+											for(i = 0; i < domElemnt.points.length; i++){
+															domElemnt.points[i].x += pos;
+															domElemnt.points[i].y += pos;
+											}
+									}else if(type == 'line'){
+											for(i = 0; i < domElemnt.line.length; i++){
+															domElemnt.points[i].x1 += pos;
+															domElemnt.points[i].x2 += pos;
+															domElemnt.points[i].y1 += pos;
+															domElemnt.points[i].y2 += pos;
+											}
 									}
 							}else if(direction == 2){
-									for(i = 0; i < domElemnt.points.length; i++){
-													domElemnt.points[i].x -= pos;
-													domElemnt.points[i].y += pos;
+									if(type == 'polygon'){
+											for(i = 0; i < domElemnt.points.length; i++){
+															domElemnt.points[i].x -= pos;
+															domElemnt.points[i].y += pos;
+											}
+									}else if(type == 'line'){
+											for(i = 0; i < domElemnt.line.length; i++){
+															domElemnt.points[i].x1 -= pos;
+															domElemnt.points[i].x2 -= pos;
+															domElemnt.points[i].y1 += pos;
+															domElemnt.points[i].y2 += pos;
+											}
 									}
 							}else if(direction == 3){
-									for(i = 0; i < domElemnt.points.length; i++){
-													domElemnt.points[i].x -= pos;
-													domElemnt.points[i].y -= pos;
+									if(type == 'polygon'){
+											for(i = 0; i < domElemnt.points.length; i++){
+															domElemnt.points[i].x -= pos;
+															domElemnt.points[i].y -= pos;
+											}
+									}else if(type == 'line'){
+											for(i = 0; i < domElemnt.line.length; i++){
+															domElemnt.points[i].x1 -= pos;
+															domElemnt.points[i].x2 -= pos;
+															domElemnt.points[i].y1 -= pos;
+															domElemnt.points[i].y2 -= pos;
+											}
 									}
 							}
 		    }
