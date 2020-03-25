@@ -591,7 +591,7 @@
 	function moveSection(idStr) {	//brendan
 			var dynamicStyle = document.getElementById('dynamicStyle');
 			var domElemnt = document.getElementById(idStr);
-			var rect = element.getBoundingClientRect();
+			var rect = domElemnt.getBoundingClientRect();
 			console.log(rect.top, rect.right, rect.bottom, rect.left);
 			domElemnt.style += "animation: mymove 5s infinite;";
 	}
