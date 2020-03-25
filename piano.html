@@ -281,11 +281,6 @@
 	var rightHandOctave = 4;
 	function loadText(text){
 			noteCount = 0;
-			var person = document.getElementsByClassName("person");
-			for(i = 0; i < person.length; i++){
-					person[i].style.display = "block";
-			}
-
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
 			var seperate = '//sample rate (4000-44100), volume, speed';
