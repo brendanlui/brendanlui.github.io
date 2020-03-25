@@ -17,12 +17,3 @@
   stroke: #f5f4f4;
   stroke-width: 2px;
 }
-
-.horizTranslateRight {
-  -webkit-transition: 3s;
-  -moz-transition: 3s;
-  -ms-transition: 3s;
-  -o-transition: 3s;
-  transition: 3s;
-  margin-left: 100% !important;
-}
