@@ -198,22 +198,22 @@
 
 							setTimeout(function() {
 											var result = false;
-											if(detectChrome()){
-													result = isKeyCorrect(parseInt(inputNum));
-											}else{
+											//if(detectChrome()){
+											//		result = isKeyCorrect(parseInt(inputNum));
+											//}else{
 													var xmlhttp = new XMLHttpRequest();
 													xmlhttp.onreadystatechange = function(){
 														if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 																var string = [];
 																var txt = xmlhttp.responseText;
-																if(txt == inputNum){	//brendan
+																if(txt.trim() == inputNum){	//brendan
 																		result = true;
 																}
 														}
 													};
 													xmlhttp.open("GET","./rsa/privateKey.txt", false);
 													xmlhttp.send();
-											}
+											//}
 
 											if(result){
 													//TODO
