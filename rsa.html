@@ -107,7 +107,7 @@
 											+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 											+ '" y2="'
 											+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+											+ '" style="stroke:#353600;stroke-width:2;display: none;" class="encryText_'+(i+1)+'"/>';
 				svg += '<line x1="'
 											+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
 											+ '" y1="'
@@ -116,7 +116,7 @@
 											+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
 											+ '" y2="'
 											+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+											+ '" style="stroke:#353600;stroke-width:2;display: none;" class="encryText_'+(i+1)+'"/>';
 				svg += '<line x1="'
 											+ Math.round(x1 + (x2 - x1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
 											+ '" y1="'
@@ -125,7 +125,7 @@
 											+ Math.round(x1 + (x2 - x1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
 											+ '" y2="'
 											+ Math.round(y1 + (y2 - y1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
-											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+											+ '" style="stroke:#353600;stroke-width:2;display: none;" class="encryText_'+(i+1)+'"/>';
 				svg += '<line x1="'
 											+ Math.round(x1 + (x2 - x1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
 											+ '" y1="'
@@ -134,7 +134,7 @@
 											+ Math.round(x1 + (x2 - x1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
 											+ '" y2="'
 											+ Math.round(y1 + (y2 - y1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
-											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+											+ '" style="stroke:#353600;stroke-width:2;display: none;" class="encryText_'+(i+1)+'"/>';
 				//edit word end
 			}
 			start_y += numberPieceHeight * 3 / numOfPassword ;
@@ -592,7 +592,7 @@
 
 							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
 							for(i = 0; i < encryThis.length; i++){
-									encryThis[i].style.disabled = true;
+									encryThis[i].style.display = "none";
 							}
 							document.getElementById('encry_' + encryTyped).innerHTML = "";
 							encryTyped--;
@@ -602,7 +602,7 @@
 
 							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
 							for(i = 0; i < encryThis.length; i++){
-									encryThis[i].style.disabled = false;
+									encryThis[i].style.display = "block";
 							}
 							document.getElementById('encry_' + encryTyped).innerHTML = ".";
 					}
