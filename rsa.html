@@ -176,7 +176,25 @@
 							}
 
 							setTimeout(function() {
-											if(isKeyCorrect(parseInt(inputNum))){
+											var result = false;
+											if(detectChrome()){
+													result = isKeyCorrect(parseInt(inputNum));
+											}else{
+													var xmlhttp = new XMLHttpRequest();
+													xmlhttp.onreadystatechange = function(){
+														if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+																var string = [];
+																var txt = xmlhttp.responseText;
+																if(txt == inputNum){
+																		result = true;
+																}
+														}
+													};
+													xmlhttp.open("GET","./rsa/privateKey.txt", false);
+													xmlhttp.send();
+											}
+
+											if(result){
 													//TODO
 													console.log(true);
 											}else{
@@ -219,6 +237,17 @@
 			};
 			xmlhttp.open("GET","./rsa/publicKey.txt", true);
 			xmlhttp.send();
+	}
+
+	function detectChrome(){
+			var ua = navigator.userAgent.toLowerCase();
+			if (ua.indexOf('safari') != -1) {
+			  if (ua.indexOf('chrome') > -1) {
+			    	return true;
+			  } else {
+				    return false;
+			  }
+			}
 	}
 
 	function isKeyCorrect(privateKey_d){
