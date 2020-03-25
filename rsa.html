@@ -577,6 +577,9 @@
 	}
 
 	function moveSection(idStr, speed, direction, type) {
+			if(idStr == ""){
+					return;
+			}
 			var domElemnt = document.getElementById(idStr);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
