@@ -591,14 +591,14 @@
 				var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
 			  var pos = 0;
-				var interval = setInterval(frame, speed);
+				var interval = setInterval(frameLine, speed);
 
 				ranArrLine = [];
 				for(i = 0; i < lineArr.length; i++){
 						ranArrLine[i] = Math.floor(Math.random() * Math.floor(4));
 				}
 
-			  function frame() {
+			  function frameLine() {
 			    if (pos == svgHieght) {
 								for(i = 0; i < displayLine.length; i++){
 										displayLine[i].style.display = "none";
@@ -649,8 +649,8 @@
 					ranArrPoint[i] = Math.floor(Math.random() * Math.floor(4));
 			}
 
-			var interval = setInterval(frame, speed);
-		  function frame() {
+			var interval = setInterval(framePoint, speed);
+		  function framePoint() {
 		    if (pos == svgHieght) {
 							for(j = 0; j < pointArr.length; j++){
 									pointArr[j].style.display = "none";
