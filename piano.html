@@ -96,6 +96,7 @@
 			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
 			var start = 5;
+			var start_y = width / 5 + start;
 			var end = 5;
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
@@ -107,19 +108,19 @@
 				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
-				svg += Math.round((start + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
 				svg += " ";
 				svg += Math.round((start + pianoPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
 				svg += ",";
-				svg += Math.round((start + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
 				svg += " ";
 				svg += Math.round((start + pianoPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
 				svg += ",";
-				svg += Math.round((start + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 				svg += " ";
 				svg += Math.round((start + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
-				svg += Math.round((start + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 				svg += '" class="whiteKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
 
@@ -133,19 +134,19 @@
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
 							svg += Math.round((start + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
-							svg += Math.round((start + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
 							svg += Math.round((start + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
 							svg += ",";
-							svg += Math.round((start + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
 							svg += Math.round((start + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
 							svg += ",";
-							svg += Math.round((start + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += " ";
 							svg += Math.round((start + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
-							svg += Math.round((start + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += '" class="blackKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 					}
 			}
@@ -158,8 +159,8 @@
 										+ '" x2="'
 										+ Math.round(width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
-										+ Math.round(height * 5 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#ffffff;stroke-width:2;" class="leftHand"/>';
+										+ Math.round(height * 1 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="leftHand"/>';
 			// person edit end
 
 			svg += '</svg>';
