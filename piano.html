@@ -157,7 +157,7 @@
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" cy="'
 										+ Math.round(start_y - height * 5 / 6 + Number.EPSILON) * 1000 / 1000
-										+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" />';
+										+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" class="head person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -166,7 +166,7 @@
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="leftHand"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="leftHand person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -175,7 +175,7 @@
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="rightHand"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="rightHand person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -184,7 +184,7 @@
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBody"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -193,7 +193,7 @@
 										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBody"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -202,7 +202,7 @@
 										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBody"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -211,7 +211,7 @@
 										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="leg"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="leg person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -220,7 +220,7 @@
 										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="leg"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="leg person"/>';
 			// person edit end
 
 			svg += '</svg>';
@@ -273,6 +273,12 @@
 	}
 
 	function loadText(text){
+
+			var person = document.getElementsByClassName("person");
+			for(i = 0; i < person.length; i++){
+					person[i].style.display = "block";
+			}
+
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
 			var seperate = '//sample rate (4000-44100), volume, speed';
