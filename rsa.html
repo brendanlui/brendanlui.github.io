@@ -595,6 +595,9 @@
 
 			  function frame() {
 			    if (pos == svgHieght) {
+								for(i = 0; i < displayLine.length; i++){
+										displayLine[i].style.display = "none";
+								}
 			      		clearInterval(interval);
 			    } else {
 					      pos++;
@@ -639,6 +642,7 @@
 			var direction = Math.floor(Math.random() * Math.floor(4));
 		  function frame() {
 		    if (pos == svgHieght) {
+							domElemnt.style.display = "none";
 		      		clearInterval(interval);
 		    } else {
 				      pos++;
