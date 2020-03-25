@@ -570,17 +570,17 @@
 
 	function breakSvg(speed){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						movePoint(numKey[i].id, speed);
+						movePoint('numKey', speed);
 				}
 				for(i = 0; i < encryDisplay.length; i++){
-						movePoint(encryDisplay[i].id, speed);
+						movePoint('encryDisplay', speed);
 				}
 				for(i = 0; i < displayLine.length; i++){
 						moveLine("displayLine", speed);
 				}
 	}
 
-	var ranArr = [];
+	var ranArrLine = [];
 	function moveLine(className, speed){
 
 				if(className == ""){
@@ -594,7 +594,7 @@
 				var interval = setInterval(frame, speed);
 
 				for(i = 0; i < lineArr.length; i++){
-						ranArr[i] = Math.floor(Math.random() * Math.floor(4));
+						ranArrLine[i] = Math.floor(Math.random() * Math.floor(4));
 				}
 
 			  function frame() {
@@ -606,7 +606,7 @@
 			    } else {
 					      pos++;
 								for(i = 0; i < lineArr.length; i++){
-										var direction = ranArr[i];
+										var direction = ranArrLine[i];
 										if(direction == 0){	//baseVal, animVal
 												lineArr[i].x1.baseVal.value += pos;
 												lineArr[i].x2.baseVal.value += pos;
@@ -633,43 +633,51 @@
 			  }
 	}
 
-	function movePoint(idStr, speed) {
-			if(idStr == ""){
+	var ranArrPoint = [];
+	function movePoint(className, speed) {
+			if(className == ""){
 					return;
 			}
 
-			var domElemnt = document.getElementById(idStr);
+
+			var pointArr = document.getElementsByClassName(className);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
+			for(i = 0; i < pointArr.length; i++){
+					ranArrPoint[i] = Math.floor(Math.random() * Math.floor(4));
+			}
+
 			var interval = setInterval(frame, speed);
-			var direction = Math.floor(Math.random() * Math.floor(4));
 		  function frame() {
 		    if (pos == svgHieght) {
-							domElemnt.style.display = "none";
+							pointArr[j].style.display = "none";
 		      		clearInterval(interval);
 		    } else {
 				      pos++;
-							if(direction == 0){
-											for(i = 0; i < domElemnt.points.length; i++){
-															domElemnt.points[i].x += pos;
-															domElemnt.points[i].y -= pos;
-											}
-							}else if(direction == 1){
-											for(i = 0; i < domElemnt.points.length; i++){
-															domElemnt.points[i].x += pos;
-															domElemnt.points[i].y += pos;
-											}
-							}else if(direction == 2){
-											for(i = 0; i < domElemnt.points.length; i++){
-															domElemnt.points[i].x -= pos;
-															domElemnt.points[i].y += pos;
-											}
-							}else if(direction == 3){
-											for(i = 0; i < domElemnt.points.length; i++){
-															domElemnt.points[i].x -= pos;
-															domElemnt.points[i].y -= pos;
-											}
+							for(j = 0; j < pointArr.length; j++){
+									var direction = ranArrPoint[i];
+									if(direction == 0){
+													for(i = 0; i < pointArr[i].points.length; i++){
+																	pointArr[j].points[i].x += pos;
+																	pointArr[j].points[i].y -= pos;
+													}
+									}else if(direction == 1){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x += pos;
+																	pointArr[j].points[i].y += pos;
+													}
+									}else if(direction == 2){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x -= pos;
+																	pointArr[j].points[i].y += pos;
+													}
+									}else if(direction == 3){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x -= pos;
+																	pointArr[j].points[i].y -= pos;
+													}
+									}
 							}
 		    }
 		  }
