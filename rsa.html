@@ -589,7 +589,7 @@
 					if(idArr[2] == '<-' && encryTyped > 0){
 							inputNum = inputNum.substring(0, inputNum.length - 1);
 
-							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
+							var encryThis = document.getElementsByClassName('encryText_' + encryTyped);
 							for(i = 0; i < encryThis.length; i++){
 									encryThis[i].style.display = "none";
 							}
@@ -599,7 +599,7 @@
 							inputNum += idArr[2];
 							encryTyped++;
 
-							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
+							var encryThis = document.getElementsByClassName('encryText_' + encryTyped);
 							for(i = 0; i < encryThis.length; i++){
 									encryThis[i].style.display = "block";
 							}
