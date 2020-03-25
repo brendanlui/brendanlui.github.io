@@ -585,9 +585,15 @@
 				for(i = 0; i < numKey.length; i++){
 						moveSection(numKey[i].id, speed);
 				}
+				for(i = 0; i < encryDisplay.length; i++){
+						moveSection(encryDisplay[i].id, speed);
+				}
+				for(i = 0; i < displayLine.length; i++){
+						moveSection(displayLine[i].id, speed);
+				}
 	}
 
-	function moveSection(idStr, speed) {	//brendan
+	function moveSection(idStr, speed) {
 			var domElemnt = document.getElementById(idStr);
 			var rect = domElemnt.getBoundingClientRect();
 			console.log(rect.top, rect.right, rect.bottom, rect.left);
@@ -631,7 +637,7 @@
 							for(i = 0; i < encryThis.length; i++){
 									encryThis[i].style.display = "block";
 							}
-							document.getElementById('encry_' + encryTyped).innerHTML = ".";
+							//document.getElementById('encry_' + encryTyped).innerHTML = ".";
 					}
 
 					if(encryTyped == numOfPassword){
