@@ -86,12 +86,14 @@
 			displayPiano();
 	}
 
+	var centerX = 0;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
 			var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
+			var centerX = width / 2;
 			var pieces = 36;
 			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
@@ -184,7 +186,7 @@
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y2="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBodyCenter person"/>';
 			svg += '<line x1="'
 										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 										+ '" y1="'
@@ -273,6 +275,8 @@
 	}
 
 	var noteCount = 0;
+	var leftHandOctave = 4;
+	var rightHandOctave = 4;
 	function loadText(text){
 			noteCount = 0;
 			var person = document.getElementsByClassName("person");
@@ -323,7 +327,16 @@
 
 	var leftHand = document.getElementsByClassName("leftHand");
 	var rightHand = document.getElementsByClassName("rightHand");
+	var personBodyCenter = document.getElementsByClassName("personBodyCenter");
+	var head = document.getElementsByClassName("head");
 	function moveHand(note, octave, left){
+				if(left){
+						leftHandOctave = octave;
+				}else{
+						rightHandOctave = octave;
+				}
+
+				var totalOctave = leftHandOctave + rightHandOctave;
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 				var xValue = 0;
 				var yValue = 0;
@@ -357,6 +370,12 @@
 						rightHand[0].x1.baseVal.value = xValue;
 						rightHand[0].y1.baseVal.value = yValue;
 				}
+
+				var moveDistance = (yHigh - yLow) * (8 - totalOctave);
+				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance;
+				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
+				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
+				head[0].cx.baseVal.value =	centerX -	moveDistance;
 	}
 
 	function playOneNote(note, octave, duration, startTime){
