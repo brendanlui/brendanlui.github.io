@@ -588,7 +588,7 @@
 				for(i = 0; i < lineArr.length; i++){
 				  var pos = 0;
 
-					window.setInterval(frame, speed);
+					setInterval(frame, speed);
 				  function frame() {
 				    if (pos == svgHieght) {
 				      		clearInterval(id);
@@ -630,7 +630,7 @@
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
-			window.setInterval(frame, speed);
+			setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
 		      		clearInterval(id);
