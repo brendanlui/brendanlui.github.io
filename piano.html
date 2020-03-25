@@ -322,23 +322,18 @@
 
 	var leftHand = document.getElementsByClassName("leftHand");
 	var rightHand = document.getElementsByClassName("rightHand");
-	function moveLeftHand(note, octave){
+	function moveHand(note, octave, left){
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 				var xValue = 0;
 				for(i = 0; i < polygon.points.length; i++){
 								xValue += polygon.points[i].x;
 				}
 				xValue = xValue / polygon.points.length;
-				leftHand[0].x1.baseVal.value = xValue;
-	}
-	function moveRightHand(note, octave){
-				var polygon = document.getElementById("key_"+note+"_"+octave);
-				var xValue = 0;
-				for(i = 0; i < polygon.points.length; i++){
-								xValue += polygon.points[i].x;
+				if(left){
+						leftHand[0].x1.baseVal.value = xValue;
+				}else{
+						rightHand[0].x1.baseVal.value = xValue;
 				}
-				xValue = xValue / polygon.points.length;
-				rightHand[0].x1.baseVal.value = xValue;
 	}
 
 	var noteCount = 0;
@@ -348,9 +343,9 @@
 						//use hand start
 						noteCount++;
 						if(noteCount % 2 == 0){
-								moveRightHand(30, note, octave);
+								moveRightHand(note, octave, false);
 						}else{
-								moveLeftHand(30, note, octave);
+								moveLeftHand(note, octave, true);
 						}
 						//use hand end
 						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
