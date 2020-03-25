@@ -590,10 +590,11 @@
 
 	function moveSection(idStr, xOffset, yOffset) {
 			var domElemnt = document.getElementById(idStr);
-	    if (domElemnt) {
-	        var transformAttr = ' translate(' + xOffset + ',' + yOffset + ')';
-	        domElemnt.setAttribute('transform', transformAttr);
-	    }
+	    domElemnt.classList.add('horizTranslate');
+	    // var computedStyle = window.getComputedStyle(domElemnt);
+	    // var marginLeft = computedStyle.getPropertyValue('margin-left');
+	    // domElemnt.style.marginLeft = marginLeft;
+	    // domElemnt.classList.remove('horizTranslate');
 	}
 
 	function pressKey(id){
