@@ -599,8 +599,11 @@
 		      clearInterval(id);
 		    } else {
 		      pos++;
-		      domElemnt.style.top = rect.top + pos + "px";
-		      domElemnt.style.left = rect.left + pos + "px";
+
+					for(i = 0; i < domElemnt.points.length; i++){
+				      	domElemnt.points[i].x += pos;
+						    domElemnt.points[i].y += pos;
+					}
 		    }
 		  }
 	}
