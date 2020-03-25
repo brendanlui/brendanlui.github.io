@@ -52,8 +52,12 @@
 
 	var encryTyped = 0;
 	var inputNum = '';
+	var unlocked = false;
 	window.addEventListener("resize", displayNumberBar);
 	function displayNumberBar(){
+			if(unlocked){
+					return;
+			}
 			var displayNumberBar = document.getElementById('displayNumberBar');
 			displayNumberBar.innerHTML = "";
 			var width = Math.round((document.getElementById("displayNumberBar").clientWidth + Number.EPSILON) * 1000) / 1000;
@@ -735,6 +739,7 @@
 											//shouldn't do that, but safari does not support BigInt end
 
 											if(document.getElementById("inputResult").innerHTML == "1"){
+													unlocked = true;
 													breakSvg(70);
 													console.log(true);
 											}else{
