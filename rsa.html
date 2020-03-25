@@ -583,7 +583,8 @@
 			var domElemnt = document.getElementById(idStr);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
-		  var id = setInterval(frame, speed);
+			
+			window.setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
 		      		clearInterval(id);
