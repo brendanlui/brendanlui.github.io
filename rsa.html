@@ -566,24 +566,70 @@
 
 	function breakSvg(speed){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						moveSection(numKey[i].id, speed, Math.floor(Math.random() * Math.floor(4)), 'polygon');
+						movePoint(numKey[i].id, speed, Math.floor(Math.random() * Math.floor(4)));
 				}
 				for(i = 0; i < encryDisplay.length; i++){
-						moveSection(encryDisplay[i].id, speed, Math.floor(Math.random() * Math.floor(4)), 'polygon');
+						movePoint(encryDisplay[i].id, speed, Math.floor(Math.random() * Math.floor(4)));
 				}
 				for(i = 0; i < displayLine.length; i++){
-						moveSection(displayLine[i].id, speed, Math.floor(Math.random() * Math.floor(4)), 'line');
+						moveLine("displayLine", speed, Math.floor(Math.random() * Math.floor(4)));
 				}
 	}
 
-	function moveSection(idStr, speed, direction, type) {
+	function moveLine(className, speed, direction){
+
+				if(className == ""){
+						return;
+				}
+
+				var lineArr = document.getElementsByClassName(className);
+				var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+
+				for(i = 0; i < lineArr.length; i++){
+				  var pos = 0;
+
+					window.setInterval(frame, speed);
+				  function frame() {
+				    if (pos == svgHieght) {
+				      		clearInterval(id);
+				    } else {
+						      pos++;
+									if(direction == 0){
+											lineArr[i].x1 += pos;
+											lineArr[i].x2 += pos;
+											lineArr[i].y1 -= pos;
+											lineArr[i].y2 -= pos;
+									}else if(direction == 1){
+											lineArr[i].x1 += pos;
+											lineArr[i].x2 += pos;
+											lineArr[i].y1 += pos;
+											lineArr[i].y2 += pos;
+									}else if(direction == 2){
+											lineArr[i].x1 -= pos;
+											lineArr[i].x2 -= pos;
+											lineArr[i].y1 += pos;
+											lineArr[i].y2 += pos;
+									}else if(direction == 3){
+											lineArr[i].x1 -= pos;
+											lineArr[i].x2 -= pos;
+											lineArr[i].y1 -= pos;
+											lineArr[i].y2 -= pos;
+									}
+				    }
+				  }
+
+				}
+	}
+
+	function movePoint(idStr, speed, direction) {
 			if(idStr == ""){
 					return;
 			}
+
 			var domElemnt = document.getElementById(idStr);
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
-			
+
 			window.setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
@@ -591,61 +637,25 @@
 		    } else {
 				      pos++;
 							if(direction == 0){
-									if(type == 'polygon'){
 											for(i = 0; i < domElemnt.points.length; i++){
 															domElemnt.points[i].x += pos;
 															domElemnt.points[i].y -= pos;
 											}
-									}else if(type == 'line'){
-											for(i = 0; i < domElemnt.line.length; i++){
-															domElemnt.points[i].x1 += pos;
-															domElemnt.points[i].x2 += pos;
-															domElemnt.points[i].y1 -= pos;
-															domElemnt.points[i].y2 -= pos;
-											}
-									}
 							}else if(direction == 1){
-									if(type == 'polygon'){
 											for(i = 0; i < domElemnt.points.length; i++){
 															domElemnt.points[i].x += pos;
 															domElemnt.points[i].y += pos;
 											}
-									}else if(type == 'line'){
-											for(i = 0; i < domElemnt.line.length; i++){
-															domElemnt.points[i].x1 += pos;
-															domElemnt.points[i].x2 += pos;
-															domElemnt.points[i].y1 += pos;
-															domElemnt.points[i].y2 += pos;
-											}
-									}
 							}else if(direction == 2){
-									if(type == 'polygon'){
 											for(i = 0; i < domElemnt.points.length; i++){
 															domElemnt.points[i].x -= pos;
 															domElemnt.points[i].y += pos;
 											}
-									}else if(type == 'line'){
-											for(i = 0; i < domElemnt.line.length; i++){
-															domElemnt.points[i].x1 -= pos;
-															domElemnt.points[i].x2 -= pos;
-															domElemnt.points[i].y1 += pos;
-															domElemnt.points[i].y2 += pos;
-											}
-									}
 							}else if(direction == 3){
-									if(type == 'polygon'){
 											for(i = 0; i < domElemnt.points.length; i++){
 															domElemnt.points[i].x -= pos;
 															domElemnt.points[i].y -= pos;
 											}
-									}else if(type == 'line'){
-											for(i = 0; i < domElemnt.line.length; i++){
-															domElemnt.points[i].x1 -= pos;
-															domElemnt.points[i].x2 -= pos;
-															domElemnt.points[i].y1 -= pos;
-															domElemnt.points[i].y2 -= pos;
-											}
-									}
 							}
 		    }
 		  }
