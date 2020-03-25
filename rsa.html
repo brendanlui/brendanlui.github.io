@@ -624,6 +624,11 @@
 											//shouldn't do that, but safari does not support BigInt start
 											if(detectChrome()){
 													result = isKeyCorrect(parseInt(inputNum));
+													if(result){
+															document.getElementById("inputResult").innerHTML = "1";
+													}else{
+															document.getElementById("inputResult").innerHTML = "0";
+													}
 											}else{
 													var xmlhttp = new XMLHttpRequest();
 													xmlhttp.onreadystatechange = function(){
