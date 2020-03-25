@@ -593,13 +593,13 @@
 			console.log(rect.top, rect.right, rect.bottom, rect.left);
 
 		  var pos = 0;
-		  var id = setInterval(frame, 5);
+			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+		  var id = setInterval(frame, 3000);
 		  function frame() {
-		    if (pos == 400) {
+		    if (pos == svgHieght)) {
 		      clearInterval(id);
 		    } else {
 		      pos++;
-
 					for(i = 0; i < domElemnt.points.length; i++){
 				      	domElemnt.points[i].x += pos;
 						    domElemnt.points[i].y += pos;
