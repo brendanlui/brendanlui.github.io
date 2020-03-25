@@ -588,10 +588,10 @@
 				for(i = 0; i < lineArr.length; i++){
 				  var pos = 0;
 
-					setInterval(frame, speed);
+					var interval = setInterval(frame, speed);
 				  function frame() {
 				    if (pos == svgHieght) {
-				      		return;
+				      		clearInterval(interval);
 				    } else {
 						      pos++;
 									if(direction == 0){
