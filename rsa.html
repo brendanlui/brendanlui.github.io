@@ -570,10 +570,10 @@
 
 	function breakSvg(speed){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						movePoint('numKey', speed);
+						movePoint1('numKey', speed);
 				}
 				for(i = 0; i < encryDisplay.length; i++){
-						movePoint('encryDisplay', speed);
+						movePoint2('encryDisplay', speed);
 				}
 				for(i = 0; i < displayLine.length; i++){
 						moveLine("displayLine", speed);
@@ -590,7 +590,8 @@
 				var lineArr = document.getElementsByClassName(className);
 				var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
-			  var pos = 0;
+				var pos = 0;
+				var posTotal = 0;
 				var interval = setInterval(frameLine, speed);
 
 				ranArrLine = [];
@@ -599,13 +600,14 @@
 				}
 
 			  function frameLine() {
-			    if (pos == svgHieght) {
+			    if (pos == svgHieght || posTotal >= svgHieght) {
 								for(i = 0; i < displayLine.length; i++){
 										displayLine[i].style.display = "none";
 								}
 			      		clearInterval(interval);
 			    } else {
 					      pos++;
+								posTotal += pos;
 								for(i = 0; i < lineArr.length; i++){
 										var direction = ranArrLine[i];
 										if(direction == 0){	//baseVal, animVal
@@ -634,32 +636,88 @@
 			  }
 	}
 
-	var ranArrPoint = [];
-	function movePoint(className, speed) {
+	var ranArrPoint1 = [];
+	function movePoint1(className, speed) {
 			if(className == ""){
 					return;
 			}
 
 			var pointArr = document.getElementsByClassName(className);
 		  var pos = 0;
+			var posTotal = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
-			ranArrPoint = [];
+			ranArrPoint1 = [];
 			for(i = 0; i < pointArr.length; i++){
-					ranArrPoint[i] = Math.floor(Math.random() * Math.floor(4));
+					ranArrPoint1[i] = Math.floor(Math.random() * Math.floor(4));
 			}
 
 			var interval = setInterval(framePoint, speed);
 		  function framePoint() {
-		    if (pos == svgHieght) {
+		    if (pos == svgHieght || posTotal >= svgHieght) {
 							for(j = 0; j < pointArr.length; j++){
 									pointArr[j].style.display = "none";
 							}
 		      		clearInterval(interval);
 		    } else {
 				      pos++;
+							posTotal += pos;
 							for(j = 0; j < pointArr.length; j++){
-									var direction = ranArrPoint[j];
+									var direction = ranArrPoint1[j];
+									if(direction == 0){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x += pos;
+																	pointArr[j].points[i].y -= pos;
+													}
+									}else if(direction == 1){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x += pos;
+																	pointArr[j].points[i].y += pos;
+													}
+									}else if(direction == 2){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x -= pos;
+																	pointArr[j].points[i].y += pos;
+													}
+									}else if(direction == 3){
+													for(i = 0; i < pointArr[j].points.length; i++){
+																	pointArr[j].points[i].x -= pos;
+																	pointArr[j].points[i].y -= pos;
+													}
+									}
+							}
+		    }
+		  }
+	}
+
+	var ranArrPoint2 = [];
+	function movePoint2(className, speed) {
+			if(className == ""){
+					return;
+			}
+
+			var pointArr = document.getElementsByClassName(className);
+		  var pos = 0;
+		  var posTotal = 0;
+			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+
+			ranArrPoint2 = [];
+			for(i = 0; i < pointArr.length; i++){
+					ranArrPoint2[i] = Math.floor(Math.random() * Math.floor(4));
+			}
+
+			var interval = setInterval(framePoint, speed);
+		  function framePoint() {
+		    if (pos == svgHieght || posTotal >= svgHieght) {
+							for(j = 0; j < pointArr.length; j++){
+									pointArr[j].style.display = "none";
+							}
+		      		clearInterval(interval);
+		    } else {
+				      pos++;
+							posTotal += pos;
+							for(j = 0; j < pointArr.length; j++){
+									var direction = ranArrPoint2[j];
 									if(direction == 0){
 													for(i = 0; i < pointArr[j].points.length; i++){
 																	pointArr[j].points[i].x += pos;
