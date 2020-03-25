@@ -11,7 +11,6 @@
 .encryText, .keyText{
   font-weight: bold;
   fill: #353600;
-  stroke-width:2;
 }
 
 .loading{
