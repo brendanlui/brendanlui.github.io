@@ -331,12 +331,12 @@
 	var firstTime = true;
 	function moveHand(note, octave, left){
 				if(left){
-						leftHandOctave = octave;
+						leftHandOctave = parseInt(octave);
 				}else{
-						rightHandOctave = octave;
+						rightHandOctave = parseInt(octave);
 				}
 
-				var totalOctave = leftHandOctave + rightHandOctave;
+				var totalOctave = parseInt(leftHandOctave) + parseInt(rightHandOctave);
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 				var xValue = 0;
 				var yValue = 0;
@@ -375,7 +375,7 @@
 						centerX = personBodyCenter[0].x1.baseVal.value;
 						firstTime = false;
 				}
-				var moveDistance = (yHigh - yLow) * (8 - totalOctave);
+				var moveDistance = (yHigh - yLow) * (8 - totalOctave) / 2;
 				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance;
 				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
 				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
