@@ -86,8 +86,12 @@
 			displayPiano();
 	}
 
+	var centerX = 0;
+	var firstTime = true;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
+			centerX = 0;
+			firstTime = true;
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
@@ -327,8 +331,6 @@
 	var rightHand = document.getElementsByClassName("rightHand");
 	var personBodyCenter = document.getElementsByClassName("personBodyCenter");
 	var head = document.getElementsByClassName("head");
-	var centerX = 0;
-	var firstTime = true;
 	function moveHand(note, octave, left){
 				if(left){
 						leftHandOctave = parseInt(octave);
