@@ -582,7 +582,7 @@
 	var encryDisplay = document.getElementsByClassName("encryDisplay");
 	var displayLine = document.getElementsByClassName("displayLine");
 
-	function breakSvg(){	//brendan break - numKey, encryDisplay, displayLine
+	function breakSvg(){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
 						moveSection(numKey[i].id);
 				}
@@ -591,7 +591,9 @@
 	function moveSection(idStr) {	//brendan
 			var dynamicStyle = document.getElementById('dynamicStyle');
 			var domElemnt = document.getElementById(idStr);
-			dynamicStyle.innerHTML += "." + domElemnt.className + "{animation:mymove 2s;animation-fill-mode: forwards;} {@keyframes mymove {from {left: 0px;}to {left: 200px;}}}";
+			var rect = element.getBoundingClientRect();
+			console.log(rect.top, rect.right, rect.bottom, rect.left);
+			domElemnt.style += "animation: mymove 5s infinite;";
 	}
 
 	function pressKey(id){
