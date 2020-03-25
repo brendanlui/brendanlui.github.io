@@ -576,6 +576,7 @@
 				}
 	}
 
+	var ranArr = [];
 	function moveLine(className, speed){
 
 				if(className == ""){
@@ -587,13 +588,18 @@
 
 			  var pos = 0;
 				var interval = setInterval(frame, speed);
-				var direction = Math.floor(Math.random() * Math.floor(4));
+
+				for(i = 0; i < lineArr.length; i++){
+						ranArr[i] = Math.floor(Math.random() * Math.floor(4));
+				}
+
 			  function frame() {
 			    if (pos == svgHieght) {
 			      		clearInterval(interval);
 			    } else {
 					      pos++;
 								for(i = 0; i < lineArr.length; i++){
+										var direction = ranArr[i];
 										if(direction == 0){	//baseVal, animVal
 												lineArr[i].x1.baseVal.value += pos;
 												lineArr[i].x2.baseVal.value += pos;
