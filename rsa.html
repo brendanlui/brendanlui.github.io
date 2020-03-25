@@ -593,6 +593,7 @@
 			  var pos = 0;
 				var interval = setInterval(frame, speed);
 
+				ranArrLine = [];
 				for(i = 0; i < lineArr.length; i++){
 						ranArrLine[i] = Math.floor(Math.random() * Math.floor(4));
 				}
@@ -643,6 +644,7 @@
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
+			ranArrPoint = [];
 			for(i = 0; i < pointArr.length; i++){
 					ranArrPoint[i] = Math.floor(Math.random() * Math.floor(4));
 			}
@@ -651,7 +653,7 @@
 		  function frame() {
 		    if (pos == svgHieght) {
 							for(j = 0; j < pointArr.length; j++){
-								pointArr[j].style.display = "none";
+									pointArr[j].style.display = "none";
 							}
 		      		clearInterval(interval);
 		    } else {
