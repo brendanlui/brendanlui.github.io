@@ -594,26 +594,26 @@
 				      		clearInterval(interval);
 				    } else {
 						      pos++;
-									if(direction == 0){
-											lineArr[i].x1 += pos;
-											lineArr[i].x2 += pos;
-											lineArr[i].y1 -= pos;
-											lineArr[i].y2 -= pos;
+									if(direction == 0){	//baseVal, animVal
+											lineArr[i].x1.baseVal += pos;
+											lineArr[i].x2.baseVal += pos;
+											lineArr[i].y1.baseVal -= pos;
+											lineArr[i].y2.baseVal -= pos;
 									}else if(direction == 1){
-											lineArr[i].x1 += pos;
-											lineArr[i].x2 += pos;
-											lineArr[i].y1 += pos;
-											lineArr[i].y2 += pos;
+											lineArr[i].x1.baseVal += pos;
+											lineArr[i].x2.baseVal += pos;
+											lineArr[i].y1.baseVal += pos;
+											lineArr[i].y2.baseVal += pos;
 									}else if(direction == 2){
-											lineArr[i].x1 -= pos;
-											lineArr[i].x2 -= pos;
-											lineArr[i].y1 += pos;
-											lineArr[i].y2 += pos;
+											lineArr[i].x1.baseVal -= pos;
+											lineArr[i].x2.baseVal -= pos;
+											lineArr[i].y1.baseVal += pos;
+											lineArr[i].y2.baseVal += pos;
 									}else if(direction == 3){
-											lineArr[i].x1 -= pos;
-											lineArr[i].x2 -= pos;
-											lineArr[i].y1 -= pos;
-											lineArr[i].y2 -= pos;
+											lineArr[i].x1.baseVal -= pos;
+											lineArr[i].x2.baseVal -= pos;
+											lineArr[i].y1.baseVal -= pos;
+											lineArr[i].y2.baseVal -= pos;
 									}
 				    }
 				  }
