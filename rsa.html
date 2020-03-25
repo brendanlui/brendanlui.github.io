@@ -595,25 +595,25 @@
 				    } else {
 						      pos++;
 									if(direction == 0){	//baseVal, animVal
-											lineArr[i].x1.baseVal += pos;
-											lineArr[i].x2.baseVal += pos;
-											lineArr[i].y1.baseVal -= pos;
-											lineArr[i].y2.baseVal -= pos;
+											lineArr[i].x1.baseVal.value += pos;
+											lineArr[i].x2.baseVal.value += pos;
+											lineArr[i].y1.baseVal.value -= pos;
+											lineArr[i].y2.baseVal.value -= pos;
 									}else if(direction == 1){
-											lineArr[i].x1.baseVal += pos;
-											lineArr[i].x2.baseVal += pos;
-											lineArr[i].y1.baseVal += pos;
-											lineArr[i].y2.baseVal += pos;
+											lineArr[i].x1.baseVal.value += pos;
+											lineArr[i].x2.baseVal.value += pos;
+											lineArr[i].y1.baseVal.value += pos;
+											lineArr[i].y2.baseVal.value += pos;
 									}else if(direction == 2){
-											lineArr[i].x1.baseVal -= pos;
-											lineArr[i].x2.baseVal -= pos;
-											lineArr[i].y1.baseVal += pos;
-											lineArr[i].y2.baseVal += pos;
+											lineArr[i].x1.baseVal.value -= pos;
+											lineArr[i].x2.baseVal.value -= pos;
+											lineArr[i].y1.baseVal.value += pos;
+											lineArr[i].y2.baseVal.value += pos;
 									}else if(direction == 3){
-											lineArr[i].x1.baseVal -= pos;
-											lineArr[i].x2.baseVal -= pos;
-											lineArr[i].y1.baseVal -= pos;
-											lineArr[i].y2.baseVal -= pos;
+											lineArr[i].x1.baseVal.value -= pos;
+											lineArr[i].x2.baseVal.value -= pos;
+											lineArr[i].y1.baseVal.value -= pos;
+											lineArr[i].y2.baseVal.value -= pos;
 									}
 				    }
 				  }
