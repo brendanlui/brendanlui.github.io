@@ -86,14 +86,12 @@
 			displayPiano();
 	}
 
-	var centerX = 0;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
 			var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
-			var centerX = width / 2;
 			var pieces = 36;
 			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
@@ -329,6 +327,8 @@
 	var rightHand = document.getElementsByClassName("rightHand");
 	var personBodyCenter = document.getElementsByClassName("personBodyCenter");
 	var head = document.getElementsByClassName("head");
+	var centerX = 0;
+	var firstTime = true;
 	function moveHand(note, octave, left){
 				if(left){
 						leftHandOctave = octave;
@@ -371,6 +371,10 @@
 						rightHand[0].y1.baseVal.value = yValue;
 				}
 
+				if(firstTime){
+						centerX = personBodyCenter[0].x1.baseVal.value;
+						firstTime = false;
+				}
 				var moveDistance = (yHigh - yLow) * (8 - totalOctave);
 				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance;
 				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
