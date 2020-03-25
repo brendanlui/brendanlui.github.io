@@ -145,6 +145,7 @@
 
 	var keyText = document.getElementsByClassName("keyText");
 	var numKey = document.getElementsByClassName("numKey");
+	var encryDisplay = document.getElementsByClassName("encryDisplay");
 	function pressKey(id){
 			var idArr = id.split('_');
 			if(idArr.length == 3){
@@ -168,7 +169,10 @@
 							}
 							for(i = 0; i < numKey.length; i++){
 								numKey[i].onclick = null;
-								numKey[i].style += " stroke: #ff0000;";
+								numKey[i].classList.add("loading");
+							}
+							for(i = 0; i < encryDisplay.length; i++){
+								encryDisplay[i].classList.add("loading");
 							}
 
 							setTimeout(function() {
@@ -176,6 +180,15 @@
 													//TODO
 													console.log(true);
 											}else{
+													for(i = 0; i < numKey.length; i++){
+															numKey[i].classList.remove("loading");
+															numKey[i].classList.add("wrong");
+													}
+													for(i = 0; i < encryDisplay.length; i++){
+															encryDisplay[i].classList.remove("loading");
+															encryDisplay[i].classList.add("wrong");
+													}
+
 													inputNum = "";
 													encryTyped = 0;
 													displayNumberBar();
