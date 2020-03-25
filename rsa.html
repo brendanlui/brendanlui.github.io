@@ -580,6 +580,22 @@
 	var keyText = document.getElementsByClassName("keyText");
 	var numKey = document.getElementsByClassName("numKey");
 	var encryDisplay = document.getElementsByClassName("encryDisplay");
+	var displayLine = document.getElementsByClassName("displayLine");
+
+	function breakSvg(){	//brendan
+				for(i = 0; i < numKey.length; i++){
+						moveSection(numKey[i].id, document.getElementById("displayNumberBar").clientWidth, document.getElementById("displayNumberBar").clientHeight);
+				}
+	}
+	
+	function moveSection(idStr, xOffset, yOffset) {
+			var domElemnt = document.getElementById(idStr);
+	    if (domElemnt) {
+	        var transformAttr = ' translate(' + xOffset + ',' + yOffset + ')';
+	        domElemnt.setAttribute('transform', transformAttr);
+	    }
+	}
+
 	function pressKey(id){
 			var idArr = id.split('_');
 			if(idArr.length == 3){
