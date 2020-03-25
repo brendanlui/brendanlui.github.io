@@ -55,7 +55,7 @@
 	var unlocked = false;
 	window.addEventListener("resize", displayNumberBar);
 	function displayNumberBar(){
-			if(unlocked){
+			if(unlocked || inputNum != ''){
 					return;
 			}
 			var displayNumberBar = document.getElementById('displayNumberBar');
