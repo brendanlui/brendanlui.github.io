@@ -33,6 +33,8 @@
 	<!--TODO-->
 	<div id="displayNumberBar">
 	</div>
+	<div id="inputResult" style="display:none;">
+	</div>
 
 	<script>
 	var publicKey_n = 0;
@@ -197,7 +199,7 @@
 							}
 
 							setTimeout(function() {
-											var result = false;
+											document.getElementById("inputResult").innerHTML = "0";
 											//if(detectChrome()){
 											//		result = isKeyCorrect(parseInt(inputNum));
 											//}else{
@@ -207,7 +209,7 @@
 																var string = [];
 																var txt = xmlhttp.responseText;
 																if(txt.trim() == inputNum){	//brendan
-																		result = true;
+																		document.getElementById("inputResult").innerHTML = "1";
 																}
 														}
 													};
@@ -215,7 +217,7 @@
 													xmlhttp.send();
 											//}
 
-											if(result){
+											if(document.getElementById("inputResult").innerHTML == "1"){
 													//TODO
 													console.log(true);
 											}else{
