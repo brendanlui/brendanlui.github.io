@@ -591,7 +591,7 @@
 					setInterval(frame, speed);
 				  function frame() {
 				    if (pos == svgHieght) {
-				      		clearInterval(id);
+				      		return;
 				    } else {
 						      pos++;
 									if(direction == 0){
@@ -630,10 +630,10 @@
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
-			setInterval(frame, speed);
+			var interval = setInterval(frame, speed);
 		  function frame() {
 		    if (pos == svgHieght) {
-		      		clearInterval(id);
+		      		clearInterval(interval);
 		    } else {
 				      pos++;
 							if(direction == 0){
