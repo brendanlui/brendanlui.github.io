@@ -582,12 +582,12 @@
 	var encryDisplay = document.getElementsByClassName("encryDisplay");
 	var displayLine = document.getElementsByClassName("displayLine");
 
-	function breakSvg(){	//brendan
+	function breakSvg(){	//brendan break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
 						moveSection(numKey[i].id, document.getElementById("displayNumberBar").clientWidth, document.getElementById("displayNumberBar").clientHeight);
 				}
 	}
-	
+
 	function moveSection(idStr, xOffset, yOffset) {
 			var domElemnt = document.getElementById(idStr);
 	    if (domElemnt) {
@@ -662,7 +662,7 @@
 											//shouldn't do that, but safari does not support BigInt end
 
 											if(document.getElementById("inputResult").innerHTML == "1"){
-													//TODO
+													breakSvg();
 													console.log(true);
 											}else{
 													for(i = 0; i < numKey.length; i++){
