@@ -566,17 +566,17 @@
 
 	function breakSvg(speed){	//break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						movePoint(numKey[i].id, speed, Math.floor(Math.random() * Math.floor(4)));
+						movePoint(numKey[i].id, speed);
 				}
 				for(i = 0; i < encryDisplay.length; i++){
-						movePoint(encryDisplay[i].id, speed, Math.floor(Math.random() * Math.floor(4)));
+						movePoint(encryDisplay[i].id, speed);
 				}
 				for(i = 0; i < displayLine.length; i++){
-						moveLine("displayLine", speed, Math.floor(Math.random() * Math.floor(4)));
+						moveLine("displayLine", speed);
 				}
 	}
 
-	function moveLine(className, speed, direction){
+	function moveLine(className, speed){
 
 				if(className == ""){
 						return;
@@ -585,43 +585,42 @@
 				var lineArr = document.getElementsByClassName(className);
 				var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
-				for(i = 0; i < lineArr.length; i++){
-				  var pos = 0;
-
-					var interval = setInterval(frame, speed);
-				  function frame() {
-				    if (pos == svgHieght) {
-				      		clearInterval(interval);
-				    } else {
-						      pos++;
-									if(direction == 0){	//baseVal, animVal
-											lineArr[i].x1.baseVal.value += pos;
-											lineArr[i].x2.baseVal.value += pos;
-											lineArr[i].y1.baseVal.value -= pos;
-											lineArr[i].y2.baseVal.value -= pos;
-									}else if(direction == 1){
-											lineArr[i].x1.baseVal.value += pos;
-											lineArr[i].x2.baseVal.value += pos;
-											lineArr[i].y1.baseVal.value += pos;
-											lineArr[i].y2.baseVal.value += pos;
-									}else if(direction == 2){
-											lineArr[i].x1.baseVal.value -= pos;
-											lineArr[i].x2.baseVal.value -= pos;
-											lineArr[i].y1.baseVal.value += pos;
-											lineArr[i].y2.baseVal.value += pos;
-									}else if(direction == 3){
-											lineArr[i].x1.baseVal.value -= pos;
-											lineArr[i].x2.baseVal.value -= pos;
-											lineArr[i].y1.baseVal.value -= pos;
-											lineArr[i].y2.baseVal.value -= pos;
-									}
-				    }
-				  }
-
-				}
+			  var pos = 0;
+				var interval = setInterval(frame, speed);
+			  function frame() {
+			    if (pos == svgHieght) {
+			      		clearInterval(interval);
+			    } else {
+					      pos++;
+								for(i = 0; i < lineArr.length; i++){
+										var direction = Math.floor(Math.random() * Math.floor(4));
+										if(direction == 0){	//baseVal, animVal
+												lineArr[i].x1.baseVal.value += pos;
+												lineArr[i].x2.baseVal.value += pos;
+												lineArr[i].y1.baseVal.value -= pos;
+												lineArr[i].y2.baseVal.value -= pos;
+										}else if(direction == 1){
+												lineArr[i].x1.baseVal.value += pos;
+												lineArr[i].x2.baseVal.value += pos;
+												lineArr[i].y1.baseVal.value += pos;
+												lineArr[i].y2.baseVal.value += pos;
+										}else if(direction == 2){
+												lineArr[i].x1.baseVal.value -= pos;
+												lineArr[i].x2.baseVal.value -= pos;
+												lineArr[i].y1.baseVal.value += pos;
+												lineArr[i].y2.baseVal.value += pos;
+										}else if(direction == 3){
+												lineArr[i].x1.baseVal.value -= pos;
+												lineArr[i].x2.baseVal.value -= pos;
+												lineArr[i].y1.baseVal.value -= pos;
+												lineArr[i].y2.baseVal.value -= pos;
+										}
+								}
+			    }
+			  }
 	}
 
-	function movePoint(idStr, speed, direction) {
+	function movePoint(idStr, speed) {
 			if(idStr == ""){
 					return;
 			}
@@ -636,6 +635,7 @@
 		      		clearInterval(interval);
 		    } else {
 				      pos++;
+							var direction = Math.floor(Math.random() * Math.floor(4));
 							if(direction == 0){
 											for(i = 0; i < domElemnt.points.length; i++){
 															domElemnt.points[i].x += pos;
