@@ -322,31 +322,23 @@
 
 	var leftHand = document.getElementsByClassName("leftHand");
 	var rightHand = document.getElementsByClassName("rightHand");
-	function moveLeftHand(speed, note, octave){
-				var interval = setInterval(frameLineLeft, speed);
+	function moveLeftHand(note, octave){
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 				var xValue = 0;
 				for(i = 0; i < polygon.points.length; i++){
 								xValue += polygon.points[i].x;
 				}
 				xValue = xValue / polygon.points.length;
-
-			  function frameLineLeft() {
-						leftHand[0].x1.baseVal.value = xValue;
-			  }
+				leftHand[0].x1.baseVal.value = xValue;
 	}
-	function moveRightHand(speed, note, octave){
-				var interval = setInterval(frameLineRight, speed);
+	function moveRightHand(note, octave){
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 				var xValue = 0;
 				for(i = 0; i < polygon.points.length; i++){
 								xValue += polygon.points[i].x;
 				}
 				xValue = xValue / polygon.points.length;
-
-			  function frameLineRight() {
-						leftHand[0].x1.baseVal.value = xValue;
-			  }
+				rightHand[0].x1.baseVal.value = xValue;
 	}
 
 	var noteCount = 0;
