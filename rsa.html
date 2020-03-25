@@ -588,7 +588,7 @@
 				}
 
 				var lineArr = document.getElementsByClassName(className);
-				var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+				var svgHeight = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
 				var pos = 0;
 				var posTotal = 0;
@@ -600,7 +600,7 @@
 				}
 
 			  function frameLine() {
-			    if (pos == svgHieght || posTotal >= svgHieght) {
+			    if (pos == svgHeight || posTotal >= svgHeight) {
 								for(i = 0; i < displayLine.length; i++){
 										displayLine[i].style.display = "none";
 								}
@@ -645,7 +645,7 @@
 			var pointArr = document.getElementsByClassName(className);
 		  var pos = 0;
 			var posTotal = 0;
-			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+			var svgHeight = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
 			ranArrPoint1 = [];
 			for(i = 0; i < pointArr.length; i++){
@@ -654,7 +654,7 @@
 
 			var interval = setInterval(framePoint, speed);
 		  function framePoint() {
-		    if (pos == svgHieght || posTotal >= svgHieght) {
+		    if (pos == svgHeight || posTotal >= svgHeight) {
 							for(j = 0; j < pointArr.length; j++){
 									pointArr[j].style.display = "none";
 							}
@@ -699,7 +699,7 @@
 			var pointArr = document.getElementsByClassName(className);
 		  var pos = 0;
 		  var posTotal = 0;
-			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
+			var svgHeight = Math.round(document.getElementById("displayNumberBar").clientHeight);
 
 			ranArrPoint2 = [];
 			for(i = 0; i < pointArr.length; i++){
@@ -708,7 +708,7 @@
 
 			var interval = setInterval(framePoint, speed);
 		  function framePoint() {
-		    if (pos == svgHieght || posTotal >= svgHieght) {
+		    if (pos == svgHeight || posTotal >= svgHeight) {
 							for(j = 0; j < pointArr.length; j++){
 									pointArr[j].style.display = "none";
 							}
