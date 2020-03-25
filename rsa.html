@@ -595,9 +595,6 @@
 
 	function moveSection(idStr, speed, direction) {
 			var domElemnt = document.getElementById(idStr);
-			var rect = domElemnt.getBoundingClientRect();
-			console.log(rect.top, rect.right, rect.bottom, rect.left);
-
 		  var pos = 0;
 			var svgHieght = Math.round(document.getElementById("displayNumberBar").clientHeight);
 		  var id = setInterval(frame, speed);
@@ -697,7 +694,7 @@
 											//shouldn't do that, but safari does not support BigInt end
 
 											if(document.getElementById("inputResult").innerHTML == "1"){
-													breakSvg(300);
+													breakSvg(50);
 													console.log(true);
 											}else{
 													for(i = 0; i < numKey.length; i++){
