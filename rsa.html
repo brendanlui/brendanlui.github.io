@@ -70,22 +70,26 @@
 
 			svg += '<svg id="numberBar" height="'+(height + width / numOfPassword)+'px" width="'+width+'px">';
 			for(i = 0; i < numOfPassword; i++){
+				var x1 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * i + Number.EPSILON) * 1000) / 1000;
+				var x2 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (i + 1) + Number.EPSILON) * 1000) / 1000;
+				var y1 = Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * (i % 2) + Number.EPSILON) * 1000) / 1000;
+				var y2 = Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;
 				svg += '<polygon id="key_display_'+(i+1)+'" points="';
-				svg += Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * i + Number.EPSILON) * 1000) / 1000;	//x1
+				svg += x1;	//x1
 				svg += ",";
-				svg += Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += y1;	//y1
 				svg += " ";
-				svg += Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+				svg += x2;	//x2
 				svg += ",";
-				svg += Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += y1;	//y1
 				svg += " ";
-				svg += Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+				svg += x2;	//x2
 				svg += ",";
-				svg += Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += y2;;	//y2
 				svg += " ";
-				svg += Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * i + Number.EPSILON) * 1000) / 1000;	//x1
+				svg += x1;	//x1
 				svg += ",";
-				svg += Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += y2;;	//y2
 				svg += '" class="encryDisplay" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
   			svg += '<text id="encry_'+(i+1)+'" x="'
@@ -93,6 +97,45 @@
 						+ '" y="'
 						+ Math.round((start_y + numberPieceHeight * 3 / numOfPassword  * ((i % 2) + ((i + 1) % 2)) / 2+ Number.EPSILON) * 1000) / 1000
 						+ '" class="encryText"></text>';
+
+				//edit word start
+				svg += '<line x1="'
+											+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" y1="'
+											+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" x2="'
+											+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" y2="'
+											+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+				svg += '<line x1="'
+											+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" y1="'
+											+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" x2="'
+											+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" y2="'
+											+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
+											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+				svg += '<line x1="'
+											+ Math.round(x1 + (x2 - x1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" y1="'
+											+ Math.round(y1 + (y2 - y1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" x2="'
+											+ Math.round(x1 + (x2 - x1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" y2="'
+											+ Math.round(y1 + (y2 - y1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+				svg += '<line x1="'
+											+ Math.round(x1 + (x2 - x1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" y1="'
+											+ Math.round(y1 + (y2 - y1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" x2="'
+											+ Math.round(x1 + (x2 - x1) * 1 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" y2="'
+											+ Math.round(y1 + (y2 - y1) * 2 / 3 + Number.EPSILON) * 1000 / 1000
+											+ '" style="stroke:#353600;stroke-width:2;disabled:true;" class="encryText_'+(i+1)+'"/>';
+				//edit word end
 			}
 			start_y += numberPieceHeight * 3 / numOfPassword ;
 
@@ -134,6 +177,7 @@
 						svg += y2;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
+						/*
   					svg += '<text id="key_text_' + displayText + '" onClick="pressKey(this.id)" x="'
 								+ Math.round((start_x + numberPieceWidth * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
 								+ '" y="'
@@ -141,8 +185,9 @@
 								+ '" class="keyText">'
 								+ displayText
 								+ '</text>';
+						*/
 
-						//edit word start	//brendan
+						//edit word start
 						if(displayText == 1){
 								svg += '<line x1="'
 															+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000 / 1000
@@ -544,11 +589,21 @@
 
 					if(idArr[2] == '<-' && encryTyped > 0){
 							inputNum = inputNum.substring(0, inputNum.length - 1);
+
+							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
+							for(i = 0; i < encryThis.length; i++){
+									encryThis[i].style.disabled = true;
+							}
 							document.getElementById('encry_' + encryTyped).innerHTML = "";
 							encryTyped--;
 					}else if(idArr[2] != '<-' && encryTyped >= 0 && encryTyped < numOfPassword){
 							inputNum += idArr[2];
 							encryTyped++;
+
+							var encryThis = document.getElementsByClassName('encry_' + encryTyped);
+							for(i = 0; i < encryThis.length; i++){
+									encryThis[i].style.disabled = false;
+							}
 							document.getElementById('encry_' + encryTyped).innerHTML = ".";
 					}
 
