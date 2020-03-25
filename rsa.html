@@ -175,16 +175,6 @@
 						svg += y2;	//y2
 						svg += '" class="numKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
-						/*
-  					svg += '<text id="key_text_' + displayText + '" onClick="pressKey(this.id)" x="'
-								+ Math.round((start_x + numberPieceWidth * (2 * i + 1) / 2 + Number.EPSILON) * 1000) / 1000
-								+ '" y="'
-								+ Math.round((start_y + numberPieceHeight * ((i % 2) + ((i + 1) % 2)) / 2 + Number.EPSILON) * 1000) / 1000
-								+ '" class="keyText">'
-								+ displayText
-								+ '</text>';
-						*/
-
 						//edit word start
 						if(displayText == 1){
 								svg += '<line x1="'
@@ -195,7 +185,7 @@
 															+ Math.round((x1 + x2) / 2 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 5){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -205,7 +195,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -214,7 +204,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -223,7 +213,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -232,7 +222,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -241,7 +231,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 3){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -251,7 +241,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -260,7 +250,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -269,7 +259,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -278,7 +268,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 4){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -288,7 +278,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -297,7 +287,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -306,7 +296,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 2){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -316,7 +306,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -325,7 +315,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -334,25 +324,25 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
-								svg += '<line x1="'
-															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" y1="'
-															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" x2="'
-															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" y2="'
-															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
+															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" x2="'
+															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" y2="'
+															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
+								svg += '<line x1="'
+															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" y1="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" x2="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 6){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -362,7 +352,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -371,7 +361,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -380,25 +370,25 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
-								svg += '<line x1="'
-															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" y1="'
-															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" x2="'
-															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" y2="'
-															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
+															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" x2="'
+															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" y2="'
+															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
+								svg += '<line x1="'
+															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
+															+ '" y1="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" x2="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 7){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -408,7 +398,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -417,7 +407,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 8){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -427,7 +417,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -436,7 +426,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -445,7 +435,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -454,7 +444,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -463,7 +453,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == 9){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -473,7 +463,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -482,7 +472,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -491,7 +481,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -500,7 +490,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == '0'){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
@@ -510,7 +500,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -519,7 +509,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -528,7 +518,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -537,7 +527,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}else if(displayText == '<-'){
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
@@ -547,7 +537,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -556,7 +546,7 @@
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 								svg += '<line x1="'
 															+ Math.round(x1 + (x2 - x1) * 1 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y1="'
@@ -565,7 +555,7 @@
 															+ Math.round(x1 + (x2 - x1) * 3 / 4 + Number.EPSILON) * 1000 / 1000
 															+ '" y2="'
 															+ Math.round(y1 + (y2 - y1) * 2 / 4 + Number.EPSILON) * 1000 / 1000
-															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine keyText"/>';
+															+ '" onClick="pressKey(\'key_text_'+displayText+'\')" style="stroke:#800000;stroke-width:6" class="displayLine"/>';
 						}
 						//edit word end
 					}
@@ -576,7 +566,6 @@
 			displayNumberBar.innerHTML = svg;
 	}
 
-	var keyText = document.getElementsByClassName("keyText");
 	var numKey = document.getElementsByClassName("numKey");
 	var encryDisplay = document.getElementsByClassName("encryDisplay");
 	var displayLine = document.getElementsByClassName("displayLine");
@@ -656,8 +645,8 @@
 
 					if(encryTyped == numOfPassword){
 							keySvg.classList.remove("pressed");
-							for(i = 0; i < keyText.length; i++){
-								keyText[i].onclick = null;
+							for(i = 0; i < displayLine.length; i++){
+								displayLine[i].onclick = null;
 							}
 							for(i = 0; i < numKey.length; i++){
 								numKey[i].onclick = null;
