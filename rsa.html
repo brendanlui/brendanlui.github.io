@@ -584,13 +584,13 @@
 
 	function breakSvg(){	//brendan break - numKey, encryDisplay, displayLine
 				for(i = 0; i < numKey.length; i++){
-						moveSection(numKey[i].id, document.getElementById("displayNumberBar").clientWidth, document.getElementById("displayNumberBar").clientHeight);
+						moveSection(numKey[i].id, 'horizTranslateRight');
 				}
 	}
 
-	function moveSection(idStr, xOffset, yOffset) {
+	function moveSection(idStr, translateClass) {
 			var domElemnt = document.getElementById(idStr);
-	    domElemnt.classList.add('horizTranslate');
+	    domElemnt.classList.add(translateClass);
 	    // var computedStyle = window.getComputedStyle(domElemnt);
 	    // var marginLeft = computedStyle.getPropertyValue('margin-left');
 	    // domElemnt.style.marginLeft = marginLeft;
