@@ -402,7 +402,7 @@
 	}
 
 	setInterval(function() {
-			document.getElementById("time").innerHTML = parseFloat(document.getElementById("time").innerHTML) + 0.1;
+			document.getElementById("time").innerHTML = parseFloat(parseFloat(document.getElementById("time").innerHTML) + 0.1);
 	}, 100);
 	</script>
 
