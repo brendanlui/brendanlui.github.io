@@ -93,20 +93,7 @@
 			}
 	}
 
-	function mobilecheck() {
-	  var check = false;
-		var md = new MobileDetect(window.navigator.userAgent);
-		if(md.mobile() != null){
-				check = true;
-		}
-	  return check;
-	}
-
 	function init(){
-		if(mobilecheck()){
-				alert("Sorry, this page does not support mobile devices.");
-		}
-
 		if(!detectChrome()){
 				alert("Please use Google Chrome.");
 		}else{
