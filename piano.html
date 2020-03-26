@@ -81,9 +81,24 @@
 			btnPlay.classList.add("abled");
 	}
 
+	function detectChrome(){
+			var ua = navigator.userAgent.toLowerCase();
+			if (ua.indexOf('safari') != -1) {
+			  if (ua.indexOf('chrome') > -1) {
+			    	return true;
+			  } else {
+				    return false;
+			  }
+			}
+	}
+
 	function init(){
-			btnPlay.classList.add("disabled");
-			displayPiano();
+		if(!detectChrome()){
+				alert("Please use Chrome.");
+		}else{
+				btnPlay.classList.add("disabled");
+				displayPiano();
+		}
 	}
 
 	var centerX = 0;
