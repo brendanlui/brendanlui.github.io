@@ -57,7 +57,6 @@
 	<div id="displayPiano">
 	</div>
   <pre style="display:none" id="fileContent"></pre>
-	<pre id="time">0</pre>	<!--style="display:none"-->
 
 	<script>
 	//btn click start
@@ -234,7 +233,7 @@
 
 	function pressKey(id){
 			var idArr = id.split('_');
-			playOneNote(idArr[1], idArr[2], 2, 0);
+			playOneNote(idArr[1], idArr[2], 2);
 	}
 
 	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
@@ -315,7 +314,7 @@
 							}
 							startTime += addTime;
 							addTime = temp_3 * (4000 / speed);
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
+							recordNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
 
@@ -380,8 +379,8 @@
 				head[0].cx.baseVal.value =	centerX -	moveDistance;
 	}
 
-	function playOneNote(note, octave, duration, startTime){
-			setTimeout(function() {
+	//modify to not use setTimeout  start
+	function playOneNote(note, octave, duration){
 						var piano = Synth.createInstrument('piano');
 						//use hand start
 						noteCount++;
@@ -397,13 +396,28 @@
 						setTimeout(function() {
 								noteSvg.classList.remove("pressed");
 						}, duration * 100);
+	}
 
-			}, startTime);
+	var noteRecord = new Map();
+	var currentTime = 0;
+	function recordNote(note, octave, duration, startTime){
+			noteRecord.set(currentTime + startTime, note + "_" + octave + "_" + duration);
 	}
 
 	setInterval(function() {
-			document.getElementById("time").innerHTML = parseFloat(parseFloat(document.getElementById("time").innerHTML) + 0.1);
+			currentTime += 100;
 	}, 100);
+
+	setInterval(function() {
+			if(noteRecord.has(currentTime)){
+							var arr = noteRecord.get(currentTime).split('_');
+							var note = arr[0];
+							var octave = arr[1];
+							var duration = arr[2];
+							playOneNote(note, octave, duration);
+			}
+	}, 100);
+	//modify to not use setTimeout end
 	</script>
 
 	<ul id="foot">
