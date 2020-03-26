@@ -313,7 +313,7 @@
 								}
 							}
 							startTime += addTime;
-							addTime = temp_3 * (4000 / speed);
+							addTime = Number((temp_3 * (4000 / speed)).toPrecision(2));
 							recordNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
