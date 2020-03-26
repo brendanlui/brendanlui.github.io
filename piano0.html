@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+	<link id="stylecall1" rel="stylesheet" href="/css/academic_style.css" />
+	<link id="stylecall2" rel="stylesheet" href="/css/logo_dadiu.css" />
+	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
+	<link id="stylecall5" rel="stylesheet" href="/css/japanese.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/piano.css" />
+	<link rel="icon"
+	  type="image/png"
+	  href="/img/d01.png">
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+		<script type="text/javascript" src="/js/audiosynth.js"></script>
+		<script type="text/javascript" src="/js/midi.js"></script>
+
+</head>
+
+<title>Dadiu | Piano</title>
+
+<body onload="init()">
+	<div id="head">
+		<div id="logo">
+			<a href="/"><img src="/img/dadiu.png" alt="dai01" class="logo_dadiu"></a>
+		</div>
+	</div>
+
+	<link rel="stylesheet" href="/css/responsive_bar_style.css">
+	<div class="topnav" id="myTopnav">
+	  <a href="/">Home</a>
+	  <a class="pianoList" onclick="loadSrc('Default');"class="other">Chromatic Scale</a>
+	  <a class="pianoList" onclick="loadSrc('HappyBirthday');"class="other">Happy Birthday</a>
+	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+	</div>
+	<script>
+	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+	function myFunction() {
+	    var x = document.getElementById("myTopnav");
+	    if (x.className === "topnav") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "topnav";
+	    }
+	}
+	</script>
+
+	<!--TODO-->
+	<div id="buttonBox">
+		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
+	</div>
+	<div id="fileUploadDiv">
+  		<input id="fileInput" type="file" name="file" />
+	</div>
+	<a id="downloadLink" style="display:none;">Download</a>
+	<div id="displayPiano">
+	</div>
+  <pre style="display:none" id="fileContent"></pre>
+
+	<script>
+	//btn click start
+	var btnPlay = document.getElementById("btnPlay");
+	btnPlay.onclick = function() {
+			btnPlay.classList.add("active");
+			loadFile();
+			setTimeout(function() {
+					btnPlay.classList.remove("active");
+			}, 500);
+	}
+	//btn click end
+
+	function editDownload(){
+			let link = document.getElementById('downloadLink');
+			link.download = 'sample.txt';
+			let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
+			link.href = URL.createObjectURL(blob);
+			link.style.display = "block";
+			btnPlay.disabled = false;
+			btnPlay.classList.remove("disabled");
+			btnPlay.classList.add("abled");
+	}
+
+	function detectChrome(){
+			var ua = navigator.userAgent.toLowerCase();
+			if (ua.indexOf('safari') != -1) {
+			  if (ua.indexOf('chrome') > -1) {
+			    	return true;
+			  } else {
+				    return false;
+			  }
+			}
+	}
+
+	function init(){
+		if(!detectChrome()){
+				alert("We're sorry. This page supports Google Chrome Browser only.");
+		}else{
+				btnPlay.classList.add("disabled");
+				displayPiano();
+		}
+	}
+
+	var centerX = 0;
+	var firstTime = true;
+	window.addEventListener("resize", displayPiano);
+	function displayPiano(){
+			centerX = 0;
+			firstTime = true;
+			var displayPiano = document.getElementById('displayPiano');
+			displayPiano.innerHTML = "";
+			//var width = window.innerWidth * 0.8;
+			var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
+			var pieces = 36;
+			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
+			var svg = "";
+			var start = 5;
+			var start_x = 5;
+			var start_y = height * 1.7 + start;
+			var end = 5;
+			var lineWidth = 1;
+			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
+			var pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
+			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
+			for(i = 0; i < pieces; i++){
+				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
+				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
+				svg += ",";
+				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += " ";
+				svg += Math.round((start_x + pianoPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+				svg += ",";
+				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
+				svg += " ";
+				svg += Math.round((start_x + pianoPieceWidth * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+				svg += ",";
+				svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += " ";
+				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
+				svg += ",";
+				svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
+				svg += '" class="whiteKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+			}
+
+			var blackNum = [1, 2, 4, 5, 6];
+			var blackKeyNote = ['C#', 'D#', '', 'F#', 'G#', 'A#', ''];
+			for(i = 0; i < pieces; i++){
+					if(i == pieces - 1){
+						break;
+					}
+					if(blackNum.includes(i % 7 + 1)){
+							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
+							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += " ";
+							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += '" class="blackKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+					}
+			}
+
+			// person edit start
+			svg += '<circle cx="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" cy="'
+										+ Math.round(start_y - height * 5 / 6 + Number.EPSILON) * 1000 / 1000
+										+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" class="head person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="leftHand person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="rightHand person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBodyCenter person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="personBody person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 5 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="leg person"/>';
+			svg += '<line x1="'
+										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y1="'
+										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" x2="'
+										+ Math.round(start_x + width * 7 / 12 + Number.EPSILON) * 1000 / 1000
+										+ '" y2="'
+										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
+										+ '" style="stroke:#000000;stroke-width:2;" class="leg person"/>';
+			// person edit end
+
+			svg += '</svg>';
+			displayPiano.innerHTML = svg;
+	}
+
+	function pressKey(id){
+			var idArr = id.split('_');
+			playOneNote(idArr[1], idArr[2], 2, 0);
+	}
+
+	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+	function handleFileSelect(event){
+	  const reader = new FileReader()
+	  reader.onload = handleFileLoad;
+		if(event.target.files.length > 0){
+		  reader.readAsText(event.target.files[0]);
+		}
+	}
+
+	function handleFileLoad(event){
+			loadText(event.target.result);
+			reset();
+	}
+
+	function reset(){
+			document.getElementById("fileInput").remove();
+			document.getElementById("fileUploadDiv").innerHTML = '<input id="fileInput" type="file" name="file" />';
+			document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+			Synth.setSampleRate(20000);
+			Synth.setVolume(0.3);
+	}
+
+	function loadFile(){
+		loadText(document.getElementById('fileContent').textContent);
+	}
+
+	function loadSrc(type){
+				myFunction();
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+							var string = [];
+							var txt = xmlhttp.responseText;
+							loadText(txt.trim());
+					}
+				};
+				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
+				xmlhttp.send();
+	}
+
+	var noteCount = 0;
+	var leftHandOctave = 4;
+	var rightHandOctave = 4;
+	function loadText(text){
+			noteCount = 0;
+		  document.getElementById('fileContent').textContent = text;
+			editDownload();
+			var seperate = '//sample rate (4000-44100), volume, speed';
+			var speed = 1;
+			if(text.includes(seperate)){
+					var headerFooterArr = text.split(seperate);
+					if(headerFooterArr.length == 2){
+							var headerArr = headerFooterArr[0].trim().split(",");
+							if(headerArr.length == 3){
+									Synth.setSampleRate(headerArr[0].trim());
+									Synth.setVolume(headerArr[1].trim());
+									speed = headerArr[2].trim();
+							}
+							text = headerFooterArr[1].trim();
+					}
+			}
+
+			var noteArr = text.split(',');
+			var startTime = 500;
+			var addTime = 0;
+			for(i = 0; i < noteArr.length; i++){
+					var tempArr = noteArr[i].split('_');
+					if(tempArr.length == 4){
+
+							temp_3 = tempArr[3];
+							if(tempArr[3].includes("/")){
+								var divideArr = tempArr[3].split("/");
+								if(divideArr.length == 2){
+									temp_3 = divideArr[0] / divideArr[1];
+								}
+							}
+							startTime += addTime;
+							addTime = temp_3 * (4000 / speed);
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
+					}
+			}
+
+			Synth.setSampleRate(20000);
+			Synth.setVolume(0.4);
+	}
+
+	var leftHand = document.getElementsByClassName("leftHand");
+	var rightHand = document.getElementsByClassName("rightHand");
+	var personBodyCenter = document.getElementsByClassName("personBodyCenter");
+	var head = document.getElementsByClassName("head");
+	function moveHand(note, octave, left){
+				if(left){
+						leftHandOctave = parseInt(octave);
+				}else{
+						rightHandOctave = parseInt(octave);
+				}
+
+				var totalOctave = parseInt(leftHandOctave) + parseInt(rightHandOctave);
+				var polygon = document.getElementById("key_"+note+"_"+octave);
+				var xValue = 0;
+				var yValue = 0;
+				var yValueSharp = 0;
+				var yValueNormal = 0;
+				var yHigh = 0;
+				var yLow = 99999999;
+				for(i = 0; i < polygon.points.length; i++){
+								xValue += polygon.points[i].x;
+								yValue += polygon.points[i].y;
+								if(polygon.points[i].y > yHigh){
+										yHigh = polygon.points[i].y;
+								}
+								if(polygon.points[i].y < yLow){
+										yLow = polygon.points[i].y;
+								}
+				}
+				xValue = xValue / polygon.points.length;
+				yValueSharp = yLow + (yHigh - yLow) / 3;
+				yValueNormal = yHigh - (yHigh - yLow) / 5;
+				if(note.includes('#')){
+						yValue = yValueSharp;
+				}else{
+						yValue = yValueNormal;
+				}
+
+				if(left){
+						leftHand[0].x1.baseVal.value = xValue;
+						leftHand[0].y1.baseVal.value = yValue;
+				}else{
+						rightHand[0].x1.baseVal.value = xValue;
+						rightHand[0].y1.baseVal.value = yValue;
+				}
+
+				if(firstTime){
+						centerX = personBodyCenter[0].x1.baseVal.value;
+						firstTime = false;
+				}
+				var moveDistance = (yHigh - yLow) * (8 - totalOctave) / 3;
+				personBodyCenter[0].x2.baseVal.value =	centerX - moveDistance;
+				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
+				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
+				head[0].cx.baseVal.value =	centerX -	moveDistance;
+	}
+
+	function playOneNote(note, octave, duration, startTime){
+			setTimeout(function() {
+						var piano = Synth.createInstrument('piano');
+						//use hand start
+						noteCount++;
+						if(noteCount % 2 == 0){
+								moveHand(note, octave, false);
+						}else{
+								moveHand(note, octave, true);
+						}
+						//use hand end
+						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
+						var noteSvg = document.getElementById("key_"+note+"_"+octave);
+						noteSvg.classList.add("pressed");
+						setTimeout(function() {
+								noteSvg.classList.remove("pressed");
+						}, duration * 100);
+
+			}, startTime);
+	}
+
+	function testing(){
+				// load a midi file in the browser
+			const midi = await Midi.fromUrl("path/to/midi.mid")
+			//the file name decoded from the first track
+			const name = midi.name
+			//get the tracks
+			midi.tracks.forEach(track => {
+			  //tracks have notes and controlChanges
+				console.log(track);
+			  //notes are an array
+			  const notes = track.notes
+			  notes.forEach(note => {
+			    	//note.midi, note.time, note.duration, note.name
+						console.log(note);
+			  })
+
+			  //the control changes are an object
+			  //the keys are the CC number
+			  track.controlChanges[64]
+			  //they are also aliased to the CC number's common name (if it has one)
+			  track.controlChanges.sustain.forEach(cc => {
+			    // cc.ticks, cc.value, cc.time
+					console.log(cc);
+			  })
+
+			  //the track also has a channel and instrument
+			  //track.instrument.name
+			})
+	}
+	</script>
+
+	<ul id="foot">
+		</br>
+		<li>© Copyright 2020. All Rights Reserved.</li>
+	</ul></br>
+</body>
+</html>
