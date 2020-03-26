@@ -313,7 +313,7 @@
 								}
 							}
 							startTime += addTime;
-							addTime = Number((temp_3 * (4000 / speed)).toPrecision(2));
+							addTime = parseInt(temp_3 * (4000 / speed) / 10) * 10;
 							recordNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
 			}
@@ -405,8 +405,8 @@
 	}
 
 	setInterval(function() {
-			currentTime += 100;
-	}, 100);
+			currentTime += 10;
+	}, 10);
 
 	setInterval(function() {
 			if(noteRecord.has(currentTime)){
@@ -416,7 +416,7 @@
 							var duration = arr[2];
 							playOneNote(note, octave, duration);
 			}
-	}, 100);
+	}, 10);
 	//modify to not use setTimeout end
 	</script>
 
