@@ -33,6 +33,7 @@
 	  <a class="pianoList" onclick="loadSrc('Default');"class="other">Chromatic Scale</a>
 	  <a class="pianoList" onclick="loadSrc('HappyBirthday');"class="other">Happy Birthday</a>
 	  <a class="pianoList" onclick="loadFakeMidi('Gurenge');"class="other">Gurenge</a>
+	  <a class="pianoList" onclick="loadFakeMidi('コノユビトマレ');"class="other">コノユビトマレ</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
@@ -447,7 +448,7 @@
 								loadText(document.getElementById('fileContent').textContent);
 						}
 					};
-					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid",true);
+					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid.txt",true);
 					xmlhttp.send();
 	}
 	</script>
