@@ -64,12 +64,16 @@
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
+	var btnClickTimeout = [];
+	var btnReleaseTimeout = [];
+	var notePlayTimeout = [];
+
 	//btn click start
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
 			loadFile();
-			setTimeout(function() {
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 500);
 	}
@@ -300,6 +304,7 @@
 	var leftHandOctave = 4;
 	var rightHandOctave = 4;
 	function loadText(text){
+			clearAllTimeout();
 			noteCount = 0;
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
@@ -400,7 +405,7 @@
 	}
 
 	function playOneNote(note, octave, duration, startTime){
-			setTimeout(function() {
+			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 						var piano = Synth.createInstrument('piano');
 						//use hand start
 						noteCount++;
@@ -413,7 +418,7 @@
 						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
-						setTimeout(function() {
+						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
 						}, duration * 100);
 
@@ -514,6 +519,16 @@
 					xmlhttp.send();
 
 					myFunction();
+	}
+
+	function clearAllTimeout(){
+			if(btnClickTimeout.length == btnReleaseTimeout.length && btnReleaseTimeout.length == notePlayTimeout.length){
+					for (i = btnClickTimeout.length - 1; i >= 0; i--){
+							clearInterval(btnClickTimeout[i]);
+							clearInterval(btnReleaseTimeout[i]);
+							clearInterval(notePlayTimeout[i]);
+					}
+			}
 	}
 	</script>
 
