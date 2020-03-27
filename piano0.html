@@ -309,7 +309,7 @@
 			noteCount = 0;
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
-			var seperate = '//sample rate (4000-44100), volume, speed';
+			var seperate = '//sample rate (4000-44100), volume, speed\n';
 			var speed = 1;
 			if(text.includes(seperate)){
 					var headerFooterArr = text.split(seperate);
@@ -447,7 +447,7 @@
 								var fakeMidiDataArr = fakeMidiData.split(";");
 
 								var midiToTxt = "";
-								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed ";
+								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
 								var lastStartTime = 0;
 								for(i = 0; i < fakeMidiDataArr.length; i++){
 										var tempArr = fakeMidiDataArr[i].split(" ");
@@ -498,7 +498,7 @@
 								var decodeMidiDataArr = decodeMidiData.split('\n');
 
 								var midiToTxt = "";
-								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed ";
+								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
 								var lastStartTime = 0;
 								for(i = 0; i < decodeMidiDataArr.length; i++){
 										if(!decodeMidiDataArr[i].includes(" On ")){
