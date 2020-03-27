@@ -432,8 +432,9 @@
 										var tempArr = fakeMidiDataArr[i].split(" ");
 										var startTime = tempArr[0];
 										var addTime = 0;
-										var note = tempArr[1];
-										var octave = tempArr[2];
+										var noteAndOctave = tempArr[1];
+										var note = "";
+										var octave = "";
 										var duration = 2;
 
 										if(i == 0){
@@ -441,6 +442,14 @@
 										}
 										addTime = (startTime - lastStartTime) + "/8";
 										lastStartTime = startTime;
+
+										if(noteAndOctave.length == 2){
+												note = noteAndOctave[0];
+												octave = noteAndOctave[1];
+										}else if(noteAndOctave.length == 3){
+												note = noteAndOctave[0] + noteAndOctave[1];
+												octave = noteAndOctave[2];
+										}
 										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
 								}
 
