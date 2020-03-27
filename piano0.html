@@ -440,7 +440,7 @@
 										}
 										addTime = (startTime - lastStartTime) + "/8";
 										lastStartTime = startTime;
-										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime ",";
+										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
 								}
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, str.length - 1);
