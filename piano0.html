@@ -444,7 +444,7 @@
 										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
 								}
 
-								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, str.length - 1);
+								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 								loadText(document.getElementById('fileContent').textContent);
 						}
 					};
