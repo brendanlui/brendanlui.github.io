@@ -65,6 +65,7 @@
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
+	var currentPlaySongName = "";
 	var btnClickTimeout = [];
 	var btnReleaseTimeout = [];
 	var notePlayTimeout = [];
@@ -82,7 +83,8 @@
 
 	function editDownload(){
 			let link = document.getElementById('downloadLink');
-			link.download = 'sample.txt';
+			link.download = currentPlaySongName + '.txt';
+			link.innerHTML = "Download - " + currentPlaySongName;
 			let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
 			link.href = URL.createObjectURL(blob);
 			link.style.display = "block";
@@ -276,6 +278,7 @@
 
 	function handleFileLoad(event){
 			loadText(event.target.result);
+			currentPlaySongName = "Your Uploaded file";
 			reset();
 	}
 
@@ -299,6 +302,7 @@
 							var string = [];
 							var txt = xmlhttp.responseText;
 							loadText(txt.trim());
+							currentPlaySongName = type;
 					}
 				};
 				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
@@ -486,6 +490,7 @@
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 								loadText(document.getElementById('fileContent').textContent);
+								currentPlaySongName = type;
 						}
 					};
 					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid.txt",true);
@@ -536,6 +541,7 @@
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 								loadText(document.getElementById('fileContent').textContent);
+								currentPlaySongName = type;
 						}
 					};
 					xmlhttp.open("GET","./music/decodeMidi/"+type+".txt",true);
