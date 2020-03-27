@@ -523,7 +523,11 @@
 												lastStartTime = startTime;
 										}
 
-										addTime = (startTime - lastStartTime) + "/640";
+										addTime = (startTime - lastStartTime);
+										if(addTime != 0){
+												addTime += "/640";
+										}
+
 										lastStartTime = startTime;
 										note = pianoKeyArr[noteAndOctave % 12];
 										octave = parseInt(noteAndOctave / 12);
