@@ -522,12 +522,14 @@
 	}
 
 	function clearAllTimeout(){
-			if(btnClickTimeout.length == btnReleaseTimeout.length && btnReleaseTimeout.length == notePlayTimeout.length){
-					for (i = btnClickTimeout.length - 1; i >= 0; i--){
-							clearInterval(btnClickTimeout[i]);
-							clearInterval(btnReleaseTimeout[i]);
-							clearInterval(notePlayTimeout[i]);
-					}
+			for (i = btnClickTimeout.length - 1; i >= 0; i--){
+					clearInterval(btnClickTimeout[i]);
+			}
+			for (i = btnReleaseTimeout.length - 1; i >= 0; i--){
+					clearInterval(btnReleaseTimeout[i]);
+			}
+			for (i = notePlayTimeout.length - 1; i >= 0; i--){
+					clearInterval(notePlayTimeout[i]);
 			}
 	}
 	</script>
