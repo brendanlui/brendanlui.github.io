@@ -418,7 +418,8 @@
 
 	function testing(){
 				// load a midi file in the browser
-			const midi = Midi.fromUrl("/music/midi/Happy_Birthday_To_You_C_Major.mid");
+			const midiData = fs.readFileSync("./music/midi/Happy_Birthday_To_You_C_Major.mid")
+			const midi = new Midi(midiData)
 			//the file name decoded from the first track
 			const name = midi.name;
 			//get the tracks
