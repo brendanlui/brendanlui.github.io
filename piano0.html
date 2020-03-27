@@ -407,14 +407,14 @@
 				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
 				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
 				head[0].cx.baseVal.value =	centerX -	moveDistance;
-				rightLeg[0].x1.baseVal.value = centerX -	moveDistance / 4;
-				personBodyRight[0].x2.baseVal.value = centerX -	moveDistance / 4;
-				leftLeg[0].x1.baseVal.value = centerX -	moveDistance / 4;
-				personBodyLeft[0].x2.baseVal.value = centerX -	moveDistance / 4;
 
-				personBodyLeft[0].x1.baseVal.value = centerX -	moveDistance / 4;
-				personBodyRight[0].x1.baseVal.value = centerX -	moveDistance / 4;
-				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance / 4;
+				rightLeg[0].x1.baseVal.value = centerX + moveDistance / 8);
+				leftLeg[0].x1.baseVal.value = centerX -	moveDistance / 8;
+				personBodyRight[0].x2.baseVal.value = centerX +	moveDistance / 8;
+				personBodyRight[0].x1.baseVal.value = centerX +	moveDistance / 8;
+				personBodyLeft[0].x2.baseVal.value = centerX -	moveDistance / 8;
+				personBodyLeft[0].x1.baseVal.value = centerX -	moveDistance / 8;
+				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance / 8;
 	}
 
 	function playOneNote(note, octave, duration, startTime){
