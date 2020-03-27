@@ -81,24 +81,9 @@
 			btnPlay.classList.add("abled");
 	}
 
-	function detectChrome(){
-			var ua = navigator.userAgent.toLowerCase();
-			if (ua.indexOf('safari') != -1) {
-			  if (ua.indexOf('chrome') > -1) {
-			    	return true;
-			  } else {
-				    return false;
-			  }
-			}
-	}
-
 	function init(){
-		if(!detectChrome()){
-				alert("We're sorry. This page supports Google Chrome Browser only.");
-		}else{
 				btnPlay.classList.add("disabled");
 				displayPiano();
-		}
 	}
 
 	var centerX = 0;
