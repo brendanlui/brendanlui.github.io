@@ -298,13 +298,13 @@
 
 	function loadSrc(type){
 				myFunction();
+				currentPlaySongName = type;
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){
 					if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 							var string = [];
 							var txt = xmlhttp.responseText;
 							loadText(txt.trim());
-							currentPlaySongName = type;
 					}
 				};
 				xmlhttp.open("GET","./music/txt/" + type + ".txt",true);
@@ -451,6 +451,9 @@
 	}
 
 	function loadFakeMidi(type){
+					currentPlaySongName = type;
+					myFunction();
+
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
@@ -492,17 +495,16 @@
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 								loadText(document.getElementById('fileContent').textContent);
-								currentPlaySongName = type;
 						}
 					};
 					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid.txt",true);
 					xmlhttp.send();
-
-					myFunction();
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 	function loadDecodeMidi(type){
+					currentPlaySongName = type;
+					myFunction();
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
@@ -543,13 +545,10 @@
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 								loadText(document.getElementById('fileContent').textContent);
-								currentPlaySongName = type;
 						}
 					};
 					xmlhttp.open("GET","./music/decodeMidi/"+type+".txt",true);
 					xmlhttp.send();
-
-					myFunction();
 	}
 
 	function clearAllTimeout(){
