@@ -417,23 +417,6 @@
 	}
 
 	function testing(){
-				// load a midi file in the browser
-			var file = './music/midi/Happy_Birthday_To_You_C_Major.mid';
-			var rawFile = new XMLHttpRequest();
-			rawFile.open("GET", file, false);
-			rawFile.onreadystatechange = function (){
-					if(rawFile.readyState === 4){
-							if(rawFile.status === 200 || rawFile.status == 0){
-									var midiData = rawFile.responseText;
-									const midi = new Midi(midiData);
-									console.log(midi);
-							}
-					}
-			}
-			rawFile.send(null);
-	}
-
-	function testing2(){
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
