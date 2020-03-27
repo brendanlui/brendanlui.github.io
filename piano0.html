@@ -15,7 +15,6 @@
 	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 	  <script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
 		<script type="text/javascript" src="/js/audiosynth.js"></script>
-		<script type="text/javascript" src="/js/vexflow.musicxml.js"></script>
 
 </head>
 
@@ -33,6 +32,7 @@
 	  <a href="/">Home</a>
 	  <a class="pianoList" onclick="loadSrc('Default');"class="other">Chromatic Scale</a>
 	  <a class="pianoList" onclick="loadSrc('HappyBirthday');"class="other">Happy Birthday</a>
+	  <a class="pianoList" onclick="loadFakeMidi('Gurenge');"class="other">Gurenge</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
@@ -416,19 +416,42 @@
 			}, startTime);
 	}
 
-	function testing(){
+	function loadFakeMidi(type){
 					var xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function(){
 						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 								var string = [];
-								var midiData = xmlhttp.responseText;
+								var fakeMidiData = xmlhttp.responseText;
+								var fakeMidiDataArr = fakeMidiData.split(";");
+
+								var midiToTxt = "";
+								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed";
+								var lastStartTime = 0;
+								for(i = 0; i < fakeMidiDataArr.length; i++){
+										var tempArr = fakeMidiDataArr[i].split(" ");
+										var startTime = tempArr[0];
+										var addTime = 0;
+										var note = tempArr[1];
+										var octave = tempArr[2];
+										var duration = 2;
+
+										if(i == 0){
+												startTime = startTime.split("|")[2];
+										}
+										addTime = (startTime - lastStartTime) + "/8";
+										lastStartTime = startTime;
+										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime ",";
+								}
+
+								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, str.length - 1);
+								loadText(document.getElementById('fileContent').textContent);
 						}
 					};
-					xmlhttp.open("GET","./music/midi/testing.mid",true);
+					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid",true);
 					xmlhttp.send();
 	}
 	</script>
-	
+
 	<ul id="foot">
 		</br>
 		<li>© Copyright 2020. All Rights Reserved.</li>
