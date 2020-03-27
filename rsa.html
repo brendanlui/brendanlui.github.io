@@ -72,7 +72,7 @@
 			var numberPieceHeight = Math.round(((height - start_y - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
 			var numberPieceWidth = Math.round(((width - start_x - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
-			svg += '<svg id="numberBar" height="'+height+'px" width="'+width+'px">';
+			svg += '<svg id="numberBar" height="'+(height + width / numOfPassword / 2)+'px" width="'+width+'px">';
 			for(i = 0; i < numOfPassword; i++){
 				var x1 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * i + Number.EPSILON) * 1000) / 1000;
 				var x2 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (i + 1) + Number.EPSILON) * 1000) / 1000;
