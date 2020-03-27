@@ -404,8 +404,8 @@
 
 				if(firstTime){
 						centerX = personBodyCenter[0].x1.baseVal.value;
-						leftLegX = leftHand[0].x1.baseVal.value;
-						rightLegX = rightHand[0].x1.baseVal.value;
+						leftLegX = leftLeg[0].x1.baseVal.value;
+						rightLegX = rightLeg[0].x1.baseVal.value;
 						firstTime = false;
 				}
 				var moveDistance = (yHigh - yLow) * (8 - totalOctave) / 3;
@@ -414,13 +414,13 @@
 				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
 				head[0].cx.baseVal.value =	centerX -	moveDistance;
 
-				rightLeg[0].x1.baseVal.value = rightLegX - moveDistance / 8;
-				leftLeg[0].x1.baseVal.value = leftLegX -	moveDistance / 8;
-				personBodyRight[0].x2.baseVal.value = rightLegX -	moveDistance / 8;
-				personBodyRight[0].x1.baseVal.value = centerX -	moveDistance / 8;
-				personBodyLeft[0].x2.baseVal.value = leftLegX -	moveDistance / 8;
-				personBodyLeft[0].x1.baseVal.value = centerX -	moveDistance / 8;
-				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance / 8;
+				rightLeg[0].x1.baseVal.value = rightLegX - moveDistance / 10;
+				leftLeg[0].x1.baseVal.value = leftLegX -	moveDistance / 10;
+				personBodyRight[0].x2.baseVal.value = rightLegX -	moveDistance / 10;
+				personBodyRight[0].x1.baseVal.value = centerX -	moveDistance / 10;
+				personBodyLeft[0].x2.baseVal.value = leftLegX -	moveDistance / 10;
+				personBodyLeft[0].x1.baseVal.value = centerX -	moveDistance / 10;
+				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance / 10;
 	}
 
 	function playOneNote(note, octave, duration, startTime){
