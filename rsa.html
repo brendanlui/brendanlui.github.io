@@ -72,7 +72,7 @@
 			var numberPieceHeight = Math.round(((height - start_y - end) / (pieces + 1) + Number.EPSILON) * 1000) / 1000;
 			var numberPieceWidth = Math.round(((width - start_x - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
-			svg += '<svg id="numberBar" height="'+(height + width / numOfPassword / 2)+'px" width="'+width+'px">'; 
+			svg += '<svg id="numberBar" height="'+(height + width / numOfPassword / 2)+'px" width="'+width+'px">';
 			for(i = 0; i < numOfPassword; i++){
 				var x1 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * i + Number.EPSILON) * 1000) / 1000;
 				var x2 = Math.round((start_x + numberPieceWidth * 3 / numOfPassword  * (i + 1) + Number.EPSILON) * 1000) / 1000;
@@ -825,9 +825,22 @@
 													inputNum = "";
 													encryTyped = 0;
 													displayNumberBar();
-													document.getElementById("numberBar").classList.add("wrong");
+
+													var encryDisplayArr = document.getElementsByClassName("encryDisplay");
+													var numKeyArr = document.getElementsByClassName("numKey");
+													for(i = 0; i < encryDisplayArr.length; i++){
+															encryDisplayArr[i].classList.add("wrong");
+													}
+													for(i = 0; i < numKeyArr.length; i++){
+															numKeyArr[i].classList.add("wrong");
+													}
 													setTimeout(function() {
-																document.getElementById("numberBar").classList.remove("wrong");
+															for(i = 0; i < encryDisplayArr.length; i++){
+																	encryDisplayArr[i].classList.remove("wrong");
+															}
+															for(i = 0; i < numKeyArr.length; i++){
+																	numKeyArr[i].classList.remove("wrong");
+															}
 													}, 500);
 													//console.log(false);
 											}
