@@ -531,6 +531,16 @@
 			for (i = notePlayTimeout.length - 1; i >= 0; i--){
 					clearInterval(notePlayTimeout[i]);
 			}
+
+			var whiteKeyArr = document.getElementsByClassName("whiteKey");
+			var blackKeyArr = document.getElementsByClassName("blackKey");
+			for(i = 0;, i < whiteKeyArr.length; i++){
+					whiteKeyArr[i].classList.remove("pressed");
+			}
+			for(i = 0;, i < blackKeyArr.length; i++){
+					blackKeyArr[i].classList.remove("pressed");
+			}
+
 			btnClickTimeout = [];
 			btnReleaseTimeout = [];
 			notePlayTimeout = [];
