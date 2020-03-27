@@ -418,9 +418,9 @@
 
 	function testing(){
 				// load a midi file in the browser
-			const midi = Midi.fromUrl("/music/midi/Happy_Birthday_To_You_C_Major.mid")
+			const midi = Midi.fromUrl("/music/midi/Happy_Birthday_To_You_C_Major.mid");
 			//the file name decoded from the first track
-			const name = midi.name
+			const name = midi.name;
 			//get the tracks
 			midi.tracks.forEach(track => {
 			  //tracks have notes and controlChanges
@@ -434,7 +434,7 @@
 
 			  //the control changes are an object
 			  //the keys are the CC number
-			  track.controlChanges[64]
+			  track.controlChanges[64];
 			  //they are also aliased to the CC number's common name (if it has one)
 			  track.controlChanges.sustain.forEach(cc => {
 			    // cc.ticks, cc.value, cc.time
