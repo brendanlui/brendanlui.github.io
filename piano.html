@@ -83,8 +83,8 @@
 
 	function editDownload(){
 			let link = document.getElementById('downloadLink');
-			link.download = currentPlaySongName + '.txt';
-			link.innerHTML = "Download : " + currentPlaySongName + '.txt';
+			link.download = currentPlaySongName.replace(new RegExp(" ", 'g'), "_") + '.txt';
+			link.innerHTML = "Download : " + currentPlaySongName.replace(new RegExp(" ", 'g'), "_") + '.txt';
 			let blob = new Blob([document.getElementById('fileContent').textContent + ""], {type: 'text/plain'});
 			link.href = URL.createObjectURL(blob);
 			link.style.display = "block";
