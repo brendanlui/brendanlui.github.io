@@ -283,7 +283,7 @@
 	}
 
 	function loadFile(){
-		loadText(document.getElementById('fileContent').textContent);
+			loadText(document.getElementById('fileContent').textContent);
 	}
 
 	function loadSrc(type){
@@ -462,7 +462,7 @@
 												note = noteAndOctave[0] + noteAndOctave[1];
 												octave = noteAndOctave[2];
 										}
-										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
+										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
 								}
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
@@ -508,7 +508,7 @@
 										lastStartTime = startTime;
 										note = pianoKeyArr[noteAndOctave % 12];
 										octave = parseInt(noteAndOctave / 12);
-										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
+										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
 								}
 
 								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
