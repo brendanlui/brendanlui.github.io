@@ -12,3 +12,9 @@
   stroke: #f5f4f4;
   stroke-width: 2px;
 }
+
+.wrong{
+    border-style: solid;
+    border-color: red;
+    border-width: thick;
+}
