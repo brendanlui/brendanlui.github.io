@@ -35,6 +35,8 @@
 	  <a class="pianoList" onclick="loadFakeMidi('紅蓮華');"class="other">紅蓮華</a>
 	  <a class="pianoList" onclick="loadFakeMidi('コノユビトマレ');"class="other">コノユビトマレ</a>
 	  <a class="pianoList" onclick="loadFakeMidi('竈門炭治郎のうた');"class="other">竈門炭治郎のうた</a>
+	  <a class="pianoList" onclick="loadDecodeMidi('Secret - Piano Battle');"class="other">Secret - Piano Battle</a>
+	  <a class="pianoList" onclick="loadDecodeMidi('Secret - Time Travel Theme');"class="other">Secret - Time Travel Theme</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
@@ -114,7 +116,7 @@
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
 			var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
-			var pieces = 43;
+			var pieces = 57;
 			var height = Math.round((width * 4 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
 			var start = 5;
@@ -128,7 +130,7 @@
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
-				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
+				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
 				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
@@ -154,7 +156,7 @@
 						break;
 					}
 					if(blackNum.includes(i % 7 + 1)){
-							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+2)+'" onClick="pressKey(this.id)" points="';
+							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
@@ -467,7 +469,55 @@
 
 					myFunction();
 	}
+
+	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+	function loadDecodeMidi(type){
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function(){
+						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+								var string = [];
+								var decodeMidiData = xmlhttp.responseText;
+								var decodeMidiDataArr = decodeMidiData.split('\n');
+
+								var midiToTxt = "";
+								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed ";
+								var lastStartTime = 0;
+								for(i = 0; i < decodeMidiDataArr.length; i++){
+										if(!decodeMidiDataArr[i].includes(" On ")){
+												continue;
+										}
+
+										var tempArr = decodeMidiDataArr[i].split(" On ");
+										var startTime = tempArr[0];
+										var addTime = 0;
+										var noteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
+										var note = "";
+										var octave = "";
+										var duration = 2;
+
+										if(lastStartTime == 0){
+												lastStartTime = startTime;
+										}
+
+										addTime = (startTime - lastStartTime) + "/640";
+										lastStartTime = startTime;
+										note = pianoKeyArr[noteAndOctave % 12];
+										octave = parseInt(noteAndOctave / 12);
+										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",";
+								}
+
+								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
+								loadText(document.getElementById('fileContent').textContent);
+						}
+					};
+					xmlhttp.open("GET","./music/decodeMidi/"+type+".txt",true);
+					xmlhttp.send();
+
+					myFunction();
+	}
 	</script>
+
+
 
 	<ul id="foot">
 		</br>
