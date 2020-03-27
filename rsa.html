@@ -812,8 +812,7 @@
 											if(document.getElementById("inputResult").innerHTML == "1"){
 													unlocked = true;
 													breakSvg(70);
-													//TODO	//brendan
-													//console.log(true);
+													//TODO	//brendan here
 											}else{
 													for(i = 0; i < numKey.length; i++){
 															numKey[i].classList.remove("loading");
@@ -826,23 +825,20 @@
 													encryTyped = 0;
 													displayNumberBar();
 
-													var encryDisplayArr = document.getElementsByClassName("encryDisplay");
-													var numKeyArr = document.getElementsByClassName("numKey");
-													for(i = 0; i < encryDisplayArr.length; i++){
-															encryDisplayArr[i].classList.add("wrong");
+													for(i = 0; i < encryDisplay.length; i++){
+															encryDisplay[i].classList.add("wrong");
 													}
-													for(i = 0; i < numKeyArr.length; i++){
-															numKeyArr[i].classList.add("wrong");
+													for(i = 0; i < numKey.length; i++){
+															numKey[i].classList.add("wrong");
 													}
 													setTimeout(function() {
-															for(i = 0; i < encryDisplayArr.length; i++){
-																	encryDisplayArr[i].classList.remove("wrong");
+															for(i = 0; i < encryDisplay.length; i++){
+																	encryDisplay[i].classList.remove("wrong");
 															}
-															for(i = 0; i < numKeyArr.length; i++){
-																	numKeyArr[i].classList.remove("wrong");
+															for(i = 0; i < numKey.length; i++){
+																	numKey[i].classList.remove("wrong");
 															}
 													}, 500);
-													//console.log(false);
 											}
 											document.getElementById("displayNumberBar").scrollIntoView();
 							}, 200);
@@ -865,7 +861,6 @@
 						if(arr.length == 2){
 								publicKey_n = arr[0];
 								publicKey_e = arr[1];
-								//console.log(isKeyCorrect(3149));
 						}
 				}
 			};
