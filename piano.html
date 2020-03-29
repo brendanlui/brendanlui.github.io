@@ -588,7 +588,7 @@
 						for (let [key, value] of tempoMap) {
 								if(key <= startTime){
 										if(tempoArr[count] == key){
-												if(tempoMap.size < count + 1){
+												if(count + 1 < tempoMap.size){
 														keyNext = tempoArr[count+1];
 														if(keyNext >= startTime){
 																midiToTxt += 'tempo_' + value + "_0_0,\n";
