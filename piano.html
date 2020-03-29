@@ -569,17 +569,23 @@
 						var tempArr = decodeMidiDataArr[i].split(" On ");
 						var startTime = tempArr[0];
 						var addTime = 0;
-						var noteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
+						var noteAndOctave = "";
+						if(tempArr[1].includes(" n=")){
+								tempArr[1].split(" n=")[1].split(" v=")[0];
+						}
 						var note = "";
 						var octave = "";
 						var duration = 2;
 
 						//tempo start
-						for (let [key, value] of tempoMap) {
-								if(key >= startTime){
-										midiToTxt += 'tempo_' + value + "_0_0,\n";
-										break;
+						if(noteAndOctave == ""){
+								for (let [key, value] of tempoMap) {
+										if(key >= startTime){
+												midiToTxt += 'tempo_' + value + "_0_0,\n";
+												break;
+										}
 								}
+								continue;
 						}
 						//tempo end
 
