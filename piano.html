@@ -365,10 +365,10 @@
 							}
 							startTime += addTime;
 							addTime = temp_3 * (4000 / speed);
-
+							
 							//tempo start
 							if("tempo" == tempArr[0].trim()){
-									speed = Math.round((tempArr[1] / 800000 + Number.EPSILON) * 1000) / 1000;
+									speed = speed * tempArr[1] / 800000;
 									continue;
 							}
 							//tempo end
