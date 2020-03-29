@@ -330,6 +330,7 @@
 	var leftHandOctave = 4;
 	var rightHandOctave = 4;
 	var speed = 1;
+	var speedChanged = 1;
 	function loadText(text){
 			clearAllTimeout();
 			noteCount = 0;
@@ -344,6 +345,7 @@
 									Synth.setSampleRate(headerArr[0].trim());
 									Synth.setVolume(headerArr[1].trim());
 									speed = headerArr[2].trim();
+									speedChanged = speed;
 							}
 							text = headerFooterArr[1].trim();
 					}
@@ -364,11 +366,11 @@
 								}
 							}
 							startTime += addTime;
-							addTime = temp_3 * (4000 / speed);
-							
+							addTime = temp_3 * (4000 / speedChanged);
+
 							//tempo start
 							if("tempo" == tempArr[0].trim()){
-									speed = speed * tempArr[1] / 800000;
+									speedChanged = speed * tempArr[1] / 800000;
 									continue;
 							}
 							//tempo end
