@@ -154,7 +154,7 @@
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
 			var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
-			var pieces = 64;
+			var pieces = 57;
 			var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
 			var start = 5;
@@ -168,7 +168,7 @@
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
-				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7)+'" onClick="pressKey(this.id)" points="';
+				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
 				svg += ",";
 				svg += Math.round((start_y + pianoPieceHeight * (i % 2) + Number.EPSILON) * 1000) / 1000;	//y1
@@ -194,7 +194,7 @@
 						break;
 					}
 					if(blackNum.includes(i % 7 + 1)){
-							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7)+'" onClick="pressKey(this.id)" points="';
+							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 							svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight * (i % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y1
