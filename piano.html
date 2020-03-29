@@ -542,6 +542,7 @@
 	}
 
 	var tempoMap = new Map();
+	var tempoArr = [];
 	function loadDecodeText(decodeMidiData){
 
 				var decodeMidiDataArr = decodeMidiData.split('\n');
@@ -557,10 +558,12 @@
 										var tempoStartTime = decodeMidiDataArr[i].split(" Tempo ")[0];
 										var newSpeed = decodeMidiDataArr[i].split(" Tempo ")[1];
 										tempoMap.set(tempoStartTime, newSpeed);
-										tempoMap = new Map([...tempoMap.entries()].sort((a, b) => a - b));
+										tempoArr[tempoArr.length] = tempoStartTime;
 								}
 						}
 				}
+				tempoMap = new Map([...tempoMap.entries()].sort((a, b) => a - b));
+				tempoArr.sort((a, b) => a - b);
 				//tempo end
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
@@ -584,9 +587,9 @@
 						var count = 0;
 						for (let [key, value] of tempoMap) {
 								if(key <= startTime){
-										if(tempoMap[count].key == key){
+										if(tempoArr[count] == key){
 												if(tempoMap.size < count + 1){
-														keyNext = tempoMap[count+1].key;
+														keyNext = tempoArr[count+1];
 														if(keyNext >= startTime){
 																midiToTxt += 'tempo_' + value + "_0_0,\n";
 																break;
