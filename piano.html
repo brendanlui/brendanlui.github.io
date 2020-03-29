@@ -535,6 +535,7 @@
 	}
 
 	var defaultSpeed = 0;
+	var tempoCount = 0;
 	function loadDecodeText(decodeMidiData){
 
 				var decodeMidiDataArr = decodeMidiData.split('\n');
@@ -548,12 +549,13 @@
 								if(decodeMidiDataArr[i].split(" Tempo ").length == 2){
 										var newSpeed = decodeMidiDataArr[i].split(" Tempo ")[1];
 										defaultSpeed += parseInt(decodeMidiDataArr[i].split(" Tempo ")[1]);
+										tempoCount++;
 								}
 						}
 				}
 				//tempo end
 				midiToTxt += "20000,0.3,"
-									+ defaultSpeed / decodeMidiDataArr.length / 300000
+									+ defaultSpeed / tempoCount / 300000
 									+ " //sample rate (4000-44100), volume, speed\n";
 
 				var lastTempo = 0;
