@@ -86,9 +86,11 @@
 
 	var btnStop = document.getElementById("btnStop");
 	btnStop.onclick = function() {
+			btnStop.classList.add("active");
 			btnStop.disabled = true;
 			btnStop.classList.remove("abled");
 			btnStop.classList.add("disabled");
+			clearAllTimeout();
 	}
 	//btn click end
 
