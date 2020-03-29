@@ -581,12 +581,18 @@
 						var duration = 2;
 
 						//tempo start
+						var count = 0;
 						for (let [key, value] of tempoMap) {
-								if(key >= startTime){
-										midiToTxt += 'tempo_' + value + "_0_0,\n";
-										tempoMap.delete(key);
-										break;
+								if(key <= startTime){
+										if(tempoMap.keys()[count] == key){
+												keyNext = tempoMap.keys()[count+1];
+												if(keyNext != null && keyNext >= startTime){
+														midiToTxt += 'tempo_' + value + "_0_0,\n";
+														break;
+												}
+										}
 								}
+								count++;
 						}
 						//tempo end
 
