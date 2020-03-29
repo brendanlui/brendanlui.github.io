@@ -541,24 +541,7 @@
 
 				var midiToTxt = "";
 				var lastStartTime = 0;
-
-				//tempo start
-				var defaultSpeed = 0;
-				var tempoCount = 0;
-				for(i = 0; i < decodeMidiDataArr.length; i++){
-						if(decodeMidiDataArr[i].includes(" Tempo ")){
-								if(decodeMidiDataArr[i].split(" Tempo ").length == 2){
-										var newSpeed = decodeMidiDataArr[i].split(" Tempo ")[1];
-										defaultSpeed += parseInt(decodeMidiDataArr[i].split(" Tempo ")[1]);
-										tempoCount++;
-								}
-						}
-				}
-				//tempo end
-
-				midiToTxt += "20000,0.3,"
-									+ defaultSpeed / tempoCount / 100000
-									+ " //sample rate (4000-44100), volume, speed\n";
+				midiToTxt += "20000,0.3,3 sample rate (4000-44100), volume, speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
