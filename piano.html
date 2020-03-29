@@ -550,7 +550,7 @@
 				var decodeMidiDataArr = decodeMidiData.split('\n');
 
 				var midiToTxt = "";
-				midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
+				midiToTxt += "20000,0.3,1.2 //sample rate (4000-44100), volume, speed\n";
 				var lastStartTime = 0;
 
 				//tempo start
@@ -580,7 +580,7 @@
 						var noteAndOctave = "";
 						if(tempArr.length > 1){
 								noteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
-								startTime = tempArr[0];
+								startTime = parseInt(tempArr[0]);
 						}
 						var note = "";
 						var octave = "";
@@ -589,14 +589,15 @@
 						//tempo start
 						var count = 0;
 						for (let [key, value] of tempoMap) {
+								key = parseInt(key);
 								if(key <= startTime){
-										if(tempoArr[count] == key){
+										if(parseInt(tempoArr[count]) == key){
 												if(count + 1 < tempoMap.size){
-														keyNext = tempoArr[count+1];
+														keyNext = parseInt(tempoArr[count+1]);
 														if(keyNext >= startTime){
-																	if(lastTempo != value){
+																	if(lastTempo != parseInt(value)){
 																			midiToTxt += 'tempo_' + value + "_0_0,\n";
-																			lastTempo = value;
+																			lastTempo = parseInt(value);
 																	}
 																	break;
 														}
