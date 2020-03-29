@@ -550,7 +550,8 @@
 				midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
 				var lastStartTime = 0;
 				for(i = 0; i < decodeMidiDataArr.length; i++){
-						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
+						if((!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0"))
+								&&  !decodeMidiDataArr[i].includes(" Tempo ") ){
 								continue;
 						}
 
