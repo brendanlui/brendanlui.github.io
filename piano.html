@@ -557,7 +557,7 @@
 				//tempo end
 
 				midiToTxt += "20000,0.3,"
-									+ Math.round(defaultSpeed / tempoCount / 6000000 + Number.EPSILON) * 10000 / 10000
+									+ defaultSpeed / tempoCount / 6000000
 									+ " //sample rate (4000-44100), volume, speed\n";
 
 				var lastTempo = 0;
