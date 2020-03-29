@@ -397,6 +397,12 @@
 
 				var totalOctave = parseInt(leftHandOctave) + parseInt(rightHandOctave);
 				var polygon = document.getElementById("key_"+note+"_"+octave);
+
+				if(polygon == null){
+						console.log("key_"+note+"_"+octave);
+						return;
+				}
+
 				var xValue = 0;
 				var yValue = 0;
 				var yValueSharp = 0;
