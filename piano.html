@@ -566,6 +566,7 @@
 				tempoArr.sort((a, b) => a - b);
 				//tempo end
 
+				var lastTempo = 0;
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
 								continue;
@@ -591,8 +592,11 @@
 												if(count + 1 < tempoMap.size){
 														keyNext = tempoArr[count+1];
 														if(keyNext >= startTime){
-																midiToTxt += 'tempo_' + value + "_0_0,\n";
-																break;
+																	if(lastTempo != value){
+																			midiToTxt += 'tempo_' + value + "_0_0,\n";
+																			lastTempo = value;
+																	}
+																	break;
 														}
 												}
 										}
