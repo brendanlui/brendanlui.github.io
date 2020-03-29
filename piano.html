@@ -330,7 +330,6 @@
 	var leftHandOctave = 4;
 	var rightHandOctave = 4;
 	var speed = 1;
-	var speedChanged = 1;
 	function loadText(text){
 			clearAllTimeout();
 			noteCount = 0;
@@ -345,7 +344,6 @@
 									Synth.setSampleRate(headerArr[0].trim());
 									Synth.setVolume(headerArr[1].trim());
 									speed = headerArr[2].trim();
-									speedChanged = speed;
 							}
 							text = headerFooterArr[1].trim();
 					}
@@ -366,14 +364,7 @@
 								}
 							}
 							startTime += addTime;
-							addTime = temp_3 * (4000 / speedChanged);
-
-							//tempo start
-							if("tempo" == tempArr[0].trim()){
-									speedChanged = speed * tempArr[1] / 800000;
-									continue;
-							}
-							//tempo end
+							addTime = temp_3 * (4000 / speed);
 
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
 					}
@@ -543,30 +534,27 @@
 					xmlhttp.send();
 	}
 
-	var tempoMap = new Map();
-	var tempoArr = [];
+	var defaultSpeed = 0;
 	function loadDecodeText(decodeMidiData){
 
 				var decodeMidiDataArr = decodeMidiData.split('\n');
 
 				var midiToTxt = "";
-				midiToTxt += "20000,0.3,1.2 //sample rate (4000-44100), volume, speed\n";
 				var lastStartTime = 0;
 
 				//tempo start
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(decodeMidiDataArr[i].includes(" Tempo ")){
 								if(decodeMidiDataArr[i].split(" Tempo ").length == 2){
-										var tempoStartTime = decodeMidiDataArr[i].split(" Tempo ")[0];
 										var newSpeed = decodeMidiDataArr[i].split(" Tempo ")[1];
-										tempoMap.set(tempoStartTime, newSpeed);
-										tempoArr[tempoArr.length] = tempoStartTime;
+										defaultSpeed += parseInt(decodeMidiDataArr[i].split(" Tempo ")[1]);
 								}
 						}
 				}
-				tempoMap = new Map([...tempoMap.entries()].sort((a, b) => a - b));
-				tempoArr.sort((a, b) => a - b);
 				//tempo end
+				midiToTxt += "20000,0.3,"
+									+ defaultSpeed / decodeMidiDataArr.length / 300000
+									+ " //sample rate (4000-44100), volume, speed\n";
 
 				var lastTempo = 0;
 				for(i = 0; i < decodeMidiDataArr.length; i++){
@@ -585,28 +573,6 @@
 						var note = "";
 						var octave = "";
 						var duration = 2;
-
-						//tempo start
-						var count = 0;
-						for (let [key, value] of tempoMap) {
-								key = parseInt(key);
-								if(key <= startTime){
-										if(parseInt(tempoArr[count]) == key){
-												if(count + 1 < tempoMap.size){
-														keyNext = parseInt(tempoArr[count+1]);
-														if(keyNext >= startTime){
-																	if(lastTempo != parseInt(value)){
-																			midiToTxt += 'tempo_' + value + "_0_0,\n";
-																			lastTempo = parseInt(value);
-																	}
-																	break;
-														}
-												}
-										}
-								}
-								count++;
-						}
-						//tempo end
 
 						if(lastStartTime == 0){
 								lastStartTime = startTime;
