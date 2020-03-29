@@ -38,7 +38,7 @@
 	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 1');"class="other">Secret - Piano Battle 1</a>
 	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 2');"class="other">Secret - Piano Battle 2</a>
 	  <a class="pianoList" onclick="loadSrc('Secret - Time Travel Theme');"class="other">Secret - Time Travel Theme</a>
-	  <a class="pianoList" onclick='loadSrc("Mariage d Amour");' class="other">Mariage d'Amour</a>
+	  <a class="pianoList" onclick='loadSrc("Mariage d Amour");' class="other">Mariage d Amour</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
@@ -535,8 +535,6 @@
 					xmlhttp.send();
 	}
 
-	var defaultSpeed = 0;
-	var tempoCount = 0;
 	function loadDecodeText(decodeMidiData){
 
 				var decodeMidiDataArr = decodeMidiData.split('\n');
@@ -545,6 +543,8 @@
 				var lastStartTime = 0;
 
 				//tempo start
+				var defaultSpeed = 0;
+				var tempoCount = 0;
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(decodeMidiDataArr[i].includes(" Tempo ")){
 								if(decodeMidiDataArr[i].split(" Tempo ").length == 2){
@@ -557,7 +557,7 @@
 				//tempo end
 
 				midiToTxt += "20000,0.3,"
-									+ defaultSpeed / tempoCount / 500000
+									+ defaultSpeed / tempoCount / 150000
 									+ " //sample rate (4000-44100), volume, speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
