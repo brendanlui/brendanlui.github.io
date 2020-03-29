@@ -557,7 +557,7 @@
 										var tempoStartTime = decodeMidiDataArr[i].split(" Tempo ")[0];
 										var newSpeed = decodeMidiDataArr[i].split(" Tempo ")[1];
 										tempoMap.set(tempoStartTime, newSpeed);
-										tempoMap = new Map([...tempoMap.entries()].sort());
+										tempoMap = new Map([...tempoMap.entries()].sort((a, b) => a - b));
 								}
 						}
 				}
@@ -581,15 +581,12 @@
 						var duration = 2;
 
 						//tempo start
-						if(noteAndOctave == ""){
-								for (let [key, value] of tempoMap) {
-										if(key >= startTime){
-												midiToTxt += 'tempo_' + value + "_0_0,\n";
-												tempoMap.delete(key);
-												break;
-										}
+						for (let [key, value] of tempoMap) {
+								if(key >= startTime){
+										midiToTxt += 'tempo_' + value + "_0_0,\n";
+										tempoMap.delete(key);
+										break;
 								}
-								continue;
 						}
 						//tempo end
 
