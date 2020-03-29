@@ -38,7 +38,7 @@
 	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 1');"class="other">Secret - Piano Battle 1</a>
 	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 2');"class="other">Secret - Piano Battle 2</a>
 	  <a class="pianoList" onclick="loadSrc('Secret - Time Travel Theme');"class="other">Secret - Time Travel Theme</a>
-	  <a class="pianoList" onclick="loadSrc('Mariage d'Amour');"class="other">Mariage d'Amour</a>
+	  <a class="pianoList" onclick='loadSrc("Mariage d&rsquo;Amour");' class="other">Mariage d'Amour</a>
 	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
@@ -557,7 +557,7 @@
 				//tempo end
 
 				midiToTxt += "20000,0.3,"
-									+ Math.round(defaultSpeed / tempoCount / 15000000 + Number.EPSILON) * 100 / 100
+									+ Math.round(defaultSpeed / tempoCount / 6000000 + Number.EPSILON) * 10000 / 10000
 									+ " //sample rate (4000-44100), volume, speed\n";
 
 				var lastTempo = 0;
