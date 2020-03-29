@@ -76,6 +76,9 @@
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
 			loadText(document.getElementById('fileContent').textContent);
+			btnStop.disabled = false;
+			btnStop.classList.remove("disabled");
+			btnStop.classList.add("abled");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 100);
@@ -83,11 +86,9 @@
 
 	var btnStop = document.getElementById("btnStop");
 	btnStop.onclick = function() {
-			btnStop.classList.add("active");
-			clearAllTimeout();
-			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
-					btnStop.classList.remove("active");
-			}, 100);
+			btnStop.disabled = true;
+			btnStop.classList.remove("abled");
+			btnStop.classList.add("disabled");
 	}
 	//btn click end
 
