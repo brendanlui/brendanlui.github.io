@@ -55,6 +55,7 @@
 	<!--TODO-->
 	<div id="buttonBox">
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
+			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -74,9 +75,18 @@
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
-			loadFile();
+			loadText(document.getElementById('fileContent').textContent);
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
+			}, 100);
+	}
+
+	var btnStop = document.getElementById("btnStop");
+	btnStop.onclick = function() {
+			btnStop.classList.add("active");
+			clearAllTimeout();
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnStop.classList.remove("active");
 			}, 100);
 	}
 	//btn click end
@@ -92,6 +102,9 @@
 			btnPlay.classList.remove("disabled");
 			btnPlay.classList.add("abled");
 			btnPlay.innerHTML = "Play : " + currentPlaySongName;
+			btnStop.disabled = false;
+			btnStop.classList.remove("disabled");
+			btnStop.classList.add("abled");
 	}
 
 	function detectChrome(){
@@ -111,6 +124,7 @@
 				location.replace("/");
 		}else{
 				btnPlay.classList.add("disabled");
+				btnStop.classList.add("disabled");
 				displayPiano();
 		}
 	}
@@ -280,7 +294,12 @@
 
 	function handleFileLoad(event){
 			currentPlaySongName = "Your Uploaded file";
-			loadText(event.target.result);
+			if(event.target.result.includes("//sample rate (4000-44100), volume, speed")){
+					loadText(event.target.result);
+			}else if(event.target.result.includes("MFile")){
+					loadDecodeText(event.target.result);
+					loadText(document.getElementById('fileContent').textContent);
+			}
 			reset();
 	}
 
@@ -290,10 +309,6 @@
 			document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 			Synth.setSampleRate(20000);
 			Synth.setVolume(0.3);
-	}
-
-	function loadFile(){
-			loadText(document.getElementById('fileContent').textContent);
 	}
 
 	function loadSrc(type){
@@ -510,45 +525,50 @@
 						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 								var string = [];
 								var decodeMidiData = xmlhttp.responseText;
-								var decodeMidiDataArr = decodeMidiData.split('\n');
-
-								var midiToTxt = "";
-								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
-								var lastStartTime = 0;
-								for(i = 0; i < decodeMidiDataArr.length; i++){
-										if(!decodeMidiDataArr[i].includes(" On ")){
-												continue;
-										}
-
-										var tempArr = decodeMidiDataArr[i].split(" On ");
-										var startTime = tempArr[0];
-										var addTime = 0;
-										var noteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
-										var note = "";
-										var octave = "";
-										var duration = 2;
-
-										if(lastStartTime == 0){
-												lastStartTime = startTime;
-										}
-
-										addTime = (startTime - lastStartTime);
-										if(addTime != 0){
-												addTime += "/640";
-										}
-
-										lastStartTime = startTime;
-										note = pianoKeyArr[noteAndOctave % 12];
-										octave = parseInt(noteAndOctave / 12);
-										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
-								}
-
-								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
+								loadDecodeText(decodeMidiData);
 								loadText(document.getElementById('fileContent').textContent);
 						}
 					};
 					xmlhttp.open("GET","./music/decodeMidi/"+type+".txt",true);
 					xmlhttp.send();
+	}
+
+	function loadDecodeText(decodeMidiData){
+
+				var decodeMidiDataArr = decodeMidiData.split('\n');
+
+				var midiToTxt = "";
+				midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
+				var lastStartTime = 0;
+				for(i = 0; i < decodeMidiDataArr.length; i++){
+						if(!decodeMidiDataArr[i].includes(" On ")){
+								continue;
+						}
+
+						var tempArr = decodeMidiDataArr[i].split(" On ");
+						var startTime = tempArr[0];
+						var addTime = 0;
+						var noteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
+						var note = "";
+						var octave = "";
+						var duration = 2;
+
+						if(lastStartTime == 0){
+								lastStartTime = startTime;
+						}
+
+						addTime = (startTime - lastStartTime);
+						if(addTime != 0){
+								addTime += "/640";
+						}
+
+						lastStartTime = startTime;
+						note = pianoKeyArr[noteAndOctave % 12];
+						octave = parseInt(noteAndOctave / 12);
+						midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
+				}
+
+				document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
 	}
 
 	function clearAllTimeout(){
