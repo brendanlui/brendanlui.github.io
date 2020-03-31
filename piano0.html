@@ -394,7 +394,7 @@
 			var noteArr = text.split(',');
 			var startTime = 1000;
 			var addTime = 0;
-			var personIndex = 1;
+			var personIndex = 2;
 			for(i = 0; i < noteArr.length; i++){
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
@@ -410,7 +410,7 @@
 							addTime = temp_3 * (4000 / speed);
 
 							if(temp_3 < 0){
-									personIndex = 2;
+									personIndex = 1;
 							}
 
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime, personIndex);
