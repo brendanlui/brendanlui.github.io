@@ -424,7 +424,7 @@
 							startTime += addTime;
 							addTime = temp_3 * (4000 / speed);
 
-							if(temp_3 < 0){		//left hand
+							if(temp_3 < 0 && noOfPerson > 1){		//another person
 									personIndex++;
 									if(personIndex > 2){
 											personIndex = 1;
