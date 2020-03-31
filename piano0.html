@@ -458,11 +458,11 @@
 									// get timeDiff from play to another person start
 							 		end = new Date().getTime();
 									timeDiff = end - start;
-									console.log(timeDiff);
+									//console.log(timeDiff);
 									// get timeDiff from play to another person end
 							}
 
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime, personIndex);
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex);
 					}
 			}
 	}
