@@ -315,7 +315,7 @@
 
 	function pressKey(id){
 			var idArr = id.split('_');
-			playOneNote(idArr[1], idArr[2], 2, 0);
+			playOneNote(idArr[1], idArr[2], 2, 0, 1);
 	}
 
 	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
@@ -359,13 +359,13 @@
 				xmlhttp.send();
 	}
 
-	var noteCount = 0;
+	var noteCount = [0, 0];
 	var leftHandOctave = 4;
 	var rightHandOctave = 4;
 	var speed = 1;
 	function loadText(text){
 			clearAllTimeout();
-			noteCount = 0;
+			noteCount = [0, 0];
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
 			var seperate = '//sample rate (4000-44100), volume, speed\n';
@@ -385,6 +385,7 @@
 			var noteArr = text.split(',');
 			var startTime = 1000;
 			var addTime = 0;
+			var personIndex = 1;
 			for(i = 0; i < noteArr.length; i++){
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
@@ -399,7 +400,11 @@
 							startTime += addTime;
 							addTime = temp_3 * (4000 / speed);
 
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime);
+							if(temp_3 < 0){
+									personIndex = 2;
+							}
+
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime, personIndex);
 					}
 			}
 	}
@@ -438,7 +443,7 @@
 				}
 	}
 
-	function moveHand(note, octave, left){
+	function moveHand(note, octave, left, personIndex){
 				if(left){
 						leftHandOctave = parseInt(octave);
 				}else{
@@ -479,17 +484,17 @@
 				}
 
 				if(left){
-						leftHand[0].x1.baseVal.value = xValue;
-						leftHand[0].y1.baseVal.value = yValue;
+						leftHand[personIndex - 1].x1.baseVal.value = xValue;
+						leftHand[personIndex - 1].y1.baseVal.value = yValue;
 				}else{
-						rightHand[0].x1.baseVal.value = xValue;
-						rightHand[0].y1.baseVal.value = yValue;
+						rightHand[personIndex - 1].x1.baseVal.value = xValue;
+						rightHand[personIndex - 1].y1.baseVal.value = yValue;
 				}
 
 				if(firstTime){
-						centerX = personBodyCenter[0].x1.baseVal.value;
-						leftLegX = leftLeg[0].x1.baseVal.value;
-						rightLegX = rightLeg[0].x1.baseVal.value;
+						centerX = personBodyCenter[personIndex - 1].x1.baseVal.value;
+						leftLegX = leftLeg[personIndex - 1].x1.baseVal.value;
+						rightLegX = rightLeg[personIndex - 1].x1.baseVal.value;
 						firstTime = false;
 				}
 
@@ -501,29 +506,29 @@
 				}
 
 				var moveDistance = (yHigh - yLow) * (avgSum - totalOctave) / 3;
-				personBodyCenter[0].x2.baseVal.value =	centerX - moveDistance;
-				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
-				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
-				head[0].cx.baseVal.value =	centerX -	moveDistance;
+				personBodyCenter[personIndex - 1].x2.baseVal.value =	centerX - moveDistance;
+				leftHand[personIndex - 1].x2.baseVal.value =	centerX - moveDistance;
+				rightHand[personIndex - 1].x2.baseVal.value =	centerX -	moveDistance;
+				head[personIndex - 1].cx.baseVal.value =	centerX -	moveDistance;
 
-				rightLeg[0].x1.baseVal.value = rightLegX - moveDistance / 10;
-				leftLeg[0].x1.baseVal.value = leftLegX -	moveDistance / 10;
-				personBodyRight[0].x2.baseVal.value = rightLegX -	moveDistance / 10;
-				personBodyRight[0].x1.baseVal.value = centerX -	moveDistance / 10;
-				personBodyLeft[0].x2.baseVal.value = leftLegX -	moveDistance / 10;
-				personBodyLeft[0].x1.baseVal.value = centerX -	moveDistance / 10;
-				personBodyCenter[0].x1.baseVal.value =	centerX - moveDistance / 10;
+				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX - moveDistance / 10;
+				leftLeg[personIndex - 1].x1.baseVal.value = leftLegX -	moveDistance / 10;
+				personBodyRight[personIndex - 1].x2.baseVal.value = rightLegX -	moveDistance / 10;
+				personBodyRight[personIndex - 1].x1.baseVal.value = centerX -	moveDistance / 10;
+				personBodyLeft[personIndex - 1].x2.baseVal.value = leftLegX -	moveDistance / 10;
+				personBodyLeft[personIndex - 1].x1.baseVal.value = centerX -	moveDistance / 10;
+				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX - moveDistance / 10;
 	}
 
 	var piano = Synth.createInstrument('piano');
-	function playOneNote(note, octave, duration, startTime){
+	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 						//use hand start
-						noteCount++;
-						if(noteCount % 2 == 0){
-								moveHand(note, octave, false);
+						noteCount[personIndex - 1]++;
+						if(noteCount[personIndex - 1] % 2 == 0){
+								moveHand(note, octave, false, personIndex);
 						}else{
-								moveHand(note, octave, true);
+								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
 						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
