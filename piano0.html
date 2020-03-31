@@ -413,7 +413,9 @@
 
 							if(temp_3 < 0){		//left hand
 									personIndex++;
-									personIndex = personIndex % 2;
+									if(personIndex > 2){
+											personIndex = 1;
+									}
 							}
 
 							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime, personIndex);
