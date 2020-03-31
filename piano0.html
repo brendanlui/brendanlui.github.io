@@ -429,26 +429,28 @@
 
 	function resetPersonPosition(numPeople){
 				var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
-				for(i = 0; i < numPeople; i++){
-						var negOne = -1;
-						if(i % 2 == 0){
-								negOne = 1;
+				if(numPeople > 1){
+						for(i = 0; i < numPeople; i++){
+								var negOne = -1;
+								if(i % 2 == 0){
+										negOne = 1;
+								}
+								personBodyCenter[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								personBodyCenter[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								personBodyRight[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								personBodyRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								personBodyLeft[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								personBodyLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								leftHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								leftHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								rightHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								rightHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								head[i].cx.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								rightLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								rightLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
+								leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 5;
 						}
-						personBodyCenter[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						personBodyCenter[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						personBodyRight[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						personBodyRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						personBodyLeft[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						personBodyLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						leftHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						leftHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						rightHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						rightHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						head[i].cx.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						rightLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						rightLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
-						leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
 				}
 	}
 
