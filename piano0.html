@@ -299,7 +299,7 @@
 
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
-			resetPosition(noOfPerson);
+			resetPersonPosition(noOfPerson);
 	}
 
 	function pressKey(id){
@@ -402,22 +402,24 @@
 	var rightLeg = document.getElementsByClassName("rightLeg");
 	var leftLeg = document.getElementsByClassName("leftLeg");
 
-	function resetPosition(numPeople){
-				personBodyCenter[0].x1.baseVal.value /=	numPeople;
-				personBodyCenter[0].x2.baseVal.value /=	numPeople;
-				personBodyRight[0].x1.baseVal.value /=	numPeople;
-				personBodyRight[0].x2.baseVal.value /=	numPeople;
-				personBodyLeft[0].x1.baseVal.value /=	numPeople;
-				personBodyLeft[0].x2.baseVal.value /=	numPeople;
-				leftHand[0].x1.baseVal.value /=	numPeople;
-				leftHand[0].x2.baseVal.value /=	numPeople;
-				rightHand[0].x1.baseVal.value /=	numPeople;
-				rightHand[0].x2.baseVal.value /=	numPeople;
-				head[0].cx.baseVal.value /=	numPeople;
-				rightLeg[0].x1.baseVal.value /=	numPeople;
-				rightLeg[0].x2.baseVal.value /=	numPeople;
-				leftLeg[0].x1.baseVal.value /=	numPeople;
-				leftLeg[0].x2.baseVal.value /=	numPeople;
+	function resetPersonPosition(numPeople){
+				for(i = 0; i < numPeople; i++){
+						personBodyCenter[i].x1.baseVal.value /=	numPeople * (i + 1);
+						personBodyCenter[i].x2.baseVal.value /=	numPeople * (i + 1);
+						personBodyRight[i].x1.baseVal.value /=	numPeople * (i + 1);
+						personBodyRight[i].x2.baseVal.value /=	numPeople * (i + 1);
+						personBodyLeft[i].x1.baseVal.value /=	numPeople * (i + 1);
+						personBodyLeft[i].x2.baseVal.value /=	numPeople * (i + 1);
+						leftHand[i].x1.baseVal.value /=	numPeople * (i + 1);
+						leftHand[i].x2.baseVal.value /=	numPeople * (i + 1);
+						rightHand[i].x1.baseVal.value /=	numPeople * (i + 1);
+						rightHand[i].x2.baseVal.value /=	numPeople * (i + 1);
+						head[i].cx.baseVal.value /=	numPeople * (i + 1);
+						rightLeg[i].x1.baseVal.value /=	numPeople * (i + 1);
+						rightLeg[i].x2.baseVal.value /=	numPeople * (i + 1);
+						leftLeg[i].x1.baseVal.value /=	numPeople * (i + 1);
+						leftLeg[i].x2.baseVal.value /=	numPeople * (i + 1);
+				}
 	}
 
 	function moveHand(note, octave, left){
