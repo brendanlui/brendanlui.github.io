@@ -143,7 +143,7 @@
 			switchValue++;
 			switchValue = switchValue % 2;
 			btnSwitchPersonHand.classList.add("active");
-			resetPersonPosition(noOfPerson);
+			displayPiano();
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
 			}, 100);
