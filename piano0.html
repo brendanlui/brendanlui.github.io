@@ -372,6 +372,7 @@
 	var noteCount = [0, 0];
 	var leftHandOctave = [4, 4];
 	var rightHandOctave = [4, 4];
+	var avgSumOctaveByPerson = [6, 10];
 	var speed = 1;
 	function loadText(text){
 			clearAllTimeout();
@@ -511,10 +512,8 @@
 				}
 
 				var avgSum = 8
-				if(noOfPerson == 2){
-						avgSum = 4;
-				}else if(noOfPerson == 1){
-						avgSum = 8;
+				if(noOfPerson >= 2){
+						avgSum = avgSumOctaveByPerson[personIndex - 1];
 				}
 
 				var moveDistance = (yHigh - yLow) * (avgSum - totalOctave) / 3;
