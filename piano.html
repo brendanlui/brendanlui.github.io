@@ -91,17 +91,9 @@
 	var btnReleaseTimeout = [];
 	var notePlayTimeout = [];
 
-	// get timeDiff from play to another person start
-	var start = new Date().getTime();
-	var end = new Date().getTime();
-	var timeDiff = end - start;
-	// get timeDiff from play to another person end
-
 	//btn click start
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
-			timeDiff = 0;
-		 	start = new Date().getTime();
 			btnPlay.classList.add("active");
 			loadText(document.getElementById('fileContent').textContent);
 			btnStop.disabled = false;
@@ -455,14 +447,9 @@
 									if(personIndex > 2){
 											personIndex = 1;
 									}
-									// get timeDiff from play to another person start
-							 		end = new Date().getTime();
-									timeDiff = end - start;
-									//console.log(timeDiff);
-									// get timeDiff from play to another person end
 							}
 
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex);
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime, personIndex);
 					}
 			}
 	}
