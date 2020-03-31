@@ -165,13 +165,13 @@
 	var centerX = [0, 0];
 	var rightLegX = [0, 0];
 	var leftLegX = [0, 0];
-	var firstTime = true;
+	var firstTime = [true, true];
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
 			rightLegX = [0, 0];
 			leftLegX = [0, 0];
-			firstTime = true;
+			firstTime = [true, true];
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
 			//var width = window.innerWidth * 0.8;
@@ -508,7 +508,7 @@
 						centerX[personIndex - 1] = personBodyCenter[personIndex - 1].x1.baseVal.value;
 						leftLegX[personIndex - 1] = leftLeg[personIndex - 1].x1.baseVal.value;
 						rightLegX[personIndex - 1] = rightLeg[personIndex - 1].x1.baseVal.value;
-						firstTime = false;
+						firstTime[personIndex - 1] = false;
 				}
 
 				var avgSum = 8
