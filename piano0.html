@@ -115,6 +115,7 @@
 	var noOfPerson = 1;
 	var maxPlayer = 2;
 	btnChangePerson.onclick = function() {
+			noOfPerson++;
 			noOfPerson = (noOfPerson + 1) % maxPlayer;
 			if(noOfPerson == 0){
 					noOfPerson++;
