@@ -134,7 +134,7 @@
 					btnSwitchPersonHand.classList.add("disabled");
 					btnSwitchPersonHand.disabled = true;
 			}
-			resetPersonPosition(noOfPerson);
+			displayPiano();
 			btnChangePerson.innerHTML = "No. of Player : " + noOfPerson;
 	}
 
@@ -142,8 +142,8 @@
 	btnSwitchPersonHand.onclick = function() {
 			switchValue++;
 			switchValue = switchValue % 2;
+			displayPiano();	//brendan
 			btnSwitchPersonHand.classList.add("active");
-			displayPiano();
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
 			}, 100);
