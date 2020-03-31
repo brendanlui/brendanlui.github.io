@@ -116,9 +116,8 @@
 	var maxPlayer = 2;
 	btnChangePerson.onclick = function() {
 			noOfPerson++;
-			noOfPerson = (noOfPerson + 1) % maxPlayer;
-			if(noOfPerson == 0){
-					noOfPerson++;
+			if(noOfPerson > maxPlayer){
+					noOfPerson = 1;
 			}
 			displayPiano();
 			btnChangePerson.innerHTML = "No. of Player : " + noOfPerson;
