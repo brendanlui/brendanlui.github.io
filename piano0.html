@@ -52,7 +52,7 @@
 		<a class="pianoList" onclick='loadSrc("Richard Clayderman - A Comme Amour");' class="other">Richard Clayderman - A Comme Amour</a>
 		<a class="pianoList" onclick='loadSrc("Show Yourself - Frozen 2");' class="other">Show Yourself - Frozen 2</a>
 		<a class="pianoList" onclick='loadSrc("Bach - Prelude No. 6");' class="other">Bach - Prelude No. 6</a>
-		
+
 		<a class="pianoList" onclick='loadSrc("Victory - Two Steps From Hell");' class="other">Victory - Two Steps From Hell</a>
 		<a class="pianoList" onclick='loadSrc("Two Steps From Hell - Heart of Courage");' class="other">Two Steps From Hell - Heart of Courage</a>
 		<a class="pianoList" onclick='loadSrc("Flight of the Silverbird - Two Steps From Hell");' class="other">Flight of the Silverbird - Two Steps From Hell</a>
@@ -397,6 +397,43 @@
 	var personBodyLeft = document.getElementsByClassName("personBodyLeft");
 	var rightLeg = document.getElementsByClassName("rightLeg");
 	var leftLeg = document.getElementsByClassName("leftLeg");
+	var noOfPerson = 2;
+
+	function resetPosition(num){
+			if(num == 2){
+						personBodyCenter[0].x1.baseVal.value /=	2;
+						personBodyCenter[0].x2.baseVal.value /=	2;
+						personBodyRight[0].x1.baseVal.value /=	2;
+						personBodyRight[0].x2.baseVal.value /=	2;
+						personBodyLeft[0].x1.baseVal.value /=	2;
+						personBodyLeft[0].x2.baseVal.value /=	2;
+						leftHand[0].x1.baseVal.value /=	2;
+						leftHand[0].x2.baseVal.value /=	2;
+						rightHand[0].x1.baseVal.value /=	2;
+						rightHand[0].x2.baseVal.value /=	2;
+						head[0].cx.baseVal.value /=	2;
+						rightLeg[0].x1.baseVal.value /=	2;
+						rightLeg[0].x2.baseVal.value /=	2;
+						leftLeg[0].x1.baseVal.value /=	2;
+						leftLeg[0].x2.baseVal.value /=	2;
+			}else if(num == 1)
+						personBodyCenter[0].x1.baseVal.value *=	2;
+						personBodyCenter[0].x2.baseVal.value *=	2;
+						personBodyRight[0].x1.baseVal.value *=	2;
+						personBodyRight[0].x2.baseVal.value *=	2;
+						personBodyLeft[0].x1.baseVal.value *=	2;
+						personBodyLeft[0].x2.baseVal.value *=	2;
+						leftHand[0].x1.baseVal.value *=	2;
+						leftHand[0].x2.baseVal.value *=	2;
+						rightHand[0].x1.baseVal.value *=	2;
+						rightHand[0].x2.baseVal.value *=	2;
+						head[0].cx.baseVal.value *=	2;
+						rightLeg[0].x1.baseVal.value *=	2;
+						rightLeg[0].x2.baseVal.value *=	2;
+						leftLeg[0].x1.baseVal.value *=	2;
+						leftLeg[0].x2.baseVal.value *=	2;
+	}
+
 	function moveHand(note, octave, left){
 				if(left){
 						leftHandOctave = parseInt(octave);
@@ -451,7 +488,15 @@
 						rightLegX = rightLeg[0].x1.baseVal.value;
 						firstTime = false;
 				}
-				var moveDistance = (yHigh - yLow) * (8 - totalOctave) / 3;
+
+				var avgSum = 8
+				if(noOfPerson == 2){
+						avgSum = 4;
+				}else if(noOfPerson == 1){
+						avgSum = 8;
+				}
+
+				var moveDistance = (yHigh - yLow) * (avgSum - totalOctave) / 3;
 				personBodyCenter[0].x2.baseVal.value =	centerX - moveDistance;
 				leftHand[0].x2.baseVal.value =	centerX - moveDistance;
 				rightHand[0].x2.baseVal.value =	centerX -	moveDistance;
