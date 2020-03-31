@@ -236,12 +236,20 @@
 			}
 
 			// person edit start
+			var personColor = "black";
 			for(i = 1; i <= noOfPerson; i++){
+						if(noOfPerson >= 2){
+								if(i % 2 == 0){
+										personColor = "#00b1ff";
+								}else{
+										personColor = "#ff3e3e";
+								}
+						}
 						svg += '<circle cx="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" cy="'
 													+ Math.round(start_y - height * 5 / 6 + Number.EPSILON) * 1000 / 1000
-													+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" class="head person"/>';
+													+ '" r="'+(height/2)+'" stroke="'+personColor+'" stroke-width="2" fill="white" class="head person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -250,7 +258,7 @@
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="leftHand person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="leftHand person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -259,7 +267,7 @@
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="rightHand person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="rightHand person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -268,7 +276,7 @@
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyCenter person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="personBodyCenter person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -277,7 +285,7 @@
 													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyRight person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="personBodyRight person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -286,7 +294,7 @@
 													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyLeft person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="personBodyLeft person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -295,7 +303,7 @@
 													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="leftLeg person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="leftLeg person"/>';
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -304,7 +312,7 @@
 													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
 													+ '" y2="'
 													+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-													+ '" style="stroke:#000000;stroke-width:2;" class="rightLeg person"/>';
+													+ '" style="stroke:'+personColor+';stroke-width:2;" class="rightLeg person"/>';
 			}
 			// person edit end
 
@@ -425,21 +433,21 @@
 						if(i % 2 == 0){
 								negOne = 1;
 						}
-						personBodyCenter[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						personBodyCenter[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						personBodyRight[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						personBodyRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						personBodyLeft[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						personBodyLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						leftHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						leftHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						rightHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						rightHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						head[i].cx.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						rightLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						rightLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
-						leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 8;
+						personBodyCenter[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						personBodyCenter[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						personBodyRight[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						personBodyRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						personBodyLeft[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						personBodyLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						leftHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						leftHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						rightHand[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						rightHand[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						head[i].cx.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						rightLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						rightLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
+						leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 6;
 				}
 	}
 
