@@ -128,9 +128,11 @@
 			if(noOfPerson > 1){
 					btnSwitchPersonHand.classList.remove("disabled");
 					btnSwitchPersonHand.classList.add("abled");
+					btnSwitchPersonHand.disabled = false;
 			}else{
 					btnSwitchPersonHand.classList.remove("abled");
 					btnSwitchPersonHand.classList.add("disabled");
+					btnSwitchPersonHand.disabled = true;
 			}
 			displayPiano();
 			btnChangePerson.innerHTML = "No. of Player : " + noOfPerson;
