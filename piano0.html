@@ -162,15 +162,15 @@
 		}
 	}
 
-	var centerX = 0;
-	var rightLegX = 0;
-	var leftLegX = 0;
+	var centerX = [0, 0];
+	var rightLegX = [0, 0];
+	var leftLegX = [0, 0];
 	var firstTime = true;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
-			centerX = 0;
-			rightLegX = 0;
-			leftLegX = 0;
+			centerX = [0, 0];
+			rightLegX = [0, 0];
+			leftLegX = [0, 0];
 			firstTime = true;
 			var displayPiano = document.getElementById('displayPiano');
 			displayPiano.innerHTML = "";
@@ -503,9 +503,9 @@
 				}
 
 				if(firstTime){
-						centerX = personBodyCenter[personIndex - 1].x1.baseVal.value;
-						leftLegX = leftLeg[personIndex - 1].x1.baseVal.value;
-						rightLegX = rightLeg[personIndex - 1].x1.baseVal.value;
+						centerX[personIndex - 1] = personBodyCenter[personIndex - 1].x1.baseVal.value;
+						leftLegX[personIndex - 1] = leftLeg[personIndex - 1].x1.baseVal.value;
+						rightLegX[personIndex - 1] = rightLeg[personIndex - 1].x1.baseVal.value;
 						firstTime = false;
 				}
 
@@ -517,18 +517,18 @@
 				}
 
 				var moveDistance = (yHigh - yLow) * (avgSum - totalOctave) / 3;
-				personBodyCenter[personIndex - 1].x2.baseVal.value =	centerX - moveDistance;
-				leftHand[personIndex - 1].x2.baseVal.value =	centerX - moveDistance;
-				rightHand[personIndex - 1].x2.baseVal.value =	centerX -	moveDistance;
-				head[personIndex - 1].cx.baseVal.value =	centerX -	moveDistance;
+				personBodyCenter[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] - moveDistance;
+				leftHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] - moveDistance;
+				rightHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
+				head[personIndex - 1].cx.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 
-				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX - moveDistance / 10;
-				leftLeg[personIndex - 1].x1.baseVal.value = leftLegX -	moveDistance / 10;
-				personBodyRight[personIndex - 1].x2.baseVal.value = rightLegX -	moveDistance / 10;
-				personBodyRight[personIndex - 1].x1.baseVal.value = centerX -	moveDistance / 10;
-				personBodyLeft[personIndex - 1].x2.baseVal.value = leftLegX -	moveDistance / 10;
-				personBodyLeft[personIndex - 1].x1.baseVal.value = centerX -	moveDistance / 10;
-				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX - moveDistance / 10;
+				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX[personIndex - 1] - moveDistance / 10;
+				leftLeg[personIndex - 1].x1.baseVal.value = leftLegX[personIndex - 1] -	moveDistance / 10;
+				personBodyRight[personIndex - 1].x2.baseVal.value = rightLegX[personIndex - 1] -	moveDistance / 10;
+				personBodyRight[personIndex - 1].x1.baseVal.value = centerX[personIndex - 1] -	moveDistance / 10;
+				personBodyLeft[personIndex - 1].x2.baseVal.value = leftLegX[personIndex - 1] -	moveDistance / 10;
+				personBodyLeft[personIndex - 1].x1.baseVal.value = centerX[personIndex - 1] -	moveDistance / 10;
+				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
 	var piano = Synth.createInstrument('piano');
