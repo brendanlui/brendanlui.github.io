@@ -72,7 +72,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-			<button id="btnChangePerson" class="buttonJp btnFilter" disabled>No. of Player : 1</button>
+			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Player : 1</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -112,12 +112,14 @@
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
-	var maxPlayer = 5;
+	var noOfPerson = 1;
+	var maxPlayer = 2;
 	btnChangePerson.onclick = function() {
 			noOfPerson = (noOfPerson + 1) % maxPlayer;
 			if(noOfPerson == 0){
 					noOfPerson++;
 					displayPiano();
+					btnChangePerson.innerHTML = "No. of Player : " + noOfPerson;
 			}
 	}
 	//btn click end
@@ -164,7 +166,6 @@
 	var rightLegX = 0;
 	var leftLegX = 0;
 	var firstTime = true;
-	var noOfPerson = 2;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = 0;
