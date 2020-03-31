@@ -153,6 +153,7 @@
 	var rightLegX = 0;
 	var leftLegX = 0;
 	var firstTime = true;
+	var noOfPerson = 2;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = 0;
@@ -224,78 +225,81 @@
 			}
 
 			// person edit start
-			svg += '<circle cx="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" cy="'
-										+ Math.round(start_y - height * 5 / 6 + Number.EPSILON) * 1000 / 1000
-										+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" class="head person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="leftHand person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="rightHand person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBodyCenter person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBodyRight person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="personBodyLeft person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="leftLeg person"/>';
-			svg += '<line x1="'
-										+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y1="'
-										+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" x2="'
-										+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
-										+ '" y2="'
-										+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
-										+ '" style="stroke:#000000;stroke-width:2;" class="rightLeg person"/>';
+			for(i = 1; i <= noOfPerson; i++){
+						svg += '<circle cx="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" cy="'
+													+ Math.round(start_y - height * 5 / 6 + Number.EPSILON) * 1000 / 1000
+													+ '" r="'+(height/2)+'" stroke="black" stroke-width="2" fill="white" class="head person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="leftHand person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 6 / 7 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="rightHand person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyCenter person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyRight person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 2 / 1 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="personBodyLeft person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 5.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="leftLeg person"/>';
+						svg += '<line x1="'
+													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y1="'
+													+ Math.round(start_y + height * 3 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" x2="'
+													+ Math.round(start_x + width * 7.5 / 13 + Number.EPSILON) * 1000 / 1000
+													+ '" y2="'
+													+ Math.round(start_y + height * 5 / 2 + Number.EPSILON) * 1000 / 1000
+													+ '" style="stroke:#000000;stroke-width:2;" class="rightLeg person"/>';
+			}
 			// person edit end
 
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
+			resetPosition(noOfPerson);
 	}
 
 	function pressKey(id){
@@ -397,41 +401,23 @@
 	var personBodyLeft = document.getElementsByClassName("personBodyLeft");
 	var rightLeg = document.getElementsByClassName("rightLeg");
 	var leftLeg = document.getElementsByClassName("leftLeg");
-	var noOfPerson = 2;
 
-	function resetPosition(num){
-			if(num == 2){
-						personBodyCenter[0].x1.baseVal.value /=	2;
-						personBodyCenter[0].x2.baseVal.value /=	2;
-						personBodyRight[0].x1.baseVal.value /=	2;
-						personBodyRight[0].x2.baseVal.value /=	2;
-						personBodyLeft[0].x1.baseVal.value /=	2;
-						personBodyLeft[0].x2.baseVal.value /=	2;
-						leftHand[0].x1.baseVal.value /=	2;
-						leftHand[0].x2.baseVal.value /=	2;
-						rightHand[0].x1.baseVal.value /=	2;
-						rightHand[0].x2.baseVal.value /=	2;
-						head[0].cx.baseVal.value /=	2;
-						rightLeg[0].x1.baseVal.value /=	2;
-						rightLeg[0].x2.baseVal.value /=	2;
-						leftLeg[0].x1.baseVal.value /=	2;
-						leftLeg[0].x2.baseVal.value /=	2;
-			}else if(num == 1)
-						personBodyCenter[0].x1.baseVal.value *=	2;
-						personBodyCenter[0].x2.baseVal.value *=	2;
-						personBodyRight[0].x1.baseVal.value *=	2;
-						personBodyRight[0].x2.baseVal.value *=	2;
-						personBodyLeft[0].x1.baseVal.value *=	2;
-						personBodyLeft[0].x2.baseVal.value *=	2;
-						leftHand[0].x1.baseVal.value *=	2;
-						leftHand[0].x2.baseVal.value *=	2;
-						rightHand[0].x1.baseVal.value *=	2;
-						rightHand[0].x2.baseVal.value *=	2;
-						head[0].cx.baseVal.value *=	2;
-						rightLeg[0].x1.baseVal.value *=	2;
-						rightLeg[0].x2.baseVal.value *=	2;
-						leftLeg[0].x1.baseVal.value *=	2;
-						leftLeg[0].x2.baseVal.value *=	2;
+	function resetPosition(numPeople){
+				personBodyCenter[0].x1.baseVal.value /=	numPeople;
+				personBodyCenter[0].x2.baseVal.value /=	numPeople;
+				personBodyRight[0].x1.baseVal.value /=	numPeople;
+				personBodyRight[0].x2.baseVal.value /=	numPeople;
+				personBodyLeft[0].x1.baseVal.value /=	numPeople;
+				personBodyLeft[0].x2.baseVal.value /=	numPeople;
+				leftHand[0].x1.baseVal.value /=	numPeople;
+				leftHand[0].x2.baseVal.value /=	numPeople;
+				rightHand[0].x1.baseVal.value /=	numPeople;
+				rightHand[0].x2.baseVal.value /=	numPeople;
+				head[0].cx.baseVal.value /=	numPeople;
+				rightLeg[0].x1.baseVal.value /=	numPeople;
+				rightLeg[0].x2.baseVal.value /=	numPeople;
+				leftLeg[0].x1.baseVal.value /=	numPeople;
+				leftLeg[0].x2.baseVal.value /=	numPeople;
 	}
 
 	function moveHand(note, octave, left){
