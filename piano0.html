@@ -73,6 +73,7 @@
 	<!--TODO-->
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Player : 1</button>
+			<button id="btnSwitchPersonHand" class="buttonJp btnFilter">Switch</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -396,7 +397,7 @@
 			var noteArr = text.split(',');
 			var startTime = 1000;
 			var addTime = 0;
-			var personIndex = 2;
+			var personIndex = 1;
 			for(i = 0; i < noteArr.length; i++){
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
@@ -437,7 +438,7 @@
 				if(numPeople > 1){
 						for(i = 0; i < numPeople; i++){
 								var negOne = -1;
-								if(i % 2 == 0){
+								if(i % 2 == 1){
 										negOne = 1;
 								}
 								personBodyCenter[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 10;
