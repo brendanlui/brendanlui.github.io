@@ -72,6 +72,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
+			<button id="btnChangePerson" class="buttonJp btnFilter" disabled>No. of Player : 1</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -108,6 +109,16 @@
 			btnStop.classList.remove("abled");
 			btnStop.classList.add("disabled");
 			clearAllTimeout();
+	}
+
+	var btnChangePerson = document.getElementById("btnChangePerson");
+	var maxPlayer = 5;
+	btnChangePerson.onclick = function() {
+			noOfPerson = (noOfPerson + 1) % maxPlayer;
+			if(noOfPerson == 0){
+					noOfPerson++;
+					displayPiano();
+			}
 	}
 	//btn click end
 
