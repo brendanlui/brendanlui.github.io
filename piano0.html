@@ -73,7 +73,7 @@
 	<!--TODO-->
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Player : 1</button>
-			<button id="btnSwitchPersonHand" class="buttonJp btnFilter">Switch</button>
+			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -113,6 +113,7 @@
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
+	var btnSwitchPersonHand = document.getElementById("btnSwitchPersonHand");
 	var noOfPerson = 1;
 	var maxPlayer = 2;
 	btnChangePerson.onclick = function() {
@@ -120,20 +121,29 @@
 			if(noOfPerson > maxPlayer){
 					noOfPerson = 1;
 			}
+			btnChangePerson.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnChangePerson.classList.remove("active");
+			}, 100);
+			if(noOfPerson > 1){
+					btnSwitchPersonHand.classList.remove("disabled");
+					btnSwitchPersonHand.classList.add("abled");
+			}else{
+					btnSwitchPersonHand.classList.remove("abled");
+					btnSwitchPersonHand.classList.add("disabled");
+			}
 			displayPiano();
 			btnChangePerson.innerHTML = "No. of Player : " + noOfPerson;
 	}
 
-	var btnSwitchPersonHand = document.getElementById("btnSwitchPersonHand");
 	var switchValue = 1;
 	btnSwitchPersonHand.onclick = function() {
 			switchValue++;
 			switchValue = switchValue % 2;
-			if(switchValue == 0){
-					btnPlay.classList.add("active");
-			}else{
-					btnPlay.classList.remove("active");
-			}
+			btnSwitchPersonHand.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnSwitchPersonHand.classList.remove("active");
+			}, 100);
 	}
 	//btn click end
 
@@ -171,6 +181,7 @@
 		}else{
 				btnPlay.classList.add("disabled");
 				btnStop.classList.add("disabled");
+				btnSwitchPersonHand.classList.add("disabled");
 				displayPiano();
 		}
 	}
