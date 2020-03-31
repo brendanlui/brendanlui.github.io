@@ -139,10 +139,23 @@
 	}
 
 	var switchValue = 1;
+	var centerX = [0, 0];
+	var rightLegX = [0, 0];
+	var leftLegX = [0, 0];
+	var firstTime = [true, true];
+	var noteCount = [0, 0];
+	var leftHandOctave = [4, 4];
+	var rightHandOctave = [4, 4];
+	var avgSumOctaveByPerson = [11, 8];		//[RED - RIGHT, BLUE - LEFT]
+	var speed = 1;
+
 	btnSwitchPersonHand.onclick = function() {
 			switchValue++;
 			switchValue = switchValue % 2;
-			displayPiano();	//brendan
+			var temp = avgSumOctaveByPerson[0];
+			avgSumOctaveByPerson[0] = avgSumOctaveByPerson[1];
+			avgSumOctaveByPerson[1] = temp;
+			displayPiano();
 			btnSwitchPersonHand.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
@@ -189,10 +202,6 @@
 		}
 	}
 
-	var centerX = [0, 0];
-	var rightLegX = [0, 0];
-	var leftLegX = [0, 0];
-	var firstTime = [true, true];
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -396,11 +405,6 @@
 				xmlhttp.send();
 	}
 
-	var noteCount = [0, 0];
-	var leftHandOctave = [4, 4];
-	var rightHandOctave = [4, 4];
-	var avgSumOctaveByPerson = [11, 8];		//[RED - RIGHT, BLUE - LEFT]
-	var speed = 1;
 	function loadText(text){
 			clearAllTimeout();
 			noteCount = [0, 0];
