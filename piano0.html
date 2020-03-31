@@ -143,6 +143,7 @@
 			switchValue++;
 			switchValue = switchValue % 2;
 			btnSwitchPersonHand.classList.add("active");
+			resetPersonPosition(noOfPerson);
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
 			}, 100);
@@ -398,7 +399,7 @@
 	var noteCount = [0, 0];
 	var leftHandOctave = [4, 4];
 	var rightHandOctave = [4, 4];
-	var avgSumOctaveByPerson = [6, 10];
+	var avgSumOctaveByPerson = [9, 7];
 	var speed = 1;
 	function loadText(text){
 			clearAllTimeout();
