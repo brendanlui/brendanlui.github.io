@@ -243,10 +243,8 @@
 						if(noOfPerson >= 2){
 								if(i % 2 == 1){
 										personColor = "#00b1ff";
-										headColor = "#00b1ff";
 								}else{
 										personColor = "#ff3e3e";
-										headColor = "#ff3e3e"; 
 								}
 						}
 						svg += '<circle cx="'
@@ -372,8 +370,8 @@
 	}
 
 	var noteCount = [0, 0];
-	var leftHandOctave = 4;
-	var rightHandOctave = 4;
+	var leftHandOctave = [4, 4];
+	var rightHandOctave = [4, 4];
 	var speed = 1;
 	function loadText(text){
 			clearAllTimeout();
@@ -459,12 +457,12 @@
 
 	function moveHand(note, octave, left, personIndex){
 				if(left){
-						leftHandOctave = parseInt(octave);
+						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
-						rightHandOctave = parseInt(octave);
+						rightHandOctave[personIndex - 1] = parseInt(octave);
 				}
 
-				var totalOctave = parseInt(leftHandOctave) + parseInt(rightHandOctave);
+				var totalOctave = parseInt(leftHandOctave[personIndex - 1]) + parseInt(rightHandOctave[personIndex - 1]);
 				var polygon = document.getElementById("key_"+note+"_"+octave);
 
 				if(polygon == null){
