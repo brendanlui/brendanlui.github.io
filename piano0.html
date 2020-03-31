@@ -415,21 +415,37 @@
 
 	function resetPersonPosition(numPeople){
 				for(i = 0; i < numPeople; i++){
-						personBodyCenter[i].x1.baseVal.value /=	numPeople * (i + 1);
-						personBodyCenter[i].x2.baseVal.value /=	numPeople * (i + 1);
-						personBodyRight[i].x1.baseVal.value /=	numPeople * (i + 1);
-						personBodyRight[i].x2.baseVal.value /=	numPeople * (i + 1);
-						personBodyLeft[i].x1.baseVal.value /=	numPeople * (i + 1);
-						personBodyLeft[i].x2.baseVal.value /=	numPeople * (i + 1);
-						leftHand[i].x1.baseVal.value /=	numPeople * (i + 1);
-						leftHand[i].x2.baseVal.value /=	numPeople * (i + 1);
-						rightHand[i].x1.baseVal.value /=	numPeople * (i + 1);
-						rightHand[i].x2.baseVal.value /=	numPeople * (i + 1);
-						head[i].cx.baseVal.value /=	numPeople * (i + 1);
-						rightLeg[i].x1.baseVal.value /=	numPeople * (i + 1);
-						rightLeg[i].x2.baseVal.value /=	numPeople * (i + 1);
-						leftLeg[i].x1.baseVal.value /=	numPeople * (i + 1);
-						leftLeg[i].x2.baseVal.value /=	numPeople * (i + 1);
+						personBodyCenter[i].x1.baseVal.value /=	numPeople;
+						personBodyCenter[i].x2.baseVal.value /=	numPeople;
+						personBodyRight[i].x1.baseVal.value /=	numPeople;
+						personBodyRight[i].x2.baseVal.value /=	numPeople;
+						personBodyLeft[i].x1.baseVal.value /=	numPeople;
+						personBodyLeft[i].x2.baseVal.value /=	numPeople;
+						leftHand[i].x1.baseVal.value /=	numPeople;
+						leftHand[i].x2.baseVal.value /=	numPeople;
+						rightHand[i].x1.baseVal.value /=	numPeople;
+						rightHand[i].x2.baseVal.value /=	numPeople;
+						head[i].cx.baseVal.value /=	numPeople;
+						rightLeg[i].x1.baseVal.value /=	numPeople;
+						rightLeg[i].x2.baseVal.value /=	numPeople;
+						leftLeg[i].x1.baseVal.value /=	numPeople;
+						leftLeg[i].x2.baseVal.value /=	numPeople;
+
+						personBodyCenter[i].x1.baseVal.value *= (i + 1);
+						personBodyCenter[i].x2.baseVal.value *= (i + 1);
+						personBodyRight[i].x1.baseVal.value *= (i + 1);
+						personBodyRight[i].x2.baseVal.value *= (i + 1);
+						personBodyLeft[i].x1.baseVal.value *= (i + 1);
+						personBodyLeft[i].x2.baseVal.value *= (i + 1);
+						leftHand[i].x1.baseVal.value *= (i + 1);
+						leftHand[i].x2.baseVal.value *= (i + 1);
+						rightHand[i].x1.baseVal.value *= (i + 1);
+						rightHand[i].x2.baseVal.value *= (i + 1);
+						head[i].cx.baseVal.value *= (i + 1);
+						rightLeg[i].x1.baseVal.value *= (i + 1);
+						rightLeg[i].x2.baseVal.value *= (i + 1);
+						leftLeg[i].x1.baseVal.value *= (i + 1);
+						leftLeg[i].x2.baseVal.value *= (i + 1);
 				}
 	}
 
