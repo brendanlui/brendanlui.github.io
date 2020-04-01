@@ -31,6 +31,7 @@
 	<div class="topnav" id="myTopnav">
 	</div>
 	<script>
+	var namePassToFunction = [];
 	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 	function myFunction() {
 	    var x = document.getElementById("myTopnav");
@@ -39,10 +40,9 @@
 	    } else {
 	        x.className = "topnav";
 	    }
-			resetAllDisablePianoList();
+			pasteToBar(namePassToFunction, true);
 	}
 
-	var namePassToFunction = [];
 	function loadPianoList(){
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function(){
@@ -57,7 +57,7 @@
 								}
 						}
 						namePassToFunction.sort();
-						pasteToBar(namePassToFunction);
+						pasteToBar(namePassToFunction, false);
 				}
 			};
 			xmlhttp.open("GET","./music/pianoList.txt",true);
@@ -68,23 +68,19 @@
 			var inputChar = document.getElementById("myInput").value;
 			var pianoList = document.getElementsByClassName("pianoList");
 			for(i = 0; i < pianoList.length; i++){
-					if(pianoList[i].innerHTML.toLowerCase().includes(inputChar.toLowerCase())){
-							pianoList[i].style.display = "block";
-					}else{
+					if(!pianoList[i].innerHTML.toLowerCase().includes(inputChar.toLowerCase())){
 							pianoList[i].style.display = "none";
 					}
 			}
 	}
 
-	function resetAllDisablePianoList(){
-			var pianoList = document.getElementsByClassName("pianoList");
-			for(i = 0; i < pianoList.length; i++){
-					pianoList[i].style.display = "block";
+	function pasteToBar(arr, isDisplaySearchBar){
+			var display = "none";
+			if(isDisplaySearchBar){
+					display = "block";
 			}
-	}
 
-	function pasteToBar(arr){
-			var result = '<a href="/">Home</a><input type="text" id="myInput" oninput="inputFunction()">';
+			var result = '<a href="/">Home</a><input type="text" style ="'+display+'" id="myInput" oninput="inputFunction()">';
 			for(i = 0; i < arr.length; i++){
 					result += '<a class="pianoList" onclick=\'loadSrc("'
 									+ arr[i]
