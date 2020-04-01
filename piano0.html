@@ -68,7 +68,7 @@
 			var inputChar = document.getElementById("myInput").value;
 			var pianoList = document.getElementsByClassName("pianoList");
 			for(i = 0; i < pianoList.length; i++){
-					if(pianoList[i].innerHTML.includes(inputChar)){
+					if(pianoList[i].innerHTML.toLowerCase().includes(inputChar.toLowerCase())){
 							pianoList[i].style.display = "block";
 					}else{
 							pianoList[i].style.display = "none";
