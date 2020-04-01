@@ -29,47 +29,80 @@
 
 	<link rel="stylesheet" href="/css/responsive_bar_style.css">
 	<div class="topnav" id="myTopnav">
-	  <a href="/">Home</a>
-	  <a class="pianoList" onclick="loadSrc('Chromatic Scale');"class="other">Chromatic Scale</a>
-	  <a class="pianoList" onclick="loadSrc('Happy Birthday');"class="other">Happy Birthday</a>
-	  <a class="pianoList" onclick="loadFakeMidi('紅蓮華');"class="other">紅蓮華</a>
-	  <a class="pianoList" onclick="loadFakeMidi('コノユビトマレ');"class="other">コノユビトマレ</a>
-	  <a class="pianoList" onclick="loadFakeMidi('竈門炭治郎のうた');"class="other">竈門炭治郎のうた</a>
-	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 1');"class="other">Secret - Piano Battle 1</a>
-	  <a class="pianoList" onclick="loadSrc('Secret - Piano Battle 2');"class="other">Secret - Piano Battle 2</a>
-	  <a class="pianoList" onclick="loadSrc('Secret - Time Travel Theme');"class="other">Secret - Time Travel Theme</a>
-	  <a class="pianoList" onclick='loadSrc("Mariage d Amour");' class="other">Mariage d Amour</a>
-		<a class="pianoList" onclick='loadSrc("The Flight of the Bumble Bee");' class="other">The Flight of the Bumble Bee</a>
-		<a class="pianoList" onclick='loadSrc("Hungarian Dance No.5");' class="other">Hungarian Dance No.5</a>
-		<a class="pianoList" onclick='loadSrc("Pirates of the Caribbean - He s a Pirate");' class="other">Pirates of the Caribbean - He's a Pirate</a>
-		<a class="pianoList" onclick='loadSrc("Attack on Titan - Guren no Yumiya");' class="other">Attack on Titan - Guren no Yumiya</a>
-		<a class="pianoList" onclick='loadSrc("Let It Go - Frozen");' class="other">Let It Go - Frozen</a>
-		<a class="pianoList" onclick='loadSrc("ドラえもん");' class="other">ドラえもん</a>
-		<a class="pianoList" onclick='loadSrc("あの夏へ - 久石譲");' class="other">あの夏へ - 久石譲</a>
-		<a class="pianoList" onclick='loadSrc("Nameless story");' class="other">Nameless story</a>
-		<a class="pianoList" onclick='loadSrc("Titanic - My Heart Will Go On");' class="other">Titanic - My Heart Will Go On</a>
-		<a class="pianoList" onclick='loadSrc("One Piece - We Are");' class="other">One Piece - We Are</a>
-		<a class="pianoList" onclick='loadSrc("Richard Clayderman - A Comme Amour");' class="other">Richard Clayderman - A Comme Amour</a>
-		<a class="pianoList" onclick='loadSrc("Show Yourself - Frozen 2");' class="other">Show Yourself - Frozen 2</a>
-		<a class="pianoList" onclick='loadSrc("Bach - Prelude No. 6");' class="other">Bach - Prelude No. 6</a>
-		<a class="pianoList" onclick='loadSrc("Victory - Two Steps From Hell");' class="other">Victory - Two Steps From Hell</a>
-		<a class="pianoList" onclick='loadSrc("Two Steps From Hell - Heart of Courage");' class="other">Two Steps From Hell - Heart of Courage</a>
-		<a class="pianoList" onclick='loadSrc("Flight of the Silverbird - Two Steps From Hell");' class="other">Flight of the Silverbird - Two Steps From Hell</a>
-		<a class="pianoList" onclick='loadSrc("天空之城");' class="other">天空之城</a>
-		<a class="pianoList" onclick='loadSrc("千與千尋");' class="other">千與千尋</a>
-		<a class="pianoList" onclick='loadSrc("One Piece - Binks Sake");' class="other">One Piece - Binks' Sake</a>
-		<a class="pianoList" onclick='loadSrc("Howls Moving Castle");' class="other">Howl's Moving Castle</a>
-	  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 	</div>
 	<script>
+	var namePassToFunction = [];
+	var btnTopnavClicked = false;
 	/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 	function myFunction() {
+			if(btnTopnavClicked){
+					btnTopnavClicked = false;
+			}else{
+					btnTopnavClicked = true;
+			}
+
 	    var x = document.getElementById("myTopnav");
 	    if (x.className === "topnav") {
 	        x.className += " responsive";
 	    } else {
 	        x.className = "topnav";
 	    }
+			pasteToBar(namePassToFunction, btnTopnavClicked);
+	}
+
+	function loadPianoList(){
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function(){
+				if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+						namePassToFunction = [];
+						var txt = xmlhttp.responseText;
+						var arr = txt.split("\n");
+						for(i = 0; i < arr.length; i++){
+								var temp = arr[i].trim();
+								if(temp != ""){
+										namePassToFunction[namePassToFunction.length] = temp;
+								}
+						}
+						namePassToFunction.sort();
+						pasteToBar(namePassToFunction, false);
+				}
+			};
+			xmlhttp.open("GET","./music/pianoList.txt",true);
+			xmlhttp.send();
+	}
+
+	function inputFunction(){
+			var inputChar = document.getElementById("myInput").value;
+			var pianoList = document.getElementsByClassName("pianoList");
+			for(i = 0; i < pianoList.length; i++){
+					if(!pianoList[i].innerHTML.toLowerCase().includes(inputChar.toLowerCase())){
+							pianoList[i].style.display = "none";
+					}else{
+							pianoList[i].style.display = "block";
+					}
+			}
+	}
+
+	function pasteToBar(arr, isDisplaySearchBar){
+			var display = "none";
+			if(isDisplaySearchBar){
+					display = "block";
+			}
+
+			var result = '<a href="/">Home</a><input type="text" style ="display:'+display+'; width: 100%; font-size: 17px; background-color: #ebf3ff;;" placeholder="Search" id="myInput" oninput="inputFunction()">';
+			for(i = 0; i < arr.length; i++){
+					var functionName = arr[i];
+					if(arr[i].includes("'")){
+							functionName = encryptFileName(arr[i]);
+					}
+					result += '<a class="pianoList" onclick=\'loadSrc("'
+									+ functionName
+									+ '");\' class="other">'
+									+ arr[i]
+									+ '</a>';
+			}
+			result += '<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div>';
+			document.getElementById("myTopnav").innerHTML = result;
 	}
 	</script>
 
@@ -208,6 +241,7 @@
 				btnStop.classList.add("disabled");
 				btnSwitchPersonHand.classList.add("disabled");
 				displayPiano();
+				loadPianoList();
 		}
 	}
 
@@ -399,7 +433,14 @@
 			document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 	}
 
+	function encryptFileName(name){
+			return name.replace(new RegExp("'", 'g'), 'P@ssw0rd123');
+	}
+	function decryptFileName(name){
+			return name.replace(new RegExp('P@ssw0rd123', 'g'), "'");
+	}
 	function loadSrc(type){
+				type = decryptFileName(type);
 				myFunction();
 				currentPlaySongName = type;
 				var xmlhttp = new XMLHttpRequest();
@@ -602,57 +643,6 @@
 						}, duration * 100);
 
 			}, startTime);
-	}
-
-	function loadFakeMidi(type){
-					currentPlaySongName = type;
-					myFunction();
-
-					var xmlhttp = new XMLHttpRequest();
-					xmlhttp.onreadystatechange = function(){
-						if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-								var string = [];
-								var fakeMidiData = xmlhttp.responseText;
-								var fakeMidiDataArr = fakeMidiData.split(";");
-
-								var midiToTxt = "";
-								midiToTxt += "20000,0.3,6 //sample rate (4000-44100), volume, speed\n";
-								var lastStartTime = 0;
-								for(i = 0; i < fakeMidiDataArr.length; i++){
-										var tempArr = fakeMidiDataArr[i].split(" ");
-										var startTime = tempArr[0];
-										var addTime = 0;
-										var noteAndOctave = tempArr[1];
-										var note = "";
-										var octave = "";
-										var duration = 2;
-
-										if(noteAndOctave == null){
-												continue;
-										}
-
-										if(i == 0){
-												startTime = startTime.split("|")[2];
-										}
-										addTime = (startTime - lastStartTime) + "/6";
-										lastStartTime = startTime;
-
-										if(noteAndOctave.length == 2){
-												note = noteAndOctave[0];
-												octave = noteAndOctave[1];
-										}else if(noteAndOctave.length == 3){
-												note = noteAndOctave[0] + noteAndOctave[1];
-												octave = noteAndOctave[2];
-										}
-										midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
-								}
-
-								document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
-								loadText(document.getElementById('fileContent').textContent);
-						}
-					};
-					xmlhttp.open("GET","./music/fakeMidi/"+type+".mid.txt",true);
-					xmlhttp.send();
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
