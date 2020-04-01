@@ -89,10 +89,10 @@
 					display = "block";
 			}
 
-			var result = '<a href="/">Home</a><input type="text" style ="display:'+display+'; width: 100%; font-size: 17px; background-color: #fffdeb;" placeholder="Search" id="myInput" oninput="inputFunction()">';
+			var result = '<a href="/">Home</a><input type="text" style ="display:'+display+'; width: 100%; font-size: 17px; background-color: #ebf3ff;;" placeholder="Search" id="myInput" oninput="inputFunction()">';
 			for(i = 0; i < arr.length; i++){
 					result += '<a class="pianoList" onclick=\'loadSrc("'
-									+ arr[i]
+									+ encryptFileName(arr[i]);
 									+ '");\' class="other">'
 									+ arr[i]
 									+ '</a>';
@@ -429,7 +429,14 @@
 			document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
 	}
 
+	function encryptFileName(name){
+			return name.replace(new RegExp('\'', 'g'), '^.^');
+	}
+	function decryptFileName(name){
+			return name.replace(new RegExp('^.^', 'g'), '\'');
+	}
 	function loadSrc(type){
+				type = decryptFileName(type);
 				myFunction();
 				currentPlaySongName = type;
 				var xmlhttp = new XMLHttpRequest();
