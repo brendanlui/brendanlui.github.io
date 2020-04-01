@@ -91,8 +91,12 @@
 
 			var result = '<a href="/">Home</a><input type="text" style ="display:'+display+'; width: 100%; font-size: 17px; background-color: #ebf3ff;;" placeholder="Search" id="myInput" oninput="inputFunction()">';
 			for(i = 0; i < arr.length; i++){
+					var functionName = arr[i];
+					if(arr[i].includes("'")){
+							functionName = encryptFileName(arr[i]);
+					}
 					result += '<a class="pianoList" onclick=\'loadSrc("'
-									+ encryptFileName(arr[i]);
+									+ functionName
 									+ '");\' class="other">'
 									+ arr[i]
 									+ '</a>';
