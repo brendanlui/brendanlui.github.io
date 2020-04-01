@@ -100,8 +100,6 @@
 	//btn click start
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
-			timeDiff = 0;
-		 	start = new Date().getTime();
 			btnPlay.classList.add("active");
 			loadText(document.getElementById('fileContent').textContent);
 			btnStop.disabled = false;
@@ -414,6 +412,11 @@
 	}
 
 	function loadText(text){
+			//count time diff start - get timeDiff from play to another person start
+			timeDiff = 0;
+		 	start = new Date().getTime();
+			//count time diff end - get timeDiff from play to another person end
+
 			clearAllTimeout();
 			noteCount = [0, 0];
 		  document.getElementById('fileContent').textContent = text;
