@@ -66,9 +66,9 @@
 			var pianoList = document.getElementsByClassName("pianoList");
 			for(i = 0; i < pianoList.length; i++){
 					if(pianoList[i].innerHTML.includes(inputChar)){
-							pianoList[i].display = "block";
+							pianoList[i].style.display = "block";
 					}else{
-							pianoList[i].display = "none";
+							pianoList[i].style.display = "none";
 					}
 			}
 	}
@@ -76,7 +76,7 @@
 	function resetAllDisablePianoList(){
 			var pianoList = document.getElementsByClassName("pianoList");
 			for(i = 0; i < pianoList.length; i++){
-					pianoList[i].display = "block";
+					pianoList[i].style.display = "block";
 			}
 	}
 
