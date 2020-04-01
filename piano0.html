@@ -45,7 +45,7 @@
 	var namePassToFunction = [];
 	function loadPianoList(){
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function(){ 
+			xmlhttp.onreadystatechange = function(){
 				if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 						namePassToFunction = [];
 						var txt = xmlhttp.responseText;
@@ -82,11 +82,13 @@
 
 	function pasteToBar(arr){
 			var result = '<a href="/">Home</a><input type="text" id="myInput" oninput="inputFunction()">';
-			result += '<a class="pianoList" onclick=\'loadSrc("'
-							+ arr[i]
-							+ '");\' class="other">'
-							+ arr[i]
-							+ '</a>';
+			for(i = 0; i < arr.length; i++){
+					result += '<a class="pianoList" onclick=\'loadSrc("'
+									+ arr[i]
+									+ '");\' class="other">'
+									+ arr[i]
+									+ '</a>';
+			}
 			result += '<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></div>';
 			document.getElementById("myTopnav").innerHTML = result;
 	}
