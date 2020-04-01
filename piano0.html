@@ -430,10 +430,10 @@
 	}
 
 	function encryptFileName(name){
-			return name.replace(new RegExp('\'', 'g'), '^.^');
+			return name.replace(new RegExp("'", 'g'), '^.^');
 	}
 	function decryptFileName(name){
-			return name.replace(new RegExp('^.^', 'g'), '\'');
+			return name.replace(new RegExp('^.^', 'g'), "'");
 	}
 	function loadSrc(type){
 				type = decryptFileName(type);
