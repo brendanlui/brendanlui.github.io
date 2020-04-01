@@ -51,7 +51,10 @@
 						var txt = xmlhttp.responseText;
 						var arr = txt.split("\n");
 						for(i = 0; i < arr.length; i++){
-								namePassToFunction[i] = arr[i].trim();
+								var temp = arr[i].trim();
+								if(temp != ""){
+										namePassToFunction[namePassToFunction.length] = temp;
+								}
 						}
 						namePassToFunction.sort();
 						pasteToBar(namePassToFunction);
