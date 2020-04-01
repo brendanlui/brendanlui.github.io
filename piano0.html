@@ -45,7 +45,7 @@
 	var namePassToFunction = [];
 	function loadPianoList(){
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function(){
+			xmlhttp.onreadystatechange = function(){ 
 				if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
 						namePassToFunction = [];
 						var txt = xmlhttp.responseText;
