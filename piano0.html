@@ -488,25 +488,10 @@
 					if(tempArr.length == 4){
 
 							// use durtion start
-							temp_2 = tempArr[2];
-							if(tempArr[2].includes("/")){
-								var divideArr = tempArr[2].split("/");
-								if(divideArr.length == 2){
-									temp_2 = divideArr[0] / divideArr[1];
-									tempArr[2] = temp_2 * (4000 / speed);
-								}
-							}
+							tempArr[2] = tempArr[2] / speed;
 							// use durtion end
-
-							temp_3 = tempArr[3];
-							if(tempArr[3].includes("/")){
-								var divideArr = tempArr[3].split("/");
-								if(divideArr.length == 2){
-									temp_3 = divideArr[0] / divideArr[1];
-								}
-							}
 							startTime += addTime;
-							addTime = temp_3 * (4000 / speed);
+							addTime = tempArr[3] / speed;
 
 							if(temp_3 < -5 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
 									personIndex++;
@@ -646,12 +631,12 @@
 								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
-						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
+						piano.play(note, octave, duration * 1000); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, duration * 100);
+						}, duration);
 
 			}, startTime);
 	}
@@ -711,9 +696,7 @@
 								}
 								if(noteAndOctave == offNoteAndOctave){
 										duration = offStartTime - startTime;
-										if(duration != 0){
-												duration += "/640";
-										}else{
+										if(duration == 0){
 												skipNote = true;
 										}
 										break;
@@ -727,11 +710,7 @@
 						if(lastStartTime == 0){
 								lastStartTime = startTime;
 						}
-
-						addTime = (startTime - lastStartTime);
-						if(addTime != 0){
-								addTime += "/640";
-						}
+						addTime = startTime - lastStartTime;
 
 						lastStartTime = startTime;
 						note = pianoKeyArr[noteAndOctave % 12];
