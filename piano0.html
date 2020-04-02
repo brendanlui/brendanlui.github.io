@@ -620,6 +620,7 @@
 				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
+	var minNoteLast = 2;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
@@ -632,8 +633,8 @@
 						}
 						//use hand end
 						var finalDuration = duration / 1000;
-						if(finalDuration < 1.8){
-								finalDuration = 1.8;
+						if(finalDuration < minNoteLast){
+								finalDuration = minNoteLast;
 						}
 
 						piano.play(note, octave, finalDuration); // plays C4 for 2s using the 'piano' sound profile
