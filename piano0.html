@@ -455,6 +455,7 @@
 				xmlhttp.send();
 	}
 
+	var valueModifySpeed = 30;
 	function loadText(text){
 			//count time diff start - get timeDiff from play to another person start
 			timeDiff = 0;
@@ -473,7 +474,7 @@
 							if(headerArr.length == 3){
 									Synth.setSampleRate(headerArr[0].trim());
 									Synth.setVolume(headerArr[1].trim());
-									speed = headerArr[2].trim() / 30;
+									speed = headerArr[2].trim() / valueModifySpeed;
 							}
 							text = headerFooterArr[1].trim();
 					}
