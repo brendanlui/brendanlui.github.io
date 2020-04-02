@@ -631,7 +631,7 @@
 								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
-						piano.play(note, octave, duration * 1000); // plays C4 for 2s using the 'piano' sound profile
+						piano.play(note, octave, duration / 1000); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
@@ -686,10 +686,10 @@
 						//find duration start
 						var skipNote = false;
 						for(j = i + 1; j < decodeMidiDataArr.length; j++){
-								if(!decodeMidiDataArr[i].includes(" Off ") && !decodeMidiDataArr[i].includes(" v=0")){
+								if(!decodeMidiDataArr[j].includes(" Off ") && !decodeMidiDataArr[j].includes(" v=0")){
 										continue;
 								}
-								var offArr = decodeMidiDataArr[i].split(" On ");
+								var offArr = decodeMidiDataArr[j].split(" On ");
 								if(offArr.length > 1){
 										offNoteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
 										offStartTime = parseInt(tempArr[0]);
