@@ -455,6 +455,7 @@
 				xmlhttp.send();
 	}
 
+	var valueModifySpeed = 30;
 	function loadText(text){
 			//count time diff start - get timeDiff from play to another person start
 			timeDiff = 0;
@@ -469,17 +470,17 @@
 			if(text.includes(seperate)){
 					var headerFooterArr = text.split(seperate);
 					if(headerFooterArr.length == 2){
-							var headerArr = headerFooterArr[0].trim().split(",");
+							var headerArr = headerFooterArr[0].trim().split("_");
 							if(headerArr.length == 3){
 									Synth.setSampleRate(headerArr[0].trim());
 									Synth.setVolume(headerArr[1].trim());
-									speed = headerArr[2].trim();
+									speed = headerArr[2].trim() / valueModifySpeed;
 							}
 							text = headerFooterArr[1].trim();
 					}
 			}
 
-			var noteArr = text.split(',');
+			var noteArr = text.split('\n');
 			var startTime = 1000;
 			var addTime = 0;
 			var personIndex = 1;
@@ -487,17 +488,13 @@
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
 
-							temp_3 = tempArr[3];
-							if(tempArr[3].includes("/")){
-								var divideArr = tempArr[3].split("/");
-								if(divideArr.length == 2){
-									temp_3 = divideArr[0] / divideArr[1];
-								}
-							}
+							// use durtion start
+							tempArr[2] = tempArr[2] / speed;
+							// use durtion end
 							startTime += addTime;
-							addTime = temp_3 * (4000 / speed);
+							addTime = tempArr[3] / speed;
 
-							if(temp_3 < -5 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
+							if(tempArr[3] < -5000 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
 									personIndex++;
 									if(personIndex > 2){
 											personIndex = 1;
@@ -624,6 +621,7 @@
 				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
+	var minNoteLast = 2;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
@@ -635,12 +633,17 @@
 								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
-						piano.play(note, octave, duration); // plays C4 for 2s using the 'piano' sound profile
+						var finalDuration = duration / 1000;
+						if(finalDuration < minNoteLast){
+								finalDuration = minNoteLast;
+						}
+
+						piano.play(note, octave, finalDuration); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, duration * 100);
+						}, 100);
 
 			}, startTime);
 	}
@@ -668,7 +671,7 @@
 
 				var midiToTxt = "";
 				var lastStartTime = 0;
-				midiToTxt += "20000_0.3_3 //sample rate (4000-44100) _ volume _ speed\n";
+				midiToTxt += "20000_0.3_50 //sample rate (4000-44100) _ volume _ speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
@@ -687,19 +690,46 @@
 						var octave = "";
 						var duration = 2;
 
+						//find duration start
+						var skipNote = false;
+						for(j = i + 1; j < decodeMidiDataArr.length; j++){
+								if(!decodeMidiDataArr[j].includes(" Off ") && !decodeMidiDataArr[j].includes(" v=0")){
+										continue;
+								}
+
+								var offArr = [];
+								if(decodeMidiDataArr[j].includes(" Off ")){
+										offArr = decodeMidiDataArr[j].split(" Off ");
+								}else{
+										offArr = decodeMidiDataArr[j].split(" On ");
+								}
+								var offNoteAndOctave = "";
+								if(offArr.length > 1){
+										offNoteAndOctave = offArr[1].split(" n=")[1].split(" v=")[0];
+										offStartTime = parseInt(offArr[0]);
+								}
+								if(noteAndOctave == offNoteAndOctave){
+										duration = offStartTime - startTime;
+										if(duration == 0){
+												skipNote = true;
+										}
+										break;
+								}
+						}
+						if(skipNote){
+								continue;
+						}
+						//find duration end
+
 						if(lastStartTime == 0){
 								lastStartTime = startTime;
 						}
-
-						addTime = (startTime - lastStartTime);
-						if(addTime != 0){
-								addTime += "/640";
-						}
+						addTime = startTime - lastStartTime;
 
 						lastStartTime = startTime;
 						note = pianoKeyArr[noteAndOctave % 12];
 						octave = parseInt(noteAndOctave / 12);
-						midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
+						midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + "\n";
 				}
 
 				document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
