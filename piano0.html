@@ -690,6 +690,7 @@
 										continue;
 								}
 								var offArr = decodeMidiDataArr[j].split(" On ");
+								var offNoteAndOctave = "";
 								if(offArr.length > 1){
 										offNoteAndOctave = tempArr[1].split(" n=")[1].split(" v=")[0];
 										offStartTime = parseInt(tempArr[0]);
