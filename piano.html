@@ -39,7 +39,6 @@
 					btnTopnavClicked = false;
 			}else{
 					btnTopnavClicked = true;
-					document.getElementById("myInput").click();
 			}
 
 	    var x = document.getElementById("myTopnav");
@@ -49,6 +48,10 @@
 	        x.className = "topnav";
 	    }
 			pasteToBar(namePassToFunction, btnTopnavClicked);
+			
+			if(btnTopnavClicked){
+					document.getElementById("myInput").click();
+			}
 	}
 
 	function loadPianoList(){
