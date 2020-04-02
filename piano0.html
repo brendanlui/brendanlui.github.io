@@ -480,7 +480,7 @@
 					}
 			}
 
-			var noteArr = text.split(',');
+			var noteArr = text.split('\n');
 			var startTime = 1000;
 			var addTime = 0;
 			var personIndex = 1;
@@ -729,7 +729,7 @@
 						lastStartTime = startTime;
 						note = pianoKeyArr[noteAndOctave % 12];
 						octave = parseInt(noteAndOctave / 12);
-						midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + ",\n";
+						midiToTxt += note + "_" + octave + "_" + duration + "_" + addTime + "\n";
 				}
 
 				document.getElementById('fileContent').innerHTML = midiToTxt.substring(0, midiToTxt.length - 1);
