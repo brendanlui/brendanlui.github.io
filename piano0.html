@@ -620,7 +620,7 @@
 				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
-	var extendValue = 3;	
+	var extendValue = 7;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
@@ -632,7 +632,12 @@
 								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
-						piano.play(note, octave, duration * extendValue / 1000); // plays C4 for 2s using the 'piano' sound profile
+						var finalDuration = 0.75;
+						if(duration * extendValue / 1000 > 0.75){
+								finalDuration = duration * extendValue / 1000;
+						}
+
+						piano.play(note, octave, finalDuration); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
