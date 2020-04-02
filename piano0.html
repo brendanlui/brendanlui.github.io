@@ -643,7 +643,7 @@
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, finalDuration);
+						}, finalDuration * 1000);
 
 			}, startTime);
 	}
@@ -671,7 +671,7 @@
 
 				var midiToTxt = "";
 				var lastStartTime = 0;
-				midiToTxt += "20000,0.3,3 //sample rate (4000-44100), volume, speed\n";
+				midiToTxt += "20000,0.3,50 //sample rate (4000-44100), volume, speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
