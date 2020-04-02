@@ -1,4 +1,4 @@
-20000,0.3,6 //sample rate (4000-44100), volume, speed
+20000_0.3_6 //sample rate (4000-44100) _ volume _ speed
 A_4_2_0/6,
 D_5_2_0/6,
 G_5_2_0/6,

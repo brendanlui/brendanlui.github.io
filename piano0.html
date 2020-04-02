@@ -418,7 +418,7 @@
 
 	function handleFileLoad(event){
 			currentPlaySongName = "Your Uploaded file";
-			if(event.target.result.includes("//sample rate (4000-44100), volume, speed")){
+			if(event.target.result.includes("//sample rate (4000-44100) _ volume _ speed")){
 					loadText(event.target.result);
 			}else if(event.target.result.includes("MFile")){
 					loadDecodeText(event.target.result);
@@ -466,11 +466,11 @@
 			noteCount = [0, 0];
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
-			var seperate = '//sample rate (4000-44100), volume, speed\n';
+			var seperate = '//sample rate (4000-44100) _ volume _ speed\n';
 			if(text.includes(seperate)){
 					var headerFooterArr = text.split(seperate);
 					if(headerFooterArr.length == 2){
-							var headerArr = headerFooterArr[0].trim().split(",");
+							var headerArr = headerFooterArr[0].trim().split("_");
 							if(headerArr.length == 3){
 									Synth.setSampleRate(headerArr[0].trim());
 									Synth.setVolume(headerArr[1].trim());
@@ -671,7 +671,7 @@
 
 				var midiToTxt = "";
 				var lastStartTime = 0;
-				midiToTxt += "20000,0.3,50 //sample rate (4000-44100), volume, speed\n";
+				midiToTxt += "20000_0.3_50 //sample rate (4000-44100) _ volume _ speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
