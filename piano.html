@@ -625,7 +625,8 @@
 				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
-	var minNoteLast = 2;
+	var minNoteLast = 1.5;
+	var buffer = 0.5;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
@@ -642,7 +643,7 @@
 								finalDuration = minNoteLast;
 						}
 
-						piano.play(note, octave, finalDuration); // plays C4 for 2s using the 'piano' sound profile
+						piano.play(note, octave, finalDuration + buffer); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
