@@ -491,10 +491,18 @@
 			//count time diff end - get timeDiff from play to another person end
 
 			//check more than one person start
-			if(!checkMoreThanOnePerson(noteArr)){
+			if(!checkMoreThanOnePerson(noteArr, personIndex)){
 					if(noOfPerson > 1){
 							document.getElementById("btnChangePerson").click();
+					}else{
+							btnChangePerson.classList.remove("abled");
+							btnChangePerson.classList.add("disabled");
+							btnChangePerson.disabled = true;
 					}
+			}else{
+						btnChangePerson.classList.remove("disabled");
+						btnChangePerson.classList.add("abled");
+						btnChangePerson.disabled = false;
 			}
 			//check more than one person end
 
@@ -525,7 +533,7 @@
 			}
 	}
 
-	function checkMoreThanOnePerson(noteArr){
+	function checkMoreThanOnePerson(noteArr, personIndex){
 					for(i = 0; i < noteArr.length; i++){
 							var tempArr = noteArr[i].split('_');
 							if(tempArr.length == 4){
