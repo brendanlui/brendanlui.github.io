@@ -494,11 +494,10 @@
 			if(!checkMoreThanOnePerson(noteArr, personIndex)){
 					if(noOfPerson > 1){
 							document.getElementById("btnChangePerson").click();
-					}else{
-							btnChangePerson.classList.remove("abled");
-							btnChangePerson.classList.add("disabled");
-							btnChangePerson.disabled = true;
 					}
+					btnChangePerson.classList.remove("abled");
+					btnChangePerson.classList.add("disabled");
+					btnChangePerson.disabled = true;
 			}else{
 						btnChangePerson.classList.remove("disabled");
 						btnChangePerson.classList.add("abled");
