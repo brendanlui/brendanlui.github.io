@@ -461,10 +461,6 @@
 
 	var valueModifySpeed = 30;
 	function loadText(text){
-			//count time diff start - get timeDiff from play to another person start
-			timeDiff = 0;
-		 	start = new Date().getTime();
-			//count time diff end - get timeDiff from play to another person end
 
 			clearAllTimeout();
 			noteCount = [0, 0];
@@ -488,6 +484,12 @@
 			var startTime = 1000;
 			var addTime = 0;
 			var personIndex = 1;
+
+			//count time diff start - get timeDiff from play to another person start
+			var timeDiff = 0;
+		 	var start = new Date().getTime();
+			//count time diff end - get timeDiff from play to another person end
+
 			for(i = 0; i < noteArr.length; i++){
 					var tempArr = noteArr[i].split('_');
 					if(tempArr.length == 4){
