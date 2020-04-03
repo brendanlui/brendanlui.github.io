@@ -491,7 +491,7 @@
 			//count time diff end - get timeDiff from play to another person end
 
 			//check more than one person start
-			if(!checkMoreThanOnePerson(noteArr, personIndex)){
+			if(!checkMoreThanOnePerson(noteArr)){
 					if(noOfPerson > 1){
 							document.getElementById("btnChangePerson").click();
 					}
@@ -532,15 +532,12 @@
 			}
 	}
 
-	function checkMoreThanOnePerson(noteArr, personIndex){
+	function checkMoreThanOnePerson(noteArr){
 					for(i = 0; i < noteArr.length; i++){
 							var tempArr = noteArr[i].split('_');
 							if(tempArr.length == 4){
-									if(tempArr[3] < -5000 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
-											personIndex++;
-											if(personIndex == 2){
-													return true;
-											}
+									if(tempArr[3] < -5000){		//another person - (-5) will be modified to dynamic later - brendan
+											return true;
 									}
 							}
 					}
