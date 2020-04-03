@@ -627,8 +627,8 @@
 				personBodyCenter[personIndex - 1].x1.baseVal.value =	centerX[personIndex - 1] - moveDistance / 10;
 	}
 
-	var minNoteLast = 1.5;
-	var buffer = 0.5;
+	var minNoteLast = 1.7;
+	var buffer = 0.3;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
