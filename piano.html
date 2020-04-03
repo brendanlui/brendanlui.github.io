@@ -644,7 +644,7 @@
 						if(finalDuration < minNoteLast){
 								finalDuration = minNoteLast;
 						}
-						
+
 						piano.play(note, octave, finalDuration + buffer); // plays C4 for 2s using the 'piano' sound profile
 						var noteSvg = document.getElementById("key_"+note+"_"+octave);
 						noteSvg.classList.add("pressed");
@@ -678,7 +678,7 @@
 
 				var midiToTxt = "";
 				var lastStartTime = 0;
-				midiToTxt += "20000_0.3_50 //sample rate (4000-44100) _ volume _ speed\n";
+				midiToTxt += "20000_0.2_50 //sample rate (4000-44100) _ volume _ speed\n";
 
 				for(i = 0; i < decodeMidiDataArr.length; i++){
 						if(!decodeMidiDataArr[i].includes(" On ") || decodeMidiDataArr[i].includes(" v=0")){
