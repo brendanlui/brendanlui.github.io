@@ -655,6 +655,7 @@
 	}
 
 	var minNoteLast = 1.8;
+	var maxNoteLast = 3;
 	var buffer = 0.2;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
@@ -670,6 +671,8 @@
 						var finalDuration = duration / 1000;
 						if(finalDuration < minNoteLast){
 								finalDuration = minNoteLast;
+						}else if(finalDuration > maxNoteLast){
+								finalDuration = maxNoteLast;
 						}
 
 						piano.play(note, octave, finalDuration + buffer); // plays C4 for 2s using the 'piano' sound profile
