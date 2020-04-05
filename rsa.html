@@ -993,39 +993,6 @@
 	}
 	</script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script>
-	function sendEmail(){
-		$.ajax({
-		  type: "POST",
-		  url: "https://mandrillapp.com/api/1.0/messages/send.json",
-		  data: {
-		    "key": "send_password",
-		    "message": {
-		      "from_email": "brendanlui@yahoo.com.hk",
-		      "to": [
-		          {
-		            "email": "mhlui@connect.ust.hk",
-		            "name": "RECIPIENT NAME (OPTIONAL)",
-		            "type": "to"
-		          },
-		          {
-		            "email": "brendanlui@yahoo.com.hk",
-		            "name": "ANOTHER RECIPIENT NAME (OPTIONAL)",
-		            "type": "to"
-		          }
-		        ],
-		      "autotext": "true",
-		      "subject": "YOUR SUBJECT HERE!",
-		      "html": "YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!"
-		    }
-		  }
-		 }).done(function(response) {
-		   console.log(response); // if you're into that sorta thing
-		 });
-	}
-	</script>
-
 	<ul id="foot">
 		</br>
 		<li>© Copyright 2020. All Rights Reserved.</li>
