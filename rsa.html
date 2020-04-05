@@ -993,23 +993,37 @@
 	}
 	</script>
 
-
-	<script src="https://smtpjs.com/v3/smtp.js"></script>
-	<script type="text/javascript">
-		function sendEmail() {
-			Email.send({
-				Host: "smtp.gmail.com",
-				Username : "brendan234@gmail.com",
-				Password : "y"+"467"+"75"+"77",
-				To : 'mhlui@connect.ust.hk',
-				From : "brendan234@gmail.com",
-				Subject : "Testing",
-				Body : "Testing 1234",
-			})
-			.then(function(message){
-				alert("mail sent successfully")
-			});
-		}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+	function sendEmail(){
+		$.ajax({
+		  type: "POST",
+		  url: "https://mandrillapp.com/api/1.0/messages/send.json",
+		  data: {
+		    "key": "send_password",
+		    "message": {
+		      "from_email": "brendanlui@yahoo.com.hk",
+		      "to": [
+		          {
+		            "email": "mhlui@connect.ust.hk",
+		            "name": "RECIPIENT NAME (OPTIONAL)",
+		            "type": "to"
+		          },
+		          {
+		            "email": "brendanlui@yahoo.com.hk",
+		            "name": "ANOTHER RECIPIENT NAME (OPTIONAL)",
+		            "type": "to"
+		          }
+		        ],
+		      "autotext": "true",
+		      "subject": "YOUR SUBJECT HERE!",
+		      "html": "YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!"
+		    }
+		  }
+		 }).done(function(response) {
+		   console.log(response); // if you're into that sorta thing
+		 });
+	}
 	</script>
 
 	<ul id="foot">
