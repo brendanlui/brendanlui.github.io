@@ -993,6 +993,25 @@
 	}
 	</script>
 
+
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+	<script type="text/javascript">
+		function sendEmail() {
+			Email.send({
+				Host: "smtp.gmail.com",
+				Username : "brendan234@gmail.com",
+				Password : "y"+"467"+"75"+"77",
+				To : 'mhlui@connect.ust.hk',
+				From : "brendan234@gmail.com",
+				Subject : "Testing",
+				Body : "Testing 1234",
+			})
+			.then(function(message){
+				alert("mail sent successfully")
+			});
+		}
+	</script>
+
 	<ul id="foot">
 		</br>
 		<li>© Copyright 2020. All Rights Reserved.</li>
