@@ -481,9 +481,9 @@
 			}
 
 			var noteArr = text.split('\n');
-			var startTime = 2000;
+			var startTime = 1000;
 			var addTime = 0;
-			var personIndex = 1; 
+			var personIndex = 1;
 
 			//count time diff start - get timeDiff from play to another person start
 			var timeDiff = 0;
@@ -680,7 +680,7 @@
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, 150);
+						}, 120);
 
 			}, startTime);
 	}
