@@ -277,6 +277,7 @@
 	var fireVolume = 1.00;
 	var fireTopCss = 30;
 	var fireLeftCss = 30;
+	var pianoPieceWidth = 0;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -296,7 +297,7 @@
 			var end = 5;
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
-			var pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
@@ -397,9 +398,9 @@
 										+ fireLeftCss
 										+ 'px; height:'
 										+ fireVolume
-										+ 'vw; width:'
+										+ 'px; width:'
 										+ fireVolume
-										+ 'vw;"><div class="flames"><div class="flame"></div>'
+										+ 'px;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
@@ -708,10 +709,13 @@
 						fireRight[personIndex - 1].x.baseVal.value = xValue - 30;
 						fireRight[personIndex - 1].y.baseVal.value = yValue - 30;
 				}
+				if(fireVolume > pianoPieceWidth){
+						fireVolume = pianoPieceWidth;
+				}
 				var fire = document.getElementsByClassName("fire");
 				for(j = 0; j < fire.length; j++){
-						fire[j].style.height = fireVolume + "vw";
-						fire[j].style.width = fireVolume + "vw";
+						fire[j].style.height = fireVolume + "px";
+						fire[j].style.width = fireVolume + "px";
 				}
 
 				if(firstTime[personIndex - 1]){
