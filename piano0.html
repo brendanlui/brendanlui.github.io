@@ -623,15 +623,15 @@
 								leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 
-								fireRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
-								fireLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								//fireRight[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								//fireLeft[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 						}
 				}
 	}
 
 	var fireVolume = 1.00;
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += 0.01;
+				fireVolume += 0.001;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
