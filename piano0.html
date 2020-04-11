@@ -115,6 +115,7 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
+			<button id="btnEffect" class="buttonJp btnFilter" disabled>Effect</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -128,6 +129,7 @@
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
+	var isEffectOn = false;
 	var currentPlaySongName = "";
 	var btnClickTimeout = [];
 	var btnReleaseTimeout = [];
@@ -158,6 +160,25 @@
 			btnStop.classList.remove("abled");
 			btnStop.classList.add("disabled");
 			clearAllTimeout();
+	}
+
+	var btnEffect = document.getElementById("btnEffect");
+	btnEffect.onclick = function() {
+			var fireNode = document.getElementById("fireNode");
+			if(isEffectOn){
+					btnEffect.classList.remove("abled");
+					btnEffect.classList.add("disabled");
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "none";
+					}
+			}else{
+					btnEffect.classList.remove("disabled");
+					btnEffect.classList.add("abled");
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "block";
+					}
+			}
+			isEffectOn = !isEffectOn;
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
