@@ -115,7 +115,7 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
-			<button id="btnEffect" class="buttonJp btnFilter abled">Effect: On</button>
+			<button id="btnEffect" class="buttonJp btnFilter abled">Fire: On</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -171,7 +171,7 @@
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "none";
 					}
-					btnEffect.innerHTML = "Effect: Off";
+					btnEffect.innerHTML = "Fire: Off";
 			}else{
 					btnEffect.classList.remove("disabled");
 					btnEffect.classList.add("abled");
