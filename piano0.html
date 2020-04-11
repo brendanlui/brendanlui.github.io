@@ -275,8 +275,8 @@
 	}
 
 	var fireVolume = 1.00;
-	var fireTop = 30;
-	var fireLeft = 30;
+	var fireTopCss = 30;
+	var fireLeftCss = 30;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -384,17 +384,17 @@
 
 						//fire start
 						svg += '<foreignobject class="fireNode fireObjectRight" x="'
-										+ Math.round(start_x + width * 2 / 3 - fireLeft + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 2 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
-										+ Math.round(start_y + height * 6 / 7 - fireTop + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeft * 4 * fireVolume)
+										+ (fireLeftCss * 4 * fireVolume)
 										+ '" height="'
-										+ (fireTop * 4 * fireVolume)
+										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	fireTop
+										+	fireTopCss
 										+ 'px; left:'
-										+ fireLeft
+										+ fireLeftCss
 										+ 'px; height:'
 										+ fireVolume
 										+ 'vw; width:'
@@ -408,13 +408,13 @@
 										+ '" y="'
 										+ Math.round(start_y + height * 6 / 7 - 30 + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeft * 4 * fireVolume)
+										+ (fireLeftCss * 4 * fireVolume)
 										+ '" height="'
-										+ (fireTop * 4 * fireVolume)
+										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	fireTop
+										+	fireTopCss
 										+ 'px; left:'
-										+ fireLeft
+										+ fireLeftCss
 										+ 'px; height:'
 										+ fireVolume
 										+ 'vw; width:'
