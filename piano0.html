@@ -274,9 +274,9 @@
 		}
 	}
 
-	var fireVolume = 1.00;
 	var fireTopCss = 30;
 	var fireLeftCss = 30;
+	var fireVolume = 0;
 	var pianoPieceWidth = 0;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
@@ -298,6 +298,9 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+			if(fireVolume == 0){
+					fireVolume = pianoPieceWidth / 300;
+			}
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
@@ -658,7 +661,7 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += 0.01;
+				fireVolume += pianoPieceWidth / 300;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
