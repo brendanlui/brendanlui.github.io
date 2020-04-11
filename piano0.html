@@ -276,7 +276,7 @@
 	}
 
 	var fireTopCss = 50;
-	var fireLeftHandCss = 50;
+	var fireHandCss = 50;
 	var handFireVolume = 0;
 	var pianoPieceWidth = 0;
 	var handMaxhandFireVolume = 0;
@@ -404,17 +404,17 @@
 
 						//fire start
 						svg += '<foreignobject class="fireNode fireObjectRightHand" x="'
-										+ Math.round(start_x + width * 2 / 3 - fireLeftHandCss + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 2 / 3 - fireHandCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeftHandCss * 4)
+										+ (fireHandCss * 4)
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
 										+	(fireTopCss - handFireVolume / 3)
 										+ 'px; left:'
-										+ fireLeftHandCss
+										+ fireHandCss
 										+ 'px; height:'
 										+ handFireVolume
 										+ 'px; width:'
@@ -424,17 +424,57 @@
 										+ '</foreignobject>';
 
 						svg += '<foreignobject class="fireNode fireObjectLeftHand" x="'
-										+ Math.round(start_x + width * 1 / 3 - fireLeftHandCss + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 1 / 3 - fireHandCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeftHandCss * 4)
+										+ (fireHandCss * 4)
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
 										+	(fireTopCss - handFireVolume / 3)
 										+ 'px; left:'
-										+ fireLeftHandCss
+										+ fireHandCss
+										+ 'px; height:'
+										+ handFireVolume
+										+ 'px; width:'
+										+ handFireVolume
+										+ 'px;"><div class="flames"><div class="flame"></div>'
+										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
+										+ '</foreignobject>';
+
+						svg += '<foreignobject class="fireNode fireObjectRightLeg" x="'
+										+ Math.round(start_x + width * 2 / 3 - fireHandCss + Number.EPSILON) * 1000 / 1000
+										+ '" y="'
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireHandCss * 4)
+										+ '" height="'
+										+ (fireTopCss * 4)
+										+ '"><div class="fire" style="top:'
+										+	(fireTopCss - handFireVolume / 3)
+										+ 'px; left:'
+										+ fireHandCss
+										+ 'px; height:'
+										+ handFireVolume
+										+ 'px; width:'
+										+ handFireVolume
+										+ 'px;"><div class="flames"><div class="flame"></div>'
+										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
+										+ '</foreignobject>';
+
+						svg += '<foreignobject class="fireNode fireObjectLeftLeg" x="'
+										+ Math.round(start_x + width * 1 / 3 - fireHandCss + Number.EPSILON) * 1000 / 1000
+										+ '" y="'
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireHandCss * 4)
+										+ '" height="'
+										+ (fireTopCss * 4)
+										+ '"><div class="fire" style="top:'
+										+	(fireTopCss - handFireVolume / 3)
+										+ 'px; left:'
+										+ fireHandCss
 										+ 'px; height:'
 										+ handFireVolume
 										+ 'px; width:'
@@ -725,12 +765,12 @@
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
-						fireLeftHand[personIndex - 1].x.baseVal.value = xValue - fireLeftHandCss;
+						fireLeftHand[personIndex - 1].x.baseVal.value = xValue - fireHandCss;
 						fireLeftHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
-						fireRightHand[personIndex - 1].x.baseVal.value = xValue - fireLeftHandCss;
+						fireRightHand[personIndex - 1].x.baseVal.value = xValue - fireHandCss;
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
 				var fire = document.getElementsByClassName("fire");
