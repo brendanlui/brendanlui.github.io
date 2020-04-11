@@ -408,7 +408,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume / 1.7)
+										+	(fireTopCss - fireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -428,7 +428,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume / 1.7)
+										+	(fireTopCss - fireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -718,12 +718,12 @@
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireLeft[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss;
+						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 3;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireRight[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss;	// - fireVolume / 1.7
+						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 3;
 				}
 				var fire = document.getElementsByClassName("fire");
 				for(j = 0; j < fire.length; j++){
