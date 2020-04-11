@@ -357,7 +357,7 @@
 													+ '" style="stroke:'+personColor+';stroke-width:2;" class="rightHand person"/>';
 
 						//fire start
-						svg += '<foreignobject class="node fireObjectRight" x="'
+						svg += '<foreignobject class="fireNode fireObjectRight" x="'
 										+ Math.round(start_x + width * 2 / 3 + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
@@ -365,7 +365,7 @@
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
-						svg += '<foreignobject class="node fireObjectLeft" x="'
+						svg += '<foreignobject class="fireNode fireObjectLeft" x="'
 										+ Math.round(start_x + width * 1 / 3 + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000

@@ -1,4 +1,4 @@
-body .fire {
+.fireNode .fire {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7,7 +7,7 @@ body .fire {
   height: 2vw;
   width: 2vw;
 }
-body .fire .flames {
+.fireNode .fire .flames {
   position: absolute;
   bottom: 40%;
   left: 50%;
@@ -16,7 +16,7 @@ body .fire .flames {
   -webkit-transform: translateX(-50%) rotate(45deg);
           transform: translateX(-50%) rotate(45deg);
 }
-body .fire .flames .flame {
+.fireNode .fire .flames .flame {
   position: absolute;
   right: 0%;
   bottom: 0%;
@@ -25,27 +25,27 @@ body .fire .flames .flame {
   background-color: #ffdc01;
   border-radius: 1vw;
 }
-body .fire .flames .flame:nth-child(2n + 1) {
+.fireNode .fire .flames .flame:nth-child(2n + 1) {
   -webkit-animation: flameodd 0.7s ease-in infinite;
           animation: flameodd 0.7s ease-in infinite;
 }
-body .fire .flames .flame:nth-child(2n) {
+.fireNode .fire .flames .flame:nth-child(2n) {
   -webkit-animation: flameeven 0.7s ease-in infinite;
           animation: flameeven 0.7s ease-in infinite;
 }
-body .fire .flames .flame:nth-child(1) {
+.fireNode .fire .flames .flame:nth-child(1) {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
-body .fire .flames .flame:nth-child(2) {
+.fireNode .fire .flames .flame:nth-child(2) {
   -webkit-animation-delay: 0.175s;
           animation-delay: 0.175s;
 }
-body .fire .flames .flame:nth-child(3) {
+.fireNode .fire .flames .flame:nth-child(3) {
   -webkit-animation-delay: 0.35s;
           animation-delay: 0.35s;
 }
-body .fire .flames .flame:nth-child(4) {
+.fireNode .fire .flames .flame:nth-child(4) {
   -webkit-animation-delay: 0.525s;
           animation-delay: 0.525s;
 }
