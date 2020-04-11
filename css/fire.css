@@ -1,7 +1,7 @@
 .fireNode .fire {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 30px;
+  left: 30px;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
   height: 2vw;
