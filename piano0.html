@@ -281,6 +281,15 @@
 	var maxFireVolume = 0;
 	var minFireVolume = 0;
 	var increasePath = 240;
+
+	function restrictFireVolume(){
+			if(fireVolume < minFireVolume){
+					fireVolume = minFireVolume;
+			}else if(fireVolume > maxFireVolume){
+					fireVolume = maxFireVolume;
+			}
+	}
+
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -303,11 +312,7 @@
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 			maxFireVolume = 2.5 * pianoPieceWidth;
 			minFireVolume = pianoPieceWidth / 2;
-			if(fireVolume < minFireVolume){
-					fireVolume = minFireVolume;
-			}else if(fireVolume > maxFireVolume){
-					fireVolume = maxFireVolume;
-			}
+			restrictFireVolume();
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
@@ -668,7 +673,7 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += ((maxFireVolume - minFireVolume) / increasePath);
+				fireVolume += (maxFireVolume - minFireVolume) / increasePath;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -708,11 +713,7 @@
 						yValue = yValueNormal;
 				}
 
-				if(fireVolume > maxFireVolume){
-						fireVolume = maxFireVolume;
-				}else if(fireVolume < minFireVolume){
-						fireVolume = minFireVolume;
-				}
+				restrictFireVolume();
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
