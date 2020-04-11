@@ -274,6 +274,9 @@
 		}
 	}
 
+	var fireVolume = 1.00;
+	var fireTop = 30;
+	var fireLeft = 30;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -379,12 +382,24 @@
 													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
 													+ '" style="stroke:'+personColor+';stroke-width:2;" class="rightHand person"/>';
 
-						//fire start : -30 for .fireNode .fire in fire.css line 1 - top and left
+						//fire start
 						svg += '<foreignobject class="fireNode fireObjectRight" x="'
-										+ Math.round(start_x + width * 2 / 3 - 30 + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 2 / 3 - fireLeft + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
-										+ Math.round(start_y + height * 6 / 7 - 30 + Number.EPSILON) * 1000 / 1000
-										+ '" width="100" height="100"><div class="fire"><div class="flames"><div class="flame"></div>'
+										+ Math.round(start_y + height * 6 / 7 - fireTop + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireLeft * 4 * fireVolume)
+										+ '" height="'
+										+ (fireTop * 4 * fireVolume)
+										+ '"><div class="fire" style="top:'
+										+	fireTop
+										+ 'px; left:'
+										+ fireLeft
+										+ 'px; height:'
+										+ fireVolume
+										+ 'vw; width:'
+										+ fireVolume
+										+ 'vw;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
@@ -392,7 +407,19 @@
 										+ Math.round(start_x + width * 1 / 3 - 30 + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y + height * 6 / 7 - 30 + Number.EPSILON) * 1000 / 1000
-										+ '" width="100" height="100"><div class="fire"><div class="flames"><div class="flame"></div>'
+										+ '" width="'
+										+ (fireLeft * 4 * fireVolume)
+										+ '" height="'
+										+ (fireTop * 4 * fireVolume)
+										+ '"><div class="fire" style="top:'
+										+	fireTop
+										+ 'px; left:'
+										+ fireLeft
+										+ 'px; height:'
+										+ fireVolume
+										+ 'vw; width:'
+										+ fireVolume
+										+ 'vw;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 						//fire end
@@ -629,9 +656,8 @@
 				}
 	}
 
-	var fireVolume = 1.00;
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += 0.001;
+				fireVolume += 0.01;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{

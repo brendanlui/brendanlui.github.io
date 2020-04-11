@@ -1,11 +1,7 @@
 .fireNode .fire {
   position: absolute;
-  top: 22px;
-  left: 30px;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
-  height: 1vw;
-  width: 1vw;
 }
 .fireNode .fire .flames {
   position: absolute;
