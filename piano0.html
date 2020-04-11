@@ -305,6 +305,8 @@
 			minFireVolume = pianoPieceWidth / 2;
 			if(fireVolume < minFireVolume){
 					fireVolume = minFireVolume;
+			}else if(fireVolume > maxFireVolume){
+					fireVolume = maxFireVolume;
 			}
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
