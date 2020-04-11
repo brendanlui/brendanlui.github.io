@@ -452,7 +452,7 @@
 
 	function pressKey(id){
 			var idArr = id.split('_');
-			playOneNote(idArr[1], idArr[2], 2, 0, 1, 1.5);
+			playOneNote(idArr[1], idArr[2], 2, 0, 1);
 	}
 
 	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
@@ -559,13 +559,6 @@
 							startTime += addTime;
 							addTime = tempArr[3] / speed;
 
-							//edit fire volume start
-							fireVolume = 1.5;
-							if(addTime != 0){
-									fireVolume = 230 / addTime;
-							}
-							//edit fire volume end
-
 							if(tempArr[3] < -5000 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
 									personIndex++;
 									if(personIndex > 2){
@@ -578,7 +571,7 @@
 									// get timeDiff from play to another person end
 							}
 
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex, fireVolume);
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex);
 					}
 			}
 	}
@@ -636,7 +629,9 @@
 				}
 	}
 
-	function moveHand(note, octave, left, personIndex, fireVolume){
+	var fireVolume = 1.00;
+	function moveHand(note, octave, left, personIndex){
+				fireVolume += 0.01;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -724,14 +719,14 @@
 	var maxNoteLast = 2.8;
 	var buffer = 0.2;
 	var piano = Synth.createInstrument('piano');
-	function playOneNote(note, octave, duration, startTime, personIndex, fireVolume){
+	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 						//use hand start
 						noteCount[personIndex - 1]++;
 						if(noteCount[personIndex - 1] % 2 == 0){
-								moveHand(note, octave, false, personIndex, fireVolume);
+								moveHand(note, octave, false, personIndex);
 						}else{
-								moveHand(note, octave, true, personIndex, fireVolume);
+								moveHand(note, octave, true, personIndex);
 						}
 						//use hand end
 						var finalDuration = duration / 1000;
