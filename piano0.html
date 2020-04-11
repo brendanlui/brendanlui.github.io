@@ -401,7 +401,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume / 2)
+										+	(fireTopCss - fireVolume / 1.7)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -421,7 +421,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume / 2)
+										+	(fireTopCss - fireVolume / 1.7)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -708,17 +708,19 @@
 
 				if(fireVolume > maxFireVolume){
 						fireVolume = maxFireVolume;
+				}else if(fireVolume < minFireVolume){
+						fireVolume = minFireVolume;
 				}
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireLeft[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 2;
+						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 1.7;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireRight[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 2;
+						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 1.7;
 				}
 				var fire = document.getElementsByClassName("fire");
 				for(j = 0; j < fire.length; j++){
