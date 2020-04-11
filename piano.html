@@ -281,12 +281,15 @@
 	var maxFireVolume = 0;
 	var minFireVolume = 0;
 	var increasePath = 300;
+	var isReverse = false;
 
 	function restrictFireVolume(){
 			if(fireVolume < minFireVolume){
 					fireVolume = minFireVolume;
+					isReverse = false;
 			}else if(fireVolume > maxFireVolume){
 					fireVolume = maxFireVolume;
+					isReverse = true;
 			}
 	}
 
@@ -673,7 +676,11 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += (maxFireVolume - minFireVolume) / increasePath;
+				if(isReverse){
+						fireVolume -= (maxFireVolume - minFireVolume) / increasePath;
+				}else{
+						fireVolume += (maxFireVolume - minFireVolume) / increasePath;
+				}
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
