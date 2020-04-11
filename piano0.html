@@ -452,7 +452,7 @@
 
 	function pressKey(id){
 			var idArr = id.split('_');
-			playOneNote(idArr[1], idArr[2], 2, 0, 1);
+			playOneNote(idArr[1], idArr[2], 2, 0, 1, 1.5);
 	}
 
 	document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
@@ -560,12 +560,9 @@
 							addTime = tempArr[3] / speed;
 
 							//edit fire volume start
+							fireVolume = 1.5;
 							if(addTime != 0){
-									var fire = document.getElementsByClassName("fire");
-									for(j = 0; j < fire.length; j++){
-											fire[j].style.height = (300 / addTime) + "vw";
-											fire[j].style.width = (300 / addTime) + "vw";
-									}
+									fireVolume = 230 / addTime;
 							}
 							//edit fire volume end
 
@@ -581,7 +578,7 @@
 									// get timeDiff from play to another person end
 							}
 
-							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex);
+							playOneNote(tempArr[0].trim(), tempArr[1], tempArr[2], startTime - timeDiff, personIndex, fireVolume);
 					}
 			}
 	}
@@ -636,7 +633,7 @@
 				}
 	}
 
-	function moveHand(note, octave, left, personIndex){
+	function moveHand(note, octave, left, personIndex, fireVolume){
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -687,6 +684,11 @@
 						fireRight[0].x.baseVal.value = xValue - 30;
 						fireRight[0].y.baseVal.value = yValue - 30;
 				}
+				var fire = document.getElementsByClassName("fire");
+				for(j = 0; j < fire.length; j++){
+						fire[j].style.height = fireVolume + "vw";
+						fire[j].style.width = fireVolume + "vw";
+				}
 
 				if(firstTime[personIndex - 1]){
 						centerX[personIndex - 1] = personBodyCenter[personIndex - 1].x1.baseVal.value;
@@ -719,14 +721,14 @@
 	var maxNoteLast = 2.8;
 	var buffer = 0.2;
 	var piano = Synth.createInstrument('piano');
-	function playOneNote(note, octave, duration, startTime, personIndex){
+	function playOneNote(note, octave, duration, startTime, personIndex, fireVolume){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 						//use hand start
 						noteCount[personIndex - 1]++;
 						if(noteCount[personIndex - 1] % 2 == 0){
-								moveHand(note, octave, false, personIndex);
+								moveHand(note, octave, false, personIndex, fireVolume);
 						}else{
-								moveHand(note, octave, true, personIndex);
+								moveHand(note, octave, true, personIndex, fireVolume);
 						}
 						//use hand end
 						var finalDuration = duration / 1000;
