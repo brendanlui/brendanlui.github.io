@@ -274,13 +274,13 @@
 		}
 	}
 
-	var fireTopCss = 30;
-	var fireLeftCss = 30;
+	var fireTopCss = 50;
+	var fireLeftCss = 50;
 	var fireVolume = 0;
 	var pianoPieceWidth = 0;
 	var maxFireVolume = 0;
 	var minFireVolume = 0;
-	var increasePath = 200;
+	var increasePath = 240;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -301,8 +301,8 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
-			maxFireVolume = 3 * pianoPieceWidth;
-			minFireVolume = pianoPieceWidth / 3;
+			maxFireVolume = 2.5 * pianoPieceWidth;
+			minFireVolume = pianoPieceWidth / 2;
 			if(fireVolume < minFireVolume){
 					fireVolume = minFireVolume;
 			}
