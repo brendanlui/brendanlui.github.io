@@ -299,7 +299,7 @@
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 			if(fireVolume == 0){
-					fireVolume = pianoPieceWidth * 2 / 100;
+					fireVolume = pianoPieceWidth * 5 / 200;
 			}
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
@@ -661,7 +661,7 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += pianoPieceWidth * 2/ 100;
+				fireVolume += pianoPieceWidth * 5 / 200;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -701,19 +701,19 @@
 						yValue = yValueNormal;
 				}
 
-				if(fireVolume > 2 * pianoPieceWidth){
-						fireVolume = 2 * pianoPieceWidth;
+				if(fireVolume > pianoPieceWidth * 5){
+						fireVolume = pianoPieceWidth * 5;
 				}
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireLeft[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume;
+						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 2;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
 						fireRight[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
-						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume;
+						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 2;
 				}
 				var fire = document.getElementsByClassName("fire");
 				for(j = 0; j < fire.length; j++){
