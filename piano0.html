@@ -393,7 +393,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss * 0.7)
+										+	(fireTopCss - fireVolume)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -413,14 +413,14 @@
 										+ '" height="'
 										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss * 0.7)
+										+	(fireTopCss * fireVolume)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
 										+ fireVolume
-										+ 'vw; width:'
+										+ 'px; width:'
 										+ fireVolume
-										+ 'vw;"><div class="flames"><div class="flame"></div>'
+										+ 'px;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 						//fire end
