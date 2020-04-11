@@ -679,13 +679,13 @@
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
-						fireLeft[0].x.baseVal.value = xValue - 30;
-						fireLeft[0].y.baseVal.value = yValue - 30;
+						fireLeft[personIndex - 1].x.baseVal.value = xValue - 30;
+						fireLeft[personIndex - 1].y.baseVal.value = yValue - 30;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
-						fireRight[0].x.baseVal.value = xValue - 30;
-						fireRight[0].y.baseVal.value = yValue - 30;
+						fireRight[personIndex - 1].x.baseVal.value = xValue - 30;
+						fireRight[personIndex - 1].y.baseVal.value = yValue - 30;
 				}
 				var fire = document.getElementsByClassName("fire");
 				for(j = 0; j < fire.length; j++){
