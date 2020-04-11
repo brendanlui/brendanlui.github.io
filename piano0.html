@@ -178,7 +178,7 @@
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
-					btnEffect.innerHTML = "Effect: On";
+					btnEffect.innerHTML = "Fire: On";
 			}
 			isEffectOn = !isEffectOn;
 	}
@@ -401,7 +401,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume)
+										+	(fireTopCss - fireVolume / 2)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -421,7 +421,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - fireVolume)
+										+	(fireTopCss - fireVolume / 2)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
