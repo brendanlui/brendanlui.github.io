@@ -151,7 +151,7 @@
 			btnStop.classList.add("abled");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
-			}, 100);
+			}, 150);
 	}
 
 	var btnStop = document.getElementById("btnStop");
@@ -195,7 +195,7 @@
 			btnChangePerson.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnChangePerson.classList.remove("active");
-			}, 100);
+			}, 150);
 			if(noOfPerson > 1){
 					btnSwitchPersonHand.classList.remove("disabled");
 					btnSwitchPersonHand.classList.add("abled");
@@ -230,7 +230,7 @@
 			btnSwitchPersonHand.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
-			}, 100);
+			}, 150);
 	}
 	//btn click end
 
@@ -280,7 +280,7 @@
 	var pianoPieceWidth = 0;
 	var maxFireVolume = 0;
 	var minFireVolume = 0;
-	var increasePath = 200;
+	var increasePath = 150;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -666,7 +666,7 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += (maxFireVolume - minFireVolume) / increasePath;
+				fireVolume += ((maxFireVolume - minFireVolume) / increasePath);
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -706,8 +706,8 @@
 						yValue = yValueNormal;
 				}
 
-				if(fireVolume > minFireVolume){
-						fireVolume = minFireVolume;
+				if(fireVolume > maxFireVolume){
+						fireVolume = maxFireVolume;
 				}
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
@@ -779,7 +779,7 @@
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, 100);
+						}, 150);
 
 			}, startTime);
 	}
