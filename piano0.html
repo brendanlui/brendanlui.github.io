@@ -301,7 +301,7 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
-			maxFireVolume = 5 * pianoPieceWidth;
+			maxFireVolume = 3 * pianoPieceWidth;
 			minFireVolume = pianoPieceWidth / 3;
 			if(fireVolume < minFireVolume){
 					fireVolume = minFireVolume;
