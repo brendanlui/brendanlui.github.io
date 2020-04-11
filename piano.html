@@ -9,6 +9,7 @@
 	<link id="stylecall3" rel="stylesheet" href="/css/inputButton.css" />
 	<link id="stylecall5" rel="stylesheet" href="/css/japanese.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/piano.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/fire.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -114,6 +115,7 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
+			<button id="btnEffect" class="buttonJp btnFilter abled">Fire: On</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -123,9 +125,11 @@
 	<a id="downloadLink" style="display:none;">Download</a>
 	<div id="displayPiano">
 	</div>
+
   <pre style="display:none" id="fileContent"></pre>
 
 	<script>
+	var isEffectOn = true;
 	var currentPlaySongName = "";
 	var btnClickTimeout = [];
 	var btnReleaseTimeout = [];
@@ -147,7 +151,7 @@
 			btnStop.classList.add("abled");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
-			}, 100);
+			}, 150);
 	}
 
 	var btnStop = document.getElementById("btnStop");
@@ -156,6 +160,27 @@
 			btnStop.classList.remove("abled");
 			btnStop.classList.add("disabled");
 			clearAllTimeout();
+	}
+
+	var btnEffect = document.getElementById("btnEffect");
+	btnEffect.onclick = function() {
+			var fireNode = document.getElementsByClassName("fireNode");
+			if(isEffectOn){
+					btnEffect.classList.remove("abled");
+					btnEffect.classList.add("disabled");
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "none";
+					}
+					btnEffect.innerHTML = "Fire: Off";
+			}else{
+					btnEffect.classList.remove("disabled");
+					btnEffect.classList.add("abled");
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "block";
+					}
+					btnEffect.innerHTML = "Fire: On";
+			}
+			isEffectOn = !isEffectOn;
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
@@ -170,7 +195,7 @@
 			btnChangePerson.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnChangePerson.classList.remove("active");
-			}, 100);
+			}, 150);
 			if(noOfPerson > 1){
 					btnSwitchPersonHand.classList.remove("disabled");
 					btnSwitchPersonHand.classList.add("abled");
@@ -205,7 +230,7 @@
 			btnSwitchPersonHand.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSwitchPersonHand.classList.remove("active");
-			}, 100);
+			}, 150);
 	}
 	//btn click end
 
@@ -249,6 +274,22 @@
 		}
 	}
 
+	var fireTopCss = 50;
+	var fireLeftCss = 50;
+	var fireVolume = 0;
+	var pianoPieceWidth = 0;
+	var maxFireVolume = 0;
+	var minFireVolume = 0;
+	var increasePath = 300;
+
+	function restrictFireVolume(){
+			if(fireVolume < minFireVolume){
+					fireVolume = minFireVolume;
+			}else if(fireVolume > maxFireVolume){
+					fireVolume = maxFireVolume;
+			}
+	}
+
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -268,7 +309,10 @@
 			var end = 5;
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
-			var pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+			maxFireVolume = 2.4 * pianoPieceWidth;
+			minFireVolume = pianoPieceWidth / 2;
+			restrictFireVolume();
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
@@ -353,6 +397,49 @@
 													+ '" y2="'
 													+ Math.round(start_y - height * 1 / 3 + Number.EPSILON) * 1000 / 1000
 													+ '" style="stroke:'+personColor+';stroke-width:2;" class="rightHand person"/>';
+
+						//fire start
+						svg += '<foreignobject class="fireNode fireObjectRight" x="'
+										+ Math.round(start_x + width * 2 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+										+ '" y="'
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireLeftCss * 4)
+										+ '" height="'
+										+ (fireTopCss * 4)
+										+ '"><div class="fire" style="top:'
+										+	(fireTopCss - fireVolume / 3)
+										+ 'px; left:'
+										+ fireLeftCss
+										+ 'px; height:'
+										+ fireVolume
+										+ 'px; width:'
+										+ fireVolume
+										+ 'px;"><div class="flames"><div class="flame"></div>'
+										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
+										+ '</foreignobject>';
+
+						svg += '<foreignobject class="fireNode fireObjectLeft" x="'
+										+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+										+ '" y="'
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireLeftCss * 4)
+										+ '" height="'
+										+ (fireTopCss * 4)
+										+ '"><div class="fire" style="top:'
+										+	(fireTopCss - fireVolume / 3)
+										+ 'px; left:'
+										+ fireLeftCss
+										+ 'px; height:'
+										+ fireVolume
+										+ 'px; width:'
+										+ fireVolume
+										+ 'px;"><div class="flames"><div class="flame"></div>'
+										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
+										+ '</foreignobject>';
+						//fire end
+
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -552,6 +639,9 @@
 	var personBodyLeft = document.getElementsByClassName("personBodyLeft");
 	var rightLeg = document.getElementsByClassName("rightLeg");
 	var leftLeg = document.getElementsByClassName("leftLeg");
+	var fireRight = document.getElementsByClassName("fireObjectRight");
+	var fireLeft = document.getElementsByClassName("fireObjectLeft");
+
 	function resetPersonPosition(numPeople){
 				var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
 				if(numPeople > 1){
@@ -575,11 +665,15 @@
 								rightLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								leftLeg[i].x1.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								leftLeg[i].x2.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+
+								fireRight[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								fireLeft[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 						}
 				}
 	}
 
 	function moveHand(note, octave, left, personIndex){
+				fireVolume += (maxFireVolume - minFireVolume) / increasePath;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -619,12 +713,22 @@
 						yValue = yValueNormal;
 				}
 
+				restrictFireVolume();
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
+						fireLeft[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
+						fireLeft[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 3;
 				}else{
 						rightHand[personIndex - 1].x1.baseVal.value = xValue;
 						rightHand[personIndex - 1].y1.baseVal.value = yValue;
+						fireRight[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
+						fireRight[personIndex - 1].y.baseVal.value = yValue - fireTopCss - fireVolume / 3;
+				}
+				var fire = document.getElementsByClassName("fire");
+				for(j = 0; j < fire.length; j++){
+						fire[j].style.height = fireVolume + "px";
+						fire[j].style.width = fireVolume + "px";
 				}
 
 				if(firstTime[personIndex - 1]){
@@ -680,7 +784,7 @@
 						noteSvg.classList.add("pressed");
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
-						}, 100);
+						}, 150);
 
 			}, startTime);
 	}
