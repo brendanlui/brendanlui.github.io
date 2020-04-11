@@ -164,17 +164,18 @@
 
 	var btnEffect = document.getElementById("btnEffect");
 	btnEffect.onclick = function() {
+			btnEffect.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnEffect.classList.remove("active");
+			}, 150);
+
 			var fireNode = document.getElementsByClassName("fireNode");
 			if(isEffectOn){
-					btnEffect.classList.remove("abled");
-					btnEffect.classList.add("disabled");
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "none";
 					}
 					btnEffect.innerHTML = "Fire: Off";
 			}else{
-					btnEffect.classList.remove("disabled");
-					btnEffect.classList.add("abled");
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
