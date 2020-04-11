@@ -392,7 +392,7 @@
 										+ '" height="'
 										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	fireTopCss
+										+	(fireTopCss * 0.7)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -404,15 +404,15 @@
 										+ '</foreignobject>';
 
 						svg += '<foreignobject class="fireNode fireObjectLeft" x="'
-										+ Math.round(start_x + width * 1 / 3 - 30 + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
-										+ Math.round(start_y + height * 6 / 7 - 30 + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
 										+ (fireLeftCss * 4 * fireVolume)
 										+ '" height="'
 										+ (fireTopCss * 4 * fireVolume)
 										+ '"><div class="fire" style="top:'
-										+	fireTopCss
+										+	(fireTopCss * 0.7)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
