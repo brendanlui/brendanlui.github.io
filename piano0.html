@@ -278,6 +278,9 @@
 	var fireLeftCss = 30;
 	var fireVolume = 0;
 	var pianoPieceWidth = 0;
+	var maxFireVolume = 0;
+	var minFireVolume = 0;
+	var increasePath = 200;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -298,8 +301,10 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
-			if(fireVolume == 0){
-					fireVolume = pianoPieceWidth * 5 / 200;
+			maxFireVolume = 5 * pianoPieceWidth;
+			minFireVolume = pianoPieceWidth / 4;
+			if(fireVolume < minFireVolume){
+					fireVolume = minFireVolume;
 			}
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
@@ -661,7 +666,7 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				fireVolume += pianoPieceWidth * 5 / 200;
+				fireVolume += (maxFireVolume - minFireVolume) / increasePath;
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
 				}else{
@@ -701,8 +706,8 @@
 						yValue = yValueNormal;
 				}
 
-				if(fireVolume > pianoPieceWidth * 5){
-						fireVolume = pianoPieceWidth * 5;
+				if(fireVolume > minFireVolume){
+						fireVolume = minFireVolume;
 				}
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
