@@ -536,6 +536,16 @@
 							startTime += addTime;
 							addTime = tempArr[3] / speed;
 
+							//edit fire volume start
+							if(addTime != 0){
+									var fire = document.getElementsByClassName("fire");
+									for(j = 0; j < fire.length; j++){
+											fire[j].style.height = (300 / addTime) + "vw";
+											fire[j].style.width = (300 / addTime) + "vw";
+									}
+							}
+							//edit fire volume end
+
 							if(tempArr[3] < -5000 && noOfPerson > 1){		//another person - (-5) will be modified to dynamic later - brendan
 									personIndex++;
 									if(personIndex > 2){
