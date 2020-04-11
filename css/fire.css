@@ -1,0 +1,249 @@
+body .fireRight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
+  height: 2vw;
+  width: 2vw;
+}
+body .fireRight .flames {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+}
+body .fireRight .flames .flame {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 0%;
+  height: 0%;
+  background-color: #ffdc01;
+  border-radius: 1vw;
+}
+body .fireRight .flames .flame:nth-child(2n + 1) {
+  -webkit-animation: flameodd 0.7s ease-in infinite;
+          animation: flameodd 0.7s ease-in infinite;
+}
+body .fireRight .flames .flame:nth-child(2n) {
+  -webkit-animation: flameeven 0.7s ease-in infinite;
+          animation: flameeven 0.7s ease-in infinite;
+}
+body .fireRight .flames .flame:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+body .fireRight .flames .flame:nth-child(2) {
+  -webkit-animation-delay: 0.175s;
+          animation-delay: 0.175s;
+}
+body .fireRight .flames .flame:nth-child(3) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+body .fireRight .flames .flame:nth-child(4) {
+  -webkit-animation-delay: 0.525s;
+          animation-delay: 0.525s;
+}
+
+
+
+
+body .fireLeft {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
+  height: 2vw;
+  width: 2vw;
+}
+body .fireLeft .flames {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+          transform: translateX(-50%) rotate(45deg);
+}
+body .fireLeft .flames .flame {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 0%;
+  height: 0%;
+  background-color: #ffdc01;
+  border-radius: 1vw;
+}
+body .fireLeft .flames .flame:nth-child(2n + 1) {
+  -webkit-animation: flameodd 0.7s ease-in infinite;
+          animation: flameodd 0.7s ease-in infinite;
+}
+body .fireLeft .flames .flame:nth-child(2n) {
+  -webkit-animation: flameeven 0.7s ease-in infinite;
+          animation: flameeven 0.7s ease-in infinite;
+}
+body .fireLeft .flames .flame:nth-child(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+body .fireLeft .flames .flame:nth-child(2) {
+  -webkit-animation-delay: 0.175s;
+          animation-delay: 0.175s;
+}
+body .fireLeft .flames .flame:nth-child(3) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+body .fireLeft .flames .flame:nth-child(4) {
+  -webkit-animation-delay: 0.525s;
+          animation-delay: 0.525s;
+}
+
+
+@-webkit-keyframes flameodd {
+  0%,
+   100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 1%;
+    bottom: 2%;
+  }
+  100% {
+    right: 150%;
+    bottom: 170%;
+  }
+}
+
+@keyframes flameodd {
+  0%,
+   100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 1%;
+    bottom: 2%;
+  }
+  100% {
+    right: 150%;
+    bottom: 170%;
+  }
+}
+@-webkit-keyframes flameeven {
+  0%,
+   100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 2%;
+    bottom: 1%;
+  }
+  100% {
+    right: 170%;
+    bottom: 150%;
+  }
+}
+@keyframes flameeven {
+  0%,
+   100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 2%;
+    bottom: 1%;
+  }
+  100% {
+    right: 170%;
+    bottom: 150%;
+  }
+}
