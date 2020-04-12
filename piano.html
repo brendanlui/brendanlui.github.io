@@ -170,7 +170,7 @@
 			}, 150);
 
 			fireMode++;
-			if(fireMode > 2){
+			if(fireMode > noOfFireMode){
 					fireMode = 0;
 			}
 
@@ -287,6 +287,7 @@
 		}
 	}
 
+	var noOfFireMode = 2;
 	var fireMode = 2;
 	var fireTopCss = 500;
 	var fireLeftCss = 500;
@@ -628,6 +629,9 @@
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
 			resetPersonPosition(noOfPerson);
+			for(i = 0; i <= noOfFireMode; i++){
+					btnEffect.click();
+			}
 	}
 
 	function pressKey(id){
