@@ -298,13 +298,11 @@
 	var legFireVolume = 0;
 	var maxLegFireVolume = 0;
 	var minLegFireVolume = 0;
-	var legIncreasePath = handIncreasePath;
 	var legMaxCount = 0;
 
 	var headFireVolume = 0;
 	var maxHeadFireVolume = 0;
 	var minHeadFireVolume = 0;
-	var headIncreasePath = handIncreasePath;
 	var headMaxCount = 0;
 
 	function restrictHandFireVolumeReverse(){
@@ -480,7 +478,7 @@
 										+ (fireLeftCss * 4)
 										+ '" height="'
 										+ (fireTopCss * 4)
-										+ '"><div class="fire" style="top:'
+										+ '"><div class="fire fireHand" style="top:'
 										+	(fireTopCss - handFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
@@ -500,7 +498,7 @@
 										+ (fireLeftCss * 4)
 										+ '" height="'
 										+ (fireTopCss * 4)
-										+ '"><div class="fire" style="top:'
+										+ '"><div class="fire fireHand" style="top:'
 										+	(fireTopCss - handFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
@@ -520,7 +518,7 @@
 										+ (fireLeftCss * 8)
 										+ '" height="'
 										+ (fireTopCss * 8)
-										+ '"><div class="fire" style="top:'
+										+ '"><div class="fire fireLeg" style="top:'
 										+	(fireTopCss - legFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
@@ -540,7 +538,7 @@
 										+ (fireLeftCss * 8)
 										+ '" height="'
 										+ (fireTopCss * 8)
-										+ '"><div class="fire" style="top:'
+										+ '"><div class="fire fireLeg" style="top:'
 										+	(fireTopCss - legFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
@@ -560,7 +558,7 @@
 										+ (fireLeftCss * 10)
 										+ '" height="'
 										+ (fireTopCss * 10)
-										+ '"><div class="fire" style="top:'
+										+ '"><div class="fire fireHead" style="top:'
 										+	(fireTopCss - headFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
@@ -809,10 +807,10 @@
 
 	function moveHand(note, octave, left, personIndex){
 				if(legMaxCount > 0 && fireMode == 2){
-						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / headIncreasePath;
+						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / handIncreasePath;
 				}
 				if(handMaxCount > 0 && fireMode == 2){
-						legFireVolume += (maxLegFireVolume - minLegFireVolume) / legIncreasePath;
+						legFireVolume += (maxLegFireVolume - minLegFireVolume) / handIncreasePath;
 				}
 				if(isReverseHand && fireMode == 1){
 						handFireVolume -= (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
@@ -876,10 +874,20 @@
 						fireRightHand[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
-				var fire = document.getElementsByClassName("fire");
-				for(j = 0; j < fire.length; j++){
-						fire[j].style.height = handFireVolume + "px";
-						fire[j].style.width = handFireVolume + "px";
+				var fireHandArr = document.getElementsByClassName("fireHand");
+				for(j = 0; j < fireHandArr.length; j++){
+						fireHandArr[j].style.height = handFireVolume + "px";
+						fireHandArr[j].style.width = handFireVolume + "px";
+				}
+				var fireLegArr = document.getElementsByClassName("fireLeg");
+				for(j = 0; j < fireLegArr.length; j++){
+						fireLegArr[j].style.height = legFireVolume + "px";
+						fireLegArr[j].style.width = legFireVolume + "px";
+				}
+				var fireHeadArr = document.getElementsByClassName("fireHead");
+				for(j = 0; j < fireHeadArr.length; j++){
+						fireHeadArr[j].style.height = headFireVolume + "px";
+						fireHeadArr[j].style.width = headFireVolume + "px";
 				}
 
 				if(firstTime[personIndex - 1]){
