@@ -289,27 +289,31 @@
 	var legFireVolume = 0;
 	var legMaxHandFireVolume = 0;
 	var legMinHandFireVolume = 0;
-	var legIncreasePath = handIncreasePath * 2;
-	var isReverseLeg = false;
+	var legIncreasePath = handIncreasePath;
 	var legMaxCount = 0;
 
 	var headFireVolume = 0;
 	var headMaxhandFireVolume = 0;
 	var headinhandFireVolume = 0;
 	var headIncreasePath = handIncreasePath;
-	var isReverseHead = false;
 	var headMaxCount = 0;
+
+	function restrictHandFireVolumeReverse(){	//brendan not used
+			if(handFireVolume < handMinHandFireVolume){
+					handFireVolume = handMinHandFireVolume;
+					isReverseHand = false;
+			}else if(handFireVolume > handMaxHandFireVolume){
+					handFireVolume = handMaxHandFireVolume;
+					isReverseHand = true;
+			}
+	}
 
 	function restrictHandFireVolume(){
 			if(handFireVolume < handMinHandFireVolume){
 					handFireVolume = handMinHandFireVolume;
-					if(handMaxCount < 2){
-							isReverseHand = false;
-					}
 			}else if(handFireVolume > handMaxHandFireVolume){
 					handFireVolume = handMaxHandFireVolume;
 					if(handMaxCount == 0){
-							isReverseHand = true;
 							handMaxCount++;
 					}
 			}
