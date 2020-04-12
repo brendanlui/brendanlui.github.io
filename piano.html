@@ -623,9 +623,9 @@
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
+					var fireBody = document.getElementsByClassName("fireBody");
 					if(mode == 1){
 							btnEffect.innerHTML = "Fire: Hand";
-							var fireBody = document.getElementsByClassName("fireBody");
 							for(i = 0; i < fireBody.length; i++){
 									fireBody[i].style.display = "none";
 							}
@@ -821,10 +821,10 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				if(legMaxCount > 0 && fireMode == 2 && headFireVolume < maxHeadFireVolume){
+				if(legMaxCount > 0 && fireMode == 2 && headFireVolume <= maxHeadFireVolume){
 						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / (handIncreasePath / 3);
 				}
-				if(handMaxCount > 0 && fireMode == 2 && legFireVolume < maxLegFireVolume){
+				if(handMaxCount > 0 && fireMode == 2 && legFireVolume <= maxLegFireVolume){
 						legFireVolume += (maxLegFireVolume - minLegFireVolume) / handIncreasePath;
 				}
 				if(isReverseHand && fireMode == 1){
