@@ -386,8 +386,8 @@
 			minLegFireVolume = 0;
 			restrictLegFireVolume();
 
-			maxHeadFireVolume = height * 2;
-			minHeadFireVolume = height * 2;
+			maxHeadFireVolume = height * 2.1;
+			minHeadFireVolume = 0;
 			restrictHeadFireVolume();
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -817,7 +817,7 @@
 
 	function moveHand(note, octave, left, personIndex){
 				if(legMaxCount > 0 && fireMode == 2){
-						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / handIncreasePath;
+						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / 3;
 				}
 				if(handMaxCount > 0 && fireMode == 2){
 						legFireVolume += (maxLegFireVolume - minLegFireVolume) / handIncreasePath;
