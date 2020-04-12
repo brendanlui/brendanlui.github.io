@@ -830,7 +830,7 @@
 				if(isReverseHand && fireMode == 1){
 						handFireVolume -= (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
 				}else{
-						if(handFireVolume < maxHandFireVolume){
+						if(handFireVolume <= maxHandFireVolume){
 								handFireVolume += (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
 						}
 				}
