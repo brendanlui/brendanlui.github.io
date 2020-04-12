@@ -291,6 +291,14 @@
 	var legMinhandFireVolume = 0;
 	var legIncreasePath = handIncreasePath * 2;
 	var isReverseLeg = false;
+	var legMaxCount = 0;
+
+	var headFireVolume = 0;
+	var headMaxhandFireVolume = 0;
+	var headinhandFireVolume = 0;
+	var headIncreasePath = handIncreasePath;
+	var isReverseHead = false;
+	var headMaxCount = 0;
 
 	function restrictHandFireVolume(){
 			if(handFireVolume < handMinhandFireVolume){
@@ -310,6 +318,16 @@
 					legFireVolume = legMinhandFireVolume;
 			}else if(legFireVolume > legMaxhandFireVolume){
 					legFireVolume = legMaxhandFireVolume;
+					legMaxCount++;
+			}
+	}
+
+	function restrictHeadFireVolume(){
+			if(headFireVolume < headMinhandFireVolume){
+					headFireVolume = headMinhandFireVolume;
+			}else if(headFireVolume > headMaxhandFireVolume){
+					headFireVolume = headMaxhandFireVolume;
+					headMaxCount++;
 			}
 	}
 
@@ -340,6 +358,10 @@
 
 			legMaxhandFireVolume = 5 * pianoPieceWidth;
 			legMinhandFireVolume = 0;
+			restrictLegFireVolume();
+
+			headMaxhandFireVolume = height;
+			headMinhandFireVolume = 0;
 			restrictLegFireVolume();
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -504,6 +526,26 @@
 										+ legFireVolume
 										+ 'px; width:'
 										+ legFireVolume
+										+ 'px;"><div class="flames"><div class="flame"></div>'
+										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
+										+ '</foreignobject>';
+
+						svg += '<foreignobject class="fireNode fireObjectHead" x="'
+										+ Math.round(start_x + width * 5.5 / 13 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+										+ '" y="'
+										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ '" width="'
+										+ (fireLeftCss * 4)
+										+ '" height="'
+										+ (fireTopCss * 4)
+										+ '"><div class="fire" style="top:'
+										+	(fireTopCss - headFireVolume / 3)
+										+ 'px; left:'
+										+ fireLeftCss
+										+ 'px; height:'
+										+ headFireVolume
+										+ 'px; width:'
+										+ headFireVolume
 										+ 'px;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
@@ -742,7 +784,10 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				if(handMaxCount == 1){
+				if(legMaxCount > 0){
+						headFireVolume += (headMaxhandFireVolume - headMinhandFireVolume) / headIncreasePath;
+				}
+				if(handMaxCount > 0){
 						legFireVolume += (legMaxhandFireVolume - legMinhandFireVolume) / legIncreasePath;
 				}
 				if(isReverseHand){
