@@ -278,19 +278,38 @@
 	var fireTopCss = 50;
 	var fireLeftCss = 50;
 	var pianoPieceWidth = 0;
+
 	var handFireVolume = 0;
 	var handMaxhandFireVolume = 0;
 	var handMinhandFireVolume = 0;
 	var handIncreasePath = 150;
 	var isReverseHand = false;
+	var handMaxCount = 0;
 
-	function restricthandFireVolume(){
+	var legFireVolume = 0;
+	var legMaxhandFireVolume = 0;
+	var legMinhandFireVolume = 0;
+	var legIncreasePath = handIncreasePath * 2;
+	var isReverseLeg = false;
+
+	function restrictHandFireVolume(){
 			if(handFireVolume < handMinhandFireVolume){
 					handFireVolume = handMinhandFireVolume;
-					isReverseHand = false;
+					if(handMaxCount < 2){
+							isReverseHand = false;
+					}
 			}else if(handFireVolume > handMaxhandFireVolume){
 					handFireVolume = handMaxhandFireVolume;
 					isReverseHand = true;
+					handMaxCount++;
+			}
+	}
+
+	function restrictLegFireVolume(){
+			if(legFireVolume < legMinhandFireVolume){
+					legFireVolume = legMinhandFireVolume;
+			}else if(legFireVolume > legMaxhandFireVolume){
+					legFireVolume = legMaxhandFireVolume;
 			}
 	}
 
@@ -314,9 +333,15 @@
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
+
 			handMaxhandFireVolume = 2.4 * pianoPieceWidth;
 			handMinhandFireVolume = pianoPieceWidth / 2;
-			restricthandFireVolume();
+			restrictHandFireVolume();
+
+			legMaxhandFireVolume = 5 * pianoPieceWidth;
+			legMinhandFireVolume = 0;
+			restrictLegFireVolume();
+
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
@@ -472,13 +497,13 @@
 										+ '" height="'
 										+ (fireTopCss * 4)
 										+ '"><div class="fire" style="top:'
-										+	(fireTopCss - handFireVolume / 3)
+										+	(fireTopCss - legFireVolume / 3)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
-										+ handFireVolume
+										+ legFireVolume
 										+ 'px; width:'
-										+ handFireVolume
+										+ legFireVolume
 										+ 'px;"><div class="flames"><div class="flame"></div>'
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
@@ -717,6 +742,9 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
+				if(handMaxCount == 1){
+						legFireVolume += (legMaxhandFireVolume - legMinhandFireVolume) / legIncreasePath;
+				}
 				if(isReverseHand){
 						handFireVolume -= (handMaxhandFireVolume - handMinhandFireVolume) / handIncreasePath;
 				}else{
@@ -761,7 +789,8 @@
 						yValue = yValueNormal;
 				}
 
-				restricthandFireVolume();
+				restrictHandFireVolume();
+				restrictLegFireVolume();
 				if(left){
 						leftHand[personIndex - 1].x1.baseVal.value = xValue;
 						leftHand[personIndex - 1].y1.baseVal.value = yValue;
