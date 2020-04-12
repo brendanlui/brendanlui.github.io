@@ -173,27 +173,7 @@
 			if(fireMode > noOfFireMode){
 					fireMode = 0;
 			}
-
-			var fireNode = document.getElementsByClassName("fireNode");
-			if(fireMode == 0){
-					for(i = 0; i < fireNode.length; i++){
-							fireNode[i].style.display = "none";
-					}
-					btnEffect.innerHTML = "Fire: None";
-			}else{
-					for(i = 0; i < fireNode.length; i++){
-							fireNode[i].style.display = "block";
-					}
-					if(fireMode == 1){
-							btnEffect.innerHTML = "Fire: Hand";
-							var fireBody = document.getElementsByClassName("fireBody");
-							for(i = 0; i < fireBody.length; i++){
-									fireBody[i].style.display = "none";
-							}
-					}else if(fireMode == 2){
-							btnEffect.innerHTML = "Fire: All";
-					}
-			}
+			setFireMode(fireMode);
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
@@ -629,8 +609,29 @@
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
 			resetPersonPosition(noOfPerson);
-			for(i = 0; i <= noOfFireMode; i++){
-					btnEffect.click();
+			setFireMode(fireMode);
+	}
+
+	function setFireMode(mode){
+			var fireNode = document.getElementsByClassName("fireNode");
+			if(mode == 0){
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "none";
+					}
+					btnEffect.innerHTML = "Fire: None";
+			}else{
+					for(i = 0; i < fireNode.length; i++){
+							fireNode[i].style.display = "block";
+					}
+					if(mode == 1){
+							btnEffect.innerHTML = "Fire: Hand";
+							var fireBody = document.getElementsByClassName("fireBody");
+							for(i = 0; i < fireBody.length; i++){
+									fireBody[i].style.display = "none";
+							}
+					}else if(mode == 2){
+							btnEffect.innerHTML = "Fire: All";
+					}
 			}
 	}
 
