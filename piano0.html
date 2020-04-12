@@ -284,8 +284,8 @@
 	}
 
 	var fireMode = 2;
-	var fireTopCss = 50;
-	var fireLeftCss = 50;
+	var fireTopCss = 500;
+	var fireLeftCss = 500;
 	var pianoPieceWidth = 0;
 
 	var handFireVolume = 0;
@@ -376,7 +376,7 @@
 			}else if(fireMode == 2){
 					restrictHandFireVolume();
 			}
-			maxLegFireVolume = 5 * pianoPieceWidth;
+			maxLegFireVolume = 3 * pianoPieceWidth;
 			minLegFireVolume = 0;
 			restrictLegFireVolume();
 
@@ -519,7 +519,7 @@
 										+ '" height="'
 										+ (fireTopCss * 8)
 										+ '"><div class="fire fireLeg" style="top:'
-										+	(fireTopCss - legFireVolume / 3)
+										+	(fireTopCss - legFireVolume / 2)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -539,7 +539,7 @@
 										+ '" height="'
 										+ (fireTopCss * 8)
 										+ '"><div class="fire fireLeg" style="top:'
-										+	(fireTopCss - legFireVolume / 3)
+										+	(fireTopCss - legFireVolume / 2)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
@@ -559,7 +559,7 @@
 										+ '" height="'
 										+ (fireTopCss * 10)
 										+ '"><div class="fire fireHead" style="top:'
-										+	(fireTopCss - headFireVolume / 3)
+										+	(fireTopCss - headFireVolume)
 										+ 'px; left:'
 										+ fireLeftCss
 										+ 'px; height:'
