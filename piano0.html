@@ -289,39 +289,39 @@
 	var pianoPieceWidth = 0;
 
 	var handFireVolume = 0;
-	var handMaxHandFireVolume = 0;
-	var handMinHandFireVolume = 0;
+	var maxHandFireVolume = 0;
+	var minHandFireVolume = 0;
 	var handIncreasePath = 80;
 	var isReverseHand = false;
 	var handMaxCount = 0;
 
 	var legFireVolume = 0;
-	var legMaxHandFireVolume = 0;
-	var legMinHandFireVolume = 0;
+	var maxLegFireVolume = 0;
+	var minLegFireVolume = 0;
 	var legIncreasePath = handIncreasePath;
 	var legMaxCount = 0;
 
 	var headFireVolume = 0;
-	var headMaxHandFireVolume = 0;
-	var headinhandFireVolume = 0;
+	var maxHeadFireVolume = 0;
+	var minHeadFireVolume = 0;
 	var headIncreasePath = handIncreasePath;
 	var headMaxCount = 0;
 
 	function restrictHandFireVolumeReverse(){
-			if(handFireVolume < handMinHandFireVolume){
-					handFireVolume = handMinHandFireVolume;
+			if(handFireVolume < minHandFireVolume){
+					handFireVolume = minHandFireVolume;
 					isReverseHand = false;
-			}else if(handFireVolume > handMaxHandFireVolume){
-					handFireVolume = handMaxHandFireVolume;
+			}else if(handFireVolume > maxHandFireVolume){
+					handFireVolume = maxHandFireVolume;
 					isReverseHand = true;
 			}
 	}
 
 	function restrictHandFireVolume(){
-			if(handFireVolume < handMinHandFireVolume){
-					handFireVolume = handMinHandFireVolume;
-			}else if(handFireVolume > handMaxHandFireVolume){
-					handFireVolume = handMaxHandFireVolume;
+			if(handFireVolume < minHandFireVolume){
+					handFireVolume = minHandFireVolume;
+			}else if(handFireVolume > maxHandFireVolume){
+					handFireVolume = maxHandFireVolume;
 					if(handMaxCount == 0){
 							handMaxCount++;
 					}
@@ -329,10 +329,10 @@
 	}
 
 	function restrictLegFireVolume(){
-			if(legFireVolume < legMinHandFireVolume){
-					legFireVolume = legMinHandFireVolume;
-			}else if(legFireVolume > legMaxHandFireVolume){
-					legFireVolume = legMaxHandFireVolume;
+			if(legFireVolume < minLegFireVolume){
+					legFireVolume = minLegFireVolume;
+			}else if(legFireVolume > maxLegFireVolume){
+					legFireVolume = maxLegFireVolume;
 					if(legMaxCount == 0){
 							legMaxCount++;
 					}
@@ -371,15 +371,15 @@
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
 
-			handMaxHandFireVolume = 2.4 * pianoPieceWidth;
-			handMinHandFireVolume = pianoPieceWidth / 2;
+			maxHandFireVolume = 2.4 * pianoPieceWidth;
+			minHandFireVolume = pianoPieceWidth / 2;
 			if(fireMode == 1){
 					restrictHandFireVolumeReverse();
 			}else if(fireMode == 2){
 					restrictHandFireVolume();
 			}
-			legMaxHandFireVolume = 5 * pianoPieceWidth;
-			legMinHandFireVolume = 0;
+			maxLegFireVolume = 5 * pianoPieceWidth;
+			minLegFireVolume = 0;
 			restrictLegFireVolume();
 
 			headMaxHeadFireVolume = height;
@@ -774,6 +774,7 @@
 	var leftLeg = document.getElementsByClassName("leftLeg");
 	var fireRightHand = document.getElementsByClassName("fireObjectRightHand");
 	var fireLeftHand = document.getElementsByClassName("fireObjectLeftHand");
+	var fireHead = document.getElementsByClassName("fireObjectHead");
 
 	function resetPersonPosition(numPeople){
 				var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
@@ -801,21 +802,22 @@
 
 								fireRightHand[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								fireLeftHand[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								fireHead[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 						}
 				}
 	}
 
 	function moveHand(note, octave, left, personIndex){
 				if(legMaxCount > 0 && fireMode == 2){
-						headFireVolume += (headMaxHandFireVolume - headMinHandFireVolume) / headIncreasePath;
+						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / headIncreasePath;
 				}
 				if(handMaxCount > 0 && fireMode == 2){
-						legFireVolume += (legMaxHandFireVolume - legMinHandFireVolume) / legIncreasePath;
+						legFireVolume += (maxLegFireVolume - minLegFireVolume) / legIncreasePath;
 				}
 				if(isReverseHand && fireMode == 1){
-						handFireVolume -= (handMaxHandFireVolume - handMinHandFireVolume) / handIncreasePath;
+						handFireVolume -= (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
 				}else{
-						handFireVolume += (handMaxHandFireVolume - handMinHandFireVolume) / handIncreasePath;
+						handFireVolume += (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
 				}
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
@@ -897,6 +899,8 @@
 				leftHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] - moveDistance;
 				rightHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 				head[personIndex - 1].cx.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
+				
+				fireHead[personIndex - 1].x.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 
 				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX[personIndex - 1] - moveDistance / 10;
 				leftLeg[personIndex - 1].x1.baseVal.value = leftLegX[personIndex - 1] -	moveDistance / 10;
