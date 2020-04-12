@@ -115,7 +115,7 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
-			<button id="btnEffect" class="buttonJp btnFilter">Fire: On</button>
+			<button id="btnEffect" class="buttonJp btnFilter">Fire: All</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -169,19 +169,27 @@
 					btnEffect.classList.remove("active");
 			}, 150);
 
+			fireMode++;
+			if(fireMode > 2){
+					fireMode = 0;
+			}
+
 			var fireNode = document.getElementsByClassName("fireNode");
-			if(isEffectOn){
+			if(fireMode == 0){
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "none";
 					}
-					btnEffect.innerHTML = "Fire: Off";
+					btnEffect.innerHTML = "Fire: None";
 			}else{
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
-					btnEffect.innerHTML = "Fire: On";
+					if(fireMode == 1){
+							btnEffect.innerHTML = "Fire: Hand";
+					}else if(fireMode == 2){
+							btnEffect.innerHTML = "Fire: All";
+					}
 			}
-			isEffectOn = !isEffectOn;
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
