@@ -338,10 +338,10 @@
 	}
 
 	function restrictHeadFireVolume(){
-			if(headFireVolume < headMinHeadFireVolume){
-					headFireVolume = headMinHeadFireVolume;
-			}else if(headFireVolume > headMaxHeadFireVolume){
-					headFireVolume = headMaxHeadFireVolume;
+			if(headFireVolume < minHeadFireVolume){
+					headFireVolume = minHeadFireVolume;
+			}else if(headFireVolume > maxHeadFireVolume){
+					headFireVolume = maxHeadFireVolume;
 					if(headMaxCount == 0){
 							headMaxCount++;
 					}
@@ -378,12 +378,12 @@
 			}else if(fireMode == 2){
 					restrictHandFireVolume();
 			}
-			maxLegFireVolume = 5 * pianoPieceWidth;
+			maxLegFireVolume = 7 * pianoPieceWidth;
 			minLegFireVolume = 0;
 			restrictLegFireVolume();
 
-			headMaxHeadFireVolume = 10 * pianoPieceWidth;
-			headMinHeadFireVolume = 0;
+			maxHeadFireVolume = 10 * pianoPieceWidth;
+			minHeadFireVolume = 0;
 			restrictHeadFireVolume();
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
