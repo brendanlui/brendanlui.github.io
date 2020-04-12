@@ -186,6 +186,10 @@
 					}
 					if(fireMode == 1){
 							btnEffect.innerHTML = "Fire: Hand";
+							var fireBody = document.getElementsByClassName("fireBody");
+							for(i = 0; i < fireBody.length; i++){
+									fireBody[i].style.display = "none";
+							}
 					}else if(fireMode == 2){
 							btnEffect.innerHTML = "Fire: All";
 					}
@@ -512,7 +516,7 @@
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
-						svg += '<foreignobject class="fireNode fireObjectRightLeg" x="'
+						svg += '<foreignobject class="fireNode fireObjectRightLeg fireBody" x="'
 										+ Math.round(start_x + width * 7.5 / 13 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
@@ -532,7 +536,7 @@
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
-						svg += '<foreignobject class="fireNode fireObjectLeftLeg" x="'
+						svg += '<foreignobject class="fireNode fireObjectLeftLeg fireBody" x="'
 										+ Math.round(start_x + width * 5.5 / 13 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
@@ -552,7 +556,7 @@
 										+ '<div class="flame"></div><div class="flame"></div><div class="flame"></div></div></div>'
 										+ '</foreignobject>';
 
-						svg += '<foreignobject class="fireNode fireObjectHead" x="'
+						svg += '<foreignobject class="fireNode fireObjectHead fireBody" x="'
 										+ Math.round(start_x + width * 2 / 4 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
 										+ Math.round(start_y - height * 5 / 6 - fireTopCss + Number.EPSILON) * 1000 / 1000
