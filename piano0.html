@@ -388,7 +388,7 @@
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-			svg += '<svg id="keyboard" height="'+(height+start_y*1.75)+'px" width="'+width+'px">';
+			svg += '<svg id="keyboard" height="'+(height+start_y*2)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
 				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
@@ -517,9 +517,9 @@
 										+ '" y="'
 										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeftCss * 4)
+										+ (fireLeftCss * 8)
 										+ '" height="'
-										+ (fireTopCss * 4)
+										+ (fireTopCss * 8)
 										+ '"><div class="fire" style="top:'
 										+	(fireTopCss - legFireVolume / 3)
 										+ 'px; left:'
@@ -537,9 +537,9 @@
 										+ '" y="'
 										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeftCss * 4)
+										+ (fireLeftCss * 8)
 										+ '" height="'
-										+ (fireTopCss * 4)
+										+ (fireTopCss * 8)
 										+ '"><div class="fire" style="top:'
 										+	(fireTopCss - legFireVolume / 3)
 										+ 'px; left:'
@@ -553,13 +553,13 @@
 										+ '</foreignobject>';
 
 						svg += '<foreignobject class="fireNode fireObjectHead" x="'
-										+ Math.round(start_x + width * 5.5 / 13 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_x + width * 2 / 4 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 										+ '" y="'
-										+ Math.round(start_y + height * 5 / 2 - fireTopCss + Number.EPSILON) * 1000 / 1000
+										+ Math.round(start_y - height * 5 / 6 - fireTopCss + Number.EPSILON) * 1000 / 1000
 										+ '" width="'
-										+ (fireLeftCss * 4)
+										+ (fireLeftCss * 10)
 										+ '" height="'
-										+ (fireTopCss * 4)
+										+ (fireTopCss * 10)
 										+ '"><div class="fire" style="top:'
 										+	(fireTopCss - headFireVolume / 3)
 										+ 'px; left:'
@@ -899,7 +899,7 @@
 				leftHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] - moveDistance;
 				rightHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 				head[personIndex - 1].cx.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
-				
+
 				fireHead[personIndex - 1].x.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 
 				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX[personIndex - 1] - moveDistance / 10;
