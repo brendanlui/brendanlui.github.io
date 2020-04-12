@@ -816,16 +816,18 @@
 	}
 
 	function moveHand(note, octave, left, personIndex){
-				if(legMaxCount > 0 && fireMode == 2){
+				if(legMaxCount > 0 && fireMode == 2 && headFireVolume < maxHeadFireVolume){
 						headFireVolume += (maxHeadFireVolume - minHeadFireVolume) / (handIncreasePath / 3);
 				}
-				if(handMaxCount > 0 && fireMode == 2){
+				if(handMaxCount > 0 && fireMode == 2 && legFireVolume < maxLegFireVolume){
 						legFireVolume += (maxLegFireVolume - minLegFireVolume) / handIncreasePath;
 				}
 				if(isReverseHand && fireMode == 1){
 						handFireVolume -= (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
 				}else{
-						handFireVolume += (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
+						if(handFireVolume < maxHandFireVolume){
+								handFireVolume += (maxHandFireVolume - minHandFireVolume) / handIncreasePath;
+						}
 				}
 				if(left){
 						leftHandOctave[personIndex - 1] = parseInt(octave);
