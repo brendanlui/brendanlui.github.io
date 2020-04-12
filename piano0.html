@@ -365,7 +365,7 @@
 			var svg = "";
 			var start = 5;
 			var start_x = 5;
-			var start_y = height * 1.7 + start;
+			var start_y = height * 2.5 + start;
 			var end = 5;
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
@@ -388,7 +388,7 @@
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-			svg += '<svg id="keyboard" height="'+(height+start_y*2)+'px" width="'+width+'px">';
+			svg += '<svg id="keyboard" height="'+(height+start_y*1.5)+'px" width="'+width+'px">';
 			for(i = 0; i < pieces; i++){
 				svg += '<polygon id="key_'+keyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 				svg += Math.round((start_x + pianoPieceWidth * i + Number.EPSILON) * 1000) / 1000;	//x1
