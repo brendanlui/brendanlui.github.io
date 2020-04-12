@@ -382,12 +382,12 @@
 			}else if(fireMode == 2){
 					restrictHandFireVolume();
 			}
-			maxLegFireVolume = 8 * pianoPieceWidth;
+			maxLegFireVolume = 7 * pianoPieceWidth;
 			minLegFireVolume = 0;
 			restrictLegFireVolume();
 
-			maxHeadFireVolume = 10 * pianoPieceWidth;
-			minHeadFireVolume = 0;
+			maxHeadFireVolume = height;
+			minHeadFireVolume = (height/2);
 			restrictHeadFireVolume();
 
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -778,6 +778,8 @@
 	var leftLeg = document.getElementsByClassName("leftLeg");
 	var fireRightHand = document.getElementsByClassName("fireObjectRightHand");
 	var fireLeftHand = document.getElementsByClassName("fireObjectLeftHand");
+	var fireRightLeg = document.getElementsByClassName("fireObjectRightLeg");
+	var fireLeftLeg = document.getElementsByClassName("fireObjectLeftLeg");
 	var fireHead = document.getElementsByClassName("fireObjectHead");
 
 	function resetPersonPosition(numPeople){
@@ -806,6 +808,8 @@
 
 								fireRightHand[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								fireLeftHand[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								fireRightLeg[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
+								fireLeftLeg[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 								fireHead[i].x.baseVal.value -= width * negOne * (parseInt(i / 2) + 1) / 12.5;
 						}
 				}
@@ -914,7 +918,7 @@
 				rightHand[personIndex - 1].x2.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 				head[personIndex - 1].cx.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
 
-				fireHead[personIndex - 1].x.baseVal.value =	centerX[personIndex - 1] -	moveDistance;
+				fireHead[personIndex - 1].x.baseVal.value =	centerX[personIndex - 1] -	moveDistance - fireLeftCss;
 
 				rightLeg[personIndex - 1].x1.baseVal.value = rightLegX[personIndex - 1] - moveDistance / 10;
 				leftLeg[personIndex - 1].x1.baseVal.value = leftLegX[personIndex - 1] -	moveDistance / 10;
