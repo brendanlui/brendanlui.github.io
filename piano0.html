@@ -574,9 +574,9 @@
 											+ 'px; left:'
 											+ fireLeftCss
 											+ 'px; height:'
-											+ pianoPieceWidth / 4
+											+ pianoPieceWidth / 3
 											+ 'px; width:'
-											+ pianoPieceWidth / 4
+											+ pianoPieceWidth / 3
 											+ 'px;"></div>'
 											+ '</foreignobject>';
 						}
@@ -661,27 +661,26 @@
 																																				+ randomY
 																																				+ "px;";
 			}
-			startSpark();
+			startSpark(lastSpark);
+			lastSpark += numberOfSpark;
 	}
 
-	function startSpark(){
-			lastSpark++;
-			if(lastSpark == maxSpark){
-					lastSpark = 0;
+	function startSpark(num){
+			if(num >= maxSpark){
+					num = 0;
 			}
 		 	var j = 0;
-			for(i = lastSpark; i < lastSpark + numberOfSpark; i++){
+			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
 					j++;
 			}
-			lastSpark += numberOfSpark - 1;
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
-					endSpark();
-			}, 100);
+					endSpark(num);
+			}, 1000);
 	}
 
-	function endSpark(){
-				for(i = lastSpark; i > lastSpark - numberOfSpark; i--){
+	function endSpark(num){
+				for(i = num; i > num - numberOfSpark; i--){
 						for(j = 0; j < numberOfSpark; j++){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
 						}
