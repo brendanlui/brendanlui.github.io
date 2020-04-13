@@ -1,3 +1,7 @@
+.spark{
+  background-color: red;
+}
+
 .sparkAnimation{
   animation-name: process;
   animation-duration: 1s;
