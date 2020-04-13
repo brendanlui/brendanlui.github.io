@@ -1,0 +1,9 @@
+.sparkAnimation{
+  animation-name: process;
+  animation-duration: 1s;
+}
+
+@keyframes process {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white; width: 100px;}
+}
