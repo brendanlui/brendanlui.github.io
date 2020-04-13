@@ -675,6 +675,9 @@
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
 					j++;
 			}
+			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
+					endSpark();
+			}, 100);
 	}
 	//spark end brendan
 
