@@ -634,16 +634,26 @@
 			setFireMode(fireMode);
 	}
 
-	function changeSparkAni(){
+	function changeSparkAni(x, y){
+			var posOrNeg = Math.floor(Math.random() * Math.floor(2));
+			var randomX = Math.floor(Math.random() * Math.floor(fireTopCss));
+			var randomY = Math.floor(Math.random() * Math.floor(fireTopCss));
+			if(posOrNeg == 1){
+					randomX *= -1;
+			}
+
 			document.styleSheets[6].cssRules[2].cssRules[0].style.cssText = "opacity: 1; background-color: red;";
-			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; background-color: white; width: 1000px;";
+			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; top:" + "100" + "px; left:" + "100" + "px;";
+	}
+
+	var sparkArr = document.getElementsByClassName("spark");
+	function endSpark(){
+				for(i = 0; i < sparkArr.length; i++){
+						document.getElementsByClassName("spark")[i].classList.remove("sparkAnimation");
+				}
 	}
 
 	function startSpark(){
-			var sparkArr = document.getElementsByClassName("spark");
-			for(i = 0; i < sparkArr.length; i++){
-					document.getElementsByClassName("spark")[i].classList.remove("sparkAnimation");
-			}
 			for(i = 0; i < sparkArr.length; i++){
 					document.getElementsByClassName("spark")[i].classList.add("sparkAnimation");
 			}
