@@ -1,6 +1,6 @@
 .spark{
   position: absolute;
-  background-color: red;
+  opacity: 0;
 }
 
 .sparkAnimation{
