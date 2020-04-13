@@ -22,3 +22,28 @@
 .spark_4{
   animation-name: process_4;
 }
+
+@keyframes process_0 {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white;}
+}
+
+@keyframes process_1 {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white;}
+}
+
+@keyframes process_2 {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white;}
+}
+
+@keyframes process_3 {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white;}
+}
+
+@keyframes process_4 {
+  0%   {opacity: 1; background-color: red;}
+  100%  {opacity: 0; background-color: white;}
+}

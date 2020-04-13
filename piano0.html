@@ -11,7 +11,6 @@
 	<link id="stylecall4" rel="stylesheet" href="/css/piano.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/fire.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/spark.css" />
-	<link id="stylecall4" rel="stylesheet" href="/css/sparkAnimation.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -646,12 +645,12 @@
 					if(Math.floor(Math.random() * Math.floor(2)) == 1){
 							randomX *= -1;
 					}
-					document.styleSheets[7].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
+					document.styleSheets[6].cssRules[i+7].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
 																																				+ x
 																																				+ "px; left:"
 																																				+ y
 																																				+ "px;";
-					document.styleSheets[7].cssRules[i].cssRules[1].style.cssText = "opacity: 0; top:"
+					document.styleSheets[6].cssRules[i+7].cssRules[1].style.cssText = "opacity: 0; top:"
 																																				+ randomX
 																																				+ "px; left:"
 																																				+ randomY
