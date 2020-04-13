@@ -4,11 +4,21 @@
 }
 
 .sparkAnimation{
-  animation-name: process;
-  animation-duration: 1s;
+  animation-duration: 0.2s;
 }
 
-@keyframes process {
-  0%   {opacity: 1; background-color: red;}
-  100%  {opacity: 0; background-color: white;}
+.spark_0{
+  animation-name: process_0;
+}
+.spark_1{
+  animation-name: process_1;
+}
+.spark_2{
+  animation-name: process_2;
+}
+.spark_3{
+  animation-name: process_3;
+}
+.spark_4{
+  animation-name: process_4;
 }

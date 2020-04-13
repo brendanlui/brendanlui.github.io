@@ -11,6 +11,7 @@
 	<link id="stylecall4" rel="stylesheet" href="/css/piano.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/fire.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/spark.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/sparkAnimation.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -560,7 +561,7 @@
 						//fire end
 
 						//spark start brendan
-						for(j = 0; j < 5; j++){
+						for(j = 0; j < numberOfSpark; j++){
 							svg += '<foreignobject class="sparkNode" x="'
 											+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 											+ '" y="'
@@ -637,35 +638,41 @@
 	}
 
 	//spark start brendan
+	var numberOfSpark = 5;
 	function changeSparkAni(x, y){
-			var randomX = fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss));
-			var randomY = (fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss))) * (-1);
-			if(Math.floor(Math.random() * Math.floor(2)) == 1){
-					randomX *= -1;
+			for(i = 0; i < numberOfSpark; i++){
+					var randomX = fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss));
+					var randomY = (fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss))) * (-1);
+					if(Math.floor(Math.random() * Math.floor(2)) == 1){
+							randomX *= -1;
+					}
+					document.styleSheets[7].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
+																																				+ x
+																																				+ "px; left:"
+																																				+ y
+																																				+ "px;";
+					document.styleSheets[7].cssRules[i].cssRules[1].style.cssText = "opacity: 0; top:"
+																																				+ randomX
+																																				+ "px; left:"
+																																				+ randomY
+																																				+ "px;";
 			}
-
-			document.styleSheets[6].cssRules[2].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
-																																		+ x
-																																		+ "px; left:"
-																																		+ y
-																																		+ "px;";
-			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; top:"
-																																		+ randomX
-																																		+ "px; left:"
-																																		+ randomY
-																																		+ "px;";
 	}
 
 	var sparkArr = document.getElementsByClassName("spark");
 	function endSpark(){
 				for(i = 0; i < sparkArr.length; i++){
-						document.getElementsByClassName("spark")[i].classList.remove("sparkAnimation");
+						for(j = 0; j < numberOfSpark; j++){
+								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
+						}
 				}
 	}
 
 	function startSpark(){
+		 	var j = 0;
 			for(i = 0; i < sparkArr.length; i++){
-					document.getElementsByClassName("spark")[i].classList.add("sparkAnimation");
+					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
+					j++;
 			}
 	}
 	//spark end brendan
