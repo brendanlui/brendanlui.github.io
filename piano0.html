@@ -638,6 +638,7 @@
 
 	//spark start brendan
 	var numberOfSpark = 5;
+	var sparkArr = document.getElementsByClassName("spark");
 	function changeSparkAni(x, y){
 			for(i = 0; i < numberOfSpark; i++){
 					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10));
@@ -658,15 +659,7 @@
 																																				+ randomY
 																																				+ "px;";
 			}
-	}
-
-	var sparkArr = document.getElementsByClassName("spark");
-	function endSpark(){
-				for(i = 0; i < sparkArr.length; i++){
-						for(j = 0; j < numberOfSpark; j++){
-								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
-						}
-				}
+			startSpark();
 	}
 
 	function startSpark(){
@@ -678,6 +671,14 @@
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 					endSpark();
 			}, 100);
+	}
+
+	function endSpark(){
+				for(i = 0; i < sparkArr.length; i++){
+						for(j = 0; j < numberOfSpark; j++){
+								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
+						}
+				}
 	}
 	//spark end brendan
 
@@ -960,6 +961,11 @@
 						fireRightHand[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
+
+				//spark start
+				changeSparkAni(xValue, yValue);
+				//spark end
+
 				var fireHandArr = document.getElementsByClassName("fireHand");
 				for(j = 0; j < fireHandArr.length; j++){
 						fireHandArr[j].style.height = handFireVolume + "px";
