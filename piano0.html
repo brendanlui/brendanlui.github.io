@@ -640,8 +640,8 @@
 	var numberOfSpark = 5;
 	function changeSparkAni(x, y){
 			for(i = 0; i < numberOfSpark; i++){
-					var randomX = Math.floor(Math.random() * Math.floor(fireTopCss));
-					var randomY = Math.floor(Math.random() * Math.floor(fireTopCss)) * (-1);
+					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10));
+					var randomY = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10)) * (-1);
 					if(Math.floor(Math.random() * Math.floor(2)) == 1){
 							randomX *= -1;
 					}
