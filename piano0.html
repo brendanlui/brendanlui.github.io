@@ -560,7 +560,7 @@
 						//fire end
 
 						//spark start brendan
-						for(j = 0; j < numberOfSpark; j++){
+						for(j = 0; j < maxSpark; j++){
 							svg += '<foreignobject class="sparkNode" x="'
 											+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
 											+ '" y="'
@@ -639,6 +639,8 @@
 	//spark start brendan
 	var numberOfSpark = 5;
 	var sparkArr = document.getElementsByClassName("spark");
+	var lastSpark = -1;
+	var maxSpark = 50;
 	function changeSparkAni(x, y){
 			for(i = 0; i < numberOfSpark; i++){
 					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10));
@@ -663,18 +665,23 @@
 	}
 
 	function startSpark(){
+			lastSpark++;
+			if(lastSpark == maxSpark){
+					lastSpark = 0;
+			}
 		 	var j = 0;
-			for(i = 0; i < sparkArr.length; i++){
+			for(i = lastSpark; i < lastSpark + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
 					j++;
 			}
+			lastSpark += numberOfSpark - 1;
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 					endSpark();
 			}, 100);
 	}
 
 	function endSpark(){
-				for(i = 0; i < sparkArr.length; i++){
+				for(i = lastSpark; i > lastSpark - numberOfSpark; i--){
 						for(j = 0; j < numberOfSpark; j++){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
 						}
