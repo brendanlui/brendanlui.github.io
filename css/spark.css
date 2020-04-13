@@ -1,9 +1,6 @@
 .spark{
   position: absolute;
   opacity: 0;
-}
-
-.sparkAnimation{
   animation-duration: 0.2s;
 }
 
