@@ -635,15 +635,18 @@
 	}
 
 	function changeSparkAni(x, y){
-			var posOrNeg = Math.floor(Math.random() * Math.floor(2));
 			var randomX = Math.floor(Math.random() * Math.floor(fireTopCss));
-			var randomY = Math.floor(Math.random() * Math.floor(fireTopCss));
-			if(posOrNeg == 1){
+			var randomY = Math.floor(Math.random() * Math.floor(fireTopCss)) * (-1);
+			if(Math.floor(Math.random() * Math.floor(2)) == 1){
 					randomX *= -1;
 			}
 
 			document.styleSheets[6].cssRules[2].cssRules[0].style.cssText = "opacity: 1; background-color: red;";
-			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; top:" + "100" + "px; left:" + "100" + "px;";
+			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; top:"
+																																		+ randomX
+																																		+ "px; left:"
+																																		+ randomY
+																																		+ "px;";
 	}
 
 	var sparkArr = document.getElementsByClassName("spark");
