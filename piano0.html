@@ -560,24 +560,26 @@
 						//fire end
 
 						//spark start brendan
-						svg += '<foreignobject class="sparkNode" x="'
-										+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
-										+ '" y="'
-										+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
-										+ '" width="'
-										+ (fireLeftCss * 2)
-										+ '" height="'
-										+ (fireTopCss * 2)
-										+ '"><div class="spark" style="top:'
-										+	fireTopCss
-										+ 'px; left:'
-										+ fireLeftCss
-										+ 'px; height:'
-										+ pianoPieceWidth * 2
-										+ 'px; width:'
-										+ pianoPieceWidth * 2
-										+ 'px;"></div>'
-										+ '</foreignobject>';
+						for(j = 0; j < 5; j++){
+							svg += '<foreignobject class="sparkNode" x="'
+											+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+											+ '" y="'
+											+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+											+ '" width="'
+											+ (fireLeftCss * 2)
+											+ '" height="'
+											+ (fireTopCss * 2)
+											+ '"><div class="spark" style="top:'
+											+	fireTopCss
+											+ 'px; left:'
+											+ fireLeftCss
+											+ 'px; height:'
+											+ pianoPieceWidth / 4
+											+ 'px; width:'
+											+ pianoPieceWidth / 4
+											+ 'px;"></div>'
+											+ '</foreignobject>';
+						}
 						//spark end brendan
 
 						svg += '<line x1="'
