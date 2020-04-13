@@ -568,7 +568,7 @@
 										+ (fireLeftCss * 2)
 										+ '" height="'
 										+ (fireTopCss * 2)
-										+ '"><div class="spark sparkAnimation" style="top:'
+										+ '"><div class="spark" style="top:'
 										+	fireTopCss
 										+ 'px; left:'
 										+ fireLeftCss
@@ -632,6 +632,23 @@
 			displayPiano.innerHTML = svg;
 			resetPersonPosition(noOfPerson);
 			setFireMode(fireMode);
+	}
+	
+	function changeSparkAni(){
+			var sparkStyleFrom = document.styleSheets[6].cssRules[2].cssRules[0].style.cssText;
+			var sparkStyleTo = document.styleSheets[6].cssRules[2].cssRules[1].style.cssText;
+			sparkStyleFrom = "opacity: 1; background-color: red;";
+			sparkStyleTo = "opacity: 0; background-color: white; width: 1000px;";
+	}
+
+	function startSpark(){
+			var sparkArr = document.getElementsByClassName("spark");
+			for(i = 0; i < sparkArr.length; i++){
+					sparkArr[i].classList.remove("sparkAnimation");
+			}
+			for(i = 0; i < sparkArr.length; i++){
+					sparkArr[i].classList.add("sparkAnimation");
+			}
 	}
 
 	function setFireMode(mode){
