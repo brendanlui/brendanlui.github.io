@@ -574,9 +574,9 @@
 											+ 'px; left:'
 											+ fireLeftCss
 											+ 'px; height:'
-											+ pianoPieceWidth / 4
+											+ pianoPieceWidth / 2
 											+ 'px; width:'
-											+ pianoPieceWidth / 4
+											+ pianoPieceWidth / 2
 											+ 'px;"></div>'
 											+ '</foreignobject>';
 						}
@@ -640,11 +640,13 @@
 	var numberOfSpark = 5;
 	function changeSparkAni(x, y){
 			for(i = 0; i < numberOfSpark; i++){
-					var randomX = fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss));
-					var randomY = (fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss))) * (-1);
+					var randomX = Math.floor(Math.random() * Math.floor(fireTopCss));
+					var randomY = Math.floor(Math.random() * Math.floor(fireTopCss))) * (-1);
 					if(Math.floor(Math.random() * Math.floor(2)) == 1){
 							randomX *= -1;
 					}
+					randomX += x;
+					randomY += y;
 					document.styleSheets[6].cssRules[i+6].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
 																																				+ x
 																																				+ "px; left:"
