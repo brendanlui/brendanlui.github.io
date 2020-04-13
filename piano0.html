@@ -634,14 +634,19 @@
 			setFireMode(fireMode);
 	}
 
+	//spark start brendan
 	function changeSparkAni(x, y){
-			var randomX = Math.floor(Math.random() * Math.floor(fireTopCss));
-			var randomY = Math.floor(Math.random() * Math.floor(fireTopCss)) * (-1);
+			var randomX = fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss));
+			var randomY = (fireTopCss + Math.floor(Math.random() * Math.floor(fireTopCss))) * (-1);
 			if(Math.floor(Math.random() * Math.floor(2)) == 1){
 					randomX *= -1;
 			}
 
-			document.styleSheets[6].cssRules[2].cssRules[0].style.cssText = "opacity: 1; background-color: red;";
+			document.styleSheets[6].cssRules[2].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
+																																		+ x
+																																		+ "px; left:"
+																																		+ y
+																																		+ "px;";
 			document.styleSheets[6].cssRules[2].cssRules[1].style.cssText = "opacity: 0; top:"
 																																		+ randomX
 																																		+ "px; left:"
@@ -661,6 +666,7 @@
 					document.getElementsByClassName("spark")[i].classList.add("sparkAnimation");
 			}
 	}
+	//spark end brendan
 
 	function setFireMode(mode){
 			var fireNode = document.getElementsByClassName("fireNode");
