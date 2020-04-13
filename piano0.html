@@ -640,21 +640,21 @@
 	var numberOfSpark = 5;
 	function changeSparkAni(x, y){
 			for(i = 0; i < numberOfSpark; i++){
-					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10)) * (-1);
-					var randomY = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10));
+					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10));
+					var randomY = Math.floor(Math.random() * Math.floor(pianoPieceWidth*10)) * (-1);
 					if(Math.floor(Math.random() * Math.floor(2)) == 1){
-							randomX *= -1;
+							randomX *= (-1);
 					}
 					randomX += x;
 					randomY += y;
-					document.styleSheets[6].cssRules[i+6].cssRules[0].style.cssText = "opacity: 1; background-color: red; top:"
+					document.styleSheets[6].cssRules[i+6].cssRules[0].style.cssText = "opacity: 1; background-color: red; left:"
 																																				+ x
-																																				+ "px; left:"
+																																				+ "px; top:"
 																																				+ y
 																																				+ "px;";
-					document.styleSheets[6].cssRules[i+6].cssRules[1].style.cssText = "opacity: 0; top:"
+					document.styleSheets[6].cssRules[i+6].cssRules[1].style.cssText = "opacity: 0; left:"
 																																				+ randomX
-																																				+ "px; left:"
+																																				+ "px; top:"
 																																				+ randomY
 																																				+ "px;";
 			}
