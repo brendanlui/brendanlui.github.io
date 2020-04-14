@@ -653,8 +653,7 @@
 	var numberOfSpark = 5;
 	var sparkArr = document.getElementsByClassName("spark");
 	var lastSpark = 0;
-	var maxSpark = 5;
-	//var maxSpark = 300;
+	var maxSpark = 300;
 	var sparkMode = true;
 	var baseCssNum = 1;
 	function startSparkCss(){
@@ -710,6 +709,18 @@
 				for(i = num; i < num + numberOfSpark; i++){
 						document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 				}
+	}
+
+	function printSparkCss(){
+			var result = "";
+			for(i = 0; i < maxSpark; i++){
+					result += ".spark_"+i+"{animation-duration: 1s; animation-name: process_"+i+"}\n";
+			}
+			for(i = 0; i < maxSpark; i++){
+					result += "@keyframes process_"
+									+ i
+									+ " { 0% { opacity: 1; background-color: red; left: 0px; top: 0px; }  100% { opacity: 0; left: 0px; top: 0px; }}\n";
+			}
 	}
 	//spark end brendan
 
