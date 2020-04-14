@@ -664,7 +664,7 @@
 				}
 				for(i = maxSpark + baseCssNum; i < 2 * maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
-						document.styleSheets[6].cssRules[i].name = "process_"+i;
+						document.styleSheets[6].cssRules[i].name = "process_"+(i-maxSpark);
 				}
 	}
 
