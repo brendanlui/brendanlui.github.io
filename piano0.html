@@ -659,12 +659,12 @@
 	function startSparkCss(){
 				for(i = baseCssNum; i < maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
-						document.styleSheets[6].cssRules[i].selectorText = ".spark_"+i;
-						document.styleSheets[6].cssRules[i].style.animationName = "process_"+i;
+						document.styleSheets[6].cssRules[i].selectorText = ".spark_"+(i-baseCssNum);
+						document.styleSheets[6].cssRules[i].style.animationName = "process_"+(i-baseCssNum);
 				}
 				for(i = maxSpark + baseCssNum; i < 2 * maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
-						document.styleSheets[6].cssRules[i].name = "process_"+(i-maxSpark);
+						document.styleSheets[6].cssRules[i].name = "process_"+(i-baseCssNum-maxSpark);
 				}
 	}
 
@@ -707,7 +707,7 @@
 
 	function endSpark(num){
 				for(i = num; i < num + numberOfSpark; i++){
-						document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+						document.getElementsByClassName("spark_" + i)[0].classList.remove("spark_" + i);
 				}
 	}
 	//spark end brendan
