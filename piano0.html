@@ -666,7 +666,7 @@
 	}
 
 	function startSpark(num){
-			if(num >= maxSpark){ 
+			if(num >= maxSpark){
 					num = 0;
 			}
 		 	var j = 0;
@@ -680,7 +680,7 @@
 	}
 
 	function endSpark(num){
-				for(i = num; i > num - numberOfSpark; i--){
+				for(i = num; i < num + numberOfSpark; i++){
 						for(j = 0; j < numberOfSpark; j++){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
 						}
