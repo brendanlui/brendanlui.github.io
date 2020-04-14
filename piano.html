@@ -10,6 +10,7 @@
 	<link id="stylecall5" rel="stylesheet" href="/css/japanese.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/piano.css" />
 	<link id="stylecall4" rel="stylesheet" href="/css/fire.css" />
+	<link id="stylecall4" rel="stylesheet" href="/css/spark.css" />
 	<link rel="icon"
 	  type="image/png"
 	  href="/img/d01.png">
@@ -115,7 +116,8 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
-			<button id="btnEffect" class="buttonJp btnFilter">Fire: All</button>
+			<button id="btnFire" class="buttonJp btnFilter">Fire: All</button>
+			<button id="btnSpark" class="buttonJp btnFilter">Spark: On</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -162,11 +164,11 @@
 			clearAllTimeout();
 	}
 
-	var btnEffect = document.getElementById("btnEffect");
-	btnEffect.onclick = function() {
-			btnEffect.classList.add("active");
+	var btnFire = document.getElementById("btnFire");
+	btnFire.onclick = function() {
+			btnFire.classList.add("active");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
-					btnEffect.classList.remove("active");
+					btnFire.classList.remove("active");
 			}, 150);
 
 			fireMode++;
@@ -174,6 +176,16 @@
 					fireMode = 0;
 			}
 			setFireMode(fireMode);
+	}
+
+	var btnSpark = document.getElementById("btnSpark");
+	btnSpark.onclick = function() {
+			btnSpark.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnSpark.classList.remove("active");
+			}, 150);
+			sparkMode = !sparkMode;
+			setSparkMode(sparkMode);
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
@@ -558,6 +570,29 @@
 										+ '</foreignobject>';
 						//fire end
 
+						//spark start
+						for(j = 0; j < maxSpark; j++){
+							svg += '<foreignobject class="sparkNode" x="'
+											+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
+											+ '" y="'
+											+ Math.round(start_y + height * 6 / 7 - fireTopCss + Number.EPSILON) * 1000 / 1000
+											+ '" width="'
+											+ (fireLeftCss * 2)
+											+ '" height="'
+											+ (fireTopCss * 2)
+											+ '"><div class="spark" style="top:'
+											+	fireTopCss
+											+ 'px; left:'
+											+ fireLeftCss
+											+ 'px; height:'
+											+ pianoPieceWidth / 4
+											+ 'px; width:'
+											+ pianoPieceWidth / 4
+											+ 'px;"></div>'
+											+ '</foreignobject>';
+						}
+						//spark end
+
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
 													+ '" y1="'
@@ -610,7 +645,73 @@
 			displayPiano.innerHTML = svg;
 			resetPersonPosition(noOfPerson);
 			setFireMode(fireMode);
+			setSparkMode(sparkMode);
 	}
+
+	//spark start brendan
+	var numberOfSpark = 7;
+	var sparkArr = document.getElementsByClassName("spark");
+	var lastSpark = 0;
+	var maxSpark = 1000;
+	var sparkMode = true;
+	var baseCssNum = 1;
+
+	function changeSparkAni(x, y){
+			if(lastSpark + numberOfSpark >= maxSpark){
+					lastSpark = 0;
+			}
+
+			for(i = baseCssNum + lastSpark + maxSpark; i < numberOfSpark + baseCssNum + lastSpark + maxSpark; i++){
+					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*7));
+					var randomY = Math.floor(Math.random() * Math.floor(pianoPieceWidth*7)) * (-1);
+					if(Math.floor(Math.random() * Math.floor(2)) == 1){
+							randomX *= (-1);
+					}
+					randomX += x;
+					randomY += y;
+					document.styleSheets[6].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: red; left:"
+																																				+ x
+																																				+ "px; top:"
+																																				+ y
+																																				+ "px;";
+					document.styleSheets[6].cssRules[i].cssRules[1].style.cssText = "opacity: 0; left:"
+																																				+ randomX
+																																				+ "px; top:"
+																																				+ randomY
+																																				+ "px;";
+			}
+			startSpark(lastSpark);
+			lastSpark += numberOfSpark;
+	}
+
+	function startSpark(num){
+			for(i = num; i < num + numberOfSpark; i++){
+					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
+			}
+			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
+					endSpark(num);
+			}, 1000);
+	}
+
+	function endSpark(num){
+				for(i = num; i < num + numberOfSpark; i++){
+						document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+				}
+	}
+
+	function printSparkCss(){
+			var result = "";
+			for(i = 0; i < maxSpark; i++){
+					result += ".spark_"+i+"{animation-duration: 1s; animation-name: process_"+i+"}\n";
+			}
+			for(i = 0; i < maxSpark; i++){
+					result += "@keyframes process_"
+									+ i
+									+ " { 0% { opacity: 1; background-color: red; left: 0px; top: 0px; }  100% { opacity: 0; left: 0px; top: 0px; }}\n";
+			}
+			console.log(result);
+	}
+	//spark end
 
 	function setFireMode(mode){
 			var fireNode = document.getElementsByClassName("fireNode");
@@ -618,20 +719,35 @@
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "none";
 					}
-					btnEffect.innerHTML = "Fire: None";
+					btnFire.innerHTML = "Fire: None";
 			}else{
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
 					var fireBody = document.getElementsByClassName("fireBody");
 					if(mode == 1){
-							btnEffect.innerHTML = "Fire: Hand";
+							btnFire.innerHTML = "Fire: Hand";
 							for(i = 0; i < fireBody.length; i++){
 									fireBody[i].style.display = "none";
 							}
 					}else if(mode == 2){
-							btnEffect.innerHTML = "Fire: All";
+							btnFire.innerHTML = "Fire: All";
 					}
+			}
+	}
+
+	var sparkNode = document.getElementsByClassName("sparkNode");
+	function setSparkMode(mode){
+			if(!mode){
+					for(i = 0; i < sparkNode.length; i++){
+							sparkNode[i].style.display = "none";
+					}
+					btnSpark.innerHTML = "Spark: Off";
+			}else{
+					for(i = 0; i < sparkNode.length; i++){
+							sparkNode[i].style.display = "block";
+					}
+					btnSpark.innerHTML = "Spark: On";
 			}
 	}
 
@@ -693,6 +809,7 @@
 
 			clearAllTimeout();
 			noteCount = [0, 0];
+			lastSpark = 0;
 		  document.getElementById('fileContent').textContent = text;
 			editDownload();
 			var seperate = '//sample rate (4000-44100) _ volume _ speed';
@@ -891,6 +1008,18 @@
 						fireRightHand[personIndex - 1].x.baseVal.value = xValue - fireLeftCss;
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
+
+				//spark start brendan
+				if(lastSpark + numberOfSpark >= maxSpark){
+						lastSpark = 0;
+				}
+				for(i = lastSpark; i < lastSpark + numberOfSpark; i++){
+						sparkNode[i].x.baseVal.value = xValue - fireLeftCss;
+						sparkNode[i].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
+				}
+				changeSparkAni(fireLeftCss, fireTopCss);
+				//spark end
+
 				var fireHandArr = document.getElementsByClassName("fireHand");
 				for(j = 0; j < fireHandArr.length; j++){
 						fireHandArr[j].style.height = handFireVolume + "px";
@@ -1072,6 +1201,10 @@
 			}
 			for(i = 0; i < blackKeyArr.length; i++){
 					blackKeyArr[i].classList.remove("pressed");
+			}
+
+			for(i = 0; i < maxSpark; i++){
+					document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 			}
 
 			btnClickTimeout = [];
