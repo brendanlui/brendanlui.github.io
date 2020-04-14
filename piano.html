@@ -655,9 +655,9 @@
 	var baseCssNum = 1;
 
 	var numberOfSpark = maxSpark;
-	var minNoOfSpark = 5;
-	var increaseSpark = 5;
-	var maxNoOfSpark = 15;
+	var minNoOfSpark = 3;
+	var increaseSpark = 3;
+	var maxNoOfSpark = 12;
 
 	function changeSparkAni(x, y){
 			if(lastSpark + numberOfSpark >= maxSpark){
@@ -672,7 +672,14 @@
 					}
 					randomX += x;
 					randomY += y;
-					document.styleSheets[6].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: red; left:"
+
+					min = Math.ceil(16515072);
+					max = Math.floor(16567808);
+					randomColor = (Math.floor(Math.random() * (max - min)) + min).toString(16);
+					
+					document.styleSheets[6].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: #"
+																																				+ randomColor
+																																				+ "; left:"
 																																				+ x
 																																				+ "px; top:"
 																																				+ y
