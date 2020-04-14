@@ -570,7 +570,7 @@
 										+ '</foreignobject>';
 						//fire end
 
-						//spark start brendan
+						//spark start
 						for(j = 0; j < maxSpark; j++){
 							svg += '<foreignobject class="sparkNode" x="'
 											+ Math.round(start_x + width * 1 / 3 - fireLeftCss + Number.EPSILON) * 1000 / 1000
@@ -591,7 +591,7 @@
 											+ 'px;"></div>'
 											+ '</foreignobject>';
 						}
-						//spark end brendan
+						//spark end
 
 						svg += '<line x1="'
 													+ Math.round(start_x + width * 2 / 4 + Number.EPSILON) * 1000 / 1000
@@ -711,7 +711,7 @@
 			}
 			console.log(result);
 	}
-	//spark end brendan
+	//spark end
 
 	function setFireMode(mode){
 			var fireNode = document.getElementsByClassName("fireNode");
@@ -737,7 +737,7 @@
 	}
 
 	function setSparkMode(mode){
-			var sparkNode = document.getElementsByClassName("SparkNode");
+			var sparkNode = document.getElementsByClassName("sparkNode");
 			if(!mode){
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "none";
@@ -1009,7 +1009,7 @@
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
 
-				//spark start
+				//spark start brendan
 				changeSparkAni(xValue - fireLeftCss, yValue - fireTopCss - handFireVolume / 3);
 				//spark end
 
