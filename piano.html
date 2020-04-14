@@ -748,7 +748,7 @@
 
 	var sparkNode = document.getElementsByClassName("sparkNode");
 	function setSparkMode(num){
-			if(num > maxNoOfSpark){
+			if(num > maxNoOfSpark || num < minNoOfSpark){
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "none";
 					}
