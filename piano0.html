@@ -646,7 +646,6 @@
 			resetPersonPosition(noOfPerson);
 			setFireMode(fireMode);
 			setSparkMode(sparkMode);
-			//startSparkCss();
 	}
 
 	//spark start brendan
@@ -656,17 +655,6 @@
 	var maxSpark = 300;
 	var sparkMode = true;
 	var baseCssNum = 1;
-	function startSparkCss(){
-				for(i = baseCssNum; i < maxSpark + baseCssNum; i++){
-						var arr = document.styleSheets[6].cssRules;
-						document.styleSheets[6].cssRules[i].selectorText = ".spark_"+(i-baseCssNum);
-						document.styleSheets[6].cssRules[i].style.animationName = "process_"+(i-baseCssNum);
-				}
-				for(i = maxSpark + baseCssNum; i < 2 * maxSpark + baseCssNum; i++){
-						var arr = document.styleSheets[6].cssRules;
-						document.styleSheets[6].cssRules[i].name = "process_"+(i-baseCssNum-maxSpark);
-				}
-	}
 
 	function changeSparkAni(x, y){
 			if(lastSpark + numberOfSpark >= maxSpark){
