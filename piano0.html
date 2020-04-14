@@ -736,8 +736,8 @@
 			}
 	}
 
+	var sparkNode = document.getElementsByClassName("sparkNode");
 	function setSparkMode(mode){
-			var sparkNode = document.getElementsByClassName("sparkNode");
 			if(!mode){
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "none";
@@ -1010,7 +1010,14 @@
 				}
 
 				//spark start brendan
-				changeSparkAni(xValue - fireLeftCss, yValue - fireTopCss - handFireVolume / 3);
+				if(lastSpark + numberOfSpark >= maxSpark){
+						lastSpark = 0;
+				}
+				for(i = lastSpark; i < lastSpark + numberOfSpark; i++){
+						sparkNode[i].x.baseVal.value = xValue - fireLeftCss;
+						sparkNode[i].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
+				}
+				changeSparkAni(fireLeftCss, fireTopCss);
 				//spark end
 
 				var fireHandArr = document.getElementsByClassName("fireHand");
