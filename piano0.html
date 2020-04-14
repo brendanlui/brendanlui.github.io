@@ -655,19 +655,19 @@
 	var lastSpark = 0;
 	var maxSpark = 300;
 	var sparkMode = true;
+	var baseCssNum = 1;
 	function startSparkCss(){
-				for(i = 0; i < maxSpark; i++){
+				for(i = baseCssNum; i < maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
 						document.styleSheets[6].cssRules[arr.length].cssText = ".spark_"+i+" { animation-duration: 1s; animation-name: process_"+i+"; }";
 				}
-				for(i = 0; i < maxSpark; i++){
+				for(i = maxSpark + baseCssNum; i < 2 * maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
 						document.styleSheets[6].cssRules[arr.length].cssText = "@keyframes process_"+i+" { 0% { opacity: 1; background-color: red; left: 0px; top: 0px; }↵  100% { opacity: 0; left: 0px; top: 0px; }}";
 				}
 	}
 
 	function changeSparkAni(x, y){
-			var baseCssNum = 1;
 			if(lastSpark + numberOfSpark >= maxSpark){
 					lastSpark = 0;
 			}
