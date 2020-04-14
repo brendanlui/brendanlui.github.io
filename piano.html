@@ -116,8 +116,8 @@
 	<div id="buttonBox">
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
-			<button id="btnFire" class="buttonJp btnFilter">Fire: All</button>
-			<button id="btnSpark" class="buttonJp btnFilter">Spark: On</button>
+			<button id="btnFire" class="buttonJp btnFilter">Fire : All</button>
+			<button id="btnSpark" class="buttonJp btnFilter">Spark: Off</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -649,15 +649,15 @@
 	}
 
 	//spark start brendan
-	var numberOfSpark = 5;
-	var minNoOfSpark = 5;
-	var increaseSpark = 5;
-	var maxNoOfSpark = 15;
-
 	var sparkArr = document.getElementsByClassName("spark");
 	var lastSpark = 0;
 	var maxSpark = 1000;
 	var baseCssNum = 1;
+
+	var numberOfSpark = maxSpark;
+	var minNoOfSpark = 5;
+	var increaseSpark = 5;
+	var maxNoOfSpark = 15;
 
 	function changeSparkAni(x, y){
 			if(lastSpark + numberOfSpark >= maxSpark){
@@ -722,19 +722,19 @@
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "none";
 					}
-					btnFire.innerHTML = "Fire: None";
+					btnFire.innerHTML = "Fire : None";
 			}else{
 					for(i = 0; i < fireNode.length; i++){
 							fireNode[i].style.display = "block";
 					}
 					var fireBody = document.getElementsByClassName("fireBody");
 					if(mode == 1){
-							btnFire.innerHTML = "Fire: Hand";
+							btnFire.innerHTML = "Fire : Hand";
 							for(i = 0; i < fireBody.length; i++){
 									fireBody[i].style.display = "none";
 							}
 					}else if(mode == 2){
-							btnFire.innerHTML = "Fire: All";
+							btnFire.innerHTML = "Fire : All";
 					}
 			}
 	}
@@ -751,7 +751,7 @@
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "block";
 					}
-					btnSpark.innerHTML = "Spark No.: " + numberOfSpark;
+					btnSpark.innerHTML = "Spark No. : " + numberOfSpark;
 			}
 	}
 
