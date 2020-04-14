@@ -659,6 +659,7 @@
 	function startSparkCss(){
 				for(i = baseCssNum; i < maxSpark + baseCssNum; i++){
 						var arr = document.styleSheets[6].cssRules;
+						document.styleSheets[6].cssRules[i].selectorText = ".spark_"+i;
 						document.styleSheets[6].cssRules[i].cssText = ".spark_"+i+" { animation-duration: 1s; animation-name: process_"+i+"; }";
 				}
 				for(i = maxSpark + baseCssNum; i < 2 * maxSpark + baseCssNum; i++){
