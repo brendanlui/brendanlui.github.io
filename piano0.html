@@ -1196,6 +1196,10 @@
 					blackKeyArr[i].classList.remove("pressed");
 			}
 
+			for(i = 0; i < maxSpark; i++){
+					document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+			}
+
 			btnClickTimeout = [];
 			btnReleaseTimeout = [];
 			notePlayTimeout = [];
