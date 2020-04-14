@@ -697,10 +697,8 @@
 	}
 
 	function startSpark(num){
-		 	var j = 0;
 			for(i = num; i < num + numberOfSpark; i++){
-					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
-					j++;
+					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
 			}
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
 					endSpark(num);
@@ -709,9 +707,7 @@
 
 	function endSpark(num){
 				for(i = num; i < num + numberOfSpark; i++){
-						for(j = 0; j < numberOfSpark; j++){
-								document.getElementsByClassName("spark")[i].classList.remove("spark_" + j);
-						}
+						document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 				}
 	}
 	//spark end brendan
