@@ -646,6 +646,7 @@
 			resetPersonPosition(noOfPerson);
 			setFireMode(fireMode);
 			setSparkMode(sparkMode);
+			startSparkCss();
 	}
 
 	//spark start brendan
@@ -654,8 +655,24 @@
 	var lastSpark = 0;
 	var maxSpark = 300;
 	var sparkMode = true;
+	function startSparkCss(){
+				for(i = 0; i < maxSpark; i++){
+						var arr = document.styleSheets[6].cssRules;
+						document.styleSheets[6].cssRules[arr.length].cssText = ".spark_"+i+" { animation-duration: 1s; animation-name: process_"+i+"; }";
+				}
+				for(i = 0; i < maxSpark; i++){
+						var arr = document.styleSheets[6].cssRules;
+						document.styleSheets[6].cssRules[arr.length].cssText = "@keyframes process_"+i+" { 0% { opacity: 1; background-color: red; left: 0px; top: 0px; }↵  100% { opacity: 0; left: 0px; top: 0px; }}";
+				}
+	}
+
 	function changeSparkAni(x, y){
-			for(i = 0; i < numberOfSpark; i++){
+			var baseCssNum = 1;
+			if(lastSpark + numberOfSpark >= maxSpark){
+					lastSpark = 0;
+			}
+
+			for(i = baseCssNum + lastSpark + maxSpark; i < numberOfSpark + baseCssNum + lastSpark + maxSpark; i++){
 					var randomX = Math.floor(Math.random() * Math.floor(pianoPieceWidth*7));
 					var randomY = Math.floor(Math.random() * Math.floor(pianoPieceWidth*7)) * (-1);
 					if(Math.floor(Math.random() * Math.floor(2)) == 1){
@@ -663,12 +680,12 @@
 					}
 					randomX += x;
 					randomY += y;
-					document.styleSheets[6].cssRules[i+6].cssRules[0].style.cssText = "opacity: 1; background-color: red; left:"
+					document.styleSheets[6].cssRules[i].cssRules[0].style.cssText = "opacity: 1; background-color: red; left:"
 																																				+ x
 																																				+ "px; top:"
 																																				+ y
 																																				+ "px;";
-					document.styleSheets[6].cssRules[i+6].cssRules[1].style.cssText = "opacity: 0; left:"
+					document.styleSheets[6].cssRules[i].cssRules[1].style.cssText = "opacity: 0; left:"
 																																				+ randomX
 																																				+ "px; top:"
 																																				+ randomY
@@ -679,9 +696,6 @@
 	}
 
 	function startSpark(num){
-			if(num >= maxSpark){
-					num = 0;
-			}
 		 	var j = 0;
 			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + j);
