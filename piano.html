@@ -184,8 +184,8 @@
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnSpark.classList.remove("active");
 			}, 150);
-			sparkMode = !sparkMode;
-			setSparkMode(sparkMode);
+			numberOfSpark += increaseSpark;
+			setSparkMode(numberOfSpark);
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
@@ -645,15 +645,18 @@
 			displayPiano.innerHTML = svg;
 			resetPersonPosition(noOfPerson);
 			setFireMode(fireMode);
-			setSparkMode(sparkMode);
+			setSparkMode(numberOfSpark);
 	}
 
 	//spark start brendan
-	var numberOfSpark = 7;
+	var numberOfSpark = 5;
+	var minNoOfSpark = 5;
+	var increaseSpark = 2;
+	var maxNoOfSpark = 19;
+	
 	var sparkArr = document.getElementsByClassName("spark");
 	var lastSpark = 0;
 	var maxSpark = 1000;
-	var sparkMode = true;
 	var baseCssNum = 1;
 
 	function changeSparkAni(x, y){
@@ -737,17 +740,18 @@
 	}
 
 	var sparkNode = document.getElementsByClassName("sparkNode");
-	function setSparkMode(mode){
-			if(!mode){
+	function setSparkMode(num){
+			if(num > maxNoOfSpark){
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "none";
 					}
 					btnSpark.innerHTML = "Spark: Off";
+					numberOfSpark = minNoOfSpark - increaseSpark;
 			}else{
 					for(i = 0; i < sparkNode.length; i++){
 							sparkNode[i].style.display = "block";
 					}
-					btnSpark.innerHTML = "Spark: On";
+					btnSpark.innerHTML = "Spark No.: " + numberOfSpark;
 			}
 	}
 
