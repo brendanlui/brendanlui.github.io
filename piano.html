@@ -651,7 +651,7 @@
 	//spark start brendan
 	var sparkArr = document.getElementsByClassName("spark");
 	var lastSpark = 0;
-	var maxSpark = 200;
+	var maxSpark = 1000;
 	var baseCssNum = 1;
 
 	var numberOfSpark = maxSpark;
@@ -694,11 +694,13 @@
 			lastSpark += numberOfSpark;
 	}
 
+	var divide = 5;
+	var period = parseInt(maxSpark / numberOfSpark / divide) * numberOfSpark;
 	function startSpark(num){
 			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
 			}
-			if(num == 0 || num == parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark){
+			if(num % period == 0){
 					endSpark(num);
 			}
 	}
@@ -706,11 +708,11 @@
 
 	function endSpark(num){
 				if(num == 0){
-						for(i = parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark; i < maxSpark; i++){
+						for(i = maxSpark - 1; i >= maxSpark - period; i--){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 						}
 				}else{
-						for(i = 0; i < parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark; i++){
+						for(i = num - period; i < num; i++){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 						}
 				}
