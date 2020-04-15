@@ -657,7 +657,7 @@
 	var numberOfSpark = maxSpark;
 	var minNoOfSpark = 3;
 	var increaseSpark = 3;
-	var maxNoOfSpark = 12;
+	var maxNoOfSpark = 9;
 
 	function changeSparkAni(x, y){
 			if(lastSpark + numberOfSpark >= maxSpark){
@@ -694,7 +694,7 @@
 			lastSpark += numberOfSpark;
 	}
 
-	var divide = 5; //must be larger than 2
+	var divide = 6; //must be larger than 2
 	function startSpark(num){
 			if(divide < 3){
 					divide = 3;
