@@ -698,14 +698,20 @@
 			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
 			}
-			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
+			if(num == 0 || num == parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark){
 					endSpark(num);
-			}, 1000);
+			}
 	}
 
 	function endSpark(num){
-				for(i = num; i < num + numberOfSpark; i++){
-						document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+				if(num == 0){
+						for(i = parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark; i < maxSpark; i++){
+								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+						}
+				}else{
+						for(i = num; i < parseInt(maxSpark / numberOfSpark / 2) * numberOfSpark; i++){
+								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+						}
 				}
 	}
 
