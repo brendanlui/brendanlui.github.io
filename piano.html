@@ -694,8 +694,11 @@
 			lastSpark += numberOfSpark;
 	}
 
-	var divide = 5;
+	var divide = 5; //must be larger than 2
 	function startSpark(num){
+			if(divide < 3){
+					divide = 3;
+			}
 			var period = parseInt(maxSpark / numberOfSpark / divide) * numberOfSpark;
 			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
@@ -708,11 +711,15 @@
 
 	function endSpark(num, period){
 				if(num == 0){
+						for(i = maxSpark - period - 1; i >= maxSpark - period * 2; i--){
+								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
+						}
+				}else if(num == period){
 						for(i = maxSpark - 1; i >= maxSpark - period; i--){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 						}
 				}else{
-						for(i = num - period; i < num; i++){
+						for(i = num - period * 2; i < num - period; i++){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 						}
 				}
