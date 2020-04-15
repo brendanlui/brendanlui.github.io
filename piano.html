@@ -651,7 +651,7 @@
 	//spark start brendan
 	var sparkArr = document.getElementsByClassName("spark");
 	var lastSpark = 0;
-	var maxSpark = 1000;
+	var maxSpark = 200;
 	var baseCssNum = 1;
 
 	var numberOfSpark = maxSpark;
@@ -702,6 +702,7 @@
 					endSpark(num);
 			}
 	}
+
 
 	function endSpark(num){
 				if(num == 0){
@@ -1026,7 +1027,7 @@
 						fireRightHand[personIndex - 1].y.baseVal.value = yValue - fireTopCss - handFireVolume / 3;
 				}
 
-				//spark start brendan
+				//spark start
 				if(lastSpark + numberOfSpark >= maxSpark){
 						lastSpark = 0;
 				}
@@ -1088,14 +1089,6 @@
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
 			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
-						//use hand start
-						noteCount[personIndex - 1]++;
-						if(noteCount[personIndex - 1] % 2 == 0){
-								moveHand(note, octave, false, personIndex);
-						}else{
-								moveHand(note, octave, true, personIndex);
-						}
-						//use hand end
 						var finalDuration = duration / 1000;
 						if(finalDuration < minNoteLast){
 								finalDuration = minNoteLast;
@@ -1109,6 +1102,15 @@
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
 						}, 150);
+
+						//use hand start
+						noteCount[personIndex - 1]++;
+						if(noteCount[personIndex - 1] % 2 == 0){
+								moveHand(note, octave, false, personIndex);
+						}else{
+								moveHand(note, octave, true, personIndex);
+						}
+						//use hand end
 
 			}, startTime);
 	}
