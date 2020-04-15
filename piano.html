@@ -694,19 +694,19 @@
 			lastSpark += numberOfSpark;
 	}
 
-	var divide = 5;
-	var period = parseInt(maxSpark / numberOfSpark / divide) * numberOfSpark;
+	var divide = 7;
 	function startSpark(num){
+			var period = parseInt(maxSpark / numberOfSpark / divide) * numberOfSpark;
 			for(i = num; i < num + numberOfSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.add("spark_" + i);
 			}
 			if(num % period == 0){
-					endSpark(num);
+					endSpark(num, period);
 			}
 	}
 
 
-	function endSpark(num){
+	function endSpark(num, period){
 				if(num == 0){
 						for(i = maxSpark - 1; i >= maxSpark - period; i--){
 								document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
