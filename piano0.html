@@ -1223,7 +1223,18 @@
 	}
 
 	function press3DPiano(note, octave){	//brendan here
+			var polygon = document.getElementById("key_3d_"+note+"_"+octave);
+			var y1 = polygon.points[0].y;
+			var y2 = polygon.points[3].y;
+			var diff = (y2 - y1) / 2;
 
+			polygon.points[0].y += diff;
+			polygon.points[1].y += diff;
+
+			btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
+					polygon.points[0].y -= diff;
+					polygon.points[1].y -= diff;
+			}, 150);
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
