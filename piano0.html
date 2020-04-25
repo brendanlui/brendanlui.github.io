@@ -509,13 +509,13 @@
 											svg += ",";
 											svg += Math.round((start_y + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y2
 											svg += " ";
-											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
+											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x2
 											svg += ",";
-											svg += Math.round((start_y + pianoPieceWidth / 6 + pianoPieceHeight * blackToWhiteRatio + bufferDiff + Number.EPSILON) * 1000) / 1000;	//y3
+											svg += Math.round((start_y + pianoPieceWidth / 6 + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y3
 											svg += " ";
-											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
+											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x1
 											svg += ",";
-											svg += Math.round((start_y + pianoPieceWidth / 6 + pianoPieceHeight * blackToWhiteRatio + bufferDiff + Number.EPSILON) * 1000) / 1000;	//y3
+											svg += Math.round((start_y + pianoPieceWidth / 6 + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y3
 											svg += '" class="blackKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 							}
 					}
@@ -1199,11 +1199,16 @@
 						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 								noteSvg.classList.remove("pressed");
 						}, 150);
-						var note3DSvg = document.getElementById("key_3d_"+note+"_"+octave);
-						note3DSvg.classList.add("pressed");
-						btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
-								note3DSvg.classList.remove("pressed");
-						}, 150);
+
+						// 3D
+						if(isPiano3D){
+								var note3DSvg = document.getElementById("key_3d_"+note+"_"+octave);
+								press3DPiano(note, octave);
+								note3DSvg.classList.add("pressed");
+								btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
+										note3DSvg.classList.remove("pressed");
+								}, 150);
+						}
 
 						//use hand start
 						noteCount[personIndex - 1]++;
@@ -1215,6 +1220,10 @@
 						//use hand end
 
 			}, startTime);
+	}
+
+	function press3DPiano(note, octave){	//brendan here
+
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
