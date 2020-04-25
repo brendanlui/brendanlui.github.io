@@ -361,8 +361,8 @@
 			var pieces = 57;
 			var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
-			var start_x = height;
-			var end_x = start_x;
+			var start_x = height / 2;
+			var end_x = height / 2;
 			var start_y = height * 2.5;
 			var lineWidth = 1;
 
@@ -475,7 +475,7 @@
 					}
 					if(blackNum.includes(i % 7 + 1)){
 							// 3D
-							var blackToWhiteRatio = 3 / 5;
+							var blackToWhiteRatio = 2 / 3;
 							var bufferDiff = Math.round(((pianoPieceWidth + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - blackToWhiteRatio) + Number.EPSILON) * 1000) / 1000; // x1 diff
 
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
