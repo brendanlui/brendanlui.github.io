@@ -147,7 +147,6 @@
 	//btn click start
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
-			displayPiano();
 			btnPlay.classList.add("active");
 			loadText(document.getElementById('fileContent').textContent);
 			btnStop.disabled = false;
@@ -1055,6 +1054,7 @@
 
 	var valueModifySpeed = 30;
 	function loadText(text){
+			displayPiano();
 			clearAllTimeout();
 			noteCount = [0, 0];
 			lastSpark = 0;
