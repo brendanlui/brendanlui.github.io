@@ -114,6 +114,7 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
+			<button id="btnD" class="buttonJp btnFilter">2D</button>
 			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
 			<button id="btnFire" class="buttonJp btnFilter">Fire : Off</button>
@@ -154,6 +155,21 @@
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 150);
+	}
+
+	var btnD = document.getElementById("btnD");
+	btnD.onclick = function() {
+			btnD.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnD.classList.remove("active");
+			}, 150);
+
+			if(isPiano3D){
+					btnD.innerHTML = "2D";
+			}else{
+					btnD.innerHTML = "3D";
+			}
+			isPiano3D = !isPiano3D;
 	}
 
 	var btnStop = document.getElementById("btnStop");
@@ -345,7 +361,7 @@
 			}
 	}
 
-	var isPiano3D = true;
+	var isPiano3D = false;
 	var pieces = 57;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
