@@ -408,6 +408,29 @@
 			var keyNote = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 			svg += '<svg id="keyboard" height="'+(height+start_y*1.5)+'px" width="'+width+'px">';
+
+			// 3D piano framework start
+			if(isPiano3D){
+							svg += '<polygon cpoints="';
+							svg += Math.round((start_x / 2 + pianoPieceWidth * 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y / 2 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x / 2 + pianoPieceWidth * 2 + pianoWholeWidth + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y / 2 + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x / 2 + pianoPieceWidth * 4 + pianoWholeWidth + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y / 2 + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += " ";
+							svg += Math.round((start_x / 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y / 2 + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += '" class="pianoFramework" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+			}
+			// 3D piano framework end
+
 			for(i = 0; i < pieces; i++){
 					var looptime = 0;
 					var start_i = i;
