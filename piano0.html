@@ -1221,7 +1221,7 @@
 				var yLow = 99999999;
 				for(i = 0; i < polygon.points.length; i++){
 								if(isPiano3D && (i == 0 || i == 1)){
-										xValue += polygon.points[i+2].x;	//brendan here
+										xValue += polygon.points[i+2].x;
 										yValue += polygon.points[i+2].y;
 								}else{
 										xValue += polygon.points[i].x;
@@ -1235,7 +1235,7 @@
 								}
 				}
 				xValue = xValue / polygon.points.length;
-				yValueSharp = yLow + (yHigh - yLow) / 3;
+				yValueSharp = yLow + (yHigh - yLow) / 6;
 				yValueNormal = yHigh - (yHigh - yLow) / 5;
 				if(note.includes('#')){
 						yValue = yValueSharp;
