@@ -388,7 +388,8 @@
 			var pianoPieceHeight = Math.round((pianoPieceWidth * 4 + Number.EPSILON) * 1000) / 1000;;
 
 			// 3D
-			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - pianoPieceHeight * 2) / pieces + Number.EPSILON) * 1000) / 1000;
+			var start3D_x = pianoPieceHeight;
+			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - start3D_x * 2) / pieces + Number.EPSILON) * 1000) / 1000;
 
 			maxHandFireVolume = 2.4 * pianoPieceWidth;
 			minHandFireVolume = pianoPieceWidth / 2;
@@ -520,11 +521,11 @@
 									svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) + Number.EPSILON) * 1000) / 1000;	//y2
 							}else{
 										// 3D
-										svg += Math.round((start_x + pianoPieceWidth + piano3DPieceWidthUp * i + Number.EPSILON) * 1000) / 1000;	//x1
+										svg += Math.round((start_x + start3D_x + piano3DPieceWidthUp * i + Number.EPSILON) * 1000) / 1000;	//x1
 										svg += ",";
 										svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
 										svg += " ";
-										svg += Math.round((start_x + pianoPieceWidth + piano3DPieceWidthUp * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
+										svg += Math.round((start_x + start3D_x + piano3DPieceWidthUp * (i + 1) + Number.EPSILON) * 1000) / 1000;	//x2
 										svg += ",";
 										svg += Math.round((start_y  + Number.EPSILON) * 1000) / 1000;	//y1
 										svg += " ";
@@ -593,11 +594,11 @@
 									svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
 							}else{
 										// 3D
-										svg += Math.round((start_x + pianoPieceWidth + piano3DPieceWidthUp * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
+										svg += Math.round((start_x + start3D_x + piano3DPieceWidthUp * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 										svg += ",";
 										svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
 										svg += " ";
-										svg += Math.round((start_x + pianoPieceWidth + piano3DPieceWidthUp * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
+										svg += Math.round((start_x + start3D_x + piano3DPieceWidthUp * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
 										svg += ",";
 										svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
 										svg += " ";
