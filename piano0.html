@@ -457,6 +457,10 @@
 						break;
 					}
 					if(blackNum.includes(i % 7 + 1)){
+							// 3D
+							var blackToWhiteRatio = 3 / 4;
+							var bufferDiff = Math.round(((pianoPieceWidth + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - blackToWhiteRatio) + Number.EPSILON) * 1000) / 1000; // x1 diff
+
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 							if(!isPiano3D){
 									svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
@@ -476,7 +480,6 @@
 									svg += Math.round((start_y + pianoPieceHeight * ((i + 1) % 2) * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y2
 							}else{
 										// 3D
-										var bufferDiff = Math.round(((pianoPieceWidth + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - 3 / 5) + Number.EPSILON) * 1000) / 1000; // x1 diff
 										svg += Math.round((start_x + pianoPieceWidth + piano3DPieceWidthUp * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 										svg += ",";
 										svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
@@ -487,32 +490,32 @@
 										svg += " ";
 										svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x2
 										svg += ",";
-										svg += Math.round((start_y + pianoPieceHeight * 3 / 5 + Number.EPSILON) * 1000) / 1000;	//y2
+										svg += Math.round((start_y + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y2
 										svg += " ";
 										svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x1
 										svg += ",";
-										svg += Math.round((start_y + pianoPieceHeight * 3 / 5 + Number.EPSILON) * 1000) / 1000;	//y2
+										svg += Math.round((start_y + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y2
 							}
 							svg += '" class="blackKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
 							// 3D
 							if(isPiano3D){
 											svg += '<polygon id="key_3d_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" points="';
-											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
+											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x1
 											svg += ",";
-											svg += Math.round((start_y + pianoPieceHeight * 3 / 5 + Number.EPSILON) * 1000) / 1000;	//y2
+											svg += Math.round((start_y + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y2
+											svg += " ";
+											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + bufferDiff + Number.EPSILON) * 1000) / 1000;	//x2
+											svg += ",";
+											svg += Math.round((start_y + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y2
 											svg += " ";
 											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
 											svg += ",";
-											svg += Math.round((start_y + pianoPieceHeight * 3 / 5 + Number.EPSILON) * 1000) / 1000;	//y2
-											svg += " ";
-											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75 + 0.5) + Number.EPSILON) * 1000) / 1000;	//x2
-											svg += ",";
-											svg += Math.round((start_y + pianoPieceWidth / 3 + pianoPieceHeight * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y3
+											svg += Math.round((start_y + pianoPieceWidth / 5 + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y3
 											svg += " ";
 											svg += Math.round((start_x + pianoPieceWidth * (i + 0.75) + Number.EPSILON) * 1000) / 1000;	//x1
 											svg += ",";
-											svg += Math.round((start_y + pianoPieceWidth / 3 + pianoPieceHeight * 2 / 3 + Number.EPSILON) * 1000) / 1000;	//y3
+											svg += Math.round((start_y + pianoPieceWidth / 5 + pianoPieceHeight * blackToWhiteRatio + Number.EPSILON) * 1000) / 1000;	//y3
 											svg += '" class="blackKey" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 							}
 					}
