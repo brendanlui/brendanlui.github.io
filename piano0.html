@@ -1235,7 +1235,11 @@
 								}
 				}
 				xValue = xValue / polygon.points.length;
-				yValueSharp = yLow + (yHigh - yLow) / 6;
+				if(isPiano3D){	// 3D
+						yValueSharp = yLow + (yHigh - yLow) * 5 / 6;
+				}else{
+						yValueSharp = yLow + (yHigh - yLow) / 3;
+				}
 				yValueNormal = yHigh - (yHigh - yLow) / 5;
 				if(note.includes('#')){
 						yValue = yValueSharp;
