@@ -1197,7 +1197,6 @@
 
 						// 3D
 						if(isPiano3D){
-								var note3DSvg = document.getElementById("key_3d_"+note+"_"+octave);
 								press3DPiano(note, octave);
 						}else{
 								var noteSvg = document.getElementById("key_"+note+"_"+octave);
@@ -1219,7 +1218,7 @@
 			}, startTime);
 	}
 
-	function press3DPiano(note, octave){	//brendan here
+	function press3DPiano(note, octave){
 			var polygon = document.getElementById("key_3d_"+note+"_"+octave);
 			var y1 = polygon.points[0].y;
 			var y2 = polygon.points[3].y;
