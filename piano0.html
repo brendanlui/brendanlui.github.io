@@ -573,7 +573,7 @@
 					if(blackNum.includes(i % 7 + 1)){
 							// 3D
 							var blackToWhiteRatio = 2 / 3;
-							var bufferDiff = Math.round(((pianoPieceWidth + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - blackToWhiteRatio) + Number.EPSILON) * 1000) / 1000; // x1 diff
+							var bufferDiff = Math.round(((start3D_x + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - blackToWhiteRatio) + Number.EPSILON) * 1000) / 1000; // x1 diff
 
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 							if(!isPiano3D){
