@@ -1389,7 +1389,7 @@
 					polygon3D.classList.remove("pushed");
 			}, 150);
 	}
- 
+
 	function clearPush(){
 			var pushedArr = document.getElementsByClassName("pushed");
 			for(var i = 0; i < pushedArr.length; i++){
@@ -1493,6 +1493,8 @@
 	}
 
 	function clearAllTimeout(){
+			clearPush();
+			
 			for (i = btnClickTimeout.length - 1; i >= 0; i--){
 					clearInterval(btnClickTimeout[i]);
 			}
@@ -1511,7 +1513,6 @@
 			for(i = 0; i < blackKeyArr.length; i++){
 					blackKeyArr[i].classList.remove("pressed");
 			}
-			clearPush();
 
 			for(i = 0; i < maxSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
