@@ -1361,28 +1361,29 @@
 	}
 
 	// 3D
+	var pushDiff = 0;
 	function press3DPiano(note, octave){
 			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
 			var y1 = polygon3D.points[0].y;
 			var y2 = polygon3D.points[3].y;
-			var diff = (y2 - y1) * 2 / 3;
+			pushDiff = (y2 - y1) * 2 / 3;
 
-			polygon3D.points[0].y += diff;
-			polygon3D.points[1].y += diff;
+			polygon3D.points[0].y += pushDiff;
+			polygon3D.points[1].y += pushDiff;
 
 			var polygon = document.getElementById("key_"+note+"_"+octave);
 			for(var i = 0; i < polygon.points.length; i++){
-					polygon.points[i].y += diff;
+					polygon.points[i].y += pushDiff;
 			}
 			polygon.classList.add("pushed");
 			polygon3D.classList.add("pushed");
 
 			btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
-					polygon3D.points[0].y -= diff;
-					polygon3D.points[1].y -= diff;
+					polygon3D.points[0].y -= pushDiff;
+					polygon3D.points[1].y -= pushDiff;
 
 					for(var i = 0; i < polygon.points.length; i++){
-							polygon.points[i].y -= diff;
+							polygon.points[i].y -= pushDiff;
 					}
 					polygon.classList.remove("pushed");
 					polygon3D.classList.remove("pushed");
@@ -1393,11 +1394,11 @@
 			var pushedArr = document.getElementsByClassName("pushed");
 			for(var i = 0; i < pushedArr.length; i++){
 					if(pushedArr[i].id.includes("key_3d_")){
-								pushedArr[i].points[0].y -= diff;
-								pushedArr[i].points[1].y -= diff;
+								pushedArr[i].points[0].y -= pushDiff;
+								pushedArr[i].points[1].y -= pushDiff;
 					}else{
 								for(var j = 0; j < pushedArr[i].points.length; j++){
-										pushedArr[i].points[j].y -= diff;
+										pushedArr[i].points[j].y -= pushDiff;
 								}
 					}
 					pushedArr[i].remove("pushed");
