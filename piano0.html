@@ -1375,8 +1375,6 @@
 			for(var i = 0; i < polygon.points.length; i++){
 					polygon.points[i].y += pushDiff;
 			}
-			polygon.classList.add("pushed");
-			polygon3D.classList.add("pushed");
 
 			btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 					polygon3D.points[0].y -= pushDiff;
@@ -1385,24 +1383,7 @@
 					for(var i = 0; i < polygon.points.length; i++){
 							polygon.points[i].y -= pushDiff;
 					}
-					polygon.classList.remove("pushed");
-					polygon3D.classList.remove("pushed");
 			}, 150);
-	}
-
-	function clearPush(){
-			var pushedArr = document.getElementsByClassName("pushed");
-			for(var i = 0; i < pushedArr.length; i++){
-					if(pushedArr[i].id.includes("key_3d_")){
-								pushedArr[i].points[0].y -= pushDiff;
-								pushedArr[i].points[1].y -= pushDiff;
-					}else{
-								for(var j = 0; j < pushedArr[i].points.length; j++){
-										pushedArr[i].points[j].y -= pushDiff;
-								}
-					}
-					pushedArr[i].remove("pushed");
-			}
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -1493,7 +1474,6 @@
 	}
 
 	function clearAllTimeout(){
-			clearPush();
 
 			for (i = btnClickTimeout.length - 1; i >= 0; i--){
 					clearInterval(btnClickTimeout[i]);
@@ -1517,6 +1497,8 @@
 			for(i = 0; i < maxSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
 			}
+
+			displayPiano();
 
 			btnClickTimeout = [];
 			btnReleaseTimeout = [];
