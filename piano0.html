@@ -388,7 +388,7 @@
 			var pianoPieceHeight = Math.round((pianoPieceWidth * 4 + Number.EPSILON) * 1000) / 1000;;
 
 			// 3D
-			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - 6 * pianoPieceWidth) / pieces + Number.EPSILON) * 1000) / 1000;
+			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - pianoPieceHeight * 2) / pieces + Number.EPSILON) * 1000) / 1000;
 
 			maxHandFireVolume = 2.4 * pianoPieceWidth;
 			minHandFireVolume = pianoPieceWidth / 2;
@@ -413,11 +413,11 @@
 			var piano3DPieceHeight = pianoPieceWidth * 3 / 4;
 			if(isPiano3D){
 							svg += '<polygon points="';
-							svg += Math.round((start_x + piano3DPieceHeight * 3 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y - piano3DPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
-							svg += Math.round((start_x + pianoWholeWidth - piano3DPieceHeight * 3 + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += Math.round((start_x + pianoWholeWidth - pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//x2
 							svg += ",";
 							svg += Math.round((start_y - piano3DPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
