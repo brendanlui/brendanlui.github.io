@@ -1362,7 +1362,7 @@
 	}
 
 	// 3D
-	function press3DPiano(note, octave){
+	function press3DPiano(note, octave){ 
 			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
 			var pushDiff = (polygon3D.points[3].y - polygon3D.points[0].y) * 2 / 3;
 			polygon3D.points[0].y += pushDiff;
