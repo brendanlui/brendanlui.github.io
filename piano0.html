@@ -591,7 +591,7 @@
 					if(blackNum.includes(i % 7 + 1)){
 							// 3D
 							var blackToWhiteRatio = 2 / 3;
-							var bufferDiff = Math.round(((start3D_x + piano3DPieceWidthUp * i - pianoPieceWidth * i) * (1 - blackToWhiteRatio) + Number.EPSILON) * 1000) / 1000; // x1 diff
+							var bufferDiff = (start3D_x + piano3DPieceWidthUp * (i + 1 / 2) - pianoPieceWidth * (i + 1 / 2)) * (1 - blackToWhiteRatio); // x1 diff
 
 							svg += '<polygon id="key_'+blackKeyNote[i%7]+'_'+Math.floor(i/7+1)+'" onClick="pressKey(this.id)" points="';
 							if(!isPiano3D){
@@ -1221,7 +1221,7 @@
 				var yLow = 99999999;
 				for(i = 0; i < polygon.points.length; i++){
 								if(isPiano3D && (i == 0 || i == 1)){
-										xValue += polygon.points[i+2].x;
+										xValue += polygon.points[i+2].x;	//brendan here
 										yValue += polygon.points[i+2].y;
 								}else{
 										xValue += polygon.points[i].x;
