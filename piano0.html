@@ -1374,6 +1374,8 @@
 			for(var i = 0; i < polygon.points.length; i++){
 					polygon.points[i].y += diff;
 			}
+			polygon.classList.add("pushed");
+			polygon3D.classList.add("pushed");
 
 			btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 					polygon3D.points[0].y -= diff;
@@ -1382,7 +1384,24 @@
 					for(var i = 0; i < polygon.points.length; i++){
 							polygon.points[i].y -= diff;
 					}
+					polygon.classList.remove("pushed");
+					polygon3D.classList.remove("pushed");
 			}, 150);
+	}
+
+	function clearPush(){
+			var pushedArr = document.getElementsByClassName("pushed");
+			for(var i = 0; i < pushedArr.length; i++){
+					if(pushedArr[i].id.includes("key_3d_")){
+								pushedArr[i].points[0].y -= diff;
+								pushedArr[i].points[1].y -= diff;
+					}else{
+								for(var j = 0; j < pushedArr[i].points.length; j++){
+										pushedArr[i].points[j].y -= diff;
+								}
+					}
+					pushedArr[i].remove("pushed");
+			}
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -1491,6 +1510,7 @@
 			for(i = 0; i < blackKeyArr.length; i++){
 					blackKeyArr[i].classList.remove("pressed");
 			}
+			clearPush();
 
 			for(i = 0; i < maxSpark; i++){
 					document.getElementsByClassName("spark")[i].classList.remove("spark_" + i);
