@@ -8,6 +8,10 @@
   stroke:#000000;
 }
 
+.blackKey3D{
+  stroke:#6f6f6f;
+}
+
 .whiteKey.pressed{
     fill: #f3e7e7;
     stroke: #ffffff;
