@@ -749,7 +749,7 @@
 
 			svg += '</svg>';
 			displayPiano.innerHTML = svg;
-			resetPersonPosition(noOfPerson);
+			resetPersonPosition(noOfPerson, pianoWholeWidth);
 			setFireMode(fireMode);
 			setSparkMode(numberOfSpark);
 	}
@@ -1037,10 +1037,8 @@
 	var fireLeftLeg = document.getElementsByClassName("fireObjectLeftLeg");
 	var fireHead = document.getElementsByClassName("fireObjectHead");
 
-	function resetPersonPosition(numPeople){	//brendan here
-				var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
-				var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
-				width -= height;
+	function resetPersonPosition(numPeople, pianoWholeWidth){	//brendan here
+				var width = pianoWholeWidth;
 
 				if(numPeople > 1){
 						for(i = 0; i < numPeople; i++){
