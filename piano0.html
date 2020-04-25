@@ -1220,8 +1220,13 @@
 				var yHigh = 0;
 				var yLow = 99999999;
 				for(i = 0; i < polygon.points.length; i++){
-								xValue += polygon.points[i].x;
-								yValue += polygon.points[i].y;
+								if(isPiano3D && (i == 0 || i == 1)){
+										xValue += polygon.points[i+2].x;
+										yValue += polygon.points[i+2].y;
+								}else{
+										xValue += polygon.points[i].x;
+										yValue += polygon.points[i].y;
+								}
 								if(polygon.points[i].y > yHigh){
 										yHigh = polygon.points[i].y;
 								}
