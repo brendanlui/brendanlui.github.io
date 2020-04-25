@@ -1037,7 +1037,7 @@
 	var fireLeftLeg = document.getElementsByClassName("fireObjectLeftLeg");
 	var fireHead = document.getElementsByClassName("fireObjectHead");
 
-	function resetPersonPosition(numPeople, pianoWholeWidth){	//brendan here
+	function resetPersonPosition(numPeople, pianoWholeWidth){
 				var width = pianoWholeWidth;
 
 				if(numPeople > 1){
@@ -1241,7 +1241,7 @@
 			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
 			var y1 = polygon3D.points[0].y;
 			var y2 = polygon3D.points[3].y;
-			var diff = (y2 - y1) / 2;
+			var diff = (y2 - y1) * 2 / 3;
 
 			polygon3D.points[0].y += diff;
 			polygon3D.points[1].y += diff;
