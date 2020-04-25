@@ -414,11 +414,11 @@
 			var piano3DPieceHeight = pianoPieceWidth * 3 / 4;
 			if(isPiano3D){
 							svg += '<polygon points="';
-							svg += Math.round((start_x + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x + start3D_x + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y - piano3DPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
-							svg += Math.round((start_x + pianoWholeWidth - pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += Math.round((start_x + pianoWholeWidth - start3D_x + Number.EPSILON) * 1000) / 1000;	//x2
 							svg += ",";
 							svg += Math.round((start_y - piano3DPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
@@ -430,6 +430,24 @@
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += '" class="pianoFramework pianoFramework_1" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+
+							svg += '<polygon points="';
+							svg += Math.round((start_x + start3D_x + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoWholeWidth - start3D_x + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoWholeWidth + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += " ";
+							svg += Math.round((start_x + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += '" class="pianoFramework pianoFramework_2" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
 							svg += '<polygon points="';
 							svg += Math.round((start_x - piano3DPieceHeight + Number.EPSILON) * 1000) / 1000;	//x1
