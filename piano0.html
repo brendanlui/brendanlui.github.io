@@ -385,10 +385,10 @@
 			var pianoWholeWidth = width - start_x - end_x;
 
 			var pianoPieceHeight = height;
-			pianoPieceWidth = Math.round(((pianoWholeWidth) / pieces + Number.EPSILON) * 1000) / 1000;
+			pianoPieceWidth = Math.round((pianoWholeWidth / pieces + Number.EPSILON) * 1000) / 1000;
 
 			// 3D
-			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - 2 * pianoPieceWidth) / pieces + Number.EPSILON) * 1000) / 1000;
+			var piano3DPieceWidthUp = Math.round(((pianoWholeWidth - 4 * pianoPieceWidth) / pieces + Number.EPSILON) * 1000) / 1000;
 
 			maxHandFireVolume = 2.4 * pianoPieceWidth;
 			minHandFireVolume = pianoPieceWidth / 2;
