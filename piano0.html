@@ -424,13 +424,13 @@
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += " ";
-							svg += Math.round((start_x - pianoPieceWidth * 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x - pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += '" class="pianoFramework pianoFramework_1" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 
 							svg += '<polygon points="';
-							svg += Math.round((start_x - pianoPieceWidth * 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x - pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
@@ -438,13 +438,31 @@
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += " ";
-							svg += Math.round((start_x + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += Math.round((start_x + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += " ";
-							svg += Math.round((start_x - pianoPieceWidth * 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x - pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//x2
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += '" class="pianoFramework pianoFramework_2" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
+
+							svg += '<polygon points="';
+							svg += Math.round((start_x + pianoWholeWidth + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoWholeWidth + pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
+							svg += " ";
+							svg += Math.round((start_x + pianoWholeWidth + pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//x2
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + pianoPieceWidth + Number.EPSILON) * 1000) / 1000;	//y2
+							svg += " ";
+							svg += Math.round((start_x + pianoWholeWidth + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += ",";
+							svg += Math.round((start_y + pianoPieceHeight + Number.EPSILON) * 1000) / 1000;	//y1
 							svg += '" class="pianoFramework pianoFramework_2" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
 			}
 			// 3D piano framework end
