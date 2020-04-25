@@ -346,6 +346,7 @@
 	}
 
 	var isPiano3D = true;
+	var pieces = 57;
 	window.addEventListener("resize", displayPiano);
 	function displayPiano(){
 			centerX = [0, 0];
@@ -358,7 +359,6 @@
 			var width = Math.round((displayPiano.clientWidth + Number.EPSILON) * 1000) / 1000;
 			fireTopCss = width;
 			fireLeftCss = width;
-			var pieces = 57;
 			var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
 			var start_x = height / 2;
@@ -1039,6 +1039,9 @@
 
 	function resetPersonPosition(numPeople){	//brendan here
 				var width = Math.round((document.getElementById("displayPiano").clientWidth + Number.EPSILON) * 1000) / 1000;
+				var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
+				width -= height;
+
 				if(numPeople > 1){
 						for(i = 0; i < numPeople; i++){
 								var negOne = -1;
