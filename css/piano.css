@@ -51,6 +51,13 @@
 }
 
 .pianoFramework{
-  fill: #4f4f4f;
   stroke: #dedede;
+}
+
+.pianoFramework_1{
+  fill: #4f4f4f;
+}
+
+.pianoFramework_1{
+  fill: #383838;
 }
