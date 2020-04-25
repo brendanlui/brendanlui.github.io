@@ -1220,8 +1220,8 @@
 
 	function press3DPiano(note, octave){
 			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
-			var y1_3D = polygon3D.points[0].y;
-			var y2_3D = polygon3D.points[3].y;
+			var y1 = polygon3D.points[0].y;
+			var y2 = polygon3D.points[3].y;
 			var diff = (y2 - y1) / 2;
 
 			polygon3D.points[0].y += diff;
