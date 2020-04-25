@@ -1361,13 +1361,13 @@
 	}
 
 	// 3D
+	var polygon3DSample = null;
 	var pushDiff = 0;
 	function press3DPiano(note, octave){
-			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
-			var y1 = polygon3D.points[0].y;
-			var y2 = polygon3D.points[3].y;
-			pushDiff = (y2 - y1) * 2 / 3;
+			polygon3DSample = document.getElementById("key_3d_C_4");
+			pushDiff = (polygon3DSample.points[3].y - polygon3DSample.points[0].y) * 2 / 3;
 
+			var polygon3D = document.getElementById("key_3d_"+note+"_"+octave);
 			polygon3D.points[0].y += pushDiff;
 			polygon3D.points[1].y += pushDiff;
 
@@ -1494,7 +1494,7 @@
 
 	function clearAllTimeout(){
 			clearPush();
-			
+
 			for (i = btnClickTimeout.length - 1; i >= 0; i--){
 					clearInterval(btnClickTimeout[i]);
 			}
