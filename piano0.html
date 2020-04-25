@@ -361,10 +361,10 @@
 			var pieces = 57;
 			var height = Math.round((width * 4.2 / pieces + Number.EPSILON) * 1000) / 1000;
 			var svg = "";
-			var start = width * 3 / pieces;
-			var start_x = width * 3 / pieces;
+			var start = height;
+			var start_x = height;
 			var start_y = height * 2.5 + start;
-			var end = width * 3 / pieces;
+			var end = height;
 			var lineWidth = 1;
 			var pianoPieceHeight = Math.round((height - start - end + Number.EPSILON) * 1000) / 1000;
 			pianoPieceWidth = Math.round(((width - start - end) / pieces + Number.EPSILON) * 1000) / 1000;
