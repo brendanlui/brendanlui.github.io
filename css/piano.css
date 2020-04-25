@@ -14,11 +14,12 @@
 
 .blackKey3D{
   stroke:#6f6f6f;
+  fill: #dfdfdf;
 }
 
 .whiteKey.pressed{
-    fill: #f3e7e7;
-    stroke: #ffffff;
+  fill: #f3e7e7;
+  stroke: #ffffff;
 }
 
 .blackKey.pressed{
