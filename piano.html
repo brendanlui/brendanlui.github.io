@@ -500,7 +500,7 @@
 							svg += ",";
 							svg += Math.round((start_y + pianoPieceHeight + piano3DPieceHeight * 2 + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += " ";
-							svg += Math.round((start_x + pianoWholeWidth + piano3DPieceHeight * 2 + Number.EPSILON) * 1000) / 1000;	//x1
+							svg += Math.round((start_x + pianoWholeWidth - start3D_x + Number.EPSILON) * 1000) / 1000;	//x1
 							svg += ",";
 							svg += Math.round((start_y + Number.EPSILON) * 1000) / 1000;	//y2
 							svg += '" class="pianoFramework pianoFramework_4" style="stroke-width:'+lineWidth+';fill-rule:nonzero;" />';
