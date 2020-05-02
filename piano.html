@@ -115,10 +115,11 @@
 	<!--TODO-->
 	<div id="buttonBox">
 			<button id="btnD" class="buttonJp btnFilter">2D</button>
-			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
-			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
 			<button id="btnFire" class="buttonJp btnFilter">Fire : Off</button>
 			<button id="btnSpark" class="buttonJp btnFilter">Spark : Off</button>
+			<button id="btnPressDuration" class="buttonJp btnFilter">Duration per time : 150 ms</button>
+			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
+			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -204,6 +205,24 @@
 			}, 150);
 			numberOfSpark += increaseSpark;
 			setSparkMode(numberOfSpark);
+	}
+
+	var currentPressDuration = 100;
+	var addPressDuration = 100;
+	var minPressDuration = 100;
+	var maxPressDuration = 700;
+	var btnPressDuration = document.getElementById("btnPressDuration");
+	btnPressDuration.onclick = function() {
+			btnPressDuration.classList.add("active");
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnPressDuration.classList.remove("active");
+			}, 150);
+
+			currentPressDuration += addPressDuration;
+			if(currentPressDuration > maxPressDuration){
+					currentPressDuration = minPressDuration;
+			}
+			btnPressDuration.innerHTML = "Duration per time : " + currentPressDuration + " ms";
 	}
 
 	var btnChangePerson = document.getElementById("btnChangePerson");
@@ -1696,7 +1715,7 @@
 								noteSvg.classList.add("pressed");
 								btnReleaseTimeout[btnReleaseTimeout.length] = setTimeout(function() {
 										noteSvg.classList.remove("pressed");
-								}, 150);
+								}, currentPressDuration);
 						}
 
 						//use hand start
@@ -1730,7 +1749,7 @@
 					for(var i = 0; i < polygon.points.length; i++){
 							polygon.points[i].y -= pushDiff;
 					}
-			}, 150);
+			}, currentPressDuration);
 	}
 
 	var pianoKeyArr = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
