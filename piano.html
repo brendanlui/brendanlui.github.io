@@ -114,12 +114,13 @@
 
 	<!--TODO-->
 	<div id="buttonBox">
-			<button id="btnD" class="buttonJp btnFilter">2D</button>
-			<button id="btnFire" class="buttonJp btnFilter">Fire : Off</button>
-			<button id="btnSpark" class="buttonJp btnFilter">Spark : Off</button>
-			<button id="btnPressDuration" class="buttonJp btnFilter">Duration per time : 100 ms</button>
-			<button id="btnChangePerson" class="buttonJp btnFilter">No. of Players : 1</button>
-			<button id="btnSwitchPersonHand" class="buttonJp btnFilter" disabled>Switch</button>
+			<button id="btnSetting" class="buttonJp btnFilter">Setting</button>
+			<button id="btnD" class="buttonJp btnFilter btnSetting">2D</button>
+			<button id="btnFire" class="buttonJp btnFilter btnSetting">Fire : Off</button>
+			<button id="btnSpark" class="buttonJp btnFilter btnSetting">Spark : Off</button>
+			<button id="btnPressDuration" class="buttonJp btnFilter btnSetting">Duration per time : 100 ms</button>
+			<button id="btnChangePerson" class="buttonJp btnFilter btnSetting">No. of Players : 1</button>
+			<button id="btnSwitchPersonHand" class="buttonJp btnFilter btnSetting" disabled>Switch</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -146,6 +147,24 @@
 	// get timeDiff from play to another person end
 
 	//btn click start
+	var btnSetting = document.getElementById("btnSetting");
+	var isSettingOn = true;
+	btnSetting.onclick = function() {
+			btnSetting.classList.add("active");
+			isSettingOn = !isSettingOn;
+			var btnSettingArr = document.getElementsByClassName("btnSetting");
+			for(var i = 0; i < btnSettingArr.length; i++){
+					if(isSettingOn){
+							btnSettingArr[i].style.display = 'block';
+					}else{
+							btnSettingArr[i].style.display = 'none';
+					}
+			}
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnSetting.classList.remove("active");
+			}, 150);
+	}
+
 	var btnPlay = document.getElementById("btnPlay");
 	btnPlay.onclick = function() {
 			btnPlay.classList.add("active");
