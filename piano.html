@@ -216,22 +216,10 @@
 	btnPause.onclick = function() {
 			isPaused = !isPaused;
 			if(isPaused){
-					for (i = btnClickTimeout.length - 1; i >= 0; i--){
-							btnClickTimeout[i].pause();
-					}
-					for (i = btnReleaseTimeout.length - 1; i >= 0; i--){
-							btnReleaseTimeout[i].pause();
-					}
 					for (i = notePlayTimeout.length - 1; i >= 0; i--){
 							notePlayTimeout[i].pause();
 					}
 			}else{
-					for (i = btnClickTimeout.length - 1; i >= 0; i--){
-							btnClickTimeout[i].resume();
-					}
-					for (i = btnReleaseTimeout.length - 1; i >= 0; i--){
-							btnReleaseTimeout[i].resume();
-					}
 					for (i = notePlayTimeout.length - 1; i >= 0; i--){
 							notePlayTimeout[i].resume();
 					}
@@ -345,6 +333,9 @@
 			btnStop.disabled = false;
 			btnStop.classList.remove("disabled");
 			btnStop.classList.add("abled");
+			btnPause.disabled = false;
+			btnPause.classList.remove("disabled");
+			btnPause.classList.add("abled");
 	}
 
 	function detectChrome(){
@@ -365,6 +356,7 @@
 		}else{
 				btnPlay.classList.add("disabled");
 				btnStop.classList.add("disabled");
+				btnPause.classList.add("disabled");
 				btnSwitchPersonHand.classList.add("disabled");
 				displayPiano();
 				loadPianoList();
@@ -1752,7 +1744,7 @@
 	var buffer = 0.2;
 	var piano = Synth.createInstrument('piano');
 	function playOneNote(note, octave, duration, startTime, personIndex){
-			notePlayTimeout[notePlayTimeout.length] = setTimeout(function() {
+			notePlayTimeout[notePlayTimeout.length] = new Timer(function() {
 						var finalDuration = duration / 1000;
 						if(finalDuration < minNoteLast){
 								finalDuration = minNoteLast;
@@ -1903,7 +1895,7 @@
 					clearInterval(btnReleaseTimeout[i]);
 			}
 			for (i = notePlayTimeout.length - 1; i >= 0; i--){
-					clearInterval(notePlayTimeout[i]);
+					notePlayTimeout[i].clear();
 			}
 
 			var whiteKeyArr = document.getElementsByClassName("whiteKey");
@@ -1922,6 +1914,29 @@
 			btnClickTimeout = [];
 			btnReleaseTimeout = [];
 			notePlayTimeout = [];
+	}
+
+	function Timer(callback, delay) {
+	    var timerId, start, remaining = delay;
+
+	    this.pause = function() {
+	        window.clearTimeout(timerId);
+	        remaining -= new Date() - start;
+	    };
+
+	    this.resume = function() {
+	        start = new Date();
+	        window.clearTimeout(timerId);
+					if(remaining >= 0){
+	        		timerId = window.setTimeout(callback, remaining);
+					}
+	    };
+
+	    this.clear = function() {
+	        window.clearTimeout(timerId);
+	    };
+
+	    this.resume();
 	}
 	</script>
 
