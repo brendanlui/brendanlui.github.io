@@ -116,11 +116,11 @@
 	<div id="buttonBox">
 			<button id="btnSetting" class="buttonJp btnFilter">Setting</button>
 			<button id="btnD" class="buttonJp btnFilter btnSetting">2D</button>
-			<button id="btnFire" class="buttonJp btnFilter btnSetting">Fire : Off</button>
-			<button id="btnSpark" class="buttonJp btnFilter btnSetting">Spark : Off</button>
-			<button id="btnPressDuration" class="buttonJp btnFilter btnSetting">Duration per time : 100 ms</button>
 			<button id="btnChangePerson" class="buttonJp btnFilter btnSetting">No. of Players : 1</button>
 			<button id="btnSwitchPersonHand" class="buttonJp btnFilter btnSetting" disabled>Switch</button>
+			<button id="btnPressDuration" class="buttonJp btnFilter btnSetting">Duration per time : 50 ms</button>
+			<button id="btnFire" class="buttonJp btnFilter btnSetting">Fire : Off</button>
+			<button id="btnSpark" class="buttonJp btnFilter btnSetting">Spark : Off</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
 	</div>
@@ -226,10 +226,10 @@
 			setSparkMode(numberOfSpark);
 	}
 
-	var currentPressDuration = 100;
+	var currentPressDuration = 50;
 	var addPressDuration = 100;
-	var minPressDuration = 100;
-	var maxPressDuration = 500;
+	var minPressDuration = 50;
+	var maxPressDuration = 450;
 	var btnPressDuration = document.getElementById("btnPressDuration");
 	btnPressDuration.onclick = function() {
 			btnPressDuration.classList.add("active");
