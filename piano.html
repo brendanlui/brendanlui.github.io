@@ -177,10 +177,8 @@
 			loadText(document.getElementById('fileContent').textContent);
 			btnStop.disabled = false;
 			btnStop.classList.remove("disabled");
-			btnStop.classList.add("abled");
 			btnPause.disabled = false;
 			btnPause.classList.remove("disabled");
-			btnPause.classList.add("abled");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 150);
@@ -205,10 +203,8 @@
 	var btnStop = document.getElementById("btnStop");
 	btnStop.onclick = function() {
 			btnStop.disabled = true;
-			btnStop.classList.remove("abled");
 			btnStop.classList.add("disabled");
 			btnPause.disabled = true;
-			btnPause.classList.remove("abled");
 			btnPause.classList.add("disabled");
 			clearAllTimeout();
 			displayPiano();
@@ -288,10 +284,8 @@
 			}, 150);
 			if(noOfPerson > 1){
 					btnSwitchPersonHand.classList.remove("disabled");
-					btnSwitchPersonHand.classList.add("abled");
 					btnSwitchPersonHand.disabled = false;
 			}else{
-					btnSwitchPersonHand.classList.remove("abled");
 					btnSwitchPersonHand.classList.add("disabled");
 					btnSwitchPersonHand.disabled = true;
 			}
@@ -333,14 +327,11 @@
 			link.style.display = "block";
 			btnPlay.disabled = false;
 			btnPlay.classList.remove("disabled");
-			btnPlay.classList.add("abled");
 			btnPlay.innerHTML = "Play : " + currentPlaySongName;
 			btnStop.disabled = false;
 			btnStop.classList.remove("disabled");
-			btnStop.classList.add("abled");
 			btnPause.disabled = false;
 			btnPause.classList.remove("disabled");
-			btnPause.classList.add("abled");
 	}
 
 	function detectChrome(){
@@ -1510,13 +1501,11 @@
 					if(noOfPerson > 1){
 							document.getElementById("btnChangePerson").click();
 					}
-					btnChangePerson.classList.remove("abled");
 					btnChangePerson.classList.add("disabled");
 					btnChangePerson.disabled = true;
 			}else{
-						btnChangePerson.classList.remove("disabled");
-						btnChangePerson.classList.add("abled");
-						btnChangePerson.disabled = false;
+					btnChangePerson.classList.remove("disabled");
+					btnChangePerson.disabled = false;
 			}
 			//check more than one person end
 
