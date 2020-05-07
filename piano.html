@@ -179,6 +179,8 @@
 			btnStop.classList.remove("disabled");
 			btnPause.disabled = false;
 			btnPause.classList.remove("disabled");
+			isPaused = false;
+			btnPause.innerHTML = "Pause";
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 150);
@@ -206,6 +208,8 @@
 			btnStop.classList.add("disabled");
 			btnPause.disabled = true;
 			btnPause.classList.add("disabled");
+			isPaused = false;
+			btnPause.innerHTML = "Pause";
 			clearAllTimeout();
 			displayPiano();
 	}
