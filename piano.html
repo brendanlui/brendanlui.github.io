@@ -213,6 +213,7 @@
 	var btnPause = document.getElementById("btnPause");
 	var isPaused = false;
 	btnPause.onclick = function() {
+			btnPause.classList.add("active");
 			isPaused = !isPaused;
 			if(isPaused){
 					for (i = notePlayTimeout.length - 1; i >= 0; i--){
@@ -225,6 +226,10 @@
 					}
 					btnPause.innerHTML = "Pause";
 			}
+
+			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
+					btnPause.classList.remove("active");
+			}, 150);
 	}
 
 	var btnFire = document.getElementById("btnFire");
