@@ -123,6 +123,7 @@
 			<button id="btnSpark" class="buttonJp btnFilter btnSetting">Spark : Off</button>
 		  <button id="btnPlay" class="buttonJp btnFilter" disabled>Play</button>
 			<button id="btnStop" class="buttonJp btnFilter" disabled>Stop</button>
+			<button id="btnPause" class="buttonJp btnFilter" disabled>Pause</button>
 	</div>
 	<div id="fileUploadDiv">
   		<input id="fileInput" type="file" name="file" />
@@ -177,6 +178,9 @@
 			btnStop.disabled = false;
 			btnStop.classList.remove("disabled");
 			btnStop.classList.add("abled");
+			btnPause.disabled = false;
+			btnPause.classList.remove("disabled");
+			btnPause.classList.add("abled");
 			btnClickTimeout[btnClickTimeout.length] = setTimeout(function() {
 					btnPlay.classList.remove("active");
 			}, 150);
@@ -205,6 +209,33 @@
 			btnStop.classList.add("disabled");
 			clearAllTimeout();
 			displayPiano();
+	}
+
+	var btnPause = document.getElementById("btnPause");
+	var isPaused = false;
+	btnPause.onclick = function() {
+			isPaused = !isPaused;
+			if(isPaused){
+					for (i = btnClickTimeout.length - 1; i >= 0; i--){
+							btnClickTimeout[i].pause();
+					}
+					for (i = btnReleaseTimeout.length - 1; i >= 0; i--){
+							btnReleaseTimeout[i].pause();
+					}
+					for (i = notePlayTimeout.length - 1; i >= 0; i--){
+							notePlayTimeout[i].pause();
+					}
+			}else{
+					for (i = btnClickTimeout.length - 1; i >= 0; i--){
+							btnClickTimeout[i].resume();
+					}
+					for (i = btnReleaseTimeout.length - 1; i >= 0; i--){
+							btnReleaseTimeout[i].resume();
+					}
+					for (i = notePlayTimeout.length - 1; i >= 0; i--){
+							notePlayTimeout[i].resume();
+					}
+			}
 	}
 
 	var btnFire = document.getElementById("btnFire");
