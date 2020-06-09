@@ -1080,7 +1080,7 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
                 </div>
                 <div class="panel-body">
                   <p lang="ja" class="txt-ja"><span class="furigana">１<ruby><rb>分</rb><rt>ぷん</rt></ruby>は６０<ruby><rb>秒</rb><rt>びょう</rt></ruby>です。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="1914" data-vt="JP" data-txt="１分は６０秒です。|１分は６０秒です。"><i class="fa fa-volume-up"></i></a></p>
-                  <p lang="ja" class="txt-zh zh">1分鐘是30秒。</p>
+                  <p lang="ja" class="txt-zh zh">1分鐘是60秒。</p>
                 </div>
               </div>
 
