@@ -923,7 +923,7 @@ border-top-left-radius: 5px;border-top-right-radius: 5px;
                   <h4 class="panel-title">例</h4>
                 </div>
                 <div class="panel-body">
-                  <p lang="ja" class="txt-ja"><span class="furigana">こんな<ruby><rb>車</rb><rt>くるま</rt></ruby>は<ruby><rb>初</rb><rt>じ</rt></ruby>めてです。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="906" data-vt="JP" data-txt="こんな車は初めてです。|こんな車は初めてです。"><i class="fa fa-volume-up"></i></a></p>
+                  <p lang="ja" class="txt-ja"><span class="furigana">こんな<ruby><rb>車</rb><rt>くるま</rt></ruby>は<ruby><rb>初</rb><rt>はじ</rt></ruby>めてです。</span>&nbsp;<a href="javascript:;" lang="" class="voiceSentences ladda-button" data-size="xs" data-spinner-color="#0ce3ac" data-style="contract" data-sn="906" data-vt="JP" data-txt="こんな車は初めてです。|こんな車は初めてです。"><i class="fa fa-volume-up"></i></a></p>
                   <p lang="ja" class="txt-zh zh">這樣的車是第一次看到。</p>
                 </div>
               </div>
